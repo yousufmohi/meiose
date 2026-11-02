@@ -7,3 +7,6 @@
 
 # eval output
 /eval/results/
+
+# demo recording data
+/docs/demo/.data/

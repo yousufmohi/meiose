@@ -58,9 +58,19 @@ pub fn search(text: &str, query: &str) -> String {
     for &hit in hits.iter().take(MAX_HITS) {
         let mut add: Vec<usize> = Vec::new();
         let mut a = parent(&lines, hit);
-        let start = a
-            .filter(|&p| subtree_end(&lines, p) - p <= MAX_CONTEXT_LINES)
-            .unwrap_or(hit);
+        // Climb to the largest ancestor that is still small: a link inside a
+        // cell brings its whole row, a method name brings its whole header
+        // (with the version badge that sits beside the heading), but a hit
+        // never brings a whole table or page.
+        let mut start = hit;
+        let mut up = a;
+        while let Some(p) = up {
+            if subtree_end(&lines, p) - p > MAX_CONTEXT_LINES {
+                break;
+            }
+            start = p;
+            up = parent(&lines, p);
+        }
         let end = subtree_end(&lines, start).min(start + MAX_CONTEXT_LINES);
         add.extend(start..end);
         while let Some(p) = a {
@@ -100,11 +110,66 @@ mod tests {
 
     const PAGE: &str = "- main:\n  - table:\n    - row:\n      - cell \"Frank Bach\"\n      - cell \"$51.00\"\n    - row:\n      - cell \"Jason Doe\"\n      - cell \"$100.00\"\n";
 
+    /// PAGE plus enough rows that the table is larger than the context limit,
+    /// as real tables are (a tiny page fits whole, which is fine).
+    fn big_table() -> String {
+        let mut p = PAGE.to_string();
+        for i in 0..30 {
+            p.push_str(&format!(
+                "    - row:\n      - cell \"Person {i}\"\n      - cell \"${i}.00\"\n"
+            ));
+        }
+        p
+    }
+
     #[test]
     fn a_cell_brings_its_row_and_ancestors_only() {
-        let r = search(PAGE, "frank");
+        let r = search(&big_table(), "frank");
         assert!(r.contains("$51.00") && r.contains("- main:"), "{r}");
         assert!(!r.contains("Jason Doe"), "{r}");
+    }
+
+    #[test]
+    fn a_link_inside_a_cell_brings_its_whole_row() {
+        // Wikipedia tables: the match is the country's link, the numbers are
+        // in sibling cells of the same row.
+        let mut p = String::from("- table:\n");
+        for (name, pop) in [("Mongolia", "3,431,932"), ("Uruguay", "3,388,081")] {
+            p.push_str(&format!(
+                "  - row:\n    - cell:\n      - link \"{name}\" [ref=e1]\n    - cell \"{pop}\"\n"
+            ));
+        }
+        for i in 0..30 {
+            p.push_str(&format!(
+                "  - row:\n    - cell \"C{i}\"\n    - cell \"{i}\"\n"
+            ));
+        }
+        let r = search(&p, "mongolia");
+        assert!(r.contains("3,431,932"), "{r}");
+        assert!(!r.contains("Uruguay"), "{r}");
+    }
+
+    #[test]
+    fn a_heading_match_brings_the_badge_beside_it() {
+        // rustdoc: the "Stable since" version sits in a sibling just before
+        // the method heading.
+        let mut p = String::from("- main:\n");
+        for (m, v) in [("dedup", "1.0.0"), ("extract_if", "1.87.0")] {
+            p.push_str(&format!(
+                "  - group:\n    - generic:\n      - generic:\n        - text: {v} ·\n        - link \"Source\" [ref=e2]\n      - heading [level=4]:\n        - text: pub fn\n        - link \"{m}\" [ref=e3]\n"
+            ));
+            for i in 0..25 {
+                // Docs lines must not mention the method, or they would
+                // match too and bring the badge in by another route.
+                p.push_str(&format!("    - paragraph: docs line {i}\n"));
+            }
+        }
+        let r = search(&p, "extract_if");
+        assert!(r.contains("1.87.0"), "{r}");
+        assert!(
+            !r.contains("1.0.0"),
+            "a neighbour's version must not leak in: {r}"
+        );
     }
 
     #[test]

@@ -16,8 +16,23 @@ use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use anyhow::Context;
 use rusqlite::{Connection, OptionalExtension, params};
 
-/// Originals older than this are deleted.
-pub const OUTPUT_TTL: Duration = Duration::from_secs(7 * 24 * 3600);
+/// Default: originals older than this many days are deleted.
+pub const DEFAULT_KEEP_DAYS: u64 = 7;
+
+/// How long original outputs are kept on disk, from `MEIOSE_KEEP_DAYS`
+/// (default 7). `0` means originals are never written to disk: they live in
+/// memory for the session only (expand still works within it; `meiose log
+/// --show` does not).
+pub fn keep_days() -> u64 {
+    std::env::var("MEIOSE_KEEP_DAYS")
+        .ok()
+        .and_then(|v| v.trim().parse().ok())
+        .unwrap_or(DEFAULT_KEEP_DAYS)
+}
+
+fn output_ttl() -> Duration {
+    Duration::from_secs(keep_days() * 24 * 3600)
+}
 /// Total size cap for stored originals; oldest go first.
 pub const OUTPUT_CAP_BYTES: i64 = 512 * 1024 * 1024;
 /// Per-process in-memory cap for originals.
@@ -109,6 +124,9 @@ impl StoreHandle {
                     m.bytes -= v.len();
                 }
             }
+        }
+        if keep_days() == 0 {
+            return; // memory only, by request
         }
         let _ = self.tx.send(Job::Output {
             id: id.into(),
@@ -282,7 +300,7 @@ fn insert_call(conn: &Connection, rec: &CallRecord) -> rusqlite::Result<()> {
 /// Delete expired originals, then the oldest until under the size cap.
 /// Call rows are kept for 90 days.
 pub fn prune(conn: &Connection) -> rusqlite::Result<()> {
-    let cutoff = now_ms() - OUTPUT_TTL.as_millis() as i64;
+    let cutoff = now_ms() - output_ttl().as_millis() as i64;
     conn.execute("DELETE FROM outputs WHERE created_ms < ?1", [cutoff])?;
     conn.execute(
         "DELETE FROM calls WHERE ts_ms < ?1",
@@ -493,7 +511,7 @@ mod tests {
         let conn = open_db(&dir.path().join("m.db")).unwrap();
         conn.execute(
             "INSERT INTO outputs VALUES ('old', ?1, 's', 't', 'r', 't')",
-            [now_ms() - OUTPUT_TTL.as_millis() as i64 - 1000],
+            [now_ms() - output_ttl().as_millis() as i64 - 1000],
         )
         .unwrap();
         conn.execute(

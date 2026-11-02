@@ -231,3 +231,21 @@ fn stats_and_log_report_the_session() {
         "original keeps everything"
     );
 }
+
+#[test]
+fn keep_days_zero_keeps_originals_in_memory_only() {
+    let mut s = Session::start_with(HN, &[], &[("MEIOSE_KEEP_DAYS", "0")]);
+    s.init();
+    let snap = s.call("browser_snapshot", json!({}));
+    let eid = expand_id(text_of(&snap));
+    // Expand still works within the session...
+    let full = s.call("meiose_expand", json!({"id": eid}));
+    assert!(text_of(&full).contains("[cursor=pointer]"));
+    let data = s.finish();
+    // ...but nothing was written to disk.
+    let conn = rusqlite::Connection::open(data.path().join("meiose.db")).unwrap();
+    let n: i64 = conn
+        .query_row("SELECT COUNT(*) FROM outputs", [], |r| r.get(0))
+        .unwrap();
+    assert_eq!(n, 0);
+}

@@ -219,9 +219,10 @@ impl Interceptor {
                 None => rpc::tool_text_response(
                     id_raw,
                     &format!(
-                        "meiose has no stored output for id \"{eid}\". Outputs are kept for 7 days \
-                         (and only while disk space allows). Re-run the original tool call to get a \
-                         fresh, complete result."
+                        "meiose has no stored output for id \"{eid}\". Outputs are kept for {} \
+                         day(s) (MEIOSE_KEEP_DAYS) and only while disk space allows. Re-run the \
+                         original tool call to get a fresh, complete result.",
+                        crate::store::keep_days()
                     ),
                     true,
                 ),

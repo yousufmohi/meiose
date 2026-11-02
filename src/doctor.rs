@@ -177,9 +177,7 @@ fn check_config(client: Client, path: &Path, our_version: &str, out: &mut Vec<Ch
         stdio += 1;
         let inner = install::unwrap_launch(&launch);
         let target = inner.as_ref().unwrap_or(&launch);
-        npx |= Path::new(&target.command)
-            .file_stem()
-            .is_some_and(|s| s.eq_ignore_ascii_case("npx"));
+        npx |= install::program_name(&target.command) == "npx";
         match &inner {
             None => problems.push(check(
                 Status::Warn,

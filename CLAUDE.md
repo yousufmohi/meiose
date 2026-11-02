@@ -16,8 +16,8 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 | M2 | Playwright handler + snapshot/property tests + benchmark | Done (2026-11-01) |
 | M3 | `meiose_expand` + store + `stats` + `log` + json/text handlers + snapshot diffing | Done (2026-11-01) |
 | M4 | `install` / `uninstall` / `doctor` + install tests | Done (2026-11-01) |
-| M5 | Protocol test suite + fail-open hardening | **Done (2026-11-01), awaiting user review**; eval harness pulled forward from M6 |
-| M6 | Eval harness + README + cargo-dist + npm wrapper | not started |
+| M5 | Protocol test suite + fail-open hardening | Done (2026-11-01); eval harness pulled forward from M6 |
+| M6 | Eval harness + README + cargo-dist + npm wrapper | **Done locally (2026-11-01); publishing awaits the user** |
 
 Work one milestone at a time. After each: report what was built, test results
 and open questions, then **wait for the user's go-ahead**.
@@ -179,6 +179,23 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   expand, +43%). Conservative dedupe now requires identical text
   (`dedupe_same_text`); aggressive keeps structural dedupe. Fixture savings:
   conservative 25% → 23%.
+
+## Release (M6)
+
+- cargo-dist 0.32 (`dist-workspace.toml`, `.github/workflows/release.yml`):
+  5 targets (macOS x64/arm64, Linux x64/arm64 gnu, Windows x64), shell +
+  PowerShell installers, Homebrew formula → `yousufmohi/homebrew-tap`
+  (secret HOMEBREW_TAP_TOKEN), npm package `meiose` (secret NPM_TOKEN).
+  Release = push a `v*` tag. `dist plan` / `dist build --artifacts=local`.
+- crates.io: `include` keeps the package to src + docs (75 KB);
+  `cargo publish --dry-run` passes. Needs `cargo login`.
+- CI (`.github/workflows/ci.yml`): fmt; clippy -D warnings + full tests on
+  ubuntu/macos/windows (Python 3.12 for fake_server.py); bench job.
+- Verified locally on Windows and on Linux (WSL Ubuntu 24.04, separate
+  CARGO_TARGET_DIR); macOS only via CI so far.
+- `install::program_name` splits on both `/` and `\` (configs travel between
+  OSes; `Path::file_stem` on Linux does not split Windows paths).
+- `MEIOSE_KEEP_DAYS` (default 7; 0 = originals never written to disk).
 
 ## Layout
 

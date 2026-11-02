@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+jobs:
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - run: cargo fmt --all -- --check
+
+  test:
+    name: test (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      # tests/fake_server.py drives the protocol and end-to-end tests.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: clippy
+        run: cargo clippy --all-targets -- -D warnings
+      - name: tests (unit, snapshot, property, end-to-end, protocol, install)
+        run: cargo test
+        env:
+          MEIOSE_TEST_PYTHON: python
+          INSTA_UPDATE: "no"
+
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: trim time on the largest fixture
+        run: cargo bench --bench prune -- --warm-up-time 1 --measurement-time 3

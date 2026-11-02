@@ -185,12 +185,22 @@ fn shell_word(s: &str) -> String {
     }
 }
 
+/// `C:\x\meiose.exe` → `meiose`, `/usr/bin/npx` → `npx`, on every OS.
+/// (`Path` only splits on the host's separators, but configs travel.)
+pub fn program_name(command: &str) -> String {
+    let base = command.rsplit(['/', '\\']).next().unwrap_or(command);
+    let lower = base.to_ascii_lowercase();
+    for ext in [".exe", ".cmd", ".bat"] {
+        if let Some(stem) = lower.strip_suffix(ext) {
+            return stem.to_string();
+        }
+    }
+    lower
+}
+
 /// Is this launch already going through meiose?
 pub fn is_wrapped(l: &Launch) -> bool {
-    let stem = Path::new(&l.command)
-        .file_stem()
-        .map(|s| s.to_string_lossy().to_ascii_lowercase());
-    stem.as_deref() == Some("meiose")
+    program_name(&l.command) == "meiose"
         && matches!(l.args.first().map(String::as_str), Some("run" | "record"))
 }
 
@@ -696,6 +706,15 @@ mod tests {
         assert_eq!(w.args[..3], ["run", "--", "npx"]);
         assert!(is_wrapped(&w));
         assert_eq!(unwrap_launch(&w), Some(orig));
+    }
+
+    #[test]
+    fn program_name_handles_both_separators_and_extensions() {
+        assert_eq!(program_name(r"C:\Users\me\.cargo\bin\meiose.exe"), "meiose");
+        assert_eq!(program_name("/usr/local/bin/meiose"), "meiose");
+        assert_eq!(program_name("npx.cmd"), "npx");
+        assert_eq!(program_name("NPX"), "npx");
+        assert_eq!(program_name("node"), "node");
     }
 
     #[test]

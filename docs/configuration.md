@@ -7,6 +7,7 @@ There is no config file. Everything below is optional.
 | | |
 |---|---|
 | `meiose run --aggressive -- …` | trim harder: hide all non-interactive refs, drop link URLs, shorten more |
+| `meiose run --budget 12000 -- …` | cap Playwright snapshots at about this many tokens; larger pages become an outline (off by default; see [how it works](how-it-works.md#budget)) |
 | `meiose run --no-diff -- …` | always send full snapshots |
 | `meiose run --passthrough -- …` | change nothing (still records stats) |
 | `meiose record -- …` | passthrough plus a JSONL log of all traffic, for debugging and fixtures |
@@ -15,6 +16,23 @@ There is no config file. Everything below is optional.
 | `meiose install --dry-run` | show what would change |
 | `meiose log [-n 20]` | recent calls with tokens before and after |
 | `meiose log --show <id>` | trimmed and original output for one call |
+
+## Which settings to use
+
+| agent | suggestion |
+|---|---|
+| Claude Code | the defaults. `--budget` added turns and did not lower cost in the eval. |
+| an agent that passes tool results to the model in full | `--budget 20000` or `--budget 12000`. In the eval this cut cost by about 93%, with no wrong answers on the large-page tasks; see [BENCHMARKS.md](../BENCHMARKS.md). |
+
+## The `meiose_expand` tool
+
+meiose adds one tool to the server's tool list. The agent calls it with the id
+from a trim note:
+
+| arguments | returns |
+|---|---|
+| `{"id": "k3x9q2ab"}` | the original result, exactly as the server sent it |
+| `{"id": "k3x9q2ab", "query": "Canada"}` | only the matching lines, with their context; `\|` separates alternatives |
 
 ## Environment variables
 

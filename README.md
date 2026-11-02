@@ -13,15 +13,17 @@ Playwright MCP snapshots of real pages, in tokens:
 
 | page | before | default | `--aggressive` |
 |---|---:|---:|---:|
-| Rust `Vec` docs | 244,156 | 193,388 (−21%) | 133,867 (−45%) |
-| MDN `<input>` reference | 166,768 | 119,646 (−28%) | 93,187 (−44%) |
-| Wikipedia "Rust" | 133,768 | 116,596 (−13%) | 81,191 (−39%) |
-| Hacker News | 13,713 | 9,591 (−30%) | 5,684 (−59%) |
-| all 40 test pages | 955,708 | 732,642 (−23%) | 493,351 (−48%) |
+| Rust `Vec` docs | 244,156 | 166,563 (−32%) | 133,879 (−45%) |
+| MDN `<input>` reference | 166,768 | 112,891 (−32%) | 93,199 (−44%) |
+| Wikipedia "Rust" | 133,768 | 105,700 (−21%) | 81,203 (−39%) |
+| Hacker News | 13,713 | 8,262 (−40%) | 5,696 (−58%) |
+| all 40 test pages | 943,239 | 650,329 (−31%) | 488,437 (−48%) |
 | repeat snapshot of an unchanged page | 133,862 | 79 | — |
+| one method from the `Vec` docs, via `query` | 244,156 | 1,399 | — |
 
-Trimming the largest page takes 2.3 ms. [BENCHMARKS.md](BENCHMARKS.md) has the
-end-to-end Claude Code comparison: same accuracy, 9% lower cost.
+Trimming the largest page takes 2.6 ms. In Claude Code the end-to-end saving is
+7% of cost at the same accuracy; agents without an output limit save far more
+with `--budget`. [BENCHMARKS.md](BENCHMARKS.md) has the evals.
 
 ## Install
 
@@ -115,18 +117,27 @@ Any stdio MCP server works the same way: `meiose run -- <command> <args>`.
 ```
 
 meiose passes through every message it does not intentionally change. When a
-tool returns a large result, meiose trims its text and adds a note with an id;
-the agent can call `meiose_expand(id)` to get the original byte-for-byte. A
-repeat snapshot of the same page is sent as a diff of what changed. Links,
-buttons, inputs and anything clickable always keep their refs. If anything
+tool returns a large result, meiose trims its text and adds a note with an id.
+The agent can call `meiose_expand(id)` to get the original byte-for-byte, or
+`meiose_expand(id, query="…")` to get only the matching lines with their
+context. A repeat snapshot of the same page is sent as a diff of what changed.
+In the default mode, links, buttons, inputs and anything clickable always keep
+their refs. With `--budget`, a page over the budget becomes an outline that can
+leave some of them out; they stay reachable through `meiose_expand`. If anything
 inside meiose fails, the original result passes through; it runs locally and
 sends no telemetry. Details in [docs/how-it-works.md](docs/how-it-works.md).
 
 ## Why shouldn't I use meiose?
 
-- In Claude Code the gains are smaller. Claude Code already keeps very large
-  tool results away from the model, so meiose only saves on mid-size outputs
-  and repeat snapshots. In the end-to-end eval that was 9% lower cost.
+- In Claude Code the gains are small. Claude Code already saves MCP text
+  results over 50,000 characters to a file instead of showing them to the
+  model, so meiose only saves on mid-size outputs and repeat snapshots. In the
+  end-to-end eval that was 7% lower cost and no change in tokens.
+- `--budget` cuts cost sharply for agents without that limit, but its outlines
+  can leave out links and buttons. In testing, agents found what they needed
+  with `query` on large pages, but this is less certain than a full snapshot.
+- A link whose URL already appeared earlier on the page is shown without it.
+  The link can still be clicked; `meiose_expand` shows its URL.
 - It keeps copies of tool outputs on disk for 7 days by default.
   `MEIOSE_KEEP_DAYS=0` keeps them in memory only.
 - Text outputs over 40 KB are cut to their head and tail. If that output is a

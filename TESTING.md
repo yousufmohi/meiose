@@ -63,8 +63,9 @@ the answers were still right:
 ```bash
 cargo build --release
 python eval/run_eval.py --quick              # 5 tasks × 2 modes × 1 run
-python eval/run_eval.py                      # 15 tasks × 2 modes × 2 runs
-python eval/run_eval.py --model sonnet --modes baseline,meiose,aggressive
+python eval/run_eval.py                      # 19 tasks × 2 modes × 2 runs
+python eval/run_eval.py --model sonnet --modes baseline,meiose,budget20000
+python eval/run_eval.py --client loop --modes baseline,meiose,budget20000   # no output limit
 ```
 
 Each run is `claude -p` with Playwright MCP, identical prompt, model and
@@ -82,36 +83,18 @@ The baseline runs Playwright through `meiose --passthrough` (byte-identical
 traffic, proven by the tests) so it can count tool tokens too; add
 `--pure-baseline` to use plain `npx @playwright/mcp` with no meiose at all.
 
-### Results so far (2026-11-01, Claude Haiku, Playwright MCP 1.65)
+### Results
 
-Full eval, 15 tasks × 2 runs per mode:
+Current results and how they were measured are in
+[BENCHMARKS.md](BENCHMARKS.md). Two things to keep in mind when reading them:
 
-| | baseline | meiose |
-|---|---:|---:|
-| correct answers | 30/30 | **30/30** |
-| billed tokens per run | 199,103 | 187,312 (**6% less**) |
-| cost per run | $0.0077 | $0.0070 (**9% less**) |
-| tool-output tokens | 293K | 219K (**23% less**) |
-
-Cost falls more than tokens because the trimmed output is written to the
-prompt cache once (expensive) and re-read cheaply afterwards.
-
-How to read this:
-
-- **Claude Code already offloads huge MCP results.** Anything over its output
-  cap (~25K tokens) never reaches the model: it is saved to a file and the
-  model gets a short note. So in Claude Code meiose only saves on outputs under
-  the cap, plus snapshot diffs. Clients without such a cap (Claude Desktop,
-  Cursor, your own agents) get the full trimming effect on big pages; this
-  harness does not measure them yet.
-- **Claude Code's own context dominates short tasks** (~15–20K tokens of
-  system prompt and tools per turn), and cache reads vary ±30–70K between
-  identical runs. Per-task differences in the table are mostly noise; only
-  the totals over 60 runs mean much.
-- **The eval already caught one harmful rule.** Structural dedupe hid unique
-  rows of a 250-country list (the agent had to expand, +43% tokens). Since
-  then, conservative mode only collapses siblings that are identical
-  including their text; that task is now even with baseline.
+- Claude Code saves MCP text results over 50,000 characters (or over
+  `MAX_MCP_OUTPUT_TOKENS`, default 25,000 tokens) to a file instead of showing
+  them to the model, so in Claude Code meiose only saves on smaller outputs.
+  `--client loop` runs a minimal agent with no such limit.
+- Identical runs vary by tens of thousands of tokens. The report gives a
+  bootstrap 95% interval for each saving; treat any interval that includes
+  zero as no measured effect.
 
 ## 5. Undo
 

@@ -1,9 +1,12 @@
 //! Savings report over the snapshot fixtures.
 //!
-//!   cargo run --release --example report [-- --dump DIR] [-- --markdown]
+//!   cargo run --release --example report [-- --dump DIR] [-- --markdown] [-- --local]
 //!
 //! Prints tokens before/after (o200k proxy) and trim time per fixture for
 //! both modes. `--dump DIR` writes each trimmed output for eyeballing.
+//! Only the committed fixtures are counted unless `--local` is given, which
+//! adds your private ones from tests/fixtures/local/ (published numbers must
+//! not include those).
 
 use std::path::{Path, PathBuf};
 use std::time::Instant;
@@ -11,9 +14,14 @@ use std::time::Instant;
 use meiose::handlers::{Mode, TrimContext, playwright};
 use meiose::tokens;
 
-fn fixtures() -> Vec<PathBuf> {
+fn fixtures(include_local: bool) -> Vec<PathBuf> {
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("tests/fixtures");
-    let mut v: Vec<PathBuf> = ["playwright", "local/playwright"]
+    let dirs: &[&str] = if include_local {
+        &["playwright", "local/playwright"]
+    } else {
+        &["playwright"]
+    };
+    let mut v: Vec<PathBuf> = dirs
         .iter()
         .filter_map(|d| std::fs::read_dir(root.join(d)).ok())
         .flatten()
@@ -44,6 +52,7 @@ fn main() {
         .position(|a| a == "--dump")
         .map(|i| PathBuf::from(&args[i + 1]));
     let markdown = args.iter().any(|a| a == "--markdown");
+    let pages = fixtures(args.iter().any(|a| a == "--local"));
     if let Some(d) = &dump {
         std::fs::create_dir_all(d).unwrap();
     }
@@ -58,8 +67,8 @@ fn main() {
             "fixture", "tokens", "cons", "saved", "aggr", "saved", "ms"
         );
     }
-    for path in fixtures() {
-        let text = std::fs::read_to_string(&path).unwrap();
+    for path in &pages {
+        let text = std::fs::read_to_string(path).unwrap();
         let name = path.file_stem().unwrap().to_string_lossy();
         let before = tokens::count(&text);
         let mut row = vec![];
@@ -108,7 +117,8 @@ fn main() {
     }
     let pct = |a: usize| 100.0 * (1.0 - a as f64 / tot[0] as f64);
     println!(
-        "TOTAL {} tokens → conservative {} ({:.0}% saved), aggressive {} ({:.0}% saved)",
+        "TOTAL ({} pages) {} tokens → conservative {} ({:.0}% saved), aggressive {} ({:.0}% saved)",
+        pages.len(),
         tot[0],
         tot[1],
         pct(tot[1]),

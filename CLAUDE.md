@@ -17,7 +17,8 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 | M3 | `meiose_expand` + store + `stats` + `log` + json/text handlers + snapshot diffing | Done (2026-11-01) |
 | M4 | `install` / `uninstall` / `doctor` + install tests | Done (2026-11-01) |
 | M5 | Protocol test suite + fail-open hardening | Done (2026-11-01); eval harness pulled forward from M6 |
-| M6 | Eval harness + README + cargo-dist + npm wrapper | Done — **v0.1.0 released 2026-11-02** (GitHub, Homebrew tap, crates.io, npm) |
+| M6 | Eval harness + README + cargo-dist + npm wrapper | Done — **v0.1.0 released 2026-11-02** (GitHub, Homebrew tap, crates.io, npm); 0.1.1 released |
+| Perf | URL rules, `query` expand, `--budget`, uncapped-agent eval | **On branch `perf-url-search-budget`, evaluated, docs updated; not released** |
 
 Work one milestone at a time. After each: report what was built, test results
 and open questions, then **wait for the user's go-ahead**.
@@ -32,8 +33,10 @@ Name check (2026-11-01): `meiose` is free on crates.io, npm, Homebrew
    Never parse-and-reserialize a message you are not changing.
 2. **stdout carries only protocol messages.** Logs go to the log file or stderr.
 3. **Never break the agent.**
-   - Never drop an interactive element (`[ref=...]` that is clickable,
-     fillable or selectable).
+   - Without `--budget`, never drop an interactive element (`[ref=...]` that
+     is clickable, fillable or selectable). With `--budget` (opt-in), an
+     outline may omit them; they must stay reachable through `meiose_expand`
+     (full or `query`). Never turn `--budget` on by default without asking.
    - Every trimmed output has a marker:
      `[312 nodes trimmed — call meiose_expand("abc123")]`.
    - `meiose_expand` returns the original output byte-for-byte.
@@ -93,14 +96,20 @@ Token breakdown of the 40 fixtures (o200k): refs 30%, content 23%, `/url`
 16%, generic lines 10%, interactive lines 8%, indentation 6%, cursor 6%.
 So refs and wrappers are the levers, not text.
 
-Conservative (default, ~23% saved over fixtures):
+Conservative (default, 31% saved over the 40 committed fixtures):
 - collapse unnamed, inert, single-child `generic` wrappers (children promoted);
 - drop empty inert nodes and separator-only text nodes (`- text: "|"`);
 - hide `[ref=…]` on non-interactive **structural** roles (generic, cell, row,
   list(item), paragraph, code, text…); headings, img, landmarks keep refs;
 - remove `[cursor=pointer]` where the role implies it (link, button, option…);
 - dedupe ≥20 *identical (incl. text)* composite inert siblings, keep 10;
-- shorten only blobs > 1200 chars (to 1000). Paragraphs are content.
+- shorten only blobs > 1200 chars (to 1000). Paragraphs are content;
+- hide a `/url` already shown earlier on the page (only URLs actually emitted
+  count, so every distinct URL survives; tested on every fixture);
+- a link whose only child is its `/url` goes on one line: `- link "x" [ref]: /p`.
+  25% of hidden repeated URLs belong to a differently named link (e.g. two
+  arXiv authors sharing a search URL): the agent can click it but not see its
+  URL without an expand.
 
 Aggressive (opt-in, ~48% saved): flatten all unnamed generics, hide every
 inert ref, drop `/url` lines, dedupe runs ≥6 keep 3, shorten > 200 chars.
@@ -112,7 +121,21 @@ block stays well-formed. Unparseable lines are kept verbatim and treated as
 interactive. Inputs < 4096 bytes are never touched. Anything odd (odd indent,
 skipped level, `\r`) → return None (fail open).
 
-Perf: 244K-token page 1.9 ms, synthetic 488K-token page 3.9 ms (criterion).
+Perf (criterion, same laptop, back to back with the pre-URL-rules code,
+2026-11-02): 244K-token page 2.4 ms (2.3), synthetic 400K-token page 4.1 ms
+(4.3) — the 5 ms requirement, now benched directly — and 488K tokens 5.1 ms
+(4.8). The URL set uses a word-at-a-time hasher; SipHash cost about 7%.
+Timings drift 10%+ between sessions on this laptop: always compare back to back.
+
+`--budget N` (off by default): over-budget snapshots → aggressive trim →
+`playwright::outline` (structure roles, then controls, then the rest in page
+order). Budget is N×3 bytes (no tiktoken on the message path), so approximate.
+Diffs are computed against the view actually sent (fix in this branch).
+
+`meiose_expand(id, query)` (`src/search.rs`): each hit brings the largest
+ancestor whose subtree is ≤ 40 lines (a cell's row, a rustdoc method header
+with its version badge), plus ancestors; ≤ 30 hits, ≤ 24 KB. Query expands are
+recorded with handler "query".
 
 **Not yet verified:** that agents succeed as often with trimmed snapshots —
 that is the M6 eval. The structural-ref hiding is the riskiest rule.
@@ -129,16 +152,25 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   or `--passthrough`.
 - The original `result` raw bytes are stored *before* the trimmed response is
   sent; `meiose_expand` splices them back verbatim (tested byte-for-byte).
-  Originals live in memory (128 MB cap) and SQLite (7-day TTL, 512 MB cap).
-- Snapshot diff: Playwright refs are stable across snapshots (verified with
-  real Playwright 1.65). A repeat snapshot of the *same URL* as the
-  *immediately previous* snapshot (< 10 min old) is sent as a ```diff of the
-  trimmed views with ancestor context, if < 40% of lines changed. `--no-diff`
-  disables it. Measured: Wikipedia repeat 134K → 81 tokens.
+  Originals live in memory (32 MB cap; 128 MB with MEIOSE_KEEP_DAYS=0) and
+  SQLite (7-day TTL, 512 MB cap).
+- Snapshot diff: Playwright refs are stable within one loaded document, NOT
+  across navigations (a reload renamed `e3` → `f2e3`; verified with real
+  Playwright 1.65), so diffs only help repeat snapshots of the page you are
+  on. A repeat snapshot of the *same URL* as the *immediately previous*
+  snapshot (< 10 min old) is sent as a ```diff of the view the agent was
+  sent, with ancestor context, if < 40% of lines changed (a reload changes
+  every ref, so it falls back to full). `--no-diff` disables it. Measured:
+  Wikipedia repeat 134K → 79 tokens. A → B → A diffing was tried and
+  rejected: refs change after the reload, so it never fires.
 - Handler order: playwright → json (arrays > 40 keep 10, numbers exact via
   `arbitrary_precision`) → text (> 40 KB: head 16 KB + tail 4 KB).
-- Stats rows are written by the store thread, which also counts tokens, so
-  neither SQLite nor tiktoken sits on the message path. Whole intercept path
+- Stats rows are written by the store thread, so SQLite is off the message
+  path. Tokens are *estimated* (`tokens::estimate`: other bytes/3.75 +
+  indent/8 + 7 per ref; estimated fixture saving 31.8% vs exact 31.1%) so the
+  o200k vocabulary (~36 MB per process) never loads; `MEIOSE_EXACT_TOKENS=1`
+  counts exactly (the eval harness sets it). Runtime: 2 worker threads. Logs:
+  daily, last 7 files kept. Footprint: 14.8 MB / 13 threads per process. Whole intercept path
   for a 500 KB snapshot: 2.0–2.6 ms. `meiose stats` counts expanded tokens
   against savings.
 - Playwright 1.65 renamed `browser_click`'s `ref` argument to `target`.
@@ -164,21 +196,37 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   target/debug) unless `--meiose-path` is given.
 - `MEIOSE_FAKE_HOME` roots all config paths in one dir (tests, safe trials).
 
-## Eval findings (eval/run_eval.py, 2026-11-01)
+## Eval findings (eval/run_eval.py)
 
-- Claude Code (current) saves any MCP tool result above its token cap
-  (~25K, `MAX_MCP_OUTPUT_TOKENS`) to a file and gives the model an error note
-  instead ("result (499,003 characters …) exceeds maximum allowed tokens.
-  Output has been saved to …"). Verified with `--output-format stream-json`.
-  ⇒ In Claude Code, trimming only matters for outputs under the cap, plus
-  diffs; a page trimmed from above to below the cap *adds* tokens but gives
-  the agent real content.
-- Full eval (Haiku, 15 tasks × 2, page-only answers): 30/30 both modes;
-  meiose −6% billed tokens, −9% cost, −23% tool-output tokens.
-- The eval caught structural dedupe hiding data rows (countries list → forced
-  expand, +43%). Conservative dedupe now requires identical text
-  (`dedupe_same_text`); aggressive keeps structural dedupe. Fixture savings:
-  conservative 25% → 23%.
+- Claude Code's documented limits: MCP text results over 50,000 characters
+  (any token count) or over `MAX_MCP_OUTPUT_TOKENS` (default 25,000) are saved
+  to a file and the model gets a note; `_meta["anthropic/maxResultSizeChars"]`
+  raises the char limit up to 500,000. So in Claude Code the biggest pages never
+  reach the model either way.
+- 2026-11-02, Haiku, 19 tasks × 3 runs, reference = `--passthrough`
+  (BENCHMARKS.md has the tables): Claude Code: default 57/57, cost −7% [3, 11],
+  billed tokens noise; `--budget` did not pay off (more turns). Uncapped loop
+  (`eval/agent_loop.py`): `--budget 20000` 54/57, billed −51% [20, 65],
+  cost −93% [42, 96]; default within noise.
+- URL rules, targeted eval (4 listing tasks; loop 20 runs, Claude Code 8):
+  no significant accuracy effect (loop 70/80 reference, 65/80 with rules,
+  61/80 without; CC 32/32 all). `books-mystery-third` is off-by-one about half
+  the time even with no trimming (11/20): don't read single-task drops on it.
+- The eval caught two rules: structural dedupe hiding data rows (now
+  identical-text only), and `query` returning a hit's parent only (1/6 known
+  answers present → 6/6 after climbing to the largest small ancestor; replay
+  34/40 → 39/40).
+- Run-to-run noise is large (cache reads ±30–70K per identical run). Use the
+  report's bootstrap intervals; never claim a saving whose interval includes 0.
+
+## Rejected ideas (do not rebuild without new evidence)
+
+- Diffing A → B → A across navigations: refs change after a reload
+  (`e3` → `f2e3`), so the diff never fires.
+- `[ref=e1]` → `[e1]`: saves 2.0%, changes a format agents may rely on.
+- Collapsing `listitem` wrappers: about 1%.
+- Cleaning query strings or URL prefixes: 1.1% and 1.4% of bytes.
+- Optimising indentation: about 29% of bytes but about 6% of tokens.
 
 ## Release (M6)
 
@@ -206,13 +254,17 @@ src/paths.rs  src/logging.rs  src/tokens.rs  src/rpc.rs (envelope, raw splicing)
 src/intercept.rs  src/diff.rs  src/store.rs (SQLite + memory)  src/report.rs (stats/log text)
 src/install.rs (config discovery, wrap/unwrap, backups)  src/setup.rs (install/uninstall UX)  src/doctor.rs
 src/handlers/{mod.rs (trait + fail-open trim_text), playwright.rs, json.rs, text.rs}
+src/search.rs (meiose_expand query)  src/procgroup.rs (process tree)
 tests/fixtures/playwright/*.txt     40 public-page snapshots (committed)
 tests/fixtures/local/               your private fixtures (git-ignored)
 tests/snapshots/playwright/*.snap   approved conservative outputs (insta)
 tests/common/mod.rs                 independent invariant checker
 tests/{passthrough,playwright_fixtures,playwright_props,expand,install}.rs
 tests/fake_server.py (modes: mirror, exit, burst, hang, mcp)  tests/fixtures/proxy/
-benches/prune.rs  examples/report.rs
+benches/prune.rs  examples/report.rs (per page; --local adds private fixtures)
+examples/measure.rs (budget totals, pages over CC limits, full vs query expand)
+examples/search_probe.rs (are known answers in query results)
+eval/run_eval.py  eval/agent_loop.py (uncapped agent)  eval/tasks.json (19 tasks)
 scripts/capture_fixtures.py         drive real Playwright MCP → fixtures
 scripts/extract_fixtures.py         your recordings → tests/fixtures/local/
 ```

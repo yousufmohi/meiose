@@ -10,8 +10,7 @@ source: tests/playwright_fixtures.rs
 - generic:
   - banner [ref=f140e3]:
     - generic:
-      - link "crates.io" [ref=f140e5]:
-        - /url: /
+      - link "crates.io" [ref=f140e5]: /
       - search [ref=f140e8]:
         - textbox "Search" [ref=f140e9]:
           - /placeholder: Type 'S' or '/' to search
@@ -46,23 +45,17 @@ source: tests/playwright_fixtures.rs
       - navigation "serde crate subpages" [ref=f140e39]:
         - list:
           - listitem:
-            - link "Readme" [ref=f140e42]:
-              - /url: /crates/serde
+            - link "Readme" [ref=f140e42]: /crates/serde
           - listitem:
-            - link "Code" [ref=f140e44]:
-              - /url: /crates/serde/code
+            - link "Code" [ref=f140e44]: /crates/serde/code
           - listitem:
-            - link "316 Versions" [ref=f140e46]:
-              - /url: /crates/serde/versions
+            - link "316 Versions" [ref=f140e46]: /crates/serde/versions
           - listitem:
-            - link "Dependencies" [ref=f140e48]:
-              - /url: /crates/serde/dependencies
+            - link "Dependencies" [ref=f140e48]: /crates/serde/dependencies
           - listitem:
-            - link "Dependents" [ref=f140e50]:
-              - /url: /crates/serde/reverse_dependencies
+            - link "Dependents" [ref=f140e50]: /crates/serde/reverse_dependencies
           - listitem:
-            - link "Security" [ref=f140e52]:
-              - /url: /crates/serde/security
+            - link "Security" [ref=f140e52]: /crates/serde/security
       - generic:
         - article "Readme" [ref=f140e55]:
           - generic:
@@ -76,28 +69,22 @@ source: tests/playwright_fixtures.rs
             - paragraph: "You may be looking for:"
             - list:
               - listitem:
-                - link "An overview of Serde" [ref=f140e66]:
-                  - /url: https://serde.rs
+                - link "An overview of Serde" [ref=f140e66]: https://serde.rs
               - listitem:
-                - link "Data formats supported by Serde" [ref=f140e68]:
-                  - /url: https://serde.rs/#data-formats
+                - link "Data formats supported by Serde" [ref=f140e68]: https://serde.rs/#data-formats
               - listitem:
                 - link [ref=f140e70]:
                   - /url: https://serde.rs/derive.html
                   - text: Setting up
                   - code: "#[derive(Serialize, Deserialize)]"
               - listitem:
-                - link "Examples" [ref=f140e73]:
-                  - /url: https://serde.rs/examples.html
+                - link "Examples" [ref=f140e73]: https://serde.rs/examples.html
               - listitem:
-                - link "API documentation" [ref=f140e75]:
-                  - /url: https://docs.rs/serde
+                - link "API documentation" [ref=f140e75]: https://docs.rs/serde
               - listitem:
-                - link "Release notes" [ref=f140e77]:
-                  - /url: https://github.com/serde-rs/serde/releases
+                - link "Release notes" [ref=f140e77]: https://github.com/serde-rs/serde/releases
             - heading "Serde in action" [level=2] [ref=f140e78]:
-              - link:
-                - /url: "#serde-in-action"
+              - link: "#serde-in-action"
               - text: Serde in action
             - code:
               - generic: "use serde::{Deserialize, Serialize};"
@@ -118,40 +105,29 @@ source: tests/playwright_fixtures.rs
               - generic: "println!(\"deserialized = {:?}\", deserialized);"
               - generic: "}"
             - heading "Getting help" [level=2] [ref=f140e98]:
-              - link:
-                - /url: "#getting-help"
+              - link: "#getting-help"
               - text: Getting help
             - paragraph:
               - text: Serde is one of the most widely used Rust libraries so any place that Rustaceans congregate will be able to help you out. For chat, consider trying the
-              - link "#rust-questions" [ref=f140e100]:
-                - /url: https://discord.com/channels/273534239310479360/274215136414400513
+              - link "#rust-questions" [ref=f140e100]: https://discord.com/channels/273534239310479360/274215136414400513
               - text: or
-              - link "#rust-beginners" [ref=f140e101]:
-                - /url: https://discord.com/channels/273534239310479360/273541522815713281
+              - link "#rust-beginners" [ref=f140e101]: https://discord.com/channels/273534239310479360/273541522815713281
               - text: "channels of the unofficial community Discord (invite:"
-              - link "https://discord.gg/rust-lang-community" [ref=f140e102]:
-                - /url: https://discord.gg/rust-lang-community
+              - link "https://discord.gg/rust-lang-community" [ref=f140e102]: https://discord.gg/rust-lang-community
               - text: ), the
-              - link "#rust-usage" [ref=f140e103]:
-                - /url: https://discord.com/channels/442252698964721669/443150878111694848
+              - link "#rust-usage" [ref=f140e103]: https://discord.com/channels/442252698964721669/443150878111694848
               - text: or
-              - link "#beginners" [ref=f140e104]:
-                - /url: https://discord.com/channels/442252698964721669/448238009733742612
+              - link "#beginners" [ref=f140e104]: https://discord.com/channels/442252698964721669/448238009733742612
               - text: "channels of the official Rust Project Discord (invite:"
-              - link "https://discord.gg/rust-lang" [ref=f140e105]:
-                - /url: https://discord.gg/rust-lang
+              - link "https://discord.gg/rust-lang" [ref=f140e105]: https://discord.gg/rust-lang
               - text: ), or the
-              - link "#general" [ref=f140e106]:
-                - /url: https://rust-lang.zulipchat.com/#narrow/stream/122651-general
+              - link "#general" [ref=f140e106]: https://rust-lang.zulipchat.com/#narrow/stream/122651-general
               - text: stream in Zulip. For asynchronous, consider the
-              - link "[rust] tag on StackOverflow" [ref=f140e107]:
-                - /url: https://stackoverflow.com/questions/tagged/rust
+              - link "[rust] tag on StackOverflow" [ref=f140e107]: https://stackoverflow.com/questions/tagged/rust
               - text: ", the"
-              - link "/r/rust" [ref=f140e108]:
-                - /url: https://www.reddit.com/r/rust
+              - link "/r/rust" [ref=f140e108]: https://www.reddit.com/r/rust
               - text: subreddit which has a pinned weekly easy questions post, or the Rust
-              - link "Discourse forum" [ref=f140e109]:
-                - /url: https://users.rust-lang.org
+              - link "Discourse forum" [ref=f140e109]: https://users.rust-lang.org
               - text: . It's acceptable to file a support issue in this repo but they tend not to get as many eyes as any of the above and may get closed without a response after some time.
         - region "Crate metadata" [ref=f140e111]:
           - generic:
@@ -165,11 +141,9 @@ source: tests/playwright_fixtures.rs
             - generic:
               - generic: "License:"
               - generic:
-                - link "MIT" [ref=f140e126]:
-                  - /url: https://choosealicense.com/licenses/mit
+                - link "MIT" [ref=f140e126]: https://choosealicense.com/licenses/mit
                 - text: OR
-                - link "Apache-2.0" [ref=f140e127]:
-                  - /url: https://choosealicense.com/licenses/apache-2.0
+                - link "Apache-2.0" [ref=f140e127]: https://choosealicense.com/licenses/apache-2.0
             - generic: 12K SLoC
             - generic:
               - generic: "Size:"
@@ -177,8 +151,7 @@ source: tests/playwright_fixtures.rs
             - generic:
               - generic: "Package URL:"
               - button "pkg:cargo/serde@1.0.229" [ref=f140e138]
-              - link "Learn more" [ref=f140e140]:
-                - /url: https://github.com/package-url/purl-spec
+              - link "Learn more" [ref=f140e140]: https://github.com/package-url/purl-spec
           - generic:
             - heading "Install" [level=2] [ref=f140e143]
             - generic:
@@ -189,39 +162,30 @@ source: tests/playwright_fixtures.rs
           - generic:
             - generic:
               - heading "Homepage" [level=2] [ref=f140e155]
-              - link "serde.rs" [ref=f140e158]:
-                - /url: https://serde.rs
+              - link "serde.rs" [ref=f140e158]
             - generic:
               - heading "Documentation" [level=2] [ref=f140e160]
-              - link "docs.rs/serde/1.0.229" [ref=f140e163]:
-                - /url: https://docs.rs/serde/1.0.229
+              - link "docs.rs/serde/1.0.229" [ref=f140e163]: https://docs.rs/serde/1.0.229
             - generic:
               - heading "Repository" [level=2] [ref=f140e165]
-              - link "github.com/serde-rs/serde" [ref=f140e168]:
-                - /url: https://github.com/serde-rs/serde
+              - link "github.com/serde-rs/serde" [ref=f140e168]: https://github.com/serde-rs/serde
           - generic:
             - heading "Owners" [level=2] [ref=f140e170]
             - list:
               - listitem:
-                - link "David Tolnay" [ref=f140e173]:
-                  - /url: /users/dtolnay
+                - link "David Tolnay" [ref=f140e173]: /users/dtolnay
               - listitem:
-                - link "serde-rs/publish" [ref=f140e177]:
-                  - /url: /teams/github:serde-rs:publish
+                - link "serde-rs/publish" [ref=f140e177]: /teams/github:serde-rs:publish
           - generic:
             - heading "Categories" [level=2] [ref=f140e181]
             - list:
               - listitem:
-                - link "No standard library" [ref=f140e184]:
-                  - /url: /categories/no-std
+                - link "No standard library" [ref=f140e184]: /categories/no-std
               - listitem:
-                - link "Encoding" [ref=f140e186]:
-                  - /url: /categories/encoding
+                - link "Encoding" [ref=f140e186]: /categories/encoding
               - listitem:
-                - link "No dynamic allocation" [ref=f140e188]:
-                  - /url: /categories/no-std::no-alloc
-          - link "Try on Rust Playground" [ref=f140e190]:
-            - /url: https://play.rust-lang.org/?edition=2021&code=use%20serde%3B%0A%0Afn%20main()%20%7B%0A%20%20%20%20%2F%2F%20try%20using%20the%20%60serde%60%20crate%20here%0A%7D
+                - link "No dynamic allocation" [ref=f140e188]: /categories/no-std::no-alloc
+          - link "Try on Rust Playground" [ref=f140e190]: https://play.rust-lang.org/?edition=2021&code=use%20serde%3B%0A%0Afn%20main()%20%7B%0A%20%20%20%20%2F%2F%20try%20using%20the%20%60serde%60%20crate%20here%0A%7D
       - generic:
         - generic:
           - heading "Stats Overview" [level=3] [ref=f140e193]
@@ -246,50 +210,37 @@ source: tests/playwright_fixtures.rs
         - heading "Rust" [level=2] [ref=f140e222]
         - list:
           - listitem:
-            - link "rust-lang.org" [ref=f140e225]:
-              - /url: https://www.rust-lang.org/
+            - link "rust-lang.org" [ref=f140e225]: https://www.rust-lang.org/
           - listitem:
-            - link "Rust Foundation" [ref=f140e227]:
-              - /url: https://foundation.rust-lang.org/
+            - link "Rust Foundation" [ref=f140e227]: https://foundation.rust-lang.org/
           - listitem:
-            - link "The crates.io team" [ref=f140e229]:
-              - /url: https://www.rust-lang.org/governance/teams/dev-tools#team-crates-io
+            - link "The crates.io team" [ref=f140e229]: https://www.rust-lang.org/governance/teams/dev-tools#team-crates-io
       - generic:
         - heading "Get Help" [level=2] [ref=f140e231]
         - list:
           - listitem:
-            - link "The Cargo Book" [ref=f140e234]:
-              - /url: https://doc.rust-lang.org/cargo/
+            - link "The Cargo Book" [ref=f140e234]: https://doc.rust-lang.org/cargo/
           - listitem:
-            - link "Support" [ref=f140e236]:
-              - /url: /support
+            - link "Support" [ref=f140e236]: /support
           - listitem:
-            - link "System Status" [ref=f140e238]:
-              - /url: https://status.crates.io/
+            - link "System Status" [ref=f140e238]: https://status.crates.io/
           - listitem:
-            - link "Report a bug" [ref=f140e240]:
-              - /url: https://github.com/rust-lang/crates.io/issues/new/choose
+            - link "Report a bug" [ref=f140e240]: https://github.com/rust-lang/crates.io/issues/new/choose
       - generic:
         - heading "Policies" [level=2] [ref=f140e242]
         - list:
           - listitem:
-            - link "Usage Policy" [ref=f140e245]:
-              - /url: /policies
+            - link "Usage Policy" [ref=f140e245]: /policies
           - listitem:
-            - link "Security" [ref=f140e247]:
-              - /url: /policies/security
+            - link "Security" [ref=f140e247]: /policies/security
           - listitem:
-            - link "Privacy Policy" [ref=f140e249]:
-              - /url: https://foundation.rust-lang.org/policies/privacy-policy/
+            - link "Privacy Policy" [ref=f140e249]: https://foundation.rust-lang.org/policies/privacy-policy/
           - listitem:
-            - link "Code of Conduct" [ref=f140e251]:
-              - /url: https://www.rust-lang.org/policies/code-of-conduct
+            - link "Code of Conduct" [ref=f140e251]: https://www.rust-lang.org/policies/code-of-conduct
           - listitem:
-            - link "Data Access" [ref=f140e253]:
-              - /url: /data-access
+            - link "Data Access" [ref=f140e253]: /data-access
           - listitem:
-            - link "Rate Limits" [ref=f140e255]:
-              - /url: /docs/rate-limits
+            - link "Rate Limits" [ref=f140e255]: /docs/rate-limits
       - generic:
         - heading "Social" [level=2] [ref=f140e257]
         - list:
@@ -309,4 +260,4 @@ source: tests/playwright_fixtures.rs
               - generic: "X:"
               - text: "@cratesiostatus"
 ```
-[meiose: 1 nodes trimmed, 130 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 1 nodes trimmed, 130 non-interactive refs hidden, 1 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

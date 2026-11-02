@@ -88,5 +88,29 @@
     "prompt": "Open https://www.scrapethissite.com/pages/forms/ , search for 'Boston' using the search box on the page, and tell me how many wins the Boston Bruins had in 1992 according to the results table.",
     "answer": "\\b51\\b",
     "notes": "search form + results table"
+  },
+  {
+    "id": "countries-vanuatu",
+    "prompt": "Open https://www.scrapethissite.com/pages/simple/ . What population does the page list for Vanuatu? Give the exact number shown.",
+    "answer": "221,?552",
+    "notes": "answer near the end of a 250-country list (~200K chars)"
+  },
+  {
+    "id": "wiki-un-mongolia",
+    "prompt": "Open https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations) . What population does the table give for Mongolia as of 1 July 2023? Give the exact number shown.",
+    "answer": "3,?431,?932",
+    "notes": "row ~130 of a very large table"
+  },
+  {
+    "id": "vec-dedup-by-key",
+    "prompt": "Open https://doc.rust-lang.org/std/vec/struct.Vec.html . Since which Rust version has the method Vec::dedup_by_key been stable, according to that page?",
+    "answer": "1\\.16(\\.0)?(?![0-9])",
+    "notes": "method deep in a ~900K-char docs page"
+  },
+  {
+    "id": "vec-extract-if",
+    "prompt": "Open https://doc.rust-lang.org/std/vec/struct.Vec.html . Since which Rust version has the method Vec::extract_if been stable, according to that page?",
+    "answer": "1\\.87(\\.0)?(?![0-9])",
+    "notes": "method deep in a ~900K-char docs page"
   }
 ]

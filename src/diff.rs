@@ -1,10 +1,13 @@
 //! Snapshot diffing: when the agent snapshots the same page again, send only
 //! what changed since the snapshot it saw last.
 //!
-//! Playwright refs are stable across snapshots of the same page (verified:
-//! two snapshots are byte-identical; a click changes exactly the affected
-//! lines), so unchanged elements and their refs remain valid in the agent's
-//! context. We diff the *trimmed* views, i.e. exactly what the agent saw.
+//! Playwright refs are stable within one loaded document (verified: two
+//! snapshots are byte-identical; a click changes exactly the affected lines),
+//! so unchanged elements and their refs remain valid in the agent's context.
+//! They are not stable across navigations: a reload of the same URL renames
+//! every ref (`e3` became `f2e3`), so almost every line differs, and the
+//! changed-share limit below falls back to a full snapshot. We diff exactly
+//! the view the agent was sent.
 //!
 //! Output keeps the `### Page` header, replaces the yaml block with a
 //! ```diff block (changed lines plus their ancestor lines as context), and

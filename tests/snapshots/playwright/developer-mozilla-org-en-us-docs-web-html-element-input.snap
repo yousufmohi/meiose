@@ -10,11 +10,9 @@ source: tests/playwright_fixtures.rs
 - generic [active] [ref=f2e1]:
   - list:
     - listitem:
-      - link "Skip to main content" [ref=f2e2]:
-        - /url: "#content"
+      - link "Skip to main content" [ref=f2e2]: "#content"
     - listitem:
-      - link "Skip to search" [ref=f2e3]:
-        - /url: "#mdn-search"
+      - link "Skip to search" [ref=f2e3]: "#mdn-search"
   - generic:
     - generic:
       - link "Otari Meet Otari, the open source LLM Control Plane that helps developers control LLM infrastructure. Discover Otari" [ref=f2e3326]:
@@ -23,10 +21,8 @@ source: tests/playwright_fixtures.rs
           - img "Otari" [ref=f2e3328]
           - generic: Meet Otari, the open source LLM Control Plane that helps developers control LLM infrastructure.
         - generic: Discover Otari
-      - link "Ad" [ref=f2e3332]:
-        - /url: /en-US/advertising
-    - link "Don't want to see ads?" [ref=f2e3334]:
-      - /url: /en-US/plus?ref=nope
+      - link "Ad" [ref=f2e3332]: /en-US/advertising
+    - link "Don't want to see ads?" [ref=f2e3334]: /en-US/plus?ref=nope
   - banner [ref=f2e7]:
     - navigation [ref=f2e8]:
       - link "MDN" [ref=f2e10]:
@@ -46,28 +42,21 @@ source: tests/playwright_fixtures.rs
           - generic:
             - button "About" [ref=f2e48]
             - text: (external)
-          - link "Blog" [ref=f2e51]:
-            - /url: /en-US/blog/
+          - link "Blog" [ref=f2e51]: /en-US/blog/
         - button "Search the site" [ref=f2e54]
-        - link "Log in" [ref=f2e3336]:
-          - /url: https://developer.mozilla.org/users/fxa/login/authenticate/?next=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput
+        - link "Log in" [ref=f2e3336]: https://developer.mozilla.org/users/fxa/login/authenticate/?next=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput
     - generic:
       - list:
         - listitem:
-          - link "Web" [ref=f2e62]:
-            - /url: /en-US/docs/Web
+          - link "Web" [ref=f2e62]: /en-US/docs/Web
         - listitem:
-          - link "HTML" [ref=f2e64]:
-            - /url: /en-US/docs/Web/HTML
+          - link "HTML" [ref=f2e64]: /en-US/docs/Web/HTML
         - listitem:
-          - link "Reference" [ref=f2e66]:
-            - /url: /en-US/docs/Web/HTML/Reference
+          - link "Reference" [ref=f2e66]: /en-US/docs/Web/HTML/Reference
         - listitem:
-          - link "Elements" [ref=f2e68]:
-            - /url: /en-US/docs/Web/HTML/Reference/Elements
+          - link "Elements" [ref=f2e68]: /en-US/docs/Web/HTML/Reference/Elements
         - listitem:
-          - link "<input>" [ref=f2e70]:
-            - /url: /en-US/docs/Web/HTML/Reference/Elements/input
+          - link "<input>" [ref=f2e70]: /en-US/docs/Web/HTML/Reference/Elements/input
       - button "Switch color theme" [ref=f2e74]:
         - generic: Theme
       - generic:
@@ -97,11 +86,9 @@ source: tests/playwright_fixtures.rs
           - text: The
           - strong:
             - code: <input>
-          - link "HTML" [ref=f2e106]:
-            - /url: /en-US/docs/Web/HTML
+          - link "HTML" [ref=f2e106]
           - text: element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and
-          - link "user agent" [ref=f2e107]:
-            - /url: /en-US/docs/Glossary/User_agent
+          - link "user agent" [ref=f2e107]: /en-US/docs/Glossary/User_agent
           - text: . The
           - code: <input>
           - text: element is one of the most powerful and complex in all of HTML due to the sheer number of combinations of input types and attributes.
@@ -110,38 +97,27 @@ source: tests/playwright_fixtures.rs
           - heading "In this article" [level=2] [ref=f2e111]
           - list:
             - listitem:
-              - link "Try it" [ref=f2e114]:
-                - /url: "#try_it"
+              - link "Try it" [ref=f2e114]: "#try_it"
             - listitem:
-              - link "<input> types" [ref=f2e116]:
-                - /url: "#input_types"
+              - link "<input> types" [ref=f2e116]: "#input_types"
             - listitem:
-              - link "Attributes" [ref=f2e118]:
-                - /url: "#attributes"
+              - link "Attributes" [ref=f2e118]: "#attributes"
             - listitem:
-              - link "Methods" [ref=f2e120]:
-                - /url: "#methods"
+              - link "Methods" [ref=f2e120]: "#methods"
             - listitem:
-              - link "CSS" [ref=f2e122]:
-                - /url: "#css"
+              - link "CSS" [ref=f2e122]: "#css"
             - listitem:
-              - link "Additional features" [ref=f2e124]:
-                - /url: "#additional_features"
+              - link "Additional features" [ref=f2e124]: "#additional_features"
             - listitem:
-              - link "Accessibility" [ref=f2e126]:
-                - /url: "#accessibility"
+              - link "Accessibility" [ref=f2e126]: "#accessibility"
             - listitem:
-              - link "Technical summary" [ref=f2e128]:
-                - /url: "#technical_summary"
+              - link "Technical summary" [ref=f2e128]: "#technical_summary"
             - listitem:
-              - link "Specifications" [ref=f2e130]:
-                - /url: "#specifications"
+              - link "Specifications" [ref=f2e130]: "#specifications"
             - listitem:
-              - link "Browser compatibility" [ref=f2e132]:
-                - /url: "#browser_compatibility"
+              - link "Browser compatibility" [ref=f2e132]: "#browser_compatibility"
             - listitem:
-              - link "See also" [ref=f2e134]:
-                - /url: "#see_also"
+              - link "See also" [ref=f2e134]: "#see_also"
         - generic:
           - generic:
             - link "Otari Control Your LLM Infrastructure Meet Otari, the open source LLM Control Plane built by Mozilla AI. Discover Otari" [ref=f2e3344]:
@@ -151,15 +127,12 @@ source: tests/playwright_fixtures.rs
                 - strong: Control Your LLM Infrastructure
                 - generic: Meet Otari, the open source LLM Control Plane built by Mozilla AI.
                 - generic: Discover Otari
-            - link "Ad" [ref=f2e3351]:
-              - /url: /en-US/advertising
-          - link "Don't want to see ads?" [ref=f2e3353]:
-            - /url: /en-US/plus?ref=nope
+            - link "Ad" [ref=f2e3351]
+          - link "Don't want to see ads?" [ref=f2e3353]
       - generic:
         - region [ref=f2e136]:
           - heading [level=2] [ref=f2e137]:
-            - link "Try it" [ref=f2e138]:
-              - /url: "#try_it"
+            - link "Try it" [ref=f2e138]
           - generic:
             - generic:
               - 'heading "HTML Demo: <input type=\"text\">" [level=4] [ref=f2e143]'
@@ -201,8 +174,7 @@ source: tests/playwright_fixtures.rs
                   - textbox "Name (4 to 8 characters):" [ref=f56e3]
         - region [ref=f2e185]:
           - heading [level=2] [ref=f2e186]:
-            - link "<input> types" [ref=f2e187]:
-              - /url: "#input_types"
+            - link "<input> types" [ref=f2e187]
           - paragraph:
             - text: How an
             - code: <input>
@@ -224,8 +196,7 @@ source: tests/playwright_fixtures.rs
               - rowgroup:
                 - row:
                   - cell:
-                    - link "button" [ref=f2e208]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/button
+                    - link "button" [ref=f2e208]: /en-US/docs/Web/HTML/Reference/Elements/input/button
                   - cell:
                     - text: A push button with no default behavior displaying the value of the
                     - link [ref=f2e210]:
@@ -235,62 +206,52 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3357]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=45ec9838fffb6b96443c93ae87f42bed4be4dadc&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKKi0pyc%2BLUVLIS8xF4Zcl5pSCBJxgAvp2SjpKycXFSlZKSjpKWVC6JCM1N1XJSiknMz2jRKkWAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3357]: https://developer.mozilla.org/en-US/play?uuid=45ec9838fffb6b96443c93ae87f42bed4be4dadc&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKKi0pyc%2BLUVLIS8xF4Zcl5pSCBJxgAvp2SjpKycXFSlZKSjpKWVC6JCM1N1XJSiknMz2jRKkWAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3359]:
                         - button "Button" [ref=f57e2]
                 - row:
                   - cell:
-                    - link "checkbox" [ref=f2e220]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/checkbox
+                    - link "checkbox" [ref=f2e220]: /en-US/docs/Web/HTML/Reference/Elements/input/checkbox
                   - cell "A checkbox allowing single values to be selected/deselected."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3363]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=b7a5b5b36347cf8f8cc67f156373d77a0ae76742&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKzkhNzk7Kr4hRUshLzEUV0bdT0lFKLi5WslJS0lHKgtIlGam5qUpWSjmZ6RklSrUA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3363]: https://developer.mozilla.org/en-US/play?uuid=b7a5b5b36347cf8f8cc67f156373d77a0ae76742&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKzkhNzk7Kr4hRUshLzEUV0bdT0lFKLi5WslJS0lHKgtIlGam5qUpWSjmZ6RklSrUA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3365]:
                         - checkbox [ref=f58e2]
                 - row:
                   - cell:
-                    - link "color" [ref=f2e230]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/color
+                    - link "color" [ref=f2e230]: /en-US/docs/Web/HTML/Reference/Elements/input/color
                   - cell "A control for specifying a color; opening a color picker when active in supporting browsers."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3369]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=7503960f6d5a954d494a54e0032c5e0199224549&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKzs%2FJL4pRUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3369]: https://developer.mozilla.org/en-US/play?uuid=7503960f6d5a954d494a54e0032c5e0199224549&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKzs%2FJL4pRUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3371]:
                         - textbox [ref=f59e2]: "#000000"
                 - row:
                   - cell:
-                    - link "date" [ref=f2e240]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/date
+                    - link "date" [ref=f2e240]: /en-US/docs/Web/HTML/Reference/Elements/input/date
                   - cell "A control for entering a date (year, month, and day, with no time). Opens a date picker or numeric wheels for year, month, day when active in supporting browsers."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3375]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=0ce1171edbc4691cbfbfe030a1ebd5af11d75053&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKSSxJjVFSyEvMRfD07ZR0lJKLi5WslJR0lLKgdElGam6qkpVSTmZ6RolSLQA%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3375]: https://developer.mozilla.org/en-US/play?uuid=0ce1171edbc4691cbfbfe030a1ebd5af11d75053&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKSSxJjVFSyEvMRfD07ZR0lJKLi5WslJR0lLKgdElGam6qkpVSTmZ6RolSLQA%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3377]:
                         - textbox [ref=f60e2]
                 - row:
                   - cell:
-                    - link "datetime-local" [ref=f2e250]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/datetime-local
+                    - link "datetime-local" [ref=f2e250]: /en-US/docs/Web/HTML/Reference/Elements/input/datetime-local
                   - cell "A control for entering a date and time, with no time zone. Opens a date picker or numeric wheels for date- and time-components when active in supporting browsers."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3381]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=062d583eb621f7b84425e337d3a08e126a1ca4fd&state=bcgxCoAwDAXQq5Q%2FV9yLepIupQYbSWqhcRDx7i6OTg%2FejWIqCJi4ttOcXY3miDUZGSsNcuQkEa4m%2FftxgUfuHQHw2D%2BtkBIChLdieF4%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3381]: https://developer.mozilla.org/en-US/play?uuid=062d583eb621f7b84425e337d3a08e126a1ca4fd&state=bcgxCoAwDAXQq5Q%2FV9yLepIupQYbSWqhcRDx7i6OTg%2FejWIqCJi4ttOcXY3miDUZGSsNcuQkEa4m%2FftxgUfuHQHw2D%2BtkBIChLdieF4%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3383]:
                         - textbox [ref=f61e2]
                 - row:
                   - cell:
-                    - link "email" [ref=f2e260]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/email
+                    - link "email" [ref=f2e260]: /en-US/docs/Web/HTML/Reference/Elements/input/email
                   - cell:
                     - text: A field for editing an email address. Looks like a
                     - code: text
@@ -298,14 +259,12 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3387]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=11478f5c62f24f370fadf4cc579ccd97958042e7&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKzU3MzIlRUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3387]: https://developer.mozilla.org/en-US/play?uuid=11478f5c62f24f370fadf4cc579ccd97958042e7&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKzU3MzIlRUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3389]:
                         - textbox [ref=f62e2]
                 - row:
                   - cell:
-                    - link "file" [ref=f2e271]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/file
+                    - link "file" [ref=f2e271]: /en-US/docs/Web/HTML/Reference/Elements/input/file
                   - cell:
                     - text: A control that lets the user select a file. Use the
                     - link [ref=f2e273]:
@@ -315,25 +274,21 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3393]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=7901813fc38023591c8a8824c1089f80437aab72&state=RcpBCoAgEAXQqwx%2FKYJ7yU7iRmRSQ0VwgiK6e5ug1du8G1lahcVS%2BjiE5BrsPLZS2YNCjDzEeZQWEhulSfgUozyoh%2FZHs0IjzgkLaOyfkrkxLGpJWfC8&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3393]: https://developer.mozilla.org/en-US/play?uuid=7901813fc38023591c8a8824c1089f80437aab72&state=RcpBCoAgEAXQqwx%2FKYJ7yU7iRmRSQ0VwgiK6e5ug1du8G1lahcVS%2BjiE5BrsPLZS2YNCjDzEeZQWEhulSfgUozyoh%2FZHs0IjzgkLaOyfkrkxLGpJWfC8&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3395]:
                         - button "Choose File" [ref=f63e2]
                 - row:
                   - cell:
-                    - link "hidden" [ref=f2e283]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/hidden
+                    - link "hidden" [ref=f2e283]: /en-US/docs/Web/HTML/Reference/Elements/input/hidden
                   - cell "A control that is not displayed but whose value is submitted to the server. There is an example in the next column, but it's hidden!"
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3399]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=4a8b36aebfba3662b30f3f20a5563eded9444d5b&state=TcixCoAgFEbhV5F%2FDqLapNp7BxfTSxoqkdcgonePoKHp8J0LjmOARO%2FTVlh4OyiUTPtkFUTSkf7mc3vtvLWUFMShQ3mHnk3TdgqiHlHB5AwJVFi%2FsqNIkAh%2BcYz7AQ%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3399]: https://developer.mozilla.org/en-US/play?uuid=4a8b36aebfba3662b30f3f20a5563eded9444d5b&state=TcixCoAgFEbhV5F%2FDqLapNp7BxfTSxoqkdcgonePoKHp8J0LjmOARO%2FTVlh4OyiUTPtkFUTSkf7mc3vtvLWUFMShQ3mHnk3TdgqiHlHB5AwJVFi%2FsqNIkAh%2BcYz7AQ%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3401]
                 - row:
                   - cell:
-                    - link "image" [ref=f2e293]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/image
+                    - link "image" [ref=f2e293]: /en-US/docs/Web/HTML/Reference/Elements/input/image
                   - cell:
                     - text: A graphical
                     - code: submit
@@ -351,50 +306,42 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3405]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=48ffd9d9f1b4f83f0634a5e605b7bb8e792f8c7c&state=TYtBCoAgEAC%2FInMOukv1kr2IiBoakdshor8HUdBpmIE5SVoLliEv665GjzWMQq4uBsEsrv61bX4UBOOKftk8o9BPdPjWsNAxv9QUasBSckzKdQM%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3405]: https://developer.mozilla.org/en-US/play?uuid=48ffd9d9f1b4f83f0634a5e605b7bb8e792f8c7c&state=TYtBCoAgEAC%2FInMOukv1kr2IiBoakdshor8HUdBpmIE5SVoLliEv665GjzWMQq4uBsEsrv61bX4UBOOKftk8o9BPdPjWsNAxv9QUasBSckzKdQM%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3407]:
                         - button "image input" [ref=f65e2]
                 - row:
                   - cell:
-                    - link "month" [ref=f2e309]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/month
+                    - link "month" [ref=f2e309]: /en-US/docs/Web/HTML/Reference/Elements/input/month
                   - cell "A control for entering a month and year, with no time zone."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3411]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=c4729e19846ab03e80ba6121d3789f35b24db08e&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVHKzc8ryYhRUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3411]: https://developer.mozilla.org/en-US/play?uuid=c4729e19846ab03e80ba6121d3789f35b24db08e&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVHKzc8ryYhRUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3413]:
                         - textbox [ref=f66e2]
                 - row:
                   - cell:
-                    - link "number" [ref=f2e319]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/number
+                    - link "number" [ref=f2e319]: /en-US/docs/Web/HTML/Reference/Elements/input/number
                   - cell "A control for entering a number. Displays a spinner and adds default validation. Displays a numeric keypad in some devices with dynamic keypads."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3417]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=ec1d9be004e9d60d4e9dd7645e5e8f6d1ca03868&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVHKK81NSi2KUVLIS8xF5uvbKekoJRcXK1kpKekoZUHpkozU3FQlK6WczPSMEqVaAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3417]: https://developer.mozilla.org/en-US/play?uuid=ec1d9be004e9d60d4e9dd7645e5e8f6d1ca03868&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVHKK81NSi2KUVLIS8xF5uvbKekoJRcXK1kpKekoZUHpkozU3FQlK6WczPSMEqVaAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3419]:
                         - spinbutton [ref=f67e2]
                 - row:
                   - cell:
-                    - link "password" [ref=f2e329]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/password
+                    - link "password" [ref=f2e329]: /en-US/docs/Web/HTML/Reference/Elements/input/password
                   - cell "A single-line text field whose value is obscured. Will alert user if site is not secure."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3423]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=a026fbb163530c859ba4f30915f20dcc6ceb0269&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSCwuLs8vSolRUshLzEUV0bdT0lFKLi5WslJS0lHKgtIlGam5qUpWSjmZ6RklSrUA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3423]: https://developer.mozilla.org/en-US/play?uuid=a026fbb163530c859ba4f30915f20dcc6ceb0269&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSCwuLs8vSolRUshLzEUV0bdT0lFKLi5WslJS0lHKgtIlGam5qUpWSjmZ6RklSrUA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3425]:
                         - textbox [ref=f68e2]
                 - row:
                   - cell:
-                    - link "radio" [ref=f2e339]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/radio
+                    - link "radio" [ref=f2e339]: /en-US/docs/Web/HTML/Reference/Elements/input/radio
                   - cell:
                     - text: A radio button, allowing a single value to be selected out of multiple choices with the same
                     - link [ref=f2e341]:
@@ -404,14 +351,12 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3429]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=22db85b887de5d8bcf48d49a0ada3be238f9fe5f&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSkzJzI9RUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3429]: https://developer.mozilla.org/en-US/play?uuid=22db85b887de5d8bcf48d49a0ada3be238f9fe5f&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSkzJzI9RUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3431]:
                         - radio [ref=f69e2]
                 - row:
                   - cell:
-                    - link "range" [ref=f2e351]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/range
+                    - link "range" [ref=f2e351]: /en-US/docs/Web/HTML/Reference/Elements/input/range
                   - cell:
                     - text: A control for entering a number whose exact value is not important. Displays as a range widget defaulting to the middle value. Used in conjunction
                     - link [ref=f2e353]:
@@ -425,86 +370,72 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3435]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=724d3e36db6d8ba9ece2415f48e88af2d67d94df&state=TcfBCkBAFEDRX9FdK1I2k%2FElbzNpMiMziadI%2Fl3KwuqeexE0zRi6mJddCz0Xb4XV5dELRXbpvylmK9Sv3GGFphWqnpJh2zBQMn3V4JPHMMcxKPcD&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3435]: https://developer.mozilla.org/en-US/play?uuid=724d3e36db6d8ba9ece2415f48e88af2d67d94df&state=TcfBCkBAFEDRX9FdK1I2k%2FElbzNpMiMziadI%2Fl3KwuqeexE0zRi6mJddCz0Xb4XV5dELRXbpvylmK9Sv3GGFphWqnpJh2zBQMn3V4JPHMMcxKPcD&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3437]:
                         - slider [ref=f70e2]: "13"
                 - row:
                   - cell:
-                    - link "reset" [ref=f2e365]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/reset
+                    - link "reset" [ref=f2e365]: /en-US/docs/Web/HTML/Reference/Elements/input/reset
                   - cell "A button that resets the contents of the form to default values. Not recommended."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3441]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=89b2fef9d84a2407e1bce35550eca4f24dacd365&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSi1OLYlRUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3441]: https://developer.mozilla.org/en-US/play?uuid=89b2fef9d84a2407e1bce35550eca4f24dacd365&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSi1OLYlRUshLzEXi6tsp6SglFxcrWSkp6ShlQemSjNTcVCUrpZzM9IwSpVoA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3443]:
                         - button "Reset" [ref=f71e2]
                 - row:
                   - cell:
-                    - link "search" [ref=f2e375]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/search
+                    - link "search" [ref=f2e375]: /en-US/docs/Web/HTML/Reference/Elements/input/search
                   - cell "A single-line text field for entering search strings. Line-breaks are automatically removed from the input value. May include a delete icon in supporting browsers that can be used to clear the field. Displays a search icon instead of enter key on some devices with dynamic keypads."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3447]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=0f759b6615a37dd2393059d21254115b6d6dfc45&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqTk0sSs6IUVLIS8xF5uvbKekoJRcXK1kpKekoZUHpkozU3FQlK6WczPSMEqVaAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3447]: https://developer.mozilla.org/en-US/play?uuid=0f759b6615a37dd2393059d21254115b6d6dfc45&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqTk0sSs6IUVLIS8xF5uvbKekoJRcXK1kpKekoZUHpkozU3FQlK6WczPSMEqVaAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3449]:
                         - searchbox [ref=f72e2]
                 - row:
                   - cell:
-                    - link "submit" [ref=f2e385]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/submit
+                    - link "submit" [ref=f2e385]: /en-US/docs/Web/HTML/Reference/Elements/input/submit
                   - cell "A button that submits the form."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3453]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=9641dc8fbe464ec8acffea468a4c049df0fd1a35&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqLk3KzSyJUVLIS8xF5uvbKekoJRcXK1kpKekoZUHpkozU3FQlK6WczPSMEqVaAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3453]: https://developer.mozilla.org/en-US/play?uuid=9641dc8fbe464ec8acffea468a4c049df0fd1a35&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqLk3KzSyJUVLIS8xF5uvbKekoJRcXK1kpKekoZUHpkozU3FQlK6WczPSMEqVaAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3455]:
                         - button "Submit" [ref=f73e2]
                 - row:
                   - cell:
-                    - link "tel" [ref=f2e395]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/tel
+                    - link "tel" [ref=f2e395]: /en-US/docs/Web/HTML/Reference/Elements/input/tel
                   - cell "A control for entering a telephone number. Displays a telephone keypad in some devices with dynamic keypads."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3459]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=90cfc3749cb7fda43373ca660fadb3345fb0a540&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSc2JUVLIS8yFc%2FTtlHSUkouLlayUlHSUsqB0SUZqbqqSlVJOZnpGiVItAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3459]: https://developer.mozilla.org/en-US/play?uuid=90cfc3749cb7fda43373ca660fadb3345fb0a540&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSc2JUVLIS8yFc%2FTtlHSUkouLlayUlHSUsqB0SUZqbqqSlVJOZnpGiVItAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3461]:
                         - textbox [ref=f74e2]
                 - row:
                   - cell:
-                    - link "text" [ref=f2e405]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/text
+                    - link "text" [ref=f2e405]: /en-US/docs/Web/HTML/Reference/Elements/input/text
                   - cell "The default value. A single-line text field. Line-breaks are automatically removed from the input value."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3465]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=0ee9065e558333ecf503283da3b3c755ae4f229d&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSa0oiVFSyEvMRfD07ZR0lJKLi5WslJR0lLKgdElGam6qkpVSTmZ6RolSLQA%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3465]: https://developer.mozilla.org/en-US/play?uuid=0ee9065e558333ecf503283da3b3c755ae4f229d&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqSa0oiVFSyEvMRfD07ZR0lJKLi5WslJR0lLKgdElGam6qkpVSTmZ6RolSLQA%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3467]:
                         - textbox [ref=f75e2]
                 - row:
                   - cell:
-                    - link "time" [ref=f2e415]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/time
+                    - link "time" [ref=f2e415]: /en-US/docs/Web/HTML/Reference/Elements/input/time
                   - cell "A control for entering a time value with no time zone."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3471]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=48fd508adaf705c19a92eb03e9aaa3a5f97aa464&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqycxNjVFSyEvMRfD07ZR0lJKLi5WslJR0lLKgdElGam6qkpVSTmZ6RolSLQA%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3471]: https://developer.mozilla.org/en-US/play?uuid=48fd508adaf705c19a92eb03e9aaa3a5f97aa464&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqycxNjVFSyEvMRfD07ZR0lJKLi5WslJR0lLKgdElGam6qkpVSTmZ6RolSLQA%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3473]:
                         - textbox [ref=f76e2]
                 - row:
                   - cell:
-                    - link "url" [ref=f2e425]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/url
+                    - link "url" [ref=f2e425]: /en-US/docs/Web/HTML/Reference/Elements/input/url
                   - cell:
                     - text: A field for entering a URL. Looks like a
                     - code: text
@@ -512,20 +443,17 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3477]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=344b623653f23be3079dfa1abd8b188979215df9&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqLcqJUVLIS8yFc%2FTtlHSUkouLlayUlHSUsqB0SUZqbqqSlVJOZnpGiVItAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3477]: https://developer.mozilla.org/en-US/play?uuid=344b623653f23be3079dfa1abd8b188979215df9&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqLcqJUVLIS8yFc%2FTtlHSUkouLlayUlHSUsqB0SUZqbqqSlVJOZnpGiVItAA%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3479]:
                         - textbox [ref=f77e2]
                 - row:
                   - cell:
-                    - link "week" [ref=f2e436]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/week
+                    - link "week" [ref=f2e436]: /en-US/docs/Web/HTML/Reference/Elements/input/week
                   - cell "A control for entering a date consisting of a week-year number and a week number with no time zone."
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3483]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=29f407a554a99d0d3725ff83bb82e4c8a742bb79&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqT03NjlFSyEvMRfD07ZR0lJKLi5WslJR0lLKgdElGam6qkpVSTmZ6RolSLQA%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3483]: https://developer.mozilla.org/en-US/play?uuid=29f407a554a99d0d3725ff83bb82e4c8a742bb79&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVEqT03NjlFSyEvMRfD07ZR0lJKLi5WslJR0lLKgdElGam6qkpVSTmZ6RolSLQA%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3485]:
                         - textbox [ref=f78e2]
                 - row:
@@ -538,20 +466,17 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - generic:
                       - generic "Run example in MDN Playground (opens in new tab)":
-                        - link "Play" [ref=f2e3489]:
-                          - /url: https://developer.mozilla.org/en-US/play?uuid=a99b38a614970828a3060e5cbec8e89e23293c2f&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKSSxJLcnMTY1RUshLzEUV0bdT0lFKLi5WslJS0lHKgtIlGam5qUpWSjmZ6RklSrUA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                        - link "Play" [ref=f2e3489]: https://developer.mozilla.org/en-US/play?uuid=a99b38a614970828a3060e5cbec8e89e23293c2f&state=q1bKKMnNUbJSssnMKygtUSipLEi1jVFKSSxJLcnMTY1RUshLzEUV0bdT0lFKLi5WslJS0lHKgtIlGam5qUpWSjmZ6RklSrUA&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
                       - iframe [ref=f2e3491]:
                         - textbox [ref=f79e2]
         - region [ref=f2e457]:
           - heading [level=2] [ref=f2e458]:
-            - link "Attributes" [ref=f2e459]:
-              - /url: "#attributes"
+            - link "Attributes" [ref=f2e459]
           - paragraph:
             - text: The
             - code: <input>
             - text: element is so powerful because of its attributes; the
             - link [ref=f2e462]:
-              - /url: "#type"
               - code: type
             - text: attribute, described with examples above, being the most important. Since every
             - code: <input>
@@ -565,8 +490,7 @@ source: tests/playwright_fixtures.rs
             - text: Attributes for the
             - code: <input>
             - text: element include the
-            - link "global HTML attributes" [ref=f2e470]:
-              - /url: /en-US/docs/Web/HTML/Reference/Global_attributes
+            - link "global HTML attributes" [ref=f2e470]: /en-US/docs/Web/HTML/Reference/Global_attributes
             - text: "and additionally:"
           - figure [ref=f2e471]:
             - table [ref=f2e472]:
@@ -579,7 +503,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e481]:
-                      - /url: "#accept"
                       - code: accept
                   - cell:
                     - code: file
@@ -595,7 +518,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e495]:
-                      - /url: "#alt"
                       - code: alt
                   - cell:
                     - code: image
@@ -649,8 +571,7 @@ source: tests/playwright_fixtures.rs
                     - code: color
                   - cell:
                     - text: The
-                    - link "color space" [ref=f2e539]:
-                      - /url: /en-US/docs/Glossary/Color_space
+                    - link "color space" [ref=f2e539]: /en-US/docs/Glossary/Color_space
                     - text: that should be used for selecting the color value
                 - row:
                   - cell:
@@ -758,7 +679,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e627]:
-                      - /url: "#max"
                       - code: max
                   - cell:
                     - code: date
@@ -787,7 +707,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e653]:
-                      - /url: "#min"
                       - code: min
                   - cell:
                     - code: date
@@ -825,7 +744,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e687]:
-                      - /url: "#name"
                       - code: name
                   - cell "all"
                   - cell "Name of the form control. Submitted with the form as part of a name/value pair"
@@ -920,7 +838,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e766]:
-                      - /url: "#src"
                       - code: src
                   - cell:
                     - code: image
@@ -929,7 +846,6 @@ source: tests/playwright_fixtures.rs
                     - code: src
                     - text: attribute for
                     - link [ref=f2e772]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/img
                       - code: <img>
                     - text: ; address of image resource
                 - row:
@@ -957,14 +873,12 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e796]:
-                      - /url: "#type"
                       - code: type
                   - cell "all"
                   - cell "Type of form control"
                 - row:
                   - cell:
                     - link [ref=f2e802]:
-                      - /url: "#value"
                       - code: value
                   - cell:
                     - text: all except
@@ -982,13 +896,11 @@ source: tests/playwright_fixtures.rs
                     - code: width
                     - text: attribute for
                     - link [ref=f2e815]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/img
                       - code: <img>
           - paragraph: A few additional non-standard attributes are listed following the descriptions of the standard attributes.
         - region [ref=f2e818]:
           - heading [level=3] [ref=f2e819]:
-            - link "Individual attributes" [ref=f2e820]:
-              - /url: "#individual_attributes"
+            - link "Individual attributes" [ref=f2e820]: "#individual_attributes"
           - generic:
             - term:
               - link [ref=f2e823]:
@@ -1003,12 +915,10 @@ source: tests/playwright_fixtures.rs
                 - text: attribute defines which file types are selectable in a
                 - code: file
                 - text: upload control. See the
-                - link "file" [ref=f2e830]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/file
+                - link "file" [ref=f2e830]
                 - text: input type.
             - term:
               - link [ref=f2e832]:
-                - /url: "#alpha"
                 - code: alpha
                 - img "Experimental" [ref=f2e834]
             - definition:
@@ -1020,7 +930,6 @@ source: tests/playwright_fixtures.rs
                 - text: attribute provides the end user with the ability to set the opacity of the color being selected.
             - term:
               - link [ref=f2e840]:
-                - /url: "#alt"
                 - code: alt
             - definition:
               - paragraph:
@@ -1030,15 +939,12 @@ source: tests/playwright_fixtures.rs
                 - code: alt
                 - text: attribute provides alternative text for the image, displaying the value of the attribute if the image
                 - link [ref=f2e846]:
-                  - /url: "#src"
                   - code: src
                 - text: is missing or otherwise fails to load. See the
-                - link "image" [ref=f2e848]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/image
+                - link "image" [ref=f2e848]
                 - text: input type.
             - term:
               - link [ref=f2e850]:
-                - /url: "#autocapitalize"
                 - code: autocapitalize
             - definition:
               - paragraph:
@@ -1057,7 +963,6 @@ source: tests/playwright_fixtures.rs
                 - strong: Not
                 - text: a Boolean attribute!) The
                 - link [ref=f2e862]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/autocomplete
                   - code: autocomplete
                 - text: attribute takes as its value a space-separated string that describes what, if any, type of autocomplete functionality the input should provide. A typical implementation of autocomplete recalls previous values entered in the same input field, but more complex forms of autocomplete can exist. For instance, a browser could integrate with a device's contacts list to autocomplete
                 - code: email
@@ -1094,7 +999,6 @@ source: tests/playwright_fixtures.rs
               - paragraph:
                 - text: See the
                 - link [ref=f2e888]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/autocomplete
                   - code: autocomplete
                   - text: attribute
                 - text: for additional information, including information on password security and how
@@ -1154,12 +1058,10 @@ source: tests/playwright_fixtures.rs
                 - text: attribute defines which media—microphone, video, or camera—should be used to capture a new file for upload with
                 - code: file
                 - text: upload control in supporting scenarios. See the
-                - link "file" [ref=f2e924]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/file
+                - link "file" [ref=f2e924]
                 - text: input type.
             - term:
               - link [ref=f2e926]:
-                - /url: "#checked"
                 - code: checked
             - definition:
               - paragraph:
@@ -1177,7 +1079,6 @@ source: tests/playwright_fixtures.rs
                 - emphasis: not
                 - text: "indicate whether this checkbox is currently checked: if the checkbox's state is changed, this content attribute does not reflect the change. (Only the"
                 - link [ref=f2e936]:
-                  - /url: /en-US/docs/Web/API/HTMLInputElement
                   - code: HTMLInputElement
                   - text: "'s"
                   - code: checked
@@ -1207,7 +1108,6 @@ source: tests/playwright_fixtures.rs
                   - text: .
             - term:
               - link [ref=f2e952]:
-                - /url: "#colorspace"
                 - code: colorspace
                 - img "Experimental" [ref=f2e954]
             - definition:
@@ -1217,20 +1117,17 @@ source: tests/playwright_fixtures.rs
                 - text: input type only, the
                 - code: colorspace
                 - text: attribute specifies the
-                - link "color space" [ref=f2e959]:
-                  - /url: /en-US/docs/Glossary/Color_space
+                - link "color space" [ref=f2e959]
                 - text: that is used by the
                 - code: type="color"
                 - text: input. Possible
-                - link "enumerated" [ref=f2e961]:
-                  - /url: /en-US/docs/Glossary/Enumerated
+                - link "enumerated" [ref=f2e961]: /en-US/docs/Glossary/Enumerated
                 - text: "values are:"
               - list:
                 - listitem:
                   - code: "\"limited-srgb\""
                   - text: ": The color is in the"
-                  - link "sRGB" [ref=f2e965]:
-                    - /url: /en-US/docs/Glossary/RGB
+                  - link "sRGB" [ref=f2e965]: /en-US/docs/Glossary/RGB
                   - text: color space. This includes
                   - link [ref=f2e966]:
                     - /url: /en-US/docs/Web/CSS/Reference/Values/color_value/rgb
@@ -1254,8 +1151,7 @@ source: tests/playwright_fixtures.rs
                 - listitem:
                   - code: "\"display-p3\""
                   - text: ": The"
-                  - link "Display P3 color space" [ref=f2e979]:
-                    - /url: /en-US/docs/Glossary/Color_space#display-p3
+                  - link "Display P3 color space" [ref=f2e979]: /en-US/docs/Glossary/Color_space#display-p3
                   - text: ", e.g.,"
                   - code: color(display-p3 1.84 -0.19 0.72 / 0.6)
             - term:
@@ -1276,11 +1172,9 @@ source: tests/playwright_fixtures.rs
                 - code: dirname
                 - text: "attribute enables the submission of the directionality of the element. When included, the form control will submit with two name/value pairs: the first being the"
                 - link [ref=f2e993]:
-                  - /url: "#name"
                   - code: name
                 - text: and
                 - link [ref=f2e995]:
-                  - /url: "#value"
                   - code: value
                 - text: ", and the second being the value of the"
                 - code: dirname
@@ -1340,7 +1234,6 @@ source: tests/playwright_fixtures.rs
                 - code: fruit-dir=ltr
                 - text: to be sent. For more information, see the
                 - link [ref=f2e1035]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/dirname
                   - code: dirname
                   - text: attribute
                 - text: .
@@ -1359,13 +1252,11 @@ source: tests/playwright_fixtures.rs
               - paragraph:
                 - strong: "Note:"
                 - text: Although not required by the specification, Firefox will by default
-                - link "persist the dynamic disabled state (external)" [ref=f2e1048]:
-                  - /url: https://stackoverflow.com/questions/5985839/bug-with-firefox-disabled-attribute-of-input-not-resetting-when-refreshing
+                - link "persist the dynamic disabled state (external)" [ref=f2e1048]: https://stackoverflow.com/questions/5985839/bug-with-firefox-disabled-attribute-of-input-not-resetting-when-refreshing
                 - text: of an
                 - code: <input>
                 - text: across page loads. Use the
                 - link [ref=f2e1050]:
-                  - /url: "#autocomplete"
                   - code: autocomplete
                 - text: attribute to control this feature.
             - term:
@@ -1398,7 +1289,6 @@ source: tests/playwright_fixtures.rs
                 - text: An input can only be associated with one form.
             - term:
               - link [ref=f2e1070]:
-                - /url: "#formaction"
                 - code: formaction
             - definition:
               - paragraph:
@@ -1407,12 +1297,10 @@ source: tests/playwright_fixtures.rs
                 - text: and
                 - code: submit
                 - text: input types only. See the
-                - link "submit" [ref=f2e1076]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/submit
+                - link "submit" [ref=f2e1076]
                 - text: input type for more information.
             - term:
               - link [ref=f2e1078]:
-                - /url: "#formenctype"
                 - code: formenctype
             - definition:
               - paragraph:
@@ -1421,12 +1309,10 @@ source: tests/playwright_fixtures.rs
                 - text: and
                 - code: submit
                 - text: input types only. See the
-                - link "submit" [ref=f2e1084]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/submit
+                - link "submit" [ref=f2e1084]
                 - text: input type for more information.
             - term:
               - link [ref=f2e1086]:
-                - /url: "#formmethod"
                 - code: formmethod
             - definition:
               - paragraph:
@@ -1435,12 +1321,10 @@ source: tests/playwright_fixtures.rs
                 - text: and
                 - code: submit
                 - text: input types only. See the
-                - link "submit" [ref=f2e1092]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/submit
+                - link "submit" [ref=f2e1092]
                 - text: input type for more information.
             - term:
               - link [ref=f2e1094]:
-                - /url: "#formnovalidate"
                 - code: formnovalidate
             - definition:
               - paragraph:
@@ -1449,12 +1333,10 @@ source: tests/playwright_fixtures.rs
                 - text: and
                 - code: submit
                 - text: input types only. See the
-                - link "submit" [ref=f2e1100]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/submit
+                - link "submit" [ref=f2e1100]
                 - text: input type for more information.
             - term:
               - link [ref=f2e1102]:
-                - /url: "#formtarget"
                 - code: formtarget
             - definition:
               - paragraph:
@@ -1463,12 +1345,10 @@ source: tests/playwright_fixtures.rs
                 - text: and
                 - code: submit
                 - text: input types only. See the
-                - link "submit" [ref=f2e1108]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/submit
+                - link "submit" [ref=f2e1108]
                 - text: input type for more information.
             - term:
               - link [ref=f2e1110]:
-                - /url: "#height"
                 - code: height
             - definition:
               - paragraph:
@@ -1477,12 +1357,10 @@ source: tests/playwright_fixtures.rs
                 - text: input button only, the
                 - code: height
                 - text: is the height of the image file to display to represent the graphical submit button. See the
-                - link "image" [ref=f2e1116]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/image
+                - link "image" [ref=f2e1116]
                 - text: input type.
             - term:
               - link [ref=f2e1118]:
-                - /url: "#id"
                 - code: id
             - definition:
               - paragraph:
@@ -1494,7 +1372,6 @@ source: tests/playwright_fixtures.rs
                 - code: for
                 - text: attribute to link the label with the form control. See
                 - link [ref=f2e1125]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/label
                   - code: <label>
                 - text: .
             - term:
@@ -1516,7 +1393,6 @@ source: tests/playwright_fixtures.rs
                 - text: .
             - term:
               - link [ref=f2e1141]:
-                - /url: "#list"
                 - code: list
             - definition:
               - paragraph:
@@ -1528,13 +1404,11 @@ source: tests/playwright_fixtures.rs
                   - code: id
                 - text: of a
                 - link [ref=f2e1148]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/datalist
                   - code: <datalist>
                 - text: element located in the same document. The
                 - code: <datalist>
                 - text: provides a list of predefined values to suggest to the user for this input. Any values in the list that are not compatible with the
                 - link [ref=f2e1151]:
-                  - /url: "#type"
                   - code: type
                 - text: "are not included in the suggested options. The values provided are suggestions, not requirements: users can select from this predefined list or provide a different value."
               - paragraph:
@@ -1570,13 +1444,11 @@ source: tests/playwright_fixtures.rs
                   - /url: /en-US/docs/Web/HTML/Reference/Elements/select
                   - code: <select>
                 - text: but allows for non-listed values. Check out the
-                - link "browser compatibility table" [ref=f2e1177]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/datalist#browser_compatibility
+                - link "browser compatibility table" [ref=f2e1177]: /en-US/docs/Web/HTML/Reference/Elements/datalist#browser_compatibility
                 - text: for the other input types.
               - paragraph:
                 - text: See the
                 - link [ref=f2e1179]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/datalist
                   - code: <datalist>
                 - text: element.
             - term:
@@ -1596,11 +1468,9 @@ source: tests/playwright_fixtures.rs
                 - code: range
                 - text: ", it defines the greatest value in the range of permitted values. If the"
                 - link [ref=f2e1193]:
-                  - /url: "#value"
                   - code: value
                 - text: entered into the element exceeds this, the element fails
-                - link "constraint validation" [ref=f2e1195]:
-                  - /url: /en-US/docs/Web/HTML/Guides/Constraint_validation
+                - link "constraint validation" [ref=f2e1195]: /en-US/docs/Web/HTML/Guides/Constraint_validation
                 - text: . If the value of the
                 - code: max
                 - text: attribute isn't a number, then the element has no maximum value.
@@ -1625,8 +1495,7 @@ source: tests/playwright_fixtures.rs
                 - text: ", and"
                 - code: password
                 - text: ", it defines the maximum string length (measured in"
-                - link "UTF-16 code units" [ref=f2e1211]:
-                  - /url: /en-US/docs/Glossary/UTF-16
+                - link "UTF-16 code units" [ref=f2e1211]: /en-US/docs/Glossary/UTF-16
                 - text: ) that the user can enter into the field. This must be an integer value of 0 or higher. If no
                 - code: maxlength
                 - text: is specified, or an invalid value is specified, the field has no maximum length. This value must also be greater than or equal to the value of
@@ -1634,17 +1503,14 @@ source: tests/playwright_fixtures.rs
                 - text: .
               - paragraph:
                 - text: The input will fail
-                - link "constraint validation" [ref=f2e1215]:
-                  - /url: /en-US/docs/Web/HTML/Guides/Constraint_validation
+                - link "constraint validation" [ref=f2e1215]
                 - text: if the length of the text entered into the field is greater than
                 - code: maxlength
-                - link "UTF-16 code units" [ref=f2e1217]:
-                  - /url: /en-US/docs/Glossary/UTF-16
+                - link "UTF-16 code units" [ref=f2e1217]
                 - text: long. By default, browsers prevent users from entering more characters than allowed by the
                 - code: maxlength
                 - text: attribute. Constraint validation is only applied when the value is changed by the user. See
-                - link "Client-side validation" [ref=f2e1219]:
-                  - /url: "#client-side_validation"
+                - link "Client-side validation" [ref=f2e1219]: "#client-side_validation"
                 - text: for more information.
             - term:
               - link [ref=f2e1221]:
@@ -1663,11 +1529,9 @@ source: tests/playwright_fixtures.rs
                 - code: range
                 - text: ", it defines the most negative value in the range of permitted values. If the"
                 - link [ref=f2e1232]:
-                  - /url: "#value"
                   - code: value
                 - text: entered into the element is less than this, the element fails
-                - link "constraint validation" [ref=f2e1234]:
-                  - /url: /en-US/docs/Web/HTML/Guides/Constraint_validation
+                - link "constraint validation" [ref=f2e1234]
                 - text: . If the value of the
                 - code: min
                 - text: attribute isn't a number, then the element has no minimum value.
@@ -1683,8 +1547,7 @@ source: tests/playwright_fixtures.rs
                 - text: attribute is valid and a non-empty value is less than the minimum allowed by the
                 - code: min
                 - text: attribute, constraint validation will prevent form submission. See
-                - link "Client-side validation" [ref=f2e1242]:
-                  - /url: "#client-side_validation"
+                - link "Client-side validation" [ref=f2e1242]
                 - text: for more information.
               - paragraph:
                 - text: "There is a special case: if the data type is periodic (such as for dates or times), the value of"
@@ -1707,8 +1570,7 @@ source: tests/playwright_fixtures.rs
                 - text: ", and"
                 - code: password
                 - text: ", it defines the minimum string length (measured in"
-                - link "UTF-16 code units" [ref=f2e1257]:
-                  - /url: /en-US/docs/Glossary/UTF-16
+                - link "UTF-16 code units" [ref=f2e1257]
                 - text: ) that the user can enter into the entry field. This must be a non-negative integer value smaller than or equal to the value specified by
                 - code: maxlength
                 - text: . If no
@@ -1716,15 +1578,12 @@ source: tests/playwright_fixtures.rs
                 - text: is specified, or an invalid value is specified, the input has no minimum length.
               - paragraph:
                 - text: The input will fail
-                - link "constraint validation" [ref=f2e1261]:
-                  - /url: /en-US/docs/Web/HTML/Guides/Constraint_validation
+                - link "constraint validation" [ref=f2e1261]
                 - text: if the length of the text entered into the field is fewer than
                 - code: minlength
-                - link "UTF-16 code units" [ref=f2e1263]:
-                  - /url: /en-US/docs/Glossary/UTF-16
+                - link "UTF-16 code units" [ref=f2e1263]
                 - text: long, preventing form submission. Constraint validation is only applied when the value is changed by the user. See
-                - link "Client-side validation" [ref=f2e1264]:
-                  - /url: "#client-side_validation"
+                - link "Client-side validation" [ref=f2e1264]
                 - text: for more information.
             - term:
               - link [ref=f2e1266]:
@@ -1737,15 +1596,12 @@ source: tests/playwright_fixtures.rs
                 - text: attribute, if set, means the user can enter comma separated email addresses in the email widget or can choose more than one file with the
                 - code: file
                 - text: input. See the
-                - link "email" [ref=f2e1272]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/email
+                - link "email" [ref=f2e1272]
                 - text: and
-                - link "file" [ref=f2e1273]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/file
+                - link "file" [ref=f2e1273]
                 - text: input type.
             - term:
               - link [ref=f2e1275]:
-                - /url: "#name"
                 - code: name
             - definition:
               - paragraph: A string specifying a name for the input control. This name is submitted along with the control's value when the form data is submitted.
@@ -1764,13 +1620,11 @@ source: tests/playwright_fixtures.rs
                   - text: ": If used as the name of an"
                   - code: <input>
                   - text: element of type
-                  - link "hidden" [ref=f2e1288]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/input/hidden
+                  - link "hidden" [ref=f2e1288]
                   - text: ", the input's"
                   - code: value
                   - text: is automatically set by the
-                  - link "user agent" [ref=f2e1290]:
-                    - /url: /en-US/docs/Glossary/User_agent
+                  - link "user agent" [ref=f2e1290]
                   - text: to the character encoding being used to submit the form.
                 - listitem:
                   - code: isindex
@@ -1783,7 +1637,6 @@ source: tests/playwright_fixtures.rs
               - paragraph:
                 - text: The
                 - link [ref=f2e1296]:
-                  - /url: "#name"
                   - code: name
                 - text: attribute creates a unique behavior for radio buttons.
               - paragraph: Only one radio button in a same-named group of radio buttons can be checked at a time. Selecting any radio button in that group automatically deselects any currently-selected radio button in the same group. The value of that one checked radio button is sent along with the name if the form is submitted,
@@ -1815,7 +1668,6 @@ source: tests/playwright_fixtures.rs
                 - code: guestName
                 - text: will be the
                 - link [ref=f2e1321]:
-                  - /url: /en-US/docs/Web/API/HTMLInputElement
                   - code: HTMLInputElement
                 - text: for the
                 - code: guest
@@ -1847,18 +1699,15 @@ source: tests/playwright_fixtures.rs
                 - code: pattern
                 - text: attribute is used to compile a regular expression that the input's
                 - link [ref=f2e1342]:
-                  - /url: "#value"
                   - code: value
                 - text: must match in order for the value to pass
-                - link "constraint validation" [ref=f2e1344]:
-                  - /url: /en-US/docs/Web/HTML/Guides/Constraint_validation
+                - link "constraint validation" [ref=f2e1344]
                 - text: . It must be a valid JavaScript regular expression, as used by the
                 - link [ref=f2e1345]:
                   - /url: /en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
                   - code: RegExp
                 - text: type, and as documented in our
-                - link "guide on regular expressions" [ref=f2e1347]:
-                  - /url: /en-US/docs/Web/JavaScript/Guide/Regular_expressions
+                - link "guide on regular expressions" [ref=f2e1347]: /en-US/docs/Web/JavaScript/Guide/Regular_expressions
                 - text: ". No forward slashes should be specified around the pattern text. When compiling the regular expression:"
               - list:
                 - listitem:
@@ -1875,15 +1724,13 @@ source: tests/playwright_fixtures.rs
                   - text: the
                   - code: "'v'"
                   - text: flag is specified so that the pattern is treated as a sequence of Unicode code points, instead of as
-                  - link "ASCII" [ref=f2e1356]:
-                    - /url: /en-US/docs/Glossary/ASCII
+                  - link "ASCII" [ref=f2e1356]: /en-US/docs/Glossary/ASCII
                   - text: .
               - paragraph:
                 - text: If the
                 - code: pattern
                 - text: attribute is present but is not specified or is invalid, no regular expression is applied and this attribute is ignored completely. If the pattern attribute is valid and a non-empty value does not match the pattern, constraint validation will prevent form submission. If the
                 - link [ref=f2e1359]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/multiple
                   - code: multiple
                 - text: is present, the compiled regular expression is matched against each comma separated value.
               - paragraph:
@@ -1897,8 +1744,7 @@ source: tests/playwright_fixtures.rs
                 - text: attribute to explain what the requirements are to match the pattern; most browsers will display this title as a tooltip. The visible explanation is required for accessibility. The tooltip is an enhancement.
               - paragraph:
                 - text: See
-                - link "Client-side validation" [ref=f2e1368]:
-                  - /url: "#client-side_validation"
+                - link "Client-side validation" [ref=f2e1368]
                 - text: for more information.
             - term:
               - link [ref=f2e1370]:
@@ -1925,20 +1771,17 @@ source: tests/playwright_fixtures.rs
                 - text: The
                 - code: placeholder
                 - text: attribute is not as semantically useful as other ways to explain your form, and can cause unexpected technical issues with your content. See
-                - link "Labels" [ref=f2e1387]:
-                  - /url: "#labels"
+                - link "Labels" [ref=f2e1387]: "#labels"
                 - text: for more information.
             - term:
               - link [ref=f2e1389]:
-                - /url: "#popovertarget"
                 - code: popovertarget
             - definition:
               - paragraph:
                 - text: Turns an
                 - code: <input type="button">
                 - text: element into a popover control button; takes the ID of the popover element to control as its value. See the
-                - link "Popover API" [ref=f2e1394]:
-                  - /url: /en-US/docs/Web/API/Popover_API
+                - link "Popover API" [ref=f2e1394]: /en-US/docs/Web/API/Popover_API
                 - text: landing page for more details. Establishing a relationship between a popover and its invoker button using the
                 - code: popovertarget
                 - text: "attribute has two additional useful effects:"
@@ -1953,20 +1796,16 @@ source: tests/playwright_fixtures.rs
                     - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded
                     - code: aria-expanded
                   - text: relationship between popover and invoker, and places the popover in a logical position in the keyboard focus navigation order when shown. This makes the popover more accessible to keyboard and assistive technology (AT) users (see also
-                  - link "Popover accessibility features" [ref=f2e1402]:
-                    - /url: /en-US/docs/Web/API/Popover_API/Using#popover_accessibility_features
+                  - link "Popover accessibility features" [ref=f2e1402]: /en-US/docs/Web/API/Popover_API/Using#popover_accessibility_features
                   - text: ).
                 - listitem:
                   - text: The browser creates an implicit anchor reference between the two, making it very convenient to position popovers relative to their controls using
-                  - link "CSS anchor positioning" [ref=f2e1404]:
-                    - /url: /en-US/docs/Web/CSS/Guides/Anchor_positioning
+                  - link "CSS anchor positioning" [ref=f2e1404]: /en-US/docs/Web/CSS/Guides/Anchor_positioning
                   - text: . See
-                  - link "Popover anchor positioning" [ref=f2e1405]:
-                    - /url: /en-US/docs/Web/API/Popover_API/Using#popover_anchor_positioning
+                  - link "Popover anchor positioning" [ref=f2e1405]: /en-US/docs/Web/API/Popover_API/Using#popover_anchor_positioning
                   - text: for more details.
             - term:
               - link [ref=f2e1407]:
-                - /url: "#popovertargetaction"
                 - code: popovertargetaction
             - definition:
               - paragraph:
@@ -2023,7 +1862,6 @@ source: tests/playwright_fixtures.rs
               - paragraph:
                 - text: See the
                 - link [ref=f2e1449]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/readonly
                   - text: "HTML attribute:"
                   - code: readonly
                 - text: for more information.
@@ -2056,11 +1894,9 @@ source: tests/playwright_fixtures.rs
                 - text: inputs.
               - paragraph:
                 - text: See
-                - link "Client-side validation" [ref=f2e1474]:
-                  - /url: "#client-side_validation"
+                - link "Client-side validation" [ref=f2e1474]
                 - text: and the
                 - link [ref=f2e1475]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/required
                   - text: "HTML attribute:"
                   - code: required
                 - text: for more information.
@@ -2100,7 +1936,6 @@ source: tests/playwright_fixtures.rs
                 - text: attribute.
             - term:
               - link [ref=f2e1498]:
-                - /url: "#src"
                 - code: src
             - definition:
               - paragraph:
@@ -2109,8 +1944,7 @@ source: tests/playwright_fixtures.rs
                 - text: input button only, the
                 - code: src
                 - text: is string specifying the URL of the image file to display to represent the graphical submit button. See the
-                - link "image" [ref=f2e1504]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/image
+                - link "image" [ref=f2e1504]
                 - text: input type.
             - term:
               - link [ref=f2e1506]:
@@ -2129,15 +1963,12 @@ source: tests/playwright_fixtures.rs
                 - code: range
                 - text: ", the"
                 - link [ref=f2e1517]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/step
                   - code: step
                 - text: attribute is a number that specifies the granularity that the value must adhere to. Only values which are a whole number of steps from the step base are valid. The step base is
                 - link [ref=f2e1519]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/min
                   - code: min
                 - text: if specified,
                 - link [ref=f2e1521]:
-                  - /url: "#value"
                   - code: value
                 - text: otherwise, or
                 - code: "0"
@@ -2181,11 +2012,9 @@ source: tests/playwright_fixtures.rs
                 - code: any
                 - text: ", which means no stepping is implied, and any value is allowed (barring other constraints, such as"
                 - link [ref=f2e1546]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/min
                   - code: min
                 - text: and
                 - link [ref=f2e1548]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Attributes/max
                   - code: max
                 - text: ).
               - paragraph:
@@ -2221,8 +2050,7 @@ source: tests/playwright_fixtures.rs
                 - text: pseudoclass.
               - paragraph:
                 - text: See
-                - link "Client-side validation" [ref=f2e1568]:
-                  - /url: "#client-side_validation"
+                - link "Client-side validation" [ref=f2e1568]
                 - text: for more information.
             - term:
               - link [ref=f2e1570]:
@@ -2248,27 +2076,22 @@ source: tests/playwright_fixtures.rs
               - paragraph: Global attribute valid for all elements, including all the input types, an integer attribute indicating if the element can take input focus (is focusable), if it should participate to sequential keyboard navigation. As all input types except for input of type hidden are focusable, this attribute should not be used on form controls, because doing so would require the management of the focus order for all elements within the document with the risk of harming usability and accessibility if done incorrectly.
             - term:
               - link [ref=f2e1587]:
-                - /url: "#title"
                 - code: title
             - definition:
               - paragraph:
                 - text: Global attribute valid for all elements, including all input types, containing a text representing advisory information related to the element it belongs to. Such information can typically, but not necessarily, be presented to the user as a tooltip. The title should NOT be used as the primary explanation of the purpose of the form control. Instead, use the
                 - link [ref=f2e1591]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/label
                   - code: <label>
                 - text: element with a
                 - code: for
                 - text: attribute set to the form control's
                 - link [ref=f2e1594]:
-                  - /url: "#id"
                   - code: id
                 - text: attribute. See
-                - link "Labels" [ref=f2e1596]:
-                  - /url: "#labels"
+                - link "Labels" [ref=f2e1596]
                 - text: below.
             - term:
               - link [ref=f2e1598]:
-                - /url: "#type"
                 - code: type
             - definition:
               - paragraph:
@@ -2279,18 +2102,15 @@ source: tests/playwright_fixtures.rs
                 - text: is used, creating a plaintext input field.
               - paragraph:
                 - text: Permitted values are listed in
-                - link "Input types" [ref=f2e1605]:
-                  - /url: "#input_types"
+                - link "Input types" [ref=f2e1605]
                 - text: above.
             - term:
               - link [ref=f2e1607]:
-                - /url: "#value"
                 - code: value
             - definition:
               - paragraph:
                 - text: The input control's value. When specified in the HTML, this is the initial value, and from then on it can be altered or retrieved at any time using JavaScript to access the respective
                 - link [ref=f2e1611]:
-                  - /url: /en-US/docs/Web/API/HTMLInputElement
                   - code: HTMLInputElement
                 - text: object's
                 - code: value
@@ -2319,14 +2139,12 @@ source: tests/playwright_fixtures.rs
                 - strong: "Note:"
                 - code: webkitdirectory
                 - text: is defined in the
-                - link "File and Directory Entries API" [ref=f2e1630]:
-                  - /url: /en-US/docs/Web/API/File_and_Directory_Entries_API
+                - link "File and Directory Entries API" [ref=f2e1630]: /en-US/docs/Web/API/File_and_Directory_Entries_API
                 - text: . It's named
                 - code: webkitdirectory
                 - text: because of its origins as a Chrome-specific API. It is now available in all browsers.
             - term:
               - link [ref=f2e1633]:
-                - /url: "#width"
                 - code: width
             - definition:
               - paragraph:
@@ -2335,13 +2153,11 @@ source: tests/playwright_fixtures.rs
                 - text: input button only, the
                 - code: width
                 - text: is the width of the image file to display to represent the graphical submit button. See the
-                - link "image" [ref=f2e1639]:
-                  - /url: /en-US/docs/Web/HTML/Reference/Elements/input/image
+                - link "image" [ref=f2e1639]
                 - text: input type.
         - region [ref=f2e1640]:
           - heading [level=3] [ref=f2e1641]:
-            - link "Non-standard attributes" [ref=f2e1642]:
-              - /url: "#non-standard_attributes"
+            - link "Non-standard attributes" [ref=f2e1642]: "#non-standard_attributes"
           - paragraph: The following non-standard attributes are also available on some browsers. As a general rule, you should avoid using them unless it can't be helped.
           - figure [ref=f2e1644]:
             - table [ref=f2e1645]:
@@ -2395,7 +2211,6 @@ source: tests/playwright_fixtures.rs
           - generic:
             - term:
               - link [ref=f2e1682]:
-                - /url: "#incremental"
                 - code: incremental
                 - img "Non-standard" [ref=f2e1684]
             - definition:
@@ -2403,15 +2218,12 @@ source: tests/playwright_fixtures.rs
                 - text: The Boolean attribute
                 - code: incremental
                 - text: is a WebKit and Blink extension (so supported by Safari, Opera, Chrome, etc.) which, if present, tells the
-                - link "user agent" [ref=f2e1688]:
-                  - /url: /en-US/docs/Glossary/User_agent
+                - link "user agent" [ref=f2e1688]
                 - text: to process the input as a live search. As the user edits the value of the field, the user agent sends
                 - link [ref=f2e1689]:
-                  - /url: /en-US/docs/Web/API/HTMLInputElement/search_event
                   - code: search
                 - text: events to the
                 - link [ref=f2e1691]:
-                  - /url: /en-US/docs/Web/API/HTMLInputElement
                   - code: HTMLInputElement
                 - text: object representing the search box. This allows your code to update the search results in real time as the user edits the search.
               - paragraph:
@@ -2419,7 +2231,6 @@ source: tests/playwright_fixtures.rs
                 - code: incremental
                 - text: is not specified, the
                 - link [ref=f2e1695]:
-                  - /url: /en-US/docs/Web/API/HTMLInputElement/search_event
                   - code: search
                 - text: event is only sent when the user explicitly initiates a search (such as by pressing the Enter or Return key while editing the field).
               - paragraph:
@@ -2428,7 +2239,6 @@ source: tests/playwright_fixtures.rs
                 - text: event is rate-limited so that it is not sent more frequently than an implementation-defined interval.
             - term:
               - link [ref=f2e1700]:
-                - /url: "#orient"
                 - code: orient
                 - img "Non-standard" [ref=f2e1702]
             - definition:
@@ -2448,12 +2258,10 @@ source: tests/playwright_fixtures.rs
                 - text: ", meaning the range is rendered horizontally, and"
                 - code: vertical
                 - text: ", where the range is rendered vertically. See"
-                - link "Creating vertical form controls" [ref=f2e1712]:
-                  - /url: /en-US/docs/Web/CSS/Guides/Writing_modes/Vertical_controls
+                - link "Creating vertical form controls" [ref=f2e1712]: /en-US/docs/Web/CSS/Guides/Writing_modes/Vertical_controls
                 - text: for a modern approach to creating vertical form controls.
             - term:
               - link [ref=f2e1714]:
-                - /url: "#results"
                 - code: results
                 - img "Non-standard" [ref=f2e1716]
             - definition:
@@ -2466,12 +2274,10 @@ source: tests/playwright_fixtures.rs
               - paragraph: The value must be a non-negative decimal number. If not provided, or an invalid value is given, the browser's default maximum number of entries is used.
         - region [ref=f2e1722]:
           - heading [level=2] [ref=f2e1723]:
-            - link "Methods" [ref=f2e1724]:
-              - /url: "#methods"
+            - link "Methods" [ref=f2e1724]
           - paragraph:
             - text: The following methods are provided by the
             - link [ref=f2e1726]:
-              - /url: /en-US/docs/Web/API/HTMLInputElement
               - code: HTMLInputElement
             - text: interface which represents
             - code: <input>
@@ -2518,7 +2324,6 @@ source: tests/playwright_fixtures.rs
                 - code: "false"
                 - text: ", fires an"
                 - link [ref=f2e1754]:
-                  - /url: /en-US/docs/Web/API/HTMLInputElement/invalid_event
                   - code: invalid
                 - text: event at the element, and (if the event isn't canceled) reports the problem to the user.
             - term:
@@ -2571,13 +2376,11 @@ source: tests/playwright_fixtures.rs
               - paragraph: Increments the value of a numeric input by one or by the specified number of units.
         - region [ref=f2e1793]:
           - heading [level=2] [ref=f2e1794]:
-            - link "CSS" [ref=f2e1795]:
-              - /url: "#css"
+            - link "CSS" [ref=f2e1795]
           - paragraph: Inputs, being replaced elements, have a few features not applicable to non form elements. There are CSS selectors that can specifically target form controls based on their UI features, also known as UI pseudo-classes. The input element can also be targeted by type with attribute selectors. There are some properties that are especially useful as well.
         - region [ref=f2e1797]:
           - heading [level=3] [ref=f2e1798]:
-            - link "UI pseudo-classes" [ref=f2e1799]:
-              - /url: "#ui_pseudo-classes"
+            - link "UI pseudo-classes" [ref=f2e1799]: "#ui_pseudo-classes"
           - figure [ref=f2e1800]:
             - table [ref=f2e1801]:
               - caption:
@@ -2621,7 +2424,6 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - text: Element that is currently displaying
                     - link [ref=f2e1834]:
-                      - /url: "#placeholder"
                       - code: placeholder
                       - text: text
                     - text: ", including"
@@ -2632,7 +2434,6 @@ source: tests/playwright_fixtures.rs
                       - code: <textarea>
                     - text: elements with the
                     - link [ref=f2e1839]:
-                      - /url: "#placeholder"
                       - code: placeholder
                     - text: attribute present that has, as yet, no value.
                 - row:
@@ -2642,11 +2443,9 @@ source: tests/playwright_fixtures.rs
                       - code: :default
                   - cell:
                     - text: Form elements that are the default in a group of related elements. Matches
-                    - link "checkbox" [ref=f2e1846]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/checkbox
+                    - link "checkbox" [ref=f2e1846]
                     - text: and
-                    - link "radio" [ref=f2e1847]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/radio
+                    - link "radio" [ref=f2e1847]
                     - text: input types that were checked on page load or render.
                 - row:
                   - cell:
@@ -2655,18 +2454,15 @@ source: tests/playwright_fixtures.rs
                       - code: :checked
                   - cell:
                     - text: Matches
-                    - link "checkbox" [ref=f2e1853]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/checkbox
+                    - link "checkbox" [ref=f2e1853]
                     - text: and
-                    - link "radio" [ref=f2e1854]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/radio
+                    - link "radio" [ref=f2e1854]
                     - text: input types that are currently checked (and the
                     - link [ref=f2e1855]:
                       - /url: /en-US/docs/Web/HTML/Reference/Elements/option
                       - code: <option>
                     - text: in a
                     - link [ref=f2e1857]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/select
                       - code: <select>
                     - text: that is currently selected).
                 - row:
@@ -2675,14 +2471,11 @@ source: tests/playwright_fixtures.rs
                       - /url: /en-US/docs/Web/CSS/Reference/Selectors/:indeterminate
                       - code: :indeterminate
                   - cell:
-                    - link "checkbox" [ref=f2e1864]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/checkbox
+                    - link "checkbox" [ref=f2e1864]
                     - text: elements whose indeterminate property is set to true by JavaScript,
-                    - link "radio" [ref=f2e1865]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/radio
+                    - link "radio" [ref=f2e1865]
                     - text: elements, when all radio buttons with the same name value in the form are unchecked, and
                     - link [ref=f2e1866]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/progress
                       - code: <progress>
                     - text: elements in an indeterminate state
                 - row:
@@ -2699,17 +2492,13 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - text: Form controls that have constraint validation applied and are currently not valid. Matches a form control whose value doesn't match the constraints set on it by its attributes, such as
                     - link [ref=f2e1878]:
-                      - /url: "#required"
                       - code: required
                     - link [ref=f2e1880]:
-                      - /url: "#pattern"
                       - code: pattern
                     - link [ref=f2e1882]:
-                      - /url: "#step"
                       - code: step
                     - text: and
                     - link [ref=f2e1884]:
-                      - /url: "#max"
                       - code: max
                     - text: .
                 - row:
@@ -2720,15 +2509,12 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - text: A non-empty input whose current value is within the range limits specified by the
                     - link [ref=f2e1891]:
-                      - /url: "#min"
                       - code: min
                     - text: and
                     - link [ref=f2e1893]:
-                      - /url: "#max"
                       - code: max
                     - text: attributes and the
                     - link [ref=f2e1895]:
-                      - /url: "#step"
                       - code: step
                     - text: .
                 - row:
@@ -2739,15 +2525,12 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - text: A non-empty input whose current value is NOT within the range limits specified by the
                     - link [ref=f2e1902]:
-                      - /url: "#min"
                       - code: min
                     - text: and
                     - link [ref=f2e1904]:
-                      - /url: "#max"
                       - code: max
                     - text: attributes or does not adhere to the
                     - link [ref=f2e1906]:
-                      - /url: "#step"
                       - code: step
                     - text: constraint.
                 - row:
@@ -2758,15 +2541,12 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - code: <input>
                     - link [ref=f2e1914]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/select
                       - code: <select>
                     - text: ", or"
                     - link [ref=f2e1916]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/textarea
                       - code: <textarea>
                     - text: element that has the
                     - link [ref=f2e1918]:
-                      - /url: "#required"
                       - code: required
                     - text: attribute set on it. Only matches elements that can be required. The attribute included on a non-requirable element will not make for a match.
                 - row:
@@ -2777,15 +2557,12 @@ source: tests/playwright_fixtures.rs
                   - cell:
                     - code: <input>
                     - link [ref=f2e1926]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/select
                       - code: <select>
                     - text: ", or"
                     - link [ref=f2e1928]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/textarea
                       - code: <textarea>
                     - text: element that does NOT have the
                     - link [ref=f2e1930]:
-                      - /url: "#required"
                       - code: required
                     - text: attribute set on it. Does not match elements that can't be required.
                 - row:
@@ -2797,7 +2574,6 @@ source: tests/playwright_fixtures.rs
                     - code: <input>
                     - text: and
                     - link [ref=f2e1938]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/textarea
                       - code: <textarea>
                     - text: elements that currently have no value.
                 - row:
@@ -2818,7 +2594,6 @@ source: tests/playwright_fixtures.rs
                     - code: <input>
                     - text: elements that display a picker for the user to choose a value from (for example
                     - link [ref=f2e1952]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input/color
                       - code: <input type="color">
                     - text: ) — but only when the element is in the open state, that is, when the picker is displayed.
           - heading "Pseudo-classes example" [level=4] [ref=f2e1954]
@@ -2833,7 +2608,6 @@ source: tests/playwright_fixtures.rs
               - code: font-weight
             - text: of the
             - link [ref=f2e1960]:
-              - /url: /en-US/docs/Web/HTML/Reference/Elements/label
               - code: <label>
             - text: that comes immediately after a checked input. We haven't applied any styles if the
             - code: input
@@ -2843,29 +2617,24 @@ source: tests/playwright_fixtures.rs
               - generic: css
               - button "Copy" [ref=f2e1969]
               - generic "Run example in MDN Playground (opens in new tab)":
-                - link "Play" [ref=f2e3493]:
-                  - /url: https://developer.mozilla.org/en-US/play?uuid=5d3eb58a46551850593d3233b559594287ab743c&state=ZY3BDoIwEER%2FZbJXMdwrcvfusRdptxQtXQI1agj%2FblpjYuJx38y8XcmnMZCiZojTPWGwR03Gs7l18jxlpAnpNfEP1oS61bEJl44DnMz%2Fk%2FYsfR8YyTO%2BESTiEi3EuaYu21ZHqsgsCykq71XpssUOH%2FmqI2AkyKwwsz3k00lM%2BwcPvU8KnYRMt2K6ZhFVlDyPTIpC7tD2Bg%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                - link "Play" [ref=f2e3493]: https://developer.mozilla.org/en-US/play?uuid=5d3eb58a46551850593d3233b559594287ab743c&state=ZY3BDoIwEER%2FZbJXMdwrcvfusRdptxQtXQI1agj%2FblpjYuJx38y8XcmnMZCiZojTPWGwR03Gs7l18jxlpAnpNfEP1oS61bEJl44DnMz%2Fk%2FYsfR8YyTO%2BESTiEi3EuaYu21ZHqsgsCykq71XpssUOH%2FmqI2AkyKwwsz3k00lM%2BwcPvU8KnYRMt2K6ZhFVlDyPTIpC7tD2Bg%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
             - code: "input:checked + label { color: red; font-weight: bold; }"
           - generic:
             - generic "Run example in MDN Playground (opens in new tab)":
-              - link "Play" [ref=f2e3496]:
-                - /url: https://developer.mozilla.org/en-US/play?uuid=5d3eb58a46551850593d3233b559594287ab743c&state=ZY3BDoIwEER%2FZbJXMdwrcvfusRdptxQtXQI1agj%2FblpjYuJx38y8XcmnMZCiZojTPWGwR03Gs7l18jxlpAnpNfEP1oS61bEJl44DnMz%2Fk%2FYsfR8YyTO%2BESTiEi3EuaYu21ZHqsgsCykq71XpssUOH%2FmqI2AkyKwwsz3k00lM%2BwcPvU8KnYRMt2K6ZhFVlDyPTIpC7tD2Bg%3D%3D&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+              - link "Play" [ref=f2e3496]
             - iframe [ref=f2e3498]:
               - generic:
                 - checkbox "Toggle the checkbox on and off" [ref=f80e2]
                 - text: Toggle the checkbox on and off
         - region [ref=f2e1978]:
           - heading [level=3] [ref=f2e1979]:
-            - link "Attribute selectors" [ref=f2e1980]:
-              - /url: "#attribute_selectors"
+            - link "Attribute selectors" [ref=f2e1980]: "#attribute_selectors"
           - paragraph:
             - text: It is possible to target different types of form controls based on their
             - link [ref=f2e1982]:
-              - /url: "#type"
               - code: type
             - text: using
-            - link "attribute selectors" [ref=f2e1984]:
-              - /url: /en-US/docs/Learn_web_development/Core/Styling_basics/Attribute_selectors
+            - link "attribute selectors" [ref=f2e1984]: /en-US/docs/Learn_web_development/Core/Styling_basics/Attribute_selectors
             - text: . CSS attribute selectors match elements based on either just the presence of an attribute or the value of a given attribute.
           - generic:
             - generic:
@@ -2874,8 +2643,7 @@ source: tests/playwright_fixtures.rs
             - code: "/* matches a password input */ input[type=\"password\"] { } /* matches a form control whose valid values are limited to a range of values */ input[min][max] { } /* matches a form control with a pattern attribute */ input[pattern] { }"
         - region [ref=f2e1995]:
           - heading [level=3] [ref=f2e1996]:
-            - link "::placeholder" [ref=f2e1997]:
-              - /url: "#placeholder"
+            - link "::placeholder" [ref=f2e1997]
           - paragraph:
             - text: By default, the appearance of placeholder text is a translucent or light gray. The
             - link [ref=f2e1999]:
@@ -2883,7 +2651,6 @@ source: tests/playwright_fixtures.rs
               - code: ::placeholder
             - text: pseudo-element is the input's
             - link [ref=f2e2001]:
-              - /url: "#placeholder"
               - code: placeholder
               - text: text
             - text: . It can be styled with a limited subset of CSS properties.
@@ -2902,8 +2669,7 @@ source: tests/playwright_fixtures.rs
             - text: in its selector.
         - region [ref=f2e2017]:
           - heading [level=3] [ref=f2e2018]:
-            - link "caret-color" [ref=f2e2019]:
-              - /url: "#caret-color"
+            - link "caret-color" [ref=f2e2019]: "#caret-color"
           - paragraph:
             - text: A property specific to text entry-related elements is the CSS
             - link [ref=f2e2021]:
@@ -2916,8 +2682,7 @@ source: tests/playwright_fixtures.rs
               - generic: html
               - button "Copy" [ref=f2e2030]
               - generic "Run example in MDN Playground (opens in new tab)":
-                - link "Play" [ref=f2e3500]:
-                  - /url: https://developer.mozilla.org/en-US/play?uuid=ee2c7a6c54cc2e13159f2cc1b48fdb13fbebe6a7&state=VY3LasMwEEV%2FZbhrp6EtdKHYhuzaTb9gNqoyrlVkKWgmJTTk34tsKHQ3j3PvuWG2JcGhT%2F5DEk2lDgyTq73l88UY43sxIZuFqpwo%2BCrm%2Bv0Kj5z72CiKp%2F8hCsmrDoxwUSsLgzT%2ByMB4fmLQfuSMDkEVDmvBw8bRjTNtjl0oqVTXpId2nEo21waix5fzlRivkr7FYvCMbnswjjX69Lerz7pTqXE6cL6vzq%2BmRAebZRE4pPg5G%2B6%2F&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                - link "Play" [ref=f2e3500]: https://developer.mozilla.org/en-US/play?uuid=ee2c7a6c54cc2e13159f2cc1b48fdb13fbebe6a7&state=VY3LasMwEEV%2FZbhrp6EtdKHYhuzaTb9gNqoyrlVkKWgmJTTk34tsKHQ3j3PvuWG2JcGhT%2F5DEk2lDgyTq73l88UY43sxIZuFqpwo%2BCrm%2Bv0Kj5z72CiKp%2F8hCsmrDoxwUSsLgzT%2ByMB4fmLQfuSMDkEVDmvBw8bRjTNtjl0oqVTXpId2nEo21waix5fzlRivkr7FYvCMbnswjjX69Lerz7pTqXE6cL6vzq%2BmRAebZRE4pPg5G%2B6%2F&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
             - code:
               - generic:
                 - generic: <label
@@ -2943,22 +2708,19 @@ source: tests/playwright_fixtures.rs
               - generic: css
               - button "Copy" [ref=f2e2051]
               - generic "Run example in MDN Playground (opens in new tab)":
-                - link "Play" [ref=f2e3503]:
-                  - /url: https://developer.mozilla.org/en-US/play?uuid=ee2c7a6c54cc2e13159f2cc1b48fdb13fbebe6a7&state=VY3LasMwEEV%2FZbhrp6EtdKHYhuzaTb9gNqoyrlVkKWgmJTTk34tsKHQ3j3PvuWG2JcGhT%2F5DEk2lDgyTq73l88UY43sxIZuFqpwo%2BCrm%2Bv0Kj5z72CiKp%2F8hCsmrDoxwUSsLgzT%2ByMB4fmLQfuSMDkEVDmvBw8bRjTNtjl0oqVTXpId2nEo21waix5fzlRivkr7FYvCMbnswjjX69Lerz7pTqXE6cL6vzq%2BmRAebZRE4pPg5G%2B6%2F&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                - link "Play" [ref=f2e3503]
             - code: "input.custom { caret-color: red; font: 16px \"Helvetica\", \"Arial\", sans-serif; }"
           - heading "Result" [level=4] [ref=f2e2055]
           - generic:
             - generic "Run example in MDN Playground (opens in new tab)":
-              - link "Play" [ref=f2e3506]:
-                - /url: https://developer.mozilla.org/en-US/play?uuid=ee2c7a6c54cc2e13159f2cc1b48fdb13fbebe6a7&state=VY3LasMwEEV%2FZbhrp6EtdKHYhuzaTb9gNqoyrlVkKWgmJTTk34tsKHQ3j3PvuWG2JcGhT%2F5DEk2lDgyTq73l88UY43sxIZuFqpwo%2BCrm%2Bv0Kj5z72CiKp%2F8hCsmrDoxwUSsLgzT%2ByMB4fmLQfuSMDkEVDmvBw8bRjTNtjl0oqVTXpId2nEo21waix5fzlRivkr7FYvCMbnswjjX69Lerz7pTqXE6cL6vzq%2BmRAebZRE4pPg5G%2B6%2F&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+              - link "Play" [ref=f2e3506]
             - iframe [ref=f2e3508]:
               - generic:
                 - text: "Note the red caret:"
                 - textbox "Note the red caret:" [ref=f81e2]
         - region [ref=f2e2061]:
           - heading [level=3] [ref=f2e2062]:
-            - link "field-sizing" [ref=f2e2063]:
-              - /url: "#field-sizing"
+            - link "field-sizing" [ref=f2e2063]: "#field-sizing"
           - paragraph:
             - text: The
             - link [ref=f2e2065]:
@@ -2968,31 +2730,25 @@ source: tests/playwright_fixtures.rs
           - paragraph:
             - text: This property is typically used to create form fields that shrinkwrap their content and grow as more text is entered. This works with input types that accept direct text input (for example,
             - link [ref=f2e2068]:
-              - /url: /en-US/docs/Web/HTML/Reference/Elements/input/text
               - code: text
             - text: and
             - link [ref=f2e2070]:
-              - /url: /en-US/docs/Web/HTML/Reference/Elements/input/url
               - code: url
             - text: ), input type
             - link [ref=f2e2072]:
-              - /url: /en-US/docs/Web/HTML/Reference/Elements/input/file
               - code: file
             - text: ", and"
             - link [ref=f2e2074]:
-              - /url: /en-US/docs/Web/HTML/Reference/Elements/textarea
               - code: <textarea>
             - text: elements.
         - region [ref=f2e2076]:
           - heading [level=3] [ref=f2e2077]:
-            - link "object-position and object-fit" [ref=f2e2078]:
-              - /url: "#object-position_and_object-fit"
+            - link "object-position and object-fit" [ref=f2e2078]: "#object-position_and_object-fit"
           - paragraph:
             - text: In certain cases (typically involving non-textual inputs and specialized interfaces), the
             - code: <input>
             - text: element is a
-            - link "replaced element" [ref=f2e2081]:
-              - /url: /en-US/docs/Glossary/Replaced_elements
+            - link "replaced element" [ref=f2e2081]: /en-US/docs/Glossary/Replaced_elements
             - text: . When it is, the position and size of the element's size and positioning within its frame can be adjusted using the CSS
             - link [ref=f2e2082]:
               - /url: /en-US/docs/Web/CSS/Reference/Properties/object-position
@@ -3004,37 +2760,30 @@ source: tests/playwright_fixtures.rs
             - text: properties.
         - region [ref=f2e2086]:
           - heading [level=3] [ref=f2e2087]:
-            - link "Styling" [ref=f2e2088]:
-              - /url: "#styling"
+            - link "Styling" [ref=f2e2088]: "#styling"
           - paragraph: "For more information about adding color to elements in HTML, see:"
           - list:
             - listitem:
-              - link "Applying color to HTML elements using CSS" [ref=f2e2092]:
-                - /url: /en-US/docs/Web/CSS/Guides/Colors/Applying_color
+              - link "Applying color to HTML elements using CSS" [ref=f2e2092]: /en-US/docs/Web/CSS/Guides/Colors/Applying_color
               - text: .
           - paragraph: "Also see:"
           - list:
             - listitem:
-              - link "Styling HTML forms" [ref=f2e2096]:
-                - /url: /en-US/docs/Learn_web_development/Extensions/Forms/Styling_web_forms
+              - link "Styling HTML forms" [ref=f2e2096]: /en-US/docs/Learn_web_development/Extensions/Forms/Styling_web_forms
             - listitem:
-              - link "Advanced styling for HTML forms" [ref=f2e2098]:
-                - /url: /en-US/docs/Learn_web_development/Extensions/Forms/Advanced_form_styling
+              - link "Advanced styling for HTML forms" [ref=f2e2098]: /en-US/docs/Learn_web_development/Extensions/Forms/Advanced_form_styling
               - text: and
         - region [ref=f2e2099]:
           - heading [level=2] [ref=f2e2100]:
-            - link "Additional features" [ref=f2e2101]:
-              - /url: "#additional_features"
+            - link "Additional features" [ref=f2e2101]
         - region [ref=f2e2102]:
           - heading [level=3] [ref=f2e2103]:
-            - link "Labels" [ref=f2e2104]:
-              - /url: "#labels"
+            - link "Labels" [ref=f2e2104]
           - paragraph:
             - text: Labels are needed to associate assistive text with an
             - code: <input>
             - text: . The
             - link [ref=f2e2107]:
-              - /url: /en-US/docs/Web/HTML/Reference/Elements/label
               - code: <label>
             - text: element provides explanatory information about a form field that is
             - emphasis: always
@@ -3044,7 +2793,6 @@ source: tests/playwright_fixtures.rs
             - code: <input>
             - text: or
             - link [ref=f2e2112]:
-              - /url: /en-US/docs/Web/HTML/Reference/Elements/textarea
               - code: <textarea>
             - text: .
           - heading "Associated labels" [level=4] [ref=f2e2114]
@@ -3065,7 +2813,6 @@ source: tests/playwright_fixtures.rs
             - code: <input>
             - text: element. Rather, usability and accessibility requires the inclusion of either implicit or explicit
             - link [ref=f2e2123]:
-              - /url: /en-US/docs/Web/HTML/Reference/Elements/label
               - code: <label>
             - text: ":"
           - generic:
@@ -3155,7 +2902,6 @@ source: tests/playwright_fixtures.rs
           - paragraph:
             - text: The
             - link [ref=f2e2180]:
-              - /url: "#placeholder"
               - code: placeholder
             - text: attribute lets you specify text that appears within the
             - code: <input>
@@ -3168,19 +2914,16 @@ source: tests/playwright_fixtures.rs
             - strong: "Note:"
             - text: Don't use the
             - link [ref=f2e2188]:
-              - /url: "#placeholder"
               - code: placeholder
             - text: attribute if you can avoid it. If you need to label an
             - code: <input>
             - text: element, use the
             - link [ref=f2e2191]:
-              - /url: /en-US/docs/Web/HTML/Reference/Elements/label
               - code: <label>
             - text: element.
         - region [ref=f2e2193]:
           - heading [level=3] [ref=f2e2194]:
-            - link "Client-side validation" [ref=f2e2195]:
-              - /url: "#client-side_validation"
+            - link "Client-side validation" [ref=f2e2195]
           - paragraph:
             - strong: "Warning:"
             - text: Client-side validation is useful, but it does
@@ -3196,15 +2939,12 @@ source: tests/playwright_fixtures.rs
           - paragraph:
             - text: In addition to using CSS to style inputs based on the
             - link [ref=f2e2204]:
-              - /url: /en-US/docs/Web/CSS/Reference/Selectors/:valid
               - code: :valid
             - text: or
             - link [ref=f2e2206]:
-              - /url: /en-US/docs/Web/CSS/Reference/Selectors/:invalid
               - code: :invalid
             - text: UI states based on the current state of each input, as noted in the
-            - link "UI pseudo-classes" [ref=f2e2208]:
-              - /url: "#ui_pseudo-classes"
+            - link "UI pseudo-classes" [ref=f2e2208]
             - text: section above, the browser provides for client-side validation on (attempted) form submission. On form submission, if there is a form control that fails constraint validation, supporting browsers will display an error message on the first invalid form control; displaying a default message based on the error type, or a message set by you.
           - paragraph:
             - text: Some input types and other attributes place limits on what values are valid for a given input. For example,
@@ -3223,11 +2963,9 @@ source: tests/playwright_fixtures.rs
           - paragraph:
             - text: For the input types whose domain of possible values is periodic (that is, at the highest possible value, the values wrap back around to the beginning rather than ending), it's possible for the values of the
             - link [ref=f2e2217]:
-              - /url: "#max"
               - code: max
             - text: and
             - link [ref=f2e2219]:
-              - /url: "#min"
               - code: min
             - text: properties to be reversed, which indicates that the range of permitted values starts at
             - code: min
@@ -3271,7 +3009,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e2254]:
-                      - /url: "#max"
                       - code: max
                   - cell:
                     - link [ref=f2e2257]:
@@ -3284,7 +3021,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e2263]:
-                      - /url: "#maxlength"
                       - code: maxlength
                   - cell:
                     - link [ref=f2e2266]:
@@ -3297,7 +3033,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e2272]:
-                      - /url: "#min"
                       - code: min
                   - cell:
                     - link [ref=f2e2275]:
@@ -3310,7 +3045,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e2281]:
-                      - /url: "#minlength"
                       - code: minlength
                   - cell:
                     - link [ref=f2e2284]:
@@ -3323,7 +3057,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e2290]:
-                      - /url: "#pattern"
                       - code: pattern
                   - cell:
                     - link [ref=f2e2293]:
@@ -3336,7 +3069,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e2299]:
-                      - /url: "#required"
                       - code: required
                   - cell:
                     - link [ref=f2e2302]:
@@ -3351,7 +3083,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e2309]:
-                      - /url: "#step"
                       - code: step
                   - cell:
                     - link [ref=f2e2312]:
@@ -3368,7 +3099,6 @@ source: tests/playwright_fixtures.rs
                 - row:
                   - cell:
                     - link [ref=f2e2320]:
-                      - /url: "#type"
                       - code: type
                   - cell:
                     - link [ref=f2e2323]:
@@ -3397,35 +3127,27 @@ source: tests/playwright_fixtures.rs
           - list:
             - listitem:
               - link [ref=f2e2338]:
-                - /url: /en-US/docs/Web/API/ValidityState/valueMissing
                 - code: validityState.valueMissing
             - listitem:
               - link [ref=f2e2341]:
-                - /url: /en-US/docs/Web/API/ValidityState/typeMismatch
                 - code: validityState.typeMismatch
             - listitem:
               - link [ref=f2e2344]:
-                - /url: /en-US/docs/Web/API/ValidityState/patternMismatch
                 - code: validityState.patternMismatch
             - listitem:
               - link [ref=f2e2347]:
-                - /url: /en-US/docs/Web/API/ValidityState/tooLong
                 - code: validityState.tooLong
             - listitem:
               - link [ref=f2e2350]:
-                - /url: /en-US/docs/Web/API/ValidityState/tooShort
                 - code: validityState.tooShort
             - listitem:
               - link [ref=f2e2353]:
-                - /url: /en-US/docs/Web/API/ValidityState/rangeUnderflow
                 - code: validityState.rangeUnderflow
             - listitem:
               - link [ref=f2e2356]:
-                - /url: /en-US/docs/Web/API/ValidityState/rangeOverflow
                 - code: validityState.rangeOverflow
             - listitem:
               - link [ref=f2e2359]:
-                - /url: /en-US/docs/Web/API/ValidityState/stepMismatch
                 - code: validityState.stepMismatch
             - listitem:
               - link [ref=f2e2362]:
@@ -3433,11 +3155,9 @@ source: tests/playwright_fixtures.rs
                 - code: validityState.badInput
             - listitem:
               - link [ref=f2e2365]:
-                - /url: /en-US/docs/Web/API/ValidityState
                 - code: validityState.valid
             - listitem:
               - link [ref=f2e2368]:
-                - /url: /en-US/docs/Web/API/ValidityState
                 - code: validityState.customError
           - paragraph:
             - text: For each of these Boolean properties, a value of
@@ -3465,8 +3185,7 @@ source: tests/playwright_fixtures.rs
           - heading "Custom validation error example" [level=4] [ref=f2e2389]
           - paragraph:
             - text: If you want to present a custom error message when a field fails to validate, you need to use the
-            - link "Constraint Validation API" [ref=f2e2391]:
-              - /url: /en-US/docs/Learn_web_development/Extensions/Forms/Form_validation#validating_forms_using_javascript
+            - link "Constraint Validation API" [ref=f2e2391]: /en-US/docs/Learn_web_development/Extensions/Forms/Form_validation#validating_forms_using_javascript
             - text: available on
             - code: <input>
             - text: "(and related) elements. Take the following form:"
@@ -3475,8 +3194,7 @@ source: tests/playwright_fixtures.rs
               - generic: html
               - button "Copy" [ref=f2e2399]
               - generic "Run example in MDN Playground (opens in new tab)":
-                - link "Play" [ref=f2e3510]:
-                  - /url: https://developer.mozilla.org/en-US/play?uuid=ca92598a0134ff7feb4c734c321243f5a612d488&state=jZJBj9MwEIX%2FyuycUpFt7yWphJY9IHFb4ADm4DrTrcEZZ%2B1xIaz635Gd0CAE7F7i2H7vmzfWPOJReodbbA4%2B9DvFAI3Te3Jw8KFVyLonhbtbFgqQIoV8AFUaBgqguQPnv1EwOhI4EqEQV1toNgUx0SwPSUDGgVqFQt9FIWTIBQ62W%2F4DPSQbqINBZxq3Cj%2B9uv6or398fqEQNhNzn0Q87%2B7SvrfSbOat4mYzd4E1mhhxi1jjl7x23qSeWNYPicJ4R46M%2BFApzAaFq7XuutsTsby1UYgpX8WCV1hDRflqBe0OHnOAsl0Poayv6aCTk2r1UvE5f4znKKXHN6X3Fv5ZvTyOwuxSfHH8LcysrKFaYiyGSHKTovj%2Bg3a2szJWCifs7ypzJPP1orjkfbLyKVv%2BqG0PUC22k3aJoG1bKHUnyVMBp6EafVom6%2BpX6DOQi%2FQsTlEAKHw%2FQyIYzeDZjWA8i7YM%2F5nXNbwLI%2Bh7bflKYT3h5hDzA2GNcqSecIvO3h8Fzz8B&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                - link "Play" [ref=f2e3510]: https://developer.mozilla.org/en-US/play?uuid=ca92598a0134ff7feb4c734c321243f5a612d488&state=jZJBj9MwEIX%2FyuycUpFt7yWphJY9IHFb4ADm4DrTrcEZZ%2B1xIaz635Gd0CAE7F7i2H7vmzfWPOJReodbbA4%2B9DvFAI3Te3Jw8KFVyLonhbtbFgqQIoV8AFUaBgqguQPnv1EwOhI4EqEQV1toNgUx0SwPSUDGgVqFQt9FIWTIBQ62W%2F4DPSQbqINBZxq3Cj%2B9uv6or398fqEQNhNzn0Q87%2B7SvrfSbOat4mYzd4E1mhhxi1jjl7x23qSeWNYPicJ4R46M%2BFApzAaFq7XuutsTsby1UYgpX8WCV1hDRflqBe0OHnOAsl0Poayv6aCTk2r1UvE5f4znKKXHN6X3Fv5ZvTyOwuxSfHH8LcysrKFaYiyGSHKTovj%2Bg3a2szJWCifs7ypzJPP1orjkfbLyKVv%2BqG0PUC22k3aJoG1bKHUnyVMBp6EafVom6%2BpX6DOQi%2FQsTlEAKHw%2FQyIYzeDZjWA8i7YM%2F5nXNbwLI%2Bh7bflKYT3h5hDzA2GNcqSecIvO3h8Fzz8B&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
             - code:
               - generic:
                 - generic: <form
@@ -3521,14 +3239,12 @@ source: tests/playwright_fixtures.rs
               - generic: js
               - button "Copy" [ref=f2e2431]
               - generic "Run example in MDN Playground (opens in new tab)":
-                - link "Play" [ref=f2e3513]:
-                  - /url: https://developer.mozilla.org/en-US/play?uuid=ca92598a0134ff7feb4c734c321243f5a612d488&state=jZJBj9MwEIX%2FyuycUpFt7yWphJY9IHFb4ADm4DrTrcEZZ%2B1xIaz635Gd0CAE7F7i2H7vmzfWPOJReodbbA4%2B9DvFAI3Te3Jw8KFVyLonhbtbFgqQIoV8AFUaBgqguQPnv1EwOhI4EqEQV1toNgUx0SwPSUDGgVqFQt9FIWTIBQ62W%2F4DPSQbqINBZxq3Cj%2B9uv6or398fqEQNhNzn0Q87%2B7SvrfSbOat4mYzd4E1mhhxi1jjl7x23qSeWNYPicJ4R46M%2BFApzAaFq7XuutsTsby1UYgpX8WCV1hDRflqBe0OHnOAsl0Poayv6aCTk2r1UvE5f4znKKXHN6X3Fv5ZvTyOwuxSfHH8LcysrKFaYiyGSHKTovj%2Bg3a2szJWCifs7ypzJPP1orjkfbLyKVv%2BqG0PUC22k3aJoG1bKHUnyVMBp6EafVom6%2BpX6DOQi%2FQsTlEAKHw%2FQyIYzeDZjWA8i7YM%2F5nXNbwLI%2Bh7bflKYT3h5hDzA2GNcqSecIvO3h8Fzz8B&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+                - link "Play" [ref=f2e3513]
             - code: "const nameInput = document.querySelector(\"input\"); nameInput.addEventListener(\"input\", () => { nameInput.setCustomValidity(\"\"); nameInput.checkValidity(); }); nameInput.addEventListener(\"invalid\", () => { if (nameInput.value === \"\") { nameInput.setCustomValidity(\"Enter your username!\"); } else { nameInput.setCustomValidity( \"Usernames can only contain upper and lowercase letters. Try again!\", ); } });"
           - paragraph: "The example renders like so:"
           - generic:
             - generic "Run example in MDN Playground (opens in new tab)":
-              - link "Play" [ref=f2e3516]:
-                - /url: https://developer.mozilla.org/en-US/play?uuid=ca92598a0134ff7feb4c734c321243f5a612d488&state=jZJBj9MwEIX%2FyuycUpFt7yWphJY9IHFb4ADm4DrTrcEZZ%2B1xIaz635Gd0CAE7F7i2H7vmzfWPOJReodbbA4%2B9DvFAI3Te3Jw8KFVyLonhbtbFgqQIoV8AFUaBgqguQPnv1EwOhI4EqEQV1toNgUx0SwPSUDGgVqFQt9FIWTIBQ62W%2F4DPSQbqINBZxq3Cj%2B9uv6or398fqEQNhNzn0Q87%2B7SvrfSbOat4mYzd4E1mhhxi1jjl7x23qSeWNYPicJ4R46M%2BFApzAaFq7XuutsTsby1UYgpX8WCV1hDRflqBe0OHnOAsl0Poayv6aCTk2r1UvE5f4znKKXHN6X3Fv5ZvTyOwuxSfHH8LcysrKFaYiyGSHKTovj%2Bg3a2szJWCifs7ypzJPP1orjkfbLyKVv%2BqG0PUC22k3aJoG1bKHUnyVMBp6EafVom6%2BpX6DOQi%2FQsTlEAKHw%2FQyIYzeDZjWA8i7YM%2F5nXNbwLI%2Bh7bflKYT3h5hDzA2GNcqSecIvO3h8Fzz8B&srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%2F
+              - link "Play" [ref=f2e3516]
             - iframe [ref=f2e3518]:
               - generic:
                 - text: "Enter username (upper and lowercase letters):"
@@ -3567,13 +3283,11 @@ source: tests/playwright_fixtures.rs
             - text: Firefox supported a proprietary error attribute —
             - code: x-moz-errormessage
             - text: — for many versions, which allowed you set custom error messages in a similar way. This has been removed as of version 66 (see
-            - link "Firefox bug 1513890 (external)" [ref=f2e2462]:
-              - /url: https://bugzil.la/1513890
+            - link "Firefox bug 1513890 (external)" [ref=f2e2462]: https://bugzil.la/1513890
             - text: ).
         - region [ref=f2e2463]:
           - heading [level=3] [ref=f2e2464]:
-            - link "Localization" [ref=f2e2465]:
-              - /url: "#localization"
+            - link "Localization" [ref=f2e2465]: "#localization"
           - paragraph:
             - text: The allowed inputs for certain
             - code: <input>
@@ -3595,16 +3309,13 @@ source: tests/playwright_fixtures.rs
             - listitem: If none specified, use the browser's locale.
         - region [ref=f2e2477]:
           - heading [level=2] [ref=f2e2478]:
-            - link "Accessibility" [ref=f2e2479]:
-              - /url: "#accessibility"
+            - link "Accessibility" [ref=f2e2479]
         - region [ref=f2e2480]:
           - heading [level=3] [ref=f2e2481]:
-            - link "Labels" [ref=f2e2482]:
-              - /url: "#labels_2"
+            - link "Labels" [ref=f2e2482]: "#labels_2"
           - paragraph:
             - text: When including inputs, it is an accessibility requirement to add labels alongside. This is needed so those who use assistive technologies can tell what the input is for. Also, clicking or touching a label gives focus to the label's associated form control. This improves the accessibility and usability for sighted users, increases the area a user can click or touch to activate the form control. This is especially useful (and even needed) for radio buttons and checkboxes, which are tiny. For more information about labels in general see
-            - link "Labels" [ref=f2e2484]:
-              - /url: "#labels"
+            - link "Labels" [ref=f2e2484]
             - text: .
           - paragraph:
             - text: The following is an example of how to associate the
@@ -3647,43 +3358,35 @@ source: tests/playwright_fixtures.rs
                 - text: />
         - region [ref=f2e2513]:
           - heading [level=3] [ref=f2e2514]:
-            - link "Size" [ref=f2e2515]:
-              - /url: "#size"
+            - link "Size" [ref=f2e2515]
           - paragraph:
             - text: Interactive elements such as form input should provide an area large enough that it is easy to activate them. This helps a variety of people, including people with motor control issues and people using non-precise forms of input such as a stylus or fingers. A minimum interactive size of 44×44
-            - link "CSS pixels (external)" [ref=f2e2517]:
-              - /url: https://w3c.github.io/wcag/guidelines/22/#dfn-css-pixels
+            - link "CSS pixels (external)" [ref=f2e2517]: https://w3c.github.io/wcag/guidelines/22/#dfn-css-pixels
             - text: is recommended.
           - list:
             - listitem:
               - 'link "Understanding Success Criterion 2.5.5: Target Size | W3C Understanding WCAG 2.1 (external)" [ref=f2e2520] [cursor=pointer]':
                 - /url: https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
             - listitem:
-              - link "Target Size and 2.5.5 | Adrian Roselli (external)" [ref=f2e2522]:
-                - /url: https://adrianroselli.com/2019/06/target-size-and-2-5-5.html
+              - link "Target Size and 2.5.5 | Adrian Roselli (external)" [ref=f2e2522]: https://adrianroselli.com/2019/06/target-size-and-2-5-5.html
             - listitem:
               - 'link "Quick test: Large touch targets - The A11Y Project (external)" [ref=f2e2524] [cursor=pointer]':
                 - /url: https://www.a11yproject.com/posts/large-touch-targets/
         - region [ref=f2e2525]:
           - heading [level=2] [ref=f2e2526]:
-            - link "Technical summary" [ref=f2e2527]:
-              - /url: "#technical_summary"
+            - link "Technical summary" [ref=f2e2527]
           - figure [ref=f2e2528]:
             - table [ref=f2e2529]:
               - rowgroup:
                 - row:
                   - rowheader [ref=f2e2532]:
-                    - link "Content categories" [ref=f2e2533]:
-                      - /url: /en-US/docs/Web/HTML/Guides/Content_categories
+                    - link "Content categories" [ref=f2e2533]: /en-US/docs/Web/HTML/Guides/Content_categories
                   - cell:
-                    - link "Flow content" [ref=f2e2535]:
-                      - /url: /en-US/docs/Web/HTML/Guides/Content_categories#flow_content
+                    - link "Flow content" [ref=f2e2535]: /en-US/docs/Web/HTML/Guides/Content_categories#flow_content
                     - text: ", listed, submittable, resettable, form-associated element,"
-                    - link "phrasing content" [ref=f2e2536]:
-                      - /url: /en-US/docs/Web/HTML/Guides/Content_categories#phrasing_content
+                    - link "phrasing content" [ref=f2e2536]: /en-US/docs/Web/HTML/Guides/Content_categories#phrasing_content
                     - text: . If the
                     - link [ref=f2e2537]:
-                      - /url: "#type"
                       - code: type
                     - text: is not
                     - code: hidden
@@ -3692,8 +3395,7 @@ source: tests/playwright_fixtures.rs
                   - rowheader "Permitted content" [ref=f2e2541]
                   - cell:
                     - text: None; it is a
-                    - link "void element" [ref=f2e2543]:
-                      - /url: /en-US/docs/Glossary/Void_element
+                    - link "void element" [ref=f2e2543]: /en-US/docs/Glossary/Void_element
                     - text: .
                 - row:
                   - rowheader "Tag omission" [ref=f2e2545]
@@ -3702,8 +3404,7 @@ source: tests/playwright_fixtures.rs
                   - rowheader "Permitted parents" [ref=f2e2548]
                   - cell:
                     - text: Any element that accepts
-                    - link "phrasing content" [ref=f2e2550]:
-                      - /url: /en-US/docs/Web/HTML/Guides/Content_categories#phrasing_content
+                    - link "phrasing content" [ref=f2e2550]
                     - text: .
                 - row:
                   - rowheader "Implicit ARIA role" [ref=f2e2552]
@@ -3713,14 +3414,12 @@ source: tests/playwright_fixtures.rs
                         - code: type=button
                         - text: ":"
                         - code:
-                          - link "button" [ref=f2e2558]:
-                            - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role
+                          - link "button" [ref=f2e2558]: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role
                       - listitem:
                         - code: type=checkbox
                         - text: ":"
                         - code:
-                          - link "checkbox" [ref=f2e2562]:
-                            - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/checkbox_role
+                          - link "checkbox" [ref=f2e2562]: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/checkbox_role
                       - listitem:
                         - code: type=email
                         - list:
@@ -3729,8 +3428,7 @@ source: tests/playwright_fixtures.rs
                             - code: list
                             - text: "attribute:"
                             - code:
-                              - link "textbox" [ref=f2e2569]:
-                                - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/textbox_role
+                              - link "textbox" [ref=f2e2569]: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/textbox_role
                           - listitem:
                             - text: with
                             - code: list
@@ -3742,8 +3440,7 @@ source: tests/playwright_fixtures.rs
                         - code: type=image
                         - text: ":"
                         - code:
-                          - link "button" [ref=f2e2577]:
-                            - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role
+                          - link "button" [ref=f2e2577]
                       - listitem:
                         - code: type=number
                         - text: ":"
@@ -3766,8 +3463,7 @@ source: tests/playwright_fixtures.rs
                         - code: type=reset
                         - text: ":"
                         - code:
-                          - link "button" [ref=f2e2593]:
-                            - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role
+                          - link "button" [ref=f2e2593]
                       - listitem:
                         - code: type=search
                         - list:
@@ -3783,14 +3479,12 @@ source: tests/playwright_fixtures.rs
                             - code: list
                             - text: "attribute:"
                             - link [ref=f2e2603]:
-                              - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/combobox_role
                               - code: combobox
                       - listitem:
                         - code: type=submit
                         - text: ":"
                         - code:
-                          - link "button" [ref=f2e2608]:
-                            - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role
+                          - link "button" [ref=f2e2608]
                       - listitem:
                         - code: type=tel
                         - list:
@@ -3799,14 +3493,12 @@ source: tests/playwright_fixtures.rs
                             - code: list
                             - text: "attribute:"
                             - code:
-                              - link "textbox" [ref=f2e2615]:
-                                - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/textbox_role
+                              - link "textbox" [ref=f2e2615]
                           - listitem:
                             - text: with
                             - code: list
                             - text: "attribute:"
                             - link [ref=f2e2618]:
-                              - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/combobox_role
                               - code: combobox
                       - listitem:
                         - code: type=text
@@ -3816,14 +3508,12 @@ source: tests/playwright_fixtures.rs
                             - code: list
                             - text: "attribute:"
                             - code:
-                              - link "textbox" [ref=f2e2626]:
-                                - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/textbox_role
+                              - link "textbox" [ref=f2e2626]
                           - listitem:
                             - text: with
                             - code: list
                             - text: "attribute:"
                             - link [ref=f2e2629]:
-                              - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/combobox_role
                               - code: combobox
                       - listitem:
                         - code: type=url
@@ -3833,20 +3523,17 @@ source: tests/playwright_fixtures.rs
                             - code: list
                             - text: "attribute:"
                             - code:
-                              - link "textbox" [ref=f2e2637]:
-                                - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/textbox_role
+                              - link "textbox" [ref=f2e2637]
                           - listitem:
                             - text: with
                             - code: list
                             - text: "attribute:"
                             - link [ref=f2e2640]:
-                              - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/combobox_role
                               - code: combobox
                       - listitem:
                         - code: type=color|date|datetime-local|file|hidden|month|password|time|week
                         - text: ":"
-                        - link "no corresponding role (external)" [ref=f2e2644]:
-                          - /url: https://w3c.github.io/html-aria/#dfn-no-corresponding-role
+                        - link "no corresponding role (external)" [ref=f2e2644]: https://w3c.github.io/html-aria/#dfn-no-corresponding-role
                 - row:
                   - rowheader "Permitted ARIA roles" [ref=f2e2646]
                   - cell:
@@ -3855,10 +3542,8 @@ source: tests/playwright_fixtures.rs
                         - code: type=button
                         - text: ":"
                         - link [ref=f2e2651]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/checkbox_role
                           - code: checkbox
                         - link [ref=f2e2653]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/combobox_role
                           - code: combobox
                         - link [ref=f2e2655]:
                           - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/link_role
@@ -3876,7 +3561,6 @@ source: tests/playwright_fixtures.rs
                           - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/option_role
                           - code: option
                         - link [ref=f2e2665]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radio_role
                           - code: radio
                         - link [ref=f2e2667]:
                           - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/switch_role
@@ -3888,45 +3572,34 @@ source: tests/playwright_fixtures.rs
                         - code: type=checkbox
                         - text: ":"
                         - link [ref=f2e2673]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role
                           - code: button
                         - text: when used with
                         - code: aria-pressed
                         - link [ref=f2e2676]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemcheckbox_role
                           - code: menuitemcheckbox
                         - link [ref=f2e2678]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/option_role
                           - code: option
                         - link [ref=f2e2680]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/switch_role
                           - code: switch
                       - listitem:
                         - code: type=image
                         - text: ":"
                         - link [ref=f2e2684]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/link_role
                           - code: link
                         - link [ref=f2e2686]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitem_role
                           - code: menuitem
                         - link [ref=f2e2688]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemcheckbox_role
                           - code: menuitemcheckbox
                         - link [ref=f2e2690]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemradio_role
                           - code: menuitemradio
                         - link [ref=f2e2692]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radio_role
                           - code: radio
                         - link [ref=f2e2694]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/switch_role
                           - code: switch
                       - listitem:
                         - code: type=radio
                         - text: ":"
                         - link [ref=f2e2698]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemradio_role
                           - code: menuitemradio
                       - listitem:
                         - code: type=text
@@ -3934,13 +3607,10 @@ source: tests/playwright_fixtures.rs
                         - code: list
                         - text: "attribute:"
                         - link [ref=f2e2703]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/combobox_role
                           - code: combobox
                         - link [ref=f2e2705]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/searchbox_role
                           - code: searchbox
                         - link [ref=f2e2707]:
-                          - /url: /en-US/docs/Web/Accessibility/ARIA/Reference/Roles/spinbutton_role
                           - code: spinbutton
                       - listitem:
                         - code: type=color|date|datetime-local|email|file|hidden|
@@ -3956,12 +3626,10 @@ source: tests/playwright_fixtures.rs
                   - rowheader "DOM interface" [ref=f2e2716]
                   - cell:
                     - link [ref=f2e2718]:
-                      - /url: /en-US/docs/Web/API/HTMLInputElement
                       - code: HTMLInputElement
         - region [ref=f2e2720]:
           - heading [level=2] [ref=f2e2721]:
-            - link "Specifications" [ref=f2e2722]:
-              - /url: "#specifications"
+            - link "Specifications" [ref=f2e2722]
           - table [ref=f2e2723]:
             - rowgroup:
               - row:
@@ -3974,17 +3642,14 @@ source: tests/playwright_fixtures.rs
                     - text: HTML# the-input-element (external)
         - region [ref=f2e2731]:
           - heading [level=2] [ref=f2e2732]:
-            - link "Browser compatibility" [ref=f2e2733]:
-              - /url: "#browser_compatibility"
+            - link "Browser compatibility" [ref=f2e2733]
           - generic:
             - figure [ref=f2e3521]:
               - figure [ref=f2e3522]:
                 - generic:
                   - generic:
-                    - link "Report problems with this compatibility data (external)" [ref=f2e3525]:
-                      - /url: https://github.com/mdn/browser-compat-data/issues/new?mdn-url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput&metadata=%3C%21--+Do+not+make+changes+below+this+line+--%3E%0A%3Cdetails%3E%0A%3Csummary%3EMDN+page+report+details%3C%2Fsummary%3E%0A%0A*+Query%3A+%60html.elements.input%60%0A*+Report+started%3A+2026-11-02T01%3A25%3A13.968Z%0A%0A%3C%2Fdetails%3E&title=html.elements.input+-+%3CSUMMARIZE+THE+PROBLEM%3E&template=data-problem.yml
-                    - link "View data on GitHub (external)" [ref=f2e3526]:
-                      - /url: https://github.com/mdn/browser-compat-data/tree/main/html/elements/input.json
+                    - link "Report problems with this compatibility data (external)" [ref=f2e3525]: https://github.com/mdn/browser-compat-data/issues/new?mdn-url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput&metadata=%3C%21--+Do+not+make+changes+below+this+line+--%3E%0A%3Cdetails%3E%0A%3Csummary%3EMDN+page+report+details%3C%2Fsummary%3E%0A%0A*+Query%3A+%60html.elements.input%60%0A*+Report+started%3A+2026-11-02T01%3A25%3A13.968Z%0A%0A%3C%2Fdetails%3E&title=html.elements.input+-+%3CSUMMARIZE+THE+PROBLEM%3E&template=data-problem.yml
+                    - link "View data on GitHub (external)" [ref=f2e3526]: https://github.com/mdn/browser-compat-data/tree/main/html/elements/input.json
                   - generic:
                     - button "Settings" [ref=f2e3529]
                     - generic:
@@ -4078,7 +3743,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e3695]:
                         - link [ref=f2e3696]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/accept
                           - code: accept
                       - cell:
                         - button "1" [ref=f2e3699]:
@@ -4348,7 +4012,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e4151]:
                         - link [ref=f2e4152]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/autocomplete
                           - code: autocomplete
                       - cell:
                         - button "14" [ref=f2e4155]:
@@ -4413,7 +4076,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e4251]:
                         - link [ref=f2e4252]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/capture
                           - code: capture
                       - cell:
                         - button "No" [ref=f2e4255]:
@@ -4543,7 +4205,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e4451]:
                         - link "colorspace Experimental" [ref=f2e4452]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/color
                           - code: colorspace
                           - generic "Experimental. Expect behavior to change in the future.": Experimental
                       - cell:
@@ -4682,7 +4343,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e4694]:
                         - link [ref=f2e4695]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/disabled
                           - code: disabled
                       - cell:
                         - button "1" [ref=f2e4698]:
@@ -5137,7 +4797,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e5394]:
                         - link [ref=f2e5395]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/max
                           - code: max
                       - cell:
                         - button "4" [ref=f2e5398]:
@@ -5202,7 +4861,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e5494]:
                         - link [ref=f2e5495]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/maxlength
                           - code: maxlength
                       - cell:
                         - button "1" [ref=f2e5498]:
@@ -5267,7 +4925,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e5594]:
                         - link [ref=f2e5595]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/min
                           - code: min
                       - cell:
                         - button "4" [ref=f2e5598]:
@@ -5332,7 +4989,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e5694]:
                         - link [ref=f2e5695]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/minlength
                           - code: minlength
                       - cell:
                         - button "40" [ref=f2e5698]:
@@ -5397,7 +5053,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e5794]:
                         - link [ref=f2e5795]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/multiple
                           - code: multiple
                       - cell:
                         - button "2" [ref=f2e5798]:
@@ -5527,7 +5182,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e5994]:
                         - link [ref=f2e5995]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/pattern
                           - code: pattern
                       - cell:
                         - button "4" [ref=f2e5998]:
@@ -5852,7 +5506,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e6495]:
                         - link [ref=f2e6496]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/readonly
                           - code: readonly
                       - cell:
                         - button "1" [ref=f2e6499]:
@@ -5982,7 +5635,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e6695]:
                         - link [ref=f2e6696]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/size
                           - code: size
                       - cell:
                         - button "1" [ref=f2e6699]:
@@ -6112,7 +5764,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e6895]:
                         - link [ref=f2e6896]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Attributes/step
                           - code: step
                       - cell:
                         - button "5" [ref=f2e6899]:
@@ -6177,7 +5828,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e6995]:
                         - link "switch Experimental Non-standard" [ref=f2e6996]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/checkbox#switch
                           - code: switch
                           - generic:
                             - generic "Experimental. Expect behavior to change in the future.": Experimental
@@ -6245,7 +5895,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e7100]:
                         - link [ref=f2e7101]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/button
                           - code: type="button"
                       - cell:
                         - button "1" [ref=f2e7105]:
@@ -6310,7 +5959,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e7201]:
                         - link [ref=f2e7202]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/checkbox
                           - code: type="checkbox"
                       - cell:
                         - button "1" [ref=f2e7206]:
@@ -6375,7 +6023,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e7302]:
                         - link [ref=f2e7303]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/color
                           - code: type="color"
                       - cell:
                         - button "20" [ref=f2e7307]:
@@ -6580,7 +6227,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e7640]:
                         - link [ref=f2e7641]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/date
                           - code: type="date"
                       - cell:
                         - button "20" [ref=f2e7645]:
@@ -6710,7 +6356,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e7844]:
                         - link [ref=f2e7845]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input#list
                           - generic:
                             - code: list
                             - text: attribute
@@ -6779,7 +6424,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e7955]:
                         - link [ref=f2e7956]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/datetime-local
                           - code: type="datetime-local"
                       - cell:
                         - button "20" [ref=f2e7960]:
@@ -6847,7 +6491,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e8071]:
                         - link [ref=f2e8072]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/email
                           - code: type="email"
                       - cell:
                         - button "5" [ref=f2e8076]:
@@ -6914,7 +6557,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e8182]:
                         - link [ref=f2e8183]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input#list
                           - generic:
                             - code: list
                             - text: attribute
@@ -6981,7 +6623,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e8283]:
                         - link [ref=f2e8284]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/file
                           - code: type="file"
                       - cell:
                         - button "1" [ref=f2e8288]:
@@ -7047,7 +6688,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e8389]:
                         - link [ref=f2e8390]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/hidden
                           - code: type="hidden"
                       - cell:
                         - button "1" [ref=f2e8394]:
@@ -7112,7 +6752,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e8490]:
                         - link [ref=f2e8491]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/image
                           - code: type="image"
                       - cell:
                         - button "1" [ref=f2e8495]:
@@ -7177,7 +6816,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e8591]:
                         - link [ref=f2e8592]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/month
                           - code: type="month"
                       - cell:
                         - button "20" [ref=f2e8596]:
@@ -7244,7 +6882,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e8702]:
                         - link [ref=f2e8703]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/number
                           - code: type="number"
                       - cell:
                         - button "7 footnote" [ref=f2e8707]:
@@ -7320,7 +6957,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e8858]:
                         - link [ref=f2e8859]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input#list
                           - generic:
                             - code: list
                             - text: attribute
@@ -7387,7 +7023,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e8959]:
                         - link [ref=f2e8960]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/password
                           - code: type="password"
                       - cell:
                         - button "1" [ref=f2e8964]:
@@ -7517,7 +7152,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e9163]:
                         - link [ref=f2e9164]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/radio
                           - code: type="radio"
                       - cell:
                         - button "1" [ref=f2e9168]:
@@ -7582,7 +7216,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e9264]:
                         - link [ref=f2e9265]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/range
                           - code: type="range"
                       - cell:
                         - button "4" [ref=f2e9269]:
@@ -7647,8 +7280,7 @@ source: tests/playwright_fixtures.rs
                             - 'generic "WebView on iOS 5 – Release date: 2011-10-12" [ref=f2e9368]': "5"
                     - row:
                       - rowheader [ref=f2e9370]:
-                        - link "Labeled values support" [ref=f2e9371]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/range#adding_labels
+                        - link "Labeled values support" [ref=f2e9371]: /en-US/docs/Web/HTML/Reference/Elements/input/range#adding_labels
                       - cell:
                         - button "38" [ref=f2e9374]:
                           - generic:
@@ -7715,7 +7347,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e9485]:
                         - link [ref=f2e9486]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input#list
                           - generic:
                             - code: list
                             - text: attribute
@@ -7946,7 +7577,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e9896]:
                         - link [ref=f2e9897]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/reset
                           - code: type="reset"
                       - cell:
                         - button "1" [ref=f2e9901]:
@@ -8013,7 +7643,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10007]:
                         - link [ref=f2e10008]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/search
                           - code: type="search"
                       - cell:
                         - button "5" [ref=f2e10012]:
@@ -8078,7 +7707,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10108]:
                         - link [ref=f2e10109]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input#list
                           - generic:
                             - code: list
                             - text: attribute
@@ -8145,7 +7773,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10209]:
                         - link [ref=f2e10210]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/submit
                           - code: type="submit"
                       - cell:
                         - button "1" [ref=f2e10214]:
@@ -8212,7 +7839,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10320]:
                         - link [ref=f2e10321]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/tel
                           - code: type="tel"
                       - cell:
                         - button "3 footnote" [ref=f2e10325]:
@@ -8279,7 +7905,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10431]:
                         - link [ref=f2e10432]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input#list
                           - generic:
                             - code: list
                             - text: attribute
@@ -8346,7 +7971,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10532]:
                         - link [ref=f2e10533]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/text
                           - code: type="text"
                       - cell:
                         - button "1" [ref=f2e10537]:
@@ -8411,7 +8035,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10633]:
                         - link [ref=f2e10634]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input#list
                           - generic:
                             - code: list
                             - text: attribute
@@ -8478,7 +8101,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10734]:
                         - link [ref=f2e10735]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/time
                           - code: type="time"
                       - cell:
                         - button "20" [ref=f2e10739]:
@@ -8543,7 +8165,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10835]:
                         - link [ref=f2e10836]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input#list
                           - generic:
                             - code: list
                             - text: attribute
@@ -8612,7 +8233,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e10946]:
                         - link [ref=f2e10947]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/url
                           - code: type="url"
                       - cell:
                         - button "1" [ref=f2e10951]:
@@ -8677,7 +8297,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e11047]:
                         - link [ref=f2e11048]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input#list
                           - generic:
                             - code: list
                             - text: attribute
@@ -8744,7 +8363,6 @@ source: tests/playwright_fixtures.rs
                     - row:
                       - rowheader [ref=f2e11148]:
                         - link [ref=f2e11149]:
-                          - /url: /en-US/docs/Web/HTML/Reference/Elements/input/week
                           - code: type="week"
                       - cell:
                         - button "20" [ref=f2e11153]:
@@ -8982,8 +8600,7 @@ source: tests/playwright_fixtures.rs
                   - definition: Has more compatibility info.
         - region [ref=f2e2734]:
           - heading [level=2] [ref=f2e2735]:
-            - link "See also" [ref=f2e2736]:
-              - /url: "#see_also"
+            - link "See also" [ref=f2e2736]
           - list:
             - listitem:
               - text: CSS
@@ -8992,23 +8609,17 @@ source: tests/playwright_fixtures.rs
                 - code: appearance
               - text: property
             - listitem:
-              - link "Your first HTML form" [ref=f2e2742]:
-                - /url: /en-US/docs/Learn_web_development/Extensions/Forms/Your_first_form
+              - link "Your first HTML form" [ref=f2e2742]: /en-US/docs/Learn_web_development/Extensions/Forms/Your_first_form
             - listitem:
-              - link "How to structure an HTML form" [ref=f2e2744]:
-                - /url: /en-US/docs/Learn_web_development/Extensions/Forms/How_to_structure_a_web_form
+              - link "How to structure an HTML form" [ref=f2e2744]: /en-US/docs/Learn_web_development/Extensions/Forms/How_to_structure_a_web_form
             - listitem:
-              - link "The native form widgets" [ref=f2e2746]:
-                - /url: /en-US/docs/Learn_web_development/Extensions/Forms/Basic_native_form_controls
+              - link "The native form widgets" [ref=f2e2746]: /en-US/docs/Learn_web_development/Extensions/Forms/Basic_native_form_controls
             - listitem:
-              - link "Sending form data" [ref=f2e2748]:
-                - /url: /en-US/docs/Learn_web_development/Extensions/Forms/Sending_and_retrieving_form_data
+              - link "Sending form data" [ref=f2e2748]: /en-US/docs/Learn_web_development/Extensions/Forms/Sending_and_retrieving_form_data
             - listitem:
-              - link "Form constraint validation" [ref=f2e2750]:
-                - /url: /en-US/docs/Web/HTML/Guides/Constraint_validation
+              - link "Form constraint validation" [ref=f2e2750]
             - listitem:
-              - link "Styling HTML forms" [ref=f2e2752]:
-                - /url: /en-US/docs/Learn_web_development/Extensions/Forms/Styling_web_forms
+              - link "Styling HTML forms" [ref=f2e2752]
         - region [ref=f2e2753]:
           - generic:
             - heading "Help improve MDN" [level=2] [ref=f2e2762]
@@ -9017,20 +8628,16 @@ source: tests/playwright_fixtures.rs
               - generic:
                 - button "Yes" [ref=f2e2768]
                 - button "No" [ref=f2e2774]
-            - link "Learn how to contribute" [ref=f2e2779]:
-              - /url: /en-US/docs/MDN/Community/Getting_started
+            - link "Learn how to contribute" [ref=f2e2779]: /en-US/docs/MDN/Community/Getting_started
             - paragraph:
               - text: This page was last modified on
               - time: Oct 14, 2026
               - text: by
-              - link "MDN contributors" [ref=f2e2782]:
-                - /url: /en-US/docs/Web/HTML/Reference/Elements/input/contributors.txt
+              - link "MDN contributors" [ref=f2e2782]: /en-US/docs/Web/HTML/Reference/Elements/input/contributors.txt
               - text: .
             - generic:
-              - link "View this page on GitHub (external)" [ref=f2e2784]:
-                - /url: https://github.com/mdn/content/blob/main/files/en-us/web/html/reference/elements/input/index.md?plain=1
-              - link "Report a problem with this content (external)" [ref=f2e2785]:
-                - /url: https://github.com/mdn/content/issues/new?template=page-report.yml&mdn-url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput&metadata=%3C%21--+Do+not+make+changes+below+this+line+--%3E%0A%3Cdetails%3E%0A%3Csummary%3EPage+report+details%3C%2Fsummary%3E%0A%0A*+Folder%3A+%60en-us%2Fweb%2Fhtml%2Freference%2Felements%2Finput%60%0A*+MDN+URL%3A+https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%0A*+GitHub+URL%3A+https%3A%2F%2Fgithub.com%2Fmdn%2Fcontent%2Fblob%2Fmain%2Ffiles%2Fen-us%2Fweb%2Fhtml%2Freference%2Felements%2Finput%2Findex.md%0A*+Last+commit%3A+https%3A%2F%2Fgithub.com%2Fmdn%2Fcontent%2Fcommit%2F46afd57950146568819d0bf98175a2ffdbe079d7%0A*+Document+last+modified%3A+2026-10-14T12%3A01%3A41.000Z%0A%0A%3C%2Fdetails%3E
+              - link "View this page on GitHub (external)" [ref=f2e2784]: https://github.com/mdn/content/blob/main/files/en-us/web/html/reference/elements/input/index.md?plain=1
+              - link "Report a problem with this content (external)" [ref=f2e2785]: https://github.com/mdn/content/issues/new?template=page-report.yml&mdn-url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput&metadata=%3C%21--+Do+not+make+changes+below+this+line+--%3E%0A%3Cdetails%3E%0A%3Csummary%3EPage+report+details%3C%2Fsummary%3E%0A%0A*+Folder%3A+%60en-us%2Fweb%2Fhtml%2Freference%2Felements%2Finput%60%0A*+MDN+URL%3A+https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FHTML%2FReference%2FElements%2Finput%0A*+GitHub+URL%3A+https%3A%2F%2Fgithub.com%2Fmdn%2Fcontent%2Fblob%2Fmain%2Ffiles%2Fen-us%2Fweb%2Fhtml%2Freference%2Felements%2Finput%2Findex.md%0A*+Last+commit%3A+https%3A%2F%2Fgithub.com%2Fmdn%2Fcontent%2Fcommit%2F46afd57950146568819d0bf98175a2ffdbe079d7%0A*+Document+last+modified%3A+2026-10-14T12%3A01%3A41.000Z%0A%0A%3C%2Fdetails%3E
     - complementary [ref=f2e2786]:
       - navigation [ref=f2e2787]:
         - generic:
@@ -9039,40 +8646,29 @@ source: tests/playwright_fixtures.rs
             - /placeholder: Filter
         - list:
           - listitem:
-            - link "HTML" [ref=f2e2796]:
-              - /url: /en-US/docs/Web/HTML
+            - link "HTML" [ref=f2e2796]
           - listitem:
             - group:
-              - link "Guides" [ref=f2e2800]:
-                - /url: /en-US/docs/Web/HTML/Guides
+              - link "Guides" [ref=f2e2800]: /en-US/docs/Web/HTML/Guides
           - listitem:
-            - link "How to" [ref=f2e2802]:
-              - /url: /en-US/docs/Web/HTML/How_to
+            - link "How to" [ref=f2e2802]: /en-US/docs/Web/HTML/How_to
           - listitem:
-            - link "Define terms with HTML" [ref=f2e2804]:
-              - /url: /en-US/docs/Web/HTML/How_to/Define_terms_with_HTML
+            - link "Define terms with HTML" [ref=f2e2804]: /en-US/docs/Web/HTML/How_to/Define_terms_with_HTML
           - listitem:
-            - link "Use data attributes" [ref=f2e2806]:
-              - /url: /en-US/docs/Web/HTML/How_to/Use_data_attributes
+            - link "Use data attributes" [ref=f2e2806]: /en-US/docs/Web/HTML/How_to/Use_data_attributes
           - listitem:
-            - link "Use cross-origin images" [ref=f2e2808]:
-              - /url: /en-US/docs/Web/HTML/How_to/CORS_enabled_image
+            - link "Use cross-origin images" [ref=f2e2808]: /en-US/docs/Web/HTML/How_to/CORS_enabled_image
           - listitem:
-            - link "Add a hitmap on top of an image" [ref=f2e2810]:
-              - /url: /en-US/docs/Web/HTML/How_to/Add_a_hit_map_on_top_of_an_image
+            - link "Add a hitmap on top of an image" [ref=f2e2810]: /en-US/docs/Web/HTML/How_to/Add_a_hit_map_on_top_of_an_image
           - listitem:
-            - link "Author fast-loading HTML pages" [ref=f2e2812]:
-              - /url: /en-US/docs/Web/HTML/How_to/Author_fast-loading_HTML_pages
+            - link "Author fast-loading HTML pages" [ref=f2e2812]: /en-US/docs/Web/HTML/How_to/Author_fast-loading_HTML_pages
           - listitem:
-            - link "Add JavaScript" [ref=f2e2814]:
-              - /url: /en-US/docs/Web/HTML/How_to/Add_JavaScript_to_your_web_page
+            - link "Add JavaScript" [ref=f2e2814]: /en-US/docs/Web/HTML/How_to/Add_JavaScript_to_your_web_page
           - listitem:
-            - link "Reference" [ref=f2e2816]:
-              - /url: /en-US/docs/Web/HTML/Reference
+            - link "Reference" [ref=f2e2816]
           - listitem:
             - group:
-              - link "Elements" [ref=f2e2820]:
-                - /url: /en-US/docs/Web/HTML/Reference/Elements
+              - link "Elements" [ref=f2e2820]
               - list:
                 - listitem:
                   - link [ref=f2e2823]:
@@ -9179,7 +8775,6 @@ source: tests/playwright_fixtures.rs
                     - code: <data>
                 - listitem:
                   - link [ref=f2e2901]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/datalist
                     - code: <datalist>
                 - listitem:
                   - link [ref=f2e2904]:
@@ -9199,7 +8794,6 @@ source: tests/playwright_fixtures.rs
                     - code: <dfn>
                 - listitem:
                   - link [ref=f2e2916]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/dialog
                     - code: <dialog>
                 - listitem:
                   - link [ref=f2e2919]:
@@ -9254,7 +8848,6 @@ source: tests/playwright_fixtures.rs
                     - code: <footer>
                 - listitem:
                   - link [ref=f2e2958]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/form
                     - code: <form>
                 - listitem:
                   - link [ref=f2e2961]:
@@ -9305,12 +8898,10 @@ source: tests/playwright_fixtures.rs
                     - code: <iframe>
                 - listitem:
                   - link [ref=f2e2997]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/img
                     - code: <img>
                 - listitem:
                   - emphasis:
                     - link [ref=f2e3001]:
-                      - /url: /en-US/docs/Web/HTML/Reference/Elements/input
                       - code: <input>
                 - listitem:
                   - link [ref=f2e3004]:
@@ -9322,7 +8913,6 @@ source: tests/playwright_fixtures.rs
                     - code: <kbd>
                 - listitem:
                   - link [ref=f2e3010]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/label
                     - code: <label>
                 - listitem:
                   - link [ref=f2e3013]:
@@ -9363,7 +8953,6 @@ source: tests/playwright_fixtures.rs
                     - code: <meta>
                 - listitem:
                   - link [ref=f2e3041]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/meter
                     - code: <meter>
                 - listitem:
                   - link [ref=f2e3044]:
@@ -9402,7 +8991,6 @@ source: tests/playwright_fixtures.rs
                     - code: <optgroup>
                 - listitem:
                   - link [ref=f2e3071]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/option
                     - code: <option>
                 - listitem:
                   - link [ref=f2e3074]:
@@ -9432,7 +9020,6 @@ source: tests/playwright_fixtures.rs
                     - code: <pre>
                 - listitem:
                   - link [ref=f2e3094]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/progress
                     - code: <progress>
                 - listitem:
                   - link [ref=f2e3097]:
@@ -9482,7 +9069,6 @@ source: tests/playwright_fixtures.rs
                     - code: <section>
                 - listitem:
                   - link [ref=f2e3132]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/select
                     - code: <select>
                 - listitem:
                   - link [ref=f2e3135]:
@@ -9547,7 +9133,6 @@ source: tests/playwright_fixtures.rs
                     - code: <template>
                 - listitem:
                   - link [ref=f2e3181]:
-                    - /url: /en-US/docs/Web/HTML/Reference/Elements/textarea
                     - code: <textarea>
                 - listitem:
                   - link [ref=f2e3184]:
@@ -9609,12 +9194,10 @@ source: tests/playwright_fixtures.rs
                     - img "Deprecated" [ref=f2e3226]
           - listitem:
             - group:
-              - link "Attributes" [ref=f2e3230]:
-                - /url: /en-US/docs/Web/HTML/Reference/Attributes
+              - link "Attributes" [ref=f2e3230]: /en-US/docs/Web/HTML/Reference/Attributes
           - listitem:
             - group:
-              - link "Global attributes" [ref=f2e3234]:
-                - /url: /en-US/docs/Web/HTML/Reference/Global_attributes
+              - link "Global attributes" [ref=f2e3234]
           - listitem:
             - group:
               - generic "Attributes by element" [ref=f2e3237] [cursor=pointer]
@@ -9626,8 +9209,7 @@ source: tests/playwright_fixtures.rs
       - link [ref=f2e11532]:
         - /url: /pong/click?code=aHR0cHM6Ly9zcnYuYnV5c2VsbGFkcy5jb20vYWRzL2NsaWNrL3gvR1RORDQyNzdDS0JJQzIzSkNUQUxZS1FVRjZCRFRLUUpDVkFJVlozSkNBQUlDNTNXQ1dCSTUySktDQVlJQ0szTkNBN0Q2NVFVRlRCREwySllDWUJJSzI3S0M2U0lMSzdNRlRZSTZLM0VISk5DTFNJWg%3D%3D.3MkBe3G6NaF61nkjArCXVck3yaDh%2Fs84MWWnHuAsI8I%3D&version=2
         - img "MongoDB" [ref=f2e11533]
-      - link "Ad" [ref=f2e11535]:
-        - /url: /en-US/advertising
+      - link "Ad" [ref=f2e11535]
     - contentinfo [ref=f2e3244]:
       - generic:
         - generic:
@@ -9637,104 +9219,77 @@ source: tests/playwright_fixtures.rs
           - paragraph: Your blueprint for a better internet.
         - list:
           - listitem:
-            - link "MDN on GitHub" [ref=f2e3253]:
-              - /url: https://github.com/mdn/
+            - link "MDN on GitHub" [ref=f2e3253]: https://github.com/mdn/
           - listitem:
-            - link "MDN on Bluesky" [ref=f2e3255]:
-              - /url: https://bsky.app/profile/developer.mozilla.org
+            - link "MDN on Bluesky" [ref=f2e3255]: https://bsky.app/profile/developer.mozilla.org
           - listitem:
-            - link "MDN on X" [ref=f2e3257]:
-              - /url: https://x.com/mozdevnet
+            - link "MDN on X" [ref=f2e3257]: https://x.com/mozdevnet
           - listitem:
-            - link "MDN on Mastodon" [ref=f2e3259]:
-              - /url: https://mastodon.social/@mdn
+            - link "MDN on Mastodon" [ref=f2e3259]: https://mastodon.social/@mdn
           - listitem:
-            - link "MDN blog RSS feed" [ref=f2e3261]:
-              - /url: /en-US/blog/rss.xml
+            - link "MDN blog RSS feed" [ref=f2e3261]: /en-US/blog/rss.xml
         - generic:
           - term: MDN
           - definition:
             - list:
               - listitem:
-                - link "About" [ref=f2e3267]:
-                  - /url: /en-US/about
+                - link "About" [ref=f2e3267]: /en-US/about
               - listitem:
-                - link "Blog" [ref=f2e3269]:
-                  - /url: /en-US/blog/
+                - link "Blog" [ref=f2e3269]
               - listitem:
-                - link "Mozilla careers (external)" [ref=f2e3271]:
-                  - /url: https://www.mozilla.org/en-US/careers/listings/
+                - link "Mozilla careers (external)" [ref=f2e3271]: https://www.mozilla.org/en-US/careers/listings/
               - listitem:
-                - link "Advertise with us" [ref=f2e3273]:
-                  - /url: /en-US/advertising
+                - link "Advertise with us" [ref=f2e3273]
               - listitem:
-                - link "MDN Plus" [ref=f2e3275]:
-                  - /url: /en-US/plus
+                - link "MDN Plus" [ref=f2e3275]: /en-US/plus
               - listitem:
-                - link "Product help (external)" [ref=f2e3277]:
-                  - /url: https://support.mozilla.org/products/mdn-plus
+                - link "Product help (external)" [ref=f2e3277]: https://support.mozilla.org/products/mdn-plus
         - generic:
           - term: Contribute
           - definition:
             - list:
               - listitem:
-                - link "MDN Community" [ref=f2e3283]:
-                  - /url: /en-US/community
+                - link "MDN Community" [ref=f2e3283]: /en-US/community
               - listitem:
-                - link "Community resources" [ref=f2e3285]:
-                  - /url: /en-US/docs/MDN/Community
+                - link "Community resources" [ref=f2e3285]: /en-US/docs/MDN/Community
               - listitem:
-                - link "Writing guidelines" [ref=f2e3287]:
-                  - /url: /en-US/docs/MDN/Writing_guidelines
+                - link "Writing guidelines" [ref=f2e3287]: /en-US/docs/MDN/Writing_guidelines
               - listitem:
-                - link "MDN Discord (external)" [ref=f2e3289]:
-                  - /url: /discord
+                - link "MDN Discord (external)" [ref=f2e3289]: /discord
               - listitem:
-                - link "MDN on GitHub (external)" [ref=f2e3291]:
-                  - /url: https://github.com/mdn
+                - link "MDN on GitHub (external)" [ref=f2e3291]: https://github.com/mdn
         - generic:
           - term: Developers
           - definition:
             - list:
               - listitem:
-                - link "Web technologies" [ref=f2e3297]:
-                  - /url: /en-US/docs/Web
+                - link "Web technologies" [ref=f2e3297]
               - listitem:
-                - link "Learn web development" [ref=f2e3299]:
-                  - /url: /en-US/docs/Learn_web_development
+                - link "Learn web development" [ref=f2e3299]: /en-US/docs/Learn_web_development
               - listitem:
-                - link "Guides" [ref=f2e3301]:
-                  - /url: /en-US/docs/MDN/Guides
+                - link "Guides" [ref=f2e3301]: /en-US/docs/MDN/Guides
               - listitem:
-                - link "Tutorials" [ref=f2e3303]:
-                  - /url: /en-US/docs/MDN/Tutorials
+                - link "Tutorials" [ref=f2e3303]: /en-US/docs/MDN/Tutorials
               - listitem:
-                - link "Glossary" [ref=f2e3305]:
-                  - /url: /en-US/docs/Glossary
+                - link "Glossary" [ref=f2e3305]: /en-US/docs/Glossary
               - listitem:
-                - link "Hacks blog (external)" [ref=f2e3307]:
-                  - /url: https://hacks.mozilla.org/
+                - link "Hacks blog (external)" [ref=f2e3307]: https://hacks.mozilla.org/
       - generic:
         - link "Mozilla logo" [ref=f2e3309]:
           - /url: https://www.mozilla.org/
           - img "Mozilla" [ref=f2e3310]
         - list:
           - listitem:
-            - link "Website Privacy Notice (external)" [ref=f2e3314]:
-              - /url: https://www.mozilla.org/privacy/websites/
+            - link "Website Privacy Notice (external)" [ref=f2e3314]: https://www.mozilla.org/privacy/websites/
           - listitem:
-            - link "Telemetry Settings (external)" [ref=f2e3316]:
-              - /url: https://www.mozilla.org/en-US/privacy/websites/data-preferences/
+            - link "Telemetry Settings (external)" [ref=f2e3316]: https://www.mozilla.org/en-US/privacy/websites/data-preferences/
           - listitem:
-            - link "Legal (external)" [ref=f2e3318]:
-              - /url: https://www.mozilla.org/about/legal/terms/mozilla
+            - link "Legal (external)" [ref=f2e3318]: https://www.mozilla.org/about/legal/terms/mozilla
           - listitem:
-            - link "Community Participation Guidelines (external)" [ref=f2e3320]:
-              - /url: https://www.mozilla.org/about/governance/policies/participation/
+            - link "Community Participation Guidelines (external)" [ref=f2e3320]: https://www.mozilla.org/about/governance/policies/participation/
         - paragraph:
           - text: Portions of this content are ©1998–2026 by individual mozilla.org contributors. Content available under
-          - link "a Creative Commons license" [ref=f2e3322]:
-            - /url: /docs/MDN/Writing_guidelines/Attrib_copyright_license
+          - link "a Creative Commons license" [ref=f2e3322]: /docs/MDN/Writing_guidelines/Attrib_copyright_license
           - text: .
 ```
-[meiose: 204 nodes trimmed, 5320 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 204 nodes trimmed, 5320 non-interactive refs hidden, 284 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

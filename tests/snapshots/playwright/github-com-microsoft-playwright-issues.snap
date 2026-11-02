@@ -9,13 +9,11 @@ source: tests/playwright_fixtures.rs
 ```yaml
 - generic:
   - generic:
-    - link "Skip to content" [ref=f127e4]:
-      - /url: "#start-of-content"
+    - link "Skip to content" [ref=f127e4]: "#start-of-content"
     - banner [ref=f127e9]:
       - heading "Navigation Menu" [level=2] [ref=f127e10]
       - generic:
-        - link "Homepage" [ref=f127e14]:
-          - /url: /
+        - link "Homepage" [ref=f127e14]: /
         - generic:
           - navigation "Global" [ref=f127e18]:
             - list:
@@ -28,35 +26,29 @@ source: tests/playwright_fixtures.rs
               - listitem:
                 - button "Resources" [ref=f127e37]
               - listitem:
-                - link "Pricing" [ref=f127e41]:
-                  - /url: https://github.com/pricing
+                - link "Pricing" [ref=f127e41]: https://github.com/pricing
           - generic:
             - button "Search or jump to, type / to search" [ref=f127e44]:
               - generic:
                 - generic: Search
                 - generic [aria-hidden]: /
             - generic:
-              - link "Sign in" [ref=f127e52]:
-                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fmicrosoft%2Fplaywright%2Fissues
-              - link "Sign up" [ref=f127e55]:
-                - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fissues%2Findex&source=header-repo&source_repo=microsoft%2Fplaywright
+              - link "Sign in" [ref=f127e52]: /login?return_to=https%3A%2F%2Fgithub.com%2Fmicrosoft%2Fplaywright%2Fissues
+              - link "Sign up" [ref=f127e55]: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fissues%2Findex&source=header-repo&source_repo=microsoft%2Fplaywright
               - button "Appearance settings" [ref=f127e58]
   - main [ref=f127e65]:
     - generic "Global navigation menu":
       - navigation "Breadcrumbs" [ref=f127e71]:
         - list:
           - listitem:
-            - link "microsoft" [ref=f127e74]:
-              - /url: /microsoft
+            - link "microsoft" [ref=f127e74]: /microsoft
           - listitem:
-            - link "playwright" [ref=f127e77]:
-              - /url: /microsoft/playwright
+            - link "playwright" [ref=f127e77]: /microsoft/playwright
       - heading "Repository navigation" [level=2] [ref=f127e80]
       - navigation "Repository" [ref=f127e81]:
         - list:
           - listitem:
-            - link "Code" [ref=f127e84]:
-              - /url: /microsoft/playwright
+            - link "Code" [ref=f127e84]
           - listitem:
             - link "Issues (31)" [ref=f127e90]:
               - /url: /microsoft/playwright/issues
@@ -72,14 +64,11 @@ source: tests/playwright_fixtures.rs
                 - generic [aria-hidden]: "11"
                 - generic: (11)
           - listitem:
-            - link "Actions" [ref=f127e109]:
-              - /url: /microsoft/playwright/actions
+            - link "Actions" [ref=f127e109]: /microsoft/playwright/actions
           - listitem:
-            - link "Security and quality" [ref=f127e115]:
-              - /url: /microsoft/playwright/security
+            - link "Security and quality" [ref=f127e115]: /microsoft/playwright/security
           - listitem:
-            - link "Insights" [ref=f127e121]:
-              - /url: /microsoft/playwright/pulse
+            - link "Insights" [ref=f127e121]: /microsoft/playwright/pulse
     - generic:
       - complementary "Issues sidebar navigation" [ref=f127e1064]:
         - generic:
@@ -108,14 +97,11 @@ source: tests/playwright_fixtures.rs
           - navigation "Pages" [ref=f127e1096]:
             - list:
               - listitem:
-                - link "Views" [ref=f127e1099]:
-                  - /url: /microsoft/playwright/issues/views
+                - link "Views" [ref=f127e1099]: /microsoft/playwright/issues/views
               - listitem:
-                - link "Milestones" [ref=f127e1103]:
-                  - /url: /microsoft/playwright/milestones
+                - link "Milestones" [ref=f127e1103]: /microsoft/playwright/milestones
               - listitem:
-                - link "Labels" [ref=f127e1107]:
-                  - /url: /microsoft/playwright/labels
+                - link "Labels" [ref=f127e1107]: /microsoft/playwright/labels
         - generic:
           - navigation "Feedback" [ref=f127e1111]:
             - list:
@@ -132,8 +118,7 @@ source: tests/playwright_fixtures.rs
         - generic:
           - generic:
             - heading "Issues" [level=1] [ref=f127e1131]
-            - link "New issue" [ref=f127e1135]:
-              - /url: /login?return_to=https://github.com/microsoft/playwright/issues
+            - link "New issue" [ref=f127e1135]: /login?return_to=https://github.com/microsoft/playwright/issues
           - search "Issues" [ref=f127e1139]:
             - form "Search issues" [ref=f127e1140]:
               - generic:
@@ -162,7 +147,6 @@ source: tests/playwright_fixtures.rs
                     - generic: (31)
                 - listitem:
                   - link "Closed (18,376)" [ref=f127e1174]:
-                    - /url: "#"
                     - generic: Closed
                     - generic [aria-hidden]: 18,376
                     - generic: (18,376)
@@ -302,8 +286,7 @@ source: tests/playwright_fixtures.rs
                     - text: "3"
               - listitem "[api review 1.65] Built-in exclusive lock. More information available below.":
                 - heading [level=3] [ref=f127e1392]:
-                  - link "[api review 1.65] Built-in exclusive lock" [ref=f127e1393]:
-                    - /url: https://github.com/microsoft/playwright/issues/43797
+                  - link "[api review 1.65] Built-in exclusive lock" [ref=f127e1393]: https://github.com/microsoft/playwright/issues/43797
                 - generic:
                   - generic: Unread
                   - img "Open" [ref=f127e1400]
@@ -317,8 +300,7 @@ source: tests/playwright_fixtures.rs
               - listitem "[api review 1.65] Trace secrets option; trace stores fewer context options. More information available below.":
                 - generic:
                   - heading [level=3] [ref=f127e1417]:
-                    - link "[api review 1.65] Trace secrets option; trace stores fewer context options" [ref=f127e1418]:
-                      - /url: https://github.com/microsoft/playwright/issues/43796
+                    - link "[api review 1.65] Trace secrets option; trace stores fewer context options" [ref=f127e1418]: https://github.com/microsoft/playwright/issues/43796
                   - button "Filter by label needs-triage" [ref=f127e1422]:
                     - generic: needs-triage
                 - generic:
@@ -341,8 +323,7 @@ source: tests/playwright_fixtures.rs
               - listitem "[api review 1.65] Reporter secrets option. More information available below.":
                 - generic:
                   - heading [level=3] [ref=f127e1453]:
-                    - link "[api review 1.65] Reporter secrets option" [ref=f127e1454]:
-                      - /url: https://github.com/microsoft/playwright/issues/43795
+                    - link "[api review 1.65] Reporter secrets option" [ref=f127e1454]: https://github.com/microsoft/playwright/issues/43795
                   - button "Filter by label needs-triage" [ref=f127e1458]:
                     - generic: needs-triage
                 - generic:
@@ -365,8 +346,7 @@ source: tests/playwright_fixtures.rs
               - listitem "[api review 1.65] Inert elements and content outside a modal <dialog> are hidden. More information available below.":
                 - generic:
                   - heading [level=3] [ref=f127e1489]:
-                    - link "[api review 1.65] Inert elements and content outside a modal <dialog> are hidden" [ref=f127e1490]:
-                      - /url: https://github.com/microsoft/playwright/issues/43792
+                    - link "[api review 1.65] Inert elements and content outside a modal <dialog> are hidden" [ref=f127e1490]: https://github.com/microsoft/playwright/issues/43792
                   - button "Filter by label needs-triage" [ref=f127e1494]:
                     - generic: needs-triage
                 - generic:
@@ -743,51 +723,40 @@ source: tests/playwright_fixtures.rs
           - navigation "Pagination" [ref=f127e2060]:
             - generic:
               - link [disabled] [aria-hidden] [ref=f127e2062]:
-                - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen
                 - text: Previous
               - link "Page 1" [ref=f127e2065]:
-                - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen
                 - text: "1"
               - link "Page 2" [ref=f127e2066]:
                 - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen&page=2
                 - text: "2"
               - link "Next Page" [ref=f127e2067]:
-                - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen&page=2
                 - text: Next
   - contentinfo [ref=f127e1029]:
     - heading "Footer" [level=2] [ref=f127e1030]
     - generic:
       - generic:
-        - link "GitHub Homepage" [ref=f127e1033]:
-          - /url: https://github.com
+        - link "GitHub Homepage" [ref=f127e1033]: https://github.com
         - generic: © 2026 GitHub, Inc.
       - navigation "Footer" [ref=f127e1037]:
         - heading "Footer navigation" [level=3] [ref=f127e1038]
         - list "Footer navigation":
           - listitem:
-            - link "Terms" [ref=f127e1041]:
-              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+            - link "Terms" [ref=f127e1041]: https://docs.github.com/site-policy/github-terms/github-terms-of-service
           - listitem:
-            - link "Privacy" [ref=f127e1043]:
-              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+            - link "Privacy" [ref=f127e1043]: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
           - listitem:
-            - link "Security" [ref=f127e1045]:
-              - /url: https://github.com/security
+            - link "Security" [ref=f127e1045]: https://github.com/security
           - listitem:
-            - link "Status" [ref=f127e1047]:
-              - /url: https://www.githubstatus.com/
+            - link "Status" [ref=f127e1047]: https://www.githubstatus.com/
           - listitem:
-            - link "Community" [ref=f127e1049]:
-              - /url: https://github.community/
+            - link "Community" [ref=f127e1049]: https://github.community/
           - listitem:
-            - link "Docs" [ref=f127e1051]:
-              - /url: https://docs.github.com/
+            - link "Docs" [ref=f127e1051]: https://docs.github.com/
           - listitem:
-            - link "Contact" [ref=f127e1053]:
-              - /url: https://support.github.com?tags=dotcom-footer
+            - link "Contact" [ref=f127e1053]: https://support.github.com?tags=dotcom-footer
           - listitem:
             - button "Manage cookies" [ref=f127e1056]
           - listitem:
             - button "Do not share my personal information" [ref=f127e1059]
 ```
-[meiose: 26 nodes trimmed, 360 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 26 nodes trimmed, 360 non-interactive refs hidden, 5 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

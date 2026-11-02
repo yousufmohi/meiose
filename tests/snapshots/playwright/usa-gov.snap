@@ -7,8 +7,7 @@ source: tests/playwright_fixtures.rs
 ### Snapshot
 ```yaml
 - generic [active] [ref=f206e1]:
-  - link "Skip to main content" [ref=f206e2]:
-    - /url: "#skip-to-h1"
+  - link "Skip to main content" [ref=f206e2]: "#skip-to-h1"
   - banner [ref=f206e3]:
     - generic:
       - region "An official website of the United States government" [ref=f206e6]:
@@ -22,8 +21,7 @@ source: tests/playwright_fixtures.rs
           - img "Information" [ref=f206e22]
           - generic:
             - text: Visit
-            - link "vote.gov" [ref=f206e24]:
-              - /url: https://www.vote.gov
+            - link "vote.gov" [ref=f206e24]: https://www.vote.gov
             - text: to learn how to register to vote or to update your registration.
     - generic:
       - emphasis:
@@ -34,8 +32,7 @@ source: tests/playwright_fixtures.rs
         - button "Español" [ref=f206e31]
         - generic:
           - generic:
-            - link "Call us at 1-844-USAGOV1" [ref=f206e36]:
-              - /url: /phone
+            - link "Call us at 1-844-USAGOV1" [ref=f206e36]: /phone
           - search [ref=f206e37]:
             - generic: Search
             - searchbox "Search" [ref=f206e39]
@@ -44,26 +41,19 @@ source: tests/playwright_fixtures.rs
     - navigation "Primary navigation" [ref=f206e42]:
       - list:
         - listitem:
-          - link "All topics and services" [ref=f206e46]:
-            - /url: /#all-topics-header
+          - link "All topics and services" [ref=f206e46]: /#all-topics-header
         - listitem:
-          - link "The U.S. and its government" [ref=f206e49]:
-            - /url: /about-the-us
+          - link "The U.S. and its government" [ref=f206e49]: /about-the-us
         - listitem:
-          - link "Government benefits" [ref=f206e52]:
-            - /url: /benefits
+          - link "Government benefits" [ref=f206e52]: /benefits
         - listitem:
-          - link "Immigration and U.S. citizenship" [ref=f206e55]:
-            - /url: /immigration-and-citizenship
+          - link "Immigration and U.S. citizenship" [ref=f206e55]: /immigration-and-citizenship
         - listitem:
-          - link "Money and credit" [ref=f206e58]:
-            - /url: /money
+          - link "Money and credit" [ref=f206e58]: /money
         - listitem:
-          - link "Travel" [ref=f206e61]:
-            - /url: /travel
+          - link "Travel" [ref=f206e61]: /travel
         - listitem:
-          - link "Voting and elections" [ref=f206e64]:
-            - /url: /voting-and-elections
+          - link "Voting and elections" [ref=f206e64]: /voting-and-elections
   - main [ref=f206e66]:
     - generic:
       - generic:
@@ -73,19 +63,14 @@ source: tests/playwright_fixtures.rs
         - heading "How do I ..." [level=2] [ref=f206e77]
         - list:
           - listitem:
-            - link "Check my voter registration" [ref=f206e80]:
-              - /url: /confirm-voter-registration
+            - link "Check my voter registration" [ref=f206e80]: /confirm-voter-registration
           - listitem:
-            - link "Get or renew a passport" [ref=f206e82]:
-              - /url: /passport
+            - link "Get or renew a passport" [ref=f206e82]: /passport
           - listitem:
-            - link "Get housing help" [ref=f206e84]:
-              - /url: /housing-help
+            - link "Get housing help" [ref=f206e84]: /housing-help
           - listitem:
-            - link "Find unclaimed money" [ref=f206e86]:
-              - /url: /unclaimed-money
-      - link "Jump to all topics and services" [ref=f206e88]:
-        - /url: "#all-topics-header"
+            - link "Find unclaimed money" [ref=f206e86]: /unclaimed-money
+      - link "Jump to all topics and services" [ref=f206e88]: "#all-topics-header"
       - generic:
         - generic:
           - heading "Government benefits and financial assistance" [level=2] [ref=f206e94]
@@ -95,12 +80,10 @@ source: tests/playwright_fixtures.rs
     - list:
       - listitem:
         - link [ref=f206e104]:
-          - /url: /voting-and-elections
           - heading "Voting and elections" [level=2] [ref=f206e107]
           - paragraph: Find out how to register to vote, where your voting location is, how presidential elections work, and more about voting in the United States.
       - listitem:
         - link [ref=f206e111]:
-          - /url: /about-the-us
           - heading "The U.S. and its government" [level=2] [ref=f206e114]
           - paragraph: Learn about U.S. laws, history, and more. Buy government property. Contact elected officials and federal agencies.
       - listitem:
@@ -125,7 +108,6 @@ source: tests/playwright_fixtures.rs
           - paragraph: Learn about Federal Student Aid and studying in the U.S. Find early intervention, special education, and Head Start programs.
       - listitem:
         - link [ref=f206e146]:
-          - /url: /benefits
           - heading "Government benefits" [level=2] [ref=f206e149]
           - paragraph: Find government programs that may help pay for food, housing, health care, and more.
       - listitem:
@@ -135,12 +117,10 @@ source: tests/playwright_fixtures.rs
           - paragraph: Get information about health insurance. Find help for mental health and other medical conditions, testing, and paying medical bills.
       - listitem:
         - link [ref=f206e160]:
-          - /url: /housing-help
           - heading "Housing help" [level=2] [ref=f206e163]
           - paragraph: Learn about rental and buyer assistance programs. Find emergency housing and avoid eviction.
       - listitem:
         - link [ref=f206e167]:
-          - /url: /immigration-and-citizenship
           - heading "Immigration and U.S. citizenship" [level=2] [ref=f206e170]
           - paragraph: Learn about U.S. residency, Green Cards, citizenship requirements, and related issues.
       - listitem:
@@ -165,7 +145,6 @@ source: tests/playwright_fixtures.rs
           - paragraph: Learn how to join the military. Find benefits and services as a member or veteran, including how to apply for housing, financial, health, and other support.
       - listitem:
         - link [ref=f206e202]:
-          - /url: /money
           - heading "Money and credit" [level=2] [ref=f206e205]
           - paragraph: Find government grants, loans, and unclaimed money. Learn about taxes. Get credit reports and scores.
       - listitem:
@@ -185,7 +164,6 @@ source: tests/playwright_fixtures.rs
           - paragraph: Learn about filing federal income tax. Find out how to pay, how to check your refund, and more.
       - listitem:
         - link [ref=f206e230]:
-          - /url: /travel
           - heading "Travel" [level=2] [ref=f206e233]
           - paragraph: Learn about passports, travel documents for minors, and travel to, from, and within the U.S.
       - listitem:
@@ -203,64 +181,50 @@ source: tests/playwright_fixtures.rs
           - heading "Government information" [level=3] [ref=f206e253]
           - list:
             - listitem:
-              - link "All topics and services" [ref=f206e256]:
-                - /url: /#all-topics-header
+              - link "All topics and services" [ref=f206e256]
             - listitem:
-              - link "Directory of U.S. government agencies and departments" [ref=f206e258]:
-                - /url: /agency-index
+              - link "Directory of U.S. government agencies and departments" [ref=f206e258]: /agency-index
             - listitem:
-              - link "Branches of government" [ref=f206e260]:
-                - /url: /branches-of-government
+              - link "Branches of government" [ref=f206e260]: /branches-of-government
         - generic:
           - heading "About us" [level=3] [ref=f206e263]
           - list:
             - listitem:
-              - link "About USAGov" [ref=f206e266]:
-                - /url: /about
+              - link "About USAGov" [ref=f206e266]: /about
             - listitem:
-              - link "Report a website issue" [ref=f206e268]:
-                - /url: /site-issue-report-form
+              - link "Report a website issue" [ref=f206e268]: /site-issue-report-form
             - listitem:
-              - link "Website usage data" [ref=f206e270]:
-                - /url: /website-analytics/
+              - link "Website usage data" [ref=f206e270]: /website-analytics/
         - generic:
           - heading "For federal agencies" [level=3] [ref=f206e273]
           - list:
             - listitem:
-              - link "Partner with us" [ref=f206e276]:
-                - /url: /partner-with-usagov
+              - link "Partner with us" [ref=f206e276]: /partner-with-usagov
             - listitem:
-              - link "Read our blog" [ref=f206e278]:
-                - /url: /blog
+              - link "Read our blog" [ref=f206e278]: /blog
     - generic:
       - heading "USAGov Contact Center" [level=4] [ref=f206e286]
       - generic:
         - paragraph: Ask USA.gov a question at
-        - link "1-844-USAGOV1 (1-844-872-4681)" [ref=f206e291]:
-          - /url: /phone
+        - link "1-844-USAGOV1 (1-844-872-4681)" [ref=f206e291]
     - generic:
       - region "USAGov is the official guide to government information and services" [ref=f206e294]:
         - region "An official website of the U.S. General Services Administration" [ref=f206e296]:
           - paragraph: USAGov is the official guide to government information and services
           - paragraph:
             - text: An official website of the
-            - link "U.S. General Services Administration" [ref=f206e299]:
-              - /url: https://www.gsa.gov/
+            - link "U.S. General Services Administration" [ref=f206e299]: https://www.gsa.gov/
           - paragraph:
             - text: This website complies with Executive Order
-            - link "14224" [ref=f206e301]:
-              - /url: https://www.federalregister.gov/documents/2025/03/06/2025-03694/designating-english-as-the-official-language-of-the-united-states
+            - link "14224" [ref=f206e301]: https://www.federalregister.gov/documents/2025/03/06/2025-03694/designating-english-as-the-official-language-of-the-united-states
             - text: . English is the official language of the U.S. Government, and the English-language version of this website is the authoritative source for all federal information contained herein.
       - navigation "Important links" [ref=f206e302]:
         - list:
           - listitem:
-            - link "Accessibility policy" [ref=f206e306]:
-              - /url: /accessibility-policy
+            - link "Accessibility policy" [ref=f206e306]: /accessibility-policy
           - listitem:
-            - link "Privacy and security policies" [ref=f206e308]:
-              - /url: /privacy-security
+            - link "Privacy and security policies" [ref=f206e308]: /privacy-security
           - listitem:
-            - link "FOIA requests" [ref=f206e310]:
-              - /url: https://www.gsa.gov/reference/freedom-of-information-act-foia
+            - link "FOIA requests" [ref=f206e310]: https://www.gsa.gov/reference/freedom-of-information-act-foia
 ```
-[meiose: 1 nodes trimmed, 98 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 1 nodes trimmed, 98 non-interactive refs hidden, 9 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

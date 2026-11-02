@@ -56,111 +56,62 @@ source: tests/playwright_fixtures.rs
   - generic:
     - generic [ref=f159e38] [cursor=pointer]: ❯
     - generic: 
-    - link "HTML" [ref=f159e40]:
-      - /url: /html/default.asp
-    - link "CSS" [ref=f159e41]:
-      - /url: /css/default.asp
-    - link "JAVASCRIPT" [ref=f159e42]:
-      - /url: /js/default.asp
-    - link "SQL" [ref=f159e43]:
-      - /url: /sql/default.asp
-    - link "PYTHON" [ref=f159e44]:
-      - /url: /python/default.asp
-    - link "JAVA" [ref=f159e45]:
-      - /url: /java/default.asp
-    - link "PHP" [ref=f159e46]:
-      - /url: /php/default.asp
-    - link "C" [ref=f159e47]:
-      - /url: /c/index.php
-    - link "C++" [ref=f159e48]:
-      - /url: /cpp/default.asp
-    - link "C#" [ref=f159e49]:
-      - /url: /cs/index.php
-    - link "AWS" [ref=f159e50]:
-      - /url: /aws/index.php
-    - link "W3.CSS" [ref=f159e51]:
-      - /url: /w3css/default.asp
-    - link "HOW TO" [ref=f159e52]:
-      - /url: /howto/default.asp
-    - link "BOOTSTRAP" [ref=f159e53]:
-      - /url: /bootstrap/bootstrap_ver.asp
-    - link "REACT" [ref=f159e54]:
-      - /url: /react/default.asp
-    - link "MYSQL" [ref=f159e55]:
-      - /url: /mysql/default.asp
-    - link "JQUERY" [ref=f159e56]:
-      - /url: /jquery/default.asp
-    - link "EXCEL" [ref=f159e57]:
-      - /url: /excel/index.php
-    - link "XML" [ref=f159e58]:
-      - /url: /xml/default.asp
-    - link "DJANGO" [ref=f159e59]:
-      - /url: /django/index.php
-    - link "NUMPY" [ref=f159e60]:
-      - /url: /python/numpy/default.asp
-    - link "PANDAS" [ref=f159e61]:
-      - /url: /python/pandas/default.asp
-    - link "NODEJS" [ref=f159e62]:
-      - /url: /nodejs/default.asp
-    - link "DSA" [ref=f159e63]:
-      - /url: /dsa/index.php
-    - link "TYPESCRIPT" [ref=f159e64]:
-      - /url: /typescript/index.php
-    - link "ANGULAR" [ref=f159e65]:
-      - /url: /angular/default.asp
-    - link "ANGULARJS" [ref=f159e66]:
-      - /url: /angularjs/default.asp
-    - link "GIT" [ref=f159e67]:
-      - /url: /git/default.asp
-    - link "POSTGRESQL" [ref=f159e68]:
-      - /url: /postgresql/index.php
-    - link "MONGODB" [ref=f159e69]:
-      - /url: /mongodb/index.php
-    - link "ASP" [ref=f159e70]:
-      - /url: /asp/default.asp
-    - link "AI" [ref=f159e71]:
-      - /url: /ai/default.asp
-    - link "R" [ref=f159e72]:
-      - /url: /r/default.asp
-    - link "GO" [ref=f159e73]:
-      - /url: /go/index.php
-    - link "KOTLIN" [ref=f159e74]:
-      - /url: /kotlin/index.php
-    - link "SWIFT" [ref=f159e75]:
-      - /url: /swift/default.asp
-    - link "SASS" [ref=f159e76]:
-      - /url: /sass/default.asp
-    - link "VUE" [ref=f159e77]:
-      - /url: /vue/index.php
-    - link "GEN AI" [ref=f159e78]:
-      - /url: /gen_ai/index.php
-    - link "SCIPY" [ref=f159e79]:
-      - /url: /python/scipy/index.php
-    - link "CYBERSECURITY" [ref=f159e80]:
-      - /url: /cybersecurity/index.php
-    - link "DATA SCIENCE" [ref=f159e81]:
-      - /url: /datascience/default.asp
-    - link "INTRO TO PROGRAMMING" [ref=f159e82]:
-      - /url: /programming/index.php
-    - link "INTRO TO HTML & CSS" [ref=f159e83]:
-      - /url: /htmlcss/default.asp
-    - link "BASH" [ref=f159e84]:
-      - /url: /bash/index.php
-    - link "RUST" [ref=f159e85]:
-      - /url: /rust/index.php
-    - link "TOOLS" [ref=f159e86]:
-      - /url: /tools/index.php
+    - link "HTML" [ref=f159e40]: /html/default.asp
+    - link "CSS" [ref=f159e41]: /css/default.asp
+    - link "JAVASCRIPT" [ref=f159e42]: /js/default.asp
+    - link "SQL" [ref=f159e43]: /sql/default.asp
+    - link "PYTHON" [ref=f159e44]: /python/default.asp
+    - link "JAVA" [ref=f159e45]: /java/default.asp
+    - link "PHP" [ref=f159e46]: /php/default.asp
+    - link "C" [ref=f159e47]: /c/index.php
+    - link "C++" [ref=f159e48]: /cpp/default.asp
+    - link "C#" [ref=f159e49]: /cs/index.php
+    - link "AWS" [ref=f159e50]: /aws/index.php
+    - link "W3.CSS" [ref=f159e51]: /w3css/default.asp
+    - link "HOW TO" [ref=f159e52]: /howto/default.asp
+    - link "BOOTSTRAP" [ref=f159e53]: /bootstrap/bootstrap_ver.asp
+    - link "REACT" [ref=f159e54]: /react/default.asp
+    - link "MYSQL" [ref=f159e55]: /mysql/default.asp
+    - link "JQUERY" [ref=f159e56]: /jquery/default.asp
+    - link "EXCEL" [ref=f159e57]: /excel/index.php
+    - link "XML" [ref=f159e58]: /xml/default.asp
+    - link "DJANGO" [ref=f159e59]: /django/index.php
+    - link "NUMPY" [ref=f159e60]: /python/numpy/default.asp
+    - link "PANDAS" [ref=f159e61]: /python/pandas/default.asp
+    - link "NODEJS" [ref=f159e62]: /nodejs/default.asp
+    - link "DSA" [ref=f159e63]: /dsa/index.php
+    - link "TYPESCRIPT" [ref=f159e64]: /typescript/index.php
+    - link "ANGULAR" [ref=f159e65]: /angular/default.asp
+    - link "ANGULARJS" [ref=f159e66]: /angularjs/default.asp
+    - link "GIT" [ref=f159e67]: /git/default.asp
+    - link "POSTGRESQL" [ref=f159e68]: /postgresql/index.php
+    - link "MONGODB" [ref=f159e69]: /mongodb/index.php
+    - link "ASP" [ref=f159e70]: /asp/default.asp
+    - link "AI" [ref=f159e71]: /ai/default.asp
+    - link "R" [ref=f159e72]: /r/default.asp
+    - link "GO" [ref=f159e73]: /go/index.php
+    - link "KOTLIN" [ref=f159e74]: /kotlin/index.php
+    - link "SWIFT" [ref=f159e75]: /swift/default.asp
+    - link "SASS" [ref=f159e76]: /sass/default.asp
+    - link "VUE" [ref=f159e77]: /vue/index.php
+    - link "GEN AI" [ref=f159e78]: /gen_ai/index.php
+    - link "SCIPY" [ref=f159e79]: /python/scipy/index.php
+    - link "CYBERSECURITY" [ref=f159e80]: /cybersecurity/index.php
+    - link "DATA SCIENCE" [ref=f159e81]: /datascience/default.asp
+    - link "INTRO TO PROGRAMMING" [ref=f159e82]: /programming/index.php
+    - link "INTRO TO HTML & CSS" [ref=f159e83]: /htmlcss/default.asp
+    - link "BASH" [ref=f159e84]: /bash/index.php
+    - link "RUST" [ref=f159e85]: /rust/index.php
+    - link "TOOLS" [ref=f159e86]: /tools/index.php
   - generic:
     - generic:
       - heading "HTML Tutorial" [level=2] [ref=f159e92]
-      - link "HTML HOME" [ref=f159e93]:
-        - /url: default.asp
+      - link "HTML HOME" [ref=f159e93]: default.asp
       - link "HTML Introduction " [ref=f159e94]:
         - /url: html_intro.asp
         - text: HTML Introduction
         - generic: 
-      - link "HTML Editors" [ref=f159e95]:
-        - /url: html_editors.asp
+      - link "HTML Editors" [ref=f159e95]: html_editors.asp
       - link "HTML Basic " [ref=f159e96]:
         - /url: html_basic.asp
         - text: HTML Basic
@@ -213,8 +164,7 @@ source: tests/playwright_fixtures.rs
         - /url: html_images.asp
         - text: HTML Images
         - generic: 
-      - link "HTML Project" [ref=f159e109]:
-        - /url: html_project_bio.php
+      - link "HTML Project" [ref=f159e109]: html_project_bio.php
       - link "HTML Favicon " [ref=f159e110]:
         - /url: html_favicon.asp
         - text: HTML Favicon
@@ -283,34 +233,25 @@ source: tests/playwright_fixtures.rs
         - /url: html5_semantic_elements.asp
         - text: HTML Semantics
         - generic: 
-      - link "HTML Style Guide" [ref=f159e127]:
-        - /url: html5_syntax.asp
+      - link "HTML Style Guide" [ref=f159e127]: html5_syntax.asp
       - link "HTML Entities " [ref=f159e128]:
         - /url: html_entities.asp
         - text: HTML Entities
         - generic: 
-      - link "HTML Symbols" [ref=f159e129]:
-        - /url: html_symbols.asp
-      - link "HTML Emojis" [ref=f159e130]:
-        - /url: html_emojis.asp
-      - link "HTML Charsets" [ref=f159e131]:
-        - /url: html_charset.asp
-      - link "HTML URL Encode" [ref=f159e132]:
-        - /url: html_urlencode.asp
-      - link "HTML vs. XHTML" [ref=f159e133]:
-        - /url: html_xhtml.asp
+      - link "HTML Symbols" [ref=f159e129]: html_symbols.asp
+      - link "HTML Emojis" [ref=f159e130]: html_emojis.asp
+      - link "HTML Charsets" [ref=f159e131]: html_charset.asp
+      - link "HTML URL Encode" [ref=f159e132]: html_urlencode.asp
+      - link "HTML vs. XHTML" [ref=f159e133]: html_xhtml.asp
       - heading "HTML Forms" [level=2] [ref=f159e134]
       - link "HTML Forms " [ref=f159e135]:
         - /url: html_forms.asp
         - text: HTML Forms
         - generic: 
       - generic:
-        - link "Forms" [ref=f159e137]:
-          - /url: html_forms.asp
-        - link "Exercises" [ref=f159e138]:
-          - /url: html_exercise_embed.asp?topic=forms
-        - link "Code Challenge" [ref=f159e139]:
-          - /url: html_challenges_forms.asp
+        - link "Forms" [ref=f159e137]
+        - link "Exercises" [ref=f159e138]: html_exercise_embed.asp?topic=forms
+        - link "Code Challenge" [ref=f159e139]: html_challenges_forms.asp
       - link "HTML Form Attributes " [ref=f159e140]:
         - /url: html_forms_attributes.asp
         - text: HTML Form Attributes
@@ -341,8 +282,7 @@ source: tests/playwright_fixtures.rs
         - text: HTML SVG
         - generic: 
       - heading "HTML Media" [level=2] [ref=f159e148]
-      - link "HTML Media" [ref=f159e149]:
-        - /url: html_media.asp
+      - link "HTML Media" [ref=f159e149]: html_media.asp
       - link "HTML Video " [ref=f159e150]:
         - /url: html5_video.asp
         - text: HTML Video
@@ -351,101 +291,59 @@ source: tests/playwright_fixtures.rs
         - /url: html5_audio.asp
         - text: HTML Audio
         - generic: 
-      - link "HTML Plug-ins" [ref=f159e152]:
-        - /url: html_object.asp
-      - link "HTML YouTube" [ref=f159e153]:
-        - /url: html_youtube.asp
+      - link "HTML Plug-ins" [ref=f159e152]: html_object.asp
+      - link "HTML YouTube" [ref=f159e153]: html_youtube.asp
       - heading "Web APIs" [level=2] [ref=f159e154]
-      - link "Web APIs" [ref=f159e155]:
-        - /url: html5_api_whatis.asp
-      - link "Geolocation API" [ref=f159e156]:
-        - /url: html5_geolocation.asp
-      - link "Drag and Drop API" [ref=f159e157]:
-        - /url: html5_draganddrop.asp
-      - link "Popover API" [ref=f159e158]:
-        - /url: html5_popover.asp
-      - link "Web Storage API" [ref=f159e159]:
-        - /url: html5_webstorage.asp
-      - link "Web Workers API" [ref=f159e160]:
-        - /url: html5_webworkers.asp
-      - link "Server-Sent Events API" [ref=f159e161]:
-        - /url: html5_serversentevents.asp
+      - link "Web APIs" [ref=f159e155]: html5_api_whatis.asp
+      - link "Geolocation API" [ref=f159e156]: html5_geolocation.asp
+      - link "Drag and Drop API" [ref=f159e157]: html5_draganddrop.asp
+      - link "Popover API" [ref=f159e158]: html5_popover.asp
+      - link "Web Storage API" [ref=f159e159]: html5_webstorage.asp
+      - link "Web Workers API" [ref=f159e160]: html5_webworkers.asp
+      - link "Server-Sent Events API" [ref=f159e161]: html5_serversentevents.asp
       - heading "HTML Cert" [level=2] [ref=f159e162]
-      - link "HTML Certificate" [ref=f159e163]:
-        - /url: html_exam.asp
+      - link "HTML Certificate" [ref=f159e163]: html_exam.asp
       - heading "HTML Examples" [level=2] [ref=f159e164]
-      - link "HTML Examples" [ref=f159e165]:
-        - /url: html_examples.asp
-      - link "HTML Editor" [ref=f159e166]:
-        - /url: html_editor.asp
-      - link "HTML Quiz" [ref=f159e167]:
-        - /url: html_quiz.asp
-      - link "HTML Exercises" [ref=f159e168]:
-        - /url: html_exercises.asp
-      - link "HTML Challenges" [ref=f159e169]:
-        - /url: html_challenges.asp
-      - link "HTML Website" [ref=f159e170]:
-        - /url: html_website.asp
-      - link "HTML Syllabus" [ref=f159e171]:
-        - /url: html_syllabus.asp
-      - link "HTML Study Plan" [ref=f159e172]:
-        - /url: html_study_plan.asp
-      - link "HTML Interview Prep" [ref=f159e173]:
-        - /url: html_interview_prep.asp
-      - link "HTML Summary" [ref=f159e174]:
-        - /url: html_summary.asp
-      - link "HTML Accessibility" [ref=f159e175]:
-        - /url: html_accessibility.asp
+      - link "HTML Examples" [ref=f159e165]: html_examples.asp
+      - link "HTML Editor" [ref=f159e166]: html_editor.asp
+      - link "HTML Quiz" [ref=f159e167]: html_quiz.asp
+      - link "HTML Exercises" [ref=f159e168]: html_exercises.asp
+      - link "HTML Challenges" [ref=f159e169]: html_challenges.asp
+      - link "HTML Website" [ref=f159e170]: html_website.asp
+      - link "HTML Syllabus" [ref=f159e171]: html_syllabus.asp
+      - link "HTML Study Plan" [ref=f159e172]: html_study_plan.asp
+      - link "HTML Interview Prep" [ref=f159e173]: html_interview_prep.asp
+      - link "HTML Summary" [ref=f159e174]: html_summary.asp
+      - link "HTML Accessibility" [ref=f159e175]: html_accessibility.asp
       - heading "HTML References" [level=2] [ref=f159e176]
-      - link "HTML Tag List" [ref=f159e177]:
-        - /url: /tags/default.asp
-      - link "HTML Attributes" [ref=f159e178]:
-        - /url: /tags/ref_attributes.asp
-      - link "HTML Global Attributes" [ref=f159e179]:
-        - /url: /tags/ref_standardattributes.asp
-      - link "HTML Browser Support" [ref=f159e180]:
-        - /url: /tags/ref_html_browsersupport.asp
-      - link "HTML Event Attributes" [ref=f159e181]:
-        - /url: /tags/ref_eventattributes.asp
-      - link "HTML Colors" [ref=f159e182]:
-        - /url: /tags/ref_colornames.asp
-      - link "HTML Canvas" [ref=f159e183]:
-        - /url: /tags/ref_canvas.asp
-      - link "HTML Audio/Video" [ref=f159e184]:
-        - /url: /tags/ref_av_dom.asp
-      - link "HTML Doctypes" [ref=f159e185]:
-        - /url: /tags/ref_html_dtd.asp
-      - link "HTML Character Sets" [ref=f159e186]:
-        - /url: /tags/ref_charactersets.asp
-      - link "HTML URL Encode" [ref=f159e187]:
-        - /url: /tags/ref_urlencode.asp
-      - link "HTML Language Codes" [ref=f159e188]:
-        - /url: /tags/ref_language_codes.asp
-      - link "HTML Country Codes" [ref=f159e189]:
-        - /url: /tags/ref_country_codes.asp
-      - link "HTTP Status Codes" [ref=f159e190]:
-        - /url: /tags/ref_httpmessages.asp
-      - link "HTTP Request Methods" [ref=f159e191]:
-        - /url: /tags/ref_httpmethods.asp
-      - link "PX to EM Converter" [ref=f159e192]:
-        - /url: /tags/ref_pxtoemconversion.asp
-      - link "Keyboard Shortcuts" [ref=f159e193]:
-        - /url: /tags/ref_keyboardshortcuts.asp
+      - link "HTML Tag List" [ref=f159e177]: /tags/default.asp
+      - link "HTML Attributes" [ref=f159e178]: /tags/ref_attributes.asp
+      - link "HTML Global Attributes" [ref=f159e179]: /tags/ref_standardattributes.asp
+      - link "HTML Browser Support" [ref=f159e180]: /tags/ref_html_browsersupport.asp
+      - link "HTML Event Attributes" [ref=f159e181]: /tags/ref_eventattributes.asp
+      - link "HTML Colors" [ref=f159e182]: /tags/ref_colornames.asp
+      - link "HTML Canvas" [ref=f159e183]: /tags/ref_canvas.asp
+      - link "HTML Audio/Video" [ref=f159e184]: /tags/ref_av_dom.asp
+      - link "HTML Doctypes" [ref=f159e185]: /tags/ref_html_dtd.asp
+      - link "HTML Character Sets" [ref=f159e186]: /tags/ref_charactersets.asp
+      - link "HTML URL Encode" [ref=f159e187]: /tags/ref_urlencode.asp
+      - link "HTML Language Codes" [ref=f159e188]: /tags/ref_language_codes.asp
+      - link "HTML Country Codes" [ref=f159e189]: /tags/ref_country_codes.asp
+      - link "HTTP Status Codes" [ref=f159e190]: /tags/ref_httpmessages.asp
+      - link "HTTP Request Methods" [ref=f159e191]: /tags/ref_httpmethods.asp
+      - link "PX to EM Converter" [ref=f159e192]: /tags/ref_pxtoemconversion.asp
+      - link "Keyboard Shortcuts" [ref=f159e193]: /tags/ref_keyboardshortcuts.asp
     - generic:
       - generic:
         - iframe [ref=f159e636]:
-          - link [ref=f176e2]:
-            - /url: https://www.actirise.com/
+          - link [ref=f176e2]: https://www.actirise.com/
         - heading "HTML Forms" [level=1] [ref=f159e198]:
           - generic "Click to add bookmark" [ref=f159e199] [cursor=pointer]
           - text: HTML Forms
         - generic:
-          - link "❮ Previous" [ref=f159e203]:
-            - /url: html_xhtml.asp
-          - link "Try Adventure Mode" [ref=f159e204]:
-            - /url: /adventure/demo.php
-          - link "Next ❯" [ref=f159e205]:
-            - /url: html_exercise_embed.asp?topic=forms
+          - link "❮ Previous" [ref=f159e203]
+          - link "Try Adventure Mode" [ref=f159e204]: /adventure/demo.php
+          - link "Next ❯" [ref=f159e205]
         - paragraph: An HTML form is used to collect user input. The user input is most often sent to a server for processing.
         - generic:
           - heading "Example" [level=3] [ref=f159e210]
@@ -455,8 +353,7 @@ source: tests/playwright_fixtures.rs
             - text: "Last name:"
             - textbox "Last name:" [ref=f159e214]: Doe
             - button "Submit" [ref=f159e215]
-          - link "Try it Yourself »" [ref=f159e216]:
-            - /url: tryit.asp?filename=tryhtml_form_submit
+          - link "Try it Yourself »" [ref=f159e216]: tryit.asp?filename=tryhtml_form_submit
         - generic:
           - generic: Share
           - button "Share on X" [ref=f159e220]
@@ -479,8 +376,7 @@ source: tests/playwright_fixtures.rs
           - text: "element is a container for different types of input elements, such as: text fields, checkboxes, radio buttons, submit buttons, etc."
         - paragraph:
           - text: "All the different form elements are covered in this chapter:"
-          - link "HTML Form Elements" [ref=f159e242]:
-            - /url: html_form_elements.asp
+          - link "HTML Form Elements" [ref=f159e242]
           - text: .
         - heading "The <input> Element" [level=2] [ref=f159e244]
         - paragraph:
@@ -516,12 +412,10 @@ source: tests/playwright_fixtures.rs
               - cell "Displays a clickable button"
         - paragraph:
           - text: "All the different input types are covered in this chapter:"
-          - link "HTML Input Types" [ref=f159e272]:
-            - /url: html_form_input_types.asp
+          - link "HTML Input Types" [ref=f159e272]
           - text: .
         - paragraph:
-          - link "REMOVE ADS" [ref=f159e276]:
-            - /url: https://order.w3schools.com/plans
+          - link "REMOVE ADS" [ref=f159e276]
         - heading "Text Fields" [level=2] [ref=f159e278]
         - paragraph:
           - text: The
@@ -556,8 +450,7 @@ source: tests/playwright_fixtures.rs
               - generic: type="text" id="lname" name="lname"
               - text: ">"
             - generic: </form>
-          - link "Try it Yourself »" [ref=f159e300]:
-            - /url: tryit.asp?filename=tryhtml_form_text
+          - link "Try it Yourself »" [ref=f159e300]: tryit.asp?filename=tryhtml_form_text
         - paragraph: "This is how the HTML code above will be displayed in a browser:"
         - generic:
           - text: "First name:"
@@ -595,8 +488,7 @@ source: tests/playwright_fixtures.rs
           - code: <input>
           - text: element to bind them together.
         - paragraph:
-          - link "REMOVE ADS" [ref=f159e640]:
-            - /url: https://order.w3schools.com/plans
+          - link "REMOVE ADS" [ref=f159e640]
         - heading "Radio Buttons" [level=2] [ref=f159e324]
         - paragraph:
           - text: The
@@ -644,8 +536,7 @@ source: tests/playwright_fixtures.rs
             - text: JavaScript
             - generic: </label>
             - generic: </form>
-          - link "Try it Yourself »" [ref=f159e353]:
-            - /url: tryit.asp?filename=tryhtml_form_radio
+          - link "Try it Yourself »" [ref=f159e353]: tryit.asp?filename=tryhtml_form_radio
         - paragraph: "This is how the HTML code above will be displayed in a browser:"
         - paragraph: "Choose your favorite Web language:"
         - radio "HTML" [ref=f159e356]
@@ -700,8 +591,7 @@ source: tests/playwright_fixtures.rs
             - text: I have a boat
             - generic: </label>
             - generic: </form>
-          - link "Try it Yourself »" [ref=f159e388]:
-            - /url: tryit.asp?filename=tryhtml_input_checkbox
+          - link "Try it Yourself »" [ref=f159e388]: tryit.asp?filename=tryhtml_input_checkbox
         - paragraph: "This is how the HTML code above will be displayed in a browser:"
         - checkbox "I have a bike" [ref=f159e390]
         - text: I have a bike
@@ -757,8 +647,7 @@ source: tests/playwright_fixtures.rs
               - generic: type="submit" value="Submit"
               - text: ">"
             - generic: </form>
-          - link "Try it Yourself »" [ref=f159e424]:
-            - /url: tryit.asp?filename=tryhtml_form_submit
+          - link "Try it Yourself »" [ref=f159e424]
         - paragraph: "This is how the HTML code above will be displayed in a browser:"
         - generic:
           - text: "First name:"
@@ -801,8 +690,7 @@ source: tests/playwright_fixtures.rs
               - generic: type="submit" value="Submit"
               - text: ">"
             - generic: </form>
-          - link "Try it Yourself »" [ref=f159e453]:
-            - /url: tryit.asp?filename=tryhtml_form_submit_id
+          - link "Try it Yourself »" [ref=f159e453]: tryit.asp?filename=tryhtml_form_submit_id
         - generic:
           - 'heading "Video: HTML Forms" [level=2] [ref=f159e456]'
           - link [ref=f159e457]:
@@ -811,31 +699,22 @@ source: tests/playwright_fixtures.rs
               - img "Tutorial on YouTube"
               - img "Tutorial on YouTube"
         - generic:
-          - link "❮ Previous" [ref=f159e461]:
-            - /url: html_xhtml.asp
-          - link "Next ❯" [ref=f159e462]:
-            - /url: html_exercise_embed.asp?topic=forms
+          - link "❮ Previous" [ref=f159e461]
+          - link "Next ❯" [ref=f159e462]
       - generic:
         - link [ref=f159e467]:
           - /url: https://campus.w3schools.com/products/w3schools-full-access-course
           - img "W3Schools Halloween sale - 80% off Full Access" [ref=f159e469]
         - generic:
-          - link "" [ref=f159e472]:
-            - /url: https://www.youtube.com/@w3schools
-          - link "" [ref=f159e474]:
-            - /url: https://www.linkedin.com/company/w3schools.com/
-          - link "" [ref=f159e476]:
-            - /url: https://discord.com/invite/w3schools
-          - link "" [ref=f159e478]:
-            - /url: https://www.facebook.com/w3schoolscom/
-          - link "" [ref=f159e480]:
-            - /url: https://www.instagram.com/w3schools.com_official/
-          - link "" [ref=f159e482]:
-            - /url: https://www.tiktok.com/@w3schools.com
+          - link "" [ref=f159e472]: https://www.youtube.com/@w3schools
+          - link "" [ref=f159e474]: https://www.linkedin.com/company/w3schools.com/
+          - link "" [ref=f159e476]: https://discord.com/invite/w3schools
+          - link "" [ref=f159e478]: https://www.facebook.com/w3schoolscom/
+          - link "" [ref=f159e480]: https://www.instagram.com/w3schools.com_official/
+          - link "" [ref=f159e482]: https://www.tiktok.com/@w3schools.com
         - generic:
           - paragraph:
-            - link "REMOVE ADS" [ref=f159e487]:
-              - /url: https://order.w3schools.com/plans
+            - link "REMOVE ADS" [ref=f159e487]
           - iframe [ref=f159e643]:
             - generic:
               - generic [ref=f190e3] [cursor=pointer]
@@ -845,8 +724,7 @@ source: tests/playwright_fixtures.rs
     - generic:
       - generic:
         - img "This way to the W3Schools Adventure app"
-        - link "Learn more about Adventure Mode›" [ref=f159e494]:
-          - /url: /adventure/
+        - link "Learn more about Adventure Mode›" [ref=f159e494]: /adventure/
       - generic:
         - generic:
           - paragraph: Free account
@@ -864,8 +742,7 @@ source: tests/playwright_fixtures.rs
             - generic:
               - text: League
               - generic: —
-          - link "Sign in to track progress" [ref=f159e510]:
-            - /url: https://profile.w3schools.com/log-in?redirect_url=https%3A%2F%2Fwww.w3schools.com%2Fhtml%2Fhtml_forms.asp
+          - link "Sign in to track progress" [ref=f159e510]: https://profile.w3schools.com/log-in?redirect_url=https%3A%2F%2Fwww.w3schools.com%2Fhtml%2Fhtml_forms.asp
         - generic:
           - paragraph: New
           - heading "Learn in Adventure Mode" [level=2] [ref=f159e513]
@@ -891,158 +768,90 @@ source: tests/playwright_fixtures.rs
         - link "W3Schools.com" [ref=f159e543]:
           - /url: //www.w3schools.com
           - generic: 
-        - link "PLUS" [ref=f159e546]:
-          - /url: https://order.w3schools.com/plans
-        - link "SPACES" [ref=f159e548]:
-          - /url: /spaces/index.php
-        - link "GET CERTIFIED" [ref=f159e550]:
-          - /url: https://campus.w3schools.com/collections/certifications
-        - link "FOR TEACHERS" [ref=f159e552]:
-          - /url: https://campus.w3schools.com/pages/for-teams
-        - link "PRACTICE" [ref=f159e554]:
-          - /url: /practice/index.php
-        - link "CONTACT US" [ref=f159e556]:
-          - /url: javascript:void(0);
+        - link "PLUS" [ref=f159e546]
+        - link "SPACES" [ref=f159e548]: /spaces/index.php
+        - link "GET CERTIFIED" [ref=f159e550]: https://campus.w3schools.com/collections/certifications
+        - link "FOR TEACHERS" [ref=f159e552]: https://campus.w3schools.com/pages/for-teams
+        - link "PRACTICE" [ref=f159e554]: /practice/index.php
+        - link "CONTACT US" [ref=f159e556]: javascript:void(0);
       - generic:
         - generic:
           - heading "Top Tutorials" [level=5] [ref=f159e559]
-          - link "HTML Tutorial" [ref=f159e560]:
-            - /url: /html/default.asp
-          - link "CSS Tutorial" [ref=f159e561]:
-            - /url: /css/default.asp
-          - link "JavaScript Tutorial" [ref=f159e562]:
-            - /url: /js/default.asp
-          - link "How To Tutorial" [ref=f159e563]:
-            - /url: /howto/default.asp
-          - link "SQL Tutorial" [ref=f159e564]:
-            - /url: /sql/default.asp
-          - link "Python Tutorial" [ref=f159e565]:
-            - /url: /python/default.asp
-          - link "W3.CSS Tutorial" [ref=f159e566]:
-            - /url: /w3css/default.asp
-          - link "Bootstrap Tutorial" [ref=f159e567]:
-            - /url: /bootstrap/bootstrap_ver.asp
-          - link "PHP Tutorial" [ref=f159e568]:
-            - /url: /php/default.asp
-          - link "Java Tutorial" [ref=f159e569]:
-            - /url: /java/default.asp
-          - link "C++ Tutorial" [ref=f159e570]:
-            - /url: /cpp/default.asp
-          - link "jQuery Tutorial" [ref=f159e571]:
-            - /url: /jquery/default.asp
+          - link "HTML Tutorial" [ref=f159e560]
+          - link "CSS Tutorial" [ref=f159e561]
+          - link "JavaScript Tutorial" [ref=f159e562]
+          - link "How To Tutorial" [ref=f159e563]
+          - link "SQL Tutorial" [ref=f159e564]
+          - link "Python Tutorial" [ref=f159e565]
+          - link "W3.CSS Tutorial" [ref=f159e566]
+          - link "Bootstrap Tutorial" [ref=f159e567]
+          - link "PHP Tutorial" [ref=f159e568]
+          - link "Java Tutorial" [ref=f159e569]
+          - link "C++ Tutorial" [ref=f159e570]
+          - link "jQuery Tutorial" [ref=f159e571]
         - generic:
           - heading "Top References" [level=5] [ref=f159e573]
-          - link "HTML Reference" [ref=f159e574]:
-            - /url: /tags/default.asp
-          - link "CSS Reference" [ref=f159e575]:
-            - /url: /cssref/index.php
-          - link "JavaScript Reference" [ref=f159e576]:
-            - /url: /jsref/default.asp
-          - link "SQL Reference" [ref=f159e577]:
-            - /url: /sql/sql_ref_keywords.asp
-          - link "Python Reference" [ref=f159e578]:
-            - /url: /python/python_reference.asp
-          - link "W3.CSS Reference" [ref=f159e579]:
-            - /url: /w3css/w3css_references.asp
-          - link "Bootstrap Reference" [ref=f159e580]:
-            - /url: /bootstrap/bootstrap_ref_all_classes.asp
-          - link "PHP Reference" [ref=f159e581]:
-            - /url: /php/php_ref_overview.asp
-          - link "HTML Colors" [ref=f159e582]:
-            - /url: /colors/colors_names.asp
-          - link "Java Reference" [ref=f159e583]:
-            - /url: /java/java_ref_keywords.asp
-          - link "AngularJS Reference" [ref=f159e584]:
-            - /url: /angularjs/angularjs_ref_directives.asp
-          - link "jQuery Reference" [ref=f159e585]:
-            - /url: /jquery/jquery_ref_overview.asp
+          - link "HTML Reference" [ref=f159e574]
+          - link "CSS Reference" [ref=f159e575]: /cssref/index.php
+          - link "JavaScript Reference" [ref=f159e576]: /jsref/default.asp
+          - link "SQL Reference" [ref=f159e577]: /sql/sql_ref_keywords.asp
+          - link "Python Reference" [ref=f159e578]: /python/python_reference.asp
+          - link "W3.CSS Reference" [ref=f159e579]: /w3css/w3css_references.asp
+          - link "Bootstrap Reference" [ref=f159e580]: /bootstrap/bootstrap_ref_all_classes.asp
+          - link "PHP Reference" [ref=f159e581]: /php/php_ref_overview.asp
+          - link "HTML Colors" [ref=f159e582]: /colors/colors_names.asp
+          - link "Java Reference" [ref=f159e583]: /java/java_ref_keywords.asp
+          - link "AngularJS Reference" [ref=f159e584]: /angularjs/angularjs_ref_directives.asp
+          - link "jQuery Reference" [ref=f159e585]: /jquery/jquery_ref_overview.asp
         - generic:
           - heading "Top Examples" [level=5] [ref=f159e587]
-          - link "HTML Examples" [ref=f159e588]:
-            - /url: /html/html_examples.asp
-          - link "CSS Examples" [ref=f159e589]:
-            - /url: /css/css_examples.asp
-          - link "JavaScript Examples" [ref=f159e590]:
-            - /url: /js/js_examples.asp
-          - link "How To Examples" [ref=f159e591]:
-            - /url: /howto/default.asp
-          - link "SQL Examples" [ref=f159e592]:
-            - /url: /sql/sql_examples.asp
-          - link "Python Examples" [ref=f159e593]:
-            - /url: /python/python_examples.asp
-          - link "W3.CSS Examples" [ref=f159e594]:
-            - /url: /w3css/w3css_examples.asp
-          - link "Bootstrap Examples" [ref=f159e595]:
-            - /url: /bootstrap/bootstrap_examples.asp
-          - link "PHP Examples" [ref=f159e596]:
-            - /url: /php/php_examples.asp
-          - link "Java Examples" [ref=f159e597]:
-            - /url: /java/java_examples.asp
-          - link "XML Examples" [ref=f159e598]:
-            - /url: /xml/xml_examples.asp
-          - link "jQuery Examples" [ref=f159e599]:
-            - /url: /jquery/jquery_examples.asp
+          - link "HTML Examples" [ref=f159e588]: /html/html_examples.asp
+          - link "CSS Examples" [ref=f159e589]: /css/css_examples.asp
+          - link "JavaScript Examples" [ref=f159e590]: /js/js_examples.asp
+          - link "How To Examples" [ref=f159e591]
+          - link "SQL Examples" [ref=f159e592]: /sql/sql_examples.asp
+          - link "Python Examples" [ref=f159e593]: /python/python_examples.asp
+          - link "W3.CSS Examples" [ref=f159e594]: /w3css/w3css_examples.asp
+          - link "Bootstrap Examples" [ref=f159e595]: /bootstrap/bootstrap_examples.asp
+          - link "PHP Examples" [ref=f159e596]: /php/php_examples.asp
+          - link "Java Examples" [ref=f159e597]: /java/java_examples.asp
+          - link "XML Examples" [ref=f159e598]: /xml/xml_examples.asp
+          - link "jQuery Examples" [ref=f159e599]: /jquery/jquery_examples.asp
         - generic:
           - link [ref=f159e601]:
-            - /url: https://campus.w3schools.com/collections/course-catalog
             - heading "Get Certified" [level=5] [ref=f159e602]
-          - link "HTML Certificate" [ref=f159e603]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/html-certificate
-          - link "CSS Certificate" [ref=f159e604]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/css-certificate
-          - link "JavaScript Certificate" [ref=f159e605]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/javascript-certificate
-          - link "Front End Certificate" [ref=f159e606]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/front-end-certificate
-          - link "SQL Certificate" [ref=f159e607]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/sql-certificate
-          - link "Python Certificate" [ref=f159e608]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/python-certificate
-          - link "PHP Certificate" [ref=f159e609]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/php-certificate
-          - link "jQuery Certificate" [ref=f159e610]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/jquery-certificate
-          - link "Java Certificate" [ref=f159e611]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/java-certificate
-          - link "C++ Certificate" [ref=f159e612]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/c-certificate
-          - link "C# Certificate" [ref=f159e613]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/c-certificate-1
-          - link "XML Certificate" [ref=f159e614]:
-            - /url: https://campus.w3schools.com/collections/certifications/products/xml-certificate
+          - link "HTML Certificate" [ref=f159e603]: https://campus.w3schools.com/collections/certifications/products/html-certificate
+          - link "CSS Certificate" [ref=f159e604]: https://campus.w3schools.com/collections/certifications/products/css-certificate
+          - link "JavaScript Certificate" [ref=f159e605]: https://campus.w3schools.com/collections/certifications/products/javascript-certificate
+          - link "Front End Certificate" [ref=f159e606]: https://campus.w3schools.com/collections/certifications/products/front-end-certificate
+          - link "SQL Certificate" [ref=f159e607]: https://campus.w3schools.com/collections/certifications/products/sql-certificate
+          - link "Python Certificate" [ref=f159e608]: https://campus.w3schools.com/collections/certifications/products/python-certificate
+          - link "PHP Certificate" [ref=f159e609]: https://campus.w3schools.com/collections/certifications/products/php-certificate
+          - link "jQuery Certificate" [ref=f159e610]: https://campus.w3schools.com/collections/certifications/products/jquery-certificate
+          - link "Java Certificate" [ref=f159e611]: https://campus.w3schools.com/collections/certifications/products/java-certificate
+          - link "C++ Certificate" [ref=f159e612]: https://campus.w3schools.com/collections/certifications/products/c-certificate
+          - link "C# Certificate" [ref=f159e613]: https://campus.w3schools.com/collections/certifications/products/c-certificate-1
+          - link "XML Certificate" [ref=f159e614]: https://campus.w3schools.com/collections/certifications/products/xml-certificate
       - generic:
-        - link "" [ref=f159e616]:
-          - /url: https://www.youtube.com/@w3schools
-        - link "" [ref=f159e618]:
-          - /url: https://www.linkedin.com/company/w3schools.com/
-        - link "" [ref=f159e620]:
-          - /url: https://discord.com/invite/w3schools
-        - link "" [ref=f159e622]:
-          - /url: https://www.facebook.com/w3schoolscom/
-        - link "" [ref=f159e624]:
-          - /url: https://www.instagram.com/w3schools.com_official/
-        - link "FORUM" [ref=f159e626]:
-          - /url: /forum/index.php
-        - link "ABOUT" [ref=f159e627]:
-          - /url: /about/default.asp
-        - link "CAMPUS" [ref=f159e628]:
-          - /url: https://campus.w3schools.com/pages/for-teams
+        - link "" [ref=f159e616]
+        - link "" [ref=f159e618]
+        - link "" [ref=f159e620]
+        - link "" [ref=f159e622]
+        - link "" [ref=f159e624]
+        - link "FORUM" [ref=f159e626]: /forum/index.php
+        - link "ABOUT" [ref=f159e627]: /about/default.asp
+        - link "CAMPUS" [ref=f159e628]
       - generic:
         - text: W3Schools is optimized for learning and training. Examples might be simplified to improve reading and learning. Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content. While using W3Schools, you agree to have read and accepted our
-        - link "terms of use" [ref=f159e630]:
-          - /url: /about/about_copyright.asp
+        - link "terms of use" [ref=f159e630]: /about/about_copyright.asp
         - text: ", cookies and"
-        - link "privacy policy" [ref=f159e631]:
-          - /url: /about/about_privacy.asp
+        - link "privacy policy" [ref=f159e631]: /about/about_privacy.asp
         - text: .
-        - link "Copyright 1999-2026" [ref=f159e632]:
-          - /url: /about/about_copyright.asp
+        - link "Copyright 1999-2026" [ref=f159e632]
         - text: by Refsnes Data. All Rights Reserved.
-        - link "W3Schools is Powered by W3.CSS" [ref=f159e633]:
-          - /url: //www.w3schools.com/w3css/default.asp
+        - link "W3Schools is Powered by W3.CSS" [ref=f159e633]: //www.w3schools.com/w3css/default.asp
         - text: .
   - iframe [ref=f159e649]:
-    - link [ref=f177e2]:
-      - /url: https://www.actirise.com/
+    - link [ref=f177e2]
 ```
-[meiose: 16 nodes trimmed, 245 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 16 nodes trimmed, 245 non-interactive refs hidden, 35 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

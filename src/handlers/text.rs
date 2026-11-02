@@ -52,7 +52,7 @@ impl Handler for Text {
         let lines = middle.matches('\n').count();
         let chars = middle.chars().count();
         let out = format!(
-            "{}\n[meiose: {lines} lines ({chars} chars) trimmed here — call meiose_expand(\"{}\") for the full output]\n{}",
+            "{}\n[meiose: {lines} lines ({chars} chars) trimmed here — call meiose_expand(\"{}\") for the full output, or add query=\"…\" for only the lines you need]\n{}",
             text[..head_end].trim_end_matches('\n'),
             cx.expand_id,
             &text[tail_start..]

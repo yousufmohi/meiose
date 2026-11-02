@@ -11,10 +11,8 @@ source: tests/playwright_fixtures.rs
     - navigation [ref=f87e4]:
       - generic:
         - generic:
-          - link "React" [ref=f87e10]:
-            - /url: /
-          - link "v19.3" [ref=f87e19]:
-            - /url: /versions
+          - link "React" [ref=f87e10]: /
+          - link "v19.3" [ref=f87e19]: /versions
         - button "Search Ctrl K" [ref=f87e21]:
           - text: Search
           - generic:
@@ -22,65 +20,49 @@ source: tests/playwright_fixtures.rs
             - generic: K
         - generic:
           - generic:
-            - link "Learn" [ref=f87e30]:
-              - /url: /learn
-            - link "Reference" [ref=f87e32]:
-              - /url: /reference/react
-            - link "Community" [ref=f87e34]:
-              - /url: /community
-            - link "Blog" [ref=f87e36]:
-              - /url: /blog
+            - link "Learn" [ref=f87e30]: /learn
+            - link "Reference" [ref=f87e32]: /reference/react
+            - link "Community" [ref=f87e34]: /community
+            - link "Blog" [ref=f87e36]: /blog
           - generic:
             - button "Use Dark Mode" [ref=f87e39]
-            - link "Translations" [ref=f87e45]:
-              - /url: /community/translations
-            - link "Open on GitHub" [ref=f87e49]:
-              - /url: https://github.com/react/react/releases
+            - link "Translations" [ref=f87e45]: /community/translations
+            - link "Open on GitHub" [ref=f87e49]: https://github.com/react/react/releases
     - generic:
       - complementary [ref=f87e58]:
         - navigation [ref=f87e59]:
           - list:
             - heading "GET STARTED" [level=3] [ref=f87e61]
             - listitem:
-              - link "Quick Start" [ref=f87e63]:
-                - /url: /learn
+              - link "Quick Start" [ref=f87e63]
               - region [ref=f87e71]:
                 - list:
                   - listitem:
                     - 'link "Tutorial: Tic-Tac-Toe" [ref=f87e74] [cursor=pointer]':
                       - /url: /learn/tutorial-tic-tac-toe
                   - listitem:
-                    - link "Thinking in React" [ref=f87e77]:
-                      - /url: /learn/thinking-in-react
+                    - link "Thinking in React" [ref=f87e77]: /learn/thinking-in-react
             - listitem:
-              - link "Installation" [ref=f87e80]:
-                - /url: /learn/installation
+              - link "Installation" [ref=f87e80]: /learn/installation
             - listitem:
-              - link "Setup" [ref=f87e88]:
-                - /url: /learn/setup
+              - link "Setup" [ref=f87e88]: /learn/setup
             - listitem:
-              - link "React Compiler" [ref=f87e96]:
-                - /url: /learn/react-compiler
+              - link "React Compiler" [ref=f87e96]: /learn/react-compiler
             - heading "LEARN REACT" [level=3] [ref=f87e104]
             - listitem:
-              - link "Describing the UI" [ref=f87e106]:
-                - /url: /learn/describing-the-ui
+              - link "Describing the UI" [ref=f87e106]: /learn/describing-the-ui
             - listitem:
-              - link "Adding Interactivity" [ref=f87e114]:
-                - /url: /learn/adding-interactivity
+              - link "Adding Interactivity" [ref=f87e114]: /learn/adding-interactivity
             - listitem:
-              - link "Managing State" [ref=f87e122]:
-                - /url: /learn/managing-state
+              - link "Managing State" [ref=f87e122]: /learn/managing-state
             - listitem:
-              - link "Escape Hatches" [ref=f87e130]:
-                - /url: /learn/escape-hatches
+              - link "Escape Hatches" [ref=f87e130]: /learn/escape-hatches
       - main [ref=f87e138]:
         - article [ref=f87e139]:
           - generic:
             - generic:
               - generic:
-                - link "Learn React" [ref=f87e148]:
-                  - /url: /learn
+                - link "Learn React" [ref=f87e148]
                 - button "Copy page" [ref=f87e152]
               - heading "Quick Start" [level=1] [ref=f87e157]
             - generic:
@@ -98,8 +80,7 @@ source: tests/playwright_fixtures.rs
                       - listitem: How to share data between components
                   - heading "Creating and nesting components Link for Creating and nesting components" [level=2] [ref=f87e172]:
                     - text: Creating and nesting components
-                    - link "Link for Creating and nesting components":
-                      - /url: "#components"
+                    - link "Link for Creating and nesting components": "#components"
                   - paragraph:
                     - text: React apps are made out of
                     - emphasis: components
@@ -150,22 +131,18 @@ source: tests/playwright_fixtures.rs
                     - text: The
                     - code: export default
                     - text: keywords specify the main component in the file. If you’re not familiar with some piece of JavaScript syntax,
-                    - link "MDN" [ref=f87e251]:
-                      - /url: https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
+                    - link "MDN" [ref=f87e251]: https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
                     - text: and
-                    - link "javascript.info" [ref=f87e252]:
-                      - /url: https://javascript.info/import-export
+                    - link "javascript.info" [ref=f87e252]: https://javascript.info/import-export
                     - text: have great references.
                   - heading "Writing markup with JSX Link for Writing markup with JSX" [level=2] [ref=f87e253]:
                     - text: Writing markup with JSX
-                    - link "Link for Writing markup with JSX":
-                      - /url: "#writing-markup-with-jsx"
+                    - link "Link for Writing markup with JSX": "#writing-markup-with-jsx"
                   - paragraph:
                     - text: The markup syntax you’ve seen above is called
                     - emphasis: JSX
                     - text: . It is optional, but most React projects use JSX for its convenience. All of the
-                    - link "tools we recommend for local development" [ref=f87e256]:
-                      - /url: /learn/installation
+                    - link "tools we recommend for local development" [ref=f87e256]
                     - text: support JSX out of the box.
                   - paragraph:
                     - text: JSX is stricter than HTML. You have to close tags like
@@ -186,12 +163,10 @@ source: tests/playwright_fixtures.rs
                     - generic: "}"
                   - paragraph:
                     - text: If you have a lot of HTML to port to JSX, you can use an
-                    - link "online converter." [ref=f87e276]:
-                      - /url: https://transform.tools/html-to-jsx
+                    - link "online converter." [ref=f87e276]: https://transform.tools/html-to-jsx
                   - heading "Adding styles Link for Adding styles" [level=2] [ref=f87e277]:
                     - text: Adding styles
-                    - link "Link for Adding styles":
-                      - /url: "#adding-styles"
+                    - link "Link for Adding styles": "#adding-styles"
                   - paragraph:
                     - text: In React, you specify a CSS class with
                     - code: className
@@ -216,8 +191,7 @@ source: tests/playwright_fixtures.rs
                     - text: tag to your HTML. If you use a build tool or a framework, consult its documentation to learn how to add a CSS file to your project.
                   - heading "Displaying data Link for Displaying data" [level=2] [ref=f87e303]:
                     - text: Displaying data
-                    - link "Link for Displaying data":
-                      - /url: "#displaying-data"
+                    - link "Link for Displaying data": "#displaying-data"
                   - paragraph:
                     - text: JSX lets you put markup into JavaScript. Curly braces let you “escape back” into JavaScript so that you can embed some variable from your code and display it to the user. For example, this will display
                     - code: user.name
@@ -251,8 +225,7 @@ source: tests/playwright_fixtures.rs
                     - generic: );
                   - paragraph:
                     - text: You can put more complex expressions inside the JSX curly braces too, for example,
-                    - link "string concatenation" [ref=f87e337]:
-                      - /url: https://javascript.info/operators#string-concatenation-with-binary
+                    - link "string concatenation" [ref=f87e337]: https://javascript.info/operators#string-concatenation-with-binary
                     - text: ":"
                 - generic:
                   - generic:
@@ -280,8 +253,7 @@ source: tests/playwright_fixtures.rs
                     - text: attribute when your styles depend on JavaScript variables.
                   - heading "Conditional rendering Link for Conditional rendering" [level=2] [ref=f87e386]:
                     - text: Conditional rendering
-                    - link "Link for Conditional rendering":
-                      - /url: "#conditional-rendering"
+                    - link "Link for Conditional rendering": "#conditional-rendering"
                   - paragraph:
                     - text: In React, there is no special syntax for writing conditions. Instead, you’ll use the same techniques as you use when writing regular JavaScript code. For example, you can use an
                     - link [ref=f87e388]:
@@ -338,8 +310,7 @@ source: tests/playwright_fixtures.rs
                     - text: .
                   - heading "Rendering lists Link for Rendering lists" [level=2] [ref=f87e439]:
                     - text: Rendering lists
-                    - link "Link for Rendering lists":
-                      - /url: "#rendering-lists"
+                    - link "Link for Rendering lists": "#rendering-lists"
                   - paragraph:
                     - text: You will rely on JavaScript features like
                     - link [ref=f87e441]:
@@ -397,8 +368,7 @@ source: tests/playwright_fixtures.rs
                 - generic:
                   - heading "Responding to events Link for Responding to events" [level=2] [ref=f87e521]:
                     - text: Responding to events
-                    - link "Link for Responding to events":
-                      - /url: "#responding-to-events"
+                    - link "Link for Responding to events": "#responding-to-events"
                   - paragraph:
                     - text: You can respond to events by declaring
                     - emphasis: event handler
@@ -424,8 +394,7 @@ source: tests/playwright_fixtures.rs
                     - text: . React will call your event handler when the user clicks the button.
                   - heading "Updating the screen Link for Updating the screen" [level=2] [ref=f87e545]:
                     - text: Updating the screen
-                    - link "Link for Updating the screen":
-                      - /url: "#updating-the-screen"
+                    - link "Link for Updating the screen": "#updating-the-screen"
                   - paragraph:
                     - text: Often, you’ll want your component to “remember” some information and display it. For example, maybe you want to count the number of times a button is clicked. To do this, add
                     - emphasis: state
@@ -509,8 +478,7 @@ source: tests/playwright_fixtures.rs
                     - text: state and doesn’t affect other buttons.
                   - heading "Using Hooks Link for Using Hooks" [level=2] [ref=f87e649]:
                     - text: Using Hooks
-                    - link "Link for Using Hooks":
-                      - /url: "#using-hooks"
+                    - link "Link for Using Hooks": "#using-hooks"
                   - paragraph:
                     - text: Functions starting with
                     - code: use
@@ -519,8 +487,7 @@ source: tests/playwright_fixtures.rs
                     - text: .
                     - code: useState
                     - text: is a built-in Hook provided by React. You can find other built-in Hooks in the
-                    - link "API reference." [ref=f87e654]:
-                      - /url: /reference/react
+                    - link "API reference." [ref=f87e654]
                     - text: You can also write your own Hooks by combining the existing ones.
                   - paragraph:
                     - text: Hooks are more restrictive than other functions. You can only call Hooks
@@ -530,8 +497,7 @@ source: tests/playwright_fixtures.rs
                     - text: in a condition or a loop, extract a new component and put it there.
                   - heading "Sharing data between components Link for Sharing data between components" [level=2] [ref=f87e658]:
                     - text: Sharing data between components
-                    - link "Link for Sharing data between components":
-                      - /url: "#sharing-data-between-components"
+                    - link "Link for Sharing data between components": "#sharing-data-between-components"
                   - paragraph:
                     - text: In the previous example, each
                     - code: MyButton
@@ -711,78 +677,52 @@ source: tests/playwright_fixtures.rs
                 - generic:
                   - heading "Next Steps Link for Next Steps" [level=2] [ref=f87e841]:
                     - text: Next Steps
-                    - link "Link for Next Steps":
-                      - /url: "#next-steps"
+                    - link "Link for Next Steps": "#next-steps"
                   - paragraph: By now, you know the basics of how to write React code!
                   - paragraph:
                     - text: Check out the
-                    - link "Tutorial" [ref=f87e844]:
-                      - /url: /learn/tutorial-tic-tac-toe
+                    - link "Tutorial" [ref=f87e844]
                     - text: to put them into practice and build your first mini-app with React.
               - 'link "Next Tutorial: Tic-Tac-Toe" [ref=f87e847] [cursor=pointer]':
-                - /url: /learn/tutorial-tic-tac-toe
                 - generic:
                   - generic: Next
                   - generic: "Tutorial: Tic-Tac-Toe"
         - generic:
           - generic:
             - generic:
-              - link "Meta Open Source" [ref=f87e862]:
-                - /url: https://opensource.fb.com/
+              - link "Meta Open Source" [ref=f87e862]: https://opensource.fb.com/
               - generic: Copyright © Meta Platforms, Inc
               - generic [ref=f87e895] [cursor=pointer]: uwu?
             - generic:
-              - link "Learn React" [ref=f87e898]:
-                - /url: /learn
-              - link "Quick Start" [ref=f87e900]:
-                - /url: /learn
-              - link "Installation" [ref=f87e902]:
-                - /url: /learn/installation
-              - link "Describing the UI" [ref=f87e904]:
-                - /url: /learn/describing-the-ui
-              - link "Adding Interactivity" [ref=f87e906]:
-                - /url: /learn/adding-interactivity
-              - link "Managing State" [ref=f87e908]:
-                - /url: /learn/managing-state
-              - link "Escape Hatches" [ref=f87e910]:
-                - /url: /learn/escape-hatches
+              - link "Learn React" [ref=f87e898]
+              - link "Quick Start" [ref=f87e900]
+              - link "Installation" [ref=f87e902]
+              - link "Describing the UI" [ref=f87e904]
+              - link "Adding Interactivity" [ref=f87e906]
+              - link "Managing State" [ref=f87e908]
+              - link "Escape Hatches" [ref=f87e910]
             - generic:
-              - link "API Reference" [ref=f87e913]:
-                - /url: /reference/react
-              - link "React APIs" [ref=f87e915]:
-                - /url: /reference/react
-              - link "React DOM APIs" [ref=f87e917]:
-                - /url: /reference/react-dom
+              - link "API Reference" [ref=f87e913]
+              - link "React APIs" [ref=f87e915]
+              - link "React DOM APIs" [ref=f87e917]: /reference/react-dom
             - generic:
-              - link "Community" [ref=f87e920]:
-                - /url: /community
-              - link "Code of Conduct" [ref=f87e922]:
-                - /url: https://github.com/react/react/blob/main/CODE_OF_CONDUCT.md
-              - link "Meet the Team" [ref=f87e924]:
-                - /url: /community/team
-              - link "Docs Contributors" [ref=f87e926]:
-                - /url: /community/docs-contributors
-              - link "Acknowledgements" [ref=f87e928]:
-                - /url: /community/acknowledgements
+              - link "Community" [ref=f87e920]
+              - link "Code of Conduct" [ref=f87e922]: https://github.com/react/react/blob/main/CODE_OF_CONDUCT.md
+              - link "Meet the Team" [ref=f87e924]: /community/team
+              - link "Docs Contributors" [ref=f87e926]: /community/docs-contributors
+              - link "Acknowledgements" [ref=f87e928]: /community/acknowledgements
             - generic:
               - generic: More
-              - link "Blog" [ref=f87e932]:
-                - /url: /blog
-              - link "React Native" [ref=f87e934]:
-                - /url: https://reactnative.dev/
-              - link "Privacy" [ref=f87e936]:
-                - /url: https://opensource.facebook.com/legal/privacy
-              - link "Terms" [ref=f87e938]:
-                - /url: https://opensource.fb.com/legal/terms/
+              - link "Blog" [ref=f87e932]
+              - link "React Native" [ref=f87e934]: https://reactnative.dev/
+              - link "Privacy" [ref=f87e936]: https://opensource.facebook.com/legal/privacy
+              - link "Terms" [ref=f87e938]: https://opensource.fb.com/legal/terms/
               - generic:
-                - link "React on Facebook" [ref=f87e940]:
-                  - /url: https://www.facebook.com/react
-                - link "React on Twitter" [ref=f87e944]:
-                  - /url: https://twitter.com/reactjs
+                - link "React on Facebook" [ref=f87e940]: https://www.facebook.com/react
+                - link "React on Twitter" [ref=f87e944]: https://twitter.com/reactjs
                 - link "React on Bluesky" [ref=f87e948]:
                   - /url: https://bsky.app/profile/react.dev
                   - img "Bluesky" [ref=f87e949]
-                - link "React on Github" [ref=f87e951]:
-                  - /url: https://github.com/react/react
+                - link "React on Github" [ref=f87e951]: https://github.com/react/react
 ```
-[meiose: 3 nodes trimmed, 389 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 3 nodes trimmed, 389 non-interactive refs hidden, 17 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

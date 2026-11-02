@@ -285,13 +285,14 @@ async fn client_to_server<R, W>(
             && let ClientAction::Expand {
                 id_raw,
                 expand_id,
+                query,
                 terminator,
             } = ic.on_client_frame(&frame)
         {
             // Answered locally; never forwarded to the server.
             let ic = ic.clone();
             let reply = tokio::task::spawn_blocking(move || {
-                ic.expand_reply(&id_raw, expand_id.as_deref(), terminator)
+                ic.expand_reply(&id_raw, expand_id.as_deref(), query.as_deref(), terminator)
             })
             .await;
             match (reply, out.upgrade()) {

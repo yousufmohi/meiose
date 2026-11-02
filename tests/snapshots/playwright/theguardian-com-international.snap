@@ -7,23 +7,18 @@ source: tests/playwright_fixtures.rs
 ### Snapshot
 ```yaml
 - generic:
-  - link "Skip to main content" [ref=f123e2]:
-    - /url: "#maincontent"
-  - link "Skip to navigation" [ref=f123e3]:
-    - /url: "#navigation"
+  - link "Skip to main content" [ref=f123e2]: "#maincontent"
+  - link "Skip to navigation" [ref=f123e3]: "#navigation"
   - generic:
     - banner [ref=f123e12]:
       - generic:
-        - link "Print subscriptions" [ref=f123e22]:
-          - /url: https://support.theguardian.com/subscribe/weekly?REFPVID=mvykuw7smwmypu3sw2ql&INTCMP=undefined&acquisitionData=%7B%22source%22%3A%22GUARDIAN_WEB%22%2C%22componentId%22%3A%22PrintSubscriptionsHeaderLink%22%2C%22componentType%22%3A%22ACQUISITIONS_HEADER%22%2C%22referrerPageviewId%22%3A%22mvykuw7smwmypu3sw2ql%22%2C%22referrerUrl%22%3A%22https%3A%2F%2Fwww.theguardian.com%2Finternational%22%7D
-        - link "Sign in" [ref=f123e24]:
-          - /url: https://profile.theguardian.com/signin?INTCMP=DOTCOM_NEWHEADER_SIGNIN&ABCMP=ab-sign-in&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dguardian_signin_header
+        - link "Print subscriptions" [ref=f123e22]: https://support.theguardian.com/subscribe/weekly?REFPVID=mvykuw7smwmypu3sw2ql&INTCMP=undefined&acquisitionData=%7B%22source%22%3A%22GUARDIAN_WEB%22%2C%22componentId%22%3A%22PrintSubscriptionsHeaderLink%22%2C%22componentType%22%3A%22ACQUISITIONS_HEADER%22%2C%22referrerPageviewId%22%3A%22mvykuw7smwmypu3sw2ql%22%2C%22referrerUrl%22%3A%22https%3A%2F%2Fwww.theguardian.com%2Finternational%22%7D
+        - link "Sign in" [ref=f123e24]: https://profile.theguardian.com/signin?INTCMP=DOTCOM_NEWHEADER_SIGNIN&ABCMP=ab-sign-in&componentEventParams=componentType%3Didentityauthentication%26componentId%3Dguardian_signin_header
       - region "Highlights" [ref=f123e30]:
         - list:
           - group:
             - generic:
-              - link "A curmudgeon’s guide to the 2026 US elections" [ref=f123e35]:
-                - /url: /commentisfree/2026/nov/01/midterm-elections-dan-sullivan
+              - link "A curmudgeon’s guide to the 2026 US elections" [ref=f123e35]: /commentisfree/2026/nov/01/midterm-elections-dan-sullivan
               - heading "Dave Schilling double quotation markA curmudgeon’s guide to the 2026 US elections" [level=3] [ref=f123e37]:
                 - generic: Dave Schilling
                 - img "double quotation mark" [ref=f123e39]
@@ -31,8 +26,7 @@ source: tests/playwright_fixtures.rs
               - img "Dave Schilling" [ref=f123e43]
           - group:
             - generic:
-              - link "Are experts changing their minds on a single autism spectrum?" [ref=f123e47]:
-                - /url: /society/2026/nov/01/the-term-is-becoming-unrecognisable-have-the-experts-who-believed-in-a-single-autism-spectrum-changed-their-minds
+              - link "Are experts changing their minds on a single autism spectrum?" [ref=f123e47]: /society/2026/nov/01/the-term-is-becoming-unrecognisable-have-the-experts-who-believed-in-a-single-autism-spectrum-changed-their-minds
               - heading "Autism Are experts changing their minds on a single autism spectrum?" [level=3] [ref=f123e49]:
                 - generic: Autism
                 - text: Are experts changing their minds on a single autism spectrum?
@@ -47,8 +41,7 @@ source: tests/playwright_fixtures.rs
               - img "Man in blue jeans and white t-shirt, holding red and blue ball in his left hand." [ref=f123e67]
           - group:
             - generic:
-              - link "What does Olivia Colman’s hot sex with a basket tell us about heteropessimism?" [ref=f123e71]:
-                - /url: /commentisfree/2026/nov/01/wicker-olivia-colman-alexander-skarsgard-hot-sex-basket-heteropessimism
+              - link "What does Olivia Colman’s hot sex with a basket tell us about heteropessimism?" [ref=f123e71]: /commentisfree/2026/nov/01/wicker-olivia-colman-alexander-skarsgard-hot-sex-basket-heteropessimism
               - heading "Emma Beddington double quotation markWhat does Olivia Colman’s hot sex with a basket tell us about heteropessimism?" [level=3] [ref=f123e73]:
                 - generic: Emma Beddington
                 - img "double quotation mark" [ref=f123e75]
@@ -56,16 +49,14 @@ source: tests/playwright_fixtures.rs
               - img "Emma Beddington" [ref=f123e79]
           - group:
             - generic:
-              - link "Hitler’s retreat was torched – should it be rebuilt?" [ref=f123e83]:
-                - /url: /world/2026/nov/01/hitler-eagles-nest-retreat-arson-attack-should-it-be-rebuilt
+              - link "Hitler’s retreat was torched – should it be rebuilt?" [ref=f123e83]: /world/2026/nov/01/hitler-eagles-nest-retreat-arson-attack-should-it-be-rebuilt
               - heading "Eagle’s Nest Hitler’s retreat was torched – should it be rebuilt?" [level=3] [ref=f123e85]:
                 - generic: Eagle’s Nest
                 - text: Hitler’s retreat was torched – should it be rebuilt?
               - img "Flames engulf the Eagle's Nest mountain lodge at night, with fog filling the valley below." [ref=f123e91]
           - group:
             - generic:
-              - link "10 tips, from reading a book to getting more sleep" [ref=f123e95]:
-                - /url: /lifeandstyle/2026/nov/01/how-to-improve-your-memory-10-easy-enjoyable-expert-tips-from-reading-a-book-to-getting-more-sleep
+              - link "10 tips, from reading a book to getting more sleep" [ref=f123e95]: /lifeandstyle/2026/nov/01/how-to-improve-your-memory-10-easy-enjoyable-expert-tips-from-reading-a-book-to-getting-more-sleep
               - heading "Improve your memory 10 tips, from reading a book to getting more sleep" [level=3] [ref=f123e97]:
                 - generic: Improve your memory
                 - text: 10 tips, from reading a book to getting more sleep
@@ -80,62 +71,44 @@ source: tests/playwright_fixtures.rs
         - button [aria-hidden] [ref=f123e130]
         - list:
           - listitem:
-            - link "News" [ref=f123e133]:
-              - /url: /
+            - link "News" [ref=f123e133]
           - listitem:
-            - link "Opinion" [ref=f123e135]:
-              - /url: /commentisfree
+            - link "Opinion" [ref=f123e135]: /commentisfree
           - listitem:
-            - link "Sport" [ref=f123e137]:
-              - /url: /sport
+            - link "Sport" [ref=f123e137]: /sport
           - listitem:
-            - link "Culture" [ref=f123e139]:
-              - /url: /culture
+            - link "Culture" [ref=f123e139]: /culture
           - listitem:
-            - link "Lifestyle" [ref=f123e141]:
-              - /url: /lifeandstyle
+            - link "Lifestyle" [ref=f123e141]: /lifeandstyle
         - button "Toggle main menu" [ref=f123e143]:
           - generic [ref=f123e144] [cursor=pointer]: Show more
         - list:
           - listitem:
-            - link "World" [ref=f123e152]:
-              - /url: /world
+            - link "World" [ref=f123e152]: /world
           - listitem:
-            - link "US politics" [ref=f123e154]:
-              - /url: /us-news/us-politics
+            - link "US politics" [ref=f123e154]: /us-news/us-politics
           - listitem:
-            - link "UK" [ref=f123e156]:
-              - /url: /uk-news
+            - link "UK" [ref=f123e156]: /uk-news
           - listitem:
-            - link "Climate crisis" [ref=f123e158]:
-              - /url: /environment/climate-crisis
+            - link "Climate crisis" [ref=f123e158]: /environment/climate-crisis
           - listitem:
-            - link "Middle East" [ref=f123e160]:
-              - /url: /world/middleeast
+            - link "Middle East" [ref=f123e160]: /world/middleeast
           - listitem:
-            - link "Ukraine" [ref=f123e162]:
-              - /url: /world/ukraine
+            - link "Ukraine" [ref=f123e162]: /world/ukraine
           - listitem:
-            - link "Environment" [ref=f123e164]:
-              - /url: /environment
+            - link "Environment" [ref=f123e164]: /environment
           - listitem:
-            - link "Science" [ref=f123e166]:
-              - /url: /science
+            - link "Science" [ref=f123e166]: /science
           - listitem:
-            - link "Global development" [ref=f123e168]:
-              - /url: /global-development
+            - link "Global development" [ref=f123e168]: /global-development
           - listitem:
-            - link "Football" [ref=f123e170]:
-              - /url: /football
+            - link "Football" [ref=f123e170]: /football
           - listitem:
-            - link "Tech" [ref=f123e172]:
-              - /url: /technology
+            - link "Tech" [ref=f123e172]: /technology
           - listitem:
-            - link "Business" [ref=f123e174]:
-              - /url: /business
+            - link "Business" [ref=f123e174]: /business
           - listitem:
-            - link "Obituaries" [ref=f123e176]:
-              - /url: /obituaries
+            - link "Obituaries" [ref=f123e176]: /obituaries
   - main [ref=f123e178]:
     - generic:
       - heading "News" [level=2] [ref=f123e184]
@@ -143,8 +116,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Ukraine defies Trump to resume attacks on Russian oil refineries" [ref=f123e190]:
-                - /url: /world/2026/nov/01/ukraine-defies-trump-resumes-attacks-russian-oil
+              - link "Ukraine defies Trump to resume attacks on Russian oil refineries" [ref=f123e190]: /world/2026/nov/01/ukraine-defies-trump-resumes-attacks-russian-oil
               - generic:
                 - img "Huge plumes of dark smoke seen across a field against a daytime sky" [ref=f123e202]
                 - generic:
@@ -170,8 +142,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Trump praises Haley Stevens while rallying in Iowa in final push before Election Day" [ref=f123e232]:
-                - /url: /us-news/live/2026/nov/01/trump-midterm-rallies-iowa-kansas
+              - link "Trump praises Haley Stevens while rallying in Iowa in final push before Election Day" [ref=f123e232]: /us-news/live/2026/nov/01/trump-midterm-rallies-iowa-kansas
               - generic:
                 - img "Donald Trump points at supporters in the crowd" [ref=f123e242]
                 - generic:
@@ -202,8 +173,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "US, Japan and Canada citizens among dead, authorities say" [ref=f123e279]:
-                - /url: /world/2026/nov/02/spain-trash-crash-us-citizens-japan-canada-dead
+              - link "US, Japan and Canada citizens among dead, authorities say" [ref=f123e279]: /world/2026/nov/02/spain-trash-crash-us-citizens-japan-canada-dead
               - generic:
                 - img "Cranes lift wrecked train carriages as rescuers search for victims following a collision between two trains in Urda, Spain." [ref=f123e289]
                 - generic:
@@ -213,8 +183,7 @@ source: tests/playwright_fixtures.rs
                   - time: 17m ago
           - listitem:
             - generic:
-              - link "Cryosphere faces permanent damage when world overshoots 1.5C, scientists warn" [ref=f123e302]:
-                - /url: /science/2026/nov/02/permanent-damage-crysophere-overshoots-15c-scientists-warn
+              - link "Cryosphere faces permanent damage when world overshoots 1.5C, scientists warn" [ref=f123e302]: /science/2026/nov/02/permanent-damage-crysophere-overshoots-15c-scientists-warn
               - generic:
                 - img "A person in a yellow jacket faces the vast Greenland ice sheet across still water" [ref=f123e312]
                 - generic:
@@ -225,8 +194,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Attempted murder probe after petrol bomb thrown at French riot police" [ref=f123e326]:
-                - /url: /world/2026/nov/01/petrol-bomb-thrown-at-french-riot-police
+              - link "Attempted murder probe after petrol bomb thrown at French riot police" [ref=f123e326]: /world/2026/nov/01/petrol-bomb-thrown-at-french-riot-police
               - generic:
                 - img "A line of riot police in helmets, visors and body armour, carrying shields, runs along a street. One has flames rising up and engulfing his legs. A young man in a white T-shirt and straw hat looks on." [ref=f123e336]
                 - generic:
@@ -251,8 +219,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Kimi Antonelli, 20, becomes youngest F1 champion with third place in Mexican Grand Prix" [ref=f123e366]:
-                - /url: /sport/2026/nov/01/kimi-antonelli-youngest-f1-champion-mexican-gp
+              - link "Kimi Antonelli, 20, becomes youngest F1 champion with third place in Mexican Grand Prix" [ref=f123e366]: /sport/2026/nov/01/kimi-antonelli-youngest-f1-champion-mexican-gp
               - generic:
                 - img "Verstappen and Hamilton lift Antonelli on the podium after the Mexico City Grand Prix" [ref=f123e376]
                 - generic:
@@ -275,8 +242,7 @@ source: tests/playwright_fixtures.rs
                       - text: Kimi Antonelli's season in pictures
           - listitem:
             - generic:
-              - link "UK was ‘vehement’ slavery reparations should not be on Commonwealth summit agenda" [ref=f123e404]:
-                - /url: /world/2026/nov/01/uk-was-vehement-slavery-reparations-should-not-be-on-commonwealth-summit-agenda
+              - link "UK was ‘vehement’ slavery reparations should not be on Commonwealth summit agenda" [ref=f123e404]: /world/2026/nov/01/uk-was-vehement-slavery-reparations-should-not-be-on-commonwealth-summit-agenda
               - generic:
                 - img "King Charles caught in rain during downpour in Antigua on Sunday." [ref=f123e414]
                 - generic:
@@ -294,8 +260,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Tens of thousands protest against Narendra Modi regime in Delhi" [ref=f123e435]:
-                - /url: /world/2026/nov/01/india-opposition-protest-rally-delhi
+              - link "Tens of thousands protest against Narendra Modi regime in Delhi" [ref=f123e435]: /world/2026/nov/01/india-opposition-protest-rally-delhi
               - generic:
                 - img "A massive crowd waves party flags around Rahul Gandhi's vehicle during a Congress protest march." [ref=f123e445]
                 - generic:
@@ -305,8 +270,7 @@ source: tests/playwright_fixtures.rs
                   - time: 9h ago
           - listitem:
             - generic:
-              - link "Investors pull billions in funds from Binance after record $6.3bn hack" [ref=f123e458]:
-                - /url: /business/2026/nov/01/investors-take-out-36bn-from-binance-after-record-hack-that-stole-billions
+              - link "Investors pull billions in funds from Binance after record $6.3bn hack" [ref=f123e458]: /business/2026/nov/01/investors-take-out-36bn-from-binance-after-record-hack-that-stole-billions
               - generic:
                 - img "Binance logo with bitcoin coin held in front of it" [ref=f123e468]
                 - generic:
@@ -320,8 +284,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "The US-China trade war seems to have subsided – but the sense of calm is misleading" [ref=f123e494]:
-                - /url: /world/2026/nov/01/us-china-trade-war-trump-xi
+              - link "The US-China trade war seems to have subsided – but the sense of calm is misleading" [ref=f123e494]: /world/2026/nov/01/us-china-trade-war-trump-xi
               - generic:
                 - img "Xi Jinping and Donald Trump watch as people play music" [ref=f123e504]
                 - generic:
@@ -341,8 +304,7 @@ source: tests/playwright_fixtures.rs
                   - text: "Piles of rubbish, power cuts and potholes: anger grows over Johannesburg’s infrastructure"
           - listitem:
             - generic:
-              - link "Hitler’s Eagle’s Nest retreat was torched in an arson attack. Should it be rebuilt?" [ref=f123e536]:
-                - /url: /world/2026/nov/01/hitler-eagles-nest-retreat-arson-attack-should-it-be-rebuilt
+              - link "Hitler’s Eagle’s Nest retreat was torched in an arson attack. Should it be rebuilt?" [ref=f123e536]
               - generic:
                 - img "Flames engulf the Eagle's Nest mountain lodge at night, with fog filling the valley below." [ref=f123e546]
                 - heading "Germany Hitler’s Eagle’s Nest retreat was torched in an arson attack. Should it be rebuilt?" [level=3] [ref=f123e550]:
@@ -355,8 +317,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "Judge dismisses Trump attempt to block Alaska Senate race results if Republican loses" [ref=f123e567]:
-              - /url: /us-news/2026/nov/01/alaska-senate-race-republican-dan-sullivan
+            - link "Judge dismisses Trump attempt to block Alaska Senate race results if Republican loses" [ref=f123e567]: /us-news/2026/nov/01/alaska-senate-race-republican-dan-sullivan
             - generic:
               - img "US Senator Dan Sullivan (R-AK) makes an appearance at the Alaska Federation of Natives Convention in Anchorage, Alaska, US, October 22, 2026. REUTERS/Kerry Tasker" [ref=f123e577]
               - generic:
@@ -375,8 +336,7 @@ source: tests/playwright_fixtures.rs
                 - text: "‘Dark money made darker’: funding labyrinth conceals donors to Republican campaigns"
         - listitem:
           - generic:
-            - link "The staggering $446m Elon Musk has spent on the US midterms – visualised" [ref=f123e609]:
-              - /url: /us-news/ng-interactive/2026/oct/31/elon-musk-midterms-spending-visualized
+            - link "The staggering $446m Elon Musk has spent on the US midterms – visualised" [ref=f123e609]: /us-news/ng-interactive/2026/oct/31/elon-musk-midterms-spending-visualized
             - generic:
               - img "Collage of Elon Musk wearing a red MAGA hat, surrounded by dollar bills and a descending red chart line" [ref=f123e619]
               - heading "Elon Musk The staggering $446m Elon Musk has spent on the US midterms – visualised" [level=3] [ref=f123e623]:
@@ -384,8 +344,7 @@ source: tests/playwright_fixtures.rs
                 - text: The staggering $446m Elon Musk has spent on the US midterms – visualised
         - listitem:
           - generic:
-            - link "It’s closer to Beijing than Washington – and residents of this Alaskan outpost are reeling from Trump’s policies" [ref=f123e628]:
-              - /url: /us-news/ng-interactive/2026/oct/31/alaska-unalaska-fishing-trump
+            - link "It’s closer to Beijing than Washington – and residents of this Alaskan outpost are reeling from Trump’s policies" [ref=f123e628]: /us-news/ng-interactive/2026/oct/31/alaska-unalaska-fishing-trump
             - generic:
               - 'img "UNALASKA - OCTOBER 16, 2026: Carl E. Moses Boat Harbor." [ref=f123e638]'
               - heading "Alaska It’s closer to Beijing than Washington – and residents of this Alaskan outpost are reeling from Trump’s policies" [level=3] [ref=f123e642]:
@@ -396,8 +355,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "Blue Planet III review – David Attenborough makes another absolute corker" [ref=f123e660]:
-              - /url: /tv-and-radio/2026/nov/01/blue-planet-iii-review-david-attenborough-bbc-iplayer
+            - link "Blue Planet III review – David Attenborough makes another absolute corker" [ref=f123e660]: /tv-and-radio/2026/nov/01/blue-planet-iii-review-david-attenborough-bbc-iplayer
             - generic:
               - img "A southern right whale's tail fluke rises above water near a film crew's boat" [ref=f123e670]
               - generic:
@@ -408,7 +366,6 @@ source: tests/playwright_fixtures.rs
         - listitem:
           - generic:
             - 'link "‘The term is becoming unrecognisable’: have the experts who believed in a single autism spectrum changed their minds?" [ref=f123e674] [cursor=pointer]':
-              - /url: /society/2026/nov/01/the-term-is-becoming-unrecognisable-have-the-experts-who-believed-in-a-single-autism-spectrum-changed-their-minds
             - generic:
               - img "Illustration of pink circles, turning red towards the centre, where a boy sits looking towards a crowd of people coming from the left" [ref=f123e684]
               - 'heading "Autism ‘The term is becoming unrecognisable’: have the experts who believed in a single autism spectrum changed their minds?" [level=3]':
@@ -420,8 +377,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "The Lives of Others review – Keira Knightley brings star power to Robert Icke’s Stasi drama" [ref=f123e699]:
-                - /url: /stage/2026/nov/02/the-lives-of-others-review-keira-knightley-brings-star-power-to-robert-ickes-stasi-drama
+              - link "The Lives of Others review – Keira Knightley brings star power to Robert Icke’s Stasi drama" [ref=f123e699]: /stage/2026/nov/02/the-lives-of-others-review-keira-knightley-brings-star-power-to-robert-ickes-stasi-drama
               - generic:
                 - img "Keira Knightley as Christa-Maria Sieland sits on a sofa, legs crossed, looking up anxiously" [ref=f123e709]
                 - generic:
@@ -431,8 +387,7 @@ source: tests/playwright_fixtures.rs
                   - time: 1h ago
           - listitem:
             - generic:
-              - link "Like many authors, I’m bombarded by scam fan mail. I wasn’t prepared for what would happen when I wrote back" [ref=f123e738]:
-                - /url: /books/2026/nov/01/like-many-authors-im-bombarded-by-scam-fan-mail-i-wasnt-prepared-for-what-would-happen-when-i-wrote-back
+              - link "Like many authors, I’m bombarded by scam fan mail. I wasn’t prepared for what would happen when I wrote back" [ref=f123e738]: /books/2026/nov/01/like-many-authors-im-bombarded-by-scam-fan-mail-i-wasnt-prepared-for-what-would-happen-when-i-wrote-back
               - generic:
                 - img "Joe Dunthorne." [ref=f123e748]
                 - heading "Books Like many authors, I’m bombarded by scam fan mail. I wasn’t prepared for what would happen when I wrote back" [level=3] [ref=f123e752]:
@@ -441,8 +396,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Love the C word? You might be Australian. Hate it? You might be American" [ref=f123e759]:
-                - /url: /books/2026/nov/02/the-c-word-australian-culture-identity
+              - link "Love the C word? You might be Australian. Hate it? You might be American" [ref=f123e759]: /books/2026/nov/02/the-c-word-australian-culture-identity
               - generic:
                 - img "Still from Colin from Accounts" [ref=f123e769]
                 - generic:
@@ -463,7 +417,6 @@ source: tests/playwright_fixtures.rs
           - listitem:
             - generic:
               - 'link "The truth about testicles: are we facing spermageddon?" [ref=f123e802] [cursor=pointer]':
-                - /url: /global/2026/nov/01/the-truth-about-testicles-are-we-facing-spermageddon
               - generic:
                 - img "Man in blue jeans and white t-shirt, holding red and blue ball in his left hand." [ref=f123e812]
                 - generic:
@@ -488,8 +441,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "A curmudgeon’s guide to the 2026 US elections" [ref=f123e862]:
-                - /url: /commentisfree/2026/nov/01/midterm-elections-dan-sullivan
+              - link "A curmudgeon’s guide to the 2026 US elections" [ref=f123e862]
               - generic:
                 - img "Dave Schilling" [ref=f123e867]
                 - generic:
@@ -507,8 +459,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "What does Olivia Colman’s hot sex with a basket tell us about heteropessimism?" [ref=f123e892]:
-                - /url: /commentisfree/2026/nov/01/wicker-olivia-colman-alexander-skarsgard-hot-sex-basket-heteropessimism
+              - link "What does Olivia Colman’s hot sex with a basket tell us about heteropessimism?" [ref=f123e892]
               - generic:
                 - img "Emma Beddington" [ref=f123e897]
                 - generic:
@@ -530,8 +481,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "Ella Baron on Donald Trump and the US midterms – cartoon" [ref=f123e937]:
-              - /url: /commentisfree/picture/2026/nov/01/ella-baron-donald-trump-us-midterms-cartoon
+            - link "Ella Baron on Donald Trump and the US midterms – cartoon" [ref=f123e937]: /commentisfree/picture/2026/nov/01/ella-baron-donald-trump-us-midterms-cartoon
             - generic:
               - heading "Guardian Opinion cartoon Ella Baron on Donald Trump and the US midterms – cartoon" [level=3] [ref=f123e942]:
                 - generic: Guardian Opinion cartoon
@@ -539,8 +489,7 @@ source: tests/playwright_fixtures.rs
               - time: 7h ago
         - listitem:
           - generic:
-            - link "Forget maxxing your life. 2027 must be the year we relax – and start minning" [ref=f123e950]:
-              - /url: /commentisfree/2026/nov/01/maxxing-life-2027-relax-start-minning
+            - link "Forget maxxing your life. 2027 must be the year we relax – and start minning" [ref=f123e950]: /commentisfree/2026/nov/01/maxxing-life-2027-relax-start-minning
             - generic:
               - img "Polly Hudson" [ref=f123e955]
               - generic:
@@ -557,8 +506,7 @@ source: tests/playwright_fixtures.rs
                   - generic: comments
         - listitem:
           - generic:
-            - link "I’m sick of smug celebrities on the podcast circuit. No wonder there’s a fuss when someone speaks the truth" [ref=f123e977]:
-              - /url: /commentisfree/2026/nov/01/smug-celebrities-podcast-circuit-aaron-sorkin
+            - link "I’m sick of smug celebrities on the podcast circuit. No wonder there’s a fuss when someone speaks the truth" [ref=f123e977]: /commentisfree/2026/nov/01/smug-celebrities-podcast-circuit-aaron-sorkin
             - generic:
               - img "Imogen West-Knights" [ref=f123e982]
               - generic:
@@ -573,8 +521,7 @@ source: tests/playwright_fixtures.rs
                 - generic: comments
         - listitem:
           - generic:
-            - link "Life is full of suffering – but leaning into moments of pleasure can allow the nervous system to rest" [ref=f123e1002]:
-              - /url: /commentisfree/2026/nov/02/life-is-full-of-suffering-but-leaning-into-moments-of-pleasure-can-allow-the-nervous-system-to-rest
+            - link "Life is full of suffering – but leaning into moments of pleasure can allow the nervous system to rest" [ref=f123e1002]: /commentisfree/2026/nov/02/life-is-full-of-suffering-but-leaning-into-moments-of-pleasure-can-allow-the-nervous-system-to-rest
             - generic:
               - generic:
                 - heading "double quotation markLife is full of suffering – but leaning into moments of pleasure can allow the nervous system to rest" [level=3] [ref=f123e1007]:
@@ -628,13 +575,11 @@ source: tests/playwright_fixtures.rs
                   - list:
                     - listitem:
                       - link [ref=f123e1101]:
-                        - /url: /sport/2026/nov/01/kimi-antonelli-youngest-f1-champion-mexican-gp
                         - heading "Formula One Antonelli becomes youngest F1 champion with third place in Mexican GP" [level=3] [ref=f123e1102]:
                           - generic: Formula One
                           - text: Antonelli becomes youngest F1 champion with third place in Mexican GP
                     - listitem:
                       - link [ref=f123e1106]:
-                        - /url: /sport/gallery/2026/nov/01/kimi-antonelli-claims-formula-one-crown-season-in-pictures
                         - heading "Gallery Kimi Antonelli claims the Formula One crown – his season in pictures" [level=3] [ref=f123e1107]:
                           - generic: Gallery
                           - text: Kimi Antonelli claims the Formula One crown – his season in pictures
@@ -667,8 +612,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Cardinals’ comeback stuns Cowboys; Jackson’s season could be over" [ref=f123e1153]:
-                - /url: /sport/2026/nov/01/nfl-roundup-sunday-football-scores
+              - link "Cardinals’ comeback stuns Cowboys; Jackson’s season could be over" [ref=f123e1153]: /sport/2026/nov/01/nfl-roundup-sunday-football-scores
               - generic:
                 - img "Gardner Minshew yells and clenches his fists while celebrating on the football field" [ref=f123e1163]
                 - generic:
@@ -685,8 +629,7 @@ source: tests/playwright_fixtures.rs
                       - text: Lions shaken after linebacker Campbell taken to hospital with ‘scary’ neck injury
           - listitem:
             - generic:
-              - link "Should Premier League strugglers stick or twist as pressure on managers mounts?" [ref=f123e1183]:
-                - /url: /football/2026/nov/01/michael-carrick-manchester-united-favourite-premier-league-sack-race
+              - link "Should Premier League strugglers stick or twist as pressure on managers mounts?" [ref=f123e1183]: /football/2026/nov/01/michael-carrick-manchester-united-favourite-premier-league-sack-race
               - generic:
                 - img "Oliver Glasner" [ref=f123e1193]
                 - generic:
@@ -704,8 +647,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Ciara Mageean, European 1500m gold medallist with Ireland, dies aged 34" [ref=f123e1214]:
-                - /url: /sport/2026/nov/01/ciara-mageean-european-1500m-gold-medallist-ireland-dies-age-34
+              - link "Ciara Mageean, European 1500m gold medallist with Ireland, dies aged 34" [ref=f123e1214]: /sport/2026/nov/01/ciara-mageean-european-1500m-gold-medallist-ireland-dies-age-34
               - generic:
                 - img "Ciara Mageean, pictured in Glasgow in 2019" [ref=f123e1224]
                 - generic:
@@ -718,8 +660,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "Mbappé penalty helps Real Madrid stroll to sixth straight win" [ref=f123e1249]:
-              - /url: /football/2026/nov/01/european-football-real-madrid-lazio-juventus-napoli-kylian-mbappe
+            - link "Mbappé penalty helps Real Madrid stroll to sixth straight win" [ref=f123e1249]: /football/2026/nov/01/european-football-real-madrid-lazio-juventus-napoli-kylian-mbappe
             - generic:
               - img "Kylian Mbappé shows his elation after opening the scoring for Real Madrid with Dean Huijsen." [ref=f123e1257]
               - generic:
@@ -735,8 +676,7 @@ source: tests/playwright_fixtures.rs
                       - generic: comments
         - listitem:
           - generic:
-            - link "Borthwick urges England players to improve discipline at Nations Championship" [ref=f123e1277]:
-              - /url: /sport/2026/nov/01/steve-borthwick-england-players-improve-discipline-before-nations-championships-rugby
+            - link "Borthwick urges England players to improve discipline at Nations Championship" [ref=f123e1277]: /sport/2026/nov/01/steve-borthwick-england-players-improve-discipline-before-nations-championships-rugby
             - generic:
               - img "Henry Arundell is shown a yellow card by the referee" [ref=f123e1285]
               - generic:
@@ -757,8 +697,7 @@ source: tests/playwright_fixtures.rs
                 - time: 9h ago
         - listitem:
           - generic:
-            - link "Dart wins maiden WTA title at 30 with Guangzhou Open triumph" [ref=f123e1318]:
-              - /url: /sport/2026/nov/01/harriet-dart-wins-maiden-wta-title-guangzhou-open-tennis-lilli-tagger
+            - link "Dart wins maiden WTA title at 30 with Guangzhou Open triumph" [ref=f123e1318]: /sport/2026/nov/01/harriet-dart-wins-maiden-wta-title-guangzhou-open-tennis-lilli-tagger
             - generic:
               - img "Harriet Dart celebrates with her trophy after her three-set defeat of Lilli Tagger in the Guangzhou Open final" [ref=f123e1326]
               - heading "Tennis Dart wins maiden WTA title at 30 with Guangzhou Open triumph" [level=3] [ref=f123e1330]:
@@ -770,8 +709,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Home secretary to make some migrants wait 10 years or more for right to settle in UK" [ref=f123e1348]:
-                - /url: /politics/2026/nov/01/home-secretary-shabana-mahmood-immigration-leave-to-remain-windrush
+              - link "Home secretary to make some migrants wait 10 years or more for right to settle in UK" [ref=f123e1348]: /politics/2026/nov/01/home-secretary-shabana-mahmood-immigration-leave-to-remain-windrush
               - generic:
                 - img "Shabana Mahmood smiles for the camera as she walks along Downing Street" [ref=f123e1360]
                 - generic:
@@ -791,8 +729,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Negotiators ‘braced for worst’ over US-Iran talks to reopen strait of Hormuz" [ref=f123e1385]:
-                - /url: /world/2026/nov/01/negotiators-braced-for-worst-over-us-iran-talks-to-reopen-strait-of-hormuz
+              - link "Negotiators ‘braced for worst’ over US-Iran talks to reopen strait of Hormuz" [ref=f123e1385]: /world/2026/nov/01/negotiators-braced-for-worst-over-us-iran-talks-to-reopen-strait-of-hormuz
               - generic:
                 - img "three young Iranians men walk past a large red, white and blue anti-US wall mural in Tehran. It shows a battleship under attack from missiles." [ref=f123e1395]
                 - generic:
@@ -809,8 +746,7 @@ source: tests/playwright_fixtures.rs
                       - text: "‘What’s our crime?’: A Palestinian family’s fight to get care for son injured by Hamas rocket"
           - listitem:
             - generic:
-              - link "Parents of woman who died of seizure after ChatGPT misguidance sue OpenAI" [ref=f123e1415]:
-                - /url: /us-news/2026/nov/01/chatgpt-woman-seizure-lawsuit-openai
+              - link "Parents of woman who died of seizure after ChatGPT misguidance sue OpenAI" [ref=f123e1415]: /us-news/2026/nov/01/chatgpt-woman-seizure-lawsuit-openai
               - generic:
                 - img "A silhouetted person stands beside the illuminated ChatGPT logo on a dark wall." [ref=f123e1425]
                 - generic:
@@ -821,8 +757,7 @@ source: tests/playwright_fixtures.rs
         - list:
           - listitem:
             - generic:
-              - link "Jacinda Ardern suggests politicians ‘rebuild trust by building financial security’" [ref=f123e1440]:
-                - /url: /world/2026/nov/01/jacinda-ardern-sydney-opera-house-talk-advises-politicians-to-rebuild-trust
+              - link "Jacinda Ardern suggests politicians ‘rebuild trust by building financial security’" [ref=f123e1440]: /world/2026/nov/01/jacinda-ardern-sydney-opera-house-talk-advises-politicians-to-rebuild-trust
               - generic:
                 - img "Former New Zealand prime minister Jacinda Ardern" [ref=f123e1450]
                 - heading "Sydney Jacinda Ardern suggests politicians ‘rebuild trust by building financial security’" [level=3] [ref=f123e1454]:
@@ -830,8 +765,7 @@ source: tests/playwright_fixtures.rs
                   - text: Jacinda Ardern suggests politicians ‘rebuild trust by building financial security’
           - listitem:
             - generic:
-              - link "Tusk defends overhaul of Poland’s constitutional court despite protests" [ref=f123e1459]:
-                - /url: /world/2026/oct/31/donald-tusk-defends-overhaul-poland-constitutional-court-despite-protests
+              - link "Tusk defends overhaul of Poland’s constitutional court despite protests" [ref=f123e1459]: /world/2026/oct/31/donald-tusk-defends-overhaul-poland-constitutional-court-despite-protests
               - generic:
                 - img "Prime minister Donald Tusk speaks into a microphone with a furrowed, animated expression" [ref=f123e1469]
                 - generic:
@@ -846,8 +780,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "Cryosphere faces permanent damage when world overshoots 1.5C, scientists warn" [ref=f123e1496]:
-              - /url: /science/2026/nov/02/permanent-damage-crysophere-overshoots-15c-scientists-warn
+            - link "Cryosphere faces permanent damage when world overshoots 1.5C, scientists warn" [ref=f123e1496]
             - generic:
               - img "A person in a yellow jacket faces the vast Greenland ice sheet across still water" [ref=f123e1508]
               - generic:
@@ -857,8 +790,7 @@ source: tests/playwright_fixtures.rs
                 - time: 1h ago
         - listitem:
           - generic:
-            - link "Trump boosted half of US coal plants with taxpayer dollars and ‘free passes to pollute’, report says" [ref=f123e1520]:
-              - /url: /us-news/2026/oct/31/trump-coal-plants-taxpayer-dollars
+            - link "Trump boosted half of US coal plants with taxpayer dollars and ‘free passes to pollute’, report says" [ref=f123e1520]: /us-news/2026/oct/31/trump-coal-plants-taxpayer-dollars
             - generic:
               - img "emissions rise from a power plant" [ref=f123e1532]
               - heading "Coal Trump boosted half of US coal plants with taxpayer dollars and ‘free passes to pollute’, report says" [level=3] [ref=f123e1536]:
@@ -875,8 +807,7 @@ source: tests/playwright_fixtures.rs
                 - text: "‘Bunch of baloney’: calls grow for Cop summit reforms as countries on track to fail nature targets"
         - listitem:
           - generic:
-            - link "Twice as many plants and animals sold in wildlife trade as previously thought, says report" [ref=f123e1562]:
-              - /url: /environment/2026/oct/30/twice-as-many-plants-and-animals-sold-in-wildlife-trade-as-previously-thought-says-report
+            - link "Twice as many plants and animals sold in wildlife trade as previously thought, says report" [ref=f123e1562]: /environment/2026/oct/30/twice-as-many-plants-and-animals-sold-in-wildlife-trade-as-previously-thought-says-report
             - generic:
               - img "Smuggled green parrots are crammed inside white pipes, blocked by wire grids" [ref=f123e1574]
               - heading "The age of extinction Twice as many plants and animals sold in wildlife trade as previously thought, says report" [level=3] [ref=f123e1578]:
@@ -887,8 +818,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "Police detain 325 people at pro-Palestine Action protest at US embassy in London" [ref=f123e1596]:
-              - /url: /uk-news/2026/nov/01/police-detain-325-people-at-pro-palestine-action-protest-at-us-embassy-in-london
+            - link "Police detain 325 people at pro-Palestine Action protest at US embassy in London" [ref=f123e1596]: /uk-news/2026/nov/01/police-detain-325-people-at-pro-palestine-action-protest-at-us-embassy-in-london
             - generic:
               - heading "Protest Police detain 325 people at pro-Palestine Action protest at US embassy in London" [level=3] [ref=f123e1601]:
                 - generic: Protest
@@ -896,22 +826,19 @@ source: tests/playwright_fixtures.rs
               - time: 8h ago
         - listitem:
           - generic:
-            - link "Tommy Robinson conviction leaves far right with leadership void" [ref=f123e1609]:
-              - /url: /uk-news/2026/nov/01/tommy-robinson-conviction-leaves-far-right-with-leadership-void
+            - link "Tommy Robinson conviction leaves far right with leadership void" [ref=f123e1609]: /uk-news/2026/nov/01/tommy-robinson-conviction-leaves-far-right-with-leadership-void
             - heading "Tommy Robinson Tommy Robinson conviction leaves far right with leadership void" [level=3] [ref=f123e1614]:
               - generic: Tommy Robinson
               - text: Tommy Robinson conviction leaves far right with leadership void
         - listitem:
           - generic:
-            - link "English children’s homes are in crisis. Does Denmark hold the answers?" [ref=f123e1620]:
-              - /url: /society/2026/nov/01/english-childrens-homes-crisis-denmark-care-system-model
+            - link "English children’s homes are in crisis. Does Denmark hold the answers?" [ref=f123e1620]: /society/2026/nov/01/english-childrens-homes-crisis-denmark-care-system-model
             - heading "Children English children’s homes are in crisis. Does Denmark hold the answers?" [level=3] [ref=f123e1625]:
               - generic: Children
               - text: English children’s homes are in crisis. Does Denmark hold the answers?
         - listitem:
           - generic:
-            - link "High street ‘slot farms’ could avoid budget tax rise through bingo hall loophole" [ref=f123e1631]:
-              - /url: /society/2026/nov/01/high-street-slot-farms-budget-tax-rise-business-rates-bingo-licence-loophole
+            - link "High street ‘slot farms’ could avoid budget tax rise through bingo hall loophole" [ref=f123e1631]: /society/2026/nov/01/high-street-slot-farms-budget-tax-rise-business-rates-bingo-licence-loophole
             - heading "Gambling High street ‘slot farms’ could avoid budget tax rise through bingo hall loophole" [level=3] [ref=f123e1636]:
               - generic: Gambling
               - text: High street ‘slot farms’ could avoid budget tax rise through bingo hall loophole
@@ -941,8 +868,7 @@ source: tests/playwright_fixtures.rs
               - text: "‘We spend our days in silence’: fear and repression in Ohio as ICE terrorizes Haitian immigrants"
         - listitem:
           - generic:
-            - link "Director Michael Mann accidentally shoots himself in the leg at gun range" [ref=f123e1688]:
-              - /url: /film/2026/nov/01/michael-mann-accidentally-shoots-himself-leg
+            - link "Director Michael Mann accidentally shoots himself in the leg at gun range" [ref=f123e1688]: /film/2026/nov/01/michael-mann-accidentally-shoots-himself-leg
             - generic:
               - heading "US Director Michael Mann accidentally shoots himself in the leg at gun range" [level=3] [ref=f123e1693]:
                 - generic: US
@@ -1045,8 +971,7 @@ source: tests/playwright_fixtures.rs
                     - generic: comments
         - listitem:
           - generic:
-            - link "Skepta on his long-awaited return – and his anger at the racist right" [ref=f123e1931]:
-              - /url: /music/2026/oct/30/skepta-interview-the-fork-and-knife-album
+            - link "Skepta on his long-awaited return – and his anger at the racist right" [ref=f123e1931]: /music/2026/oct/30/skepta-interview-the-fork-and-knife-album
             - generic:
               - img "Skepta, in a beanie and jacket, stares intensely at the camera against a green backdrop" [ref=f123e1943]
               - heading "‘Ignorance towards immigration is horrible. It’s not British’ Skepta on his long-awaited return – and his anger at the racist right" [level=3] [ref=f123e1947]:
@@ -1084,8 +1009,7 @@ source: tests/playwright_fixtures.rs
                 - text: "‘Being hated is very bracing’: Helen Garner on surviving three marriages and being called a ‘rotten feminist’"
         - listitem:
           - generic:
-            - link "Ian Rankin, Louise Kennedy and Guardian readers on the books they enjoyed in October" [ref=f123e2041]:
-              - /url: /books/2026/oct/31/what-were-reading-ian-rankin-louise-kennedy-and-guardian-readers-on-the-books-they-enjoyed-in-october
+            - link "Ian Rankin, Louise Kennedy and Guardian readers on the books they enjoyed in October" [ref=f123e2041]: /books/2026/oct/31/what-were-reading-ian-rankin-louise-kennedy-and-guardian-readers-on-the-books-they-enjoyed-in-october
             - generic:
               - img "Book covers" [ref=f123e2049]
               - generic:
@@ -1108,8 +1032,7 @@ source: tests/playwright_fixtures.rs
                 - text: "Philippa Gregory: ‘I read 100 of the 18th century’s most popular novels – the perfect author’s apprenticeship’"
         - listitem:
           - generic:
-            - link "Attention Seeking Behaviour by Aea Varfis-van Warmelo review – a slippery liar’s taleaFiction" [ref=f123e2085]:
-              - /url: /books/2026/oct/30/attention-seeking-behaviour-by-aea-varfis-van-warmelo-review-a-slippery-liars-tale
+            - link "Attention Seeking Behaviour by Aea Varfis-van Warmelo review – a slippery liar’s taleaFiction" [ref=f123e2085]: /books/2026/oct/30/attention-seeking-behaviour-by-aea-varfis-van-warmelo-review-a-slippery-liars-tale
             - generic:
               - img "Aea Varfis-van Warmelo" [ref=f123e2093]
               - generic:
@@ -1126,8 +1049,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "After 50 years of playing video games, I’m finally starring in one" [ref=f123e2123]:
-              - /url: /games/2026/oct/30/after-50-years-of-playing-video-games-im-finally-starring-in-one
+            - link "After 50 years of playing video games, I’m finally starring in one" [ref=f123e2123]: /games/2026/oct/30/after-50-years-of-playing-video-games-im-finally-starring-in-one
             - generic:
               - img "Draga, protagonist of Black Tides Draga's Wake, played by Dominik Diamond" [ref=f123e2131]
               - generic:
@@ -1143,8 +1065,7 @@ source: tests/playwright_fixtures.rs
                     - generic: comments
         - listitem:
           - generic:
-            - link "Night Plane – join the jumbo jet to hell in this indie horror game" [ref=f123e2151]:
-              - /url: /games/2026/oct/29/night-plane-review-join-the-jumbo-jet-to-hell-in-this-indie-horror-game
+            - link "Night Plane – join the jumbo jet to hell in this indie horror game" [ref=f123e2151]: /games/2026/oct/29/night-plane-review-join-the-jumbo-jet-to-hell-in-this-indie-horror-game
             - generic:
               - img "Night Plane game screen shows a figure in the aisle of a plane with text onscreen reading 'Hey Bestie You Gotta Run! Ruuun!" [ref=f123e2159]
               - heading "Review Night Plane – join the jumbo jet to hell in this indie horror game" [level=3] [ref=f123e2163]:
@@ -1152,8 +1073,7 @@ source: tests/playwright_fixtures.rs
                 - text: Night Plane – join the jumbo jet to hell in this indie horror game
         - listitem:
           - generic:
-            - link "Social media is full of weird video game mashups. Where are they all coming from?" [ref=f123e2185]:
-              - /url: /games/2026/oct/28/social-media-is-full-of-weird-video-game-mashups-where-are-they-all-coming-from
+            - link "Social media is full of weird video game mashups. Where are they all coming from?" [ref=f123e2185]: /games/2026/oct/28/social-media-is-full-of-weird-video-game-mashups-where-are-they-all-coming-from
             - generic:
               - img "A blocky Minecraft character glides with a large orange and white Fortnite-style glider over terrain" [ref=f123e2193]
               - generic:
@@ -1163,8 +1083,7 @@ source: tests/playwright_fixtures.rs
                 - generic: Newsletter
         - listitem:
           - generic:
-            - link "Eight great new indie horror games for Halloween" [ref=f123e2205]:
-              - /url: /games/2026/oct/27/new-indie-horror-games-halloween
+            - link "Eight great new indie horror games for Halloween" [ref=f123e2205]: /games/2026/oct/27/new-indie-horror-games-halloween
             - generic:
               - img "In The Killing Stone game, a horned demon looms over small figurines on a glowing ritual mat" [ref=f123e2213]
               - heading "Games Eight great new indie horror games for Halloween" [level=3] [ref=f123e2217]:
@@ -1175,8 +1094,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "Juan Atkins, pioneer of Detroit techno sound, dies aged 64" [ref=f123e2236]:
-              - /url: /music/2026/nov/01/juan-atkins-pioneer-of-detroit-techno-sound-dies-aged-64
+            - link "Juan Atkins, pioneer of Detroit techno sound, dies aged 64" [ref=f123e2236]: /music/2026/nov/01/juan-atkins-pioneer-of-detroit-techno-sound-dies-aged-64
             - generic:
               - img "Juan Atkins" [ref=f123e2248]
               - generic:
@@ -1186,8 +1104,7 @@ source: tests/playwright_fixtures.rs
                 - time: 7h ago
         - listitem:
           - generic:
-            - link "Why you should treat charisma as a red flag" [ref=f123e2260]:
-              - /url: /science/2026/nov/01/why-you-should-treat-charisma-as-a-red-flag
+            - link "Why you should treat charisma as a red flag" [ref=f123e2260]: /science/2026/nov/01/why-you-should-treat-charisma-as-a-red-flag
             - generic:
               - img "A small silhouetted man speaks charismatically at a podium inside a giant shark's open jaws" [ref=f123e2272]
               - generic:
@@ -1210,8 +1127,7 @@ source: tests/playwright_fixtures.rs
                 - text: "‘Never big enough’: inside the booming penis enlargement industry"
         - listitem:
           - generic:
-            - link "‘We freed Patrick Stewart!’ Star Trek’s Marina Sirtis on breaking in her beloved but very serious co-star" [ref=f123e2310]:
-              - /url: /culture/2026/oct/31/patrick-stewart-star-trek-marina-sirtis-picard-shakespearean
+            - link "‘We freed Patrick Stewart!’ Star Trek’s Marina Sirtis on breaking in her beloved but very serious co-star" [ref=f123e2310]: /culture/2026/oct/31/patrick-stewart-star-trek-marina-sirtis-picard-shakespearean
             - generic:
               - 'img "From left: LeVar Burton, Patrick Stewart and Marina Sirtis in Star Trek." [ref=f123e2322]'
               - heading "Culture ‘We freed Patrick Stewart!’ Star Trek’s Marina Sirtis on breaking in her beloved but very serious co-star" [level=3] [ref=f123e2326]:
@@ -1223,7 +1139,6 @@ source: tests/playwright_fixtures.rs
         - listitem:
           - generic:
             - 'link "How to improve your memory: 10 easy, enjoyable expert tips – from reading a book to getting more sleep" [ref=f123e2344] [cursor=pointer]':
-              - /url: /lifeandstyle/2026/nov/01/how-to-improve-your-memory-10-easy-enjoyable-expert-tips-from-reading-a-book-to-getting-more-sleep
             - generic:
               - 'img "The Experts memory illustration Credit: Guardian Design; Photographer/Agency" [ref=f123e2354]'
               - 'heading "The experts How to improve your memory: 10 easy, enjoyable expert tips – from reading a book to getting more sleep" [level=3]':
@@ -1231,8 +1146,7 @@ source: tests/playwright_fixtures.rs
                 - text: "How to improve your memory: 10 easy, enjoyable expert tips – from reading a book to getting more sleep"
         - listitem:
           - generic:
-            - link "He loved to travel, I had a fear of flying. I expected him to skol his beer and wish me well" [ref=f123e2358]:
-              - /url: /lifeandstyle/2026/nov/01/the-moment-i-knew-he-loved-to-travel-i-had-a-fear-of-flying-i-expected-him-to-skol-his-beer-and-wish-me-well
+            - link "He loved to travel, I had a fear of flying. I expected him to skol his beer and wish me well" [ref=f123e2358]: /lifeandstyle/2026/nov/01/the-moment-i-knew-he-loved-to-travel-i-had-a-fear-of-flying-i-expected-him-to-skol-his-beer-and-wish-me-well
             - generic:
               - img "Kev and Danielle smile for a selfie on a beach path near the sea" [ref=f123e2368]
               - generic:
@@ -1249,8 +1163,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "How to make the perfect venison casserole – recipe" [ref=f123e2385]:
-              - /url: /food/2026/nov/01/how-to-make-the-perfect-venison-casserole-recipe
+            - link "How to make the perfect venison casserole – recipe" [ref=f123e2385]: /food/2026/nov/01/how-to-make-the-perfect-venison-casserole-recipe
             - generic:
               - img "A pot of venison casserole with chunks of meat, leeks, and gravy, viewed from above" [ref=f123e2397]
               - generic:
@@ -1279,8 +1192,7 @@ source: tests/playwright_fixtures.rs
                     - generic: comments
         - listitem:
           - generic:
-            - link "‘I’m sweating … can I get some tissues on stage?’ Behind the scenes at Darwin’s international laksa festival" [ref=f123e2443]:
-              - /url: /food/2026/nov/01/im-sweating-can-i-get-some-tissues-on-stage-behind-the-scenes-at-darwins-international-laksa-festival
+            - link "‘I’m sweating … can I get some tissues on stage?’ Behind the scenes at Darwin’s international laksa festival" [ref=f123e2443]: /food/2026/nov/01/im-sweating-can-i-get-some-tissues-on-stage-behind-the-scenes-at-darwins-international-laksa-festival
             - generic:
               - img "Man eating noddles with chopsticks" [ref=f123e2455]
               - heading "Food ‘I’m sweating … can I get some tissues on stage?’ Behind the scenes at Darwin’s international laksa festival" [level=3] [ref=f123e2459]:
@@ -1288,8 +1200,7 @@ source: tests/playwright_fixtures.rs
                 - text: ‘I’m sweating … can I get some tissues on stage?’ Behind the scenes at Darwin’s international laksa festival
         - listitem:
           - generic:
-            - link "Jackson Boxer’s recipe for roast apples with toffee sauce and soured cream" [ref=f123e2464]:
-              - /url: /food/2026/oct/31/roast-apples-toffee-sauce-soured-cream-recipe-jackson-boxer
+            - link "Jackson Boxer’s recipe for roast apples with toffee sauce and soured cream" [ref=f123e2464]: /food/2026/oct/31/roast-apples-toffee-sauce-soured-cream-recipe-jackson-boxer
             - generic:
               - img "Two bowls of roast apples with toffee sauce, walnuts and soured cream, beside spoons" [ref=f123e2476]
               - generic:
@@ -1315,8 +1226,7 @@ source: tests/playwright_fixtures.rs
                 - text: "A-listers and AI stylists: how high-street brands are staging a fashion comeback"
         - listitem:
           - generic:
-            - link "What fashion insiders wear in the rain – plus we pick the best raincoats and accessories" [ref=f123e2527]:
-              - /url: /fashion/2026/oct/30/fashion-autumn-rain-best-raincoats-accessories
+            - link "What fashion insiders wear in the rain – plus we pick the best raincoats and accessories" [ref=f123e2527]: /fashion/2026/oct/30/fashion-autumn-rain-best-raincoats-accessories
             - generic:
               - img "A model wearing a pink raincoat and black rain hat tilts her face upward in side profile amid colourful raindrops" [ref=f123e2539]
               - heading "Dripping with style What fashion insiders wear in the rain – plus we pick the best raincoats and accessories" [level=3] [ref=f123e2543]:
@@ -1349,8 +1259,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "My wife and I are in our late 70s and have no children. Who can help us in our old age?" [ref=f123e2609]:
-              - /url: /lifeandstyle/2026/nov/01/late-70s-no-children-who-help-old-age-annalisa-barbieri
+            - link "My wife and I are in our late 70s and have no children. Who can help us in our old age?" [ref=f123e2609]: /lifeandstyle/2026/nov/01/late-70s-no-children-who-help-old-age-annalisa-barbieri
             - generic:
               - img "An illustration of a man with white hair turning away, arms folded, with a thought above his head" [ref=f123e2617]
               - generic:
@@ -1364,8 +1273,7 @@ source: tests/playwright_fixtures.rs
                     - generic: comments
         - listitem:
           - generic:
-            - link "Is AI your new wingman? How chatbots are transforming dating" [ref=f123e2635]:
-              - /url: /lifeandstyle/2026/oct/31/ai-your-wingman-chatbots-transforming-dating
+            - link "Is AI your new wingman? How chatbots are transforming dating" [ref=f123e2635]: /lifeandstyle/2026/oct/31/ai-your-wingman-chatbots-transforming-dating
             - generic:
               - img "An illustration of people on a date with a robot on all fours being used as a table for a meal" [ref=f123e2643]
               - heading "Dating Is AI your new wingman? How chatbots are transforming dating" [level=3] [ref=f123e2647]:
@@ -1373,8 +1281,7 @@ source: tests/playwright_fixtures.rs
                 - text: Is AI your new wingman? How chatbots are transforming dating
         - listitem:
           - generic:
-            - link "My sister-in-law is nearly 40 but cannot handle losing at board games. What can I do?" [ref=f123e2653]:
-              - /url: /lifeandstyle/2026/oct/30/how-to-deal-with-board-games-bad-loser-advice
+            - link "My sister-in-law is nearly 40 but cannot handle losing at board games. What can I do?" [ref=f123e2653]: /lifeandstyle/2026/oct/30/how-to-deal-with-board-games-bad-loser-advice
             - generic:
               - 'img "Painting: The dispute at cards by Jan Steen" [ref=f123e2661]'
               - generic:
@@ -1419,8 +1326,7 @@ source: tests/playwright_fixtures.rs
                 - text: "‘Ferritin face’: are social media claims about iron deficiency fact – or fiction?"
         - listitem:
           - generic:
-            - link "Sin or virtue? How envy can actually be helpful" [ref=f123e2747]:
-              - /url: /global/ng-interactive/2026/oct/26/turn-envy-into-motivation
+            - link "Sin or virtue? How envy can actually be helpful" [ref=f123e2747]: /global/ng-interactive/2026/oct/26/turn-envy-into-motivation
             - generic:
               - img "Two women looking over fence" [ref=f123e2755]
               - heading "Well actually Sin or virtue? How envy can actually be helpful" [level=3] [ref=f123e2759]:
@@ -1440,8 +1346,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "In 1989 I lost a wallet with $1,000 in it. A couple went to incredible lengths to return it" [ref=f123e2794]:
-              - /url: /lifeandstyle/2026/nov/02/kindness-of-strangers-lost-wallet-cash-returned-couple
+            - link "In 1989 I lost a wallet with $1,000 in it. A couple went to incredible lengths to return it" [ref=f123e2794]: /lifeandstyle/2026/nov/02/kindness-of-strangers-lost-wallet-cash-returned-couple
             - generic:
               - img "An elderly couple, arm in arm, walk down the street together, one using a cane" [ref=f123e2806]
               - generic:
@@ -1487,8 +1392,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "Dream of Birds" [ref=f123e2901]:
-              - /url: /environment/ng-interactive/2026/oct/13/dream-of-birds-documentary
+            - link "Dream of Birds" [ref=f123e2901]: /environment/ng-interactive/2026/oct/13/dream-of-birds-documentary
             - generic:
               - figure [ref=f123e2905]:
                 - generic:
@@ -1505,8 +1409,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "The secret behind Lula’s win in Brazil may be an ‘army’ – of social media creators" [ref=f123e2937]:
-              - /url: /world/2026/oct/31/brazil-lula-social-media
+            - link "The secret behind Lula’s win in Brazil may be an ‘army’ – of social media creators" [ref=f123e2937]: /world/2026/oct/31/brazil-lula-social-media
             - generic:
               - img "Lula da Silva takes a photo with his phone, hand raised, amid a cheering campaign crowd with flags" [ref=f123e2947]
               - heading "Brazil The secret behind Lula’s win in Brazil may be an ‘army’ – of social media creators" [level=3]:
@@ -1523,8 +1426,7 @@ source: tests/playwright_fixtures.rs
                 - text: "The cursed cruise: how the dream of never-ending luxury at sea became a nightmare"
         - listitem:
           - generic:
-            - link "Trump’s foreign policy, from Ukraine to Iran, raised fears of world war three. Americans are about to have their say" [ref=f123e2965]:
-              - /url: /us-news/ng-interactive/2026/oct/30/ukraine-iran-trump-elections
+            - link "Trump’s foreign policy, from Ukraine to Iran, raised fears of world war three. Americans are about to have their say" [ref=f123e2965]: /us-news/ng-interactive/2026/oct/30/ukraine-iran-trump-elections
             - generic:
               - img "Composite of male leaders against a red background, map and fiery explosion" [ref=f123e2975]
               - heading "Donald Trump Trump’s foreign policy, from Ukraine to Iran, raised fears of world war three. Americans are about to have their say" [level=3]:
@@ -1544,8 +1446,7 @@ source: tests/playwright_fixtures.rs
                 - text: "Tell us: have you been affected by the Binance hack?"
         - listitem:
           - generic:
-            - link "Share your tributes and memories of Patrick Stewart" [ref=f123e3010]:
-              - /url: /culture/2026/oct/30/share-your-tributes-and-memories-of-patrick-stewart
+            - link "Share your tributes and memories of Patrick Stewart" [ref=f123e3010]: /culture/2026/oct/30/share-your-tributes-and-memories-of-patrick-stewart
             - generic:
               - img "Patrick Stewart smiles in a black suit against a blurred grey backgroundhis home in Los Angeles, California, following a brief battle with Alzheimer's disease and Lewy body dementia, according to a statement released on his official social media accounts --- Patrick Stewart attends The 23rd Annual Critics' Choice Awards at Barker Hangar on January 11, 2018 in Santa Monica, Los Angeles, CA, USA. File - Patrick Stewart Dies At 86, Los Angeles, United States - 30 Oct 2026" [ref=f123e3018]
               - heading "Patrick Stewart Share your tributes and memories of Patrick Stewart" [level=3] [ref=f123e3022]:
@@ -1562,8 +1463,7 @@ source: tests/playwright_fixtures.rs
                 - text: "Tell us: do you live near the Strait of Hormuz? How is the US-Iran conflict affecting your life?"
         - listitem:
           - generic:
-            - link "Post your questions for Charlie Nicholas" [ref=f123e3045]:
-              - /url: /football/2026/oct/29/questions-charlie-nicholas-celtic-arsenal-scotland-forward
+            - link "Post your questions for Charlie Nicholas" [ref=f123e3045]: /football/2026/oct/29/questions-charlie-nicholas-celtic-arsenal-scotland-forward
             - generic:
               - img "Charlie Nicholas smiles while peering out through a gap in orange velvet curtains" [ref=f123e3053]
               - heading "Football Post your questions for Charlie Nicholas" [level=3] [ref=f123e3057]:
@@ -1585,8 +1485,7 @@ source: tests/playwright_fixtures.rs
                 - generic: Newsletter
         - listitem:
           - generic:
-            - link "Sign up for the First Edition newsletter" [ref=f123e3096]:
-              - /url: /global/2022/sep/20/sign-up-for-the-first-edition-newsletter-our-free-news-email
+            - link "Sign up for the First Edition newsletter" [ref=f123e3096]: /global/2022/sep/20/sign-up-for-the-first-edition-newsletter-our-free-news-email
             - generic:
               - img "First Edition" [ref=f123e3104]
               - generic:
@@ -1596,8 +1495,7 @@ source: tests/playwright_fixtures.rs
                 - generic: Newsletter
         - listitem:
           - generic:
-            - link "Sign up for the Football Daily newsletter" [ref=f123e3117]:
-              - /url: /info/2022/nov/14/football-daily-email-sign-up
+            - link "Sign up for the Football Daily newsletter" [ref=f123e3117]: /info/2022/nov/14/football-daily-email-sign-up
             - generic:
               - img "Football Daily sign up page" [ref=f123e3125]
               - generic:
@@ -1607,8 +1505,7 @@ source: tests/playwright_fixtures.rs
                 - generic: Newsletter
         - listitem:
           - generic:
-            - link "Sign up for the Feast newsletter" [ref=f123e3137]:
-              - /url: /food/2019/jul/09/sign-up-for-the-feast-newsletter-our-free-guardian-food-email
+            - link "Sign up for the Feast newsletter" [ref=f123e3137]: /food/2019/jul/09/sign-up-for-the-feast-newsletter-our-free-guardian-food-email
             - generic:
               - img "Feast" [ref=f123e3145]
               - generic:
@@ -1623,8 +1520,7 @@ source: tests/playwright_fixtures.rs
       - list:
         - listitem:
           - generic:
-            - link "Halloween, midterms and cafe culture" [ref=f123e3171]:
-              - /url: /artanddesign/gallery/2026/nov/01/halloween-midterms-and-cafe-culture-photos-of-the-weekend
+            - link "Halloween, midterms and cafe culture" [ref=f123e3171]: /artanddesign/gallery/2026/nov/01/halloween-midterms-and-cafe-culture-photos-of-the-weekend
             - generic:
               - img "Greenwich Village Halloween parade" [ref=f123e3183]
               - generic:
@@ -1646,7 +1542,6 @@ source: tests/playwright_fixtures.rs
             - list:
               - listitem:
                 - link [ref=f123e3217]:
-                  - /url: /world/2026/nov/01/ukraine-defies-trump-resumes-attacks-russian-oil
                   - heading "Ukraine defies Trump to resume attacks on Russian oil refineries" [level=4] [ref=f123e3223]
               - listitem:
                 - link [ref=f123e3225]:
@@ -1654,27 +1549,21 @@ source: tests/playwright_fixtures.rs
                   - heading "Tributes paid to ‘inspiring’ Cambridge scientist who died in Spain train crash" [level=4] [ref=f123e3231]
               - listitem:
                 - link [ref=f123e3233]:
-                  - /url: /world/2026/nov/01/negotiators-braced-for-worst-over-us-iran-talks-to-reopen-strait-of-hormuz
                   - heading "Negotiators ‘braced for worst’ over US-Iran talks to reopen strait of Hormuz" [level=4] [ref=f123e3239]
               - listitem:
                 - link [ref=f123e3241]:
-                  - /url: /world/2026/nov/01/jacinda-ardern-sydney-opera-house-talk-advises-politicians-to-rebuild-trust
                   - 'heading "‘We’re making it worse’: Jacinda Ardern’s warning for Australian politicians" [level=4] [ref=f123e3247]'
               - listitem:
                 - link [ref=f123e3249]:
-                  - /url: /world/2026/nov/01/britain-should-not-apologise-slave-trade-kemi-badenoch
                   - heading "Britain should not issue apology over slave trade, says Kemi Badenoch" [level=4] [ref=f123e3255]
               - listitem:
                 - link [ref=f123e3257]:
-                  - /url: /world/2026/nov/01/petrol-bomb-thrown-at-french-riot-police
                   - heading "Attempted murder probe after petrol bomb thrown at French riot police" [level=4] [ref=f123e3263]
               - listitem:
                 - link [ref=f123e3265]:
-                  - /url: /world/2026/nov/01/uk-was-vehement-slavery-reparations-should-not-be-on-commonwealth-summit-agenda
                   - heading "UK was ‘vehement’ slavery reparations should not be on Commonwealth summit agenda" [level=4] [ref=f123e3271]
               - listitem:
                 - link [ref=f123e3273]:
-                  - /url: /world/2026/nov/01/hitler-eagles-nest-retreat-arson-attack-should-it-be-rebuilt
                   - heading "Hitler’s Eagle’s Nest retreat was torched in an arson attack. Should it be rebuilt?" [level=4] [ref=f123e3279]
               - listitem:
                 - link [ref=f123e3281]:
@@ -1682,15 +1571,13 @@ source: tests/playwright_fixtures.rs
                   - 'heading "Ukraine war briefing: Moscow’s Lavrov snubbed at G20 in Atlanta" [level=4] [ref=f123e3287]'
               - listitem:
                 - link [ref=f123e3289]:
-                  - /url: /world/2026/nov/01/palestinian-family-fight-care-son-hamas-rocket
                   - 'heading "‘What’s our crime?’: A Palestinian family’s fight to get care for son injured by Hamas rocket" [level=4] [ref=f123e3295]'
           - generic:
             - generic:
               - heading "Deeply read" [level=3] [ref=f123e3298]
               - generic:
                 - text: What readers are spending time with (
-                - link "Learn more" [ref=f123e3300]:
-                  - /url: https://www.theguardian.com/info/2024/feb/28/what-is-the-deeply-read-list
+                - link "Learn more" [ref=f123e3300]: https://www.theguardian.com/info/2024/feb/28/what-is-the-deeply-read-list
                 - text: )
             - list:
               - listitem:
@@ -1737,166 +1624,116 @@ source: tests/playwright_fixtures.rs
     - generic: Explore more on these topics
     - list:
       - listitem:
-        - link "Europe" [ref=f123e3395]:
-          - /url: https://www.theguardian.com/world/europe-news
+        - link "Europe" [ref=f123e3395]: https://www.theguardian.com/world/europe-news
       - listitem:
-        - link "Donald Trump" [ref=f123e3397]:
-          - /url: https://www.theguardian.com/us-news/donaldtrump
+        - link "Donald Trump" [ref=f123e3397]: https://www.theguardian.com/us-news/donaldtrump
       - listitem:
-        - link "US politics" [ref=f123e3399]:
-          - /url: https://www.theguardian.com/us-news/us-politics
+        - link "US politics" [ref=f123e3399]: https://www.theguardian.com/us-news/us-politics
       - listitem:
-        - link "Republicans" [ref=f123e3401]:
-          - /url: https://www.theguardian.com/us-news/republicans
+        - link "Republicans" [ref=f123e3401]: https://www.theguardian.com/us-news/republicans
       - listitem:
-        - link "US midterm elections 2026" [ref=f123e3403]:
-          - /url: https://www.theguardian.com/us-news/us-midterm-elections-2026
+        - link "US midterm elections 2026" [ref=f123e3403]
   - complementary [ref=f123e3404]:
   - complementary [ref=f123e3407]:
     - list:
       - listitem:
-        - link "World" [ref=f123e3413]:
-          - /url: /world
+        - link "World" [ref=f123e3413]
       - listitem:
-        - link "US politics" [ref=f123e3415]:
-          - /url: /us-news/us-politics
+        - link "US politics" [ref=f123e3415]
       - listitem:
-        - link "UK" [ref=f123e3417]:
-          - /url: /uk-news
+        - link "UK" [ref=f123e3417]
       - listitem:
-        - link "Climate crisis" [ref=f123e3419]:
-          - /url: /environment/climate-crisis
+        - link "Climate crisis" [ref=f123e3419]
       - listitem:
-        - link "Middle East" [ref=f123e3421]:
-          - /url: /world/middleeast
+        - link "Middle East" [ref=f123e3421]
       - listitem:
-        - link "Ukraine" [ref=f123e3423]:
-          - /url: /world/ukraine
+        - link "Ukraine" [ref=f123e3423]
       - listitem:
-        - link "Environment" [ref=f123e3425]:
-          - /url: /environment
+        - link "Environment" [ref=f123e3425]
       - listitem:
-        - link "Science" [ref=f123e3427]:
-          - /url: /science
+        - link "Science" [ref=f123e3427]
       - listitem:
-        - link "Global development" [ref=f123e3429]:
-          - /url: /global-development
+        - link "Global development" [ref=f123e3429]
       - listitem:
-        - link "Football" [ref=f123e3431]:
-          - /url: /football
+        - link "Football" [ref=f123e3431]
       - listitem:
-        - link "Tech" [ref=f123e3433]:
-          - /url: /technology
+        - link "Tech" [ref=f123e3433]
       - listitem:
-        - link "Business" [ref=f123e3435]:
-          - /url: /business
+        - link "Business" [ref=f123e3435]
       - listitem:
-        - link "Obituaries" [ref=f123e3437]:
-          - /url: /obituaries
+        - link "Obituaries" [ref=f123e3437]
   - contentinfo [ref=f123e3438]:
     - generic:
       - list:
         - listitem:
-          - link "News" [ref=f123e3444]:
-            - /url: /
+          - link "News" [ref=f123e3444]
         - listitem:
-          - link "Opinion" [ref=f123e3446]:
-            - /url: /commentisfree
+          - link "Opinion" [ref=f123e3446]
         - listitem:
-          - link "Sport" [ref=f123e3448]:
-            - /url: /sport
+          - link "Sport" [ref=f123e3448]
         - listitem:
-          - link "Culture" [ref=f123e3450]:
-            - /url: /culture
+          - link "Culture" [ref=f123e3450]
         - listitem:
-          - link "Lifestyle" [ref=f123e3452]:
-            - /url: /lifeandstyle
+          - link "Lifestyle" [ref=f123e3452]
       - generic:
         - generic:
           - generic: Original reporting and incisive analysis, direct from the Guardian every morning
-          - link "Sign up for our email" [ref=f123e3456]:
-            - /url: https://www.theguardian.com/global/2022/sep/20/sign-up-for-the-first-edition-newsletter-our-free-news-email
+          - link "Sign up for our email" [ref=f123e3456]: https://www.theguardian.com/global/2022/sep/20/sign-up-for-the-first-edition-newsletter-our-free-news-email
         - generic:
           - list:
             - listitem:
-              - link "About us" [ref=f123e3462]:
-                - /url: /about
+              - link "About us" [ref=f123e3462]: /about
             - listitem:
-              - link "Help" [ref=f123e3464]:
-                - /url: https://manage.theguardian.com/help-centre
+              - link "Help" [ref=f123e3464]: https://manage.theguardian.com/help-centre
             - listitem:
-              - link "Complaints & corrections" [ref=f123e3466]:
-                - /url: /info/complaints-and-corrections
+              - link "Complaints & corrections" [ref=f123e3466]: /info/complaints-and-corrections
             - listitem:
-              - link "Contact us" [ref=f123e3468]:
-                - /url: /help/contact-us
+              - link "Contact us" [ref=f123e3468]: /help/contact-us
             - listitem:
-              - link "Tip us off" [ref=f123e3470]:
-                - /url: https://www.theguardian.com/tips
+              - link "Tip us off" [ref=f123e3470]: https://www.theguardian.com/tips
             - listitem:
-              - link "SecureDrop" [ref=f123e3472]:
-                - /url: https://www.theguardian.com/securedrop
+              - link "SecureDrop" [ref=f123e3472]: https://www.theguardian.com/securedrop
             - listitem:
-              - link "Privacy policy" [ref=f123e3474]:
-                - /url: /info/privacy
+              - link "Privacy policy" [ref=f123e3474]: /info/privacy
             - listitem:
-              - link "Cookie policy" [ref=f123e3476]:
-                - /url: /info/cookies
+              - link "Cookie policy" [ref=f123e3476]: /info/cookies
             - listitem:
-              - link "Tax strategy" [ref=f123e3478]:
-                - /url: https://uploads.guim.co.uk/2026/07/22/STL_Global_Tax_Strategy_for_the_year_to_31_March_2027.pdf
+              - link "Tax strategy" [ref=f123e3478]: https://uploads.guim.co.uk/2026/07/22/STL_Global_Tax_Strategy_for_the_year_to_31_March_2027.pdf
             - listitem:
-              - link "Terms & conditions" [ref=f123e3480]:
-                - /url: /help/terms-of-service
+              - link "Terms & conditions" [ref=f123e3480]: /help/terms-of-service
           - list:
             - listitem:
-              - link "All topics" [ref=f123e3483]:
-                - /url: /index/subjects/a
+              - link "All topics" [ref=f123e3483]: /index/subjects/a
             - listitem:
-              - link "All writers" [ref=f123e3485]:
-                - /url: /index/contributors
+              - link "All writers" [ref=f123e3485]: /index/contributors
             - listitem:
-              - link "Newsletters" [ref=f123e3487]:
-                - /url: /email-newsletters?INTCMP=DOTCOM_FOOTER_NEWSLETTER_INTERNATIONAL
+              - link "Newsletters" [ref=f123e3487]: /email-newsletters?INTCMP=DOTCOM_FOOTER_NEWSLETTER_INTERNATIONAL
             - listitem:
-              - link "Digital newspaper archive" [ref=f123e3489]:
-                - /url: https://theguardian.newspapers.com
+              - link "Digital newspaper archive" [ref=f123e3489]: https://theguardian.newspapers.com
             - listitem:
-              - link "Bluesky" [ref=f123e3491]:
-                - /url: https://bsky.app/profile/theguardian.com
+              - link "Bluesky" [ref=f123e3491]: https://bsky.app/profile/theguardian.com
             - listitem:
-              - link "Facebook" [ref=f123e3493]:
-                - /url: https://www.facebook.com/theguardian
+              - link "Facebook" [ref=f123e3493]: https://www.facebook.com/theguardian
             - listitem:
-              - link "Instagram" [ref=f123e3495]:
-                - /url: https://www.instagram.com/guardian
+              - link "Instagram" [ref=f123e3495]: https://www.instagram.com/guardian
             - listitem:
-              - link "LinkedIn" [ref=f123e3497]:
-                - /url: https://www.linkedin.com/company/theguardian
+              - link "LinkedIn" [ref=f123e3497]: https://www.linkedin.com/company/theguardian
             - listitem:
-              - link "Threads" [ref=f123e3499]:
-                - /url: https://www.threads.com/@guardian
+              - link "Threads" [ref=f123e3499]: https://www.threads.com/@guardian
             - listitem:
-              - link "TikTok" [ref=f123e3501]:
-                - /url: https://www.tiktok.com/@guardian
+              - link "TikTok" [ref=f123e3501]: https://www.tiktok.com/@guardian
             - listitem:
-              - link "YouTube" [ref=f123e3503]:
-                - /url: https://www.youtube.com/user/TheGuardian
+              - link "YouTube" [ref=f123e3503]: https://www.youtube.com/user/TheGuardian
           - list:
             - listitem:
-              - link "Advertise with us" [ref=f123e3506]:
-                - /url: https://advertising.theguardian.com
+              - link "Advertise with us" [ref=f123e3506]: https://advertising.theguardian.com
             - listitem:
-              - link "Tips" [ref=f123e3508]:
-                - /url: https://www.theguardian.com/tips
+              - link "Tips" [ref=f123e3508]
             - listitem:
-              - link "Accessibility settings" [ref=f123e3510]:
-                - /url: /help/accessibility-help
+              - link "Accessibility settings" [ref=f123e3510]: /help/accessibility-help
             - listitem:
-              - link "Work with us" [ref=f123e3512]:
-                - /url: https://workwithus.theguardian.com/
-        - link "Back to top" [ref=f123e3518]:
-          - /url: "#top"
+              - link "Work with us" [ref=f123e3512]: https://workwithus.theguardian.com/
+        - link "Back to top" [ref=f123e3518]: "#top"
       - generic: © 2026 Guardian News & Media Limited or its affiliated companies. All rights reserved. (dcr)
   - dialog [ref=f123e3523]:
     - iframe [active] [ref=f123e3524]:
@@ -1907,8 +1744,7 @@ source: tests/playwright_fixtures.rs
             - paragraph:
               - text: When we make the Guardian available to you online, we and our partners may use cookies and similar technologies to help us to do this. Some are necessary to help our website work properly and can't be switched off, and some are optional but support the Guardian and your experience in other ways. To do this we work with a cross section of 141
               - generic "message-link":
-                - link "partners" [ref=f125e13]:
-                  - /url: "#"
+                - link "partners" [ref=f125e13]: "#"
                 - text: .
             - paragraph: Cookies and other similar technologies may be used to access personal data, including page visits and your IP address. We use this information about you, your devices and your online interactions with us to provide, analyse and improve our services. Depending on your choice, we may also use your data to personalise content or advertising.
             - generic:
@@ -1919,8 +1755,7 @@ source: tests/playwright_fixtures.rs
                 - button "Personalised content and content measurement" [ref=f125e27]
             - paragraph:
               - text: Learn more in our
-              - link "privacy policy" [ref=f125e31]:
-                - /url: https://www.theguardian.com/help/privacy-policy
+              - link "privacy policy" [ref=f125e31]: https://www.theguardian.com/help/privacy-policy
               - text: and
               - link "<span href=\"true\" target=\"_blank\" aria-label=\"message-link\">cookie policy</span>" [ref=f125e32]:
                 - /url: https://www.theguardian.com/info/cookies
@@ -1938,4 +1773,4 @@ source: tests/playwright_fixtures.rs
             - button "No, thank you" [ref=f125e41]
             - button "Manage cookies" [ref=f125e42]
 ```
-[meiose: 45 nodes trimmed, 914 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 45 nodes trimmed, 914 non-interactive refs hidden, 38 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

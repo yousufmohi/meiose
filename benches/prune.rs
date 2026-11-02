@@ -61,6 +61,32 @@ fn bench(c: &mut Criterion) {
         b.iter(|| playwright::trim_snapshot(black_box(&doubled), &cx))
     });
     g.finish();
+
+    // The requirement itself: a 400K-token snapshot. Cut the doubled tree at
+    // a line boundary where the o200k count reaches 400K.
+    let body: Vec<&str> = doubled[s..doubled.len() - (text.len() - e)]
+        .split('\n')
+        .collect();
+    let (mut lo, mut hi) = (1, body.len());
+    let page = |n: usize| format!("{}{}{}", &text[..s], body[..n].join("\n"), &text[e..]);
+    while lo < hi {
+        let mid = (lo + hi) / 2;
+        if meiose::tokens::count(&page(mid)) < 400_000 {
+            lo = mid + 1;
+        } else {
+            hi = mid;
+        }
+    }
+    let p400 = page(lo);
+    let mut g = c.benchmark_group(format!(
+        "playwright/synthetic-{}k-tokens",
+        meiose::tokens::count(&p400) / 1000
+    ));
+    g.throughput(Throughput::Bytes(p400.len() as u64));
+    g.bench_function("conservative", |b| {
+        b.iter(|| playwright::trim_snapshot(black_box(&p400), &cx))
+    });
+    g.finish();
 }
 
 criterion_group!(benches, bench);

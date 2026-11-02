@@ -9,8 +9,7 @@ source: tests/playwright_fixtures.rs
 ```yaml
 - generic [active] [ref=f97e1]:
   - generic:
-    - link "Skip to content" [ref=f97e6]:
-      - /url: "#bbc-main"
+    - link "Skip to content" [ref=f97e6]: "#bbc-main"
     - banner [ref=f97e8]:
       - generic:
         - button "Open menu" [ref=f97e11]
@@ -26,83 +25,58 @@ source: tests/playwright_fixtures.rs
       - navigation [ref=f97e32]:
         - list:
           - listitem:
-            - link "Home" [ref=f97e36]:
-              - /url: /
+            - link "Home" [ref=f97e36]
           - listitem:
-            - link "News" [ref=f97e39]:
-              - /url: /news
+            - link "News" [ref=f97e39]: /news
           - listitem:
-            - link "Sport" [ref=f97e42]:
-              - /url: /sport
+            - link "Sport" [ref=f97e42]: /sport
           - listitem:
-            - link "Business" [ref=f97e45]:
-              - /url: /business
+            - link "Business" [ref=f97e45]: /business
           - listitem:
-            - link "Technology" [ref=f97e48]:
-              - /url: /technology
+            - link "Technology" [ref=f97e48]: /technology
           - listitem:
-            - link "Health" [ref=f97e51]:
-              - /url: /health
+            - link "Health" [ref=f97e51]: /health
           - listitem:
-            - link "Culture" [ref=f97e54]:
-              - /url: /culture
+            - link "Culture" [ref=f97e54]: /culture
           - listitem:
-            - link "Arts" [ref=f97e57]:
-              - /url: /arts
+            - link "Arts" [ref=f97e57]: /arts
           - listitem:
-            - link "Travel" [ref=f97e60]:
-              - /url: /travel
+            - link "Travel" [ref=f97e60]: /travel
           - listitem:
-            - link "Earth" [ref=f97e63]:
-              - /url: /future-planet
+            - link "Earth" [ref=f97e63]: /future-planet
           - listitem:
-            - link "Audio" [ref=f97e66]:
-              - /url: /audio
+            - link "Audio" [ref=f97e66]: /audio
           - listitem:
-            - link "Video" [ref=f97e69]:
-              - /url: /video
+            - link "Video" [ref=f97e69]: /video
           - listitem:
-            - link "Live" [ref=f97e72]:
-              - /url: /live
+            - link "Live" [ref=f97e72]: /live
           - listitem:
-            - link "Documentaries" [ref=f97e75]:
-              - /url: /video/docs
+            - link "Documentaries" [ref=f97e75]: /video/docs
       - navigation [ref=f97e76]:
         - navigation [ref=f97e77]:
           - list:
             - listitem:
-              - link "US & Canada" [ref=f97e81]:
-                - /url: /news/us-canada
+              - link "US & Canada" [ref=f97e81]: /news/us-canada
             - listitem:
-              - link "UK" [ref=f97e84]:
-                - /url: /news/uk
+              - link "UK" [ref=f97e84]: /news/uk
             - listitem:
-              - link "Africa" [ref=f97e87]:
-                - /url: /news/world/africa
+              - link "Africa" [ref=f97e87]: /news/world/africa
             - listitem:
-              - link "Asia" [ref=f97e90]:
-                - /url: /news/world/asia
+              - link "Asia" [ref=f97e90]: /news/world/asia
             - listitem:
-              - link "Australia" [ref=f97e93]:
-                - /url: /news/world/australia
+              - link "Australia" [ref=f97e93]: /news/world/australia
             - listitem:
-              - link "Europe" [ref=f97e96]:
-                - /url: /news/world/europe
+              - link "Europe" [ref=f97e96]: /news/world/europe
             - listitem:
-              - link "Latin America" [ref=f97e99]:
-                - /url: /news/world/latin_america
+              - link "Latin America" [ref=f97e99]: /news/world/latin_america
             - listitem:
-              - link "Middle East" [ref=f97e102]:
-                - /url: /news/world/middle_east
+              - link "Middle East" [ref=f97e102]: /news/world/middle_east
             - listitem:
-              - link "In Pictures" [ref=f97e105]:
-                - /url: /news/in_pictures
+              - link "In Pictures" [ref=f97e105]: /news/in_pictures
             - listitem:
-              - link "BBC InDepth" [ref=f97e108]:
-                - /url: /news/bbcindepth
+              - link "BBC InDepth" [ref=f97e108]: /news/bbcindepth
             - listitem:
-              - link "BBC Verify" [ref=f97e111]:
-                - /url: /news/bbcverify
+              - link "BBC Verify" [ref=f97e111]: /news/bbcverify
     - main [ref=f97e112]:
       - article [ref=f97e113]:
         - generic:
@@ -119,7 +93,6 @@ source: tests/playwright_fixtures.rs
               - /url: /news/articles/c51kdy1ew7zvo
               - img "People in Winter clothes sit on camping chairs inside a Kyiv metro station" [ref=f97e134]
             - link "Ukraine air raid app apparently hacked as users receive false radiation threat, Air Force says Hours later Russian authorities said its app was also hacked, with fake warnings sent inside the country. 7 mins ago Europe" [ref=f97e138]:
-              - /url: /news/articles/c51kdy1ew7zvo
               - generic:
                 - heading "Ukraine air raid app apparently hacked as users receive false radiation threat, Air Force says" [level=2] [ref=f97e142]
                 - paragraph: Hours later Russian authorities said its app was also hacked, with fake warnings sent inside the country.
@@ -219,7 +192,6 @@ source: tests/playwright_fixtures.rs
                 - /url: /news/articles/cmy0r2y6zeddo
                 - img "Image shows James Talarico, a Democratic candidate for the US Senate seat representing Texas" [ref=f97e324]
               - link "Democrats are used to heartbreak in Texas - could Talarico turn the tide? The state's $500m Senate race may be the most closely watched in the US midterms, and is about far more than control of Congress. 19 hrs ago US & Canada" [ref=f97e328]:
-                - /url: /news/articles/cmy0r2y6zeddo
                 - generic:
                   - heading "Democrats are used to heartbreak in Texas - could Talarico turn the tide?" [level=2] [ref=f97e332]
                   - paragraph: The state's $500m Senate race may be the most closely watched in the US midterms, and is about far more than control of Congress.
@@ -254,7 +226,6 @@ source: tests/playwright_fixtures.rs
                     - generic: 1 day ago
                     - generic: Asia
             - link "Lindsay Clancy in court Lindsay Clancy is back in court - where will her case go next? The Massachusetts mother, accused of murdering her three children, is expected back in court as she awaits a decision on whether her case will be retried. 8 hrs ago US & Canada" [ref=f97e385]:
-              - /url: /news/articles/ck3r5z3pw928o
               - generic:
                 - img "Lindsay Clancy in court" [ref=f97e390]
                 - generic:
@@ -333,13 +304,11 @@ source: tests/playwright_fixtures.rs
                   - 'heading "Watch: Heidi Klum as giant severed hand for Halloween bash" [level=2] [ref=f97e522]'
             - listitem:
               - link "2 ‘My vote still matters’ - Americans weigh in on the power of their ballot" [ref=f97e526]:
-                - /url: /news/videos/cw62yd964e55o
                 - generic:
                   - generic: "2"
                   - heading "‘My vote still matters’ - Americans weigh in on the power of their ballot" [level=2] [ref=f97e534]
             - listitem:
               - 'link "3 ''I''ve had people eating cat food'': Rising cost of living top of mind for US voters" [ref=f97e538] [cursor=pointer]':
-                - /url: /news/videos/cwly0eev3m44o
                 - generic:
                   - generic: "3"
                   - 'heading "''I''ve had people eating cat food'': Rising cost of living top of mind for US voters" [level=2] [ref=f97e546]'
@@ -366,7 +335,6 @@ source: tests/playwright_fixtures.rs
                   - img "image unavailable" [ref=f97e592]
                   - img "Three armed police officers walk along the shore. Behind them are palm trees and the entrance of the park" [ref=f97e593]
               - link "Armed police start patrols in Sydney after Bondi Beach attack The new police unit is a security measure in response to last year's deadly shooting attack at a Hanukkah festival. 7 hrs ago Australia" [ref=f97e597]:
-                - /url: /news/articles/c9kgj7k7ry0ro
                 - generic:
                   - heading "Armed police start patrols in Sydney after Bondi Beach attack" [level=2] [ref=f97e601]
                   - paragraph: The new police unit is a security measure in response to last year's deadly shooting attack at a Hanukkah festival.
@@ -426,13 +394,11 @@ source: tests/playwright_fixtures.rs
           - list:
             - listitem:
               - link "1 'Like a missile coming down' - Nine killed in fiery Florida jet crash" [ref=f97e691]:
-                - /url: /news/articles/cm369yy7lw73o
                 - generic:
                   - generic: "1"
                   - heading "'Like a missile coming down' - Nine killed in fiery Florida jet crash" [level=2] [ref=f97e696]
             - listitem:
               - link "2 Democrat endorses Republican candidate in key Michigan Senate race as party spat erupts" [ref=f97e700]:
-                - /url: /news/articles/c95ynzv88n68o
                 - generic:
                   - generic: "2"
                   - heading "Democrat endorses Republican candidate in key Michigan Senate race as party spat erupts" [level=2] [ref=f97e705]
@@ -444,13 +410,11 @@ source: tests/playwright_fixtures.rs
                   - heading "He left 28 years ago, now after 31,000 miles Karl Bushby is almost home" [level=2] [ref=f97e714]
             - listitem:
               - link "4 Judge dismisses Trump administration's lawsuit over two Dan Sullivans in Alaska election" [ref=f97e718]:
-                - /url: /news/articles/cv4g1y02jejro
                 - generic:
                   - generic: "4"
                   - heading "Judge dismisses Trump administration's lawsuit over two Dan Sullivans in Alaska election" [level=2] [ref=f97e723]
             - listitem:
               - link "5 Democrats have high hopes for midterms, but polls have let them down before" [ref=f97e727]:
-                - /url: /news/articles/cmg47p3edv4do
                 - generic:
                   - generic: "5"
                   - heading "Democrats have high hopes for midterms, but polls have let them down before" [level=2] [ref=f97e732]
@@ -462,25 +426,21 @@ source: tests/playwright_fixtures.rs
                   - heading "US midterm elections results 2026" [level=2] [ref=f97e741]
             - listitem:
               - link "7 Ukraine air raid app apparently hacked as users receive false radiation threat, Air Force says" [ref=f97e745]:
-                - /url: /news/articles/c51kdy1ew7zvo
                 - generic:
                   - generic: "7"
                   - heading "Ukraine air raid app apparently hacked as users receive false radiation threat, Air Force says" [level=2] [ref=f97e750]
             - listitem:
               - link "8 Cambridge scientist dies in Spanish train crash" [ref=f97e754]:
-                - /url: /news/articles/cq5ynzvkn1d8o
                 - generic:
                   - generic: "8"
                   - heading "Cambridge scientist dies in Spanish train crash" [level=2] [ref=f97e759]
             - listitem:
               - link "9 What are the US midterms? A simple guide" [ref=f97e763]:
-                - /url: /news/articles/c6wyz223j19po
                 - generic:
                   - generic: "9"
                   - heading "What are the US midterms? A simple guide" [level=2] [ref=f97e768]
             - listitem:
               - link "10 The fight to save Canadian town threatened by Trump's tariffs" [ref=f97e772]:
-                - /url: /news/articles/cmly016ep243o
                 - generic:
                   - generic: "10"
                   - heading "The fight to save Canadian town threatened by Trump's tariffs" [level=2] [ref=f97e777]
@@ -490,10 +450,8 @@ source: tests/playwright_fixtures.rs
           - generic:
             - generic:
               - link [ref=f97e797]:
-                - /url: /sport/formula1/articles/cv62y1e6wly6o
                 - img "Kimi Antonelli" [ref=f97e799]
               - link "Antonelli becomes world champion as Verstappen wins in Mexico Kimi Antonelli becomes the youngest world champion in Formula 1 history as Max Verstappen wins the Mexico City Grand Prix. 2 hrs ago Formula 1" [ref=f97e803]:
-                - /url: /sport/formula1/articles/cv62y1e6wly6o
                 - generic:
                   - heading "Antonelli becomes world champion as Verstappen wins in Mexico" [level=2] [ref=f97e807]
                   - paragraph: Kimi Antonelli becomes the youngest world champion in Formula 1 history as Max Verstappen wins the Mexico City Grand Prix.
@@ -502,7 +460,6 @@ source: tests/playwright_fixtures.rs
                     - generic: Formula 1
             - generic:
               - link "image unavailable A young Kimi Antonelli sitting on his dad's lap while steering a car Antonelli - the boy 'born in a garage' who became world champion Kimi Antonelli was a natural driver at the age of three, according to his dad. Here's how he developed to become the F1 champion at the age of 20. 3 hrs ago Formula 1" [ref=f97e817]:
-                - /url: /sport/formula1/articles/c0rdvxdwwwwo
                 - generic:
                   - generic:
                     - img "image unavailable" [ref=f97e822]
@@ -567,61 +524,43 @@ source: tests/playwright_fixtures.rs
                     - generic: Arsenal
     - contentinfo [ref=f97e913]:
       - link "British Broadcasting Corporation" [ref=f97e916]:
-        - /url: /
         - img "British Broadcasting Corporation" [ref=f97e917]
       - navigation "Footer navigation" [ref=f97e920]:
         - list:
           - listitem:
-            - link "Home" [ref=f97e924]:
-              - /url: https://www.bbc.com/
+            - link "Home" [ref=f97e924]: https://www.bbc.com/
           - listitem:
-            - link "News" [ref=f97e927]:
-              - /url: /news
+            - link "News" [ref=f97e927]
           - listitem:
-            - link "Sport" [ref=f97e930]:
-              - /url: /sport
+            - link "Sport" [ref=f97e930]
           - listitem:
-            - link "Business" [ref=f97e933]:
-              - /url: /business
+            - link "Business" [ref=f97e933]
           - listitem:
-            - link "Technology" [ref=f97e936]:
-              - /url: /technology
+            - link "Technology" [ref=f97e936]
           - listitem:
-            - link "Health" [ref=f97e939]:
-              - /url: /health
+            - link "Health" [ref=f97e939]
           - listitem:
-            - link "Culture" [ref=f97e942]:
-              - /url: /culture
+            - link "Culture" [ref=f97e942]
           - listitem:
-            - link "Arts" [ref=f97e945]:
-              - /url: /arts
+            - link "Arts" [ref=f97e945]
           - listitem:
-            - link "Travel" [ref=f97e948]:
-              - /url: /travel
+            - link "Travel" [ref=f97e948]
           - listitem:
-            - link "Earth" [ref=f97e951]:
-              - /url: /future-planet
+            - link "Earth" [ref=f97e951]
           - listitem:
-            - link "Audio" [ref=f97e954]:
-              - /url: /audio
+            - link "Audio" [ref=f97e954]
           - listitem:
-            - link "Video" [ref=f97e957]:
-              - /url: /video
+            - link "Video" [ref=f97e957]
           - listitem:
-            - link "Live" [ref=f97e960]:
-              - /url: /live
+            - link "Live" [ref=f97e960]
           - listitem:
-            - link "Documentaries" [ref=f97e963]:
-              - /url: /video/docs
+            - link "Documentaries" [ref=f97e963]
           - listitem:
-            - link "Weather" [ref=f97e966]:
-              - /url: https://www.bbc.com/weather
+            - link "Weather" [ref=f97e966]: https://www.bbc.com/weather
           - listitem:
-            - link "BBC Shop" [ref=f97e969]:
-              - /url: https://shop.bbc.com/
+            - link "BBC Shop" [ref=f97e969]: https://shop.bbc.com/
           - listitem:
-            - link "BritBox" [ref=f97e972]:
-              - /url: https://www.britbox.com/?utm_source=bbc.com&utm_medium=referral&utm_campaign=footer
+            - link "BritBox" [ref=f97e972]: https://www.britbox.com/?utm_source=bbc.com&utm_medium=referral&utm_campaign=footer
       - button "BBC in other languages" [ref=f97e975]
       - generic:
         - generic: "Follow BBC on:"
@@ -635,46 +574,33 @@ source: tests/playwright_fixtures.rs
       - navigation [ref=f97e1001]:
         - list:
           - listitem:
-            - link "Terms of Use" [ref=f97e1005]:
-              - /url: https://www.bbc.com/pages/terms-of-use
+            - link "Terms of Use" [ref=f97e1005]: https://www.bbc.com/pages/terms-of-use
           - listitem:
-            - link "Subscription Terms" [ref=f97e1008]:
-              - /url: https://www.bbc.com/pages/subscription-terms
+            - link "Subscription Terms" [ref=f97e1008]: https://www.bbc.com/pages/subscription-terms
           - listitem:
-            - link "About the BBC" [ref=f97e1011]:
-              - /url: https://www.bbc.co.uk/aboutthebbc
+            - link "About the BBC" [ref=f97e1011]: https://www.bbc.co.uk/aboutthebbc
           - listitem:
-            - link "Privacy Policy" [ref=f97e1014]:
-              - /url: https://www.bbc.com/pages/privacy-policy
+            - link "Privacy Policy" [ref=f97e1014]: https://www.bbc.com/pages/privacy-policy
           - listitem:
-            - link "Cookies" [ref=f97e1017]:
-              - /url: https://www.bbc.com/usingthebbc/cookies/how-can-i-change-my-bbc-cookie-settings/
+            - link "Cookies" [ref=f97e1017]: https://www.bbc.com/usingthebbc/cookies/how-can-i-change-my-bbc-cookie-settings/
           - listitem:
-            - link "Do not share or sell my info" [ref=f97e1020]:
-              - /url: https://www.bbc.com/usingthebbc/cookies/how-can-i-change-my-bbc-cookie-settings/
+            - link "Do not share or sell my info" [ref=f97e1020]
           - listitem:
-            - link "Accessibility Help" [ref=f97e1023]:
-              - /url: https://www.bbc.co.uk/accessibility/
+            - link "Accessibility Help" [ref=f97e1023]: https://www.bbc.co.uk/accessibility/
           - listitem:
-            - link "Contact the BBC" [ref=f97e1026]:
-              - /url: https://www.bbc.co.uk/contact
+            - link "Contact the BBC" [ref=f97e1026]: https://www.bbc.co.uk/contact
           - listitem:
-            - link "Advertise with us" [ref=f97e1029]:
-              - /url: https://advertising.bbcstudios.com/
+            - link "Advertise with us" [ref=f97e1029]: https://advertising.bbcstudios.com/
           - listitem:
-            - link "BBC.com Help & FAQs" [ref=f97e1032]:
-              - /url: https://help.bbc.com/hc/
+            - link "BBC.com Help & FAQs" [ref=f97e1032]: https://help.bbc.com/hc/
           - listitem:
-            - link "Content Index" [ref=f97e1035]:
-              - /url: https://www.bbc.com/pages/content-index
+            - link "Content Index" [ref=f97e1035]: https://www.bbc.com/pages/content-index
           - listitem:
-            - link "Set Preferred Source" [ref=f97e1038]:
-              - /url: https://www.bbc.com/future/article/20260128-how-to-make-google-put-trusted-sources-up-top-when-you-search
+            - link "Set Preferred Source" [ref=f97e1038]: https://www.bbc.com/future/article/20260128-how-to-make-google-put-trusted-sources-up-top-when-you-search
       - generic:
         - paragraph:
           - text: Copyright 2026 BBC. All rights reserved. The BBC is not responsible for the content of external sites.
-          - link "Read about our approach to external linking." [ref=f97e1041]:
-            - /url: https://www.bbc.com/editorialguidelines/guidance/links-and-feeds
+          - link "Read about our approach to external linking." [ref=f97e1041]: https://www.bbc.com/editorialguidelines/guidance/links-and-feeds
     - iframe [ref=f97e1045]:
       - generic:
         - iframe [ref=f101e3]
@@ -686,4 +612,4 @@ source: tests/playwright_fixtures.rs
               - button "See benefits" [ref=f101e13]
             - button "Close subscription banner" [ref=f101e14]
 ```
-[meiose: 11 nodes trimmed, 296 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 11 nodes trimmed, 296 non-interactive refs hidden, 33 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

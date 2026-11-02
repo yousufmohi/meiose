@@ -88,6 +88,11 @@ pub fn stats(days: u32, t: &Totals, per_tool: &[ToolTotals]) -> String {
             );
         }
     }
+    let _ = writeln!(
+        s,
+        "\n  Token counts are estimates (within about 10%); set MEIOSE_EXACT_TOKENS=1 \
+         on the proxy for exact counts."
+    );
     s
 }
 

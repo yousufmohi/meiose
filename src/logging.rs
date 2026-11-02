@@ -5,19 +5,32 @@
 //! Level is controlled by `MEIOSE_LOG` (e.g. `MEIOSE_LOG=debug`); default `info`.
 
 use tracing_appender::non_blocking::WorkerGuard;
+use tracing_appender::rolling::{RollingFileAppender, Rotation};
 use tracing_subscriber::EnvFilter;
 
 use crate::paths;
+
+/// Daily log files kept; older ones are deleted when a new day starts.
+const MAX_LOG_FILES: usize = 7;
 
 /// Install the global subscriber. Keep the returned guard alive until exit,
 /// then drop it to flush buffered log lines.
 pub fn init() -> Option<WorkerGuard> {
     let filter = EnvFilter::try_from_env("MEIOSE_LOG").unwrap_or_else(|_| EnvFilter::new("info"));
 
-    let dir = paths::logs_dir().filter(|d| std::fs::create_dir_all(d).is_ok());
-    match dir {
-        Some(dir) => {
-            let appender = tracing_appender::rolling::daily(dir, "meiose.log");
+    let appender = paths::logs_dir()
+        .filter(|d| std::fs::create_dir_all(d).is_ok())
+        .and_then(|dir| {
+            RollingFileAppender::builder()
+                .rotation(Rotation::DAILY)
+                .filename_prefix("meiose")
+                .filename_suffix("log")
+                .max_log_files(MAX_LOG_FILES)
+                .build(dir)
+                .ok()
+        });
+    match appender {
+        Some(appender) => {
             let (writer, guard) = tracing_appender::non_blocking(appender);
             tracing_subscriber::fmt()
                 .with_env_filter(filter)

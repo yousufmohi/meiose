@@ -117,6 +117,25 @@ fn repeat_snapshot_of_the_same_page_is_sent_as_a_diff() {
 }
 
 #[test]
+fn expand_with_a_query_returns_only_matching_lines() {
+    let mut s = Session::start(FORM, &[]);
+    s.init();
+    let first = s.call("browser_snapshot", json!({}));
+    let id = expand_id(text_of(&first)).to_string();
+    let hit = s.call("meiose_expand", json!({"id": id, "query": "checkbox"}));
+    let t = text_of(&hit);
+    assert!(
+        t.contains("match \"checkbox\"") && t.contains("[ref=e5]"),
+        "{t}"
+    );
+    let full = s.call("meiose_expand", json!({"id": id}));
+    assert!(t.len() < text_of(&full).len() / 2);
+    let miss = s.call("meiose_expand", json!({"id": id, "query": "no such text"}));
+    assert!(text_of(&miss).starts_with("No lines match"));
+    s.finish();
+}
+
+#[test]
 fn no_diff_flag_always_sends_full_snapshots() {
     let mut s = Session::start(FORM, &["--no-diff"]);
     s.init();
@@ -248,4 +267,48 @@ fn keep_days_zero_keeps_originals_in_memory_only() {
         .query_row("SELECT COUNT(*) FROM outputs", [], |r| r.get(0))
         .unwrap();
     assert_eq!(n, 0);
+}
+
+#[test]
+fn diff_after_a_budget_outline_only_refers_to_what_the_agent_saw() {
+    // A budget small enough that the form page becomes an outline.
+    let mut s = Session::start(FORM, &["--budget", "1500"]);
+    s.init();
+    let first = s.call("browser_snapshot", json!({}));
+    let seen = text_of(&first).to_string();
+    assert!(seen.contains("outline only"), "{seen}");
+    let second = s.call("browser_snapshot", json!({"checked": true}));
+    let d = text_of(&second);
+    if let Some(start) = d.find("```diff\n") {
+        // Every unchanged or removed line must be one the agent was shown.
+        for line in d[start + 8..].lines().take_while(|l| *l != "```") {
+            if let Some(old) = line.strip_prefix(' ').or_else(|| line.strip_prefix('-')) {
+                assert!(seen.contains(old), "diff refers to an unseen line: {old:?}");
+            }
+        }
+    } else {
+        assert!(!d.contains("Unchanged since"), "{d}");
+    }
+    s.finish();
+}
+
+#[test]
+fn query_and_full_expands_are_logged_apart() {
+    let mut s = Session::start(HN, &[]);
+    s.init();
+    let snap = s.call("browser_snapshot", json!({}));
+    let eid = expand_id(text_of(&snap));
+    s.call("meiose_expand", json!({"id": eid, "query": "comments"}));
+    s.call("meiose_expand", json!({"id": eid}));
+    let data = s.finish();
+    let conn = rusqlite::Connection::open(data.path().join("meiose.db")).unwrap();
+    let mut kinds: Vec<Option<String>> = conn
+        .prepare("SELECT handler FROM calls WHERE kind = 'expand' ORDER BY rowid")
+        .unwrap()
+        .query_map([], |r| r.get(0))
+        .unwrap()
+        .map(Result::unwrap)
+        .collect();
+    kinds.sort();
+    assert_eq!(kinds, [None, Some("query".to_string())]);
 }

@@ -10,172 +10,119 @@ source: tests/playwright_fixtures.rs
 - generic [active] [ref=f148e1]:
   - banner [ref=f148e2]:
     - generic:
-      - link "Books to Scrape" [ref=f148e6]:
-        - /url: index.html
+      - link "Books to Scrape" [ref=f148e6]: index.html
       - text: We love being scraped!
   - generic:
     - list:
       - listitem:
-        - link "Home" [ref=f148e11]:
-          - /url: index.html
+        - link "Home" [ref=f148e11]
       - listitem: / All products
     - generic:
       - complementary [ref=f148e14]:
         - list:
           - listitem:
-            - link "Books" [ref=f148e18]:
-              - /url: catalogue/category/books_1/index.html
+            - link "Books" [ref=f148e18]: catalogue/category/books_1/index.html
             - list:
               - listitem:
-                - link "Travel" [ref=f148e21]:
-                  - /url: catalogue/category/books/travel_2/index.html
+                - link "Travel" [ref=f148e21]: catalogue/category/books/travel_2/index.html
               - listitem:
-                - link "Mystery" [ref=f148e23]:
-                  - /url: catalogue/category/books/mystery_3/index.html
+                - link "Mystery" [ref=f148e23]: catalogue/category/books/mystery_3/index.html
               - listitem:
-                - link "Historical Fiction" [ref=f148e25]:
-                  - /url: catalogue/category/books/historical-fiction_4/index.html
+                - link "Historical Fiction" [ref=f148e25]: catalogue/category/books/historical-fiction_4/index.html
               - listitem:
-                - link "Sequential Art" [ref=f148e27]:
-                  - /url: catalogue/category/books/sequential-art_5/index.html
+                - link "Sequential Art" [ref=f148e27]: catalogue/category/books/sequential-art_5/index.html
               - listitem:
-                - link "Classics" [ref=f148e29]:
-                  - /url: catalogue/category/books/classics_6/index.html
+                - link "Classics" [ref=f148e29]: catalogue/category/books/classics_6/index.html
               - listitem:
-                - link "Philosophy" [ref=f148e31]:
-                  - /url: catalogue/category/books/philosophy_7/index.html
+                - link "Philosophy" [ref=f148e31]: catalogue/category/books/philosophy_7/index.html
               - listitem:
-                - link "Romance" [ref=f148e33]:
-                  - /url: catalogue/category/books/romance_8/index.html
+                - link "Romance" [ref=f148e33]: catalogue/category/books/romance_8/index.html
               - listitem:
-                - link "Womens Fiction" [ref=f148e35]:
-                  - /url: catalogue/category/books/womens-fiction_9/index.html
+                - link "Womens Fiction" [ref=f148e35]: catalogue/category/books/womens-fiction_9/index.html
               - listitem:
-                - link "Fiction" [ref=f148e37]:
-                  - /url: catalogue/category/books/fiction_10/index.html
+                - link "Fiction" [ref=f148e37]: catalogue/category/books/fiction_10/index.html
               - listitem:
-                - link "Childrens" [ref=f148e39]:
-                  - /url: catalogue/category/books/childrens_11/index.html
+                - link "Childrens" [ref=f148e39]: catalogue/category/books/childrens_11/index.html
               - listitem:
-                - link "Religion" [ref=f148e41]:
-                  - /url: catalogue/category/books/religion_12/index.html
+                - link "Religion" [ref=f148e41]: catalogue/category/books/religion_12/index.html
               - listitem:
-                - link "Nonfiction" [ref=f148e43]:
-                  - /url: catalogue/category/books/nonfiction_13/index.html
+                - link "Nonfiction" [ref=f148e43]: catalogue/category/books/nonfiction_13/index.html
               - listitem:
-                - link "Music" [ref=f148e45]:
-                  - /url: catalogue/category/books/music_14/index.html
+                - link "Music" [ref=f148e45]: catalogue/category/books/music_14/index.html
               - listitem:
-                - link "Default" [ref=f148e47]:
-                  - /url: catalogue/category/books/default_15/index.html
+                - link "Default" [ref=f148e47]: catalogue/category/books/default_15/index.html
               - listitem:
-                - link "Science Fiction" [ref=f148e49]:
-                  - /url: catalogue/category/books/science-fiction_16/index.html
+                - link "Science Fiction" [ref=f148e49]: catalogue/category/books/science-fiction_16/index.html
               - listitem:
-                - link "Sports and Games" [ref=f148e51]:
-                  - /url: catalogue/category/books/sports-and-games_17/index.html
+                - link "Sports and Games" [ref=f148e51]: catalogue/category/books/sports-and-games_17/index.html
               - listitem:
-                - link "Add a comment" [ref=f148e53]:
-                  - /url: catalogue/category/books/add-a-comment_18/index.html
+                - link "Add a comment" [ref=f148e53]: catalogue/category/books/add-a-comment_18/index.html
               - listitem:
-                - link "Fantasy" [ref=f148e55]:
-                  - /url: catalogue/category/books/fantasy_19/index.html
+                - link "Fantasy" [ref=f148e55]: catalogue/category/books/fantasy_19/index.html
               - listitem:
-                - link "New Adult" [ref=f148e57]:
-                  - /url: catalogue/category/books/new-adult_20/index.html
+                - link "New Adult" [ref=f148e57]: catalogue/category/books/new-adult_20/index.html
               - listitem:
-                - link "Young Adult" [ref=f148e59]:
-                  - /url: catalogue/category/books/young-adult_21/index.html
+                - link "Young Adult" [ref=f148e59]: catalogue/category/books/young-adult_21/index.html
               - listitem:
-                - link "Science" [ref=f148e61]:
-                  - /url: catalogue/category/books/science_22/index.html
+                - link "Science" [ref=f148e61]: catalogue/category/books/science_22/index.html
               - listitem:
-                - link "Poetry" [ref=f148e63]:
-                  - /url: catalogue/category/books/poetry_23/index.html
+                - link "Poetry" [ref=f148e63]: catalogue/category/books/poetry_23/index.html
               - listitem:
-                - link "Paranormal" [ref=f148e65]:
-                  - /url: catalogue/category/books/paranormal_24/index.html
+                - link "Paranormal" [ref=f148e65]: catalogue/category/books/paranormal_24/index.html
               - listitem:
-                - link "Art" [ref=f148e67]:
-                  - /url: catalogue/category/books/art_25/index.html
+                - link "Art" [ref=f148e67]: catalogue/category/books/art_25/index.html
               - listitem:
-                - link "Psychology" [ref=f148e69]:
-                  - /url: catalogue/category/books/psychology_26/index.html
+                - link "Psychology" [ref=f148e69]: catalogue/category/books/psychology_26/index.html
               - listitem:
-                - link "Autobiography" [ref=f148e71]:
-                  - /url: catalogue/category/books/autobiography_27/index.html
+                - link "Autobiography" [ref=f148e71]: catalogue/category/books/autobiography_27/index.html
               - listitem:
-                - link "Parenting" [ref=f148e73]:
-                  - /url: catalogue/category/books/parenting_28/index.html
+                - link "Parenting" [ref=f148e73]: catalogue/category/books/parenting_28/index.html
               - listitem:
-                - link "Adult Fiction" [ref=f148e75]:
-                  - /url: catalogue/category/books/adult-fiction_29/index.html
+                - link "Adult Fiction" [ref=f148e75]: catalogue/category/books/adult-fiction_29/index.html
               - listitem:
-                - link "Humor" [ref=f148e77]:
-                  - /url: catalogue/category/books/humor_30/index.html
+                - link "Humor" [ref=f148e77]: catalogue/category/books/humor_30/index.html
               - listitem:
-                - link "Horror" [ref=f148e79]:
-                  - /url: catalogue/category/books/horror_31/index.html
+                - link "Horror" [ref=f148e79]: catalogue/category/books/horror_31/index.html
               - listitem:
-                - link "History" [ref=f148e81]:
-                  - /url: catalogue/category/books/history_32/index.html
+                - link "History" [ref=f148e81]: catalogue/category/books/history_32/index.html
               - listitem:
-                - link "Food and Drink" [ref=f148e83]:
-                  - /url: catalogue/category/books/food-and-drink_33/index.html
+                - link "Food and Drink" [ref=f148e83]: catalogue/category/books/food-and-drink_33/index.html
               - listitem:
-                - link "Christian Fiction" [ref=f148e85]:
-                  - /url: catalogue/category/books/christian-fiction_34/index.html
+                - link "Christian Fiction" [ref=f148e85]: catalogue/category/books/christian-fiction_34/index.html
               - listitem:
-                - link "Business" [ref=f148e87]:
-                  - /url: catalogue/category/books/business_35/index.html
+                - link "Business" [ref=f148e87]: catalogue/category/books/business_35/index.html
               - listitem:
-                - link "Biography" [ref=f148e89]:
-                  - /url: catalogue/category/books/biography_36/index.html
+                - link "Biography" [ref=f148e89]: catalogue/category/books/biography_36/index.html
               - listitem:
-                - link "Thriller" [ref=f148e91]:
-                  - /url: catalogue/category/books/thriller_37/index.html
+                - link "Thriller" [ref=f148e91]: catalogue/category/books/thriller_37/index.html
               - listitem:
-                - link "Contemporary" [ref=f148e93]:
-                  - /url: catalogue/category/books/contemporary_38/index.html
+                - link "Contemporary" [ref=f148e93]: catalogue/category/books/contemporary_38/index.html
               - listitem:
-                - link "Spirituality" [ref=f148e95]:
-                  - /url: catalogue/category/books/spirituality_39/index.html
+                - link "Spirituality" [ref=f148e95]: catalogue/category/books/spirituality_39/index.html
               - listitem:
-                - link "Academic" [ref=f148e97]:
-                  - /url: catalogue/category/books/academic_40/index.html
+                - link "Academic" [ref=f148e97]: catalogue/category/books/academic_40/index.html
               - listitem:
-                - link "Self Help" [ref=f148e99]:
-                  - /url: catalogue/category/books/self-help_41/index.html
+                - link "Self Help" [ref=f148e99]: catalogue/category/books/self-help_41/index.html
               - listitem:
-                - link "Historical" [ref=f148e101]:
-                  - /url: catalogue/category/books/historical_42/index.html
+                - link "Historical" [ref=f148e101]: catalogue/category/books/historical_42/index.html
               - listitem:
-                - link "Christian" [ref=f148e103]:
-                  - /url: catalogue/category/books/christian_43/index.html
+                - link "Christian" [ref=f148e103]: catalogue/category/books/christian_43/index.html
               - listitem:
-                - link "Suspense" [ref=f148e105]:
-                  - /url: catalogue/category/books/suspense_44/index.html
+                - link "Suspense" [ref=f148e105]: catalogue/category/books/suspense_44/index.html
               - listitem:
-                - link "Short Stories" [ref=f148e107]:
-                  - /url: catalogue/category/books/short-stories_45/index.html
+                - link "Short Stories" [ref=f148e107]: catalogue/category/books/short-stories_45/index.html
               - listitem:
-                - link "Novels" [ref=f148e109]:
-                  - /url: catalogue/category/books/novels_46/index.html
+                - link "Novels" [ref=f148e109]: catalogue/category/books/novels_46/index.html
               - listitem:
-                - link "Health" [ref=f148e111]:
-                  - /url: catalogue/category/books/health_47/index.html
+                - link "Health" [ref=f148e111]: catalogue/category/books/health_47/index.html
               - listitem:
-                - link "Politics" [ref=f148e113]:
-                  - /url: catalogue/category/books/politics_48/index.html
+                - link "Politics" [ref=f148e113]: catalogue/category/books/politics_48/index.html
               - listitem:
-                - link "Cultural" [ref=f148e115]:
-                  - /url: catalogue/category/books/cultural_49/index.html
+                - link "Cultural" [ref=f148e115]: catalogue/category/books/cultural_49/index.html
               - listitem:
-                - link "Erotica" [ref=f148e117]:
-                  - /url: catalogue/category/books/erotica_50/index.html
+                - link "Erotica" [ref=f148e117]: catalogue/category/books/erotica_50/index.html
               - listitem:
-                - link "Crime" [ref=f148e119]:
-                  - /url: catalogue/category/books/crime_51/index.html
+                - link "Crime" [ref=f148e119]: catalogue/category/books/crime_51/index.html
       - generic:
         - heading "All products" [level=1] [ref=f148e122]
         - generic:
@@ -203,8 +150,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e143]:
-                    - link "A Light in the ..." [ref=f148e144]:
-                      - /url: catalogue/a-light-in-the-attic_1000/index.html
+                    - link "A Light in the ..." [ref=f148e144]
                   - generic:
                     - paragraph: £51.77
                     - paragraph:
@@ -223,8 +169,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e162]:
-                    - link "Tipping the Velvet" [ref=f148e163]:
-                      - /url: catalogue/tipping-the-velvet_999/index.html
+                    - link "Tipping the Velvet" [ref=f148e163]
                   - generic:
                     - paragraph: £53.74
                     - paragraph:
@@ -243,8 +188,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e181]:
-                    - link "Soumission" [ref=f148e182]:
-                      - /url: catalogue/soumission_998/index.html
+                    - link "Soumission" [ref=f148e182]
                   - generic:
                     - paragraph: £50.10
                     - paragraph:
@@ -263,8 +207,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e200]:
-                    - link "Sharp Objects" [ref=f148e201]:
-                      - /url: catalogue/sharp-objects_997/index.html
+                    - link "Sharp Objects" [ref=f148e201]
                   - generic:
                     - paragraph: £47.82
                     - paragraph:
@@ -284,7 +227,6 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                   - heading [level=3] [ref=f148e219]:
                     - 'link "Sapiens: A Brief History ..." [ref=f148e220] [cursor=pointer]':
-                      - /url: catalogue/sapiens-a-brief-history-of-humankind_996/index.html
                   - generic:
                     - paragraph: £54.23
                     - paragraph:
@@ -303,8 +245,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e238]:
-                    - link "The Requiem Red" [ref=f148e239]:
-                      - /url: catalogue/the-requiem-red_995/index.html
+                    - link "The Requiem Red" [ref=f148e239]
                   - generic:
                     - paragraph: £22.65
                     - paragraph:
@@ -323,8 +264,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e257]:
-                    - link "The Dirty Little Secrets ..." [ref=f148e258]:
-                      - /url: catalogue/the-dirty-little-secrets-of-getting-your-dream-job_994/index.html
+                    - link "The Dirty Little Secrets ..." [ref=f148e258]
                   - generic:
                     - paragraph: £33.34
                     - paragraph:
@@ -344,7 +284,6 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                   - heading [level=3] [ref=f148e276]:
                     - 'link "The Coming Woman: A ..." [ref=f148e277] [cursor=pointer]':
-                      - /url: catalogue/the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html
                   - generic:
                     - paragraph: £17.93
                     - paragraph:
@@ -363,8 +302,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e295]:
-                    - link "The Boys in the ..." [ref=f148e296]:
-                      - /url: catalogue/the-boys-in-the-boat-nine-americans-and-their-epic-quest-for-gold-at-the-1936-berlin-olympics_992/index.html
+                    - link "The Boys in the ..." [ref=f148e296]
                   - generic:
                     - paragraph: £22.60
                     - paragraph:
@@ -383,8 +321,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e314]:
-                    - link "The Black Maria" [ref=f148e315]:
-                      - /url: catalogue/the-black-maria_991/index.html
+                    - link "The Black Maria" [ref=f148e315]
                   - generic:
                     - paragraph: £52.15
                     - paragraph:
@@ -403,8 +340,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e333]:
-                    - link "Starving Hearts (Triangular Trade ..." [ref=f148e334]:
-                      - /url: catalogue/starving-hearts-triangular-trade-trilogy-1_990/index.html
+                    - link "Starving Hearts (Triangular Trade ..." [ref=f148e334]
                   - generic:
                     - paragraph: £13.99
                     - paragraph:
@@ -423,8 +359,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e352]:
-                    - link "Shakespeare's Sonnets" [ref=f148e353]:
-                      - /url: catalogue/shakespeares-sonnets_989/index.html
+                    - link "Shakespeare's Sonnets" [ref=f148e353]
                   - generic:
                     - paragraph: £20.66
                     - paragraph:
@@ -443,8 +378,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e371]:
-                    - link "Set Me Free" [ref=f148e372]:
-                      - /url: catalogue/set-me-free_988/index.html
+                    - link "Set Me Free" [ref=f148e372]
                   - generic:
                     - paragraph: £17.46
                     - paragraph:
@@ -463,8 +397,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e390]:
-                    - link "Scott Pilgrim's Precious Little ..." [ref=f148e391]:
-                      - /url: catalogue/scott-pilgrims-precious-little-life-scott-pilgrim-1_987/index.html
+                    - link "Scott Pilgrim's Precious Little ..." [ref=f148e391]
                   - generic:
                     - paragraph: £52.29
                     - paragraph:
@@ -483,8 +416,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e409]:
-                    - link "Rip it Up and ..." [ref=f148e410]:
-                      - /url: catalogue/rip-it-up-and-start-again_986/index.html
+                    - link "Rip it Up and ..." [ref=f148e410]
                   - generic:
                     - paragraph: £35.02
                     - paragraph:
@@ -503,8 +435,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e428]:
-                    - link "Our Band Could Be ..." [ref=f148e429]:
-                      - /url: catalogue/our-band-could-be-your-life-scenes-from-the-american-indie-underground-1981-1991_985/index.html
+                    - link "Our Band Could Be ..." [ref=f148e429]
                   - generic:
                     - paragraph: £57.25
                     - paragraph:
@@ -523,8 +454,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e447]:
-                    - link "Olio" [ref=f148e448]:
-                      - /url: catalogue/olio_984/index.html
+                    - link "Olio" [ref=f148e448]
                   - generic:
                     - paragraph: £23.88
                     - paragraph:
@@ -544,7 +474,6 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                   - heading [level=3] [ref=f148e466]:
                     - 'link "Mesaerion: The Best Science ..." [ref=f148e467] [cursor=pointer]':
-                      - /url: catalogue/mesaerion-the-best-science-fiction-stories-1800-1849_983/index.html
                   - generic:
                     - paragraph: £37.59
                     - paragraph:
@@ -563,8 +492,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e485]:
-                    - link "Libertarianism for Beginners" [ref=f148e486]:
-                      - /url: catalogue/libertarianism-for-beginners_982/index.html
+                    - link "Libertarianism for Beginners" [ref=f148e486]
                   - generic:
                     - paragraph: £51.33
                     - paragraph:
@@ -583,8 +511,7 @@ source: tests/playwright_fixtures.rs
                     - generic: 
                     - generic: 
                   - heading [level=3] [ref=f148e504]:
-                    - link "It's Only the Himalayas" [ref=f148e505]:
-                      - /url: catalogue/its-only-the-himalayas_981/index.html
+                    - link "It's Only the Himalayas" [ref=f148e505]
                   - generic:
                     - paragraph: £45.17
                     - paragraph:
@@ -594,7 +521,6 @@ source: tests/playwright_fixtures.rs
             - list:
               - listitem: Page 1 of 50
               - listitem:
-                - link "next" [ref=f148e515]:
-                  - /url: catalogue/page-2.html
+                - link "next" [ref=f148e515]: catalogue/page-2.html
 ```
-[meiose: 1 nodes trimmed, 290 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 1 nodes trimmed, 290 non-interactive refs hidden, 21 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

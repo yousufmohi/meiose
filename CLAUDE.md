@@ -191,8 +191,9 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   `cargo publish --dry-run` passes. Needs `cargo login`.
 - CI (`.github/workflows/ci.yml`): fmt; clippy -D warnings + full tests on
   ubuntu/macos/windows (Python 3.12 for fake_server.py); bench job.
-- Verified locally on Windows and on Linux (WSL Ubuntu 24.04, separate
-  CARGO_TARGET_DIR); macOS only via CI so far.
+- Verified on Windows, Linux (WSL Ubuntu 24.04 + CI) and macOS (CI, all 118
+  tests); first green CI run 2026-11-02. Local Linux runs use a separate
+  CARGO_TARGET_DIR.
 - `install::program_name` splits on both `/` and `\` (configs travel between
   OSes; `Path::file_stem` on Linux does not split Windows paths).
 - `MEIOSE_KEEP_DAYS` (default 7; 0 = originals never written to disk).

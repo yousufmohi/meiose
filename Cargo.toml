@@ -1,9 +1,9 @@
 [package]
 name = "meiose"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.88"
-description = "A context-trimming proxy for MCP servers: smaller tool outputs for AI agents, originals one call away"
+description = "An MCP proxy that trims oversized tool outputs before they reach your agent"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/yousufmohi/meiose"
 homepage = "https://github.com/yousufmohi/meiose"

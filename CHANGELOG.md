@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 — 2026-11-02
 
 - `meiose_expand(id, query="…")` returns only the matching lines of a stored
   output, each with its enclosing row or block, instead of the whole thing.

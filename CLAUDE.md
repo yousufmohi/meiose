@@ -18,7 +18,7 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 | M4 | `install` / `uninstall` / `doctor` + install tests | Done (2026-11-01) |
 | M5 | Protocol test suite + fail-open hardening | Done (2026-11-01); eval harness pulled forward from M6 |
 | M6 | Eval harness + README + cargo-dist + npm wrapper | Done — **v0.1.0 released 2026-11-02** (GitHub, Homebrew tap, crates.io, npm); 0.1.1 released |
-| Perf | URL rules, `query` expand, `--budget`, uncapped-agent eval | **On branch `perf-url-search-budget`, evaluated, docs updated; not released** |
+| Perf | URL rules, `query` expand, `--budget`, uncapped-agent eval, lighter footprint | Done — **0.2.0 released 2026-11-02** (PR #1) |
 
 Work one milestone at a time. After each: report what was built, test results
 and open questions, then **wait for the user's go-ahead**.

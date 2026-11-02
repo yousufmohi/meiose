@@ -17,7 +17,7 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 | M3 | `meiose_expand` + store + `stats` + `log` + json/text handlers + snapshot diffing | Done (2026-11-01) |
 | M4 | `install` / `uninstall` / `doctor` + install tests | Done (2026-11-01) |
 | M5 | Protocol test suite + fail-open hardening | Done (2026-11-01); eval harness pulled forward from M6 |
-| M6 | Eval harness + README + cargo-dist + npm wrapper | **Done locally (2026-11-01); publishing awaits the user** |
+| M6 | Eval harness + README + cargo-dist + npm wrapper | Done — **v0.1.0 released 2026-11-02** (GitHub, Homebrew tap, crates.io, npm) |
 
 Work one milestone at a time. After each: report what was built, test results
 and open questions, then **wait for the user's go-ahead**.
@@ -271,3 +271,12 @@ claude mcp add --scope user pw-meiose -- meiose record -- npx -y @playwright/mcp
 - Windows testing gotcha: child processes inherit every inheritable handle;
   an orphaned test server can hold cargo's output pipe and hang the run.
   The grandchild in fake_server uses null stdio for this reason.
+
+## Release notes for next time
+
+- npm tokens must be granular, "Read and write (publish and stage)", with
+  **Bypass 2FA** enabled, or CI publish fails with E403. After publish, npm
+  shows a `0.0.0-stage` placeholder for ~1 minute before the real version.
+- Rerun only failed release jobs: `gh run rerun <run-id> --failed`.
+- crates.io publishing is manual (`cargo publish`); bump the version in
+  Cargo.toml, update CHANGELOG.md, push, then tag `vX.Y.Z`.

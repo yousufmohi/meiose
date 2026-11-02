@@ -124,6 +124,10 @@ data directory for 7 days, so `meiose_expand` and `meiose log` work. Set
 memory for the session only. Stored originals are capped at 512 MB, oldest
 first.
 
+Recent originals are also cached in memory, up to 32 MB per meiose process
+(128 MB with `MEIOSE_KEEP_DAYS=0`, where memory is the only copy). Logs go to
+daily files in `<data dir>/logs/`; the last 7 are kept.
+
 `meiose install` keeps backups of the config files it changes in the same
 directory. Those are full copies, including any `env` values (API keys).
 

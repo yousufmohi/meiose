@@ -142,10 +142,10 @@ def run_one(task: dict, mode: str, rep: int, args, out_dir: Path) -> dict:
     cmd = server_cmd(mode, args.meiose)
     started = time.time()
     if args.client == "loop":
-        env = dict(os.environ, MEIOSE_DATA_DIR=str(data))
+        env = dict(os.environ, MEIOSE_DATA_DIR=str(data), MEIOSE_EXACT_TOKENS="1")
         d = agent_loop.run(task["prompt"] + LOOP_INSTRUCTIONS, cmd, env, args.model, TOOLS, args.timeout)
     else:
-        d = run_claude_code(task, cmd, {"MEIOSE_DATA_DIR": str(data)}, args, work)
+        d = run_claude_code(task, cmd, {"MEIOSE_DATA_DIR": str(data), "MEIOSE_EXACT_TOKENS": "1"}, args, work)
     u = d.get("usage") or {}
     result = d.get("result") or ""
     m = re.findall(r"ANSWER:\s*(.+)", result)

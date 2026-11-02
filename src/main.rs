@@ -13,7 +13,15 @@ fn main() {
     let cli = Cli::parse();
     let log_guard = logging::init();
 
-    let rt = match tokio::runtime::Runtime::new() {
+    // The proxy mostly waits on pipes and trims in a few milliseconds, so two
+    // workers are plenty; the default (one per core) only adds idle threads,
+    // and every wrapped MCP server runs its own meiose.
+    let rt = match tokio::runtime::Builder::new_multi_thread()
+        .worker_threads(2)
+        .thread_name("meiose")
+        .enable_all()
+        .build()
+    {
         Ok(rt) => rt,
         Err(e) => {
             eprintln!(

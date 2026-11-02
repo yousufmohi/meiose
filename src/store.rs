@@ -36,7 +36,19 @@ fn output_ttl() -> Duration {
 /// Total size cap for stored originals; oldest go first.
 pub const OUTPUT_CAP_BYTES: i64 = 512 * 1024 * 1024;
 /// Per-process in-memory cap for originals.
-const MEMORY_CAP_BYTES: usize = 128 * 1024 * 1024;
+const MEMORY_CAP_BYTES: usize = 32 * 1024 * 1024;
+/// With `MEIOSE_KEEP_DAYS=0` memory is the only copy, so keep more of it.
+const MEMORY_ONLY_CAP_BYTES: usize = 128 * 1024 * 1024;
+
+/// Originals are also on disk (unless `MEIOSE_KEEP_DAYS=0`), so memory only
+/// needs the recent ones; an expand of an older id reads it from SQLite.
+fn memory_cap() -> usize {
+    if keep_days() == 0 {
+        MEMORY_ONLY_CAP_BYTES
+    } else {
+        MEMORY_CAP_BYTES
+    }
+}
 
 pub fn now_ms() -> i64 {
     SystemTime::now()
@@ -117,7 +129,8 @@ impl StoreHandle {
             m.bytes += result.len();
             m.map.insert(id.to_string(), Arc::from(result));
             m.order.push_back(id.to_string());
-            while m.bytes > MEMORY_CAP_BYTES && m.order.len() > 1 {
+            let cap = memory_cap();
+            while m.bytes > cap && m.order.len() > 1 {
                 if let Some(old) = m.order.pop_front()
                     && let Some(v) = m.map.remove(&old)
                 {
@@ -270,11 +283,11 @@ fn run(conn: Connection, rx: std_mpsc::Receiver<Job>) {
 }
 
 fn insert_call(conn: &Connection, rec: &CallRecord) -> rusqlite::Result<()> {
-    let tokens_before = crate::tokens::count(&rec.text_before) as i64;
+    let tokens_before = crate::tokens::for_stats(&rec.text_before) as i64;
     let tokens_after = if rec.text_after == rec.text_before {
         tokens_before
     } else {
-        crate::tokens::count(&rec.text_after) as i64
+        crate::tokens::for_stats(&rec.text_after) as i64
     };
     conn.execute(
         "INSERT INTO calls(ts_ms, server, tool, kind, handler, bytes_before, bytes_after,

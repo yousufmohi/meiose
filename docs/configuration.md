@@ -40,6 +40,7 @@ from a trim note:
 |---|---|
 | `MEIOSE_KEEP_DAYS` | days to keep originals on disk (default 7, `0` = memory only) |
 | `MEIOSE_DATA_DIR` | where the database, logs and backups live |
+| `MEIOSE_EXACT_TOKENS=1` | count tokens exactly for `meiose stats` (loads a ~36 MB vocabulary per process); by default they are estimated, within about 10% |
 | `MEIOSE_LOG=debug` | more detail in `<data dir>/logs/` |
 
 ## Supported servers

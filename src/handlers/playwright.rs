@@ -255,7 +255,7 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
     }
     let limits = Limits::for_mode(cx.mode);
     let mut nodes = parse(body)?;
-    analyze(&mut nodes, limits.dedupe_same_text);
+    analyze(&mut nodes, limits.dedupe_same_text, limits.dedupe_min_run);
 
     let n = nodes.len();
     let mut drop = vec![false; n];
@@ -648,14 +648,30 @@ fn parse_key(s: &str) -> Option<Key> {
 
 /// Compute `keeps` and `sig` bottom-up. Nodes are in preorder, so walking
 /// backwards visits every child before its parent.
-fn analyze(nodes: &mut [Node], with_text: bool) {
+fn analyze(nodes: &mut [Node], with_text: bool, min_run: usize) {
     let n = nodes.len();
     let mut acc = vec![0u64; n];
     let mut child_keeps = vec![false; n];
+    // Text only matters for subtrees that dedupe can look at: children (and
+    // their descendants) of lists with at least `min_run` siblings.
+    let mut in_long_list = vec![false; n];
+    if with_text {
+        let roots = nodes.iter().filter(|nd| nd.parent == NONE).count();
+        if roots >= min_run {
+            in_long_list.fill(true);
+        } else {
+            for i in 0..n {
+                if nodes[i].n_children >= min_run && !in_long_list[i] {
+                    let end = nodes[i].end;
+                    in_long_list[i + 1..end].fill(true);
+                }
+            }
+        }
+    }
     for i in (0..n).rev() {
         let nd = &mut nodes[i];
         let mut base = fnv(nd.role.as_bytes()) ^ nd.kind as u64;
-        if with_text {
+        if in_long_list[i] {
             // The whole line except its ref (refs are unique per element).
             base ^= match &nd.ref_attr {
                 Some(r) => {
@@ -742,13 +758,19 @@ fn eligible(nd: &Node, limits: &Limits) -> bool {
     nd.kind == Kind::Element && !nd.keeps && (!limits.dedupe_composite_only || nd.n_children > 0)
 }
 
+/// Fast non-cryptographic hash over 8-byte words (dedupe signatures hash
+/// every line of large snapshots, so a byte-at-a-time hash is too slow).
 fn fnv(bytes: &[u8]) -> u64 {
-    let mut h: u64 = 0xcbf2_9ce4_8422_2325;
-    for &b in bytes {
-        h ^= u64::from(b);
-        h = h.wrapping_mul(0x0100_0000_01b3);
+    const K: u64 = 0x9E37_79B9_7F4A_7C15;
+    let mut h: u64 = 0xcbf2_9ce4_8422_2325 ^ (bytes.len() as u64).wrapping_mul(K);
+    let (words, rest) = bytes.as_chunks::<8>();
+    for w in words {
+        h = (h.rotate_left(5) ^ u64::from_le_bytes(*w)).wrapping_mul(K);
     }
-    h
+    let mut tail = [0u8; 8];
+    tail[..rest.len()].copy_from_slice(rest);
+    h = (h.rotate_left(5) ^ u64::from_le_bytes(tail)).wrapping_mul(K);
+    h ^ (h >> 32)
 }
 
 fn mix(mut x: u64) -> u64 {

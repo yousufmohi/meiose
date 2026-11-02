@@ -1,7 +1,11 @@
 # Changelog
 
-## Unreleased
+## 0.2.1 — 2026-11-02
 
+- A short JSON list of big items (16 GitHub pull requests, 85 KB) was cut
+  mid-item by the text fallback. Lists under 40 items but over 40 KB now keep
+  whole items up to 16 KB and summarize the rest, so the output stays valid
+  JSON. Longer lists are trimmed as before.
 - `meiose_expand(query=…)` on JSON outputs: a match also brings the one-line
   fields of its object (number, state, URLs), so a title found in a GitHub
   issue list arrives with the issue's number and link. Measured on real GitHub

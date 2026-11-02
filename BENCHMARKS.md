@@ -79,7 +79,7 @@ o200k tokens:
 | `search_issues` playwright "screenshot" | 100,677 | 18,211 (−82%) | 3,901 (−96%) | json |
 | `list_commits` rust-lang/rust, 50 | 94,554 | 21,839 (−77%) | 5,370 (−94%) | json |
 | `search_repositories` "model context protocol" | 17,954 | 3,533 (−80%) | 1,093 (−94%) | json |
-| `list_pull_requests` playwright (16 open) | 25,013 | 5,859 (−77%) | 4,579 (−82%) | text |
+| `list_pull_requests` playwright (16 open) | 25,013 | 4,889 (−80%) | 4,579 (−82%) | json |
 | `get_file_contents` (a directory) | 4,284 | untouched | 656 (−85%) | — |
 | `get_issue` | 1,202 | untouched | untouched | — |
 
@@ -92,8 +92,12 @@ one-line fields of its object (number, state, URLs, dates): 6 of 6 found, at
 185–2,068 tokens per query.
 
 The pull-request list has only 16 items, under the JSON handler's 40-item
-threshold, so it falls through to the text handler, which keeps the first 16 KB
-and last 4 KB: the agent sees the start and end of the array, cut mid-item.
+threshold, but they are big (nested `head`/`base` repository objects are 56% of
+the bytes). It used to fall through to the text handler, which keeps the first
+16 KB and last 4 KB and so cut the JSON mid-item (−77%). A list too short for
+the 40-item rule but over 40 KB of JSON now keeps whole items up to 16 KB
+(here 3 of 16), so the output stays valid JSON (−80%). Lists of more than 40
+items keep their 10 samples as before.
 
 ## Footprint on the host
 

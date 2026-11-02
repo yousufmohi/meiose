@@ -19,6 +19,12 @@ struct Limits {
     array_keep: usize,
     string_max: usize,
     string_keep: usize,
+    /// An array too short for `array_max` but larger than this (compact
+    /// JSON) keeps whole items up to `array_bytes_keep`, at least one. A short list
+    /// of big objects (16 GitHub pull requests: 85 KB) is otherwise left to
+    /// the text handler, which cuts the JSON mid-item.
+    array_bytes_max: usize,
+    array_bytes_keep: usize,
 }
 
 impl Limits {
@@ -29,12 +35,16 @@ impl Limits {
                 array_keep: 10,
                 string_max: 4000,
                 string_keep: 3000,
+                array_bytes_max: 40 * 1024,
+                array_bytes_keep: 16 * 1024,
             },
             Mode::Aggressive => Limits {
                 array_max: 10,
                 array_keep: 3,
                 string_max: 600,
                 string_keep: 400,
+                array_bytes_max: 12 * 1024,
+                array_bytes_keep: 4 * 1024,
             },
         }
     }
@@ -101,24 +111,39 @@ struct Stats {
 fn walk(v: &mut Value, limits: &Limits, stats: &mut Stats) {
     match v {
         Value::Array(items) => {
-            if items.len() > limits.array_max {
-                let cut = items.len() - limits.array_keep;
-                let keys = item_keys(&items[..]);
+            let n = items.len();
+            let keys = if n > 1 { item_keys(&items[..]) } else { vec![] };
+            if n > limits.array_max {
                 items.truncate(limits.array_keep);
+            }
+            for item in items.iter_mut() {
+                walk(item, limits, stats);
+            }
+            // Only lists the count rule left whole: it already decides how
+            // many samples a long list shows.
+            if n <= limits.array_max && n > 1 {
+                let sizes: Vec<usize> = items
+                    .iter()
+                    .map(|i| serde_json::to_string(i).map_or(0, |t| t.len()))
+                    .collect();
+                if sizes.iter().sum::<usize>() > limits.array_bytes_max {
+                    let mut total = sizes[0];
+                    let mut keep = 1;
+                    while keep < sizes.len() && total + sizes[keep] <= limits.array_bytes_keep {
+                        total += sizes[keep];
+                        keep += 1;
+                    }
+                    items.truncate(keep);
+                }
+            }
+            let cut = n - items.len();
+            if cut > 0 {
                 stats.items += cut;
-                let note = if keys.is_empty() {
+                items.push(Value::String(if keys.is_empty() {
                     format!("…{cut} more items")
                 } else {
                     format!("…{cut} more items with keys: {}", keys.join(", "))
-                };
-                for item in items.iter_mut() {
-                    walk(item, limits, stats);
-                }
-                items.push(Value::String(note));
-            } else {
-                for item in items.iter_mut() {
-                    walk(item, limits, stats);
-                }
+                }));
             }
         }
         Value::Object(map) => {
@@ -179,6 +204,68 @@ mod tests {
         assert_eq!(arr[10], "…90 more items with keys: id, name, email");
         assert!(marker.contains("90 array items trimmed"));
         assert!(marker.contains("meiose_expand(\"j1\")"));
+    }
+
+    /// GitHub-like: few items, each a big nested object, no long strings.
+    fn big_items(n: usize) -> String {
+        let items: Vec<Value> = (0..n)
+            .map(|i| {
+                let repo: Map<String, Value> = (0..150)
+                    .map(|k| (format!("field_{k}_url"), Value::String(format!("https://api.example.com/repos/o/r/{k}"))))
+                    .collect();
+                serde_json::json!({"number": i, "title": format!("PR {i}"), "head": repo, "base": repo})
+            })
+            .collect();
+        serde_json::to_string_pretty(&items).unwrap()
+    }
+
+    #[test]
+    fn a_short_list_of_big_items_keeps_whole_items_and_stays_valid_json() {
+        let text = big_items(16);
+        assert!(text.len() > 150_000);
+        let out = trim_json_min(&text, &cx(Mode::Conservative), 0).unwrap();
+        let (json_part, marker) = out.text.rsplit_once('\n').unwrap();
+        let v: Value = serde_json::from_str(json_part).expect("still valid JSON");
+        let arr = v.as_array().unwrap();
+        let kept = arr.len() - 1;
+        assert!((1..16).contains(&kept), "kept {kept}");
+        for (i, item) in arr[..kept].iter().enumerate() {
+            assert_eq!(item["number"], i, "whole items, in order");
+            assert_eq!(item["head"].as_object().unwrap().len(), 150);
+        }
+        assert_eq!(
+            arr[kept],
+            format!(
+                "…{} more items with keys: number, title, head, base",
+                16 - kept
+            )
+        );
+        assert!(marker.contains(&format!("{} array items trimmed", 16 - kept)));
+        assert!(json_part.len() < 40 * 1024);
+    }
+
+    #[test]
+    fn long_lists_keep_their_samples_whatever_their_size() {
+        // 50 big items: the count rule keeps 10; the size rule stays out.
+        let text = big_items(50);
+        let out = trim_json_min(&text, &cx(Mode::Conservative), 0).unwrap();
+        let (json_part, _) = out.text.rsplit_once('\n').unwrap();
+        let v: Value = serde_json::from_str(json_part).unwrap();
+        assert_eq!(v.as_array().unwrap().len(), 11);
+    }
+
+    #[test]
+    fn one_big_item_is_kept_whole() {
+        let text = big_items(1);
+        // Nothing to cut: no long array, no long string.
+        assert!(trim_json_min(&text, &cx(Mode::Conservative), 0).is_none());
+    }
+
+    #[test]
+    fn lists_under_the_size_limit_are_untouched() {
+        // 2 items of 16.4 KB compact each: 33 KB, under 40 KB.
+        let text = big_items(2);
+        assert!(trim_json_min(&text, &cx(Mode::Conservative), 0).is_none());
     }
 
     #[test]

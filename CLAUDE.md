@@ -19,6 +19,7 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 | M5 | Protocol test suite + fail-open hardening | Done (2026-11-01); eval harness pulled forward from M6 |
 | M6 | Eval harness + README + cargo-dist + npm wrapper | Done — **v0.1.0 released 2026-11-02** (GitHub, Homebrew tap, crates.io, npm); 0.1.1 released |
 | Perf | URL rules, `query` expand, `--budget`, uncapped-agent eval, lighter footprint | Done — **0.2.0 released 2026-11-02** (PR #1) |
+| JSON | measured on GitHub MCP; query brings JSON fields; short big lists stay valid JSON | **0.2.1** (PRs #2, #3) |
 
 Work one milestone at a time. After each: report what was built, test results
 and open questions, then **wait for the user's go-ahead**.
@@ -165,8 +166,10 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   every ref, so it falls back to full). `--no-diff` disables it. Measured:
   Wikipedia repeat 134K → 79 tokens. A → B → A diffing was tried and
   rejected: refs change after the reload, so it never fires.
-- Handler order: playwright → json (arrays > 40 keep 10, numbers exact via
-  `arbitrary_precision`) → text (> 40 KB: head 16 KB + tail 4 KB).
+- Handler order: playwright → json (arrays > 40 keep 10; arrays ≤ 40 items but
+  > 40 KB compact keep whole items up to 16 KB, so short lists of big objects
+  never reach the text cut; numbers exact via `arbitrary_precision`) → text
+  (> 40 KB: head 16 KB + tail 4 KB).
 - Stats rows are written by the store thread, so SQLite is off the message
   path. Tokens are *estimated* (`tokens::estimate`: other bytes/3.75 +
   indent/8 + 7 per ref; estimated fixture saving 31.8% vs exact 31.1%) so the

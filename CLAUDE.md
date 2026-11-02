@@ -16,7 +16,7 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 | M2 | Playwright handler + snapshot/property tests + benchmark | Done (2026-11-01) |
 | M3 | `meiose_expand` + store + `stats` + `log` + json/text handlers + snapshot diffing | Done (2026-11-01) |
 | M4 | `install` / `uninstall` / `doctor` + install tests | Done (2026-11-01) |
-| M5 | Protocol test suite + fail-open hardening | **Done (2026-11-01), awaiting user review** |
+| M5 | Protocol test suite + fail-open hardening | **Done (2026-11-01), awaiting user review**; eval harness pulled forward from M6 |
 | M6 | Eval harness + README + cargo-dist + npm wrapper | not started |
 
 Work one milestone at a time. After each: report what was built, test results
@@ -163,6 +163,21 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
 - `install` refuses to embed a throwaway meiose path (npx cache, temp,
   target/debug) unless `--meiose-path` is given.
 - `MEIOSE_FAKE_HOME` roots all config paths in one dir (tests, safe trials).
+
+## Eval findings (eval/run_eval.py, 2026-11-01)
+
+- Claude Code (current) saves any MCP tool result above its token cap
+  (~25K, `MAX_MCP_OUTPUT_TOKENS`) to a file and gives the model an error note
+  instead ("result (499,003 characters …) exceeds maximum allowed tokens.
+  Output has been saved to …"). Verified with `--output-format stream-json`.
+  ⇒ In Claude Code, trimming only matters for outputs under the cap, plus
+  diffs; a page trimmed from above to below the cap *adds* tokens but gives
+  the agent real content.
+- Quick eval (Haiku, 5 tasks × 1): 10/10 correct both modes; meiose +3%
+  total tokens, tool outputs −6%. Per-turn fixed cost (~15–20K system+tools)
+  and cache-read noise (±30K/run) swamp small-page savings.
+- `wiki-rust` and `large-table-cell` are guessable without reading the page;
+  replace with page-only answers.
 
 ## Layout
 

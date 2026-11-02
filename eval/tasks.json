@@ -1,0 +1,80 @@
+[
+  {
+    "id": "checkboxes-initial",
+    "prompt": "Open https://the-internet.herokuapp.com/checkboxes. Which of the two checkboxes is checked: first, second, both, or none?",
+    "answer": "\\bsecond\\b",
+    "notes": "small page, untouched by meiose (control)"
+  },
+  {
+    "id": "checkboxes-click",
+    "prompt": "Open https://the-internet.herokuapp.com/checkboxes and take a snapshot. Then click the first checkbox and take another snapshot. Which checkboxes are checked now: first, second, both, or none?",
+    "answer": "\\bboth\\b",
+    "notes": "repeat snapshot of the same page: exercises the diff"
+  },
+  {
+    "id": "table-lookup",
+    "prompt": "Open https://the-internet.herokuapp.com/tables. In the first table (Example 1), what amount is due for Frank Bach?",
+    "answer": "\\$\\s?51\\.00",
+    "notes": "table structure; refs hidden on cells"
+  },
+  {
+    "id": "dropdown",
+    "prompt": "Open https://the-internet.herokuapp.com/dropdown, select 'Option 2' in the dropdown, then take a snapshot and tell me which option is now selected.",
+    "answer": "option\\s*2",
+    "notes": "select + verify"
+  },
+  {
+    "id": "login",
+    "prompt": "Open https://the-internet.herokuapp.com/login and log in with username tomsmith and password SuperSecretPassword! . What message is shown after logging in?",
+    "answer": "secure area",
+    "notes": "form fill + submit"
+  },
+  {
+    "id": "books-price",
+    "prompt": "Open https://books.toscrape.com/ . What is the price of the book 'A Light in the Attic'?",
+    "answer": "51\\.77",
+    "notes": "listing page"
+  },
+  {
+    "id": "books-total",
+    "prompt": "Open https://books.toscrape.com/ . How many books does the page say there are in total?",
+    "answer": "\\b1,?000\\b",
+    "notes": "listing page"
+  },
+  {
+    "id": "quotes-author",
+    "prompt": "Open https://quotes.toscrape.com/ . Who is the author of the first quote on the page?",
+    "answer": "einstein",
+    "notes": "listing page"
+  },
+  {
+    "id": "wiki-rust",
+    "prompt": "Open https://en.wikipedia.org/wiki/Rust_(programming_language) . Who created the Rust programming language?",
+    "answer": "graydon\\s+hoare",
+    "notes": "very large page (~130K tokens)"
+  },
+  {
+    "id": "wiki-australia",
+    "prompt": "Open https://en.wikipedia.org/wiki/Australia . According to the article's infobox, what is the capital of Australia?",
+    "answer": "canberra",
+    "notes": "very large page"
+  },
+  {
+    "id": "large-table-cell",
+    "prompt": "Open https://the-internet.herokuapp.com/large . In the table at the bottom of the page (id large-table), what text is in row 50, column 3?",
+    "answer": "\\b50\\.3\\b",
+    "notes": "row 50 is beyond the dedupe cut: needs meiose_expand"
+  },
+  {
+    "id": "todomvc",
+    "prompt": "Open https://demo.playwright.dev/todomvc/ . Add two todos: 'buy milk' and 'walk dog'. Mark 'buy milk' as completed. What does the item counter at the bottom say?",
+    "answer": "1\\s+item\\s+left",
+    "notes": "multi-step interaction, several snapshots of one page"
+  },
+  {
+    "id": "hn-nav",
+    "prompt": "Open https://news.ycombinator.com/ . What is the text of the first link in the top navigation bar after the 'Hacker News' logo text?",
+    "answer": "\\bnew\\b",
+    "notes": "link-heavy page"
+  }
+]

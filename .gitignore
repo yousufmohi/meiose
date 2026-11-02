@@ -4,3 +4,6 @@
 /tests/fixtures/local/
 *.pending-snap
 *.snap.new
+
+# eval output
+/eval/results/

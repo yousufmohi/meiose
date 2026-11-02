@@ -93,13 +93,13 @@ Token breakdown of the 40 fixtures (o200k): refs 30%, content 23%, `/url`
 16%, generic lines 10%, interactive lines 8%, indentation 6%, cursor 6%.
 So refs and wrappers are the levers, not text.
 
-Conservative (default, ~25% saved over fixtures):
+Conservative (default, ~23% saved over fixtures):
 - collapse unnamed, inert, single-child `generic` wrappers (children promoted);
 - drop empty inert nodes and separator-only text nodes (`- text: "|"`);
 - hide `[ref=…]` on non-interactive **structural** roles (generic, cell, row,
   list(item), paragraph, code, text…); headings, img, landmarks keep refs;
 - remove `[cursor=pointer]` where the role implies it (link, button, option…);
-- dedupe ≥20 structurally identical *composite* inert siblings, keep 10;
+- dedupe ≥20 *identical (incl. text)* composite inert siblings, keep 10;
 - shorten only blobs > 1200 chars (to 1000). Paragraphs are content.
 
 Aggressive (opt-in, ~48% saved): flatten all unnamed generics, hide every
@@ -173,11 +173,12 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   ⇒ In Claude Code, trimming only matters for outputs under the cap, plus
   diffs; a page trimmed from above to below the cap *adds* tokens but gives
   the agent real content.
-- Quick eval (Haiku, 5 tasks × 1): 10/10 correct both modes; meiose +3%
-  total tokens, tool outputs −6%. Per-turn fixed cost (~15–20K system+tools)
-  and cache-read noise (±30K/run) swamp small-page savings.
-- `wiki-rust` and `large-table-cell` are guessable without reading the page;
-  replace with page-only answers.
+- Full eval (Haiku, 15 tasks × 2, page-only answers): 30/30 both modes;
+  meiose −6% billed tokens, −9% cost, −23% tool-output tokens.
+- The eval caught structural dedupe hiding data rows (countries list → forced
+  expand, +43%). Conservative dedupe now requires identical text
+  (`dedupe_same_text`); aggressive keeps structural dedupe. Fixture savings:
+  conservative 25% → 23%.
 
 ## Layout
 

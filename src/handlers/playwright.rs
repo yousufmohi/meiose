@@ -140,6 +140,10 @@ struct Limits {
     dedupe_keep: usize,
     /// Only dedupe siblings that have children of their own (rows, cards).
     dedupe_composite_only: bool,
+    /// Siblings must match including their text, not just their structure.
+    /// Conservative: only truly repeated UI is collapsed, never unique data
+    /// (the eval showed structural dedupe hiding the row the agent needed).
+    dedupe_same_text: bool,
     refs: RefPolicy,
     drop_urls: bool,
 }
@@ -163,6 +167,7 @@ impl Limits {
                 dedupe_min_run: 20,
                 dedupe_keep: 10,
                 dedupe_composite_only: true,
+                dedupe_same_text: true,
                 refs: RefPolicy::StripStructural,
                 drop_urls: false,
             },
@@ -173,6 +178,7 @@ impl Limits {
                 dedupe_min_run: 6,
                 dedupe_keep: 3,
                 dedupe_composite_only: false,
+                dedupe_same_text: false,
                 refs: RefPolicy::StripAllInert,
                 drop_urls: true,
             },
@@ -249,7 +255,7 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
     }
     let limits = Limits::for_mode(cx.mode);
     let mut nodes = parse(body)?;
-    analyze(&mut nodes);
+    analyze(&mut nodes, limits.dedupe_same_text);
 
     let n = nodes.len();
     let mut drop = vec![false; n];
@@ -642,13 +648,24 @@ fn parse_key(s: &str) -> Option<Key> {
 
 /// Compute `keeps` and `sig` bottom-up. Nodes are in preorder, so walking
 /// backwards visits every child before its parent.
-fn analyze(nodes: &mut [Node]) {
+fn analyze(nodes: &mut [Node], with_text: bool) {
     let n = nodes.len();
     let mut acc = vec![0u64; n];
     let mut child_keeps = vec![false; n];
     for i in (0..n).rev() {
         let nd = &mut nodes[i];
-        nd.sig = mix((fnv(nd.role.as_bytes()) ^ nd.kind as u64).wrapping_add(acc[i]));
+        let mut base = fnv(nd.role.as_bytes()) ^ nd.kind as u64;
+        if with_text {
+            // The whole line except its ref (refs are unique per element).
+            base ^= match &nd.ref_attr {
+                Some(r) => {
+                    fnv(&nd.line.as_bytes()[..r.start]).rotate_left(17)
+                        ^ fnv(&nd.line.as_bytes()[r.end..])
+                }
+                None => fnv(nd.line.as_bytes()),
+            };
+        }
+        nd.sig = mix(base.wrapping_add(acc[i]));
         // Props never force their parent to stay; opaque lines always do.
         let self_keeps = match nd.kind {
             Kind::Opaque => true,
@@ -873,20 +890,52 @@ mod tests {
         );
     }
 
-    #[test]
-    fn dedupes_long_runs_of_inert_composite_siblings() {
+    fn rows(n: usize, distinct: bool) -> String {
         let mut y = String::from("- table [ref=t]:\n  - rowgroup [ref=g]:\n");
-        for i in 0..25 {
+        for i in 0..n {
+            let v = if distinct {
+                format!("v{i}")
+            } else {
+                "same".into()
+            };
             y.push_str(&format!(
-                "    - row [ref=r{i}]:\n      - cell [ref=c{i}]: v{i}\n"
+                "    - row [ref=r{i}]:\n      - cell [ref=c{i}]: {v}\n"
             ));
         }
         y.pop();
-        let out = trim(&y, Mode::Conservative).unwrap();
+        y
+    }
+
+    #[test]
+    fn conservative_never_dedupes_rows_with_distinct_data() {
+        // Regression from the eval: a 250-country list was cut to 10 and
+        // the agent had to expand to find its row.
+        let out = trim(&rows(25, true), Mode::Conservative).unwrap();
         let b = body(&out);
-        assert!(b.contains("cell: v9"));
-        assert!(!b.contains("cell: v10"));
+        for i in 0..25 {
+            assert!(
+                b.contains(&format!("cell: v{i}\n")) || b.ends_with(&format!("cell: v{i}")),
+                "row {i} hidden"
+            );
+        }
+        assert!(!b.contains("more similar"));
+    }
+
+    #[test]
+    fn conservative_dedupes_truly_identical_rows() {
+        let out = trim(&rows(25, false), Mode::Conservative).unwrap();
+        let b = body(&out);
+        assert_eq!(b.matches("cell: same").count(), 10);
         assert!(b.contains("- text: \"…and 15 more similar row\""), "{b}");
+    }
+
+    #[test]
+    fn aggressive_dedupes_structurally_similar_rows() {
+        let out = trim(&rows(25, true), Mode::Aggressive).unwrap();
+        let b = body(&out);
+        assert!(b.contains("cell: v2"));
+        assert!(!b.contains("cell: v3\n"));
+        assert!(b.contains("- text: \"…and 22 more similar row\""), "{b}");
     }
 
     #[test]

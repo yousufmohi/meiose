@@ -41,7 +41,7 @@ INSTRUCTIONS = (
     "\n\nUse the pw browser tools and read pages with browser_snapshot. "
     "Finish with one final line of the form 'ANSWER: <your answer>'."
 )
-QUICK = ["checkboxes-click", "table-lookup", "wiki-rust", "large-table-cell", "todomvc"]
+QUICK = ["books-travel-upc", "quotes-page3", "countries-bhutan", "hockey-1992", "todomvc"]
 
 
 def default_meiose() -> str:

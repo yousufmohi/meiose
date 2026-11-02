@@ -63,7 +63,7 @@ the answers were still right:
 ```bash
 cargo build --release
 python eval/run_eval.py --quick              # 5 tasks × 2 modes × 1 run
-python eval/run_eval.py                      # 13 tasks × 2 modes × 2 runs
+python eval/run_eval.py                      # 15 tasks × 2 modes × 2 runs
 python eval/run_eval.py --model sonnet --modes baseline,meiose,aggressive
 ```
 
@@ -82,26 +82,36 @@ The baseline runs Playwright through `meiose --passthrough` (byte-identical
 traffic, proven by the tests) so it can count tool tokens too; add
 `--pure-baseline` to use plain `npx @playwright/mcp` with no meiose at all.
 
-### What the first eval showed (2026-11-01, Haiku, 5 tasks × 1 run)
+### Results so far (2026-11-01, Claude Haiku, Playwright MCP 1.65)
 
-All 10 runs correct, but **no net saving in Claude Code: +3% tokens and cost**
-with meiose, although tool outputs shrank 6%. Why:
+Full eval, 15 tasks × 2 runs per mode:
+
+| | baseline | meiose |
+|---|---:|---:|
+| correct answers | 30/30 | **30/30** |
+| billed tokens per run | 199,103 | 187,312 (**6% less**) |
+| cost per run | $0.0077 | $0.0070 (**9% less**) |
+| tool-output tokens | 293K | 219K (**23% less**) |
+
+Cost falls more than tokens because the trimmed output is written to the
+prompt cache once (expensive) and re-read cheaply afterwards.
+
+How to read this:
 
 - **Claude Code already offloads huge MCP results.** Anything over its output
-  cap (~25K tokens) never reaches the model: it is saved to a file and the model
-  gets a ~1.5K-character note instead. So trimming a 134K-token Wikipedia
-  snapshot to 117K changes nothing there. meiose's token savings in Claude Code
-  come only from outputs *under* the cap (roughly 2K–25K tokens), which enter
-  the context and are re-read on every later turn, and from snapshot diffs.
-- **On short tasks the fixed cost dominates.** Claude Code's own system prompt
-  and tools are ~15–20K tokens per turn; a 1–2K-token saving on a small page is
-  below the run-to-run noise (same task, same turns, cache reads varied by 30K).
-- **Some tasks are guessable** (`wiki-rust`, `large-table-cell`): both modes
-  answered correctly without the agent seeing the page. They need replacing
-  with tasks whose answers only the page contains.
-
-In clients without such a cap (Claude Desktop, Cursor, your own agents) the
-big-page savings apply directly; that is not measured by this harness yet.
+  cap (~25K tokens) never reaches the model: it is saved to a file and the
+  model gets a short note. So in Claude Code meiose only saves on outputs under
+  the cap, plus snapshot diffs. Clients without such a cap (Claude Desktop,
+  Cursor, your own agents) get the full trimming effect on big pages; this
+  harness does not measure them yet.
+- **Claude Code's own context dominates short tasks** (~15–20K tokens of
+  system prompt and tools per turn), and cache reads vary ±30–70K between
+  identical runs. Per-task differences in the table are mostly noise; only
+  the totals over 60 runs mean much.
+- **The eval already caught one harmful rule.** Structural dedupe hid unique
+  rows of a 250-country list (the agent had to expand, +43% tokens). Since
+  then, conservative mode only collapses siblings that are identical
+  including their text; that task is now even with baseline.
 
 ## 5. Undo
 

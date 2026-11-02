@@ -1,0 +1,558 @@
+---
+source: tests/playwright_fixtures.rs
+---
+### Page
+- Page URL: https://www.python.org/
+- Page Title: Welcome to Python.org
+### Snapshot
+```yaml
+- generic:
+  - navigation [ref=f208e4]:
+    - link "Skip to content" [ref=f208e6]:
+      - /url: "#content"
+    - text: 
+    - tree:
+      - listitem:
+        - link "Python" [ref=f208e8]:
+          - /url: /
+      - listitem:
+        - link "PSF" [ref=f208e10]:
+          - /url: https://www.python.org/psf/
+      - listitem:
+        - link "Docs" [ref=f208e12]:
+          - /url: https://docs.python.org
+      - listitem:
+        - link "PyPI" [ref=f208e14]:
+          - /url: https://pypi.org/
+      - listitem:
+        - link "Jobs" [ref=f208e16]:
+          - /url: /jobs/
+      - listitem:
+        - link "Community" [ref=f208e18]:
+          - /url: /community/
+    - text: 
+  - banner [ref=f208e19]:
+    - generic:
+      - link [ref=f208e22]:
+        - /url: /
+        - img "python™" [ref=f208e23]
+      - generic:
+        - link "Donate" [ref=f208e25]:
+          - /url: https://donate.python.org/
+        - generic:
+          - group "Search Python.org":
+            - generic [aria-hidden]: 
+            - generic: Search This Site
+            - searchbox "Search This Site" [ref=f208e31]
+            - button "GO" [ref=f208e32]
+          - list "Social Media Navigation":
+            - listitem:
+              - link "Socialize" [ref=f208e36]:
+                - /url: "#"
+              - text:    
+      - navigation [ref=f208e37]:
+        - menubar "Main Navigation" [ref=f208e38]:
+          - listitem:
+            - link "About" [ref=f208e40]:
+              - /url: /about/
+          - listitem:
+            - link "Downloads" [ref=f208e42]:
+              - /url: /downloads/
+          - listitem:
+            - link "Documentation" [ref=f208e44]:
+              - /url: /doc/
+          - listitem:
+            - link "Community" [ref=f208e46]:
+              - /url: /community/
+          - listitem:
+            - link "Success Stories" [ref=f208e48]:
+              - /url: /success-stories/
+          - listitem:
+            - link "News" [ref=f208e50]:
+              - /url: /blogs/
+          - listitem:
+            - link "Events" [ref=f208e52]:
+              - /url: /events/
+      - generic:
+        - list:
+          - listitem:
+            - link ">_ Launch Interactive Shell" [ref=f208e397]:
+              - /url: /shell/
+              - text: ">_"
+              - generic: Launch Interactive Shell
+        - list:
+          - listitem:
+            - code: "# Write Fibonacci series up to n >>> def fib(n): ... a, b = 0, 1 ... while a < n: ... print(a, end=' ') ... a, b = b, a+b ... print() ... >>> fib(1000) 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987"
+            - generic:
+              - heading "Functions Defined" [level=1] [ref=f208e61]
+              - paragraph:
+                - text: The core of extensible programming is defining functions. Python allows mandatory and optional arguments, keyword arguments, and even arbitrary argument lists.
+                - link "More about defining functions" [ref=f208e63]:
+                  - /url: https://docs.python.org/3/tutorial/controlflow.html#defining-functions
+        - list:
+          - listitem:
+            - generic [ref=f208e66] [cursor=pointer]: "1"
+          - listitem:
+            - generic [ref=f208e68] [cursor=pointer]: "2"
+          - listitem:
+            - generic [ref=f208e70] [cursor=pointer]: "3"
+          - listitem:
+            - generic [ref=f208e72] [cursor=pointer]: "4"
+          - listitem:
+            - generic [ref=f208e74] [cursor=pointer]: "5"
+      - paragraph:
+        - text: Python is a programming language that lets you work quickly and integrate systems more effectively.
+        - link ">>>Learn More" [ref=f208e78]:
+          - /url: /doc/
+  - main [ref=f208e81]:
+    - generic:
+      - text: "Security notice: the emSign root CA has been removed from certifi. Upgrade certifi, pip, uv and sigstore now."
+      - link "See more" [ref=f208e85]:
+        - /url: https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576
+    - generic:
+      - generic:
+        - heading "Get Started" [level=2] [ref=f208e88]:
+          - generic [aria-hidden]: 
+          - text: Get Started
+        - paragraph: Whether you're new to programming or an experienced developer, it's easy to learn and use Python.
+        - paragraph:
+          - link "Start with our Beginner’s Guide" [ref=f208e92]:
+            - /url: /about/gettingstarted/
+      - generic:
+        - heading "Download" [level=2] [ref=f208e94]:
+          - generic: 
+          - text: Download
+        - paragraph: Python source code and installers are available for download for all versions!
+        - paragraph:
+          - text: "Latest:"
+          - link "Python 3.15.2" [ref=f208e98]:
+            - /url: /downloads/release/python-3152/
+      - generic:
+        - heading "Docs" [level=2] [ref=f208e100]:
+          - generic [aria-hidden]: 
+          - text: Docs
+        - paragraph: Documentation for Python's standard library, along with tutorials and guides, are available online.
+        - paragraph:
+          - link "docs.python.org" [ref=f208e104]:
+            - /url: https://docs.python.org
+      - generic:
+        - heading "Jobs" [level=2] [ref=f208e106]:
+          - generic [aria-hidden]: 
+          - text: Jobs
+        - paragraph:
+          - text: Looking for work or have a Python related position that you're trying to hire for? Our
+          - strong: relaunched community-run job board
+          - text: is the place to go.
+        - paragraph:
+          - link "jobs.python.org" [ref=f208e111]:
+            - /url: //jobs.python.org
+    - generic:
+      - generic:
+        - heading "Latest News" [level=2] [ref=f208e115]:
+          - generic [aria-hidden]: 
+          - text: Latest News
+        - paragraph:
+          - link ">>>More news" [ref=f208e118]:
+            - /url: /blogs/
+        - list:
+          - listitem:
+            - time: 2026-10-29
+            - link "Announcing PSF Community Service Award Recipients!" [ref=f208e122]:
+              - /url: https://pyfound.blogspot.com/2026/10/announcing-psf-community-service-award.html
+          - listitem:
+            - time: 2026-10-26
+            - link "Python 3.15.2, 3.14.10, 3.13.18, 3.12.16 and 3.11.18 are out" [ref=f208e125]:
+              - /url: https://blog.python.org/2026/10/python-3152-31410-31318-31216-31118/
+          - listitem:
+            - time: 2026-10-22
+            - link "Mark Your Calendars! PSF Board Office Hours for the Year Ahead" [ref=f208e128]:
+              - /url: https://pyfound.blogspot.com/2026/10/mark-your-calendars-psf-board-office.html
+          - listitem:
+            - time: 2026-10-21
+            - link "Python 3.15.1, 3.14.9 and 3.13.17 are out" [ref=f208e131]:
+              - /url: https://blog.python.org/2026/10/python-3151-3149-31317/
+          - listitem:
+            - time: 2026-10-20
+            - 'link "Wikis: Relaunched!" [ref=f208e134] [cursor=pointer]':
+              - /url: https://pyfound.blogspot.com/2026/10/wikis-relaunched.html
+      - generic:
+        - heading "Upcoming Events" [level=2] [ref=f208e137]:
+          - generic [aria-hidden]: 
+          - text: Upcoming Events
+        - paragraph:
+          - link ">>>More" [ref=f208e140]:
+            - /url: /events/calendars/
+        - list:
+          - listitem:
+            - time: 2026-11-06
+            - link "PyCon ES 2026" [ref=f208e144]:
+              - /url: /events/python-events/2150/
+          - listitem:
+            - time: 2026-11-07
+            - link "Python El Salvador vuelve — Meetup de Reactivación" [ref=f208e147]:
+              - /url: /events/python-user-group/2253/
+          - listitem:
+            - time: 2026-11-11
+            - 'link "Edmonton.py: The Edmonton Python User Group" [ref=f208e150] [cursor=pointer]':
+              - /url: /events/python-user-group/2249/
+          - listitem:
+            - time: 2026-11-12
+            - link "Python Help" [ref=f208e153]:
+              - /url: /events/python-user-group/2254/
+          - listitem:
+            - time: 2026-11-12
+            - link "Python Leiden User Group" [ref=f208e156]:
+              - /url: /events/python-user-group/2212/
+    - generic:
+      - generic:
+        - heading "Success Stories" [level=2] [ref=f208e160]:
+          - generic [aria-hidden]: 
+          - text: Success Stories
+        - paragraph:
+          - link ">>>More" [ref=f208e163]:
+            - /url: /success-stories/
+        - generic:
+          - blockquote:
+            - link "To simplify the adoption of FHE, which involves a complex and resource-intensive technological stack, Zama developed tools that streamline the integration of FHE into applications. Since Python is the de facto standard for building machine learning (ML) applications, it was an obvious choice to create an open-source FHE library in Python." [ref=f208e166]:
+              - /url: /success-stories/zama-concrete-ml-simplifying-homomorphic-encryption-for-python-machine-learning/
+          - table [ref=f208e167]:
+            - rowgroup:
+              - row:
+                - cell:
+                  - paragraph:
+                    - 'link "Zama Concrete ML: Simplifying Homomorphic Encryption for Python Machine Learning" [ref=f208e172] [cursor=pointer]':
+                      - /url: /success-stories/zama-concrete-ml-simplifying-homomorphic-encryption-for-python-machine-learning/
+                    - emphasis: by Andrei Stoian and Benoit Chevallier-Mames
+      - generic:
+        - heading "Use Python for…" [level=2] [ref=f208e176]:
+          - generic [aria-hidden]: 
+          - text: Use Python for…
+        - paragraph:
+          - link ">>>More" [ref=f208e179]:
+            - /url: /about/apps
+        - list:
+          - listitem:
+            - text: "Web Development:"
+            - generic:
+              - link "Django" [ref=f208e183]:
+                - /url: https://www.djangoproject.com/
+              - link "Pyramid" [ref=f208e184]:
+                - /url: https://trypyramid.com/
+              - link "Bottle" [ref=f208e185]:
+                - /url: https://bottlepy.org
+              - link "Tornado" [ref=f208e186]:
+                - /url: https://www.tornadoweb.org/
+              - link "Flask" [ref=f208e187]:
+                - /url: https://flask.palletsprojects.com/
+              - link "Litestar" [ref=f208e188]:
+                - /url: https://litestar.dev/
+              - link "FastAPI" [ref=f208e189]:
+                - /url: https://fastapi.tiangolo.com/
+          - listitem:
+            - text: "GUI Development:"
+            - generic:
+              - link "tkInter" [ref=f208e192]:
+                - /url: https://en.wikipedia.org/wiki/Tkinter
+              - link "PyGObject" [ref=f208e193]:
+                - /url: https://pygobject.gnome.org/
+              - link "PyQt" [ref=f208e194]:
+                - /url: https://riverbankcomputing.com/software/pyqt/intro
+              - link "PySide" [ref=f208e195]:
+                - /url: https://wiki.qt.io/Qt_for_Python
+              - link "Kivy" [ref=f208e196]:
+                - /url: https://kivy.org/
+              - link "wxPython" [ref=f208e197]:
+                - /url: https://www.wxpython.org/
+              - link "DearPyGui" [ref=f208e198]:
+                - /url: https://dearpygui.readthedocs.io/en/latest/
+          - listitem:
+            - text: "AI and Machine Learning:"
+            - generic:
+              - link "PyTorch" [ref=f208e201]:
+                - /url: https://pytorch.org/
+              - link "TensorFlow" [ref=f208e202]:
+                - /url: https://www.tensorflow.org/
+              - link "scikit-learn" [ref=f208e203]:
+                - /url: https://scikit-learn.org/
+              - link "Transformers" [ref=f208e204]:
+                - /url: https://huggingface.co/docs/transformers/
+              - link "Anthropic" [ref=f208e205]:
+                - /url: https://docs.anthropic.com/
+              - link "LangChain" [ref=f208e206]:
+                - /url: https://langchain.com/
+          - listitem:
+            - text: "Scientific and Numeric:"
+            - generic:
+              - link "SciPy" [ref=f208e209]:
+                - /url: https://scipy.org/
+              - link "Pandas" [ref=f208e210]:
+                - /url: https://pandas.pydata.org/
+              - link "IPython" [ref=f208e211]:
+                - /url: https://ipython.org/
+          - listitem:
+            - text: "Software Development:"
+            - generic:
+              - link "Buildbot" [ref=f208e214]:
+                - /url: https://buildbot.net/
+              - link "Trac" [ref=f208e215]:
+                - /url: https://trac.edgewall.org/
+              - link "Roundup" [ref=f208e216]:
+                - /url: https://www.roundup-tracker.org/
+          - listitem:
+            - text: "System Administration:"
+            - generic:
+              - link "Ansible" [ref=f208e219]:
+                - /url: https://docs.ansible.com/
+              - link "Salt" [ref=f208e220]:
+                - /url: https://saltproject.io/
+              - link "OpenStack" [ref=f208e221]:
+                - /url: https://www.openstack.org/
+              - link "xonsh" [ref=f208e222]:
+                - /url: https://xon.sh/
+    - generic:
+      - heading [level=2] [ref=f208e225]:
+        - text: ">>>"
+        - link "Python Software Foundation" [ref=f208e226]:
+          - /url: /psf/
+      - paragraph:
+        - text: The mission of the Python Software Foundation is to promote, protect, and advance the Python programming language, and to support and facilitate the growth of a diverse and international community of Python programmers.
+        - link ">>>Learn more" [ref=f208e228]:
+          - /url: /psf/
+      - paragraph:
+        - link "Become a Member" [ref=f208e230]:
+          - /url: /psf/membership/
+        - link "Donate to the PSF" [ref=f208e231]:
+          - /url: /psf/donations/
+  - contentinfo [ref=f208e232]:
+    - generic:
+      - text: 
+      - tree [ref=f208e235]:
+        - listitem:
+          - link "About" [ref=f208e237]:
+            - /url: /about/
+          - list:
+            - treeitem [ref=f208e239]:
+              - link "Applications" [ref=f208e240]:
+                - /url: /about/apps/
+            - treeitem [ref=f208e241]:
+              - link "Quotes" [ref=f208e242]:
+                - /url: /about/quotes/
+            - treeitem [ref=f208e243]:
+              - link "Getting Started" [ref=f208e244]:
+                - /url: /about/gettingstarted/
+            - treeitem [ref=f208e245]:
+              - link "Help" [ref=f208e246]:
+                - /url: /about/help/
+        - listitem:
+          - link "Downloads" [ref=f208e248]:
+            - /url: /downloads/
+          - list:
+            - treeitem [ref=f208e250]:
+              - link "All releases" [ref=f208e251]:
+                - /url: /downloads/
+            - treeitem [ref=f208e252]:
+              - link "Source code" [ref=f208e253]:
+                - /url: /downloads/source/
+            - treeitem [ref=f208e254]:
+              - link "Windows" [ref=f208e255]:
+                - /url: /downloads/windows/
+            - treeitem [ref=f208e256]:
+              - link "macOS" [ref=f208e257]:
+                - /url: /downloads/macos/
+            - treeitem [ref=f208e258]:
+              - link "Android" [ref=f208e259]:
+                - /url: /downloads/android/
+            - treeitem [ref=f208e260]:
+              - link "iOS" [ref=f208e261]:
+                - /url: /downloads/ios/
+            - treeitem [ref=f208e262]:
+              - link "Other Platforms" [ref=f208e263]:
+                - /url: /download/other/
+            - treeitem [ref=f208e264]:
+              - link "License" [ref=f208e265]:
+                - /url: https://docs.python.org/3/license.html
+            - treeitem [ref=f208e266]:
+              - link "Alternative Implementations" [ref=f208e267]:
+                - /url: /download/alternatives
+        - listitem:
+          - link "Documentation" [ref=f208e269]:
+            - /url: /doc/
+          - list:
+            - treeitem [ref=f208e271]:
+              - link "Docs" [ref=f208e272]:
+                - /url: /doc/
+            - treeitem [ref=f208e273]:
+              - link "Audio/Visual Talks" [ref=f208e274]:
+                - /url: /doc/av
+            - treeitem [ref=f208e275]:
+              - link "Beginner's Guide" [ref=f208e276]:
+                - /url: https://wiki.python.org/python/getting-started/BeginnersGuide.html
+            - treeitem [ref=f208e277]:
+              - link "FAQ" [ref=f208e278]:
+                - /url: https://docs.python.org/3/faq/
+            - treeitem [ref=f208e279]:
+              - link "Non-English Docs" [ref=f208e280]:
+                - /url: https://translations.python.org/
+            - treeitem [ref=f208e281]:
+              - link "PEP Index" [ref=f208e282]:
+                - /url: https://peps.python.org
+            - treeitem [ref=f208e283]:
+              - link "Python Books" [ref=f208e284]:
+                - /url: https://wiki.python.org/moin/PythonBooks
+            - treeitem [ref=f208e285]:
+              - link "Python Essays" [ref=f208e286]:
+                - /url: /doc/essays/
+        - listitem:
+          - link "Community" [ref=f208e288]:
+            - /url: /community/
+          - list:
+            - treeitem [ref=f208e290]:
+              - link "Diversity" [ref=f208e291]:
+                - /url: /community/diversity/
+            - treeitem [ref=f208e292]:
+              - link "Mailing Lists" [ref=f208e293]:
+                - /url: /community/lists/
+            - treeitem [ref=f208e294]:
+              - link "IRC" [ref=f208e295]:
+                - /url: /community/irc/
+            - treeitem [ref=f208e296]:
+              - link "Forums" [ref=f208e297]:
+                - /url: /community/forums/
+            - treeitem [ref=f208e298]:
+              - link "PSF Annual Impact Report" [ref=f208e299]:
+                - /url: /psf/annual-report/2024/
+            - treeitem [ref=f208e300]:
+              - link "Python Conferences" [ref=f208e301]:
+                - /url: /community/workshops/
+            - treeitem [ref=f208e302]:
+              - link "Special Interest Groups" [ref=f208e303]:
+                - /url: /community/sigs/
+            - treeitem [ref=f208e304]:
+              - link "Python Logo" [ref=f208e305]:
+                - /url: /community/logos/
+            - treeitem [ref=f208e306]:
+              - link "Python Wiki" [ref=f208e307]:
+                - /url: https://wiki.python.org/moin/
+            - treeitem [ref=f208e308]:
+              - link "Code of Conduct" [ref=f208e309]:
+                - /url: /psf/conduct/
+            - treeitem [ref=f208e310]:
+              - link "Community Awards" [ref=f208e311]:
+                - /url: /community/awards
+            - treeitem [ref=f208e312]:
+              - link "Get Involved" [ref=f208e313]:
+                - /url: /psf/get-involved/
+            - treeitem [ref=f208e314]:
+              - link "Shared Stories" [ref=f208e315]:
+                - /url: /psf/community-stories/
+        - listitem:
+          - link "Success Stories" [ref=f208e317]:
+            - /url: /success-stories/
+          - list:
+            - treeitem [ref=f208e319]:
+              - link "Arts" [ref=f208e320]:
+                - /url: /success-stories/category/arts/
+            - treeitem [ref=f208e321]:
+              - link "Business" [ref=f208e322]:
+                - /url: /success-stories/category/business/
+            - treeitem [ref=f208e323]:
+              - link "Education" [ref=f208e324]:
+                - /url: /success-stories/category/education/
+            - treeitem [ref=f208e325]:
+              - link "Engineering" [ref=f208e326]:
+                - /url: /success-stories/category/engineering/
+            - treeitem [ref=f208e327]:
+              - link "Government" [ref=f208e328]:
+                - /url: /success-stories/category/government/
+            - treeitem [ref=f208e329]:
+              - link "Scientific" [ref=f208e330]:
+                - /url: /success-stories/category/scientific/
+            - treeitem [ref=f208e331]:
+              - link "Software Development" [ref=f208e332]:
+                - /url: /success-stories/category/software-development/
+        - listitem:
+          - link "News" [ref=f208e334]:
+            - /url: /blogs/
+          - list:
+            - treeitem [ref=f208e336]:
+              - link "Python News" [ref=f208e337]:
+                - /url: /blogs/
+            - treeitem [ref=f208e338]:
+              - link "PSF Newsletter" [ref=f208e339]:
+                - /url: /psf/newsletter/
+            - treeitem [ref=f208e340]:
+              - link "PSF News" [ref=f208e341]:
+                - /url: https://pyfound.blogspot.com
+            - treeitem [ref=f208e342]:
+              - link "PyCon US News" [ref=f208e343]:
+                - /url: https://pycon.blogspot.com/
+            - treeitem [ref=f208e344]:
+              - link "Python Insider" [ref=f208e345]:
+                - /url: https://blog.python.org
+            - treeitem [ref=f208e346]:
+              - link "News from the Community" [ref=f208e347]:
+                - /url: https://planetpython.org/
+        - listitem:
+          - link "Events" [ref=f208e349]:
+            - /url: /events/
+          - list:
+            - treeitem [ref=f208e351]:
+              - link "Python Events" [ref=f208e352]:
+                - /url: /events/python-events/
+            - treeitem [ref=f208e353]:
+              - link "User Group Events" [ref=f208e354]:
+                - /url: /events/python-user-group/
+            - treeitem [ref=f208e355]:
+              - link "Python Events Archive" [ref=f208e356]:
+                - /url: /events/python-events/past/
+            - treeitem [ref=f208e357]:
+              - link "User Group Events Archive" [ref=f208e358]:
+                - /url: /events/python-user-group/past/
+            - treeitem [ref=f208e359]:
+              - link "Submit an Event" [ref=f208e360]:
+                - /url: https://wiki.python.org/moin/PythonEventsCalendar#Submitting_an_Event
+        - listitem:
+          - link "Contributing" [ref=f208e362]:
+            - /url: /dev/
+          - list:
+            - treeitem [ref=f208e364]:
+              - link "Developer's Guide" [ref=f208e365]:
+                - /url: https://devguide.python.org/
+            - treeitem [ref=f208e366]:
+              - link "Issue Tracker" [ref=f208e367]:
+                - /url: https://github.com/python/cpython/issues
+            - treeitem [ref=f208e368]:
+              - link "python-dev list" [ref=f208e369]:
+                - /url: https://mail.python.org/mailman/listinfo/python-dev
+            - treeitem [ref=f208e370]:
+              - link "Core Mentorship" [ref=f208e371]:
+                - /url: /dev/core-mentorship/
+            - treeitem [ref=f208e372]:
+              - link "Report a Security Issue" [ref=f208e373]:
+                - /url: /dev/security/
+      - text: 
+    - generic:
+      - tree [ref=f208e376]:
+        - listitem:
+          - link "Help & General Contact" [ref=f208e378]:
+            - /url: /about/help/
+        - listitem:
+          - link "Diversity Initiatives" [ref=f208e380]:
+            - /url: /community/diversity/
+        - listitem:
+          - link "Submit Website Bug" [ref=f208e382]:
+            - /url: https://github.com/python/pythondotorg/issues
+        - listitem:
+          - link "Status" [ref=f208e384]:
+            - /url: https://status.python.org/
+      - paragraph:
+        - generic:
+          - text: Copyright ©2001-2026.
+          - link "Python Software Foundation" [ref=f208e390]:
+            - /url: /psf-landing/
+          - link "Legal Statements" [ref=f208e392]:
+            - /url: /about/legal/
+          - link "Privacy Notice" [ref=f208e394]:
+            - /url: https://policies.python.org/python.org/Privacy-Notice/
+```
+[meiose: 24 nodes trimmed, 140 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]

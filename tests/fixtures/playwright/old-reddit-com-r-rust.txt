@@ -1,0 +1,13 @@
+### Page
+- Page URL: https://old.reddit.com/login/?reason=lor2&dest=https%3A%2F%2Fold.reddit.com%2Fr%2Frust%2F
+- HTTP status: 403
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f96e7]:
+  - generic [ref=f96e8]: You've been blocked by network security.
+  - generic [ref=f96e10]:
+    - text: If you think you've been blocked by mistake, file a ticket below and we'll look into it.
+    - link "File a ticket" [ref=f96e12] [cursor=pointer]:
+      - /url: https://support.reddithelp.com/hc/en-us/requests/new?ticket_form_id=21879292693140
+```

@@ -1,0 +1,521 @@
+---
+source: tests/playwright_fixtures.rs
+---
+### Page
+- Page URL: https://pypi.org/project/requests/
+- Page Title: requests · PyPI
+- Console: 2 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f141e1]:
+  - link "Skip to main content" [ref=f141e2]:
+    - /url: "#content"
+  - banner [ref=f141e3]:
+    - generic:
+      - generic:
+        - link [ref=f141e8]:
+          - /url: /
+          - img "PyPI" [ref=f141e9]
+        - search [ref=f141e10]:
+          - generic: Search PyPI
+          - textbox "Search PyPI" [ref=f141e12]:
+            - /placeholder: Type '/' to search projects
+          - button "Search" [ref=f141e13]
+      - generic:
+        - navigation "Main navigation" [ref=f141e18]:
+          - list:
+            - listitem:
+              - link "Blog" [ref=f141e21]:
+                - /url: https://blog.pypi.org
+            - listitem:
+              - link "Docs" [ref=f141e23]:
+                - /url: https://docs.pypi.org/
+            - listitem:
+              - link "Log in" [ref=f141e25]:
+                - /url: /account/login/?next=https%3A%2F%2Fpypi.org%2Fproject%2Frequests%2F
+            - listitem:
+              - link "Register" [ref=f141e27]:
+                - /url: /account/register/
+        - navigation "Localization" [ref=f141e28]:
+          - button "Change language" [ref=f141e29]
+  - main [ref=f141e31]:
+    - generic:
+      - heading "requests 2.34.2" [level=1] [ref=f141e34]
+      - paragraph: Python HTTP for Humans.
+      - paragraph:
+        - generic: pip install requests
+        - button "Copy PIP instructions" [ref=f141e39]
+    - generic:
+      - navigation "Navigation for requests":
+        - tablist:
+          - tab "Project description. Focus will be moved to the description." [selected] [ref=f141e45]:
+            - generic: Description
+          - tab "Release files. Focus will be moved to the release files panel." [ref=f141e48]:
+            - generic: Release files
+          - tab "Release security. Focus will be moved to the security panel." [ref=f141e51]:
+            - generic: Security
+          - tab "Release history. Focus will be moved to the release history panel." [ref=f141e54]:
+            - generic: Release history
+      - generic:
+        - tabpanel "Project description. Focus will be moved to the description." [ref=f141e59]:
+          - generic:
+            - generic:
+              - heading "Requests" [level=1] [ref=f141e63]:
+                - text: Requests
+                - link:
+                  - /url: "#user-content-requests"
+              - paragraph:
+                - link [ref=f141e65]:
+                  - /url: https://pypi.org/project/requests/
+                  - img "Version" [ref=f141e66]
+                - link [ref=f141e67]:
+                  - /url: https://pypi.org/project/requests
+                  - img "Supported Versions" [ref=f141e68]
+                - link [ref=f141e69]:
+                  - /url: https://pepy.tech/project/requests
+                  - img "Downloads" [ref=f141e70]
+                - link [ref=f141e71]:
+                  - /url: https://github.com/psf/requests/graphs/contributors
+                  - img "Contributors" [ref=f141e72]
+                - link [ref=f141e73]:
+                  - /url: https://requests.readthedocs.io
+                  - img "Documentation" [ref=f141e74]
+              - paragraph:
+                - strong: Requests
+                - text: is a simple, yet elegant, HTTP library.
+              - generic: ">>> import requests >>> r = requests.get('https://httpbin.org/basic-auth/user/pass', auth=('user', 'pass')) >>> r.status_code 200 >>> r.headers['content-type'] 'application/json; charset=utf8' >>> r.encoding 'utf-8' >>> r.text '{\"authenticated\": true, ...' >>> r.json() {'authenticated': True, ...}"
+              - paragraph:
+                - text: Requests allows you to send HTTP/1.1 requests extremely easily. There’s no need to manually add query strings to your URLs, or to form-encode your
+                - code: PUT
+                - text: "&"
+                - code: POST
+                - text: data — but nowadays, just use the
+                - code: json
+                - text: method!
+              - paragraph:
+                - text: Requests is one of the most downloaded Python packages today, pulling in around
+                - code: 300M downloads / week
+                - text: — according to GitHub, Requests is currently
+                - link "depended upon" [ref=f141e84]:
+                  - /url: https://github.com/psf/requests/network/dependents?package_id=UGFja2FnZS01NzA4OTExNg%3D%3D
+                - text: by
+                - code: 4,000,000+
+                - text: repositories.
+              - heading "Installing Requests and Supported Versions" [level=2] [ref=f141e86]:
+                - text: Installing Requests and Supported Versions
+                - link:
+                  - /url: "#user-content-installing-requests-and-supported-versions"
+              - paragraph: "Requests is available on PyPI:"
+              - generic: $ python -m pip install requests
+              - paragraph: Requests officially supports Python 3.10+.
+              - heading "Supported Features & Best–Practices" [level=2] [ref=f141e90]:
+                - text: Supported Features & Best–Practices
+                - link:
+                  - /url: "#user-content-supported-features--bestpractices"
+              - paragraph: Requests is ready for the demands of building robust and reliable HTTP–speaking applications, for the needs of today.
+              - list:
+                - listitem: Keep-Alive & Connection Pooling
+                - listitem: International Domains and URLs
+                - listitem: Sessions with Cookie Persistence
+                - listitem: Browser-style TLS/SSL Verification
+                - listitem: Basic & Digest Authentication
+                - listitem:
+                  - text: Familiar
+                  - code: dict
+                  - text: –like Cookies
+                - listitem: Automatic Content Decompression and Decoding
+                - listitem: Multi-part File Uploads
+                - listitem: SOCKS Proxy Support
+                - listitem: Connection Timeouts
+                - listitem: Streaming Downloads
+                - listitem:
+                  - text: Automatic honoring of
+                  - code: .netrc
+                - listitem: Chunked HTTP Requests
+              - heading "Cloning the repository" [level=2] [ref=f141e108]:
+                - text: Cloning the repository
+                - link:
+                  - /url: "#user-content-cloning-the-repository"
+              - paragraph:
+                - text: When cloning the Requests repository, you may need to add the
+                - code: "-c fetch.fsck.badTimezone=ignore"
+                - text: flag to avoid an error about a bad commit timestamp (see
+                - link "this issue" [ref=f141e111]:
+                  - /url: https://github.com/psf/requests/issues/2690
+                - text: "for more background):"
+              - generic: git clone -c fetch.fsck.badTimezone=ignore https://github.com/psf/requests.git
+              - paragraph: "You can also apply this setting to your global Git config:"
+              - generic: git config --global fetch.fsck.badTimezone ignore
+              - paragraph:
+                - link [ref=f141e117]:
+                  - /url: https://kennethreitz.org
+                  - img "Kenneth Reitz" [ref=f141e118]
+                - link [ref=f141e119]:
+                  - /url: https://www.python.org/psf
+                  - img "Python Software Foundation" [ref=f141e120]
+            - generic:
+              - generic:
+                - heading "Project links" [level=2] [ref=f141e123]
+                - generic:
+                  - group:
+                    - generic "Data verified by PyPI on May 14, 2026 ›" [ref=f141e126] [cursor=pointer]
+                  - list:
+                    - listitem:
+                      - link "Source" [ref=f141e130]:
+                        - /url: https://github.com/psf/requests
+                - list:
+                  - listitem:
+                    - link "Documentation" [ref=f141e135]:
+                      - /url: https://requests.readthedocs.io
+              - generic:
+                - heading "Key dates" [level=2] [ref=f141e138]
+                - generic:
+                  - group:
+                    - generic "PyPI data ›" [ref=f141e141] [cursor=pointer]
+                  - generic:
+                    - list:
+                      - listitem:
+                        - strong: "Released:"
+                        - time: May 14, 2026
+                    - generic: Latest release
+              - generic:
+                - heading "3 maintainers" [level=2] [ref=f141e149]
+                - generic:
+                  - group:
+                    - generic "PyPI data ›" [ref=f141e152] [cursor=pointer]
+                  - generic:
+                    - link "graffatcolmingov" [ref=f141e154]:
+                      - /url: /user/graffatcolmingov/
+                      - img "Avatar for graffatcolmingov from gravatar.com" [ref=f141e155]
+                    - link "Lukasa" [ref=f141e157]:
+                      - /url: /user/Lukasa/
+                      - img "Avatar for Lukasa from gravatar.com" [ref=f141e158]
+                    - link "nateprewitt" [ref=f141e160]:
+                      - /url: /user/nateprewitt/
+                      - img "Avatar for nateprewitt from gravatar.com" [ref=f141e161]
+              - generic:
+                - heading "Credits" [level=2] [ref=f141e164]
+                - generic:
+                  - paragraph:
+                    - strong: "Author:"
+                    - link "Kenneth Reitz" [ref=f141e168]:
+                      - /url: mailto:me@kennethreitz.org
+                  - paragraph:
+                    - strong: "Maintainer:"
+                    - link "Ian Stapleton Cordasco" [ref=f141e171]:
+                      - /url: mailto:graffatcolmingov@gmail.com
+              - generic:
+                - heading "GitHub Statistics" [level=2] [ref=f141e173]
+                - generic:
+                  - group:
+                    - generic "Data verified by PyPI on May 14, 2026 ›" [ref=f141e176] [cursor=pointer]
+                  - list:
+                    - listitem:
+                      - link "Repository" [ref=f141e180]:
+                        - /url: https://github.com/psf/requests
+                    - listitem:
+                      - link [ref=f141e183]:
+                        - /url: https://github.com/psf/requests/stargazers
+                        - text: "Stars:"
+                        - strong: "54812"
+                    - listitem:
+                      - link [ref=f141e187]:
+                        - /url: https://github.com/psf/requests/network/members
+                        - text: "Forks:"
+                        - strong: "11509"
+                    - listitem:
+                      - link [ref=f141e191]:
+                        - /url: https://github.com/psf/requests/issues
+                        - text: "Open issues:"
+                        - strong: "159"
+                    - listitem:
+                      - link [ref=f141e195]:
+                        - /url: https://github.com/psf/requests/pulls
+                        - text: "Open PRs:"
+                        - strong: "87"
+              - generic:
+                - heading [level=2] [ref=f141e199]:
+                  - text: Provenance
+                  - link "About provenance" [ref=f141e200]:
+                    - /url: https://docs.pypi.org/using-pypi/package-security/provenance/
+                - generic:
+                  - group:
+                    - generic "Data verified by PyPI on May 14, 2026 ›" [ref=f141e204] [cursor=pointer]
+                  - generic:
+                    - paragraph:
+                      - strong: Full provenance
+                    - paragraph: All 2 files in this release have provenance metadata.
+                    - paragraph:
+                      - link "View provenance details" [ref=f141e211]:
+                        - /url: "#security"
+              - generic:
+                - heading "License" [level=2] [ref=f141e213]
+                - paragraph: Apache Software License (Apache-2.0)
+              - generic:
+                - heading "Requires" [level=2] [ref=f141e217]
+                - paragraph:
+                  - strong: Python
+                  - text: ">=3.10"
+              - generic:
+                - heading "Provides Extra" [level=2] [ref=f141e222]
+                - paragraph:
+                  - code: security
+                  - code: socks
+                  - code: use-chardet-on-py3
+              - generic:
+                - heading "Classifiers" [level=2] [ref=f141e229]
+                - list:
+                  - listitem:
+                    - text: Development Status
+                    - list:
+                      - listitem:
+                        - link "5 - Production/Stable" [ref=f141e235]:
+                          - /url: /search/?c=Development+Status+%3A%3A+5+-+Production%2FStable
+                  - listitem:
+                    - text: Environment
+                    - list:
+                      - listitem:
+                        - link "Web Environment" [ref=f141e239]:
+                          - /url: /search/?c=Environment+%3A%3A+Web+Environment
+                  - listitem:
+                    - text: Intended Audience
+                    - list:
+                      - listitem:
+                        - link "Developers" [ref=f141e243]:
+                          - /url: /search/?c=Intended+Audience+%3A%3A+Developers
+                  - listitem:
+                    - text: License
+                    - list:
+                      - listitem:
+                        - 'link "OSI Approved :: Apache Software License" [ref=f141e247] [cursor=pointer]':
+                          - /url: /search/?c=License+%3A%3A+OSI+Approved+%3A%3A+Apache+Software+License
+                  - listitem:
+                    - text: Natural Language
+                    - list:
+                      - listitem:
+                        - link "English" [ref=f141e251]:
+                          - /url: /search/?c=Natural+Language+%3A%3A+English
+                  - listitem:
+                    - text: Operating System
+                    - list:
+                      - listitem:
+                        - link "OS Independent" [ref=f141e255]:
+                          - /url: /search/?c=Operating+System+%3A%3A+OS+Independent
+                  - listitem:
+                    - text: Programming Language
+                    - list:
+                      - listitem:
+                        - link "Python" [ref=f141e259]:
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python
+                      - listitem:
+                        - 'link "Python :: 3" [ref=f141e261] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3
+                      - listitem:
+                        - 'link "Python :: 3 :: Only" [ref=f141e263] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3+%3A%3A+Only
+                      - listitem:
+                        - 'link "Python :: 3.10" [ref=f141e265] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.10
+                      - listitem:
+                        - 'link "Python :: 3.11" [ref=f141e267] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.11
+                      - listitem:
+                        - 'link "Python :: 3.12" [ref=f141e269] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.12
+                      - listitem:
+                        - 'link "Python :: 3.13" [ref=f141e271] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.13
+                      - listitem:
+                        - 'link "Python :: 3.14" [ref=f141e273] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.14
+                      - listitem:
+                        - 'link "Python :: 3.15" [ref=f141e275] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3.15
+                      - listitem:
+                        - 'link "Python :: Free Threading :: 2 - Beta" [ref=f141e277] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+Free+Threading+%3A%3A+2+-+Beta
+                      - listitem:
+                        - 'link "Python :: Implementation :: CPython" [ref=f141e279] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+Implementation+%3A%3A+CPython
+                      - listitem:
+                        - 'link "Python :: Implementation :: PyPy" [ref=f141e281] [cursor=pointer]':
+                          - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+Implementation+%3A%3A+PyPy
+                  - listitem:
+                    - text: Topic
+                    - list:
+                      - listitem:
+                        - 'link "Internet :: WWW/HTTP" [ref=f141e285] [cursor=pointer]':
+                          - /url: /search/?c=Topic+%3A%3A+Internet+%3A%3A+WWW%2FHTTP
+                      - listitem:
+                        - 'link "Software Development :: Libraries" [ref=f141e287] [cursor=pointer]':
+                          - /url: /search/?c=Topic+%3A%3A+Software+Development+%3A%3A+Libraries
+        - text: › › ›   › ›                                 
+  - contentinfo [ref=f141e288]:
+    - generic:
+      - generic:
+        - link "PyPI" [ref=f141e291]:
+          - /url: /
+        - paragraph:
+          - text: Developed and maintained by the
+          - link "Python Software Foundation" [ref=f141e294]:
+            - /url: https://www.python.org/psf/
+          - text: and Python community, for the Python community.
+        - paragraph:
+          - 'link "Status: All Systems Operational" [ref=f141e297] [cursor=pointer]':
+            - /url: https://status.python.org/
+        - link "Donate today!" [ref=f141e299]:
+          - /url: https://donate.pypi.org
+      - generic:
+        - generic:
+          - heading "Help" [level=2] [ref=f141e302]
+          - navigation "Help navigation" [ref=f141e303]:
+            - list:
+              - listitem:
+                - link "PyPI documentation" [ref=f141e306]:
+                  - /url: https://docs.pypi.org/
+              - listitem:
+                - link "Getting help" [ref=f141e308]:
+                  - /url: https://docs.pypi.org/about/getting-help/
+              - listitem:
+                - link "Installing packages" [ref=f141e310]:
+                  - /url: https://packaging.python.org/tutorials/installing-packages/
+              - listitem:
+                - link "Uploading packages" [ref=f141e312]:
+                  - /url: https://packaging.python.org/tutorials/packaging-projects/
+              - listitem:
+                - link "Packaging user guide" [ref=f141e314]:
+                  - /url: https://packaging.python.org/
+        - generic:
+          - heading "About PyPI" [level=2] [ref=f141e316]
+          - navigation "About PyPI navigation" [ref=f141e317]:
+            - list:
+              - listitem:
+                - link "PyPI blog" [ref=f141e320]:
+                  - /url: https://blog.pypi.org
+              - listitem:
+                - link "Infrastructure dashboard" [ref=f141e322]:
+                  - /url: https://dtdg.co/pypi
+              - listitem:
+                - link "Statistics" [ref=f141e324]:
+                  - /url: /stats/
+              - listitem:
+                - link "Logos & trademarks" [ref=f141e326]:
+                  - /url: /trademarks/
+              - listitem:
+                - link "Our sponsors" [ref=f141e328]:
+                  - /url: /sponsors/
+        - generic:
+          - heading "Contributing to PyPI" [level=2] [ref=f141e330]
+          - navigation "How to contribute navigation" [ref=f141e331]:
+            - list:
+              - listitem:
+                - link "Bugs and feedback" [ref=f141e334]:
+                  - /url: https://docs.pypi.org/about/contributing/#reporting-bugs
+              - listitem:
+                - link "Contribute on GitHub" [ref=f141e336]:
+                  - /url: https://github.com/pypi/warehouse
+              - listitem:
+                - link "Translate PyPI" [ref=f141e338]:
+                  - /url: https://hosted.weblate.org/projects/pypa/warehouse/
+              - listitem:
+                - link "Sponsor PyPI" [ref=f141e340]:
+                  - /url: /sponsors/
+              - listitem:
+                - link "Development credits" [ref=f141e342]:
+                  - /url: https://github.com/pypi/warehouse/graphs/contributors
+        - generic:
+          - heading "Using PyPI" [level=2] [ref=f141e344]
+          - navigation "Using PyPI navigation" [ref=f141e345]:
+            - list:
+              - listitem:
+                - link "Terms of Service" [ref=f141e348]:
+                  - /url: https://policies.python.org/pypi.org/Terms-of-Service/
+              - listitem:
+                - link "Report security issue" [ref=f141e350]:
+                  - /url: /security/
+              - listitem:
+                - link "Code of conduct" [ref=f141e352]:
+                  - /url: https://policies.python.org/python.org/code-of-conduct/
+              - listitem:
+                - link "Privacy Notice" [ref=f141e354]:
+                  - /url: https://policies.python.org/pypi.org/Privacy-Notice/
+              - listitem:
+                - link "Acceptable Use Policy" [ref=f141e356]:
+                  - /url: https://policies.python.org/pypi.org/Acceptable-Use-Policy/
+  - generic:
+    - link "Anthropic, PBC Visionary sponsor" [ref=f141e358]:
+      - /url: https://www.anthropic.com/
+      - generic: Anthropic, PBC
+      - generic: Visionary sponsor
+    - link "Bloomberg Visionary sponsor" [ref=f141e362]:
+      - /url: https://www.techatbloomberg.com/
+      - generic: Bloomberg
+      - generic: Visionary sponsor
+    - link "Hudson River Trading Visionary sponsor" [ref=f141e366]:
+      - /url: https://www.hudsonrivertrading.com/careers/
+      - generic: Hudson River Trading
+      - generic: Visionary sponsor
+    - link "Meta Visionary sponsor" [ref=f141e370]:
+      - /url: https://about.facebook.com/meta/
+      - generic: Meta
+      - generic: Visionary sponsor
+    - link "NVIDIA Visionary sponsor" [ref=f141e374]:
+      - /url: https://developer.nvidia.com
+      - generic: NVIDIA
+      - generic: Visionary sponsor
+    - link "Microsoft Sustainability sponsor" [ref=f141e378]:
+      - /url: https://aka.ms/python
+      - generic: Microsoft
+      - generic: Sustainability sponsor
+    - link "Depot Continuous Integration" [ref=f141e382]:
+      - /url: https://depot.dev
+      - generic: Depot
+      - generic: Continuous Integration
+    - link "AWS Cloud computing and Security Sponsor" [ref=f141e386]:
+      - /url: https://aws.amazon.com/
+      - generic: AWS
+      - generic: Cloud computing and Security Sponsor
+    - link "Datadog Monitoring" [ref=f141e390]:
+      - /url: https://www.datadoghq.com/
+      - generic: Datadog
+      - generic: Monitoring
+    - link "Fastly CDN" [ref=f141e394]:
+      - /url: https://www.fastly.com/
+      - generic: Fastly
+      - generic: CDN
+    - link "Google Download Analytics" [ref=f141e398]:
+      - /url: https://careers.google.com/
+      - generic: Google
+      - generic: Download Analytics
+    - link "Sentry Error logging" [ref=f141e402]:
+      - /url: https://sentry.io/for/python/?utm_source=pypi&utm_medium=paid-community&utm_campaign=python-na-evergreen&utm_content=static-ad-pypi-sponsor-learnmore
+      - generic: Sentry
+      - generic: Error logging
+    - link "StatusPage Status page" [ref=f141e406]:
+      - /url: https://statuspage.io
+      - generic: StatusPage
+      - generic: Status page
+  - list:
+    - listitem:
+      - text: "\"PyPI\", \"Python Package Index\", and the blocks logos are registered"
+      - link "trademarks" [ref=f141e413]:
+        - /url: /trademarks/
+      - text: of the
+      - link "Python Software Foundation" [ref=f141e414]:
+        - /url: https://www.python.org/psf-landing
+      - text: .
+    - listitem:
+      - text: © 2026
+      - link "Python Software Foundation" [ref=f141e416]:
+        - /url: https://www.python.org/psf-landing/
+    - listitem:
+      - link "Site map" [ref=f141e418]:
+        - /url: /sitemap/
+    - listitem:
+      - text: Deployed from
+      - link [ref=f141e420]:
+        - /url: https://github.com/pypi/warehouse/commit/ce99a6d4ad2b8ce8b9d7b5019cdb81da405e23fb
+        - code: ce99a6d
+        - text: 
+```
+[meiose: 3 nodes trimmed, 220 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]

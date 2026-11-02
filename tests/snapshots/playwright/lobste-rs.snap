@@ -1,0 +1,798 @@
+---
+source: tests/playwright_fixtures.rs
+---
+### Page
+- Page URL: https://lobste.rs/
+- Page Title: Lobsters
+### Snapshot
+```yaml
+- generic [active] [ref=f95e1]:
+  - banner [ref=f95e2]:
+    - generic:
+      - heading [level=1] [ref=f95e4]:
+        - 'link "Lobsters (Current traffic: 0%)" [ref=f95e5] [cursor=pointer]':
+          - /url: /
+          - generic [aria-hidden]: Lobsters
+      - navigation "Menu" [ref=f95e7]:
+        - list:
+          - listitem:
+            - link "Active" [ref=f95e10]:
+              - /url: /active
+          - listitem:
+            - link "Recent" [ref=f95e12]:
+              - /url: /recent
+          - listitem:
+            - link "Comments" [ref=f95e14]:
+              - /url: /comments
+          - listitem:
+            - link "Search" [ref=f95e16]:
+              - /url: /search
+          - listitem:
+            - link "Login" [ref=f95e18]:
+              - /url: /login
+  - main [ref=f95e19]:
+    - list:
+      - listitem:
+        - generic:
+          - link "△ 50" [ref=f95e24]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e26]:
+              - link "An outsider's perspective on Scion and Mononoke" [ref=f95e27]:
+                - /url: https://typesanitizer.com/blog/scion.html
+            - list "Tags":
+              - listitem:
+                - link "Tag vcs" [ref=f95e30]:
+                  - /url: /t/vcs
+                  - text: vcs
+            - link "typesanitizer.com" [ref=f95e31]:
+              - /url: /domains/typesanitizer.com
+            - generic:
+              - link [aria-hidden] [ref=f95e33]:
+                - /url: /~typesanitizer
+              - text: authored by
+              - link "typesanitizer" [ref=f95e34]:
+                - /url: /~typesanitizer
+              - time: 10 hours ago
+              - group:
+                - generic "caches" [ref=f95e37] [cursor=pointer]
+              - generic:
+                - link "5 comments" [ref=f95e39]:
+                  - /url: /s/s2qeww/outsider_s_perspective_on_scion_mononoke
+      - listitem:
+        - generic:
+          - link "△ 24" [ref=f95e43]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e45]:
+              - link "Pratt parsing is a black box" [ref=f95e46]:
+                - /url: https://vinipsmaker.github.io/blog/article/pratt-parsing-is-a-black-box/
+            - list "Tags":
+              - listitem:
+                - link "Tag compilers" [ref=f95e49]:
+                  - /url: /t/compilers
+                  - text: compilers
+              - listitem:
+                - link "Tag plt" [ref=f95e51]:
+                  - /url: /t/plt
+                  - text: plt
+            - link "vinipsmaker.github.io" [ref=f95e52]:
+              - /url: /domains/vinipsmaker.github.io
+            - generic:
+              - link [aria-hidden] [ref=f95e54]:
+                - /url: /~vinipsmaker
+              - text: authored by
+              - link "vinipsmaker" [ref=f95e55]:
+                - /url: /~vinipsmaker
+              - time: 7 hours ago
+              - group:
+                - generic "caches" [ref=f95e58] [cursor=pointer]
+              - generic:
+                - link "9 comments" [ref=f95e60]:
+                  - /url: /s/bzazar/pratt_parsing_is_black_box
+      - listitem:
+        - generic:
+          - link "△ 100" [ref=f95e64]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e66]:
+              - link "Introducing Kwi, a new KDE terminal emulator" [ref=f95e67]:
+                - /url: https://blogs.kde.org/2026/11/01/introducing-kwi/
+            - list "Tags":
+              - listitem:
+                - link "Tag linux" [ref=f95e70]:
+                  - /url: /t/linux
+                  - text: linux
+            - link "blogs.kde.org" [ref=f95e71]:
+              - /url: /domains/blogs.kde.org
+            - generic:
+              - link [aria-hidden] [ref=f95e73]:
+                - /url: /~cesarandreu
+              - text: via
+              - link "cesarandreu" [ref=f95e74]:
+                - /url: /~cesarandreu
+              - time: 22 hours ago
+              - group:
+                - generic "caches" [ref=f95e77] [cursor=pointer]
+              - generic:
+                - link "26 comments" [ref=f95e79]:
+                  - /url: /s/lt44rt/introducing_kwi_new_kde_terminal
+      - listitem:
+        - generic:
+          - link "△ 20" [ref=f95e83]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e85]:
+              - link "London Meetup - Nov 2026" [ref=f95e86]:
+                - /url: /s/cqzwwg/london_meetup_nov_2026
+            - 'link "Description text for: London Meetup - Nov 2026" [ref=f95e87] [cursor=pointer]':
+              - /url: /s/cqzwwg/london_meetup_nov_2026
+              - text: ☶
+            - list "Tags":
+              - listitem:
+                - link "Tag event" [ref=f95e90]:
+                  - /url: /t/event
+                  - text: event
+            - generic:
+              - link [aria-hidden] [ref=f95e92]:
+                - /url: /~prole
+              - text: authored by
+              - link "prole - New user" [ref=f95e93]:
+                - /url: /~prole
+                - text: prole
+              - time: 6 hours ago
+              - generic:
+                - link "4 comments" [ref=f95e96]:
+                  - /url: /s/cqzwwg/london_meetup_nov_2026
+      - listitem:
+        - generic:
+          - link "△ 141" [ref=f95e100]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e102]:
+              - 'link "Jepsen: ParticleDB 1.1.4" [ref=f95e103] [cursor=pointer]':
+                - /url: https://jepsen.io/analyses/particledb-1.1.4
+            - list "Tags":
+              - listitem:
+                - link "Tag databases" [ref=f95e106]:
+                  - /url: /t/databases
+                  - text: databases
+              - listitem:
+                - link "Tag testing" [ref=f95e108]:
+                  - /url: /t/testing
+                  - text: testing
+            - link "jepsen.io" [ref=f95e109]:
+              - /url: /domains/jepsen.io
+            - generic:
+              - link [aria-hidden] [ref=f95e111]:
+                - /url: /~aphyr
+              - text: authored by
+              - link "aphyr" [ref=f95e112]:
+                - /url: /~aphyr
+              - time: 35 hours ago
+              - group:
+                - generic "caches" [ref=f95e115] [cursor=pointer]
+              - generic:
+                - link "36 comments" [ref=f95e117]:
+                  - /url: /s/drwd4j/jepsen_particledb_1_1_4
+      - listitem:
+        - generic:
+          - link "△ 18" [ref=f95e121]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e123]:
+              - link "Work on GEFS (the Good Enough File System) for OpenBSD progresses" [ref=f95e124]:
+                - /url: https://www.undeadly.org/cgi?action=article;sid=20261101115637
+            - list "Tags":
+              - listitem:
+                - link "Tag openbsd" [ref=f95e127]:
+                  - /url: /t/openbsd
+                  - text: openbsd
+            - link "undeadly.org" [ref=f95e128]:
+              - /url: /domains/undeadly.org
+            - generic:
+              - link [aria-hidden] [ref=f95e130]:
+                - /url: /~jbauer
+              - text: via
+              - link "jbauer" [ref=f95e131]:
+                - /url: /~jbauer
+              - time: 5 hours ago
+              - group:
+                - generic "caches" [ref=f95e134] [cursor=pointer]
+              - generic:
+                - link "1 comment" [ref=f95e136]:
+                  - /url: /s/zjjvbo/work_on_gefs_good_enough_file_system_for
+      - listitem:
+        - generic:
+          - link "△ 11" [ref=f95e140]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e142]:
+              - link "Introduction to Programming in ATS" [ref=f95e143]:
+                - /url: https://ats-lang.sourceforge.net/DOCUMENT/INT2PROGINATS/HTML/book1.html
+            - list "Tags":
+              - listitem:
+                - link "Tag book" [ref=f95e146]:
+                  - /url: /t/book
+                  - text: book
+              - listitem:
+                - link "Tag plt" [ref=f95e148]:
+                  - /url: /t/plt
+                  - text: plt
+            - link "ats-lang.sourceforge.net" [ref=f95e149]:
+              - /url: /domains/ats-lang.sourceforge.net
+            - generic:
+              - link [aria-hidden] [ref=f95e151]:
+                - /url: /~WilhelmVonWeiner
+              - text: via
+              - link "WilhelmVonWeiner" [ref=f95e152]:
+                - /url: /~WilhelmVonWeiner
+              - time: 7 hours ago
+              - group:
+                - generic "caches" [ref=f95e155] [cursor=pointer]
+              - generic:
+                - link "2 comments" [ref=f95e157]:
+                  - /url: /s/oqj2zo/introduction_programming_ats
+      - listitem:
+        - generic:
+          - link "△ 28" [ref=f95e161]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e163]:
+              - link "XKCD and Fourier" [ref=f95e164]:
+                - /url: https://leancrew.com/all-this/2026/10/xkcd-and-fourier/
+            - list "Tags":
+              - listitem:
+                - link "Tag math" [ref=f95e167]:
+                  - /url: /t/math
+                  - text: math
+            - link "leancrew.com" [ref=f95e168]:
+              - /url: /domains/leancrew.com
+            - generic:
+              - link [aria-hidden] [ref=f95e170]:
+                - /url: /~aggsol
+              - text: via
+              - link "aggsol - New user" [ref=f95e171]:
+                - /url: /~aggsol
+                - text: aggsol
+              - time: 14 hours ago
+              - group:
+                - generic "caches" [ref=f95e174] [cursor=pointer]
+              - generic:
+                - link "2 comments" [ref=f95e176]:
+                  - /url: /s/mni8ri/xkcd_fourier
+      - listitem:
+        - generic:
+          - link "△ 68" [ref=f95e180]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e182]:
+              - link "Mystery of 60-Second Fluctuations in Power Grids Solved" [ref=f95e183]:
+                - /url: https://www.fz-juelich.de/en/news/archive/press-release/2026/mystery-of-60-second-fluctuations-in-power-grids-solved
+            - list "Tags":
+              - listitem:
+                - link "Tag science" [ref=f95e186]:
+                  - /url: /t/science
+                  - text: science
+            - link "fz-juelich.de" [ref=f95e187]:
+              - /url: /domains/fz-juelich.de
+            - generic:
+              - link [aria-hidden] [ref=f95e189]:
+                - /url: /~robalex
+              - text: via
+              - link "robalex" [ref=f95e190]:
+                - /url: /~robalex
+              - time: 29 hours ago
+              - group:
+                - generic "caches" [ref=f95e193] [cursor=pointer]
+              - generic:
+                - link "28 comments" [ref=f95e195]:
+                  - /url: /s/qwou15/mystery_60_second_fluctuations_power
+      - listitem:
+        - generic:
+          - link "△ 87" [ref=f95e199]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e201]:
+              - link "Avoid Public Functions Calling Other Public Functions" [ref=f95e202]:
+                - /url: https://matklad.github.io/2026/10/29/pub-calls-pub.html
+            - list "Tags":
+              - listitem:
+                - link "Tag api" [ref=f95e205]:
+                  - /url: /t/api
+                  - text: api
+              - listitem:
+                - link "Tag programming" [ref=f95e207]:
+                  - /url: /t/programming
+                  - text: programming
+            - link "matklad.github.io" [ref=f95e208]:
+              - /url: /domains/matklad.github.io
+            - generic:
+              - link [aria-hidden] [ref=f95e210]:
+                - /url: /~telemachus
+              - text: via
+              - link "telemachus" [ref=f95e211]:
+                - /url: /~telemachus
+              - time: 31 hours ago
+              - group:
+                - generic "caches" [ref=f95e214] [cursor=pointer]
+              - generic:
+                - link "20 comments" [ref=f95e216]:
+                  - /url: /s/k508we/avoid_public_functions_calling_other
+      - listitem:
+        - generic:
+          - link "△ 53" [ref=f95e220]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e222]:
+              - link "The Kluever Maneuver" [ref=f95e223]:
+                - /url: https://jordi.inversethought.com/blog/the-kluever-maneuver/
+            - list "Tags":
+              - listitem:
+                - link "Tag testing" [ref=f95e226]:
+                  - /url: /t/testing
+                  - text: testing
+            - link "jordi.inversethought.com" [ref=f95e227]:
+              - /url: /domains/jordi.inversethought.com
+            - generic:
+              - link [aria-hidden] [ref=f95e229]:
+                - /url: /~JordiGH
+              - text: authored by
+              - link "JordiGH" [ref=f95e230]:
+                - /url: /~JordiGH
+              - time: 34 hours ago
+              - group:
+                - generic "caches" [ref=f95e233] [cursor=pointer]
+              - generic:
+                - link "34 comments" [ref=f95e235]:
+                  - /url: /s/rpiu3w/kluever_maneuver
+      - listitem:
+        - generic:
+          - link "△ 11" [ref=f95e239]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e241]:
+              - 'link "Zig: From Beginner to Slightly Less Beginner" [ref=f95e242] [cursor=pointer]':
+                - /url: https://www.youtube.com/watch?v=jWCQXBVIyrY
+            - list "Tags":
+              - listitem:
+                - link "Tag video" [ref=f95e245]:
+                  - /url: /t/video
+                  - text: video
+              - listitem:
+                - link "Tag zig" [ref=f95e247]:
+                  - /url: /t/zig
+                  - text: zig
+            - link "youtube.com" [ref=f95e248]:
+              - /url: /domains/youtube.com
+            - generic:
+              - link [aria-hidden] [ref=f95e250]:
+                - /url: /~rcalixte
+              - text: via
+              - link "rcalixte" [ref=f95e251]:
+                - /url: /~rcalixte
+              - time: 8 hours ago
+              - group:
+                - generic "caches" [ref=f95e254] [cursor=pointer]
+              - generic:
+                - link "no comments" [ref=f95e256]:
+                  - /url: /s/uhlnqx/zig_from_beginner_slightly_less_beginner
+      - listitem:
+        - generic:
+          - link "△ 15" [ref=f95e260]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e262]:
+              - 'link "groff/troff macros: ms, mm, me or mom" [ref=f95e263] [cursor=pointer]':
+                - /url: https://www.stephenlindholm.com/groff_macros.html
+            - list "Tags":
+              - listitem:
+                - link "Tag unix" [ref=f95e266]:
+                  - /url: /t/unix
+                  - text: unix
+            - link "stephenlindholm.com" [ref=f95e267]:
+              - /url: /domains/stephenlindholm.com
+            - generic:
+              - link [aria-hidden] [ref=f95e269]:
+                - /url: /~bediger4000
+              - text: via
+              - link "bediger4000" [ref=f95e270]:
+                - /url: /~bediger4000
+              - time: 11 hours ago
+              - group:
+                - generic "caches" [ref=f95e273] [cursor=pointer]
+              - generic:
+                - link "no comments" [ref=f95e275]:
+                  - /url: /s/dbwbvr/groff_troff_macros_ms_mm_me_mom
+      - listitem:
+        - generic:
+          - link "△ 7" [ref=f95e279]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e281]:
+              - link "Spooky C++" [ref=f95e282]:
+                - /url: https://www.nablag.com/spooky_cpp
+            - list "Tags":
+              - listitem:
+                - link "Tag c++" [ref=f95e285]:
+                  - /url: /t/c++
+                  - text: c++
+            - link "nablag.com" [ref=f95e286]:
+              - /url: /domains/nablag.com
+            - generic:
+              - link [aria-hidden] [ref=f95e288]:
+                - /url: /~raymii
+              - text: via
+              - link "raymii" [ref=f95e289]:
+                - /url: /~raymii
+              - time: 7 hours ago
+              - group:
+                - generic "caches" [ref=f95e292] [cursor=pointer]
+              - generic:
+                - link "1 comment" [ref=f95e294]:
+                  - /url: /s/4yxx6f/spooky_c
+      - listitem:
+        - generic:
+          - link "△ 8" [ref=f95e298]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e300]:
+              - link "Beating the compiler at signed 32-bit division" [ref=f95e301]:
+                - /url: https://lemire.me/blog/2026/10/31/beating-the-compiler-at-signed-32-bit-division/
+            - list "Tags":
+              - listitem:
+                - link "Tag compilers" [ref=f95e304]:
+                  - /url: /t/compilers
+                  - text: compilers
+              - listitem:
+                - link "Tag performance" [ref=f95e306]:
+                  - /url: /t/performance
+                  - text: performance
+            - link "lemire.me" [ref=f95e307]:
+              - /url: /domains/lemire.me
+            - generic:
+              - link [aria-hidden] [ref=f95e309]:
+                - /url: /~EvanHahn
+              - text: via
+              - link "EvanHahn" [ref=f95e310]:
+                - /url: /~EvanHahn
+              - time: 12 hours ago
+              - group:
+                - generic "caches" [ref=f95e313] [cursor=pointer]
+              - generic:
+                - link "4 comments" [ref=f95e315]:
+                  - /url: /s/ep5vsq/beating_compiler_at_signed_32_bit
+      - listitem:
+        - generic:
+          - link "△ 7" [ref=f95e319]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e321]:
+              - link "A Specialised Haskell Processor on FPGA" [ref=f95e322]:
+                - /url: https://bathtub-01.github.io/technical/ouros-demo/
+            - list "Tags":
+              - listitem:
+                - link "Tag hardware" [ref=f95e325]:
+                  - /url: /t/hardware
+                  - text: hardware
+              - listitem:
+                - link "Tag haskell" [ref=f95e327]:
+                  - /url: /t/haskell
+                  - text: haskell
+            - link "bathtub-01.github.io" [ref=f95e328]:
+              - /url: /domains/bathtub-01.github.io
+            - generic:
+              - link [aria-hidden] [ref=f95e330]:
+                - /url: /~veqq
+              - text: via
+              - link "veqq" [ref=f95e331]:
+                - /url: /~veqq
+              - time: 9 hours ago
+              - group:
+                - generic "caches" [ref=f95e334] [cursor=pointer]
+              - generic:
+                - link "1 comment" [ref=f95e336]:
+                  - /url: /s/8o9wus/specialised_haskell_processor_on_fpga
+      - listitem:
+        - generic:
+          - link "△ 38" [ref=f95e340]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e342]:
+              - link "Novellas with groff" [ref=f95e343]:
+                - /url: https://movq.de/blog/postings/2026-10-31/0/POSTING-en.html
+            - list "Tags":
+              - listitem:
+                - link "Tag unix" [ref=f95e346]:
+                  - /url: /t/unix
+                  - text: unix
+            - link "movq.de" [ref=f95e347]:
+              - /url: /domains/movq.de
+            - generic:
+              - link [aria-hidden] [ref=f95e349]:
+                - /url: /~zk
+              - text: via
+              - link "zk" [ref=f95e350]:
+                - /url: /~zk
+              - time: 28 hours ago
+              - group:
+                - generic "caches" [ref=f95e353] [cursor=pointer]
+              - generic:
+                - link "6 comments" [ref=f95e355]:
+                  - /url: /s/54xwm8/novellas_with_groff
+      - listitem:
+        - generic:
+          - link "△ 2" [ref=f95e359]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e361]:
+              - link "An easy way to try local AI with braindead-local-intelligence" [ref=f95e362]:
+                - /url: https://dataswamp.org/~solene/2026-11-01-braindead-local-intelligence.html
+            - list "Tags":
+              - listitem:
+                - link "Tag ai" [ref=f95e365]:
+                  - /url: /t/ai
+                  - text: ai
+            - link "dataswamp.org/~solene" [ref=f95e366]:
+              - /url: /origins/dataswamp.org%2F~solene
+            - generic:
+              - link [aria-hidden] [ref=f95e368]:
+                - /url: /~msangi
+              - text: via
+              - link "msangi" [ref=f95e369]:
+                - /url: /~msangi
+              - time: 4 hours ago
+              - group:
+                - generic "caches" [ref=f95e372] [cursor=pointer]
+              - generic:
+                - link "no comments" [ref=f95e374]:
+                  - /url: /s/rlmrfy/easy_way_try_local_ai_with_braindead_local
+      - listitem:
+        - generic:
+          - link "△ 9" [ref=f95e378]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e380]:
+              - link "Non-Determinism and Overcount on Modern Hardware Performance Counter Implementations" [ref=f95e381]:
+                - /url: https://web.eece.maine.edu/~vweaver/projects/deterministic/deterministic_counters.pdf
+            - 'link "Description text for: Non-Determinism and Overcount on Modern Hardware Performance Counter Implementations" [ref=f95e382] [cursor=pointer]':
+              - /url: /s/pswl6z/non_determinism_overcount_on_modern
+              - text: ☶
+            - list "Tags":
+              - listitem:
+                - link "Tag pdf" [ref=f95e385]:
+                  - /url: /t/pdf
+                  - text: pdf
+              - listitem:
+                - link "Tag hardware" [ref=f95e387]:
+                  - /url: /t/hardware
+                  - text: hardware
+              - listitem:
+                - link "Tag performance" [ref=f95e389]:
+                  - /url: /t/performance
+                  - text: performance
+            - link "web.eece.maine.edu" [ref=f95e390]:
+              - /url: /domains/web.eece.maine.edu
+            - generic:
+              - link [aria-hidden] [ref=f95e392]:
+                - /url: /~typesanitizer
+              - text: via
+              - link "typesanitizer" [ref=f95e393]:
+                - /url: /~typesanitizer
+              - time: 17 hours ago
+              - group:
+                - generic "caches" [ref=f95e396] [cursor=pointer]
+              - generic:
+                - link "no comments" [ref=f95e398]:
+                  - /url: /s/pswl6z/non_determinism_overcount_on_modern
+      - listitem:
+        - generic:
+          - link "△ 1" [ref=f95e402]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e404]:
+              - link "Understanding Org's LaTeX previews" [ref=f95e405]:
+                - /url: https://karthinks.com/software/understanding-org-latex-preview/
+            - list "Tags":
+              - listitem:
+                - link "Tag emacs" [ref=f95e408]:
+                  - /url: /t/emacs
+                  - text: emacs
+            - link "karthinks.com" [ref=f95e409]:
+              - /url: /domains/karthinks.com
+            - generic:
+              - link [aria-hidden] [ref=f95e411]:
+                - /url: /~ehamberg
+              - text: via
+              - link "ehamberg" [ref=f95e412]:
+                - /url: /~ehamberg
+              - time: 3 hours ago
+              - group:
+                - generic "caches" [ref=f95e415] [cursor=pointer]
+              - generic:
+                - link "no comments" [ref=f95e417]:
+                  - /url: /s/yihs7m/understanding_org_s_latex_previews
+      - listitem:
+        - generic:
+          - link "△ 15" [ref=f95e421]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e423]:
+              - link "An LC-3 Disassembler in Haskell" [ref=f95e424]:
+                - /url: https://abhinavsarkar.net/posts/lc3-disassembler/
+            - list "Tags":
+              - listitem:
+                - link "Tag assembly" [ref=f95e427]:
+                  - /url: /t/assembly
+                  - text: assembly
+              - listitem:
+                - link "Tag haskell" [ref=f95e429]:
+                  - /url: /t/haskell
+                  - text: haskell
+              - listitem:
+                - link "Tag reversing" [ref=f95e431]:
+                  - /url: /t/reversing
+                  - text: reversing
+            - link "abhinavsarkar.net" [ref=f95e432]:
+              - /url: /domains/abhinavsarkar.net
+            - generic:
+              - link [aria-hidden] [ref=f95e434]:
+                - /url: /~abhin4v
+              - text: authored by
+              - link "abhin4v" [ref=f95e435]:
+                - /url: /~abhin4v
+              - time: 33 hours ago
+              - group:
+                - generic "caches" [ref=f95e438] [cursor=pointer]
+              - generic:
+                - link "4 comments" [ref=f95e440]:
+                  - /url: /s/qoznnh/lc_3_disassembler_haskell
+      - listitem:
+        - generic:
+          - link "△ 25" [ref=f95e444]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e446]:
+              - link "Enlightenment 0.28.0 Release" [ref=f95e447]:
+                - /url: https://www.enlightenment.org/news/2026-10-31-enlightenment-0.28.0
+            - 'link "Description text for: Enlightenment 0.28.0 Release" [ref=f95e448] [cursor=pointer]':
+              - /url: /s/fmawla/enlightenment_0_28_0_release
+              - text: ☶
+            - list "Tags":
+              - listitem:
+                - link "Tag linux" [ref=f95e451]:
+                  - /url: /t/linux
+                  - text: linux
+              - listitem:
+                - link "Tag release" [ref=f95e453]:
+                  - /url: /t/release
+                  - text: release
+            - link "enlightenment.org" [ref=f95e454]:
+              - /url: /domains/enlightenment.org
+            - generic:
+              - link [aria-hidden] [ref=f95e456]:
+                - /url: /~vinipsmaker
+              - text: via
+              - link "vinipsmaker" [ref=f95e457]:
+                - /url: /~vinipsmaker
+              - time: 31 hours ago
+              - group:
+                - generic "caches" [ref=f95e460] [cursor=pointer]
+              - generic:
+                - link "no comments" [ref=f95e462]:
+                  - /url: /s/fmawla/enlightenment_0_28_0_release
+      - listitem:
+        - generic:
+          - link "△ 2" [ref=f95e466]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e468]:
+              - link "No AI, 52 min. Build all Linux Files utils in C by Hand" [ref=f95e469]:
+                - /url: https://www.youtube.com/watch?v=gQRmSlcTq9c
+            - list "Tags":
+              - listitem:
+                - link "Tag video" [ref=f95e472]:
+                  - /url: /t/video
+                  - text: video
+              - listitem:
+                - link "Tag c" [ref=f95e474]:
+                  - /url: /t/c
+                  - text: c
+            - link "youtube.com" [ref=f95e475]:
+              - /url: /domains/youtube.com
+            - generic:
+              - link [aria-hidden] [ref=f95e477]:
+                - /url: /~anex9d
+              - text: via
+              - link "anex9d" [ref=f95e478]:
+                - /url: /~anex9d
+              - time: 14 hours ago
+              - group:
+                - generic "caches" [ref=f95e481] [cursor=pointer]
+              - generic:
+                - link "1 comment" [ref=f95e483]:
+                  - /url: /s/daouvo/no_ai_52_min_build_all_linux_files_utils_c_by
+      - listitem:
+        - generic:
+          - link "△ 76" [ref=f95e487]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e489]:
+              - link "The support case of a customer who said that all they could see was a black screen" [ref=f95e490]:
+                - /url: https://devblogs.microsoft.com/oldnewthing/20261029-00/?p=112808/
+            - list "Tags":
+              - listitem:
+                - link "Tag historical" [ref=f95e493]:
+                  - /url: /t/historical
+                  - text: historical
+              - listitem:
+                - link "Tag windows" [ref=f95e495]:
+                  - /url: /t/windows
+                  - text: windows
+            - link "devblogs.microsoft.com" [ref=f95e496]:
+              - /url: /domains/devblogs.microsoft.com
+            - generic:
+              - link [aria-hidden] [ref=f95e498]:
+                - /url: /~ubernostrum
+              - text: via
+              - link "ubernostrum" [ref=f95e499]:
+                - /url: /~ubernostrum
+              - time: 2 days ago
+              - group:
+                - generic "caches" [ref=f95e502] [cursor=pointer]
+              - generic:
+                - link "11 comments" [ref=f95e504]:
+                  - /url: /s/soosuu/support_case_customer_who_said_all_they
+      - listitem:
+        - generic:
+          - link "△ 46" [ref=f95e508]:
+            - /url: /login
+          - generic:
+            - heading [level=2] [ref=f95e510]:
+              - link "Tangled, hire a front-end accessibility expert" [ref=f95e511]:
+                - /url: https://dbushell.com/2026/11/01/tangled-accessibility/
+            - 'link "Description text for: Tangled, hire a front-end accessibility expert" [ref=f95e512] [cursor=pointer]':
+              - /url: /s/ymqjuj/tangled_hire_front_end_accessibility
+              - text: ☶
+            - list "Tags":
+              - listitem:
+                - link "Tag a11y" [ref=f95e515]:
+                  - /url: /t/a11y
+                  - text: a11y
+              - listitem:
+                - link "Tag rant" [ref=f95e517]:
+                  - /url: /t/rant
+                  - text: rant
+              - listitem:
+                - link "Tag vcs" [ref=f95e519]:
+                  - /url: /t/vcs
+                  - text: vcs
+            - link "dbushell.com" [ref=f95e520]:
+              - /url: /domains/dbushell.com
+            - generic:
+              - link [aria-hidden] [ref=f95e522]:
+                - /url: /~diktomat
+              - text: via
+              - link "diktomat" [ref=f95e523]:
+                - /url: /~diktomat
+              - time: 32 hours ago
+              - group:
+                - generic "caches" [ref=f95e526] [cursor=pointer]
+              - generic:
+                - link "11 comments" [ref=f95e528]:
+                  - /url: /s/ymqjuj/tangled_hire_front_end_accessibility
+    - navigation [ref=f95e529]:
+      - link "Page 2" [ref=f95e530]:
+        - /url: /page/2
+  - contentinfo [ref=f95e531]:
+    - navigation [ref=f95e532]:
+      - link "About" [ref=f95e533]:
+        - /url: /about
+      - link "Tags" [ref=f95e534]:
+        - /url: /tags
+      - link "Filter" [ref=f95e535]:
+        - /url: /filters
+      - link "Moderation Log" [ref=f95e536]:
+        - /url: /moderations
+```
+[meiose: 49 nodes trimmed, 249 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]

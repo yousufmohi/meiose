@@ -1,0 +1,32 @@
+---
+source: tests/playwright_fixtures.rs
+---
+<untouched>
+### Page
+- Page URL: https://www.npmjs.com/package/@playwright/mcp
+- Page Title: Just a moment...
+- HTTP status: 403
+- Console: 11 errors, 8 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f128e1]:
+  - main [ref=f128e2]:
+    - generic [ref=f128e3]:
+      - heading "www.npmjs.com" [level=1] [ref=f128e5]
+      - heading "Performing security verification" [level=2] [ref=f128e6]
+      - paragraph [ref=f128e7]: This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.
+  - contentinfo [ref=f128e14]:
+    - generic [ref=f128e16]:
+      - generic [ref=f128e18]:
+        - text: "Ray ID:"
+        - code [ref=f128e19]: a53f591c2ca3a20a
+      - generic [ref=f128e20]:
+        - generic [ref=f128e21]:
+          - text: Performance and Security by
+          - link "Cloudflare, opens in a new tab" [ref=f128e22] [cursor=pointer]:
+            - /url: https://www.cloudflare.com?utm_source=challenge&utm_campaign=m
+            - text: Cloudflare
+        - link "Privacy, opens in a new tab" [ref=f128e24] [cursor=pointer]:
+          - /url: https://www.cloudflare.com/privacypolicy/
+          - text: Privacy
+```

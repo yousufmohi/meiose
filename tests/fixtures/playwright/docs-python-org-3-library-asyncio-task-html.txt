@@ -1,0 +1,2496 @@
+### Page
+- Page URL: https://docs.python.org/3/library/asyncio-task.html
+- Page Title: Coroutines and tasks — Python 3.15.2 documentation
+### Snapshot
+```yaml
+- generic [active] [ref=f83e1]:
+  - navigation "Related" [ref=f83e2]:
+    - list [ref=f83e3]:
+      - listitem [ref=f83e4]:
+        - link "index" [ref=f83e5] [cursor=pointer]:
+          - /url: ../genindex.html
+      - listitem [ref=f83e6]:
+        - link "modules" [ref=f83e7] [cursor=pointer]:
+          - /url: ../py-modindex.html
+        - text: "|"
+      - listitem [ref=f83e8]:
+        - link "next" [ref=f83e9] [cursor=pointer]:
+          - /url: asyncio-stream.html
+        - text: "|"
+      - listitem [ref=f83e10]:
+        - link "previous" [ref=f83e11] [cursor=pointer]:
+          - /url: asyncio-runner.html
+        - text: "|"
+      - listitem [ref=f83e12]:
+        - img "Python logo" [ref=f83e13]
+      - listitem [ref=f83e14]:
+        - link "Python" [ref=f83e15] [cursor=pointer]:
+          - /url: https://www.python.org/
+        - text: »
+      - listitem [ref=f83e16]:
+        - combobox "Language" [ref=f83e18]:
+          - option "German | Deutsch"
+          - option "Greek | Ελληνικά"
+          - option "English" [selected]
+          - option "Spanish | español"
+          - option "Persian | فارسی"
+          - option "French | français"
+          - option "Italian | italiano"
+          - option "Japanese | 日本語"
+          - option "Korean | 한국어"
+          - option "Punjabi | ਪੰਜਾਬੀ"
+          - option "Polish | polski"
+          - option "Brazilian Portuguese | Português brasileiro"
+          - option "Romanian | Românește"
+          - option "Russian | Русский"
+          - option "Turkish | Türkçe"
+          - option "Simplified Chinese | 简体中文"
+          - option "Traditional Chinese | 繁體中文"
+        - combobox "Python version" [ref=f83e20]:
+          - option "dev (3.16)"
+          - option "3.15.2" [selected]
+          - option "3.14"
+          - option "3.13"
+          - option "3.12"
+          - option "3.11"
+          - option "3.10"
+          - option "3.9"
+          - option "3.8"
+          - option "3.7"
+          - option "3.6"
+          - option "3.5"
+          - option "3.4"
+          - option "3.3"
+          - option "3.2"
+          - option "3.1"
+          - option "3.0"
+          - option "2.7"
+          - option "2.6"
+      - listitem
+      - listitem [ref=f83e21]:
+        - link "3.15.2 documentation" [ref=f83e22] [cursor=pointer]:
+          - /url: ../index.html
+        - text: »
+      - listitem [ref=f83e23]:
+        - link "The Python standard library" [ref=f83e24] [cursor=pointer]:
+          - /url: index.html
+        - text: »
+      - listitem [ref=f83e25]:
+        - link "Networking and Interprocess Communication" [ref=f83e26] [cursor=pointer]:
+          - /url: ipc.html
+        - text: »
+      - listitem [ref=f83e27]:
+        - link [ref=f83e28] [cursor=pointer]:
+          - /url: asyncio.html
+          - code [ref=f83e29]: asyncio
+          - text: — Asynchronous I/O
+        - text: »
+      - listitem [ref=f83e30]:
+        - link "Coroutines and tasks" [ref=f83e31] [cursor=pointer]:
+          - /url: ""
+      - listitem [ref=f83e32]:
+        - search [ref=f83e33]:
+          - generic [ref=f83e34]:
+            - searchbox "Quick search" [ref=f83e35]
+            - button "Go" [ref=f83e36]
+        - text: "|"
+      - listitem [ref=f83e37]:
+        - generic [ref=f83e38]:
+          - text: Theme
+          - combobox "Theme" [ref=f83e39]:
+            - option "Auto" [selected]
+            - option "Light"
+            - option "Dark"
+        - text: "|"
+  - generic [ref=f83e40]:
+    - main [ref=f83e43]:
+      - generic [ref=f83e44]:
+        - heading "Coroutines and tasks" [level=1] [ref=f83e45]
+        - paragraph [ref=f83e46]: This section outlines high-level asyncio APIs to work with coroutines and Tasks.
+        - navigation [ref=f83e47]:
+          - list [ref=f83e48]:
+            - listitem [ref=f83e49]:
+              - paragraph [ref=f83e50]:
+                - link "Coroutines" [ref=f83e51] [cursor=pointer]:
+                  - /url: "#coroutines"
+            - listitem [ref=f83e52]:
+              - paragraph [ref=f83e53]:
+                - link "Awaitables" [ref=f83e54] [cursor=pointer]:
+                  - /url: "#awaitables"
+            - listitem [ref=f83e55]:
+              - paragraph [ref=f83e56]:
+                - link "Creating tasks" [ref=f83e57] [cursor=pointer]:
+                  - /url: "#creating-tasks"
+            - listitem [ref=f83e58]:
+              - paragraph [ref=f83e59]:
+                - link "Task cancellation" [ref=f83e60] [cursor=pointer]:
+                  - /url: "#task-cancellation"
+            - listitem [ref=f83e61]:
+              - paragraph [ref=f83e62]:
+                - link "Task groups" [ref=f83e63] [cursor=pointer]:
+                  - /url: "#task-groups"
+            - listitem [ref=f83e64]:
+              - paragraph [ref=f83e65]:
+                - link "Sleeping" [ref=f83e66] [cursor=pointer]:
+                  - /url: "#sleeping"
+            - listitem [ref=f83e67]:
+              - paragraph [ref=f83e68]:
+                - link "Running tasks concurrently" [ref=f83e69] [cursor=pointer]:
+                  - /url: "#running-tasks-concurrently"
+            - listitem [ref=f83e70]:
+              - paragraph [ref=f83e71]:
+                - link "Eager task factory" [ref=f83e72] [cursor=pointer]:
+                  - /url: "#eager-task-factory"
+            - listitem [ref=f83e73]:
+              - paragraph [ref=f83e74]:
+                - link "Shielding from cancellation" [ref=f83e75] [cursor=pointer]:
+                  - /url: "#shielding-from-cancellation"
+            - listitem [ref=f83e76]:
+              - paragraph [ref=f83e77]:
+                - link "Timeouts" [ref=f83e78] [cursor=pointer]:
+                  - /url: "#timeouts"
+            - listitem [ref=f83e79]:
+              - paragraph [ref=f83e80]:
+                - link "Waiting primitives" [ref=f83e81] [cursor=pointer]:
+                  - /url: "#waiting-primitives"
+            - listitem [ref=f83e82]:
+              - paragraph [ref=f83e83]:
+                - link "Running in threads" [ref=f83e84] [cursor=pointer]:
+                  - /url: "#running-in-threads"
+            - listitem [ref=f83e85]:
+              - paragraph [ref=f83e86]:
+                - link "Scheduling from other threads" [ref=f83e87] [cursor=pointer]:
+                  - /url: "#scheduling-from-other-threads"
+            - listitem [ref=f83e88]:
+              - paragraph [ref=f83e89]:
+                - link "Introspection" [ref=f83e90] [cursor=pointer]:
+                  - /url: "#introspection"
+            - listitem [ref=f83e91]:
+              - paragraph [ref=f83e92]:
+                - link "Task object" [ref=f83e93] [cursor=pointer]:
+                  - /url: "#task-object"
+        - generic [ref=f83e94]:
+          - heading [level=2] [ref=f83e95]:
+            - link "Coroutines" [ref=f83e96] [cursor=pointer]:
+              - /url: "#id2"
+          - paragraph [ref=f83e97]:
+            - strong [ref=f83e98]: "Source code:"
+            - link "Lib/asyncio/coroutines.py" [ref=f83e99] [cursor=pointer]:
+              - /url: https://github.com/python/cpython/tree/3.15/Lib/asyncio/coroutines.py
+          - separator [ref=f83e100]
+          - paragraph [ref=f83e101]:
+            - link "Coroutines" [ref=f83e102] [cursor=pointer]:
+              - /url: ../glossary.html#term-coroutine
+            - text: "declared with the async/await syntax is the preferred way of writing asyncio applications. For example, the following snippet of code prints “hello”, waits 1 second, and then prints “world”:"
+          - generic [ref=f83e103]: ">>> import asyncio >>> async def main(): ... print('hello') ... await asyncio.sleep(1) ... print('world') >>> asyncio.run(main()) hello world"
+          - paragraph [ref=f83e106]: "Note that simply calling a coroutine will not schedule it to be executed:"
+          - generic [ref=f83e107]: ">>> main() <coroutine object main at 0x1053bb7c8>"
+          - paragraph [ref=f83e110]: "To actually run a coroutine, asyncio provides the following mechanisms:"
+          - list [ref=f83e111]:
+            - listitem [ref=f83e112]:
+              - paragraph [ref=f83e113]:
+                - text: The
+                - link [ref=f83e114] [cursor=pointer]:
+                  - /url: asyncio-runner.html#asyncio.run
+                  - code [ref=f83e115]: asyncio.run()
+                - text: function to run the top-level entry point “main()” function (see the above example.)
+            - listitem [ref=f83e116]:
+              - paragraph [ref=f83e117]:
+                - text: Awaiting on a coroutine. The following snippet of code will print “hello” after waiting for 1 second, and then print “world” after waiting for
+                - emphasis [ref=f83e118]: another
+                - text: "2 seconds:"
+              - generic [ref=f83e119]: "import asyncio import time async def say_after(delay, what): await asyncio.sleep(delay) print(what) async def main(): print(f\"started at {time.strftime('%X')}\") await say_after(1, 'hello') await say_after(2, 'world') print(f\"finished at {time.strftime('%X')}\") asyncio.run(main())"
+              - paragraph [ref=f83e122]: "Expected output:"
+              - generic [ref=f83e123]: started at 17:13:52 hello world finished at 17:13:55
+            - listitem [ref=f83e126]:
+              - paragraph [ref=f83e127]:
+                - text: The
+                - link [ref=f83e128] [cursor=pointer]:
+                  - /url: "#asyncio.create_task"
+                  - code [ref=f83e129]: asyncio.create_task()
+                - text: function to run coroutines concurrently as asyncio
+                - link [ref=f83e130] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e131]: Tasks
+                - text: .
+              - paragraph [ref=f83e132]:
+                - text: Let’s modify the above example and run two
+                - code [ref=f83e133]: say_after
+                - text: coroutines
+                - emphasis [ref=f83e134]: concurrently
+                - text: ":"
+              - generic [ref=f83e135]: "async def main(): task1 = asyncio.create_task( say_after(1, 'hello')) task2 = asyncio.create_task( say_after(2, 'world')) print(f\"started at {time.strftime('%X')}\") # Wait until both tasks are completed (should take # around 2 seconds.) await task1 await task2 print(f\"finished at {time.strftime('%X')}\")"
+              - paragraph [ref=f83e138]: "Note that expected output now shows that the snippet runs 1 second faster than before:"
+              - generic [ref=f83e139]: started at 17:14:32 hello world finished at 17:14:34
+            - listitem [ref=f83e142]:
+              - paragraph [ref=f83e143]:
+                - text: The
+                - link [ref=f83e144] [cursor=pointer]:
+                  - /url: "#asyncio.TaskGroup"
+                  - code [ref=f83e145]: asyncio.TaskGroup
+                - text: class provides a more modern alternative to
+                - link [ref=f83e146] [cursor=pointer]:
+                  - /url: "#asyncio.create_task"
+                  - code [ref=f83e147]: create_task()
+                - text: ". Using this API, the last example becomes:"
+              - generic [ref=f83e148]: "async def main(): async with asyncio.TaskGroup() as tg: task1 = tg.create_task( say_after(1, 'hello')) task2 = tg.create_task( say_after(2, 'world')) print(f\"started at {time.strftime('%X')}\") # The await is implicit when the context manager exits. print(f\"finished at {time.strftime('%X')}\")"
+              - paragraph [ref=f83e151]: The timing and output should be the same as for the previous version.
+              - paragraph [ref=f83e153]:
+                - text: "Added in version 3.11:"
+                - link [ref=f83e154] [cursor=pointer]:
+                  - /url: "#asyncio.TaskGroup"
+                  - code [ref=f83e155]: asyncio.TaskGroup
+                - text: .
+        - generic [ref=f83e156]:
+          - heading [level=2] [ref=f83e157]:
+            - link "Awaitables" [ref=f83e158] [cursor=pointer]:
+              - /url: "#id3"
+          - paragraph [ref=f83e159]:
+            - text: We say that an object is an
+            - strong [ref=f83e160]: awaitable
+            - text: object if it can be used in an
+            - link [ref=f83e161] [cursor=pointer]:
+              - /url: ../reference/expressions.html#await
+              - code [ref=f83e162]: await
+            - text: expression. Many asyncio APIs are designed to accept awaitables.
+          - paragraph [ref=f83e163]:
+            - text: There are three main types of
+            - emphasis [ref=f83e164]: awaitable
+            - text: "objects:"
+            - strong [ref=f83e165]: coroutines
+            - text: ","
+            - strong [ref=f83e166]: Tasks
+            - text: ", and"
+            - strong [ref=f83e167]: Futures
+            - text: .
+          - paragraph [ref=f83e168]: Coroutines
+          - paragraph [ref=f83e169]:
+            - text: Python coroutines are
+            - emphasis [ref=f83e170]: awaitables
+            - text: "and therefore can be awaited from other coroutines:"
+          - generic [ref=f83e171]: "import asyncio async def nested(): return 42 async def main(): # Nothing happens if we just call \"nested()\". # A coroutine object is created but not awaited, # so it *won't run at all*. nested() # will raise a \"RuntimeWarning\". # Let's do it differently now and await it: print(await nested()) # will print \"42\". asyncio.run(main())"
+          - generic [ref=f83e174]:
+            - paragraph [ref=f83e175]: "Important:"
+            - paragraph [ref=f83e176]: "In this documentation the term “coroutine” can be used for two closely related concepts:"
+            - list [ref=f83e177]:
+              - listitem [ref=f83e178]:
+                - paragraph [ref=f83e179]:
+                  - text: a
+                  - emphasis [ref=f83e180]: coroutine function
+                  - text: ": an"
+                  - link [ref=f83e181] [cursor=pointer]:
+                    - /url: ../reference/compound_stmts.html#async-def
+                    - code [ref=f83e182]: async def
+                  - text: function;
+              - listitem [ref=f83e183]:
+                - paragraph [ref=f83e184]:
+                  - text: a
+                  - emphasis [ref=f83e185]: coroutine object
+                  - text: ": an object returned by calling a"
+                  - emphasis [ref=f83e186]: coroutine function
+                  - text: .
+          - paragraph [ref=f83e187]: Tasks
+          - paragraph [ref=f83e188]:
+            - emphasis [ref=f83e189]: Tasks
+            - text: are used to schedule coroutines
+            - emphasis [ref=f83e190]: concurrently
+            - text: .
+          - paragraph [ref=f83e191]:
+            - text: When a coroutine is wrapped into a
+            - emphasis [ref=f83e192]: Task
+            - text: with functions like
+            - link [ref=f83e193] [cursor=pointer]:
+              - /url: "#asyncio.create_task"
+              - code [ref=f83e194]: asyncio.create_task()
+            - text: "the coroutine is automatically scheduled to run soon:"
+          - generic [ref=f83e195]: "import asyncio async def nested(): return 42 async def main(): # Schedule nested() to run soon concurrently # with \"main()\". task = asyncio.create_task(nested()) # \"task\" can now be used to cancel \"nested()\", or # can simply be awaited to wait until it is complete: await task asyncio.run(main())"
+          - paragraph [ref=f83e198]: Futures
+          - paragraph [ref=f83e199]:
+            - text: A
+            - link [ref=f83e200] [cursor=pointer]:
+              - /url: asyncio-future.html#asyncio.Future
+              - code [ref=f83e201]: Future
+            - text: is a special
+            - strong [ref=f83e202]: low-level
+            - text: awaitable object that represents an
+            - strong [ref=f83e203]: eventual result
+            - text: of an asynchronous operation.
+          - paragraph [ref=f83e204]:
+            - text: When a Future object is
+            - emphasis [ref=f83e205]: awaited
+            - text: it means that the coroutine will wait until the Future is resolved in some other place.
+          - paragraph [ref=f83e206]: Future objects in asyncio are needed to allow callback-based code to be used with async/await.
+          - paragraph [ref=f83e207]:
+            - text: Normally
+            - strong [ref=f83e208]: there is no need
+            - text: to create Future objects at the application level code.
+          - paragraph [ref=f83e209]: "Future objects, sometimes exposed by libraries and some asyncio APIs, can be awaited:"
+          - generic [ref=f83e210]: "async def main(): await function_that_returns_a_future_object() # this is also valid: await asyncio.gather( function_that_returns_a_future_object(), some_python_coroutine() )"
+          - paragraph [ref=f83e213]:
+            - text: A good example of a low-level function that returns a Future object is
+            - link [ref=f83e214] [cursor=pointer]:
+              - /url: asyncio-eventloop.html#asyncio.loop.run_in_executor
+              - code [ref=f83e215]: loop.run_in_executor()
+            - text: .
+        - generic [ref=f83e216]:
+          - heading [level=2] [ref=f83e217]:
+            - link "Creating tasks" [ref=f83e218] [cursor=pointer]:
+              - /url: "#id4"
+          - paragraph [ref=f83e219]:
+            - strong [ref=f83e220]: "Source code:"
+            - link "Lib/asyncio/tasks.py" [ref=f83e221] [cursor=pointer]:
+              - /url: https://github.com/python/cpython/tree/3.15/Lib/asyncio/tasks.py
+          - separator [ref=f83e222]
+          - generic [ref=f83e223]:
+            - term [ref=f83e224]:
+              - generic [ref=f83e225]: asyncio.
+              - generic [ref=f83e226]: create_task
+              - text: (
+              - emphasis [ref=f83e227]:
+                - generic [ref=f83e228]: coro
+              - text: ","
+              - emphasis [ref=f83e229]:
+                - generic "Keyword-only parameters separator (PEP 3102)" [ref=f83e231]: "*"
+              - text: ","
+              - emphasis [ref=f83e232]:
+                - generic [ref=f83e233]: name
+                - generic [ref=f83e234]: =
+                - generic [ref=f83e235]: None
+              - text: ","
+              - emphasis [ref=f83e236]:
+                - generic [ref=f83e237]: context
+                - generic [ref=f83e238]: =
+                - generic [ref=f83e239]: None
+              - text: ","
+              - emphasis [ref=f83e240]:
+                - generic [ref=f83e241]: eager_start
+                - generic [ref=f83e242]: =
+                - generic [ref=f83e243]: None
+              - text: ","
+              - emphasis [ref=f83e244]:
+                - generic [ref=f83e245]: "**"
+                - generic [ref=f83e246]: kwargs
+              - text: )
+            - definition [ref=f83e247]:
+              - paragraph [ref=f83e248]:
+                - text: Wrap the
+                - emphasis [ref=f83e249]: coro
+                - link "coroutine" [ref=f83e250] [cursor=pointer]:
+                  - /url: "#coroutine"
+                - text: into a
+                - link [ref=f83e251] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e252]: Task
+                - text: and schedule its execution. Return the Task object.
+              - paragraph [ref=f83e253]:
+                - text: The full function signature is largely the same as that of the
+                - link [ref=f83e254] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e255]: Task
+                - text: constructor (or factory) - all of the keyword arguments to this function are passed through to that interface.
+              - paragraph [ref=f83e256]:
+                - text: An optional keyword-only
+                - emphasis [ref=f83e257]: context
+                - text: argument allows specifying a custom
+                - link [ref=f83e258] [cursor=pointer]:
+                  - /url: contextvars.html#contextvars.Context
+                  - code [ref=f83e259]: contextvars.Context
+                - text: for the
+                - emphasis [ref=f83e260]: coro
+                - text: to run in. The current context copy is created when no
+                - emphasis [ref=f83e261]: context
+                - text: is provided.
+              - paragraph [ref=f83e262]:
+                - text: An optional keyword-only
+                - emphasis [ref=f83e263]: eager_start
+                - text: argument allows specifying if the task should execute eagerly during the call to create_task, or be scheduled later. If
+                - emphasis [ref=f83e264]: eager_start
+                - text: is not passed the mode set by
+                - link [ref=f83e265] [cursor=pointer]:
+                  - /url: asyncio-eventloop.html#asyncio.loop.set_task_factory
+                  - code [ref=f83e266]: loop.set_task_factory()
+                - text: will be used.
+              - paragraph [ref=f83e267]:
+                - text: The task is executed in the loop returned by
+                - link [ref=f83e268] [cursor=pointer]:
+                  - /url: asyncio-eventloop.html#asyncio.get_running_loop
+                  - code [ref=f83e269]: get_running_loop()
+                - text: ","
+                - link [ref=f83e270] [cursor=pointer]:
+                  - /url: ../builtins/exceptions.html#RuntimeError
+                  - code [ref=f83e271]: RuntimeError
+                - text: is raised if there is no running loop in current thread.
+              - generic [ref=f83e272]:
+                - paragraph [ref=f83e273]: "Note:"
+                - paragraph [ref=f83e274]:
+                  - link [ref=f83e275] [cursor=pointer]:
+                    - /url: "#asyncio.TaskGroup.create_task"
+                    - code [ref=f83e276]: asyncio.TaskGroup.create_task()
+                  - text: is a new alternative leveraging structural concurrency; it allows for waiting for a group of related tasks with strong safety guarantees.
+              - generic [ref=f83e277]:
+                - paragraph [ref=f83e278]: "Important:"
+                - paragraph [ref=f83e279]: "Save a reference to the result of this function, to avoid a task disappearing mid-execution. The event loop only keeps weak references to tasks. A task that isn’t referenced elsewhere may get garbage collected at any time, even before it’s done. For reliable “fire-and-forget” background tasks, gather them in a collection:"
+                - generic [ref=f83e280]: "background_tasks = set() for i in range(10): task = asyncio.create_task(some_coro(param=i)) # Add task to the set. This creates a strong reference. background_tasks.add(task) # To prevent keeping references to finished tasks forever, # make each task remove its own reference from the set after # completion: task.add_done_callback(background_tasks.discard)"
+                - paragraph [ref=f83e283]:
+                  - text: Note that this approach never awaits the tasks, so if a task fails, its exception is never retrieved and asyncio logs a “Task exception was never retrieved” message when the task is garbage collected. To avoid this, use
+                  - link [ref=f83e284] [cursor=pointer]:
+                    - /url: "#asyncio.TaskGroup"
+                    - code [ref=f83e285]: asyncio.TaskGroup
+                  - text: "which keeps a strong reference to each task, awaits them and propagates their exceptions:"
+                - generic [ref=f83e286]: "async with asyncio.TaskGroup() as tg: for i in range(10): tg.create_task(some_coro(param=i))"
+              - paragraph [ref=f83e290]: Added in version 3.7.
+              - paragraph [ref=f83e292]:
+                - text: "Changed in version 3.8: Added the"
+                - emphasis [ref=f83e293]: name
+                - text: parameter.
+              - paragraph [ref=f83e295]:
+                - text: "Changed in version 3.11: Added the"
+                - emphasis [ref=f83e296]: context
+                - text: parameter.
+              - paragraph [ref=f83e298]:
+                - text: "Changed in version 3.14: Added the"
+                - emphasis [ref=f83e299]: eager_start
+                - text: parameter by passing on all
+                - emphasis [ref=f83e300]: kwargs
+                - text: .
+        - generic [ref=f83e301]:
+          - heading [level=2] [ref=f83e302]:
+            - link "Task cancellation" [ref=f83e303] [cursor=pointer]:
+              - /url: "#id5"
+          - paragraph [ref=f83e304]:
+            - text: Tasks can easily and safely be cancelled. When a task is cancelled,
+            - link [ref=f83e305] [cursor=pointer]:
+              - /url: asyncio-exceptions.html#asyncio.CancelledError
+              - code [ref=f83e306]: asyncio.CancelledError
+            - text: will be raised in the task at the next opportunity.
+          - paragraph [ref=f83e307]:
+            - text: It is recommended that coroutines use
+            - code [ref=f83e308]: try/finally
+            - text: blocks to robustly perform clean-up logic. In case
+            - link [ref=f83e309] [cursor=pointer]:
+              - /url: asyncio-exceptions.html#asyncio.CancelledError
+              - code [ref=f83e310]: asyncio.CancelledError
+            - text: is explicitly caught, it should generally be propagated when clean-up is complete.
+            - code [ref=f83e311]: asyncio.CancelledError
+            - text: directly subclasses
+            - link [ref=f83e312] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#BaseException
+              - code [ref=f83e313]: BaseException
+            - text: so most code will not need to be aware of it.
+          - paragraph [ref=f83e314]:
+            - text: The asyncio components that enable structured concurrency, like
+            - link [ref=f83e315] [cursor=pointer]:
+              - /url: "#asyncio.TaskGroup"
+              - code [ref=f83e316]: asyncio.TaskGroup
+            - text: and
+            - link [ref=f83e317] [cursor=pointer]:
+              - /url: "#asyncio.timeout"
+              - code [ref=f83e318]: asyncio.timeout()
+            - text: ", are implemented using cancellation internally and might misbehave if a coroutine swallows"
+            - link [ref=f83e319] [cursor=pointer]:
+              - /url: asyncio-exceptions.html#asyncio.CancelledError
+              - code [ref=f83e320]: asyncio.CancelledError
+            - text: . Similarly, user code should not generally call
+            - link [ref=f83e321] [cursor=pointer]:
+              - /url: "#asyncio.Task.uncancel"
+              - code [ref=f83e322]: uncancel
+            - text: . However, in cases when suppressing
+            - code [ref=f83e323]: asyncio.CancelledError
+            - text: is truly desired, it is necessary to also call
+            - code [ref=f83e324]: uncancel()
+            - text: to completely remove the cancellation state.
+        - generic [ref=f83e325]:
+          - heading [level=2] [ref=f83e326]:
+            - link "Task groups" [ref=f83e327] [cursor=pointer]:
+              - /url: "#id6"
+          - paragraph [ref=f83e328]: Task groups combine a task creation API with a convenient and reliable way to wait for all tasks in the group to finish.
+          - generic [ref=f83e329]:
+            - term [ref=f83e330]:
+              - emphasis [ref=f83e331]:
+                - generic [ref=f83e332]: class
+              - generic [ref=f83e333]: asyncio.
+              - generic [ref=f83e334]: TaskGroup
+            - definition [ref=f83e335]:
+              - paragraph [ref=f83e336]:
+                - text: An
+                - link "asynchronous context manager" [ref=f83e337] [cursor=pointer]:
+                  - /url: ../reference/datamodel.html#async-context-managers
+                - text: holding a group of tasks. Tasks can be added to the group using
+                - link [ref=f83e338] [cursor=pointer]:
+                  - /url: "#asyncio.create_task"
+                  - code [ref=f83e339]: create_task()
+                - text: . All tasks are awaited when the context manager exits.
+              - paragraph [ref=f83e341]: Added in version 3.11.
+              - generic [ref=f83e342]:
+                - term [ref=f83e343]:
+                  - generic [ref=f83e344]: create_task
+                  - text: (
+                  - emphasis [ref=f83e345]:
+                    - generic [ref=f83e346]: coro
+                  - text: ","
+                  - emphasis [ref=f83e347]:
+                    - generic "Keyword-only parameters separator (PEP 3102)" [ref=f83e349]: "*"
+                  - text: ","
+                  - emphasis [ref=f83e350]:
+                    - generic [ref=f83e351]: name
+                    - generic [ref=f83e352]: =
+                    - generic [ref=f83e353]: None
+                  - text: ","
+                  - emphasis [ref=f83e354]:
+                    - generic [ref=f83e355]: context
+                    - generic [ref=f83e356]: =
+                    - generic [ref=f83e357]: None
+                  - text: ","
+                  - emphasis [ref=f83e358]:
+                    - generic [ref=f83e359]: eager_start
+                    - generic [ref=f83e360]: =
+                    - generic [ref=f83e361]: None
+                  - text: ","
+                  - emphasis [ref=f83e362]:
+                    - generic [ref=f83e363]: "**"
+                    - generic [ref=f83e364]: kwargs
+                  - text: )
+                - definition [ref=f83e365]:
+                  - paragraph [ref=f83e366]:
+                    - text: Create a task in this task group. The signature matches that of
+                    - link [ref=f83e367] [cursor=pointer]:
+                      - /url: "#asyncio.create_task"
+                      - code [ref=f83e368]: asyncio.create_task()
+                    - text: . If the task group is inactive (e.g. not yet entered, already finished, or in the process of shutting down), we will close the given
+                    - code [ref=f83e369]: coro
+                    - text: and raise
+                    - link [ref=f83e370] [cursor=pointer]:
+                      - /url: ../builtins/exceptions.html#RuntimeError
+                      - code [ref=f83e371]: RuntimeError
+                    - text: .
+                  - paragraph [ref=f83e373]: "Changed in version 3.13: Close the given coroutine if the task group is not active."
+                  - paragraph [ref=f83e375]:
+                    - text: "Changed in version 3.14: Passes on all"
+                    - emphasis [ref=f83e376]: kwargs
+                    - text: to
+                    - link [ref=f83e377] [cursor=pointer]:
+                      - /url: asyncio-eventloop.html#asyncio.loop.create_task
+                      - code [ref=f83e378]: loop.create_task()
+              - generic [ref=f83e379]:
+                - term [ref=f83e380]:
+                  - generic [ref=f83e381]: cancel
+                  - text: ()
+                - definition [ref=f83e382]:
+                  - paragraph [ref=f83e383]: Cancel the task group. This is a non-exceptional, early exit of the task group’s lifetime – useful once the group’s goal has been met or its services no longer needed.
+                  - paragraph [ref=f83e384]:
+                    - link [ref=f83e385] [cursor=pointer]:
+                      - /url: "#asyncio.Task.cancel"
+                      - code [ref=f83e386]: cancel()
+                    - text: will be called on any tasks in the group that aren’t yet done, as well as the parent (body) of the group. The task group context manager will exit
+                    - emphasis [ref=f83e387]: without
+                    - link [ref=f83e388] [cursor=pointer]:
+                      - /url: asyncio-exceptions.html#asyncio.CancelledError
+                      - code [ref=f83e389]: asyncio.CancelledError
+                    - text: being raised.
+                  - paragraph [ref=f83e390]:
+                    - text: If
+                    - code [ref=f83e391]: cancel()
+                    - text: is called before entering the task group, the group will be cancelled upon entry. This is useful for patterns where one piece of code passes an unused
+                    - link [ref=f83e392] [cursor=pointer]:
+                      - /url: "#asyncio.TaskGroup"
+                      - code [ref=f83e393]: asyncio.TaskGroup
+                    - text: instance to another in order to have the ability to cancel anything run within the group.
+                  - paragraph [ref=f83e394]:
+                    - code [ref=f83e395]: cancel()
+                    - text: is idempotent and may be called after the task group has already exited.
+                  - paragraph [ref=f83e396]:
+                    - text: Some ways to use
+                    - code [ref=f83e397]: cancel()
+                    - text: ":"
+                  - list [ref=f83e398]:
+                    - listitem [ref=f83e399]:
+                      - paragraph [ref=f83e400]: call it from the task group body based on some condition or event
+                    - listitem [ref=f83e401]:
+                      - paragraph [ref=f83e402]:
+                        - text: pass the task group instance to child tasks via
+                        - link [ref=f83e403] [cursor=pointer]:
+                          - /url: "#asyncio.create_task"
+                          - code [ref=f83e404]: create_task()
+                        - text: ", allowing a child task to conditionally cancel the entire group"
+                    - listitem [ref=f83e405]:
+                      - paragraph [ref=f83e406]:
+                        - text: pass the task group instance or bound
+                        - code [ref=f83e407]: cancel()
+                        - text: method to some other task
+                        - emphasis [ref=f83e408]: before
+                        - text: opening the task group, allowing remote cancellation
+                  - paragraph [ref=f83e410]: Added in version 3.15.
+          - paragraph [ref=f83e411]: "Example:"
+          - generic [ref=f83e412]: "async def main(): async with asyncio.TaskGroup() as tg: task1 = tg.create_task(some_coro(...)) task2 = tg.create_task(another_coro(...)) print(f\"Both tasks have completed now: {task1.result()}, {task2.result()}\")"
+          - paragraph [ref=f83e415]:
+            - text: The
+            - code [ref=f83e416]: async with
+            - text: statement will wait for all tasks in the group to finish. While waiting, new tasks may still be added to the group (for example, by passing
+            - code [ref=f83e417]: tg
+            - text: into one of the coroutines and calling
+            - code [ref=f83e418]: tg.create_task()
+            - text: in that coroutine). There is also opportunity to request termination of the entire task group with
+            - code [ref=f83e419]: tg.cancel()
+            - text: ", based on some condition. Once the last task has finished and the"
+            - code [ref=f83e420]: async with
+            - text: block is exited, no new tasks may be added to the group.
+          - paragraph [ref=f83e421]:
+            - text: The first time any of the tasks belonging to the group fails with an exception other than
+            - link [ref=f83e422] [cursor=pointer]:
+              - /url: asyncio-exceptions.html#asyncio.CancelledError
+              - code [ref=f83e423]: asyncio.CancelledError
+            - text: ", the remaining tasks in the group are cancelled. No further tasks can then be added to the group. At this point, if the body of the"
+            - code [ref=f83e424]: async with
+            - text: statement is still active (i.e.,
+            - link [ref=f83e425] [cursor=pointer]:
+              - /url: ../reference/datamodel.html#object.__aexit__
+              - code [ref=f83e426]: __aexit__()
+            - text: hasn’t been called yet), the task directly containing the
+            - code [ref=f83e427]: async with
+            - text: statement is also cancelled. The resulting
+            - code [ref=f83e428]: asyncio.CancelledError
+            - text: will interrupt an
+            - code [ref=f83e429]: await
+            - text: ", but it will not bubble out of the containing"
+            - code [ref=f83e430]: async with
+            - text: statement.
+          - paragraph [ref=f83e431]:
+            - text: Once all tasks have finished, if any tasks have failed with an exception other than
+            - link [ref=f83e432] [cursor=pointer]:
+              - /url: asyncio-exceptions.html#asyncio.CancelledError
+              - code [ref=f83e433]: asyncio.CancelledError
+            - text: ", those exceptions are combined in an"
+            - link [ref=f83e434] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#ExceptionGroup
+              - code [ref=f83e435]: ExceptionGroup
+            - text: or
+            - link [ref=f83e436] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#BaseExceptionGroup
+              - code [ref=f83e437]: BaseExceptionGroup
+            - text: (as appropriate; see their documentation) which is then raised.
+          - paragraph [ref=f83e438]:
+            - text: "Two base exceptions are treated specially: If any task fails with"
+            - link [ref=f83e439] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#KeyboardInterrupt
+              - code [ref=f83e440]: KeyboardInterrupt
+            - text: or
+            - link [ref=f83e441] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#SystemExit
+              - code [ref=f83e442]: SystemExit
+            - text: ", the task group still cancels the remaining tasks and waits for them, but then the initial"
+            - code [ref=f83e443]: KeyboardInterrupt
+            - text: or
+            - code [ref=f83e444]: SystemExit
+            - text: is re-raised instead of
+            - link [ref=f83e445] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#ExceptionGroup
+              - code [ref=f83e446]: ExceptionGroup
+            - text: or
+            - link [ref=f83e447] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#BaseExceptionGroup
+              - code [ref=f83e448]: BaseExceptionGroup
+            - text: .
+          - paragraph [ref=f83e449]:
+            - text: If the body of the
+            - code [ref=f83e450]: async with
+            - text: statement exits with an exception (so
+            - link [ref=f83e451] [cursor=pointer]:
+              - /url: ../reference/datamodel.html#object.__aexit__
+              - code [ref=f83e452]: __aexit__()
+            - text: "is called with an exception set), this is treated the same as if one of the tasks failed: the remaining tasks are cancelled and then waited for, and non-cancellation exceptions are grouped into an exception group and raised. The exception passed into"
+            - code [ref=f83e453]: __aexit__()
+            - text: ", unless it is"
+            - link [ref=f83e454] [cursor=pointer]:
+              - /url: asyncio-exceptions.html#asyncio.CancelledError
+              - code [ref=f83e455]: asyncio.CancelledError
+            - text: ", is also included in the exception group. The same special case is made for"
+            - link [ref=f83e456] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#KeyboardInterrupt
+              - code [ref=f83e457]: KeyboardInterrupt
+            - text: and
+            - link [ref=f83e458] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#SystemExit
+              - code [ref=f83e459]: SystemExit
+            - text: as in the previous paragraph. There is an additional special case made only for the body of the
+            - code [ref=f83e460]: async with
+            - text: ": if it raises"
+            - link [ref=f83e461] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#GeneratorExit
+              - code [ref=f83e462]: GeneratorExit
+            - text: and none of the other tasks raise exceptions that would be reported, then the
+            - code [ref=f83e463]: GeneratorExit
+            - text: is reraised.
+          - paragraph [ref=f83e464]:
+            - text: Task groups are careful not to mix up the internal cancellation used to “wake up” their
+            - link [ref=f83e465] [cursor=pointer]:
+              - /url: ../reference/datamodel.html#object.__aexit__
+              - code [ref=f83e466]: __aexit__()
+            - text: with cancellation requests for the task in which they are running made by other parties. In particular, when one task group is syntactically nested in another, and both experience an exception in one of their child tasks simultaneously, the inner task group will process its exceptions, and then the outer task group will receive another cancellation and process its own exceptions.
+          - paragraph [ref=f83e467]:
+            - text: In the case where a task group is cancelled externally and also must raise an
+            - link [ref=f83e468] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#ExceptionGroup
+              - code [ref=f83e469]: ExceptionGroup
+            - text: ", it will call the parent task’s"
+            - link [ref=f83e470] [cursor=pointer]:
+              - /url: "#asyncio.Task.cancel"
+              - code [ref=f83e471]: cancel()
+            - text: method. This ensures that a
+            - link [ref=f83e472] [cursor=pointer]:
+              - /url: asyncio-exceptions.html#asyncio.CancelledError
+              - code [ref=f83e473]: asyncio.CancelledError
+            - text: will be raised at the next
+            - link [ref=f83e474] [cursor=pointer]:
+              - /url: ../reference/expressions.html#await
+              - code [ref=f83e475]: await
+            - text: ", so the cancellation is not lost."
+          - paragraph [ref=f83e476]:
+            - text: Task groups preserve the cancellation count reported by
+            - link [ref=f83e477] [cursor=pointer]:
+              - /url: "#asyncio.Task.cancelling"
+              - code [ref=f83e478]: asyncio.Task.cancelling()
+            - text: .
+          - paragraph [ref=f83e480]: "Changed in version 3.13: Improved handling of simultaneous internal and external cancellations and correct preservation of cancellation counts."
+          - paragraph [ref=f83e482]:
+            - text: "Changed in version 3.15: Addition of the special case for"
+            - link [ref=f83e483] [cursor=pointer]:
+              - /url: ../builtins/exceptions.html#GeneratorExit
+              - code [ref=f83e484]: GeneratorExit
+            - text: .
+        - generic [ref=f83e485]:
+          - heading [level=2] [ref=f83e486]:
+            - link "Sleeping" [ref=f83e487] [cursor=pointer]:
+              - /url: "#id7"
+          - generic [ref=f83e488]:
+            - term [ref=f83e489]:
+              - emphasis [ref=f83e490]:
+                - generic [ref=f83e491]: async
+              - generic [ref=f83e492]: asyncio.
+              - generic [ref=f83e493]: sleep
+              - text: (
+              - emphasis [ref=f83e494]:
+                - generic [ref=f83e495]: delay
+              - text: ","
+              - emphasis [ref=f83e496]:
+                - generic [ref=f83e497]: result
+                - generic [ref=f83e498]: =
+                - generic [ref=f83e499]: None
+              - text: )
+            - definition [ref=f83e500]:
+              - paragraph [ref=f83e501]:
+                - text: Block for
+                - emphasis [ref=f83e502]: delay
+                - text: seconds.
+              - paragraph [ref=f83e503]:
+                - text: If
+                - emphasis [ref=f83e504]: result
+                - text: is provided, it is returned to the caller when the coroutine completes.
+              - paragraph [ref=f83e505]:
+                - code [ref=f83e506]: sleep()
+                - text: always suspends the current task, allowing other tasks to run.
+              - paragraph [ref=f83e507]: Setting the delay to 0 provides an optimized path to allow other tasks to run. This can be used by long-running functions to avoid blocking the event loop for the full duration of the function call.
+              - paragraph [ref=f83e508]: "Example of coroutine displaying the current date every second for 5 seconds:"
+              - generic [ref=f83e509]: "import asyncio import datetime as dt async def display_date(): loop = asyncio.get_running_loop() end_time = loop.time() + 5.0 while True: print(dt.datetime.now()) if (loop.time() + 1.0) >= end_time: break await asyncio.sleep(1) asyncio.run(display_date())"
+              - paragraph [ref=f83e513]:
+                - text: "Changed in version 3.10: Removed the"
+                - emphasis [ref=f83e514]: loop
+                - text: parameter.
+              - paragraph [ref=f83e516]:
+                - text: "Changed in version 3.13: Raises"
+                - link [ref=f83e517] [cursor=pointer]:
+                  - /url: ../builtins/exceptions.html#ValueError
+                  - code [ref=f83e518]: ValueError
+                - text: if
+                - emphasis [ref=f83e519]: delay
+                - text: is
+                - link [ref=f83e520] [cursor=pointer]:
+                  - /url: math.html#math.nan
+                  - code [ref=f83e521]: nan
+                - text: .
+        - generic [ref=f83e522]:
+          - heading [level=2] [ref=f83e523]:
+            - link "Running tasks concurrently" [ref=f83e524] [cursor=pointer]:
+              - /url: "#id8"
+          - generic [ref=f83e525]:
+            - term [ref=f83e526]:
+              - emphasis [ref=f83e527]: awaitable
+              - generic [ref=f83e528]: asyncio.
+              - generic [ref=f83e529]: gather
+              - text: (
+              - emphasis [ref=f83e530]:
+                - generic [ref=f83e531]: "*"
+                - generic [ref=f83e532]: aws
+              - text: ","
+              - emphasis [ref=f83e533]:
+                - generic [ref=f83e534]: return_exceptions
+                - generic [ref=f83e535]: =
+                - generic [ref=f83e536]: "False"
+              - text: )
+            - definition [ref=f83e537]:
+              - paragraph [ref=f83e538]:
+                - text: Run
+                - link "awaitable objects" [ref=f83e539] [cursor=pointer]:
+                  - /url: "#asyncio-awaitables"
+                - text: in the
+                - emphasis [ref=f83e540]: aws
+                - text: sequence
+                - emphasis [ref=f83e541]: concurrently
+                - text: .
+              - paragraph [ref=f83e542]:
+                - text: If any awaitable in
+                - emphasis [ref=f83e543]: aws
+                - text: is a coroutine, it is automatically scheduled as a Task.
+              - paragraph [ref=f83e544]:
+                - text: If all awaitables are completed successfully, the result is an aggregate list of returned values. The order of result values corresponds to the order of awaitables in
+                - emphasis [ref=f83e545]: aws
+                - text: .
+              - paragraph [ref=f83e546]:
+                - text: If
+                - emphasis [ref=f83e547]: return_exceptions
+                - text: is
+                - code [ref=f83e548]: "False"
+                - text: (default), the first raised exception is immediately propagated to the task that awaits on
+                - code [ref=f83e549]: gather()
+                - text: . Other awaitables in the
+                - emphasis [ref=f83e550]: aws
+                - text: sequence
+                - strong [ref=f83e551]: won’t be cancelled
+                - text: and will continue to run.
+              - paragraph [ref=f83e552]:
+                - text: If
+                - emphasis [ref=f83e553]: return_exceptions
+                - text: is
+                - code [ref=f83e554]: "True"
+                - text: ", exceptions are treated the same as successful results, and aggregated in the result list."
+              - paragraph [ref=f83e555]:
+                - text: If
+                - code [ref=f83e556]: gather()
+                - text: is
+                - emphasis [ref=f83e557]: cancelled
+                - text: ", all submitted awaitables (that have not completed yet) are also"
+                - emphasis [ref=f83e558]: cancelled
+                - text: .
+              - paragraph [ref=f83e559]:
+                - text: If any Task or Future from the
+                - emphasis [ref=f83e560]: aws
+                - text: sequence is
+                - emphasis [ref=f83e561]: cancelled
+                - text: ", it is treated as if it raised"
+                - link [ref=f83e562] [cursor=pointer]:
+                  - /url: asyncio-exceptions.html#asyncio.CancelledError
+                  - code [ref=f83e563]: CancelledError
+                - text: – the
+                - code [ref=f83e564]: gather()
+                - text: call is
+                - strong [ref=f83e565]: not
+                - text: cancelled in this case. This is to prevent the cancellation of one submitted Task/Future to cause other Tasks/Futures to be cancelled.
+              - generic [ref=f83e566]:
+                - paragraph [ref=f83e567]: "Note:"
+                - paragraph [ref=f83e568]:
+                  - text: A new alternative to create and run tasks concurrently and wait for their completion is
+                  - link [ref=f83e569] [cursor=pointer]:
+                    - /url: "#asyncio.TaskGroup"
+                    - code [ref=f83e570]: asyncio.TaskGroup
+                  - text: .
+                  - emphasis [ref=f83e571]: TaskGroup
+                  - text: provides stronger safety guarantees than
+                  - emphasis [ref=f83e572]: gather
+                  - text: "for scheduling a nesting of subtasks: if a task (or a subtask, a task scheduled by a task) raises an exception,"
+                  - emphasis [ref=f83e573]: TaskGroup
+                  - text: will, while
+                  - emphasis [ref=f83e574]: gather
+                  - text: will not, cancel the remaining scheduled tasks.
+              - paragraph [ref=f83e575]: "Example:"
+              - generic [ref=f83e576]: "import asyncio async def factorial(name, number): f = 1 for i in range(2, number + 1): print(f\"Task {name}: Compute factorial({number}), currently i={i}...\") await asyncio.sleep(1) f *= i print(f\"Task {name}: factorial({number}) = {f}\") return f async def main(): # Schedule three calls *concurrently*: L = await asyncio.gather( factorial(\"A\", 2), factorial(\"B\", 3), factorial(\"C\", 4), ) print(L) asyncio.run(main()) # Expected output: # # Task A: Compute factorial(2), currently i=2... # Task B: Compute factorial(3), currently i=2... # Task C: Compute factorial(4), currently i=2... # Task A: factorial(2) = 2 # Task B: Compute factorial(3), currently i=3... # Task C: Compute factorial(4), currently i=3... # Task B: factorial(3) = 6 # Task C: Compute factorial(4), currently i=4... # Task C: factorial(4) = 24 # [2, 6, 24]"
+              - generic [ref=f83e579]:
+                - paragraph [ref=f83e580]: "Note:"
+                - paragraph [ref=f83e581]:
+                  - text: If
+                  - emphasis [ref=f83e582]: return_exceptions
+                  - text: is false, cancelling gather() after it has been marked done won’t cancel any submitted awaitables. For instance, gather can be marked done after propagating an exception to the caller, therefore, calling
+                  - code [ref=f83e583]: gather.cancel()
+                  - text: after catching an exception (raised by one of the awaitables) from gather won’t cancel any other awaitables.
+              - paragraph [ref=f83e585]:
+                - text: "Changed in version 3.7: If the"
+                - emphasis [ref=f83e586]: gather
+                - text: itself is cancelled, the cancellation is propagated regardless of
+                - emphasis [ref=f83e587]: return_exceptions
+                - text: .
+              - paragraph [ref=f83e589]:
+                - text: "Changed in version 3.10: Removed the"
+                - emphasis [ref=f83e590]: loop
+                - text: parameter.
+              - paragraph [ref=f83e592]: "Deprecated since version 3.10: Deprecation warning is emitted if no positional arguments are provided or not all positional arguments are Future-like objects and there is no running event loop."
+        - generic [ref=f83e593]:
+          - heading [level=2] [ref=f83e594]:
+            - link "Eager task factory" [ref=f83e595] [cursor=pointer]:
+              - /url: "#id9"
+          - generic [ref=f83e596]:
+            - term [ref=f83e597]:
+              - generic [ref=f83e598]: asyncio.
+              - generic [ref=f83e599]: eager_task_factory
+              - text: (
+              - emphasis [ref=f83e600]:
+                - generic [ref=f83e601]: loop
+              - text: ","
+              - emphasis [ref=f83e602]:
+                - generic [ref=f83e603]: coro
+              - text: ","
+              - emphasis [ref=f83e604]:
+                - generic "Keyword-only parameters separator (PEP 3102)" [ref=f83e606]: "*"
+              - text: ","
+              - emphasis [ref=f83e607]:
+                - generic [ref=f83e608]: name
+                - generic [ref=f83e609]: =
+                - generic [ref=f83e610]: None
+              - text: ","
+              - emphasis [ref=f83e611]:
+                - generic [ref=f83e612]: context
+                - generic [ref=f83e613]: =
+                - generic [ref=f83e614]: None
+              - text: )
+            - definition [ref=f83e615]:
+              - paragraph [ref=f83e616]: A task factory for eager task execution.
+              - paragraph [ref=f83e617]:
+                - text: When using this factory (via
+                - link [ref=f83e618] [cursor=pointer]:
+                  - /url: asyncio-eventloop.html#asyncio.loop.set_task_factory
+                  - code [ref=f83e619]: loop.set_task_factory(asyncio.eager_task_factory)
+                - text: ), coroutines begin execution synchronously during
+                - link [ref=f83e620] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e621]: Task
+                - text: construction. Tasks are only scheduled on the event loop if they block. This can be a performance improvement as the overhead of loop scheduling is avoided for coroutines that complete synchronously.
+              - paragraph [ref=f83e622]: A common example where this is beneficial is coroutines which employ caching or memoization to avoid actual I/O when possible.
+              - generic [ref=f83e623]:
+                - paragraph [ref=f83e624]: "Note:"
+                - paragraph [ref=f83e625]: Immediate execution of the coroutine is a semantic change. If the coroutine returns or raises, the task is never scheduled to the event loop. If the coroutine execution blocks, the task is scheduled to the event loop. This change may introduce behavior changes to existing applications. For example, the application’s task execution order is likely to change.
+              - paragraph [ref=f83e627]: Added in version 3.12.
+          - generic [ref=f83e628]:
+            - term [ref=f83e629]:
+              - generic [ref=f83e630]: asyncio.
+              - generic [ref=f83e631]: create_eager_task_factory
+              - text: (
+              - emphasis [ref=f83e632]:
+                - generic [ref=f83e633]: custom_task_constructor
+              - text: )
+            - definition [ref=f83e634]:
+              - paragraph [ref=f83e635]:
+                - text: Create an eager task factory, similar to
+                - link [ref=f83e636] [cursor=pointer]:
+                  - /url: "#asyncio.eager_task_factory"
+                  - code [ref=f83e637]: eager_task_factory()
+                - text: ", using the provided"
+                - emphasis [ref=f83e638]: custom_task_constructor
+                - text: when creating a new task instead of the default
+                - link [ref=f83e639] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e640]: Task
+                - text: .
+              - paragraph [ref=f83e641]:
+                - emphasis [ref=f83e642]: custom_task_constructor
+                - text: must be a
+                - emphasis [ref=f83e643]: callable
+                - text: with the signature matching the signature of
+                - link [ref=f83e644] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e645]: Task.__init__
+                - text: . The callable must return a
+                - link [ref=f83e646] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e647]: asyncio.Task
+                - text: "-compatible object."
+              - paragraph [ref=f83e648]:
+                - text: This function returns a
+                - emphasis [ref=f83e649]: callable
+                - text: intended to be used as a task factory of an event loop via
+                - link [ref=f83e650] [cursor=pointer]:
+                  - /url: asyncio-eventloop.html#asyncio.loop.set_task_factory
+                  - code [ref=f83e651]: loop.set_task_factory(factory)
+                - text: ).
+              - paragraph [ref=f83e653]: Added in version 3.12.
+        - generic [ref=f83e654]:
+          - heading [level=2] [ref=f83e655]:
+            - link "Shielding from cancellation" [ref=f83e656] [cursor=pointer]:
+              - /url: "#id10"
+          - generic [ref=f83e657]:
+            - term [ref=f83e658]:
+              - emphasis [ref=f83e659]: awaitable
+              - generic [ref=f83e660]: asyncio.
+              - generic [ref=f83e661]: shield
+              - text: (
+              - emphasis [ref=f83e662]:
+                - generic [ref=f83e663]: aw
+              - text: )
+            - definition [ref=f83e664]:
+              - paragraph [ref=f83e665]:
+                - text: Protect an
+                - link "awaitable object" [ref=f83e666] [cursor=pointer]:
+                  - /url: "#asyncio-awaitables"
+                - text: from being
+                - link [ref=f83e667] [cursor=pointer]:
+                  - /url: "#asyncio.Task.cancel"
+                  - code [ref=f83e668]: cancelled
+                - text: .
+              - paragraph [ref=f83e669]:
+                - text: If
+                - emphasis [ref=f83e670]: aw
+                - text: is a coroutine it is automatically scheduled as a Task.
+              - paragraph [ref=f83e671]: "The statement:"
+              - generic [ref=f83e672]: task = asyncio.create_task(something()) res = await shield(task)
+              - paragraph [ref=f83e675]: "is equivalent to:"
+              - generic [ref=f83e676]: res = await something()
+              - paragraph [ref=f83e679]:
+                - emphasis [ref=f83e680]: except
+                - text: that if the coroutine containing it is cancelled, the Task running in
+                - code [ref=f83e681]: something()
+                - text: is not cancelled. From the point of view of
+                - code [ref=f83e682]: something()
+                - text: ", the cancellation did not happen. Although its caller is still cancelled, so the “await” expression still raises a"
+                - link [ref=f83e683] [cursor=pointer]:
+                  - /url: asyncio-exceptions.html#asyncio.CancelledError
+                  - code [ref=f83e684]: CancelledError
+                - text: .
+              - paragraph [ref=f83e685]:
+                - text: If
+                - code [ref=f83e686]: something()
+                - text: is cancelled by other means (i.e. from within itself) that would also cancel
+                - code [ref=f83e687]: shield()
+                - text: .
+              - paragraph [ref=f83e688]:
+                - text: If it is desired to completely ignore cancellation (not recommended) the
+                - code [ref=f83e689]: shield()
+                - text: "function should be combined with a try/except clause, as follows:"
+              - generic [ref=f83e690]: "task = asyncio.create_task(something()) try: res = await shield(task) except CancelledError: res = None"
+              - generic [ref=f83e693]:
+                - paragraph [ref=f83e694]: "Important:"
+                - paragraph [ref=f83e695]: Save a reference to tasks passed to this function, to avoid a task disappearing mid-execution. The event loop only keeps weak references to tasks. A task that isn’t referenced elsewhere may get garbage collected at any time, even before it’s done.
+              - paragraph [ref=f83e697]:
+                - text: "Changed in version 3.10: Removed the"
+                - emphasis [ref=f83e698]: loop
+                - text: parameter.
+              - paragraph [ref=f83e700]:
+                - text: "Deprecated since version 3.10: Deprecation warning is emitted if"
+                - emphasis [ref=f83e701]: aw
+                - text: is not Future-like object and there is no running event loop.
+        - generic [ref=f83e702]:
+          - heading [level=2] [ref=f83e703]:
+            - link "Timeouts" [ref=f83e704] [cursor=pointer]:
+              - /url: "#id11"
+          - generic [ref=f83e705]:
+            - term [ref=f83e706]:
+              - generic [ref=f83e707]: asyncio.
+              - generic [ref=f83e708]: timeout
+              - text: (
+              - emphasis [ref=f83e709]:
+                - generic [ref=f83e710]: delay
+              - text: )
+            - definition [ref=f83e711]:
+              - paragraph [ref=f83e712]:
+                - text: Return an
+                - link "asynchronous context manager" [ref=f83e713] [cursor=pointer]:
+                  - /url: ../reference/datamodel.html#async-context-managers
+                - text: that can be used to limit the amount of time spent waiting on something.
+              - paragraph [ref=f83e714]:
+                - emphasis [ref=f83e715]: delay
+                - text: can either be
+                - code [ref=f83e716]: None
+                - text: ", or a float/int number of seconds to wait. If"
+                - emphasis [ref=f83e717]: delay
+                - text: is
+                - code [ref=f83e718]: None
+                - text: ", no time limit will be applied; this can be useful if the delay is unknown when the context manager is created."
+              - paragraph [ref=f83e719]:
+                - text: In either case, the context manager can be rescheduled after creation using
+                - link [ref=f83e720] [cursor=pointer]:
+                  - /url: "#asyncio.Timeout.reschedule"
+                  - code [ref=f83e721]: Timeout.reschedule()
+                - text: .
+              - paragraph [ref=f83e722]: "Example:"
+              - generic [ref=f83e723]: "async def main(): async with asyncio.timeout(10): await long_running_task()"
+              - paragraph [ref=f83e726]:
+                - text: If
+                - code [ref=f83e727]: long_running_task
+                - text: takes more than 10 seconds to complete, the context manager will cancel the current task and handle the resulting
+                - link [ref=f83e728] [cursor=pointer]:
+                  - /url: asyncio-exceptions.html#asyncio.CancelledError
+                  - code [ref=f83e729]: asyncio.CancelledError
+                - text: internally, transforming it into a
+                - link [ref=f83e730] [cursor=pointer]:
+                  - /url: ../builtins/exceptions.html#TimeoutError
+                  - code [ref=f83e731]: TimeoutError
+                - text: which can be caught and handled.
+              - generic [ref=f83e732]:
+                - paragraph [ref=f83e733]: "Note:"
+                - paragraph [ref=f83e734]:
+                  - text: The
+                  - link [ref=f83e735] [cursor=pointer]:
+                    - /url: "#asyncio.timeout"
+                    - code [ref=f83e736]: asyncio.timeout()
+                  - text: context manager is what transforms the
+                  - link [ref=f83e737] [cursor=pointer]:
+                    - /url: asyncio-exceptions.html#asyncio.CancelledError
+                    - code [ref=f83e738]: asyncio.CancelledError
+                  - text: into a
+                  - link [ref=f83e739] [cursor=pointer]:
+                    - /url: ../builtins/exceptions.html#TimeoutError
+                    - code [ref=f83e740]: TimeoutError
+                  - text: ", which means the"
+                  - code [ref=f83e741]: TimeoutError
+                  - text: can only be caught
+                  - emphasis [ref=f83e742]: outside
+                  - text: of the context manager.
+              - paragraph [ref=f83e743]:
+                - text: Example of catching
+                - link [ref=f83e744] [cursor=pointer]:
+                  - /url: ../builtins/exceptions.html#TimeoutError
+                  - code [ref=f83e745]: TimeoutError
+                - text: ":"
+              - generic [ref=f83e746]: "async def main(): try: async with asyncio.timeout(10): await long_running_task() except TimeoutError: print(\"The long operation timed out, but we've handled it.\") print(\"This statement will run regardless.\")"
+              - paragraph [ref=f83e749]:
+                - text: The context manager produced by
+                - link [ref=f83e750] [cursor=pointer]:
+                  - /url: "#asyncio.timeout"
+                  - code [ref=f83e751]: asyncio.timeout()
+                - text: can be rescheduled to a different deadline and inspected.
+              - generic [ref=f83e752]:
+                - term [ref=f83e753]:
+                  - emphasis [ref=f83e754]:
+                    - generic [ref=f83e755]: class
+                  - generic [ref=f83e756]: asyncio.
+                  - generic [ref=f83e757]: Timeout
+                  - text: (
+                  - emphasis [ref=f83e758]:
+                    - generic [ref=f83e759]: when
+                  - text: )
+                - definition [ref=f83e760]:
+                  - paragraph [ref=f83e761]:
+                    - text: An
+                    - link "asynchronous context manager" [ref=f83e762] [cursor=pointer]:
+                      - /url: ../reference/datamodel.html#async-context-managers
+                    - text: for cancelling overdue coroutines.
+                  - paragraph [ref=f83e763]:
+                    - text: Prefer using
+                    - link [ref=f83e764] [cursor=pointer]:
+                      - /url: "#asyncio.timeout"
+                      - code [ref=f83e765]: asyncio.timeout()
+                    - text: or
+                    - link [ref=f83e766] [cursor=pointer]:
+                      - /url: "#asyncio.timeout_at"
+                      - code [ref=f83e767]: asyncio.timeout_at()
+                    - text: rather than instantiating
+                    - code [ref=f83e768]: Timeout
+                    - text: directly.
+                  - paragraph [ref=f83e769]:
+                    - code [ref=f83e770]: when
+                    - text: "should be an absolute time at which the context should time out, as measured by the event loop’s clock:"
+                  - list [ref=f83e771]:
+                    - listitem [ref=f83e772]:
+                      - paragraph [ref=f83e773]:
+                        - text: If
+                        - code [ref=f83e774]: when
+                        - text: is
+                        - code [ref=f83e775]: None
+                        - text: ", the timeout will never trigger."
+                    - listitem [ref=f83e776]:
+                      - paragraph [ref=f83e777]:
+                        - text: If
+                        - code [ref=f83e778]: when < loop.time()
+                        - text: ", the timeout will trigger on the next iteration of the event loop."
+                  - blockquote [ref=f83e779]:
+                    - generic [ref=f83e780]:
+                      - generic [ref=f83e781]:
+                        - term [ref=f83e782]:
+                          - generic [ref=f83e783]: when
+                          - text: ()
+                          - generic [ref=f83e784]:
+                            - text: →
+                            - generic [ref=f83e785]:
+                              - link "float" [ref=f83e786] [cursor=pointer]:
+                                - /url: ../builtins/functions.html#float
+                              - generic [ref=f83e787]: "|"
+                              - link "None" [ref=f83e788] [cursor=pointer]:
+                                - /url: ../builtins/constants.html#None
+                        - definition [ref=f83e789]:
+                          - paragraph [ref=f83e790]:
+                            - text: Return the current deadline, or
+                            - code [ref=f83e791]: None
+                            - text: if the current deadline is not set.
+                      - generic [ref=f83e792]:
+                        - term [ref=f83e793]:
+                          - generic [ref=f83e794]: reschedule
+                          - text: (
+                          - emphasis [ref=f83e795]:
+                            - generic [ref=f83e796]: when
+                            - generic [ref=f83e797]: ":"
+                            - generic [ref=f83e798]:
+                              - link "float" [ref=f83e799] [cursor=pointer]:
+                                - /url: ../builtins/functions.html#float
+                              - generic [ref=f83e800]: "|"
+                              - link "None" [ref=f83e801] [cursor=pointer]:
+                                - /url: ../builtins/constants.html#None
+                          - text: )
+                        - definition [ref=f83e802]:
+                          - paragraph [ref=f83e803]: Reschedule the timeout.
+                      - generic [ref=f83e804]:
+                        - term [ref=f83e805]:
+                          - generic [ref=f83e806]: expired
+                          - text: ()
+                          - generic [ref=f83e807]:
+                            - text: →
+                            - link "bool" [ref=f83e809] [cursor=pointer]:
+                              - /url: ../builtins/functions.html#bool
+                        - definition [ref=f83e810]:
+                          - paragraph [ref=f83e811]: Return whether the context manager has exceeded its deadline (expired).
+              - paragraph [ref=f83e812]: "Example:"
+              - generic [ref=f83e813]: "async def main(): try: # We do not know the timeout when starting, so we pass ``None``. async with asyncio.timeout(None) as cm: # We know the timeout now, so we reschedule it. new_deadline = get_running_loop().time() + 10 cm.reschedule(new_deadline) await long_running_task() except TimeoutError: pass if cm.expired(): print(\"Looks like we haven't finished on time.\")"
+              - paragraph [ref=f83e816]: Timeout context managers can be safely nested.
+              - paragraph [ref=f83e818]: Added in version 3.11.
+          - generic [ref=f83e819]:
+            - term [ref=f83e820]:
+              - generic [ref=f83e821]: asyncio.
+              - generic [ref=f83e822]: timeout_at
+              - text: (
+              - emphasis [ref=f83e823]:
+                - generic [ref=f83e824]: when
+              - text: )
+            - definition [ref=f83e825]:
+              - paragraph [ref=f83e826]:
+                - text: Similar to
+                - link [ref=f83e827] [cursor=pointer]:
+                  - /url: "#asyncio.timeout"
+                  - code [ref=f83e828]: asyncio.timeout()
+                - text: ", except"
+                - emphasis [ref=f83e829]: when
+                - text: is the absolute time to stop waiting, or
+                - code [ref=f83e830]: None
+                - text: .
+              - paragraph [ref=f83e831]: "Example:"
+              - generic [ref=f83e832]: "async def main(): loop = get_running_loop() deadline = loop.time() + 20 try: async with asyncio.timeout_at(deadline): await long_running_task() except TimeoutError: print(\"The long operation timed out, but we've handled it.\") print(\"This statement will run regardless.\")"
+              - paragraph [ref=f83e836]: Added in version 3.11.
+          - generic [ref=f83e837]:
+            - term [ref=f83e838]:
+              - emphasis [ref=f83e839]:
+                - generic [ref=f83e840]: async
+              - generic [ref=f83e841]: asyncio.
+              - generic [ref=f83e842]: wait_for
+              - text: (
+              - emphasis [ref=f83e843]:
+                - generic [ref=f83e844]: aw
+              - text: ","
+              - emphasis [ref=f83e845]:
+                - generic [ref=f83e846]: timeout
+              - text: )
+            - definition [ref=f83e847]:
+              - paragraph [ref=f83e848]:
+                - text: Wait for the
+                - emphasis [ref=f83e849]: aw
+                - link "awaitable" [ref=f83e850] [cursor=pointer]:
+                  - /url: "#asyncio-awaitables"
+                - text: to complete with a timeout.
+              - paragraph [ref=f83e851]:
+                - emphasis [ref=f83e852]: timeout
+                - text: can either be
+                - code [ref=f83e853]: None
+                - text: or a float or int number of seconds to wait for. If
+                - emphasis [ref=f83e854]: timeout
+                - text: is
+                - code [ref=f83e855]: None
+                - text: ", block until the future completes."
+              - paragraph [ref=f83e856]:
+                - text: If a timeout occurs, it cancels
+                - emphasis [ref=f83e857]: aw
+                - text: and raises
+                - link [ref=f83e858] [cursor=pointer]:
+                  - /url: ../builtins/exceptions.html#TimeoutError
+                  - code [ref=f83e859]: TimeoutError
+                - text: .
+              - paragraph [ref=f83e860]:
+                - text: To prevent
+                - emphasis [ref=f83e861]: aw
+                - text: from being cancelled, wrap it in
+                - link [ref=f83e862] [cursor=pointer]:
+                  - /url: "#asyncio.shield"
+                  - code [ref=f83e863]: shield()
+                - text: .
+              - paragraph [ref=f83e864]:
+                - text: The function will wait until the future is actually cancelled, so the total wait time may exceed the
+                - emphasis [ref=f83e865]: timeout
+                - text: . If an exception happens during cancellation, it is propagated.
+              - paragraph [ref=f83e866]:
+                - text: If the wait is cancelled, the future
+                - emphasis [ref=f83e867]: aw
+                - text: is also cancelled.
+              - paragraph [ref=f83e868]: "Example:"
+              - generic [ref=f83e869]: "async def eternity(): # Sleep for one hour await asyncio.sleep(3600) print('yay!') async def main(): # Wait for at most 1 second try: await asyncio.wait_for(eternity(), timeout=1.0) except TimeoutError: print('timeout!') asyncio.run(main()) # Expected output: # # timeout!"
+              - paragraph [ref=f83e873]:
+                - text: "Changed in version 3.7: When"
+                - emphasis [ref=f83e874]: aw
+                - text: is cancelled due to a timeout,
+                - code [ref=f83e875]: wait_for
+                - text: waits for
+                - emphasis [ref=f83e876]: aw
+                - text: to be cancelled. Previously, it raised
+                - link [ref=f83e877] [cursor=pointer]:
+                  - /url: ../builtins/exceptions.html#TimeoutError
+                  - code [ref=f83e878]: TimeoutError
+                - text: immediately.
+              - paragraph [ref=f83e880]:
+                - text: "Changed in version 3.10: Removed the"
+                - emphasis [ref=f83e881]: loop
+                - text: parameter.
+              - paragraph [ref=f83e883]:
+                - text: "Changed in version 3.11: Raises"
+                - link [ref=f83e884] [cursor=pointer]:
+                  - /url: ../builtins/exceptions.html#TimeoutError
+                  - code [ref=f83e885]: TimeoutError
+                - text: instead of
+                - link [ref=f83e886] [cursor=pointer]:
+                  - /url: asyncio-exceptions.html#asyncio.TimeoutError
+                  - code [ref=f83e887]: asyncio.TimeoutError
+                - text: .
+              - paragraph [ref=f83e889]:
+                - text: "Changed in version 3.12: Implemented using"
+                - link [ref=f83e890] [cursor=pointer]:
+                  - /url: "#asyncio.timeout"
+                  - code [ref=f83e891]: asyncio.timeout()
+                - text: ", a coroutine passed as"
+                - emphasis [ref=f83e892]: aw
+                - text: is no longer wrapped in a
+                - link [ref=f83e893] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e894]: Task
+                - text: when
+                - emphasis [ref=f83e895]: timeout
+                - text: is positive.
+        - generic [ref=f83e896]:
+          - heading [level=2] [ref=f83e897]:
+            - link "Waiting primitives" [ref=f83e898] [cursor=pointer]:
+              - /url: "#id12"
+          - generic [ref=f83e899]:
+            - term [ref=f83e900]:
+              - emphasis [ref=f83e901]:
+                - generic [ref=f83e902]: async
+              - generic [ref=f83e903]: asyncio.
+              - generic [ref=f83e904]: wait
+              - text: (
+              - emphasis [ref=f83e905]:
+                - generic [ref=f83e906]: aws
+              - text: ","
+              - emphasis [ref=f83e907]:
+                - generic "Keyword-only parameters separator (PEP 3102)" [ref=f83e909]: "*"
+              - text: ","
+              - emphasis [ref=f83e910]:
+                - generic [ref=f83e911]: timeout
+                - generic [ref=f83e912]: =
+                - generic [ref=f83e913]: None
+              - text: ","
+              - emphasis [ref=f83e914]:
+                - generic [ref=f83e915]: return_when
+                - generic [ref=f83e916]: =
+                - generic [ref=f83e917]: ALL_COMPLETED
+              - text: )
+            - definition [ref=f83e918]:
+              - paragraph [ref=f83e919]:
+                - text: Run
+                - link [ref=f83e920] [cursor=pointer]:
+                  - /url: asyncio-future.html#asyncio.Future
+                  - code [ref=f83e921]: Future
+                - text: and
+                - link [ref=f83e922] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e923]: Task
+                - text: instances in the
+                - emphasis [ref=f83e924]: aws
+                - text: iterable concurrently and block until the condition specified by
+                - emphasis [ref=f83e925]: return_when
+                - text: .
+              - paragraph [ref=f83e926]:
+                - text: The
+                - emphasis [ref=f83e927]: aws
+                - text: iterable must not be empty.
+              - paragraph [ref=f83e928]:
+                - text: "Returns two sets of Tasks/Futures:"
+                - code [ref=f83e929]: (done, pending)
+                - text: .
+              - paragraph [ref=f83e930]: "Usage:"
+              - generic [ref=f83e931]: done, pending = await asyncio.wait(aws)
+              - paragraph [ref=f83e934]:
+                - emphasis [ref=f83e935]: timeout
+                - text: (a float or int), if specified, can be used to control the maximum number of seconds to wait before returning.
+              - paragraph [ref=f83e936]:
+                - text: Note that this function does not raise
+                - link [ref=f83e937] [cursor=pointer]:
+                  - /url: ../builtins/exceptions.html#TimeoutError
+                  - code [ref=f83e938]: TimeoutError
+                - text: . Futures or Tasks that aren’t done when the timeout occurs are simply returned in the second set.
+              - paragraph [ref=f83e939]:
+                - emphasis [ref=f83e940]: return_when
+                - text: "indicates when this function should return. It must be one of the following constants:"
+              - table [ref=f83e942]:
+                - rowgroup [ref=f83e943]:
+                  - row [ref=f83e944]:
+                    - columnheader [ref=f83e945]:
+                      - paragraph [ref=f83e946]: Constant
+                    - columnheader [ref=f83e947]:
+                      - paragraph [ref=f83e948]: Description
+                - rowgroup [ref=f83e949]:
+                  - row [ref=f83e950]:
+                    - cell "asyncio.FIRST_COMPLETED" [ref=f83e951]:
+                      - generic [ref=f83e952]:
+                        - term [ref=f83e953]:
+                          - generic [ref=f83e954]: asyncio.
+                          - generic [ref=f83e955]: FIRST_COMPLETED
+                        - definition
+                    - cell [ref=f83e956]:
+                      - paragraph [ref=f83e957]: The function will return when any future finishes or is cancelled.
+                  - row [ref=f83e958]:
+                    - cell "asyncio.FIRST_EXCEPTION" [ref=f83e959]:
+                      - generic [ref=f83e960]:
+                        - term [ref=f83e961]:
+                          - generic [ref=f83e962]: asyncio.
+                          - generic [ref=f83e963]: FIRST_EXCEPTION
+                        - definition
+                    - cell [ref=f83e964]:
+                      - paragraph [ref=f83e965]:
+                        - text: The function will return when any future finishes by raising an exception. If no future raises an exception then it is equivalent to
+                        - link [ref=f83e966] [cursor=pointer]:
+                          - /url: "#asyncio.ALL_COMPLETED"
+                          - code [ref=f83e967]: ALL_COMPLETED
+                        - text: .
+                  - row [ref=f83e968]:
+                    - cell "asyncio.ALL_COMPLETED" [ref=f83e969]:
+                      - generic [ref=f83e970]:
+                        - term [ref=f83e971]:
+                          - generic [ref=f83e972]: asyncio.
+                          - generic [ref=f83e973]: ALL_COMPLETED
+                        - definition
+                    - cell [ref=f83e974]:
+                      - paragraph [ref=f83e975]: The function will return when all futures finish or are cancelled.
+              - paragraph [ref=f83e976]:
+                - text: Unlike
+                - link [ref=f83e977] [cursor=pointer]:
+                  - /url: "#asyncio.wait_for"
+                  - code [ref=f83e978]: wait_for()
+                - text: ","
+                - code [ref=f83e979]: wait()
+                - text: does not cancel the futures when a timeout occurs.
+              - paragraph [ref=f83e980]:
+                - text: If
+                - code [ref=f83e981]: wait()
+                - text: is cancelled, the futures in
+                - emphasis [ref=f83e982]: aws
+                - text: are not cancelled and continue to run.
+              - paragraph [ref=f83e984]:
+                - text: "Changed in version 3.10: Removed the"
+                - emphasis [ref=f83e985]: loop
+                - text: parameter.
+              - paragraph [ref=f83e987]:
+                - text: "Changed in version 3.11: Passing coroutine objects to"
+                - code [ref=f83e988]: wait()
+                - text: directly is forbidden.
+              - paragraph [ref=f83e990]: "Changed in version 3.12: Added support for generators yielding tasks."
+          - generic [ref=f83e991]:
+            - term [ref=f83e992]:
+              - generic [ref=f83e993]: asyncio.
+              - generic [ref=f83e994]: as_completed
+              - text: (
+              - emphasis [ref=f83e995]:
+                - generic [ref=f83e996]: aws
+              - text: ","
+              - emphasis [ref=f83e997]:
+                - generic "Keyword-only parameters separator (PEP 3102)" [ref=f83e999]: "*"
+              - text: ","
+              - emphasis [ref=f83e1000]:
+                - generic [ref=f83e1001]: timeout
+                - generic [ref=f83e1002]: =
+                - generic [ref=f83e1003]: None
+              - text: )
+            - definition [ref=f83e1004]:
+              - paragraph [ref=f83e1005]:
+                - text: Run
+                - link "awaitable objects" [ref=f83e1006] [cursor=pointer]:
+                  - /url: "#asyncio-awaitables"
+                - text: in the
+                - emphasis [ref=f83e1007]: aws
+                - text: iterable concurrently. The returned object can be iterated to obtain the results of the awaitables as they finish.
+              - paragraph [ref=f83e1008]:
+                - text: The object returned by
+                - code [ref=f83e1009]: as_completed()
+                - text: can be iterated as an
+                - link "asynchronous iterator" [ref=f83e1010] [cursor=pointer]:
+                  - /url: ../glossary.html#term-asynchronous-iterator
+                - text: or a plain
+                - link "iterator" [ref=f83e1011] [cursor=pointer]:
+                  - /url: ../glossary.html#term-iterator
+                - text: ". When asynchronous iteration is used, the originally-supplied awaitables are yielded if they are tasks or futures. This makes it easy to correlate previously-scheduled tasks with their results. Example:"
+              - generic [ref=f83e1012]: "ipv4_connect = create_task(open_connection(\"127.0.0.1\", 80)) ipv6_connect = create_task(open_connection(\"::1\", 80)) tasks = [ipv4_connect, ipv6_connect] async for earliest_connect in as_completed(tasks): # earliest_connect is done. The result can be obtained by # awaiting it or calling earliest_connect.result() reader, writer = await earliest_connect if earliest_connect is ipv6_connect: print(\"IPv6 connection established.\") else: print(\"IPv4 connection established.\")"
+              - paragraph [ref=f83e1015]: During asynchronous iteration, implicitly-created tasks will be yielded for supplied awaitables that aren’t tasks or futures.
+              - paragraph [ref=f83e1016]: "When used as a plain iterator, each iteration yields a new coroutine that returns the result or raises the exception of the next completed awaitable. This pattern is compatible with Python versions older than 3.13:"
+              - generic [ref=f83e1017]: "ipv4_connect = create_task(open_connection(\"127.0.0.1\", 80)) ipv6_connect = create_task(open_connection(\"::1\", 80)) tasks = [ipv4_connect, ipv6_connect] for next_connect in as_completed(tasks): # next_connect is not one of the original task objects. It must be # awaited to obtain the result value or raise the exception of the # awaitable that finishes next. reader, writer = await next_connect"
+              - paragraph [ref=f83e1020]:
+                - text: A
+                - link [ref=f83e1021] [cursor=pointer]:
+                  - /url: ../builtins/exceptions.html#TimeoutError
+                  - code [ref=f83e1022]: TimeoutError
+                - text: is raised if the timeout occurs before all awaitables are done. This is raised by the
+                - code [ref=f83e1023]: async for
+                - text: loop during asynchronous iteration or by the coroutines yielded during plain iteration.
+              - paragraph [ref=f83e1024]:
+                - code [ref=f83e1025]: as_completed()
+                - text: "does not cancel the tasks running the supplied awaitables: if a timeout occurs or the iteration is cancelled, the remaining tasks continue to run."
+              - paragraph [ref=f83e1027]:
+                - text: "Changed in version 3.10: Removed the"
+                - emphasis [ref=f83e1028]: loop
+                - text: parameter.
+              - paragraph [ref=f83e1030]:
+                - text: "Deprecated since version 3.10: Deprecation warning is emitted if not all awaitable objects in the"
+                - emphasis [ref=f83e1031]: aws
+                - text: iterable are Future-like objects and there is no running event loop.
+              - paragraph [ref=f83e1033]: "Changed in version 3.12: Added support for generators yielding tasks."
+              - paragraph [ref=f83e1035]:
+                - text: "Changed in version 3.13: The result can now be used as either an"
+                - link "asynchronous iterator" [ref=f83e1036] [cursor=pointer]:
+                  - /url: ../glossary.html#term-asynchronous-iterator
+                - text: or as a plain
+                - link "iterator" [ref=f83e1037] [cursor=pointer]:
+                  - /url: ../glossary.html#term-iterator
+                - text: (previously it was only a plain iterator).
+        - generic [ref=f83e1038]:
+          - heading [level=2] [ref=f83e1039]:
+            - link "Running in threads" [ref=f83e1040] [cursor=pointer]:
+              - /url: "#id13"
+          - generic [ref=f83e1041]:
+            - term [ref=f83e1042]:
+              - emphasis [ref=f83e1043]:
+                - generic [ref=f83e1044]: async
+              - generic [ref=f83e1045]: asyncio.
+              - generic [ref=f83e1046]: to_thread
+              - text: (
+              - emphasis [ref=f83e1047]:
+                - generic [ref=f83e1048]: func
+              - text: ","
+              - emphasis [ref=f83e1049]:
+                - generic "Positional-only parameter separator (PEP 570)" [ref=f83e1051]: /
+              - text: ","
+              - emphasis [ref=f83e1052]:
+                - generic [ref=f83e1053]: "*"
+                - generic [ref=f83e1054]: args
+              - text: ","
+              - emphasis [ref=f83e1055]:
+                - generic [ref=f83e1056]: "**"
+                - generic [ref=f83e1057]: kwargs
+              - text: )
+            - definition [ref=f83e1058]:
+              - paragraph [ref=f83e1059]:
+                - text: Asynchronously run function
+                - emphasis [ref=f83e1060]: func
+                - text: in a separate thread.
+              - paragraph [ref=f83e1061]:
+                - text: Any *args and **kwargs supplied for this function are directly passed to
+                - emphasis [ref=f83e1062]: func
+                - text: . Also, the current
+                - link [ref=f83e1063] [cursor=pointer]:
+                  - /url: contextvars.html#contextvars.Context
+                  - code [ref=f83e1064]: contextvars.Context
+                - text: is propagated, allowing context variables from the event loop thread to be accessed in the separate thread.
+              - paragraph [ref=f83e1065]:
+                - text: Return a coroutine that can be awaited to get the eventual result of
+                - emphasis [ref=f83e1066]: func
+                - text: .
+              - paragraph [ref=f83e1067]: "This coroutine function is primarily intended to be used for executing IO-bound functions/methods that would otherwise block the event loop if they were run in the main thread. For example:"
+              - generic [ref=f83e1068]: "def blocking_io(): print(f\"start blocking_io at {time.strftime('%X')}\") # Note that time.sleep() can be replaced with any blocking # IO-bound operation, such as file operations. time.sleep(1) print(f\"blocking_io complete at {time.strftime('%X')}\") async def main(): print(f\"started main at {time.strftime('%X')}\") await asyncio.gather( asyncio.to_thread(blocking_io), asyncio.sleep(1)) print(f\"finished main at {time.strftime('%X')}\") asyncio.run(main()) # Expected output: # # started main at 19:50:53 # start blocking_io at 19:50:53 # blocking_io complete at 19:50:54 # finished main at 19:50:54"
+              - paragraph [ref=f83e1071]:
+                - text: Directly calling
+                - code [ref=f83e1072]: blocking_io()
+                - text: in any coroutine would block the event loop for its duration, resulting in an additional 1 second of run time. Instead, by using
+                - code [ref=f83e1073]: asyncio.to_thread()
+                - text: ", we can run it in a separate thread without blocking the event loop."
+              - generic [ref=f83e1074]:
+                - paragraph [ref=f83e1075]: "Note:"
+                - paragraph [ref=f83e1076]:
+                  - text: Due to the
+                  - link "GIL" [ref=f83e1077] [cursor=pointer]:
+                    - /url: ../glossary.html#term-GIL
+                  - text: ","
+                  - code [ref=f83e1078]: asyncio.to_thread()
+                  - text: can typically only be used to make IO-bound functions non-blocking. However, for extension modules that release the GIL or alternative Python implementations that don’t have one,
+                  - code [ref=f83e1079]: asyncio.to_thread()
+                  - text: can also be used for CPU-bound functions.
+              - paragraph [ref=f83e1081]: Added in version 3.9.
+        - generic [ref=f83e1082]:
+          - heading [level=2] [ref=f83e1083]:
+            - link "Scheduling from other threads" [ref=f83e1084] [cursor=pointer]:
+              - /url: "#id14"
+          - generic [ref=f83e1085]:
+            - term [ref=f83e1086]:
+              - generic [ref=f83e1087]: asyncio.
+              - generic [ref=f83e1088]: run_coroutine_threadsafe
+              - text: (
+              - emphasis [ref=f83e1089]:
+                - generic [ref=f83e1090]: coro
+              - text: ","
+              - emphasis [ref=f83e1091]:
+                - generic [ref=f83e1092]: loop
+              - text: )
+            - definition [ref=f83e1093]:
+              - paragraph [ref=f83e1094]: Submit a coroutine to the given event loop. Thread-safe.
+              - paragraph [ref=f83e1095]:
+                - text: Return a
+                - link [ref=f83e1096] [cursor=pointer]:
+                  - /url: concurrent.futures.html#concurrent.futures.Future
+                  - code [ref=f83e1097]: concurrent.futures.Future
+                - text: to wait for the result from another OS thread.
+              - paragraph [ref=f83e1098]: "This function is meant to be called from a different OS thread than the one where the event loop is running. Example:"
+              - generic [ref=f83e1099]: "def in_thread(loop: asyncio.AbstractEventLoop) -> None: # Run some blocking IO pathlib.Path(\"example.txt\").write_text(\"hello world\", encoding=\"utf8\") # Create a coroutine coro = asyncio.sleep(1, result=3) # Submit the coroutine to a given loop future = asyncio.run_coroutine_threadsafe(coro, loop) # Wait for the result with an optional timeout argument assert future.result(timeout=2) == 3 async def amain() -> None: # Get the running loop loop = asyncio.get_running_loop() # Run something in a thread await asyncio.to_thread(in_thread, loop)"
+              - paragraph [ref=f83e1102]: "It’s also possible to run the other way around. Example:"
+              - generic [ref=f83e1103]: "@contextlib.contextmanager def loop_in_thread() -> Generator[asyncio.AbstractEventLoop]: loop_fut = concurrent.futures.Future[asyncio.AbstractEventLoop]() stop_event = asyncio.Event() async def main() -> None: loop_fut.set_result(asyncio.get_running_loop()) await stop_event.wait() with concurrent.futures.ThreadPoolExecutor(1) as tpe: complete_fut = tpe.submit(asyncio.run, main()) for fut in concurrent.futures.as_completed((loop_fut, complete_fut)): if fut is loop_fut: loop = loop_fut.result() try: yield loop finally: loop.call_soon_threadsafe(stop_event.set) else: fut.result() # Create a loop in another thread with loop_in_thread() as loop: # Create a coroutine coro = asyncio.sleep(1, result=3) # Submit the coroutine to a given loop future = asyncio.run_coroutine_threadsafe(coro, loop) # Wait for the result with an optional timeout argument assert future.result(timeout=2) == 3"
+              - paragraph [ref=f83e1106]: "If an exception is raised in the coroutine, the returned Future will be notified. It can also be used to cancel the task in the event loop:"
+              - generic [ref=f83e1107]: "try: result = future.result(timeout) except TimeoutError: print('The coroutine took too long, cancelling the task...') future.cancel() except Exception as exc: print(f'The coroutine raised an exception: {exc!r}') else: print(f'The coroutine returned: {result!r}')"
+              - paragraph [ref=f83e1110]:
+                - text: See the
+                - link "concurrency and multithreading" [ref=f83e1111] [cursor=pointer]:
+                  - /url: asyncio-dev.html#asyncio-multithreading
+                - text: section of the documentation.
+              - paragraph [ref=f83e1112]:
+                - text: Unlike other asyncio functions this function requires the
+                - emphasis [ref=f83e1113]: loop
+                - text: argument to be passed explicitly.
+              - paragraph [ref=f83e1115]: Added in version 3.5.1.
+        - generic [ref=f83e1116]:
+          - heading [level=2] [ref=f83e1117]:
+            - link "Introspection" [ref=f83e1118] [cursor=pointer]:
+              - /url: "#id15"
+          - generic [ref=f83e1119]:
+            - term [ref=f83e1120]:
+              - generic [ref=f83e1121]: asyncio.
+              - generic [ref=f83e1122]: current_task
+              - text: (
+              - emphasis [ref=f83e1123]:
+                - generic [ref=f83e1124]: loop
+                - generic [ref=f83e1125]: =
+                - generic [ref=f83e1126]: None
+              - text: )
+            - definition [ref=f83e1127]:
+              - paragraph [ref=f83e1128]:
+                - text: Return the currently running
+                - link [ref=f83e1129] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e1130]: Task
+                - text: instance, or
+                - code [ref=f83e1131]: None
+                - text: if no task is running.
+              - paragraph [ref=f83e1132]:
+                - text: If
+                - emphasis [ref=f83e1133]: loop
+                - text: is
+                - code [ref=f83e1134]: None
+                - link [ref=f83e1135] [cursor=pointer]:
+                  - /url: asyncio-eventloop.html#asyncio.get_running_loop
+                  - code [ref=f83e1136]: get_running_loop()
+                - text: is used to get the current loop.
+              - paragraph [ref=f83e1138]: Added in version 3.7.
+          - generic [ref=f83e1139]:
+            - term [ref=f83e1140]:
+              - generic [ref=f83e1141]: asyncio.
+              - generic [ref=f83e1142]: all_tasks
+              - text: (
+              - emphasis [ref=f83e1143]:
+                - generic [ref=f83e1144]: loop
+                - generic [ref=f83e1145]: =
+                - generic [ref=f83e1146]: None
+              - text: )
+            - definition [ref=f83e1147]:
+              - paragraph [ref=f83e1148]:
+                - text: Return a set of not yet finished
+                - link [ref=f83e1149] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e1150]: Task
+                - text: objects run by the loop.
+              - paragraph [ref=f83e1151]:
+                - text: If
+                - emphasis [ref=f83e1152]: loop
+                - text: is
+                - code [ref=f83e1153]: None
+                - text: ","
+                - link [ref=f83e1154] [cursor=pointer]:
+                  - /url: asyncio-eventloop.html#asyncio.get_running_loop
+                  - code [ref=f83e1155]: get_running_loop()
+                - text: is used for getting current loop.
+              - paragraph [ref=f83e1157]: Added in version 3.7.
+          - generic [ref=f83e1158]:
+            - term [ref=f83e1159]:
+              - generic [ref=f83e1160]: asyncio.
+              - generic [ref=f83e1161]: iscoroutine
+              - text: (
+              - emphasis [ref=f83e1162]:
+                - generic [ref=f83e1163]: obj
+              - text: )
+            - definition [ref=f83e1164]:
+              - paragraph [ref=f83e1165]:
+                - text: Return
+                - code [ref=f83e1166]: "True"
+                - text: if
+                - emphasis [ref=f83e1167]: obj
+                - text: is a coroutine object.
+              - paragraph [ref=f83e1169]: Added in version 3.4.
+        - generic [ref=f83e1170]:
+          - heading [level=2] [ref=f83e1171]:
+            - link "Task object" [ref=f83e1172] [cursor=pointer]:
+              - /url: "#id16"
+          - generic [ref=f83e1173]:
+            - term [ref=f83e1174]:
+              - emphasis [ref=f83e1175]:
+                - generic [ref=f83e1176]: class
+              - generic [ref=f83e1177]: asyncio.
+              - generic [ref=f83e1178]: Task
+              - text: (
+              - emphasis [ref=f83e1179]:
+                - generic [ref=f83e1180]: coro
+              - text: ","
+              - emphasis [ref=f83e1181]:
+                - generic "Keyword-only parameters separator (PEP 3102)" [ref=f83e1183]: "*"
+              - text: ","
+              - emphasis [ref=f83e1184]:
+                - generic [ref=f83e1185]: loop
+                - generic [ref=f83e1186]: =
+                - generic [ref=f83e1187]: None
+              - text: ","
+              - emphasis [ref=f83e1188]:
+                - generic [ref=f83e1189]: name
+                - generic [ref=f83e1190]: =
+                - generic [ref=f83e1191]: None
+              - text: ","
+              - emphasis [ref=f83e1192]:
+                - generic [ref=f83e1193]: context
+                - generic [ref=f83e1194]: =
+                - generic [ref=f83e1195]: None
+              - text: ","
+              - emphasis [ref=f83e1196]:
+                - generic [ref=f83e1197]: eager_start
+                - generic [ref=f83e1198]: =
+                - generic [ref=f83e1199]: "False"
+              - text: )
+            - definition [ref=f83e1200]:
+              - paragraph [ref=f83e1201]:
+                - text: A
+                - link [ref=f83e1202] [cursor=pointer]:
+                  - /url: asyncio-future.html#asyncio.Future
+                  - code [ref=f83e1203]: Future-like
+                - text: object that runs a Python
+                - link "coroutine" [ref=f83e1204] [cursor=pointer]:
+                  - /url: "#coroutine"
+                - text: . Not thread-safe.
+              - paragraph [ref=f83e1205]:
+                - text: Tasks are used to run coroutines in event loops. If a coroutine awaits on a Future, the Task suspends the execution of the coroutine and waits for the completion of the Future. When the Future is
+                - emphasis [ref=f83e1206]: done
+                - text: ", the execution of the wrapped coroutine resumes."
+              - paragraph [ref=f83e1207]: "Event loops use cooperative scheduling: an event loop runs one Task at a time. While a Task awaits for the completion of a Future, the event loop runs other Tasks, callbacks, or performs IO operations."
+              - paragraph [ref=f83e1208]:
+                - text: Use the high-level
+                - link [ref=f83e1209] [cursor=pointer]:
+                  - /url: "#asyncio.create_task"
+                  - code [ref=f83e1210]: asyncio.create_task()
+                - text: function to create Tasks, or the low-level
+                - link [ref=f83e1211] [cursor=pointer]:
+                  - /url: asyncio-eventloop.html#asyncio.loop.create_task
+                  - code [ref=f83e1212]: loop.create_task()
+                - text: or
+                - link [ref=f83e1213] [cursor=pointer]:
+                  - /url: asyncio-future.html#asyncio.ensure_future
+                  - code [ref=f83e1214]: ensure_future()
+                - text: functions. Manual instantiation of Tasks is discouraged.
+              - paragraph [ref=f83e1215]:
+                - text: To cancel a running Task use the
+                - link [ref=f83e1216] [cursor=pointer]:
+                  - /url: "#asyncio.Task.cancel"
+                  - code [ref=f83e1217]: cancel()
+                - text: method. Calling it will cause the Task to throw a
+                - link [ref=f83e1218] [cursor=pointer]:
+                  - /url: asyncio-exceptions.html#asyncio.CancelledError
+                  - code [ref=f83e1219]: CancelledError
+                - text: exception into the wrapped coroutine. If a coroutine is awaiting on a future-like object during cancellation, the awaited object will be cancelled.
+              - paragraph [ref=f83e1220]:
+                - link [ref=f83e1221] [cursor=pointer]:
+                  - /url: "#asyncio.Task.cancelled"
+                  - code [ref=f83e1222]: cancelled()
+                - text: can be used to check if the Task was cancelled. The method returns
+                - code [ref=f83e1223]: "True"
+                - text: if the wrapped coroutine did not suppress the
+                - link [ref=f83e1224] [cursor=pointer]:
+                  - /url: asyncio-exceptions.html#asyncio.CancelledError
+                  - code [ref=f83e1225]: CancelledError
+                - text: exception and was actually cancelled.
+              - paragraph [ref=f83e1226]:
+                - link [ref=f83e1227] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e1228]: asyncio.Task
+                - text: inherits from
+                - link [ref=f83e1229] [cursor=pointer]:
+                  - /url: asyncio-future.html#asyncio.Future
+                  - code [ref=f83e1230]: Future
+                - text: all of its APIs except
+                - link [ref=f83e1231] [cursor=pointer]:
+                  - /url: asyncio-future.html#asyncio.Future.set_result
+                  - code [ref=f83e1232]: Future.set_result()
+                - text: and
+                - link [ref=f83e1233] [cursor=pointer]:
+                  - /url: asyncio-future.html#asyncio.Future.set_exception
+                  - code [ref=f83e1234]: Future.set_exception()
+                - text: .
+              - paragraph [ref=f83e1235]:
+                - text: An optional keyword-only
+                - emphasis [ref=f83e1236]: context
+                - text: argument allows specifying a custom
+                - link [ref=f83e1237] [cursor=pointer]:
+                  - /url: contextvars.html#contextvars.Context
+                  - code [ref=f83e1238]: contextvars.Context
+                - text: for the
+                - emphasis [ref=f83e1239]: coro
+                - text: to run in. If no
+                - emphasis [ref=f83e1240]: context
+                - text: is provided, the Task copies the current context and later runs its coroutine in the copied context.
+              - paragraph [ref=f83e1241]:
+                - text: An optional keyword-only
+                - emphasis [ref=f83e1242]: eager_start
+                - text: argument allows eagerly starting the execution of the
+                - link [ref=f83e1243] [cursor=pointer]:
+                  - /url: "#asyncio.Task"
+                  - code [ref=f83e1244]: asyncio.Task
+                - text: at task creation time. If set to
+                - code [ref=f83e1245]: "True"
+                - text: and the event loop is running, the task will start executing the coroutine immediately, until the first time the coroutine blocks. If the coroutine returns or raises without blocking, the task will be finished eagerly and will skip scheduling to the event loop.
+              - paragraph [ref=f83e1246]:
+                - text: Tasks are
+                - link "generic" [ref=f83e1247] [cursor=pointer]:
+                  - /url: typing.html#generics
+                - text: over the return type of their wrapped coroutines.
+              - paragraph [ref=f83e1249]:
+                - text: "Changed in version 3.7: Added support for the"
+                - link [ref=f83e1250] [cursor=pointer]:
+                  - /url: contextvars.html#module-contextvars
+                  - code [ref=f83e1251]: contextvars
+                - text: module.
+              - paragraph [ref=f83e1253]:
+                - text: "Changed in version 3.8: Added the"
+                - emphasis [ref=f83e1254]: name
+                - text: parameter.
+              - paragraph [ref=f83e1256]:
+                - text: "Deprecated since version 3.10: Deprecation warning is emitted if"
+                - emphasis [ref=f83e1257]: loop
+                - text: is not specified and there is no running event loop.
+              - paragraph [ref=f83e1259]:
+                - text: "Changed in version 3.11: Added the"
+                - emphasis [ref=f83e1260]: context
+                - text: parameter.
+              - paragraph [ref=f83e1262]:
+                - text: "Changed in version 3.12: Added the"
+                - emphasis [ref=f83e1263]: eager_start
+                - text: parameter.
+              - generic [ref=f83e1264]:
+                - term [ref=f83e1265]:
+                  - generic [ref=f83e1266]: done
+                  - text: ()
+                - definition [ref=f83e1267]:
+                  - paragraph [ref=f83e1268]:
+                    - text: Return
+                    - code [ref=f83e1269]: "True"
+                    - text: if the Task is
+                    - emphasis [ref=f83e1270]: done
+                    - text: .
+                  - paragraph [ref=f83e1271]:
+                    - text: A Task is
+                    - emphasis [ref=f83e1272]: done
+                    - text: when the wrapped coroutine either returned a value, raised an exception, or the Task was cancelled.
+              - generic [ref=f83e1273]:
+                - term [ref=f83e1274]:
+                  - generic [ref=f83e1275]: result
+                  - text: ()
+                - definition [ref=f83e1276]:
+                  - paragraph [ref=f83e1277]: Return the result of the Task.
+                  - paragraph [ref=f83e1278]:
+                    - text: If the Task is
+                    - emphasis [ref=f83e1279]: done
+                    - text: ", the result of the wrapped coroutine is returned (or if the coroutine raised an exception, that exception is re-raised.)"
+                  - paragraph [ref=f83e1280]:
+                    - text: If the Task has been
+                    - emphasis [ref=f83e1281]: cancelled
+                    - text: ", this method raises a"
+                    - link [ref=f83e1282] [cursor=pointer]:
+                      - /url: asyncio-exceptions.html#asyncio.CancelledError
+                      - code [ref=f83e1283]: CancelledError
+                    - text: exception.
+                  - paragraph [ref=f83e1284]:
+                    - text: If the Task’s result isn’t yet available, this method raises an
+                    - link [ref=f83e1285] [cursor=pointer]:
+                      - /url: asyncio-exceptions.html#asyncio.InvalidStateError
+                      - code [ref=f83e1286]: InvalidStateError
+                    - text: exception.
+              - generic [ref=f83e1287]:
+                - term [ref=f83e1288]:
+                  - generic [ref=f83e1289]: exception
+                  - text: ()
+                - definition [ref=f83e1290]:
+                  - paragraph [ref=f83e1291]: Return the exception of the Task.
+                  - paragraph [ref=f83e1292]:
+                    - text: If the wrapped coroutine raised an exception that exception is returned. If the wrapped coroutine returned normally this method returns
+                    - code [ref=f83e1293]: None
+                    - text: .
+                  - paragraph [ref=f83e1294]:
+                    - text: If the Task has been
+                    - emphasis [ref=f83e1295]: cancelled
+                    - text: ", this method raises a"
+                    - link [ref=f83e1296] [cursor=pointer]:
+                      - /url: asyncio-exceptions.html#asyncio.CancelledError
+                      - code [ref=f83e1297]: CancelledError
+                    - text: exception.
+                  - paragraph [ref=f83e1298]:
+                    - text: If the Task isn’t
+                    - emphasis [ref=f83e1299]: done
+                    - text: yet, this method raises an
+                    - link [ref=f83e1300] [cursor=pointer]:
+                      - /url: asyncio-exceptions.html#asyncio.InvalidStateError
+                      - code [ref=f83e1301]: InvalidStateError
+                    - text: exception.
+              - generic [ref=f83e1302]:
+                - term [ref=f83e1303]:
+                  - generic [ref=f83e1304]: add_done_callback
+                  - text: (
+                  - emphasis [ref=f83e1305]:
+                    - generic [ref=f83e1306]: callback
+                  - text: ","
+                  - emphasis [ref=f83e1307]:
+                    - generic "Keyword-only parameters separator (PEP 3102)" [ref=f83e1309]: "*"
+                  - text: ","
+                  - emphasis [ref=f83e1310]:
+                    - generic [ref=f83e1311]: context
+                    - generic [ref=f83e1312]: =
+                    - generic [ref=f83e1313]: None
+                  - text: )
+                - definition [ref=f83e1314]:
+                  - paragraph [ref=f83e1315]:
+                    - text: Add a callback to be run when the Task is
+                    - emphasis [ref=f83e1316]: done
+                    - text: .
+                  - paragraph [ref=f83e1317]: This method should only be used in low-level callback-based code.
+                  - paragraph [ref=f83e1318]:
+                    - text: See the documentation of
+                    - link [ref=f83e1319] [cursor=pointer]:
+                      - /url: asyncio-future.html#asyncio.Future.add_done_callback
+                      - code [ref=f83e1320]: Future.add_done_callback()
+                    - text: for more details.
+              - generic [ref=f83e1321]:
+                - term [ref=f83e1322]:
+                  - generic [ref=f83e1323]: remove_done_callback
+                  - text: (
+                  - emphasis [ref=f83e1324]:
+                    - generic [ref=f83e1325]: callback
+                  - text: )
+                - definition [ref=f83e1326]:
+                  - paragraph [ref=f83e1327]:
+                    - text: Remove
+                    - emphasis [ref=f83e1328]: callback
+                    - text: from the callbacks list.
+                  - paragraph [ref=f83e1329]: This method should only be used in low-level callback-based code.
+                  - paragraph [ref=f83e1330]:
+                    - text: See the documentation of
+                    - link [ref=f83e1331] [cursor=pointer]:
+                      - /url: asyncio-future.html#asyncio.Future.remove_done_callback
+                      - code [ref=f83e1332]: Future.remove_done_callback()
+                    - text: for more details.
+              - generic [ref=f83e1333]:
+                - term [ref=f83e1334]:
+                  - generic [ref=f83e1335]: get_stack
+                  - text: (
+                  - emphasis [ref=f83e1336]:
+                    - generic "Keyword-only parameters separator (PEP 3102)" [ref=f83e1338]: "*"
+                  - text: ","
+                  - emphasis [ref=f83e1339]:
+                    - generic [ref=f83e1340]: limit
+                    - generic [ref=f83e1341]: =
+                    - generic [ref=f83e1342]: None
+                  - text: )
+                - definition [ref=f83e1343]:
+                  - paragraph [ref=f83e1344]: Return the list of stack frames for this Task.
+                  - paragraph [ref=f83e1345]: If the wrapped coroutine is not done, this returns the stack where it is suspended. If the coroutine has completed successfully or was cancelled, this returns an empty list. If the coroutine was terminated by an exception, this returns the list of traceback frames.
+                  - paragraph [ref=f83e1346]: The frames are always ordered from oldest to newest.
+                  - paragraph [ref=f83e1347]: Only one stack frame is returned for a suspended coroutine.
+                  - paragraph [ref=f83e1348]:
+                    - text: The optional
+                    - emphasis [ref=f83e1349]: limit
+                    - text: "argument sets the maximum number of frames to return; by default all available frames are returned. The ordering of the returned list differs depending on whether a stack or a traceback is returned: the newest frames of a stack are returned, but the oldest frames of a traceback are returned. (This matches the behavior of the traceback module.)"
+              - generic [ref=f83e1350]:
+                - term [ref=f83e1351]:
+                  - generic [ref=f83e1352]: print_stack
+                  - text: (
+                  - emphasis [ref=f83e1353]:
+                    - generic "Keyword-only parameters separator (PEP 3102)" [ref=f83e1355]: "*"
+                  - text: ","
+                  - emphasis [ref=f83e1356]:
+                    - generic [ref=f83e1357]: limit
+                    - generic [ref=f83e1358]: =
+                    - generic [ref=f83e1359]: None
+                  - text: ","
+                  - emphasis [ref=f83e1360]:
+                    - generic [ref=f83e1361]: file
+                    - generic [ref=f83e1362]: =
+                    - generic [ref=f83e1363]: None
+                  - text: )
+                - definition [ref=f83e1364]:
+                  - paragraph [ref=f83e1365]: Print the stack or traceback for this Task.
+                  - paragraph [ref=f83e1366]:
+                    - text: This produces output similar to that of the traceback module for the frames retrieved by
+                    - link [ref=f83e1367] [cursor=pointer]:
+                      - /url: "#asyncio.Task.get_stack"
+                      - code [ref=f83e1368]: get_stack()
+                    - text: .
+                  - paragraph [ref=f83e1369]:
+                    - text: The
+                    - emphasis [ref=f83e1370]: limit
+                    - text: argument is passed to
+                    - link [ref=f83e1371] [cursor=pointer]:
+                      - /url: "#asyncio.Task.get_stack"
+                      - code [ref=f83e1372]: get_stack()
+                    - text: directly.
+                  - paragraph [ref=f83e1373]:
+                    - text: The
+                    - emphasis [ref=f83e1374]: file
+                    - text: argument is an I/O stream to which the output is written; by default output is written to
+                    - link [ref=f83e1375] [cursor=pointer]:
+                      - /url: sys.html#sys.stdout
+                      - code [ref=f83e1376]: sys.stdout
+                    - text: .
+              - generic [ref=f83e1377]:
+                - term [ref=f83e1378]:
+                  - generic [ref=f83e1379]: get_coro
+                  - text: ()
+                - definition [ref=f83e1380]:
+                  - paragraph [ref=f83e1381]:
+                    - text: Return the coroutine object wrapped by the
+                    - code [ref=f83e1382]: Task
+                    - text: .
+                  - generic [ref=f83e1383]:
+                    - paragraph [ref=f83e1384]: "Note:"
+                    - paragraph [ref=f83e1385]:
+                      - text: This will return
+                      - code [ref=f83e1386]: None
+                      - text: for Tasks which have already completed eagerly. See the
+                      - link "Eager Task Factory" [ref=f83e1387] [cursor=pointer]:
+                        - /url: "#eager-task-factory"
+                      - text: .
+                  - paragraph [ref=f83e1389]: Added in version 3.8.
+                  - paragraph [ref=f83e1391]:
+                    - text: "Changed in version 3.12: Newly added eager task execution means result may be"
+                    - code [ref=f83e1392]: None
+                    - text: .
+              - generic [ref=f83e1393]:
+                - term [ref=f83e1394]:
+                  - generic [ref=f83e1395]: get_context
+                  - text: ()
+                - definition [ref=f83e1396]:
+                  - paragraph [ref=f83e1397]:
+                    - text: Return the
+                    - link [ref=f83e1398] [cursor=pointer]:
+                      - /url: contextvars.html#contextvars.Context
+                      - code [ref=f83e1399]: contextvars.Context
+                    - text: object associated with the task.
+                  - paragraph [ref=f83e1401]: Added in version 3.12.
+              - generic [ref=f83e1402]:
+                - term [ref=f83e1403]:
+                  - generic [ref=f83e1404]: get_name
+                  - text: ()
+                - definition [ref=f83e1405]:
+                  - paragraph [ref=f83e1406]: Return the name of the Task.
+                  - paragraph [ref=f83e1407]: If no name has been explicitly assigned to the Task, the default asyncio Task implementation generates a default name during instantiation.
+                  - paragraph [ref=f83e1409]: Added in version 3.8.
+              - generic [ref=f83e1410]:
+                - term [ref=f83e1411]:
+                  - generic [ref=f83e1412]: set_name
+                  - text: (
+                  - emphasis [ref=f83e1413]:
+                    - generic [ref=f83e1414]: value
+                  - text: )
+                - definition [ref=f83e1415]:
+                  - paragraph [ref=f83e1416]: Set the name of the Task.
+                  - paragraph [ref=f83e1417]:
+                    - text: The
+                    - emphasis [ref=f83e1418]: value
+                    - text: argument can be any object, which is then converted to a string.
+                  - paragraph [ref=f83e1419]:
+                    - text: In the default Task implementation, the name will be visible in the
+                    - link [ref=f83e1420] [cursor=pointer]:
+                      - /url: ../builtins/functions.html#repr
+                      - code [ref=f83e1421]: repr()
+                    - text: output of a task object.
+                  - paragraph [ref=f83e1423]: Added in version 3.8.
+              - generic [ref=f83e1424]:
+                - term [ref=f83e1425]:
+                  - generic [ref=f83e1426]: cancel
+                  - text: (
+                  - emphasis [ref=f83e1427]:
+                    - generic [ref=f83e1428]: msg
+                    - generic [ref=f83e1429]: =
+                    - generic [ref=f83e1430]: None
+                  - text: )
+                - definition [ref=f83e1431]:
+                  - paragraph [ref=f83e1432]: Request the Task to be cancelled.
+                  - paragraph [ref=f83e1433]:
+                    - text: If the Task is already
+                    - emphasis [ref=f83e1434]: done
+                    - text: or
+                    - emphasis [ref=f83e1435]: cancelled
+                    - text: ", return"
+                    - code [ref=f83e1436]: "False"
+                    - text: ", otherwise, return"
+                    - code [ref=f83e1437]: "True"
+                    - text: .
+                  - paragraph [ref=f83e1438]:
+                    - text: The method arranges for a
+                    - link [ref=f83e1439] [cursor=pointer]:
+                      - /url: asyncio-exceptions.html#asyncio.CancelledError
+                      - code [ref=f83e1440]: CancelledError
+                    - text: exception to be thrown into the wrapped coroutine on the next cycle of the event loop.
+                  - paragraph [ref=f83e1441]:
+                    - text: The coroutine then has a chance to clean up or even deny the request by suppressing the exception with a
+                    - link [ref=f83e1442] [cursor=pointer]:
+                      - /url: ../reference/compound_stmts.html#try
+                      - code [ref=f83e1443]: try
+                    - text: … …
+                    - code [ref=f83e1444]: except CancelledError
+                    - text: …
+                    - link [ref=f83e1445] [cursor=pointer]:
+                      - /url: ../reference/compound_stmts.html#finally
+                      - code [ref=f83e1446]: finally
+                    - text: block. Therefore, unlike
+                    - link [ref=f83e1447] [cursor=pointer]:
+                      - /url: asyncio-future.html#asyncio.Future.cancel
+                      - code [ref=f83e1448]: Future.cancel()
+                    - text: ","
+                    - code [ref=f83e1449]: Task.cancel()
+                    - text: does not guarantee that the Task will be cancelled, although suppressing cancellation completely is not common and is actively discouraged. Should the coroutine nevertheless decide to suppress the cancellation, it needs to call
+                    - link [ref=f83e1450] [cursor=pointer]:
+                      - /url: "#asyncio.Task.uncancel"
+                      - code [ref=f83e1451]: Task.uncancel()
+                    - text: in addition to catching the exception.
+                  - paragraph [ref=f83e1452]: If the Task being cancelled is currently awaiting on a future-like object, that awaited object will also be cancelled. This cancellation propagates down the entire chain of awaited objects.
+                  - paragraph [ref=f83e1454]:
+                    - text: "Changed in version 3.9: Added the"
+                    - emphasis [ref=f83e1455]: msg
+                    - text: parameter.
+                  - paragraph [ref=f83e1457]:
+                    - text: "Changed in version 3.11: The"
+                    - code [ref=f83e1458]: msg
+                    - text: parameter is propagated from cancelled task to its awaiter.
+                  - paragraph [ref=f83e1459]: "The following example illustrates how coroutines can intercept the cancellation request:"
+                  - generic [ref=f83e1460]: "async def cancel_me(): print('cancel_me(): before sleep') try: # Wait for 1 hour await asyncio.sleep(3600) except asyncio.CancelledError: print('cancel_me(): cancel sleep') raise finally: print('cancel_me(): after sleep') async def main(): # Create a \"cancel_me\" Task task = asyncio.create_task(cancel_me()) # Wait for 1 second await asyncio.sleep(1) task.cancel() try: await task except asyncio.CancelledError: print(\"main(): cancel_me is cancelled now\") asyncio.run(main()) # Expected output: # # cancel_me(): before sleep # cancel_me(): cancel sleep # cancel_me(): after sleep # main(): cancel_me is cancelled now"
+              - generic [ref=f83e1463]:
+                - term [ref=f83e1464]:
+                  - generic [ref=f83e1465]: cancelled
+                  - text: ()
+                - definition [ref=f83e1466]:
+                  - paragraph [ref=f83e1467]:
+                    - text: Return
+                    - code [ref=f83e1468]: "True"
+                    - text: if the Task is
+                    - emphasis [ref=f83e1469]: cancelled
+                    - text: .
+                  - paragraph [ref=f83e1470]:
+                    - text: The Task is
+                    - emphasis [ref=f83e1471]: cancelled
+                    - text: when the cancellation was requested with
+                    - link [ref=f83e1472] [cursor=pointer]:
+                      - /url: "#asyncio.Task.cancel"
+                      - code [ref=f83e1473]: cancel()
+                    - text: and the wrapped coroutine propagated the
+                    - link [ref=f83e1474] [cursor=pointer]:
+                      - /url: asyncio-exceptions.html#asyncio.CancelledError
+                      - code [ref=f83e1475]: CancelledError
+                    - text: exception thrown into it.
+              - generic [ref=f83e1476]:
+                - term [ref=f83e1477]:
+                  - generic [ref=f83e1478]: uncancel
+                  - text: ()
+                - definition [ref=f83e1479]:
+                  - paragraph [ref=f83e1480]: Decrement the count of cancellation requests to this Task.
+                  - paragraph [ref=f83e1481]: Returns the remaining number of cancellation requests.
+                  - paragraph [ref=f83e1482]:
+                    - text: Note that once execution of a cancelled task completed, further calls to
+                    - code [ref=f83e1483]: uncancel()
+                    - text: are ineffective.
+                  - paragraph [ref=f83e1485]: Added in version 3.11.
+                  - paragraph [ref=f83e1486]:
+                    - text: This method is used by asyncio’s internals and isn’t expected to be used by end-user code. In particular, if a Task gets successfully uncancelled, this allows for elements of structured concurrency like
+                    - link "Task groups" [ref=f83e1487] [cursor=pointer]:
+                      - /url: "#taskgroups"
+                    - text: and
+                    - link [ref=f83e1488] [cursor=pointer]:
+                      - /url: "#asyncio.timeout"
+                      - code [ref=f83e1489]: asyncio.timeout()
+                    - text: "to continue running, isolating cancellation to the respective structured block. For example:"
+                  - generic [ref=f83e1490]: "async def make_request_with_timeout(): try: async with asyncio.timeout(1): # Structured block affected by the timeout: await make_request() await make_another_request() except TimeoutError: log(\"There was a timeout\") # Outer code not affected by the timeout: await unrelated_code()"
+                  - paragraph [ref=f83e1493]:
+                    - text: While the block with
+                    - code [ref=f83e1494]: make_request()
+                    - text: and
+                    - code [ref=f83e1495]: make_another_request()
+                    - text: might get cancelled due to the timeout,
+                    - code [ref=f83e1496]: unrelated_code()
+                    - text: should continue running even in case of the timeout. This is implemented with
+                    - code [ref=f83e1497]: uncancel()
+                    - text: .
+                    - link [ref=f83e1498] [cursor=pointer]:
+                      - /url: "#asyncio.TaskGroup"
+                      - code [ref=f83e1499]: TaskGroup
+                    - text: context managers use
+                    - link [ref=f83e1500] [cursor=pointer]:
+                      - /url: "#asyncio.Task.uncancel"
+                      - code [ref=f83e1501]: uncancel()
+                    - text: in a similar fashion.
+                  - paragraph [ref=f83e1502]:
+                    - text: If end-user code is, for some reason, suppressing cancellation by catching
+                    - link [ref=f83e1503] [cursor=pointer]:
+                      - /url: asyncio-exceptions.html#asyncio.CancelledError
+                      - code [ref=f83e1504]: CancelledError
+                    - text: ", it needs to call this method to remove the cancellation state."
+                  - paragraph [ref=f83e1505]:
+                    - text: When this method decrements the cancellation count to zero, the method checks if a previous
+                    - link [ref=f83e1506] [cursor=pointer]:
+                      - /url: "#asyncio.Task.cancel"
+                      - code [ref=f83e1507]: cancel()
+                    - text: call had arranged for
+                    - link [ref=f83e1508] [cursor=pointer]:
+                      - /url: asyncio-exceptions.html#asyncio.CancelledError
+                      - code [ref=f83e1509]: CancelledError
+                    - text: to be thrown into the task. If it hasn’t been thrown yet, that arrangement will be rescinded (by resetting the internal
+                    - code [ref=f83e1510]: _must_cancel
+                    - text: flag).
+              - paragraph [ref=f83e1512]: "Changed in version 3.13: Changed to rescind pending cancellation requests upon reaching zero."
+              - generic [ref=f83e1513]:
+                - term [ref=f83e1514]:
+                  - generic [ref=f83e1515]: cancelling
+                  - text: ()
+                - definition [ref=f83e1516]:
+                  - paragraph [ref=f83e1517]:
+                    - text: Return the number of pending cancellation requests to this Task, i.e., the number of calls to
+                    - link [ref=f83e1518] [cursor=pointer]:
+                      - /url: "#asyncio.Task.cancel"
+                      - code [ref=f83e1519]: cancel()
+                    - text: less the number of
+                    - link [ref=f83e1520] [cursor=pointer]:
+                      - /url: "#asyncio.Task.uncancel"
+                      - code [ref=f83e1521]: uncancel()
+                    - text: calls.
+                  - paragraph [ref=f83e1522]:
+                    - text: Note that if this number is greater than zero but the Task is still executing,
+                    - link [ref=f83e1523] [cursor=pointer]:
+                      - /url: "#asyncio.Task.cancelled"
+                      - code [ref=f83e1524]: cancelled()
+                    - text: will still return
+                    - code [ref=f83e1525]: "False"
+                    - text: . This is because this number can be lowered by calling
+                    - link [ref=f83e1526] [cursor=pointer]:
+                      - /url: "#asyncio.Task.uncancel"
+                      - code [ref=f83e1527]: uncancel()
+                    - text: ", which can lead to the task not being cancelled after all if the cancellation requests go down to zero."
+                  - paragraph [ref=f83e1528]:
+                    - text: This method is used by asyncio’s internals and isn’t expected to be used by end-user code. See
+                    - link [ref=f83e1529] [cursor=pointer]:
+                      - /url: "#asyncio.Task.uncancel"
+                      - code [ref=f83e1530]: uncancel()
+                    - text: for more details.
+                  - paragraph [ref=f83e1532]: Added in version 3.11.
+    - navigation "Main" [ref=f83e1533]:
+      - generic [ref=f83e1534]:
+        - generic [ref=f83e1535]:
+          - heading [level=3] [ref=f83e1536]:
+            - link "Table of Contents" [ref=f83e1537] [cursor=pointer]:
+              - /url: ../contents.html
+          - list [ref=f83e1538]:
+            - listitem [ref=f83e1539]:
+              - link "Coroutines and tasks" [ref=f83e1540] [cursor=pointer]:
+                - /url: "#"
+              - list [ref=f83e1541]:
+                - listitem [ref=f83e1542]:
+                  - link "Coroutines" [ref=f83e1543] [cursor=pointer]:
+                    - /url: "#coroutines"
+                - listitem [ref=f83e1544]:
+                  - link "Awaitables" [ref=f83e1545] [cursor=pointer]:
+                    - /url: "#awaitables"
+                - listitem [ref=f83e1546]:
+                  - link "Creating tasks" [ref=f83e1547] [cursor=pointer]:
+                    - /url: "#creating-tasks"
+                - listitem [ref=f83e1548]:
+                  - link "Task cancellation" [ref=f83e1549] [cursor=pointer]:
+                    - /url: "#task-cancellation"
+                - listitem [ref=f83e1550]:
+                  - link "Task groups" [ref=f83e1551] [cursor=pointer]:
+                    - /url: "#task-groups"
+                - listitem [ref=f83e1552]:
+                  - link "Sleeping" [ref=f83e1553] [cursor=pointer]:
+                    - /url: "#sleeping"
+                - listitem [ref=f83e1554]:
+                  - link "Running tasks concurrently" [ref=f83e1555] [cursor=pointer]:
+                    - /url: "#running-tasks-concurrently"
+                - listitem [ref=f83e1556]:
+                  - link "Eager task factory" [ref=f83e1557] [cursor=pointer]:
+                    - /url: "#eager-task-factory"
+                - listitem [ref=f83e1558]:
+                  - link "Shielding from cancellation" [ref=f83e1559] [cursor=pointer]:
+                    - /url: "#shielding-from-cancellation"
+                - listitem [ref=f83e1560]:
+                  - link "Timeouts" [ref=f83e1561] [cursor=pointer]:
+                    - /url: "#timeouts"
+                - listitem [ref=f83e1562]:
+                  - link "Waiting primitives" [ref=f83e1563] [cursor=pointer]:
+                    - /url: "#waiting-primitives"
+                - listitem [ref=f83e1564]:
+                  - link "Running in threads" [ref=f83e1565] [cursor=pointer]:
+                    - /url: "#running-in-threads"
+                - listitem [ref=f83e1566]:
+                  - link "Scheduling from other threads" [ref=f83e1567] [cursor=pointer]:
+                    - /url: "#scheduling-from-other-threads"
+                - listitem [ref=f83e1568]:
+                  - link "Introspection" [ref=f83e1569] [cursor=pointer]:
+                    - /url: "#introspection"
+                - listitem [ref=f83e1570]:
+                  - link "Task object" [ref=f83e1571] [cursor=pointer]:
+                    - /url: "#task-object"
+        - generic [ref=f83e1572]:
+          - heading "Previous topic" [level=4] [ref=f83e1573]
+          - paragraph [ref=f83e1574]:
+            - link "Runners" [ref=f83e1575] [cursor=pointer]:
+              - /url: asyncio-runner.html
+        - generic [ref=f83e1576]:
+          - heading "Next topic" [level=4] [ref=f83e1577]
+          - paragraph [ref=f83e1578]:
+            - link "Streams" [ref=f83e1579] [cursor=pointer]:
+              - /url: asyncio-stream.html
+        - note "source link" [ref=f83e1580]:
+          - heading "This page" [level=3] [ref=f83e1581]
+          - list [ref=f83e1582]:
+            - listitem [ref=f83e1583]:
+              - link "Report a bug" [ref=f83e1584] [cursor=pointer]:
+                - /url: ../bugs.html
+            - listitem [ref=f83e1585]:
+              - link "Improve this page" [ref=f83e1586] [cursor=pointer]:
+                - /url: https://docs.python.org/3/improve-page.html?pagetitle=Coroutines+and+tasks&pageurl=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fasyncio-task.html&pagesource=library%2Fasyncio-task.rst
+            - listitem [ref=f83e1587]:
+              - link "Show source" [ref=f83e1588] [cursor=pointer]:
+                - /url: https://github.com/python/cpython/blob/3.15/Doc/library/asyncio-task.rst?plain=1
+      - generic "Collapse sidebar" [ref=f83e1589] [cursor=pointer]: «
+  - navigation "Related" [ref=f83e1591]:
+    - list [ref=f83e1592]:
+      - listitem [ref=f83e1593]:
+        - link "index" [ref=f83e1594] [cursor=pointer]:
+          - /url: ../genindex.html
+      - listitem [ref=f83e1595]:
+        - link "modules" [ref=f83e1596] [cursor=pointer]:
+          - /url: ../py-modindex.html
+        - text: "|"
+      - listitem [ref=f83e1597]:
+        - link "next" [ref=f83e1598] [cursor=pointer]:
+          - /url: asyncio-stream.html
+        - text: "|"
+      - listitem [ref=f83e1599]:
+        - link "previous" [ref=f83e1600] [cursor=pointer]:
+          - /url: asyncio-runner.html
+        - text: "|"
+      - listitem [ref=f83e1601]:
+        - img "Python logo" [ref=f83e1602]
+      - listitem [ref=f83e1603]:
+        - link "Python" [ref=f83e1604] [cursor=pointer]:
+          - /url: https://www.python.org/
+        - text: »
+      - listitem [ref=f83e1605]:
+        - combobox "Language" [ref=f83e1607]:
+          - option "German | Deutsch"
+          - option "Greek | Ελληνικά"
+          - option "English" [selected]
+          - option "Spanish | español"
+          - option "Persian | فارسی"
+          - option "French | français"
+          - option "Italian | italiano"
+          - option "Japanese | 日本語"
+          - option "Korean | 한국어"
+          - option "Punjabi | ਪੰਜਾਬੀ"
+          - option "Polish | polski"
+          - option "Brazilian Portuguese | Português brasileiro"
+          - option "Romanian | Românește"
+          - option "Russian | Русский"
+          - option "Turkish | Türkçe"
+          - option "Simplified Chinese | 简体中文"
+          - option "Traditional Chinese | 繁體中文"
+        - combobox "Python version" [ref=f83e1609]:
+          - option "dev (3.16)"
+          - option "3.15.2" [selected]
+          - option "3.14"
+          - option "3.13"
+          - option "3.12"
+          - option "3.11"
+          - option "3.10"
+          - option "3.9"
+          - option "3.8"
+          - option "3.7"
+          - option "3.6"
+          - option "3.5"
+          - option "3.4"
+          - option "3.3"
+          - option "3.2"
+          - option "3.1"
+          - option "3.0"
+          - option "2.7"
+          - option "2.6"
+      - listitem
+      - listitem [ref=f83e1610]:
+        - link "3.15.2 documentation" [ref=f83e1611] [cursor=pointer]:
+          - /url: ../index.html
+        - text: »
+      - listitem [ref=f83e1612]:
+        - link "The Python standard library" [ref=f83e1613] [cursor=pointer]:
+          - /url: index.html
+        - text: »
+      - listitem [ref=f83e1614]:
+        - link "Networking and Interprocess Communication" [ref=f83e1615] [cursor=pointer]:
+          - /url: ipc.html
+        - text: »
+      - listitem [ref=f83e1616]:
+        - link [ref=f83e1617] [cursor=pointer]:
+          - /url: asyncio.html
+          - code [ref=f83e1618]: asyncio
+          - text: — Asynchronous I/O
+        - text: »
+      - listitem [ref=f83e1619]:
+        - link "Coroutines and tasks" [ref=f83e1620] [cursor=pointer]:
+          - /url: ""
+      - listitem [ref=f83e1621]:
+        - search [ref=f83e1622]:
+          - generic [ref=f83e1623]:
+            - searchbox "Quick search" [ref=f83e1624]
+            - button "Go" [ref=f83e1625]
+        - text: "|"
+      - listitem [ref=f83e1626]:
+        - generic [ref=f83e1627]:
+          - text: Theme
+          - combobox "Theme" [ref=f83e1628]:
+            - option "Auto" [selected]
+            - option "Light"
+            - option "Dark"
+        - text: "|"
+  - generic [ref=f83e1629]:
+    - text: ©
+    - link "Copyright" [ref=f83e1630] [cursor=pointer]:
+      - /url: ../copyright.html
+    - text: 2001 Python Software Foundation. This page is licensed under the Python Software Foundation License Version 2. Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License. See
+    - link "History and License" [ref=f83e1631] [cursor=pointer]:
+      - /url: /license.html
+    - text: for more information. The Python Software Foundation is a non-profit corporation.
+    - link "Please donate." [ref=f83e1632] [cursor=pointer]:
+      - /url: https://www.python.org/psf/donations/
+    - text: Last updated on Nov 01, 2026 (23:28 UTC).
+    - link "Found a bug" [ref=f83e1633] [cursor=pointer]:
+      - /url: /bugs.html
+    - text: "? Created using"
+    - link "Sphinx" [ref=f83e1634] [cursor=pointer]:
+      - /url: https://www.sphinx-doc.org/
+    - text: 8.2.3.
+```

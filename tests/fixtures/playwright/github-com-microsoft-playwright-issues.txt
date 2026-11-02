@@ -1,0 +1,815 @@
+### Page
+- Page URL: https://github.com/microsoft/playwright/issues
+- Page Title: Issues · microsoft/playwright · GitHub
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f127e2]:
+  - generic [ref=f127e3]:
+    - link "Skip to content" [ref=f127e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=f127e9]:
+      - heading "Navigation Menu" [level=2] [ref=f127e10]
+      - generic [ref=f127e11]:
+        - link "Homepage" [ref=f127e14] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f127e17]:
+          - navigation "Global" [ref=f127e18]:
+            - list [ref=f127e19]:
+              - listitem [ref=f127e20]:
+                - button "Products" [ref=f127e22] [cursor=pointer]
+              - listitem [ref=f127e25]:
+                - button "Developers" [ref=f127e27] [cursor=pointer]
+              - listitem [ref=f127e30]:
+                - button "Businesses" [ref=f127e32] [cursor=pointer]
+              - listitem [ref=f127e35]:
+                - button "Resources" [ref=f127e37] [cursor=pointer]
+              - listitem [ref=f127e40]:
+                - link "Pricing" [ref=f127e41] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+          - generic [ref=f127e42]:
+            - button "Search or jump to, type / to search" [ref=f127e44] [cursor=pointer]:
+              - generic [ref=f127e47]:
+                - generic [ref=f127e48]: Search
+                - generic [aria-hidden] [ref=f127e49]: /
+            - generic [ref=f127e50]:
+              - link "Sign in" [ref=f127e52] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fmicrosoft%2Fplaywright%2Fissues
+              - link "Sign up" [ref=f127e55] [cursor=pointer]:
+                - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fissues%2Findex&source=header-repo&source_repo=microsoft%2Fplaywright
+              - button "Appearance settings" [ref=f127e58] [cursor=pointer]
+  - main [ref=f127e65]:
+    - generic "Global navigation menu" [ref=f127e68]:
+      - navigation "Breadcrumbs" [ref=f127e71]:
+        - list [ref=f127e72]:
+          - listitem [ref=f127e73]:
+            - link "microsoft" [ref=f127e74] [cursor=pointer]:
+              - /url: /microsoft
+          - listitem [ref=f127e76]:
+            - link "playwright" [ref=f127e77] [cursor=pointer]:
+              - /url: /microsoft/playwright
+      - heading "Repository navigation" [level=2] [ref=f127e80]
+      - navigation "Repository" [ref=f127e81]:
+        - list [ref=f127e82]:
+          - listitem [ref=f127e83]:
+            - link "Code" [ref=f127e84] [cursor=pointer]:
+              - /url: /microsoft/playwright
+          - listitem [ref=f127e89]:
+            - link "Issues (31)" [ref=f127e90] [cursor=pointer]:
+              - /url: /microsoft/playwright/issues
+              - generic [ref=f127e95]: Issues
+              - generic [ref=f127e96]:
+                - generic [aria-hidden] [ref=f127e97]: "31"
+                - generic [ref=f127e98]: (31)
+          - listitem [ref=f127e99]:
+            - link "Pull requests (11)" [ref=f127e100] [cursor=pointer]:
+              - /url: /microsoft/playwright/pulls
+              - generic [ref=f127e104]: Pull requests
+              - generic [ref=f127e105]:
+                - generic [aria-hidden] [ref=f127e106]: "11"
+                - generic [ref=f127e107]: (11)
+          - listitem [ref=f127e108]:
+            - link "Actions" [ref=f127e109] [cursor=pointer]:
+              - /url: /microsoft/playwright/actions
+          - listitem [ref=f127e114]:
+            - link "Security and quality" [ref=f127e115] [cursor=pointer]:
+              - /url: /microsoft/playwright/security
+          - listitem [ref=f127e120]:
+            - link "Insights" [ref=f127e121] [cursor=pointer]:
+              - /url: /microsoft/playwright/pulse
+    - generic [ref=f127e1063]:
+      - complementary "Issues sidebar navigation" [ref=f127e1064]:
+        - generic [ref=f127e1067]:
+          - navigation "Issue filters" [ref=f127e1068]:
+            - list [ref=f127e1069]:
+              - listitem [ref=f127e1070]:
+                - link "Issues" [ref=f127e1071] [cursor=pointer]:
+                  - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen
+                  - generic "Issues" [ref=f127e1074]
+              - listitem [ref=f127e1075]:
+                - link "Assigned to me" [ref=f127e1076] [cursor=pointer]:
+                  - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen+assignee%3A%40me
+                  - generic "Assigned to me" [ref=f127e1079]
+              - listitem [ref=f127e1080]:
+                - link "Created by me" [ref=f127e1081] [cursor=pointer]:
+                  - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen+author%3A%40me
+                  - generic "Created by me" [ref=f127e1084]
+              - listitem [ref=f127e1085]:
+                - link "Mentioned" [ref=f127e1086] [cursor=pointer]:
+                  - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen+mentions%3A%40me
+                  - generic "Mentioned" [ref=f127e1089]
+              - listitem [ref=f127e1090]:
+                - link "Recent activity" [ref=f127e1091] [cursor=pointer]:
+                  - /url: /microsoft/playwright/issues?q=is%3Aissue+updated%3A%3E%40today-1w+sort%3Aupdated-desc
+                  - generic "Recent activity" [ref=f127e1094]
+          - separator [ref=f127e1095]
+          - navigation "Pages" [ref=f127e1096]:
+            - list [ref=f127e1097]:
+              - listitem [ref=f127e1098]:
+                - link "Views" [ref=f127e1099] [cursor=pointer]:
+                  - /url: /microsoft/playwright/issues/views
+              - listitem [ref=f127e1102]:
+                - link "Milestones" [ref=f127e1103] [cursor=pointer]:
+                  - /url: /microsoft/playwright/milestones
+              - listitem [ref=f127e1106]:
+                - link "Labels" [ref=f127e1107] [cursor=pointer]:
+                  - /url: /microsoft/playwright/labels
+        - generic [ref=f127e1110]:
+          - navigation "Feedback" [ref=f127e1111]:
+            - list [ref=f127e1112]:
+              - listitem [ref=f127e1113]:
+                - link "Feedback Preview" [ref=f127e1114] [cursor=pointer]:
+                  - /url: https://gh.io/issues-sidebar-feedback
+                  - generic [ref=f127e1115]:
+                    - generic [ref=f127e1116]: Feedback
+                    - generic: Preview
+          - list [ref=f127e1117]:
+            - listitem [ref=f127e1118]:
+              - button "Collapse sidebar" [expanded] [ref=f127e1119] [cursor=pointer]
+      - generic [ref=f127e1126]:
+        - generic [ref=f127e1127]:
+          - generic [ref=f127e1128]:
+            - heading "Issues" [level=1] [ref=f127e1131]
+            - link "New issue" [ref=f127e1135] [cursor=pointer]:
+              - /url: /login?return_to=https://github.com/microsoft/playwright/issues
+          - search "Issues" [ref=f127e1139]:
+            - form "Search issues" [ref=f127e1140]:
+              - generic [ref=f127e1143]:
+                - generic [ref=f127e1144]:
+                  - generic [ref=f127e1145]:
+                    - generic [aria-hidden] [ref=f127e1146]:
+                      - generic [ref=f127e1147]:
+                        - text: "is:"
+                        - generic [ref=f127e1148]: issue
+                      - generic [ref=f127e1150]:
+                        - text: "state:"
+                        - generic [ref=f127e1151]: open
+                    - combobox "Search issues" [ref=f127e1153]: is:issue state:open
+                  - button "Clear filter" [ref=f127e1154] [cursor=pointer]
+                - button "Search" [ref=f127e1157] [cursor=pointer]
+        - generic [ref=f127e1161]:
+          - generic [ref=f127e1163]:
+            - heading "Issues" [level=2] [ref=f127e1164]
+            - generic [ref=f127e1165]:
+              - list "Filter issues by state" [ref=f127e1167]:
+                - listitem [ref=f127e1168]:
+                  - link "Open (31)" [ref=f127e1169] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=f127e1170]: Open
+                    - generic [aria-hidden] [ref=f127e1171]: "31"
+                    - generic [ref=f127e1172]: (31)
+                - listitem [ref=f127e1173]:
+                  - link "Closed (18,376)" [ref=f127e1174] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=f127e1175]: Closed
+                    - generic [aria-hidden] [ref=f127e1176]: 18,376
+                    - generic [ref=f127e1177]: (18,376)
+              - toolbar "Issue list controls" [ref=f127e1178]:
+                - generic [ref=f127e1179]:
+                  - button "Filter by author" [ref=f127e1181] [cursor=pointer]:
+                    - generic [ref=f127e1182]: Author
+                  - button "Filter by labels" [ref=f127e1185] [cursor=pointer]:
+                    - generic [ref=f127e1186]: Labels
+                  - button "Filter by projects" [ref=f127e1189] [cursor=pointer]:
+                    - generic [ref=f127e1190]: Projects
+                  - button "Filter by milestones" [ref=f127e1193] [cursor=pointer]:
+                    - generic [ref=f127e1194]: Milestones
+                  - button "Filter by assignees" [ref=f127e1197] [cursor=pointer]:
+                    - generic [ref=f127e1198]: Assignees
+                  - button "Filter by issue type" [ref=f127e1201] [cursor=pointer]:
+                    - generic [ref=f127e1202]: Types
+                - button "More Issue list controls" [ref=f127e1204] [cursor=pointer]
+              - list "Issues display density" [ref=f127e1208]:
+                - listitem [ref=f127e1209]:
+                  - button "Comfortable display density" [pressed] [ref=f127e1210] [cursor=pointer]
+                - listitem [ref=f127e1214]:
+                  - button "Compact display density" [ref=f127e1215] [cursor=pointer]
+            - list "Issues" [ref=f127e1219]:
+              - 'listitem "[Feature]: Long-term Stability and Future Support of Playwright Electron API. More information available below." [ref=f127e1220]':
+                - heading [level=3] [ref=f127e1222]:
+                  - 'link "[Feature]: Long-term Stability and Future Support of Playwright Electron API" [ref=f127e1223] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/issues/43834
+                - generic [ref=f127e1225]:
+                  - generic [ref=f127e1226]: Unread
+                  - img "Open" [ref=f127e1230]
+                - generic [ref=f127e1235]:
+                  - generic [ref=f127e1236]: microsoft/playwright#43834
+                  - generic [ref=f127e1237]:
+                    - text: ·
+                    - button "Filter by author nattaramya" [ref=f127e1238] [cursor=pointer]:
+                      - generic [ref=f127e1239]: Filter by author
+                      - text: nattaramya
+                    - text: opened 8h ago
+              - 'listitem "[Feature]: Update snapshot sticky header in UI Mode Attachments panel. More information available below." [ref=f127e1245]':
+                - generic [ref=f127e1246]:
+                  - heading [level=3] [ref=f127e1247]:
+                    - link [ref=f127e1248] [cursor=pointer]:
+                      - /url: https://github.com/microsoft/playwright/issues/43833
+                      - generic [ref=f127e1250]:
+                        - text: "[Feature]:"
+                        - code [ref=f127e1251]: Update snapshot
+                        - text: sticky header in UI Mode Attachments panel
+                  - button "Filter by label needs-triage" [ref=f127e1254] [cursor=pointer]:
+                    - generic [ref=f127e1255]: needs-triage
+                - generic [ref=f127e1257]:
+                  - generic [ref=f127e1258]: Unread
+                  - img "Open" [ref=f127e1262]
+                - generic [ref=f127e1267]:
+                  - generic [ref=f127e1268]: microsoft/playwright#43833
+                  - generic [ref=f127e1269]:
+                    - text: ·
+                    - button "Filter by author karlhorky" [ref=f127e1270] [cursor=pointer]:
+                      - generic [ref=f127e1271]: Filter by author
+                      - text: karlhorky
+                    - text: opened 9h ago
+                - generic [ref=f127e1272]:
+                  - 'link "1 linked pull request microsoft/playwright#43835: feat(ui-mode): update individual image snapshots, Draft" [ref=f127e1274] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43835
+                    - generic [aria-hidden] [ref=f127e1277]: "1"
+                  - generic [ref=f127e1278]:
+                    - img "2 comments" [ref=f127e1279]
+                    - text: "2"
+              - 'listitem "[Bug]: --only-changed misses a test file when two ESM test files share an import. More information available below." [ref=f127e1283]':
+                - generic [ref=f127e1284]:
+                  - heading [level=3] [ref=f127e1285]:
+                    - 'link "[Bug]: --only-changed misses a test file when two ESM test files share an import" [ref=f127e1286] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43824
+                  - button "Filter by label needs-triage" [ref=f127e1290] [cursor=pointer]:
+                    - generic [ref=f127e1291]: needs-triage
+                - generic [ref=f127e1293]:
+                  - generic [ref=f127e1294]: Unread
+                  - img "Open" [ref=f127e1298]
+                - generic [ref=f127e1303]:
+                  - generic [ref=f127e1304]: microsoft/playwright#43824
+                  - generic [ref=f127e1305]:
+                    - text: ·
+                    - button "Filter by author cpeaustriajc" [ref=f127e1306] [cursor=pointer]:
+                      - generic [ref=f127e1307]: Filter by author
+                      - text: cpeaustriajc
+                    - text: opened 1d ago
+                - generic [ref=f127e1308]:
+                  - button "2 linked pull requests" [ref=f127e1310] [cursor=pointer]:
+                    - generic [ref=f127e1311]: "2"
+                  - generic [ref=f127e1313]:
+                    - img "2 comments" [ref=f127e1314]
+                    - text: "2"
+              - 'listitem "[Feature]: Let an MCP client label its own extension tab group. More information available below." [ref=f127e1318]':
+                - generic [ref=f127e1319]:
+                  - heading [level=3] [ref=f127e1320]:
+                    - 'link "[Feature]: Let an MCP client label its own extension tab group" [ref=f127e1321] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43823
+                  - button "Filter by label needs-triage" [ref=f127e1325] [cursor=pointer]:
+                    - generic [ref=f127e1326]: needs-triage
+                - generic [ref=f127e1328]:
+                  - generic [ref=f127e1329]: Unread
+                  - img "Open" [ref=f127e1333]
+                - generic [ref=f127e1338]:
+                  - generic [ref=f127e1339]: microsoft/playwright#43823
+                  - generic [ref=f127e1340]:
+                    - text: ·
+                    - button "Filter by author rasmusbe" [ref=f127e1341] [cursor=pointer]:
+                      - generic [ref=f127e1342]: Filter by author
+                      - text: rasmusbe
+                    - text: opened 2d ago
+                - generic [ref=f127e1343]:
+                  - 'link "1 linked pull request microsoft/playwright#43827: feat(extension): let MCP clients label their tab groups, Draft" [ref=f127e1345] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43827
+                    - generic [aria-hidden] [ref=f127e1348]: "1"
+                  - generic [ref=f127e1349]:
+                    - img "2 comments" [ref=f127e1350]
+                    - text: "2"
+              - 'listitem "[Bug]: ariaSnapshot({ mode: ''ai'' }) drops the name of dialogs, landmarks, tables and column headers when it comes from a visible descendant. More information available below." [ref=f127e1354]':
+                - generic [ref=f127e1355]:
+                  - heading [level=3] [ref=f127e1356]:
+                    - 'link "[Bug]: ariaSnapshot({ mode: ''ai'' }) drops the name of dialogs, landmarks, tables and column headers when it comes from a visible descendant" [ref=f127e1357] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43809
+                  - button "Filter by label needs-triage" [ref=f127e1361] [cursor=pointer]:
+                    - generic [ref=f127e1362]: needs-triage
+                - generic [ref=f127e1364]:
+                  - generic [ref=f127e1365]: Unread
+                  - img "Open" [ref=f127e1369]
+                - generic [ref=f127e1374]:
+                  - generic [ref=f127e1375]: microsoft/playwright#43809
+                  - generic [ref=f127e1376]:
+                    - text: ·
+                    - button "Filter by author Meet-Pansuriya" [ref=f127e1377] [cursor=pointer]:
+                      - generic [ref=f127e1378]: Filter by author
+                      - text: Meet-Pansuriya
+                    - text: opened 2d ago
+                - generic [ref=f127e1379]:
+                  - 'link "1 linked pull request microsoft/playwright#43810: fix(aria): preserve identifying container names in AI snapshots, Open" [ref=f127e1381] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43810
+                    - generic [aria-hidden] [ref=f127e1384]: "1"
+                  - generic [ref=f127e1385]:
+                    - img "3 comments" [ref=f127e1386]
+                    - text: "3"
+              - listitem "[api review 1.65] Built-in exclusive lock. More information available below." [ref=f127e1390]:
+                - heading [level=3] [ref=f127e1392]:
+                  - link "[api review 1.65] Built-in exclusive lock" [ref=f127e1393] [cursor=pointer]:
+                    - /url: https://github.com/microsoft/playwright/issues/43797
+                - generic [ref=f127e1395]:
+                  - generic [ref=f127e1396]: Unread
+                  - img "Open" [ref=f127e1400]
+                - generic [ref=f127e1405]:
+                  - generic [ref=f127e1406]: microsoft/playwright#43797
+                  - generic [ref=f127e1407]:
+                    - text: ·
+                    - button "Filter by author dgozman" [ref=f127e1408] [cursor=pointer]:
+                      - generic [ref=f127e1409]: Filter by author
+                      - text: dgozman
+                    - text: opened 3d ago
+              - listitem "[api review 1.65] Trace secrets option; trace stores fewer context options. More information available below." [ref=f127e1415]:
+                - generic [ref=f127e1416]:
+                  - heading [level=3] [ref=f127e1417]:
+                    - link "[api review 1.65] Trace secrets option; trace stores fewer context options" [ref=f127e1418] [cursor=pointer]:
+                      - /url: https://github.com/microsoft/playwright/issues/43796
+                  - button "Filter by label needs-triage" [ref=f127e1422] [cursor=pointer]:
+                    - generic [ref=f127e1423]: needs-triage
+                - generic [ref=f127e1425]:
+                  - generic [ref=f127e1426]: Unread
+                  - img "Open" [ref=f127e1430]
+                - generic [ref=f127e1435]:
+                  - generic [ref=f127e1436]: microsoft/playwright#43796
+                  - generic [ref=f127e1437]:
+                    - text: ·
+                    - button "Filter by author dgozman" [ref=f127e1438] [cursor=pointer]:
+                      - generic [ref=f127e1439]: Filter by author
+                      - text: dgozman
+                    - text: opened 3d ago
+                - generic [ref=f127e1440]:
+                  - 'link "1 linked pull request microsoft/playwright#43806: feat(test runner): support dotenv files for trace secrets, Open" [ref=f127e1442] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43806
+                    - generic [aria-hidden] [ref=f127e1445]: "1"
+                  - generic [ref=f127e1446]:
+                    - img "2 comments" [ref=f127e1447]
+                    - text: "2"
+              - listitem "[api review 1.65] Reporter secrets option. More information available below." [ref=f127e1451]:
+                - generic [ref=f127e1452]:
+                  - heading [level=3] [ref=f127e1453]:
+                    - link "[api review 1.65] Reporter secrets option" [ref=f127e1454] [cursor=pointer]:
+                      - /url: https://github.com/microsoft/playwright/issues/43795
+                  - button "Filter by label needs-triage" [ref=f127e1458] [cursor=pointer]:
+                    - generic [ref=f127e1459]: needs-triage
+                - generic [ref=f127e1461]:
+                  - generic [ref=f127e1462]: Unread
+                  - img "Open" [ref=f127e1466]
+                - generic [ref=f127e1471]:
+                  - generic [ref=f127e1472]: microsoft/playwright#43795
+                  - generic [ref=f127e1473]:
+                    - text: ·
+                    - button "Filter by author dgozman" [ref=f127e1474] [cursor=pointer]:
+                      - generic [ref=f127e1475]: Filter by author
+                      - text: dgozman
+                    - text: opened 3d ago
+                - generic [ref=f127e1476]:
+                  - 'link "1 linked pull request microsoft/playwright#43807: fix(reporters): complete secret redaction, Draft" [ref=f127e1478] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43807
+                    - generic [aria-hidden] [ref=f127e1481]: "1"
+                  - generic [ref=f127e1482]:
+                    - img "2 comments" [ref=f127e1483]
+                    - text: "2"
+              - listitem "[api review 1.65] Inert elements and content outside a modal <dialog> are hidden. More information available below." [ref=f127e1487]:
+                - generic [ref=f127e1488]:
+                  - heading [level=3] [ref=f127e1489]:
+                    - link "[api review 1.65] Inert elements and content outside a modal <dialog> are hidden" [ref=f127e1490] [cursor=pointer]:
+                      - /url: https://github.com/microsoft/playwright/issues/43792
+                  - button "Filter by label needs-triage" [ref=f127e1494] [cursor=pointer]:
+                    - generic [ref=f127e1495]: needs-triage
+                - generic [ref=f127e1497]:
+                  - generic [ref=f127e1498]: Unread
+                  - img "Open" [ref=f127e1502]
+                - generic [ref=f127e1507]:
+                  - generic [ref=f127e1508]: microsoft/playwright#43792
+                  - generic [ref=f127e1509]:
+                    - text: ·
+                    - button "Filter by author dgozman" [ref=f127e1510] [cursor=pointer]:
+                      - generic [ref=f127e1511]: Filter by author
+                      - text: dgozman
+                    - text: opened 3d ago
+                - generic [ref=f127e1512]:
+                  - 'link "1 linked pull request microsoft/playwright#43804: fix(a11y): limit inert checks to actionability, Draft" [ref=f127e1514] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43804
+                    - generic [aria-hidden] [ref=f127e1517]: "1"
+                  - generic [ref=f127e1518]:
+                    - img "2 comments" [ref=f127e1519]
+                    - text: "2"
+              - 'listitem "[Bug]: WebKit does not download text/plain with Content-Disposition: attachment. More information available below." [ref=f127e1523]':
+                - generic [ref=f127e1524]:
+                  - heading [level=3] [ref=f127e1525]:
+                    - 'link "[Bug]: WebKit does not download text/plain with Content-Disposition: attachment" [ref=f127e1526] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43763
+                  - button "Filter by label browser-webkit" [ref=f127e1530] [cursor=pointer]:
+                    - generic [ref=f127e1531]: browser-webkit
+                - generic [ref=f127e1533]:
+                  - generic [ref=f127e1534]: Unread
+                  - img "Open" [ref=f127e1538]
+                - generic [ref=f127e1543]:
+                  - generic [ref=f127e1544]: microsoft/playwright#43763
+                  - generic [ref=f127e1545]:
+                    - text: ·
+                    - button "Filter by author saurabh281991" [ref=f127e1546] [cursor=pointer]:
+                      - generic [ref=f127e1547]: Filter by author
+                      - text: saurabh281991
+                    - text: opened 3d ago
+                - generic [ref=f127e1550]:
+                  - img "3 comments" [ref=f127e1551]
+                  - text: "3"
+              - 'listitem "[MCP]: browser_evaluate / browser_click never return on pages that cannot run timers (CSP sandbox, paused clock). More information available below." [ref=f127e1555]':
+                - generic [ref=f127e1556]:
+                  - heading [level=3] [ref=f127e1557]:
+                    - 'link "[MCP]: browser_evaluate / browser_click never return on pages that cannot run timers (CSP sandbox, paused clock)" [ref=f127e1558] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43752
+                  - button "Filter by label needs-triage" [ref=f127e1562] [cursor=pointer]:
+                    - generic [ref=f127e1563]: needs-triage
+                - generic [ref=f127e1565]:
+                  - generic [ref=f127e1566]: Unread
+                  - img "Open" [ref=f127e1570]
+                - generic [ref=f127e1575]:
+                  - generic [ref=f127e1576]: microsoft/playwright#43752
+                  - generic [ref=f127e1577]:
+                    - text: ·
+                    - button "Filter by author bgmacris" [ref=f127e1578] [cursor=pointer]:
+                      - generic [ref=f127e1579]: Filter by author
+                      - text: bgmacris
+                    - text: opened 4d ago
+                - generic [ref=f127e1580]:
+                  - 'link "1 linked pull request microsoft/playwright#43767: fix(mcp): bound settle waits when page timers cannot run, Open" [ref=f127e1582] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43767
+                    - generic [aria-hidden] [ref=f127e1585]: "1"
+                  - generic [ref=f127e1586]:
+                    - img "2 comments" [ref=f127e1587]
+                    - text: "2"
+              - 'listitem "[Feature]: Test step names as tooltips in HTML report. More information available below." [ref=f127e1591]':
+                - generic [ref=f127e1592]:
+                  - heading [level=3] [ref=f127e1593]:
+                    - 'link "[Feature]: Test step names as tooltips in HTML report" [ref=f127e1594] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43741
+                  - button "Filter by label needs-triage" [ref=f127e1598] [cursor=pointer]:
+                    - generic [ref=f127e1599]: needs-triage
+                - generic [ref=f127e1601]:
+                  - generic [ref=f127e1602]: Unread
+                  - img "Open" [ref=f127e1606]
+                - generic [ref=f127e1611]:
+                  - generic [ref=f127e1612]: microsoft/playwright#43741
+                  - generic [ref=f127e1613]:
+                    - text: ·
+                    - button "Filter by author jack5github" [ref=f127e1614] [cursor=pointer]:
+                      - generic [ref=f127e1615]: Filter by author
+                      - text: jack5github
+                    - text: opened 4d ago
+                - generic [ref=f127e1618]:
+                  - img "3 comments" [ref=f127e1619]
+                  - text: "3"
+              - 'listitem "[Feature]: Ship a Chromium build without the distrusted emSign ECC Root CA - G3 (eMudhra key compromise, CVE-2026-111943). More information available below." [ref=f127e1623]':
+                - heading [level=3] [ref=f127e1625]:
+                  - 'link "[Feature]: Ship a Chromium build without the distrusted emSign ECC Root CA - G3 (eMudhra key compromise, CVE-2026-111943)" [ref=f127e1626] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/issues/43687
+                - generic [ref=f127e1628]:
+                  - generic [ref=f127e1629]: Unread
+                  - img "Open" [ref=f127e1633]
+                - generic [ref=f127e1638]:
+                  - generic [ref=f127e1639]: microsoft/playwright#43687
+                  - generic [ref=f127e1640]:
+                    - text: ·
+                    - button "Filter by author jim-fal" [ref=f127e1641] [cursor=pointer]:
+                      - generic [ref=f127e1642]: Filter by author
+                      - text: jim-fal
+                    - text: opened 5d ago
+                - generic [ref=f127e1645]:
+                  - img "3 comments" [ref=f127e1646]
+                  - text: "3"
+              - 'listitem "[Bug]: Page.captureScreenshot never returns in Chromium when the page navigates away right after it is sent. More information available below." [ref=f127e1650]':
+                - generic [ref=f127e1651]:
+                  - heading [level=3] [ref=f127e1652]:
+                    - 'link "[Bug]: Page.captureScreenshot never returns in Chromium when the page navigates away right after it is sent" [ref=f127e1653] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43685
+                  - button "Filter by label browser-chromium" [ref=f127e1657] [cursor=pointer]:
+                    - generic [ref=f127e1658]: browser-chromium
+                - generic [ref=f127e1660]:
+                  - generic [ref=f127e1661]: Unread
+                  - img "Open" [ref=f127e1665]
+                - generic [ref=f127e1670]:
+                  - generic [ref=f127e1671]: microsoft/playwright#43685
+                  - generic [ref=f127e1672]:
+                    - text: ·
+                    - button "Filter by author yury-s" [ref=f127e1673] [cursor=pointer]:
+                      - generic [ref=f127e1674]: Filter by author
+                      - text: yury-s
+                    - text: opened 5d ago
+                - generic [ref=f127e1675]:
+                  - 'link "1 linked pull request microsoft/playwright#43721: fix(chromium): retry screenshot when page navigates away mid capture, Closed" [ref=f127e1677] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43721
+                    - generic [aria-hidden] [ref=f127e1680]: "1"
+                  - generic [ref=f127e1681]:
+                    - img "3 comments" [ref=f127e1682]
+                    - text: "3"
+              - 'listitem "[Bug]: WebKit decodes HTML from route.fulfill() as windows-1252, ignoring charset=utf-8. More information available below." [ref=f127e1686]':
+                - generic [ref=f127e1687]:
+                  - heading [level=3] [ref=f127e1688]:
+                    - 'link "[Bug]: WebKit decodes HTML from route.fulfill() as windows-1252, ignoring charset=utf-8" [ref=f127e1689] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43649
+                  - button "Filter by label browser-webkit" [ref=f127e1693] [cursor=pointer]:
+                    - generic [ref=f127e1694]: browser-webkit
+                - generic [ref=f127e1696]:
+                  - generic [ref=f127e1697]: Unread
+                  - img "Open" [ref=f127e1701]
+                - generic [ref=f127e1706]:
+                  - generic [ref=f127e1707]: microsoft/playwright#43649
+                  - generic [ref=f127e1708]:
+                    - text: ·
+                    - button "Filter by author jay-tau" [ref=f127e1709] [cursor=pointer]:
+                      - generic [ref=f127e1710]: Filter by author
+                      - text: jay-tau
+                    - text: opened 1w ago
+                - generic [ref=f127e1713]:
+                  - img "3 comments" [ref=f127e1714]
+                  - text: "3"
+              - 'listitem "[Bug]: Firefox BiDi: page.title() intermittently returns an empty string after navigation. More information available below." [ref=f127e1718]':
+                - generic [ref=f127e1719]:
+                  - heading [level=3] [ref=f127e1720]:
+                    - 'link "[Bug]: Firefox BiDi: page.title() intermittently returns an empty string after navigation" [ref=f127e1721] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43644
+                  - button "Filter by label bidi" [ref=f127e1725] [cursor=pointer]:
+                    - generic [ref=f127e1726]: bidi
+                - generic [ref=f127e1728]:
+                  - generic [ref=f127e1729]: Unread
+                  - img "Open" [ref=f127e1733]
+                - generic [ref=f127e1738]:
+                  - generic [ref=f127e1739]: microsoft/playwright#43644
+                  - generic [ref=f127e1740]:
+                    - text: ·
+                    - button "Filter by author Miguel0888" [ref=f127e1741] [cursor=pointer]:
+                      - generic [ref=f127e1742]: Filter by author
+                      - text: Miguel0888
+                    - text: opened 1w ago
+                - generic [ref=f127e1745]:
+                  - img "4 comments" [ref=f127e1746]
+                  - text: "4"
+              - 'listitem "[Bug]: Firefox delivers other pages'' mouse events to a page that captured the pointer. More information available below." [ref=f127e1750]':
+                - generic [ref=f127e1751]:
+                  - heading [level=3] [ref=f127e1752]:
+                    - 'link "[Bug]: Firefox delivers other pages'' mouse events to a page that captured the pointer" [ref=f127e1753] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43631
+                  - button "Filter by label browser-firefox" [ref=f127e1757] [cursor=pointer]:
+                    - generic [ref=f127e1758]: browser-firefox
+                - generic [ref=f127e1760]:
+                  - generic [ref=f127e1761]: Unread
+                  - img "Open" [ref=f127e1765]
+                - generic [ref=f127e1770]:
+                  - generic [ref=f127e1771]: microsoft/playwright#43631
+                  - generic [ref=f127e1772]:
+                    - text: ·
+                    - button "Filter by author nstepien" [ref=f127e1773] [cursor=pointer]:
+                      - generic [ref=f127e1774]: Filter by author
+                      - text: nstepien
+                    - text: opened 1w ago
+                - generic [ref=f127e1777]:
+                  - img "1 comments" [ref=f127e1778]
+                  - text: "1"
+              - 'listitem "[Bug]: Chromium: a popup that opens the next popup through its opener never finishes loading when it holds a cross-site iframe. More information available below." [ref=f127e1782]':
+                - generic [ref=f127e1783]:
+                  - heading [level=3] [ref=f127e1784]:
+                    - 'link "[Bug]: Chromium: a popup that opens the next popup through its opener never finishes loading when it holds a cross-site iframe" [ref=f127e1785] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43629
+                  - button "Filter by label browser-chromium" [ref=f127e1789] [cursor=pointer]:
+                    - generic [ref=f127e1790]: browser-chromium
+                - generic [ref=f127e1792]:
+                  - generic [ref=f127e1793]: Unread
+                  - img "Open" [ref=f127e1797]
+                - generic [ref=f127e1802]:
+                  - generic [ref=f127e1803]: microsoft/playwright#43629
+                  - generic [ref=f127e1804]:
+                    - text: ·
+                    - button "Filter by author TheMalloum" [ref=f127e1805] [cursor=pointer]:
+                      - generic [ref=f127e1806]: Filter by author
+                      - text: TheMalloum
+                    - text: opened 1w ago
+                - generic [ref=f127e1807]:
+                  - generic [ref=f127e1809]:
+                    - img "1 comments" [ref=f127e1810]
+                    - text: "1"
+                  - button "Filter by assignee dgozman" [ref=f127e1814] [cursor=pointer]
+              - 'listitem "[Bug]: request.response() never resolves for a service worker''s own script when many contexts register service workers at once. More information available below." [ref=f127e1815]':
+                - generic [ref=f127e1816]:
+                  - heading [level=3] [ref=f127e1817]:
+                    - link [ref=f127e1818] [cursor=pointer]:
+                      - /url: https://github.com/microsoft/playwright/issues/43562
+                      - generic [ref=f127e1820]:
+                        - text: "[Bug]:"
+                        - code [ref=f127e1821]: request.response()
+                        - text: never resolves for a service worker's own script when many contexts register service workers at once
+                  - button "Filter by label browser-chromium" [ref=f127e1824] [cursor=pointer]:
+                    - generic [ref=f127e1825]: browser-chromium
+                - generic [ref=f127e1827]:
+                  - generic [ref=f127e1828]: Unread
+                  - img "Open" [ref=f127e1832]
+                - generic [ref=f127e1837]:
+                  - generic [ref=f127e1838]: microsoft/playwright#43562
+                  - generic [ref=f127e1839]:
+                    - text: ·
+                    - button "Filter by author pavelfeldman" [ref=f127e1840] [cursor=pointer]:
+                      - generic [ref=f127e1841]: Filter by author
+                      - text: pavelfeldman
+                    - text: opened 2w ago
+                - generic [ref=f127e1842]:
+                  - 'link "1 linked pull request microsoft/playwright#43566: fix(chromium): detach page-side service worker session without resuming it, Merged" [ref=f127e1844] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43566
+                    - generic [aria-hidden] [ref=f127e1847]: "1"
+                  - generic [ref=f127e1848]:
+                    - img "3 comments" [ref=f127e1849]
+                    - text: "3"
+                  - button "Filter by assignee dgozman" [ref=f127e1853] [cursor=pointer]
+              - 'listitem "[Bug]: Chromium: any route on the opener stalls subresource requests of an about:blank popup (window.open + document.write). More information available below." [ref=f127e1854]':
+                - generic [ref=f127e1855]:
+                  - heading [level=3] [ref=f127e1856]:
+                    - 'link "[Bug]: Chromium: any route on the opener stalls subresource requests of an about:blank popup (window.open + document.write)" [ref=f127e1857] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43496
+                  - button "Filter by label browser-chromium" [ref=f127e1861] [cursor=pointer]:
+                    - generic [ref=f127e1862]: browser-chromium
+                - generic [ref=f127e1864]:
+                  - generic [ref=f127e1865]: Unread
+                  - img "Open" [ref=f127e1869]
+                - generic [ref=f127e1874]:
+                  - generic [ref=f127e1875]: microsoft/playwright#43496
+                  - generic [ref=f127e1876]:
+                    - text: ·
+                    - button "Filter by author tonioloewald" [ref=f127e1877] [cursor=pointer]:
+                      - generic [ref=f127e1878]: Filter by author
+                      - text: tonioloewald
+                    - text: opened 2w ago
+                - generic [ref=f127e1879]:
+                  - 'link "1 linked pull request microsoft/playwright#43521: fix(chromium): do not stall about:blank popup subresources when routing, Closed" [ref=f127e1881] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/43521
+                    - generic [aria-hidden] [ref=f127e1884]: "1"
+                  - generic [ref=f127e1885]:
+                    - img "2 comments" [ref=f127e1886]
+                    - text: "2"
+                  - button "Filter by assignee dgozman" [ref=f127e1890] [cursor=pointer]
+              - 'listitem "[Bug]: --extension mode with pre-shared token attaches to connect.html itself; first browser_navigate fails (TypeError: Cannot read properties of undefined (reading ''url'')). More information available below." [ref=f127e1891]':
+                - generic [ref=f127e1892]:
+                  - heading [level=3] [ref=f127e1893]:
+                    - 'link "[Bug]: --extension mode with pre-shared token attaches to connect.html itself; first browser_navigate fails (TypeError: Cannot read properties of undefined (reading ''url''))" [ref=f127e1894] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43230
+                  - button "Filter by label needs-triage" [ref=f127e1898] [cursor=pointer]:
+                    - generic [ref=f127e1899]: needs-triage
+                - generic [ref=f127e1901]:
+                  - generic [ref=f127e1902]: Unread
+                  - img "Open" [ref=f127e1906]
+                - generic [ref=f127e1911]:
+                  - generic [ref=f127e1912]: microsoft/playwright#43230
+                  - generic [ref=f127e1913]:
+                    - text: ·
+                    - button "Filter by author janacm" [ref=f127e1914] [cursor=pointer]:
+                      - generic [ref=f127e1915]: Filter by author
+                      - text: janacm
+                    - text: opened 3w ago
+                - generic [ref=f127e1916]:
+                  - button "2 linked pull requests" [ref=f127e1918] [cursor=pointer]:
+                    - generic [ref=f127e1919]: "2"
+                  - generic [ref=f127e1921]:
+                    - img "12 comments" [ref=f127e1922]
+                    - text: "12"
+                  - button "Filter by assignee yury-s" [ref=f127e1926] [cursor=pointer]
+              - 'listitem "[BUG] WebKit (Linux): Assertion error in WKPage._onTargetCreated on a cross-site redirect chain. More information available below." [ref=f127e1927]':
+                - generic [ref=f127e1928]:
+                  - heading [level=3] [ref=f127e1929]:
+                    - 'link "[BUG] WebKit (Linux): Assertion error in WKPage._onTargetCreated on a cross-site redirect chain" [ref=f127e1930] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/43067
+                  - button "Filter by label browser-webkit" [ref=f127e1934] [cursor=pointer]:
+                    - generic [ref=f127e1935]: browser-webkit
+                - generic [ref=f127e1937]:
+                  - generic [ref=f127e1938]: Unread
+                  - img "Open" [ref=f127e1942]
+                - generic [ref=f127e1947]:
+                  - generic [ref=f127e1948]: microsoft/playwright#43067
+                  - generic [ref=f127e1949]:
+                    - text: ·
+                    - button "Filter by author MO2k4" [ref=f127e1950] [cursor=pointer]:
+                      - generic [ref=f127e1951]: Filter by author
+                      - text: MO2k4
+                    - text: opened on Oct 2
+                - generic [ref=f127e1952]:
+                  - button "2 linked pull requests" [ref=f127e1954] [cursor=pointer]:
+                    - generic [ref=f127e1955]: "2"
+                  - generic [ref=f127e1957]:
+                    - img "5 comments" [ref=f127e1958]
+                    - text: "5"
+                  - button "Filter by assignee yury-s" [ref=f127e1962] [cursor=pointer]
+              - 'listitem "[Feature]: Support compression effort option for WebP screenshots and visual regression. More information available below." [ref=f127e1963]':
+                - heading [level=3] [ref=f127e1965]:
+                  - 'link "[Feature]: Support compression effort option for WebP screenshots and visual regression" [ref=f127e1966] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/issues/43045
+                - generic [ref=f127e1968]:
+                  - generic [ref=f127e1969]: Unread
+                  - img "Open" [ref=f127e1973]
+                - generic [ref=f127e1978]:
+                  - generic [ref=f127e1979]: microsoft/playwright#43045
+                  - generic [ref=f127e1980]:
+                    - text: ·
+                    - button "Filter by author sudar69" [ref=f127e1981] [cursor=pointer]:
+                      - generic [ref=f127e1982]: Filter by author
+                      - text: sudar69
+                    - text: opened on Oct 1
+                - generic [ref=f127e1983]:
+                  - generic [ref=f127e1985]:
+                    - img "2 comments" [ref=f127e1986]
+                    - text: "2"
+                  - button "Filter by assignee yury-s" [ref=f127e1990] [cursor=pointer]
+              - 'listitem "[MCP]: --extension background mode: let several agents use the logged-in browser without taking the screen. More information available below." [ref=f127e1991]':
+                - generic [ref=f127e1992]:
+                  - heading [level=3] [ref=f127e1993]:
+                    - 'link "[MCP]: --extension background mode: let several agents use the logged-in browser without taking the screen" [ref=f127e1994] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/42973
+                  - button "Filter by label browser-chromium" [ref=f127e1998] [cursor=pointer]:
+                    - generic [ref=f127e1999]: browser-chromium
+                - generic [ref=f127e2001]:
+                  - generic [ref=f127e2002]: Unread
+                  - img "Open" [ref=f127e2006]
+                - generic [ref=f127e2011]:
+                  - generic [ref=f127e2012]: microsoft/playwright#42973
+                  - generic [ref=f127e2013]:
+                    - text: ·
+                    - button "Filter by author isaachorowitz" [ref=f127e2014] [cursor=pointer]:
+                      - generic [ref=f127e2015]: Filter by author
+                      - text: isaachorowitz
+                    - text: opened on Sep 28
+                - generic [ref=f127e2016]:
+                  - generic [ref=f127e2018]:
+                    - img "2 comments" [ref=f127e2019]
+                    - text: "2"
+                  - button "Filter by assignee yury-s" [ref=f127e2023] [cursor=pointer]
+              - 'listitem "[Bug]: Firefox focus emulation stops at the top-level document. More information available below." [ref=f127e2024]':
+                - generic [ref=f127e2025]:
+                  - heading [level=3] [ref=f127e2026]:
+                    - 'link "[Bug]: Firefox focus emulation stops at the top-level document" [ref=f127e2027] [cursor=pointer]':
+                      - /url: https://github.com/microsoft/playwright/issues/42933
+                  - button "Filter by label browser-firefox" [ref=f127e2031] [cursor=pointer]:
+                    - generic [ref=f127e2032]: browser-firefox
+                - generic [ref=f127e2034]:
+                  - generic [ref=f127e2035]: Unread
+                  - img "Open" [ref=f127e2039]
+                - generic [ref=f127e2044]:
+                  - generic [ref=f127e2045]: microsoft/playwright#42933
+                  - generic [ref=f127e2046]:
+                    - text: ·
+                    - button "Filter by author top-sigrid" [ref=f127e2047] [cursor=pointer]:
+                      - generic [ref=f127e2048]: Filter by author
+                      - text: top-sigrid
+                    - text: opened on Sep 25
+                - generic [ref=f127e2049]:
+                  - 'link "1 linked pull request microsoft/playwright#42969: test(firefox): focused iframe should not blur on input to another page, Merged" [ref=f127e2051] [cursor=pointer]':
+                    - /url: https://github.com/microsoft/playwright/pull/42969
+                    - generic [aria-hidden] [ref=f127e2054]: "1"
+                  - generic [ref=f127e2055]:
+                    - img "5 comments" [ref=f127e2056]
+                    - text: "5"
+          - navigation "Pagination" [ref=f127e2060]:
+            - generic [ref=f127e2061]:
+              - link [disabled] [aria-hidden] [ref=f127e2062]:
+                - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen
+                - text: Previous
+              - link "Page 1" [ref=f127e2065] [cursor=pointer]:
+                - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen
+                - text: "1"
+              - link "Page 2" [ref=f127e2066] [cursor=pointer]:
+                - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen&page=2
+                - text: "2"
+              - link "Next Page" [ref=f127e2067] [cursor=pointer]:
+                - /url: /microsoft/playwright/issues?q=is%3Aissue+state%3Aopen&page=2
+                - text: Next
+  - contentinfo [ref=f127e1029]:
+    - heading "Footer" [level=2] [ref=f127e1030]
+    - generic [ref=f127e1031]:
+      - generic [ref=f127e1032]:
+        - link "GitHub Homepage" [ref=f127e1033] [cursor=pointer]:
+          - /url: https://github.com
+        - generic [ref=f127e1036]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=f127e1037]:
+        - heading "Footer navigation" [level=3] [ref=f127e1038]
+        - list "Footer navigation" [ref=f127e1039]:
+          - listitem [ref=f127e1040]:
+            - link "Terms" [ref=f127e1041] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=f127e1042]:
+            - link "Privacy" [ref=f127e1043] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=f127e1044]:
+            - link "Security" [ref=f127e1045] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=f127e1046]:
+            - link "Status" [ref=f127e1047] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=f127e1048]:
+            - link "Community" [ref=f127e1049] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=f127e1050]:
+            - link "Docs" [ref=f127e1051] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=f127e1052]:
+            - link "Contact" [ref=f127e1053] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=f127e1054]:
+            - button "Manage cookies" [ref=f127e1056] [cursor=pointer]
+          - listitem [ref=f127e1057]:
+            - button "Do not share my personal information" [ref=f127e1059] [cursor=pointer]
+```

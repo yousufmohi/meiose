@@ -1,0 +1,309 @@
+### Page
+- Page URL: https://crates.io/crates/serde
+- Page Title: serde - crates.io: Rust Package Registry
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f140e2]:
+  - banner [ref=f140e3]:
+    - generic [ref=f140e4]:
+      - link "crates.io" [ref=f140e5] [cursor=pointer]:
+        - /url: /
+      - search [ref=f140e8]:
+        - textbox "Search" [ref=f140e9]:
+          - /placeholder: Type 'S' or '/' to search
+        - button "Search" [ref=f140e10] [cursor=pointer]
+      - navigation [ref=f140e13]:
+        - 'button "Change color scheme. Current: system" [ref=f140e16] [cursor=pointer]'
+        - button "Log in with GitHub" [ref=f140e19] [cursor=pointer]
+      - text: ▼
+  - main [ref=f140e21]:
+    - generic [ref=f140e22]:
+      - generic [ref=f140e23]:
+        - heading "serde v1.0.229" [level=1] [ref=f140e25]:
+          - generic [ref=f140e26]: serde
+          - generic [ref=f140e27]: v1.0.229
+        - generic [ref=f140e28]: A generic serialization/deserialization framework
+        - list "Keywords" [ref=f140e29]:
+          - listitem [ref=f140e30]:
+            - link "serialization" [ref=f140e31] [cursor=pointer]:
+              - /url: /keywords/serialization
+              - generic [aria-hidden] [ref=f140e32]: "#"
+              - text: serialization
+          - listitem [ref=f140e33]:
+            - link "no_std" [ref=f140e34] [cursor=pointer]:
+              - /url: /keywords/no_std
+              - generic [aria-hidden] [ref=f140e35]: "#"
+              - text: no_std
+          - listitem [ref=f140e36]:
+            - link "serde" [ref=f140e37] [cursor=pointer]:
+              - /url: /keywords/serde
+              - generic [aria-hidden] [ref=f140e38]: "#"
+              - text: serde
+      - navigation "serde crate subpages" [ref=f140e39]:
+        - list [ref=f140e40]:
+          - listitem [ref=f140e41]:
+            - link "Readme" [ref=f140e42] [cursor=pointer]:
+              - /url: /crates/serde
+          - listitem [ref=f140e43]:
+            - link "Code" [ref=f140e44] [cursor=pointer]:
+              - /url: /crates/serde/code
+          - listitem [ref=f140e45]:
+            - link "316 Versions" [ref=f140e46] [cursor=pointer]:
+              - /url: /crates/serde/versions
+          - listitem [ref=f140e47]:
+            - link "Dependencies" [ref=f140e48] [cursor=pointer]:
+              - /url: /crates/serde/dependencies
+          - listitem [ref=f140e49]:
+            - link "Dependents" [ref=f140e50] [cursor=pointer]:
+              - /url: /crates/serde/reverse_dependencies
+          - listitem [ref=f140e51]:
+            - link "Security" [ref=f140e52] [cursor=pointer]:
+              - /url: /crates/serde/security
+      - generic [ref=f140e53]:
+        - article "Readme" [ref=f140e55]:
+          - generic [ref=f140e57]:
+            - paragraph [ref=f140e58]:
+              - strong [ref=f140e59]:
+                - text: Serde is a framework for
+                - emphasis [ref=f140e60]: ser
+                - text: ializing and
+                - emphasis [ref=f140e61]: de
+                - text: serializing Rust data structures efficiently and generically.
+            - separator [ref=f140e62]
+            - paragraph [ref=f140e63]: "You may be looking for:"
+            - list [ref=f140e64]:
+              - listitem [ref=f140e65]:
+                - link "An overview of Serde" [ref=f140e66] [cursor=pointer]:
+                  - /url: https://serde.rs
+              - listitem [ref=f140e67]:
+                - link "Data formats supported by Serde" [ref=f140e68] [cursor=pointer]:
+                  - /url: https://serde.rs/#data-formats
+              - listitem [ref=f140e69]:
+                - link [ref=f140e70] [cursor=pointer]:
+                  - /url: https://serde.rs/derive.html
+                  - text: Setting up
+                  - code [ref=f140e71]: "#[derive(Serialize, Deserialize)]"
+              - listitem [ref=f140e72]:
+                - link "Examples" [ref=f140e73] [cursor=pointer]:
+                  - /url: https://serde.rs/examples.html
+              - listitem [ref=f140e74]:
+                - link "API documentation" [ref=f140e75] [cursor=pointer]:
+                  - /url: https://docs.rs/serde
+              - listitem [ref=f140e76]:
+                - link "Release notes" [ref=f140e77] [cursor=pointer]:
+                  - /url: https://github.com/serde-rs/serde/releases
+            - heading "Serde in action" [level=2] [ref=f140e78]:
+              - link:
+                - /url: "#serde-in-action"
+              - text: Serde in action
+            - code [ref=f140e80]:
+              - generic [ref=f140e81]: "use serde::{Deserialize, Serialize};"
+              - generic [ref=f140e82]: "#[derive(Serialize, Deserialize, Debug)]"
+              - generic [ref=f140e83]: "struct Point {"
+              - generic [ref=f140e84]: "x: i32,"
+              - generic [ref=f140e85]: "y: i32,"
+              - generic [ref=f140e86]: "}"
+              - generic [ref=f140e87]: "fn main() {"
+              - generic [ref=f140e88]: "let point = Point { x: 1, y: 2 };"
+              - generic [ref=f140e89]: // Convert the Point to a JSON string.
+              - generic [ref=f140e90]: let serialized = serde_json::to_string(&point).unwrap();
+              - generic [ref=f140e91]: "// Prints serialized = {\"x\":1,\"y\":2}"
+              - generic [ref=f140e92]: "println!(\"serialized = {}\", serialized);"
+              - generic [ref=f140e93]: // Convert the JSON string back to a Point.
+              - generic [ref=f140e94]: "let deserialized: Point = serde_json::from_str(&serialized).unwrap();"
+              - generic [ref=f140e95]: "// Prints deserialized = Point { x: 1, y: 2 }"
+              - generic [ref=f140e96]: "println!(\"deserialized = {:?}\", deserialized);"
+              - generic [ref=f140e97]: "}"
+            - heading "Getting help" [level=2] [ref=f140e98]:
+              - link:
+                - /url: "#getting-help"
+              - text: Getting help
+            - paragraph [ref=f140e99]:
+              - text: Serde is one of the most widely used Rust libraries so any place that Rustaceans congregate will be able to help you out. For chat, consider trying the
+              - link "#rust-questions" [ref=f140e100] [cursor=pointer]:
+                - /url: https://discord.com/channels/273534239310479360/274215136414400513
+              - text: or
+              - link "#rust-beginners" [ref=f140e101] [cursor=pointer]:
+                - /url: https://discord.com/channels/273534239310479360/273541522815713281
+              - text: "channels of the unofficial community Discord (invite:"
+              - link "https://discord.gg/rust-lang-community" [ref=f140e102] [cursor=pointer]:
+                - /url: https://discord.gg/rust-lang-community
+              - text: ), the
+              - link "#rust-usage" [ref=f140e103] [cursor=pointer]:
+                - /url: https://discord.com/channels/442252698964721669/443150878111694848
+              - text: or
+              - link "#beginners" [ref=f140e104] [cursor=pointer]:
+                - /url: https://discord.com/channels/442252698964721669/448238009733742612
+              - text: "channels of the official Rust Project Discord (invite:"
+              - link "https://discord.gg/rust-lang" [ref=f140e105] [cursor=pointer]:
+                - /url: https://discord.gg/rust-lang
+              - text: ), or the
+              - link "#general" [ref=f140e106] [cursor=pointer]:
+                - /url: https://rust-lang.zulipchat.com/#narrow/stream/122651-general
+              - text: stream in Zulip. For asynchronous, consider the
+              - link "[rust] tag on StackOverflow" [ref=f140e107] [cursor=pointer]:
+                - /url: https://stackoverflow.com/questions/tagged/rust
+              - text: ", the"
+              - link "/r/rust" [ref=f140e108] [cursor=pointer]:
+                - /url: https://www.reddit.com/r/rust
+              - text: subreddit which has a pinned weekly easy questions post, or the Rust
+              - link "Discourse forum" [ref=f140e109] [cursor=pointer]:
+                - /url: https://users.rust-lang.org
+              - text: . It's acceptable to file a support issue in this repo but they tend not to get as many eyes as any of the above and may get closed without a response after some time.
+        - region "Crate metadata" [ref=f140e111]:
+          - generic [ref=f140e112]:
+            - heading "Metadata" [level=2] [ref=f140e113]
+            - time [ref=f140e114]:
+              - generic [ref=f140e116]: "Release date:"
+              - generic [ref=f140e117]: 4 months ago
+            - generic [ref=f140e118]:
+              - generic [ref=f140e120]: "Minimum Rust version:"
+              - generic [ref=f140e121]: v1.56.0
+            - generic [ref=f140e122]:
+              - generic [ref=f140e124]: "License:"
+              - generic [ref=f140e125]:
+                - link "MIT" [ref=f140e126] [cursor=pointer]:
+                  - /url: https://choosealicense.com/licenses/mit
+                - text: OR
+                - link "Apache-2.0" [ref=f140e127] [cursor=pointer]:
+                  - /url: https://choosealicense.com/licenses/apache-2.0
+            - generic [ref=f140e128]: 12K SLoC
+            - generic [ref=f140e131]:
+              - generic [ref=f140e133]: "Size:"
+              - generic [ref=f140e134]: 81.7 KiB
+            - generic [ref=f140e135]:
+              - generic [ref=f140e137]: "Package URL:"
+              - button "pkg:cargo/serde@1.0.229" [ref=f140e138] [cursor=pointer]
+              - link "Learn more" [ref=f140e140] [cursor=pointer]:
+                - /url: https://github.com/package-url/purl-spec
+          - generic [ref=f140e142]:
+            - heading "Install" [level=2] [ref=f140e143]
+            - generic [ref=f140e144]:
+              - paragraph [ref=f140e145]: "Run the following Cargo command in your project directory:"
+              - button "cargo add serde" [ref=f140e146] [cursor=pointer]
+              - paragraph [ref=f140e149]: "Or add the following line to your Cargo.toml:"
+              - button "serde = \"1.0.229\"" [ref=f140e150] [cursor=pointer]
+          - generic [ref=f140e153]:
+            - generic [ref=f140e154]:
+              - heading "Homepage" [level=2] [ref=f140e155]
+              - link "serde.rs" [ref=f140e158] [cursor=pointer]:
+                - /url: https://serde.rs
+            - generic [ref=f140e159]:
+              - heading "Documentation" [level=2] [ref=f140e160]
+              - link "docs.rs/serde/1.0.229" [ref=f140e163] [cursor=pointer]:
+                - /url: https://docs.rs/serde/1.0.229
+            - generic [ref=f140e164]:
+              - heading "Repository" [level=2] [ref=f140e165]
+              - link "github.com/serde-rs/serde" [ref=f140e168] [cursor=pointer]:
+                - /url: https://github.com/serde-rs/serde
+          - generic [ref=f140e169]:
+            - heading "Owners" [level=2] [ref=f140e170]
+            - list [ref=f140e171]:
+              - listitem [ref=f140e172]:
+                - link "David Tolnay" [ref=f140e173] [cursor=pointer]:
+                  - /url: /users/dtolnay
+              - listitem [ref=f140e176]:
+                - link "serde-rs/publish" [ref=f140e177] [cursor=pointer]:
+                  - /url: /teams/github:serde-rs:publish
+          - generic [ref=f140e180]:
+            - heading "Categories" [level=2] [ref=f140e181]
+            - list [ref=f140e182]:
+              - listitem [ref=f140e183]:
+                - link "No standard library" [ref=f140e184] [cursor=pointer]:
+                  - /url: /categories/no-std
+              - listitem [ref=f140e185]:
+                - link "Encoding" [ref=f140e186] [cursor=pointer]:
+                  - /url: /categories/encoding
+              - listitem [ref=f140e187]:
+                - link "No dynamic allocation" [ref=f140e188] [cursor=pointer]:
+                  - /url: /categories/no-std::no-alloc
+          - link "Try on Rust Playground" [ref=f140e190] [cursor=pointer]:
+            - /url: https://play.rust-lang.org/?edition=2021&code=use%20serde%3B%0A%0Afn%20main()%20%7B%0A%20%20%20%20%2F%2F%20try%20using%20the%20%60serde%60%20crate%20here%0A%7D
+      - generic [ref=f140e191]:
+        - generic [ref=f140e192]:
+          - heading "Stats Overview" [level=3] [ref=f140e193]
+          - generic [ref=f140e194]:
+            - generic [ref=f140e195]: 396,276,822
+            - generic [ref=f140e198]: Recent downloads
+          - generic [ref=f140e199]:
+            - generic [ref=f140e200]: 1,629,076,784
+            - generic [ref=f140e203]: Downloads all time
+          - generic [ref=f140e204]:
+            - generic [ref=f140e205]: "316"
+            - generic [ref=f140e208]: Versions published
+        - generic [ref=f140e209]:
+          - heading "Downloads over the last 90 days" [level=4] [ref=f140e210]
+          - generic [ref=f140e211]:
+            - text: Display as
+            - button "Stacked" [ref=f140e213] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f140e215]: ▼
+  - contentinfo [ref=f140e219]:
+    - generic [ref=f140e220]:
+      - generic [ref=f140e221]:
+        - heading "Rust" [level=2] [ref=f140e222]
+        - list [ref=f140e223]:
+          - listitem [ref=f140e224]:
+            - link "rust-lang.org" [ref=f140e225] [cursor=pointer]:
+              - /url: https://www.rust-lang.org/
+          - listitem [ref=f140e226]:
+            - link "Rust Foundation" [ref=f140e227] [cursor=pointer]:
+              - /url: https://foundation.rust-lang.org/
+          - listitem [ref=f140e228]:
+            - link "The crates.io team" [ref=f140e229] [cursor=pointer]:
+              - /url: https://www.rust-lang.org/governance/teams/dev-tools#team-crates-io
+      - generic [ref=f140e230]:
+        - heading "Get Help" [level=2] [ref=f140e231]
+        - list [ref=f140e232]:
+          - listitem [ref=f140e233]:
+            - link "The Cargo Book" [ref=f140e234] [cursor=pointer]:
+              - /url: https://doc.rust-lang.org/cargo/
+          - listitem [ref=f140e235]:
+            - link "Support" [ref=f140e236] [cursor=pointer]:
+              - /url: /support
+          - listitem [ref=f140e237]:
+            - link "System Status" [ref=f140e238] [cursor=pointer]:
+              - /url: https://status.crates.io/
+          - listitem [ref=f140e239]:
+            - link "Report a bug" [ref=f140e240] [cursor=pointer]:
+              - /url: https://github.com/rust-lang/crates.io/issues/new/choose
+      - generic [ref=f140e241]:
+        - heading "Policies" [level=2] [ref=f140e242]
+        - list [ref=f140e243]:
+          - listitem [ref=f140e244]:
+            - link "Usage Policy" [ref=f140e245] [cursor=pointer]:
+              - /url: /policies
+          - listitem [ref=f140e246]:
+            - link "Security" [ref=f140e247] [cursor=pointer]:
+              - /url: /policies/security
+          - listitem [ref=f140e248]:
+            - link "Privacy Policy" [ref=f140e249] [cursor=pointer]:
+              - /url: https://foundation.rust-lang.org/policies/privacy-policy/
+          - listitem [ref=f140e250]:
+            - link "Code of Conduct" [ref=f140e251] [cursor=pointer]:
+              - /url: https://www.rust-lang.org/policies/code-of-conduct
+          - listitem [ref=f140e252]:
+            - link "Data Access" [ref=f140e253] [cursor=pointer]:
+              - /url: /data-access
+          - listitem [ref=f140e254]:
+            - link "Rate Limits" [ref=f140e255] [cursor=pointer]:
+              - /url: /docs/rate-limits
+      - generic [ref=f140e256]:
+        - heading "Social" [level=2] [ref=f140e257]
+        - list [ref=f140e258]:
+          - listitem [ref=f140e259]:
+            - 'link "GitHub: rust-lang/crates.io" [ref=f140e260] [cursor=pointer]':
+              - /url: https://github.com/rust-lang/crates.io/
+              - generic [ref=f140e262]: "GitHub:"
+              - text: rust-lang/crates.io
+          - listitem [ref=f140e263]:
+            - 'link "Zulip: #t-crates-io" [ref=f140e264] [cursor=pointer]':
+              - /url: https://rust-lang.zulipchat.com/#streams/318791/t-crates-io
+              - generic [ref=f140e266]: "Zulip:"
+              - text: "#t-crates-io"
+          - listitem [ref=f140e267]:
+            - 'link "X: @cratesiostatus" [ref=f140e268] [cursor=pointer]':
+              - /url: https://twitter.com/cratesiostatus
+              - generic [ref=f140e270]: "X:"
+              - text: "@cratesiostatus"
+```

@@ -1,0 +1,689 @@
+---
+source: tests/playwright_fixtures.rs
+---
+### Page
+- Page URL: https://www.bbc.com/news
+- Page Title: BBC News - Breaking news, video and the latest top stories from the U.S. and around the world
+- Console: 1 errors, 4 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f97e1]:
+  - generic:
+    - link "Skip to content" [ref=f97e6]:
+      - /url: "#bbc-main"
+    - banner [ref=f97e8]:
+      - generic:
+        - button "Open menu" [ref=f97e11]
+        - link "British Broadcasting Corporation" [ref=f97e20]:
+          - /url: /
+          - img "British Broadcasting Corporation" [ref=f97e21]
+        - generic:
+          - button "Subscribe" [ref=f97e25]
+          - link [ref=f97e27]:
+            - /url: https://session.bbc.com/session?userOrigin=BBCS_BBC&ptrt=https%3A%2F%2Fwww.bbc.com%2Fnews
+            - button "Sign In" [ref=f97e28]
+    - navigation [ref=f97e30]:
+      - navigation [ref=f97e32]:
+        - list:
+          - listitem:
+            - link "Home" [ref=f97e36]:
+              - /url: /
+          - listitem:
+            - link "News" [ref=f97e39]:
+              - /url: /news
+          - listitem:
+            - link "Sport" [ref=f97e42]:
+              - /url: /sport
+          - listitem:
+            - link "Business" [ref=f97e45]:
+              - /url: /business
+          - listitem:
+            - link "Technology" [ref=f97e48]:
+              - /url: /technology
+          - listitem:
+            - link "Health" [ref=f97e51]:
+              - /url: /health
+          - listitem:
+            - link "Culture" [ref=f97e54]:
+              - /url: /culture
+          - listitem:
+            - link "Arts" [ref=f97e57]:
+              - /url: /arts
+          - listitem:
+            - link "Travel" [ref=f97e60]:
+              - /url: /travel
+          - listitem:
+            - link "Earth" [ref=f97e63]:
+              - /url: /future-planet
+          - listitem:
+            - link "Audio" [ref=f97e66]:
+              - /url: /audio
+          - listitem:
+            - link "Video" [ref=f97e69]:
+              - /url: /video
+          - listitem:
+            - link "Live" [ref=f97e72]:
+              - /url: /live
+          - listitem:
+            - link "Documentaries" [ref=f97e75]:
+              - /url: /video/docs
+      - navigation [ref=f97e76]:
+        - navigation [ref=f97e77]:
+          - list:
+            - listitem:
+              - link "US & Canada" [ref=f97e81]:
+                - /url: /news/us-canada
+            - listitem:
+              - link "UK" [ref=f97e84]:
+                - /url: /news/uk
+            - listitem:
+              - link "Africa" [ref=f97e87]:
+                - /url: /news/world/africa
+            - listitem:
+              - link "Asia" [ref=f97e90]:
+                - /url: /news/world/asia
+            - listitem:
+              - link "Australia" [ref=f97e93]:
+                - /url: /news/world/australia
+            - listitem:
+              - link "Europe" [ref=f97e96]:
+                - /url: /news/world/europe
+            - listitem:
+              - link "Latin America" [ref=f97e99]:
+                - /url: /news/world/latin_america
+            - listitem:
+              - link "Middle East" [ref=f97e102]:
+                - /url: /news/world/middle_east
+            - listitem:
+              - link "In Pictures" [ref=f97e105]:
+                - /url: /news/in_pictures
+            - listitem:
+              - link "BBC InDepth" [ref=f97e108]:
+                - /url: /news/bbcindepth
+            - listitem:
+              - link "BBC Verify" [ref=f97e111]:
+                - /url: /news/bbcverify
+    - main [ref=f97e112]:
+      - article [ref=f97e113]:
+        - generic:
+          - generic: Advertisement
+          - iframe [ref=f97e1051]:
+            - link [ref=f113e4]:
+              - /url: https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsu_Gw2gA2EhT0Hg9KcmCrxP04Tqj7_mw-WhvvGQzNx3S0PfGD960GgEd1tiuO5YSBPcQserZKhYk3CUoGaUQpQw25HYlXoPzGzcMKmlRt8tyny7I6due27lb9_veU2HAfWL0c-nowhdCeFnYwu-6nGzoyzMtFV4M7RXFh6Ih3umyj5wmmBXdIdOIkRQ2CPBLrI0GZZnsdFryMu6Z7pObKBqf4X3MVkhVH5qO62kdUyjnJJLyH-py4tnABtJ7j5BAUQT5EGqgUUVzp0sgn3Zr4OvD7wRbO57fTeHVIINvfRoltTC83oucM-ziUPYRESeU0jF_z9IBnSMVgVmQz5c2TUhX1GtLYHTZw_6aZLT_tXja9Bj6Sj2NGgtBGB26hyVPMbj2npTtzRc5Sz97uVfuD21eH7leCmjU6pyQTxiVJbZ6EPjxM3p_G7w2APTQC4j1VT5tJTKzQFYJif6UfJhmoDyKXZElEt81zFZ9ZcqrOLnbwWCDSQ1ddTbQusKfVEHWj9hA9ySuIFTK9ATNHjA6Bp43vm6lh5PELyk6aRhluLeVhKoNdeHZzHG099zjALVCtlnpWXFIoG-3bikE0p3Zy-auJBOkunifG_O4zyZyxBZK0rAFfyZsyn904EPdmZSGoyO4yXiGAc2kISyEAM_Cj6pDJbQHxHCRwAVzCZphvAAPW3cThhQi_-x2o9Nxtqx-trUw7qw7flbE4o2DzFeqTvZuNFY7xVpTWXqKMj-ClAnclRm7VaA68IuDlIyOQS1RQ&sai=AMfl-YTkUw-YDbyMPDR2PfARSCuqQTFENbh3hFnE5Dqt-vJ4QXlyBO6c7BlC6Hk4VwOnEtFQt-MgYht2YjmyGStkwdiW_hk-ZpaIY1jsMgWuDDGFug_1l6tlV3Le7MzLr6D1RDP1B5rMvQCKtlLr2E1mwGH0E-YwfpUvOYA9UpzNzjF5GU-tod3g0xA8YQ2Pbl-vl-n3x09Vkfr9-YPNva4Bhsq79ar83DtJMeLR9I78TGjrltdMLWXS7Y6JfitDZ3ug4sBEL5ls72nZks8lcqkzpgrdoyP3Im344Z4p3AIcr9kJ3MFm4I4fr0WWeJK_w2dxuaJ3s9yYKcoNUqdooXexRW9Vb8SuG1HN9FsiPRph2bGWGH5XfnETVy9XQfkMOV87rfmVP7cpVY0zBetw3VitQW1OZdmiLFfmYcXb8lBwLh8t-57A&sig=Cg0ArKJSzLTmJKdirZ85&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://corient.com/ca/fr%3Futm_campaign%3D26-q3-cor-displ-bbc-ca-allregions-allcities-enca-bbctiff-rwm-jpg%26utm_source%3Dbbc%26utm_medium%3Ddispl%26utm_content%3Drwm%26dclid%3D%25edclid!%26gad_source%3D7%26gad_campaignid%3D24276783762
+              - img "Advertisement" [ref=f113e5]
+        - heading [level=1] [ref=f97e120]:
+          - img "News" [ref=f97e121]
+        - generic:
+          - generic:
+            - link [ref=f97e132]:
+              - /url: /news/articles/c51kdy1ew7zvo
+              - img "People in Winter clothes sit on camping chairs inside a Kyiv metro station" [ref=f97e134]
+            - link "Ukraine air raid app apparently hacked as users receive false radiation threat, Air Force says Hours later Russian authorities said its app was also hacked, with fake warnings sent inside the country. 7 mins ago Europe" [ref=f97e138]:
+              - /url: /news/articles/c51kdy1ew7zvo
+              - generic:
+                - heading "Ukraine air raid app apparently hacked as users receive false radiation threat, Air Force says" [level=2] [ref=f97e142]
+                - paragraph: Hours later Russian authorities said its app was also hacked, with fake warnings sent inside the country.
+                - generic:
+                  - generic: 7 mins ago
+                  - generic: Europe
+          - generic:
+            - link "US Representative Haley Stevens, a Michigan Democrat and the rival Abdul El-Sayed defeated in the Senate primary, speaks with the media next to Republican US Senate candidate Mike Rogers Democrat endorses Republican candidate in key Michigan Senate race as party spat erupts The move by Haley Stevens, who lost out on the Democratic Senate nomination to Abdul El-Sayed, was called a \"despicable betrayal\" by one top Democrat. 1 hr ago US & Canada" [ref=f97e152]:
+              - /url: /news/articles/c95ynzv88n68o
+              - generic:
+                - img "US Representative Haley Stevens, a Michigan Democrat and the rival Abdul El-Sayed defeated in the Senate primary, speaks with the media next to Republican US Senate candidate Mike Rogers" [ref=f97e157]
+                - generic:
+                  - heading "Democrat endorses Republican candidate in key Michigan Senate race as party spat erupts" [level=2] [ref=f97e161]
+                  - paragraph: The move by Haley Stevens, who lost out on the Democratic Senate nomination to Abdul El-Sayed, was called a "despicable betrayal" by one top Democrat.
+                  - generic:
+                    - generic: 1 hr ago
+                    - generic: US & Canada
+            - link "France launches attempted murder investigation after petrol bomb thrown at police There were hundreds of arrests as protesters took to the streets in cities across France for the third weekend in a row. 1 hr ago Europe" [ref=f97e169]:
+              - /url: /news/articles/cwvg05z184j0o
+              - generic:
+                - heading "France launches attempted murder investigation after petrol bomb thrown at police" [level=2] [ref=f97e174]
+                - paragraph: There were hundreds of arrests as protesters took to the streets in cities across France for the third weekend in a row.
+                - generic:
+                  - generic: 1 hr ago
+                  - generic: Europe
+            - link "Judge dismisses Trump administration's lawsuit over two Dan Sullivans in Alaska election The Department of Justice had sought to delay certifying results in Alaska's crucial Senate race if the Republican incumbent loses. 2 hrs ago US & Canada" [ref=f97e182]:
+              - /url: /news/articles/cv4g1y02jejro
+              - generic:
+                - heading "Judge dismisses Trump administration's lawsuit over two Dan Sullivans in Alaska election" [level=2] [ref=f97e187]
+                - paragraph: The Department of Justice had sought to delay certifying results in Alaska's crucial Senate race if the Republican incumbent loses.
+                - generic:
+                  - generic: 2 hrs ago
+                  - generic: US & Canada
+          - generic:
+            - link "A flaming crater is shown on a road, with piles of rubble strewn around. 'Like a missile coming down' - Nine killed in fiery Florida jet crash Transportation Secretary Sean Duffy described the crash, which happened near President Trump's Mar-a-Lago resort, as a \"horrific tragedy\". 2 hrs ago US & Canada" [ref=f97e197]:
+              - /url: /news/articles/cm369yy7lw73o
+              - generic:
+                - img "A flaming crater is shown on a road, with piles of rubble strewn around." [ref=f97e202]
+                - generic:
+                  - heading "'Like a missile coming down' - Nine killed in fiery Florida jet crash" [level=2] [ref=f97e206]
+                  - paragraph: Transportation Secretary Sean Duffy described the crash, which happened near President Trump's Mar-a-Lago resort, as a "horrific tragedy".
+                  - generic:
+                    - generic: 2 hrs ago
+                    - generic: US & Canada
+            - link "Kimi Antonelli Antonelli becomes youngest world champion in F1 history Kimi Antonelli, 20, clinches his first world title by finishing third at the Mexico City Grand Prix. 2 hrs ago Formula 1" [ref=f97e214]:
+              - /url: /sport/formula1/articles/cv62y1e6wly6o
+              - generic:
+                - img "Kimi Antonelli" [ref=f97e219]
+                - generic:
+                  - heading "Antonelli becomes youngest world champion in F1 history" [level=2] [ref=f97e223]
+                  - paragraph: Kimi Antonelli, 20, clinches his first world title by finishing third at the Mexico City Grand Prix.
+                  - generic:
+                    - generic: 2 hrs ago
+                    - generic: Formula 1
+            - link "A hand puts a ballot paper into a white box with a USA flag behind Democrats have high hopes for midterms, but polls have let them down before Polls have been predicting a Democratic surge, but last-minute deciders and sampling issues mean there's no guarantee. 1 hr ago US & Canada" [ref=f97e231]:
+              - /url: /news/articles/cmg47p3edv4do
+              - generic:
+                - img "A hand puts a ballot paper into a white box with a USA flag behind" [ref=f97e236]
+                - generic:
+                  - heading "Democrats have high hopes for midterms, but polls have let them down before" [level=2] [ref=f97e240]
+                  - paragraph: Polls have been predicting a Democratic surge, but last-minute deciders and sampling issues mean there's no guarantee.
+                  - generic:
+                    - generic: 1 hr ago
+                    - generic: US & Canada
+            - 'link "A split screen: On the left, a man in a teal shirt; on the right, a woman in a grey shirt. ‘My vote still matters’ - Americans weigh in on the power of their ballot The BBC asked voters from across the United States what voting means to them and whether they think it matters in the midterm elections. 9 hrs ago US & Canada" [ref=f97e248] [cursor=pointer]':
+              - /url: /news/videos/cw62yd964e55o
+              - generic:
+                - 'img "A split screen: On the left, a man in a teal shirt; on the right, a woman in a grey shirt." [ref=f97e253]'
+                - generic:
+                  - heading "‘My vote still matters’ - Americans weigh in on the power of their ballot" [level=2] [ref=f97e261]
+                  - paragraph: The BBC asked voters from across the United States what voting means to them and whether they think it matters in the midterm elections.
+                  - generic:
+                    - generic: 9 hrs ago
+                    - generic: US & Canada
+        - generic:
+          - link [ref=f97e271]:
+            - /url: /sport/american-football/articles/ck30ey1ezmyqo
+            - heading "Referee accidentally fractures college football player's leg" [level=2] [ref=f97e275]
+          - link [ref=f97e278]:
+            - /url: /news/articles/cmqln14rrzxvo
+            - heading "Israeli strikes in Gaza kill eight including child, hospitals say" [level=2] [ref=f97e282]
+          - link [ref=f97e285]:
+            - /url: /news/articles/c64g1y90p71eo
+            - heading "Russian strikes cut power to thousands in Ukraine as Kherson ceasefire ends" [level=2] [ref=f97e289]
+          - link [ref=f97e292]:
+            - /url: /news/articles/cq5ynzvkn1d8o
+            - heading "University of Cambridge scientist among those who died in Spanish train crash" [level=2] [ref=f97e296]
+          - link [ref=f97e299]:
+            - /url: /news/articles/ck3r5z3pw928o
+            - heading "Lindsay Clancy is back in court - where will her case go next?" [level=2] [ref=f97e303]
+        - generic:
+          - generic:
+            - heading "More to explore" [level=2] [ref=f97e313]
+          - generic:
+            - generic:
+              - link [ref=f97e322]:
+                - /url: /news/articles/cmy0r2y6zeddo
+                - img "Image shows James Talarico, a Democratic candidate for the US Senate seat representing Texas" [ref=f97e324]
+              - link "Democrats are used to heartbreak in Texas - could Talarico turn the tide? The state's $500m Senate race may be the most closely watched in the US midterms, and is about far more than control of Congress. 19 hrs ago US & Canada" [ref=f97e328]:
+                - /url: /news/articles/cmy0r2y6zeddo
+                - generic:
+                  - heading "Democrats are used to heartbreak in Texas - could Talarico turn the tide?" [level=2] [ref=f97e332]
+                  - paragraph: The state's $500m Senate race may be the most closely watched in the US midterms, and is about far more than control of Congress.
+                  - generic:
+                    - generic: 19 hrs ago
+                    - generic: US & Canada
+            - generic:
+              - link "A young Kimi Antonelli sitting on his dad's lap while steering a car Antonelli - the boy 'born in a garage' who became world champion Kimi Antonelli was a natural driver at the age of three, according to his dad. Here's how he developed to become the F1 champion at the age of 20. 3 hrs ago Formula 1" [ref=f97e342]:
+                - /url: /sport/formula1/articles/c0rdvxdwwwwo
+                - generic:
+                  - img "A young Kimi Antonelli sitting on his dad's lap while steering a car" [ref=f97e347]
+                  - generic:
+                    - heading "Antonelli - the boy 'born in a garage' who became world champion" [level=2] [ref=f97e351]
+                    - paragraph: Kimi Antonelli was a natural driver at the age of three, according to his dad. Here's how he developed to become the F1 champion at the age of 20.
+                    - generic:
+                      - generic: 3 hrs ago
+                      - generic: Formula 1
+              - link "The fight to save Canadian town threatened by Trump's tariffs A century-old paper mill in Témiscaming, Quebec is indefinitely closed after the US imposed 50% tariffs on its products, putting hundreds out of work. 2 days ago US & Canada" [ref=f97e359]:
+                - /url: /news/articles/cmly016ep243o
+                - generic:
+                  - heading "The fight to save Canadian town threatened by Trump's tariffs" [level=2] [ref=f97e364]
+                  - paragraph: A century-old paper mill in Témiscaming, Quebec is indefinitely closed after the US imposed 50% tariffs on its products, putting hundreds out of work.
+                  - generic:
+                    - generic: 2 days ago
+                    - generic: US & Canada
+              - link "I've been stuck on a tiny Pacific island for years and can't get a transit visa to fly home Ruchira Ranasingha, 50, has been stranded in the Cook Islands since 2023 and wants to return to Sri Lanka. 1 day ago Asia" [ref=f97e372]:
+                - /url: /news/articles/cmq5npz5l5geo
+                - generic:
+                  - heading "I've been stuck on a tiny Pacific island for years and can't get a transit visa to fly home" [level=2] [ref=f97e377]
+                  - paragraph: Ruchira Ranasingha, 50, has been stranded in the Cook Islands since 2023 and wants to return to Sri Lanka.
+                  - generic:
+                    - generic: 1 day ago
+                    - generic: Asia
+            - link "Lindsay Clancy in court Lindsay Clancy is back in court - where will her case go next? The Massachusetts mother, accused of murdering her three children, is expected back in court as she awaits a decision on whether her case will be retried. 8 hrs ago US & Canada" [ref=f97e385]:
+              - /url: /news/articles/ck3r5z3pw928o
+              - generic:
+                - img "Lindsay Clancy in court" [ref=f97e390]
+                - generic:
+                  - heading "Lindsay Clancy is back in court - where will her case go next?" [level=2] [ref=f97e394]
+                  - paragraph: The Massachusetts mother, accused of murdering her three children, is expected back in court as she awaits a decision on whether her case will be retried.
+                  - generic:
+                    - generic: 8 hrs ago
+                    - generic: US & Canada
+            - link "Woman looks at a phone with clothing listed on it and a box in front of her is open and has a blue top inside. Don't get caught out by new Buy Now Pay Later rules New affordability checks mean you could be blocked from using Buy Now Pay Later but here are ways to avoid it. 2 hrs ago Business" [ref=f97e402]:
+              - /url: /news/articles/crpdgp4y017go
+              - generic:
+                - img "Woman looks at a phone with clothing listed on it and a box in front of her is open and has a blue top inside." [ref=f97e407]
+                - generic:
+                  - heading "Don't get caught out by new Buy Now Pay Later rules" [level=2] [ref=f97e411]
+                  - paragraph: New affordability checks mean you could be blocked from using Buy Now Pay Later but here are ways to avoid it.
+                  - generic:
+                    - generic: 2 hrs ago
+                    - generic: Business
+            - 'link "A kitchen that is covered in rubbish, empty bottles and mess on the floor No more washing up: How Airbnb''s new house rules have divided hosts and guests Airbnb hosts must stop asking guests to wash-up or take out bins under rules coming into force in November. 1 day ago" [ref=f97e419] [cursor=pointer]':
+              - /url: /news/articles/ckjwez8g5dyeo
+              - generic:
+                - img "A kitchen that is covered in rubbish, empty bottles and mess on the floor" [ref=f97e424]
+                - generic:
+                  - 'heading "No more washing up: How Airbnb''s new house rules have divided hosts and guests" [level=2] [ref=f97e428]'
+                  - paragraph: Airbnb hosts must stop asking guests to wash-up or take out bins under rules coming into force in November.
+                  - generic: 1 day ago
+        - generic:
+          - generic:
+            - heading "US midterm elections" [level=2] [ref=f97e440]
+          - generic:
+            - link [ref=f97e444]:
+              - /url: /news/articles/cr20wlp09gn3o
+              - generic:
+                - generic:
+                  - img "image unavailable" [ref=f97e449]
+                  - img "Graphic showing a stylised chart with purple bar graphs and two red trend lines moving in opposite directions across the image. A black-and-white close-up portrait of Donald Trump fills the right side of the frame. The image uses a dark purple background." [ref=f97e450]
+                - generic:
+                  - heading "Who will win? How the elections will be won and lost" [level=2] [ref=f97e454]
+                  - paragraph: An in-depth look at the key polling, races and issues ahead of an election that will define Trump’s final two years as president.
+            - link [ref=f97e458]:
+              - /url: /news/articles/c6wyz223j19po
+              - generic:
+                - generic:
+                  - img "image unavailable" [ref=f97e463]
+                  - img "Illustration of the US Capitol with red and blue campaign-style stripes and stars representing the two main political parties." [ref=f97e464]
+                - generic:
+                  - heading "A simple guide to the midterms" [level=2] [ref=f97e468]
+                  - paragraph: US voters will head to the polls on 3 November in a ballot that could have a major impact on Donald Trump’s presidency.
+            - link [ref=f97e472]:
+              - /url: /news/articles/ckq6nz4286r4o
+              - generic:
+                - generic:
+                  - img "image unavailable" [ref=f97e477]
+                  - img "Composite image of Ashley Hinson, Marie Gluesenkamp-Perez and Abdul El-Sayed. Hinson (left) wears a dark denim dress, Gluesenkamp Perez (centre) wears a light blazer over a light top, and El-Sayed (right) wears a dark V-neck jumper and holds a microphone." [ref=f97e478]
+                - generic:
+                  - 'heading "''The necktie is dead'': How US midterm candidates are dressing for votes" [level=2] [ref=f97e482]'
+                  - paragraph: From Alaska to Texas, candidates with an eye on Congress are using their personal style to stand out.
+            - link [ref=f97e486]:
+              - /url: /news/videos/cwly0eev3m44o
+              - generic:
+                - generic:
+                  - img "image unavailable" [ref=f97e491]
+                  - img "Woman with large pink glasses, pink jacket and blue t-shirt staring at BBC's Clive Myrie" [ref=f97e492]
+                - generic:
+                  - 'heading "''I''ve had people eating cat food'': Rising cost of living top of mind for US voters" [level=2] [ref=f97e500]'
+                  - paragraph: The BBC's Clive Myrie travelled to North Caroline where voters voiced their frustrations ahead of midterm elections.
+        - generic:
+          - generic:
+            - heading "Most watched" [level=2] [ref=f97e509]
+          - list:
+            - listitem:
+              - 'link "1 Watch: Heidi Klum as giant severed hand for Halloween bash" [ref=f97e514] [cursor=pointer]':
+                - /url: /news/videos/cj040yd1xdrlo
+                - generic:
+                  - generic: "1"
+                  - 'heading "Watch: Heidi Klum as giant severed hand for Halloween bash" [level=2] [ref=f97e522]'
+            - listitem:
+              - link "2 ‘My vote still matters’ - Americans weigh in on the power of their ballot" [ref=f97e526]:
+                - /url: /news/videos/cw62yd964e55o
+                - generic:
+                  - generic: "2"
+                  - heading "‘My vote still matters’ - Americans weigh in on the power of their ballot" [level=2] [ref=f97e534]
+            - listitem:
+              - 'link "3 ''I''ve had people eating cat food'': Rising cost of living top of mind for US voters" [ref=f97e538] [cursor=pointer]':
+                - /url: /news/videos/cwly0eev3m44o
+                - generic:
+                  - generic: "3"
+                  - 'heading "''I''ve had people eating cat food'': Rising cost of living top of mind for US voters" [level=2] [ref=f97e546]'
+            - listitem:
+              - link "4 Peaceful protests in Germany spiral into violence and looting" [ref=f97e550]:
+                - /url: /news/videos/cqgm0der7zkmo
+                - generic:
+                  - generic: "4"
+                  - heading "Peaceful protests in Germany spiral into violence and looting" [level=2] [ref=f97e558]
+            - listitem:
+              - link "5 Thousands demonstrate in Paris as protests spread across Europe" [ref=f97e562]:
+                - /url: /news/videos/ck0j0y87j303o
+                - generic:
+                  - generic: "5"
+                  - heading "Thousands demonstrate in Paris as protests spread across Europe" [level=2] [ref=f97e570]
+        - generic:
+          - generic:
+            - heading "Also in news" [level=2] [ref=f97e581]
+          - generic:
+            - generic:
+              - link [ref=f97e590]:
+                - /url: /news/articles/c9kgj7k7ry0ro
+                - generic:
+                  - img "image unavailable" [ref=f97e592]
+                  - img "Three armed police officers walk along the shore. Behind them are palm trees and the entrance of the park" [ref=f97e593]
+              - link "Armed police start patrols in Sydney after Bondi Beach attack The new police unit is a security measure in response to last year's deadly shooting attack at a Hanukkah festival. 7 hrs ago Australia" [ref=f97e597]:
+                - /url: /news/articles/c9kgj7k7ry0ro
+                - generic:
+                  - heading "Armed police start patrols in Sydney after Bondi Beach attack" [level=2] [ref=f97e601]
+                  - paragraph: The new police unit is a security measure in response to last year's deadly shooting attack at a Hanukkah festival.
+                  - generic:
+                    - generic: 7 hrs ago
+                    - generic: Australia
+            - generic:
+              - link "image unavailable A masked protester attacks a shop window in Frankfurt with a road sign Shops looted as German cost-of-living protests turn violent The protests in cities across Germany - including Berlin, Hamburg and Frankfurt - came on the same day hundreds of thousands also protested in France. 13 hrs ago Europe" [ref=f97e611]:
+                - /url: /news/articles/cqj34gnd3n30o
+                - generic:
+                  - generic:
+                    - img "image unavailable" [ref=f97e616]
+                    - img "A masked protester attacks a shop window in Frankfurt with a road sign" [ref=f97e617]
+                  - generic:
+                    - heading "Shops looted as German cost-of-living protests turn violent" [level=2] [ref=f97e621]
+                    - paragraph: The protests in cities across Germany - including Berlin, Hamburg and Frankfurt - came on the same day hundreds of thousands also protested in France.
+                    - generic:
+                      - generic: 13 hrs ago
+                      - generic: Europe
+              - link "image unavailable A spectacular display of bright green lighting up the sky in Nairn, Highland on Halloween night Northern Lights dance across UK sky on Halloween night Stargazers across the UK were treated to the vivid colours of the aurora borealis on Saturday night. 15 hrs ago" [ref=f97e629]:
+                - /url: https://www.bbc.com/weather/articles/c3pwge119lnvo
+                - generic:
+                  - generic:
+                    - img "image unavailable" [ref=f97e634]
+                    - img "A spectacular display of bright green lighting up the sky in Nairn, Highland on Halloween night" [ref=f97e635]
+                  - generic:
+                    - heading "Northern Lights dance across UK sky on Halloween night" [level=2] [ref=f97e639]
+                    - paragraph: Stargazers across the UK were treated to the vivid colours of the aurora borealis on Saturday night.
+                    - generic: 15 hrs ago
+            - link "image unavailable Older woman with white hair and turquoise coat being carried by four police officers More than 300 arrests at Palestine Action support protest outside US embassy in London More than 4,000 people have been arrested for supporting the group since it was proscribed in July 2025. 12 hrs ago London" [ref=f97e646]:
+              - /url: /news/articles/c98rz23ed781o
+              - generic:
+                - generic:
+                  - img "image unavailable" [ref=f97e651]
+                  - img "Older woman with white hair and turquoise coat being carried by four police officers" [ref=f97e652]
+                - generic:
+                  - heading "More than 300 arrests at Palestine Action support protest outside US embassy in London" [level=2] [ref=f97e656]
+                  - paragraph: More than 4,000 people have been arrested for supporting the group since it was proscribed in July 2025.
+                  - generic:
+                    - generic: 12 hrs ago
+                    - generic: London
+            - link "image unavailable Queen Camilla and King Charles at a church in Antigua. She is wearing a green dress, he is wearing a light brown suit. King to address slavery in Antigua as PM says he is open to possible UK apology King Charles III will deliver a speech to the Commonwealth Heads of Government Meeting on Tuesday as he concludes his nine-day Caribbean tour. 4 hrs ago Latin America" [ref=f97e664]:
+              - /url: /news/articles/cq398y0zj9rpo
+              - generic:
+                - generic:
+                  - img "image unavailable" [ref=f97e669]
+                  - img "Queen Camilla and King Charles at a church in Antigua. She is wearing a green dress, he is wearing a light brown suit." [ref=f97e670]
+                - generic:
+                  - heading "King to address slavery in Antigua as PM says he is open to possible UK apology" [level=2] [ref=f97e674]
+                  - paragraph: King Charles III will deliver a speech to the Commonwealth Heads of Government Meeting on Tuesday as he concludes his nine-day Caribbean tour.
+                  - generic:
+                    - generic: 4 hrs ago
+                    - generic: Latin America
+        - generic:
+          - generic:
+            - heading "Most read" [level=2] [ref=f97e686]
+          - list:
+            - listitem:
+              - link "1 'Like a missile coming down' - Nine killed in fiery Florida jet crash" [ref=f97e691]:
+                - /url: /news/articles/cm369yy7lw73o
+                - generic:
+                  - generic: "1"
+                  - heading "'Like a missile coming down' - Nine killed in fiery Florida jet crash" [level=2] [ref=f97e696]
+            - listitem:
+              - link "2 Democrat endorses Republican candidate in key Michigan Senate race as party spat erupts" [ref=f97e700]:
+                - /url: /news/articles/c95ynzv88n68o
+                - generic:
+                  - generic: "2"
+                  - heading "Democrat endorses Republican candidate in key Michigan Senate race as party spat erupts" [level=2] [ref=f97e705]
+            - listitem:
+              - link "3 He left 28 years ago, now after 31,000 miles Karl Bushby is almost home" [ref=f97e709]:
+                - /url: /news/articles/cq8rz38jr50go
+                - generic:
+                  - generic: "3"
+                  - heading "He left 28 years ago, now after 31,000 miles Karl Bushby is almost home" [level=2] [ref=f97e714]
+            - listitem:
+              - link "4 Judge dismisses Trump administration's lawsuit over two Dan Sullivans in Alaska election" [ref=f97e718]:
+                - /url: /news/articles/cv4g1y02jejro
+                - generic:
+                  - generic: "4"
+                  - heading "Judge dismisses Trump administration's lawsuit over two Dan Sullivans in Alaska election" [level=2] [ref=f97e723]
+            - listitem:
+              - link "5 Democrats have high hopes for midterms, but polls have let them down before" [ref=f97e727]:
+                - /url: /news/articles/cmg47p3edv4do
+                - generic:
+                  - generic: "5"
+                  - heading "Democrats have high hopes for midterms, but polls have let them down before" [level=2] [ref=f97e732]
+            - listitem:
+              - link "6 US midterm elections results 2026" [ref=f97e736]:
+                - /url: /news/election/2026/us/results
+                - generic:
+                  - generic: "6"
+                  - heading "US midterm elections results 2026" [level=2] [ref=f97e741]
+            - listitem:
+              - link "7 Ukraine air raid app apparently hacked as users receive false radiation threat, Air Force says" [ref=f97e745]:
+                - /url: /news/articles/c51kdy1ew7zvo
+                - generic:
+                  - generic: "7"
+                  - heading "Ukraine air raid app apparently hacked as users receive false radiation threat, Air Force says" [level=2] [ref=f97e750]
+            - listitem:
+              - link "8 Cambridge scientist dies in Spanish train crash" [ref=f97e754]:
+                - /url: /news/articles/cq5ynzvkn1d8o
+                - generic:
+                  - generic: "8"
+                  - heading "Cambridge scientist dies in Spanish train crash" [level=2] [ref=f97e759]
+            - listitem:
+              - link "9 What are the US midterms? A simple guide" [ref=f97e763]:
+                - /url: /news/articles/c6wyz223j19po
+                - generic:
+                  - generic: "9"
+                  - heading "What are the US midterms? A simple guide" [level=2] [ref=f97e768]
+            - listitem:
+              - link "10 The fight to save Canadian town threatened by Trump's tariffs" [ref=f97e772]:
+                - /url: /news/articles/cmly016ep243o
+                - generic:
+                  - generic: "10"
+                  - heading "The fight to save Canadian town threatened by Trump's tariffs" [level=2] [ref=f97e777]
+        - generic:
+          - generic:
+            - heading "Sport" [level=2] [ref=f97e788]
+          - generic:
+            - generic:
+              - link [ref=f97e797]:
+                - /url: /sport/formula1/articles/cv62y1e6wly6o
+                - img "Kimi Antonelli" [ref=f97e799]
+              - link "Antonelli becomes world champion as Verstappen wins in Mexico Kimi Antonelli becomes the youngest world champion in Formula 1 history as Max Verstappen wins the Mexico City Grand Prix. 2 hrs ago Formula 1" [ref=f97e803]:
+                - /url: /sport/formula1/articles/cv62y1e6wly6o
+                - generic:
+                  - heading "Antonelli becomes world champion as Verstappen wins in Mexico" [level=2] [ref=f97e807]
+                  - paragraph: Kimi Antonelli becomes the youngest world champion in Formula 1 history as Max Verstappen wins the Mexico City Grand Prix.
+                  - generic:
+                    - generic: 2 hrs ago
+                    - generic: Formula 1
+            - generic:
+              - link "image unavailable A young Kimi Antonelli sitting on his dad's lap while steering a car Antonelli - the boy 'born in a garage' who became world champion Kimi Antonelli was a natural driver at the age of three, according to his dad. Here's how he developed to become the F1 champion at the age of 20. 3 hrs ago Formula 1" [ref=f97e817]:
+                - /url: /sport/formula1/articles/c0rdvxdwwwwo
+                - generic:
+                  - generic:
+                    - img "image unavailable" [ref=f97e822]
+                    - img "A young Kimi Antonelli sitting on his dad's lap while steering a car" [ref=f97e823]
+                  - generic:
+                    - heading "Antonelli - the boy 'born in a garage' who became world champion" [level=2] [ref=f97e827]
+                    - paragraph: Kimi Antonelli was a natural driver at the age of three, according to his dad. Here's how he developed to become the F1 champion at the age of 20.
+                    - generic:
+                      - generic: 3 hrs ago
+                      - generic: Formula 1
+              - link "Detroit linebacker Campbell taken to hospital with neck injury Jack Campbell was placed on a stretcher and carted off the pitch during the Detroit Lions' game on Sunday, before being taken to hospital. 2 hrs ago American Football" [ref=f97e835]:
+                - /url: /sport/american-football/articles/ck9qz29w2p90o
+                - generic:
+                  - heading "Detroit linebacker Campbell taken to hospital with neck injury" [level=2] [ref=f97e840]
+                  - paragraph: Jack Campbell was placed on a stretcher and carted off the pitch during the Detroit Lions' game on Sunday, before being taken to hospital.
+                  - generic:
+                    - generic: 2 hrs ago
+                    - generic: American Football
+              - link "How Dart revived career with help of Wimbledon champion Britain's Harriet Dart knows people doubted whether she would ever win a WTA title, but says the belief of her coach Marion Bartoli helped achieve the best week of her career. 9 hrs ago Tennis" [ref=f97e848]:
+                - /url: /sport/tennis/articles/cmrlyw2y0gxzo
+                - generic:
+                  - heading "How Dart revived career with help of Wimbledon champion" [level=2] [ref=f97e853]
+                  - paragraph: Britain's Harriet Dart knows people doubted whether she would ever win a WTA title, but says the belief of her coach Marion Bartoli helped achieve the best week of her career.
+                  - generic:
+                    - generic: 9 hrs ago
+                    - generic: Tennis
+            - link "image unavailable Lewis Hamilton 'We've got big problems' - Hamilton says Ferrari need 'serious talks' Lewis Hamilton says Ferrari need \"some serious talks behind closed doors\" after fighting between their two drivers in Mexico. 57 mins ago Formula 1" [ref=f97e861]:
+              - /url: /sport/formula1/articles/cmwy7dl879gzo
+              - generic:
+                - generic:
+                  - img "image unavailable" [ref=f97e866]
+                  - img "Lewis Hamilton" [ref=f97e867]
+                - generic:
+                  - heading "'We've got big problems' - Hamilton says Ferrari need 'serious talks'" [level=2] [ref=f97e871]
+                  - paragraph: Lewis Hamilton says Ferrari need "some serious talks behind closed doors" after fighting between their two drivers in Mexico.
+                  - generic:
+                    - generic: 57 mins ago
+                    - generic: Formula 1
+            - link "image unavailable Andoni Iraola I'll tell my players to dive in future - Iraola Andoni Iraola says that he will tell his players to go down in future after Liverpool were denied a penalty in Sunday's defeat by Arsenal. 4 hrs ago Liverpool" [ref=f97e879]:
+              - /url: /sport/football/articles/cvp8grpjk4leo
+              - generic:
+                - generic:
+                  - img "image unavailable" [ref=f97e884]
+                  - img "Andoni Iraola" [ref=f97e885]
+                - generic:
+                  - heading "I'll tell my players to dive in future - Iraola" [level=2] [ref=f97e889]
+                  - paragraph: Andoni Iraola says that he will tell his players to go down in future after Liverpool were denied a penalty in Sunday's defeat by Arsenal.
+                  - generic:
+                    - generic: 4 hrs ago
+                    - generic: Liverpool
+            - link "image unavailable Mikel Arteta From Fleetwood embarrassment to 'magical' Anfield win 14 years in making Arsenal bounce back from the low of defeat at League Two Fleetwood to secure their first win in 14 years at Anfield - and open up a three-point lead at the top of the Premier League. 5 hrs ago Arsenal" [ref=f97e897]:
+              - /url: /sport/football/articles/c39wz2epven4o
+              - generic:
+                - generic:
+                  - img "image unavailable" [ref=f97e902]
+                  - img "Mikel Arteta" [ref=f97e903]
+                - generic:
+                  - heading "From Fleetwood embarrassment to 'magical' Anfield win 14 years in making" [level=2] [ref=f97e907]
+                  - paragraph: Arsenal bounce back from the low of defeat at League Two Fleetwood to secure their first win in 14 years at Anfield - and open up a three-point lead at the top of the Premier League.
+                  - generic:
+                    - generic: 5 hrs ago
+                    - generic: Arsenal
+    - contentinfo [ref=f97e913]:
+      - link "British Broadcasting Corporation" [ref=f97e916]:
+        - /url: /
+        - img "British Broadcasting Corporation" [ref=f97e917]
+      - navigation "Footer navigation" [ref=f97e920]:
+        - list:
+          - listitem:
+            - link "Home" [ref=f97e924]:
+              - /url: https://www.bbc.com/
+          - listitem:
+            - link "News" [ref=f97e927]:
+              - /url: /news
+          - listitem:
+            - link "Sport" [ref=f97e930]:
+              - /url: /sport
+          - listitem:
+            - link "Business" [ref=f97e933]:
+              - /url: /business
+          - listitem:
+            - link "Technology" [ref=f97e936]:
+              - /url: /technology
+          - listitem:
+            - link "Health" [ref=f97e939]:
+              - /url: /health
+          - listitem:
+            - link "Culture" [ref=f97e942]:
+              - /url: /culture
+          - listitem:
+            - link "Arts" [ref=f97e945]:
+              - /url: /arts
+          - listitem:
+            - link "Travel" [ref=f97e948]:
+              - /url: /travel
+          - listitem:
+            - link "Earth" [ref=f97e951]:
+              - /url: /future-planet
+          - listitem:
+            - link "Audio" [ref=f97e954]:
+              - /url: /audio
+          - listitem:
+            - link "Video" [ref=f97e957]:
+              - /url: /video
+          - listitem:
+            - link "Live" [ref=f97e960]:
+              - /url: /live
+          - listitem:
+            - link "Documentaries" [ref=f97e963]:
+              - /url: /video/docs
+          - listitem:
+            - link "Weather" [ref=f97e966]:
+              - /url: https://www.bbc.com/weather
+          - listitem:
+            - link "BBC Shop" [ref=f97e969]:
+              - /url: https://shop.bbc.com/
+          - listitem:
+            - link "BritBox" [ref=f97e972]:
+              - /url: https://www.britbox.com/?utm_source=bbc.com&utm_medium=referral&utm_campaign=footer
+      - button "BBC in other languages" [ref=f97e975]
+      - generic:
+        - generic: "Follow BBC on:"
+        - generic:
+          - button "Follow BBC on x" [ref=f97e982]
+          - button "Follow BBC on facebook" [ref=f97e985]
+          - button "Follow BBC on instagram" [ref=f97e988]
+          - button "Follow BBC on tiktok" [ref=f97e991]
+          - button "Follow BBC on linkedin" [ref=f97e994]
+          - button "Follow BBC on youtube" [ref=f97e997]
+      - navigation [ref=f97e1001]:
+        - list:
+          - listitem:
+            - link "Terms of Use" [ref=f97e1005]:
+              - /url: https://www.bbc.com/pages/terms-of-use
+          - listitem:
+            - link "Subscription Terms" [ref=f97e1008]:
+              - /url: https://www.bbc.com/pages/subscription-terms
+          - listitem:
+            - link "About the BBC" [ref=f97e1011]:
+              - /url: https://www.bbc.co.uk/aboutthebbc
+          - listitem:
+            - link "Privacy Policy" [ref=f97e1014]:
+              - /url: https://www.bbc.com/pages/privacy-policy
+          - listitem:
+            - link "Cookies" [ref=f97e1017]:
+              - /url: https://www.bbc.com/usingthebbc/cookies/how-can-i-change-my-bbc-cookie-settings/
+          - listitem:
+            - link "Do not share or sell my info" [ref=f97e1020]:
+              - /url: https://www.bbc.com/usingthebbc/cookies/how-can-i-change-my-bbc-cookie-settings/
+          - listitem:
+            - link "Accessibility Help" [ref=f97e1023]:
+              - /url: https://www.bbc.co.uk/accessibility/
+          - listitem:
+            - link "Contact the BBC" [ref=f97e1026]:
+              - /url: https://www.bbc.co.uk/contact
+          - listitem:
+            - link "Advertise with us" [ref=f97e1029]:
+              - /url: https://advertising.bbcstudios.com/
+          - listitem:
+            - link "BBC.com Help & FAQs" [ref=f97e1032]:
+              - /url: https://help.bbc.com/hc/
+          - listitem:
+            - link "Content Index" [ref=f97e1035]:
+              - /url: https://www.bbc.com/pages/content-index
+          - listitem:
+            - link "Set Preferred Source" [ref=f97e1038]:
+              - /url: https://www.bbc.com/future/article/20260128-how-to-make-google-put-trusted-sources-up-top-when-you-search
+      - generic:
+        - paragraph:
+          - text: Copyright 2026 BBC. All rights reserved. The BBC is not responsible for the content of external sites.
+          - link "Read about our approach to external linking." [ref=f97e1041]:
+            - /url: https://www.bbc.com/editorialguidelines/guidance/links-and-feeds
+    - iframe [ref=f97e1045]:
+      - generic:
+        - iframe [ref=f101e3]
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - paragraph: Subscribe now for a limited time offer
+              - button "See benefits" [ref=f101e13]
+            - button "Close subscription banner" [ref=f101e14]
+```
+[meiose: 11 nodes trimmed, 296 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]

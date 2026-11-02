@@ -1,0 +1,266 @@
+---
+source: tests/playwright_fixtures.rs
+---
+### Page
+- Page URL: https://www.usa.gov/
+- Page Title: Making government services easier to find | USAGov
+### Snapshot
+```yaml
+- generic [active] [ref=f206e1]:
+  - link "Skip to main content" [ref=f206e2]:
+    - /url: "#skip-to-h1"
+  - banner [ref=f206e3]:
+    - generic:
+      - region "An official website of the United States government" [ref=f206e6]:
+        - banner [ref=f206e8]:
+          - generic:
+            - paragraph: An official website of the United States government
+            - button "Here's how you know" [ref=f206e14]
+      - generic: "|"
+      - region "Information" [ref=f206e19]:
+        - generic:
+          - img "Information" [ref=f206e22]
+          - generic:
+            - text: Visit
+            - link "vote.gov" [ref=f206e24]:
+              - /url: https://www.vote.gov
+            - text: to learn how to register to vote or to update your registration.
+    - generic:
+      - emphasis:
+        - link [ref=f206e28]:
+          - /url: /
+          - img "USAGov Logo" [ref=f206e29]
+      - generic:
+        - button "Español" [ref=f206e31]
+        - generic:
+          - generic:
+            - link "Call us at 1-844-USAGOV1" [ref=f206e36]:
+              - /url: /phone
+          - search [ref=f206e37]:
+            - generic: Search
+            - searchbox "Search" [ref=f206e39]
+            - button [ref=f206e40]:
+              - img "Search" [ref=f206e41]
+    - navigation "Primary navigation" [ref=f206e42]:
+      - list:
+        - listitem:
+          - link "All topics and services" [ref=f206e46]:
+            - /url: /#all-topics-header
+        - listitem:
+          - link "The U.S. and its government" [ref=f206e49]:
+            - /url: /about-the-us
+        - listitem:
+          - link "Government benefits" [ref=f206e52]:
+            - /url: /benefits
+        - listitem:
+          - link "Immigration and U.S. citizenship" [ref=f206e55]:
+            - /url: /immigration-and-citizenship
+        - listitem:
+          - link "Money and credit" [ref=f206e58]:
+            - /url: /money
+        - listitem:
+          - link "Travel" [ref=f206e61]:
+            - /url: /travel
+        - listitem:
+          - link "Voting and elections" [ref=f206e64]:
+            - /url: /voting-and-elections
+  - main [ref=f206e66]:
+    - generic:
+      - generic:
+        - heading "Making government services easier to find" [level=1] [ref=f206e73]
+        - paragraph: USA.gov helps you locate and understand government benefits, programs, and information.
+      - generic:
+        - heading "How do I ..." [level=2] [ref=f206e77]
+        - list:
+          - listitem:
+            - link "Check my voter registration" [ref=f206e80]:
+              - /url: /confirm-voter-registration
+          - listitem:
+            - link "Get or renew a passport" [ref=f206e82]:
+              - /url: /passport
+          - listitem:
+            - link "Get housing help" [ref=f206e84]:
+              - /url: /housing-help
+          - listitem:
+            - link "Find unclaimed money" [ref=f206e86]:
+              - /url: /unclaimed-money
+      - link "Jump to all topics and services" [ref=f206e88]:
+        - /url: "#all-topics-header"
+      - generic:
+        - generic:
+          - heading "Government benefits and financial assistance" [level=2] [ref=f206e94]
+          - paragraph: Discover government benefits that you may be eligible for and learn how to apply.
+        - button "Find benefits" [ref=f206e97]
+      - heading "All topics and services" [level=2] [ref=f206e99]
+    - list:
+      - listitem:
+        - link [ref=f206e104]:
+          - /url: /voting-and-elections
+          - heading "Voting and elections" [level=2] [ref=f206e107]
+          - paragraph: Find out how to register to vote, where your voting location is, how presidential elections work, and more about voting in the United States.
+      - listitem:
+        - link [ref=f206e111]:
+          - /url: /about-the-us
+          - heading "The U.S. and its government" [level=2] [ref=f206e114]
+          - paragraph: Learn about U.S. laws, history, and more. Buy government property. Contact elected officials and federal agencies.
+      - listitem:
+        - link [ref=f206e118]:
+          - /url: /complaints
+          - heading "Complaints" [level=2] [ref=f206e121]
+          - paragraph: File complaints involving government agencies, telemarketers, products and services, travel, housing, and banking.
+      - listitem:
+        - link [ref=f206e125]:
+          - /url: /disability-services
+          - heading "Disability services" [level=2] [ref=f206e128]
+          - paragraph: Find government benefits and programs for people with disabilities and their families.
+      - listitem:
+        - link [ref=f206e132]:
+          - /url: /disasters-and-emergencies
+          - heading "Disasters and emergencies" [level=2] [ref=f206e135]
+          - paragraph: Learn about disaster assistance and find government benefits for other emergencies.
+      - listitem:
+        - link [ref=f206e139]:
+          - /url: /education
+          - heading "Education" [level=2] [ref=f206e142]
+          - paragraph: Learn about Federal Student Aid and studying in the U.S. Find early intervention, special education, and Head Start programs.
+      - listitem:
+        - link [ref=f206e146]:
+          - /url: /benefits
+          - heading "Government benefits" [level=2] [ref=f206e149]
+          - paragraph: Find government programs that may help pay for food, housing, health care, and more.
+      - listitem:
+        - link [ref=f206e153]:
+          - /url: /health
+          - heading "Health" [level=2] [ref=f206e156]
+          - paragraph: Get information about health insurance. Find help for mental health and other medical conditions, testing, and paying medical bills.
+      - listitem:
+        - link [ref=f206e160]:
+          - /url: /housing-help
+          - heading "Housing help" [level=2] [ref=f206e163]
+          - paragraph: Learn about rental and buyer assistance programs. Find emergency housing and avoid eviction.
+      - listitem:
+        - link [ref=f206e167]:
+          - /url: /immigration-and-citizenship
+          - heading "Immigration and U.S. citizenship" [level=2] [ref=f206e170]
+          - paragraph: Learn about U.S. residency, Green Cards, citizenship requirements, and related issues.
+      - listitem:
+        - link [ref=f206e174]:
+          - /url: /innovation
+          - heading "Innovation" [level=2] [ref=f206e177]
+          - paragraph: Find ways you can participate through citizen science projects and challenges. Explore active competitions and volunteer opportunities. Innovation is essential to solving problems.
+      - listitem:
+        - link [ref=f206e181]:
+          - /url: /jobs-labor-laws-unemployment
+          - heading "Jobs, labor laws, and unemployment" [level=2] [ref=f206e184]
+          - paragraph: Get resources for finding a job. Learn about unemployment insurance and important labor laws.
+      - listitem:
+        - link [ref=f206e188]:
+          - /url: /laws-and-legal-issues
+          - heading "Laws and legal issues" [level=2] [ref=f206e191]
+          - paragraph: Learn how to replace vital records, get child support enforcement, find legal help, and more.
+      - listitem:
+        - link [ref=f206e195]:
+          - /url: /military-and-veterans
+          - heading "Military and veterans" [level=2] [ref=f206e198]
+          - paragraph: Learn how to join the military. Find benefits and services as a member or veteran, including how to apply for housing, financial, health, and other support.
+      - listitem:
+        - link [ref=f206e202]:
+          - /url: /money
+          - heading "Money and credit" [level=2] [ref=f206e205]
+          - paragraph: Find government grants, loans, and unclaimed money. Learn about taxes. Get credit reports and scores.
+      - listitem:
+        - link [ref=f206e209]:
+          - /url: /scams-and-fraud
+          - heading "Scams and fraud" [level=2] [ref=f206e212]
+          - paragraph: Learn about identity theft, Social Security scams, and how to report scams and fraud.
+      - listitem:
+        - link [ref=f206e216]:
+          - /url: /small-business
+          - heading "Small business" [level=2] [ref=f206e219]
+          - paragraph: Learn how to start, fund, and manage your own business. Understand how to get import and export licenses.
+      - listitem:
+        - link [ref=f206e223]:
+          - /url: /taxes
+          - heading "Taxes" [level=2] [ref=f206e226]
+          - paragraph: Learn about filing federal income tax. Find out how to pay, how to check your refund, and more.
+      - listitem:
+        - link [ref=f206e230]:
+          - /url: /travel
+          - heading "Travel" [level=2] [ref=f206e233]
+          - paragraph: Learn about passports, travel documents for minors, and travel to, from, and within the U.S.
+      - listitem:
+        - link [ref=f206e237]:
+          - /url: /life-events
+          - heading "Life events" [level=2] [ref=f206e240]
+          - paragraph: Discover government benefits and services to help you and your family through every stage of life.
+    - link "Back to top" [ref=f206e243]:
+      - /url: "#main-content"
+      - text: Top
+  - contentinfo [ref=f206e244]:
+    - navigation "Footer navigation" [ref=f206e249]:
+      - generic:
+        - generic:
+          - heading "Government information" [level=3] [ref=f206e253]
+          - list:
+            - listitem:
+              - link "All topics and services" [ref=f206e256]:
+                - /url: /#all-topics-header
+            - listitem:
+              - link "Directory of U.S. government agencies and departments" [ref=f206e258]:
+                - /url: /agency-index
+            - listitem:
+              - link "Branches of government" [ref=f206e260]:
+                - /url: /branches-of-government
+        - generic:
+          - heading "About us" [level=3] [ref=f206e263]
+          - list:
+            - listitem:
+              - link "About USAGov" [ref=f206e266]:
+                - /url: /about
+            - listitem:
+              - link "Report a website issue" [ref=f206e268]:
+                - /url: /site-issue-report-form
+            - listitem:
+              - link "Website usage data" [ref=f206e270]:
+                - /url: /website-analytics/
+        - generic:
+          - heading "For federal agencies" [level=3] [ref=f206e273]
+          - list:
+            - listitem:
+              - link "Partner with us" [ref=f206e276]:
+                - /url: /partner-with-usagov
+            - listitem:
+              - link "Read our blog" [ref=f206e278]:
+                - /url: /blog
+    - generic:
+      - heading "USAGov Contact Center" [level=4] [ref=f206e286]
+      - generic:
+        - paragraph: Ask USA.gov a question at
+        - link "1-844-USAGOV1 (1-844-872-4681)" [ref=f206e291]:
+          - /url: /phone
+    - generic:
+      - region "USAGov is the official guide to government information and services" [ref=f206e294]:
+        - region "An official website of the U.S. General Services Administration" [ref=f206e296]:
+          - paragraph: USAGov is the official guide to government information and services
+          - paragraph:
+            - text: An official website of the
+            - link "U.S. General Services Administration" [ref=f206e299]:
+              - /url: https://www.gsa.gov/
+          - paragraph:
+            - text: This website complies with Executive Order
+            - link "14224" [ref=f206e301]:
+              - /url: https://www.federalregister.gov/documents/2025/03/06/2025-03694/designating-english-as-the-official-language-of-the-united-states
+            - text: . English is the official language of the U.S. Government, and the English-language version of this website is the authoritative source for all federal information contained herein.
+      - navigation "Important links" [ref=f206e302]:
+        - list:
+          - listitem:
+            - link "Accessibility policy" [ref=f206e306]:
+              - /url: /accessibility-policy
+          - listitem:
+            - link "Privacy and security policies" [ref=f206e308]:
+              - /url: /privacy-security
+          - listitem:
+            - link "FOIA requests" [ref=f206e310]:
+              - /url: https://www.gsa.gov/reference/freedom-of-information-act-foia
+```
+[meiose: 1 nodes trimmed, 98 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]

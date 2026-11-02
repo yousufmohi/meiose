@@ -1,0 +1,215 @@
+### Page
+- Page URL: https://rust-lang.org/
+- Page Title: Rust Programming Language
+### Snapshot
+```yaml
+- generic [active] [ref=f209e1]:
+  - navigation [ref=f209e2]:
+    - link [ref=f209e4] [cursor=pointer]:
+      - /url: /
+      - img "Rust Logo" [ref=f209e5]
+    - list [ref=f209e6]:
+      - listitem [ref=f209e7]:
+        - link "Install" [ref=f209e8] [cursor=pointer]:
+          - /url: /tools/install
+      - listitem [ref=f209e9]:
+        - link "Learn" [ref=f209e10] [cursor=pointer]:
+          - /url: /learn
+      - listitem [ref=f209e11]:
+        - link "Playground" [ref=f209e12] [cursor=pointer]:
+          - /url: https://play.rust-lang.org/
+      - listitem [ref=f209e13]:
+        - link "Tools" [ref=f209e14] [cursor=pointer]:
+          - /url: /tools
+      - listitem [ref=f209e15]:
+        - link "Governance" [ref=f209e16] [cursor=pointer]:
+          - /url: /governance
+      - listitem [ref=f209e17]:
+        - link "Funding" [ref=f209e18] [cursor=pointer]:
+          - /url: /funding
+      - listitem [ref=f209e19]:
+        - link "Community" [ref=f209e20] [cursor=pointer]:
+          - /url: /community
+      - listitem [ref=f209e21]:
+        - link "Blog" [ref=f209e22] [cursor=pointer]:
+          - /url: https://blog.rust-lang.org/
+    - generic [ref=f209e24]:
+      - generic [ref=f209e25]: Language
+      - combobox "Language" [ref=f209e26]:
+        - option "English (en-US)" [selected]
+        - option "Español (es)"
+        - option "Français (fr)"
+        - option "Italiano (it)"
+        - option "日本語 (ja)"
+        - option "Português (pt-BR)"
+        - option "Русский (ru)"
+        - option "Türkçe (tr)"
+        - option "简体中文 (zh-CN)"
+        - option "正體中文 (zh-TW)"
+  - main [ref=f209e27]:
+    - generic [ref=f209e29]:
+      - generic [ref=f209e30]:
+        - heading "Rust" [level=1] [ref=f209e31]
+        - heading "A language empowering everyone to build reliable and efficient software." [level=2] [ref=f209e32]
+      - generic [ref=f209e33]:
+        - link "Get Started" [ref=f209e34] [cursor=pointer]:
+          - /url: /learn/get-started
+        - paragraph [ref=f209e35]:
+          - link "Version 1.99.1" [ref=f209e36] [cursor=pointer]:
+            - /url: https://blog.rust-lang.org/releases/latest
+    - generic [ref=f209e38]:
+      - heading "Why Rust?" [level=2] [ref=f209e40]
+      - generic [ref=f209e42]:
+        - generic [ref=f209e43]:
+          - heading "Performance" [level=3] [ref=f209e44]
+          - paragraph [ref=f209e45]: "Rust is blazingly fast and memory-efficient: with no runtime or garbage collector, it can power performance-critical services, run on embedded devices, and easily integrate with other languages."
+        - generic [ref=f209e46]:
+          - heading "Reliability" [level=3] [ref=f209e47]
+          - paragraph [ref=f209e48]: Rust’s rich type system and ownership model guarantee memory-safety and thread-safety — enabling you to eliminate many classes of bugs at compile-time.
+        - generic [ref=f209e49]:
+          - heading "Productivity" [level=3] [ref=f209e50]
+          - paragraph [ref=f209e51]: Rust has great documentation, a friendly compiler with useful error messages, and top-notch tooling — an integrated package manager and build tool, smart multi-editor support with auto-completion and type inspections, an auto-formatter, and more.
+    - generic [ref=f209e53]:
+      - heading "Build it in Rust" [level=2] [ref=f209e55]
+      - paragraph [ref=f209e58]:
+        - text: In 2018, the Rust community decided to improve the programming experience for a few distinct domains (see
+        - link "the 2018 roadmap" [ref=f209e59] [cursor=pointer]:
+          - /url: https://blog.rust-lang.org/2018/03/12/roadmap.html
+        - text: ). For these, you can find many high-quality crates and some awesome guides on how to get started.
+      - generic [ref=f209e60]:
+        - generic [ref=f209e61]:
+          - img "terminal" [ref=f209e63]
+          - generic [ref=f209e64]:
+            - heading "Command Line" [level=3] [ref=f209e65]
+            - paragraph [ref=f209e66]: Whip up a CLI tool quickly with Rust’s robust ecosystem. Rust helps you maintain your app with confidence and distribute it with ease.
+            - link "Building Tools" [ref=f209e67] [cursor=pointer]:
+              - /url: /what/cli
+        - generic [ref=f209e68]:
+          - img "gear with puzzle piece elements" [ref=f209e70]
+          - generic [ref=f209e71]:
+            - heading "WebAssembly" [level=3] [ref=f209e72]
+            - paragraph [ref=f209e73]: Use Rust to supercharge your JavaScript, one module at a time. Publish to npm, bundle with webpack, and you’re off to the races.
+            - link "Writing Web Apps" [ref=f209e74] [cursor=pointer]:
+              - /url: /what/wasm
+        - generic [ref=f209e75]:
+          - img "a cloud with nodes" [ref=f209e77]
+          - generic [ref=f209e78]:
+            - heading "Networking" [level=3] [ref=f209e79]
+            - paragraph [ref=f209e80]: Predictable performance. Tiny resource footprint. Rock-solid reliability. Rust is great for network services.
+            - link "Working On Servers" [ref=f209e81] [cursor=pointer]:
+              - /url: /what/networking
+        - generic [ref=f209e82]:
+          - img "an embedded device chip" [ref=f209e84]
+          - generic [ref=f209e85]:
+            - heading "Embedded" [level=3] [ref=f209e86]
+            - paragraph [ref=f209e87]: Targeting low-resource devices? Need low-level control without giving up high-level conveniences? Rust has you covered.
+            - link "Starting With Embedded" [ref=f209e88] [cursor=pointer]:
+              - /url: /what/embedded
+    - generic [ref=f209e90]:
+      - heading "Rust in production" [level=2] [ref=f209e92]
+      - paragraph [ref=f209e95]:
+        - text: Hundreds of companies around the world are using Rust in production today for fast, low-resource, cross-platform solutions.
+        - strong [ref=f209e96]: From startups to large corporations, from embedded devices to scalable web services, Rust is a great fit.
+    - generic [ref=f209e98]:
+      - heading "Get involved" [level=2] [ref=f209e100]
+      - generic [ref=f209e102]:
+        - generic [ref=f209e103]:
+          - heading "Read Rust" [level=3] [ref=f209e104]
+          - paragraph [ref=f209e105]: We love documentation! Take a look at the books available online, as well as key blog posts and user guides.
+          - link "Read the book" [ref=f209e106] [cursor=pointer]:
+            - /url: learn
+        - generic [ref=f209e107]:
+          - heading "Watch Rust" [level=3] [ref=f209e108]
+          - paragraph [ref=f209e109]: The Rust community has a dedicated YouTube channel collecting a huge range of presentations and tutorials.
+          - link "Watch the Videos" [ref=f209e110] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCaYhcUwRBNscFNUKTjgPFiA
+      - generic [ref=f209e111]:
+        - heading "Contribute code" [level=3] [ref=f209e112]
+        - paragraph [ref=f209e113]: Rust is truly a community effort, and we welcome contribution from hobbyists and production users, from newcomers and seasoned professionals. Come help us make the Rust experience even better!
+        - link "Read Contribution Guide" [ref=f209e114] [cursor=pointer]:
+          - /url: https://rustc-dev-guide.rust-lang.org/getting-started.html
+    - generic [ref=f209e116]:
+      - heading "Thanks" [level=2] [ref=f209e118]
+      - paragraph [ref=f209e121]: Rust would not exist without the generous contributions of time, work, and resources from individuals and companies. We are very grateful for the support!
+      - generic [ref=f209e122]:
+        - generic [ref=f209e123]:
+          - heading "Individuals" [level=3] [ref=f209e124]
+          - paragraph [ref=f209e125]: Rust is a community project and is very thankful for the many community contributions it receives.
+          - link "See individual contributors" [ref=f209e126] [cursor=pointer]:
+            - /url: https://thanks.rust-lang.org/
+        - generic [ref=f209e127]:
+          - heading "Corporate sponsors" [level=3] [ref=f209e128]
+          - paragraph [ref=f209e129]: The Rust project receives support from companies through the Rust Foundation.
+          - link "See Foundation members" [ref=f209e130] [cursor=pointer]:
+            - /url: https://foundation.rust-lang.org/members
+  - contentinfo [ref=f209e131]:
+    - generic [ref=f209e132]:
+      - generic [ref=f209e133]:
+        - generic [ref=f209e134]:
+          - heading "Get help!" [level=4] [ref=f209e135]
+          - list [ref=f209e136]:
+            - listitem [ref=f209e137]:
+              - link "Documentation" [ref=f209e138] [cursor=pointer]:
+                - /url: /learn
+            - listitem [ref=f209e139]:
+              - link "Rust Forge (Contributor Documentation)" [ref=f209e140] [cursor=pointer]:
+                - /url: http://forge.rust-lang.org
+            - listitem [ref=f209e141]:
+              - link "Ask a Question on the Users Forum" [ref=f209e142] [cursor=pointer]:
+                - /url: https://users.rust-lang.org
+          - generic [ref=f209e144]:
+            - generic [ref=f209e145]: Language
+            - combobox "Language" [ref=f209e146]:
+              - option "English (en-US)" [selected]
+              - option "Español (es)"
+              - option "Français (fr)"
+              - option "Italiano (it)"
+              - option "日本語 (ja)"
+              - option "Português (pt-BR)"
+              - option "Русский (ru)"
+              - option "Türkçe (tr)"
+              - option "简体中文 (zh-CN)"
+              - option "正體中文 (zh-TW)"
+        - generic [ref=f209e147]:
+          - heading "Terms and policies" [level=4] [ref=f209e148]
+          - list [ref=f209e149]:
+            - listitem [ref=f209e150]:
+              - link "Code of Conduct" [ref=f209e151] [cursor=pointer]:
+                - /url: /policies/code-of-conduct
+            - listitem [ref=f209e152]:
+              - link "Licenses" [ref=f209e153] [cursor=pointer]:
+                - /url: /policies/licenses
+            - listitem [ref=f209e154]:
+              - link "Logo Policy and Media Guide" [ref=f209e155] [cursor=pointer]:
+                - /url: https://foundation.rust-lang.org/policies/logo-policy-and-media-guide/
+            - listitem [ref=f209e156]:
+              - link "Security Disclosures" [ref=f209e157] [cursor=pointer]:
+                - /url: /policies/security
+            - listitem [ref=f209e158]:
+              - link "Privacy Notice" [ref=f209e159] [cursor=pointer]:
+                - /url: https://foundation.rust-lang.org/policies/privacy-policy/
+            - listitem [ref=f209e160]:
+              - link "All Policies" [ref=f209e161] [cursor=pointer]:
+                - /url: /policies
+        - generic [ref=f209e162]:
+          - heading "Social" [level=4] [ref=f209e163]
+          - generic [ref=f209e164]:
+            - link [ref=f209e165] [cursor=pointer]:
+              - /url: https://social.rust-lang.org/@rust
+              - img "Mastodon" [ref=f209e166]
+            - link [ref=f209e167] [cursor=pointer]:
+              - /url: https://bsky.app/profile/rust-lang.org
+              - img "Bluesky" [ref=f209e168]
+            - link [ref=f209e169] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCaYhcUwRBNscFNUKTjgPFiA
+              - img "youtube logo" [ref=f209e170]
+            - link [ref=f209e171] [cursor=pointer]:
+              - /url: https://github.com/rust-lang
+              - img "github logo" [ref=f209e172]
+      - generic [ref=f209e173]:
+        - paragraph [ref=f209e174]:
+          - text: Maintained by the Rust Team. See a bug?
+          - link "File an issue!" [ref=f209e175] [cursor=pointer]:
+            - /url: https://github.com/rust-lang/www.rust-lang.org/issues/new/choose
+        - paragraph [ref=f209e176]: Web site built every day at 22:00 UTC
+```

@@ -1,0 +1,20 @@
+### Page
+- Page URL: https://www.ebay.com/sch/i.html?_nkw=mechanical+keyboard
+- Page Title: Error Page | eBay
+- HTTP status: 403
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f147e1]:
+  - main [ref=f147e2]:
+    - generic [ref=f147e5]:
+      - paragraph [ref=f147e6]: SORRY
+      - generic [ref=f147e7]:
+        - paragraph [ref=f147e8]: Something went wrong on our end
+        - separator [ref=f147e9]
+        - paragraph [ref=f147e10]: 0.cb182117.1793582765.4c5a287d
+        - separator [ref=f147e11]
+        - paragraph [ref=f147e12]: Please go back and try again.
+  - contentinfo [ref=f147e13]:
+    - paragraph [ref=f147e14]: Copyright © 1995-2026 eBay Inc. All Rights Reserved.
+```

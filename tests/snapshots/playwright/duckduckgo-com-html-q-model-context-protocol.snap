@@ -1,0 +1,34 @@
+---
+source: tests/playwright_fixtures.rs
+---
+<untouched>
+### Page
+- Page URL: https://html.duckduckgo.com/html/?q=model+context+protocol
+- Page Title: DuckDuckGo
+### Snapshot
+```yaml
+- generic [ref=f210e2]:
+  - link "DuckDuckGo" [ref=f210e3] [cursor=pointer]:
+    - /url: /html/
+  - iframe [ref=f210e4]
+  - generic [ref=f210e5]:
+    - generic [ref=f210e6]:
+      - generic [ref=f210e7]: Unfortunately, bots use DuckDuckGo too.
+      - generic [ref=f210e8]: Please complete the following challenge to confirm this search was made by a human.
+      - generic [ref=f210e9]: "Select all squares containing a duck:"
+      - generic [ref=f210e11]:
+        - generic [ref=f210e12]: █
+        - generic [ref=f210e15]: █
+        - generic [ref=f210e18]: █
+        - generic [ref=f210e21]: █
+        - generic [ref=f210e24]: █
+        - generic [ref=f210e27]: █
+        - generic [ref=f210e30]: █
+        - generic [ref=f210e33]: █
+        - generic [ref=f210e36]: █
+      - generic [ref=f210e39]:
+        - button "Submit" [ref=f210e40] [cursor=pointer]
+        - paragraph
+        - text: Images not loading?
+    - paragraph
+```

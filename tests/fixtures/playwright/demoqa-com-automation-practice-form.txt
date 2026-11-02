@@ -1,0 +1,90 @@
+### Page
+- Page URL: https://demoqa.com/automation-practice-form
+- Page Title: demosite
+- Console: 0 errors, 4 warnings
+### Snapshot
+```yaml
+- generic [ref=f197e2]:
+  - banner [ref=f197e3]:
+    - link [ref=f197e196] [cursor=pointer]:
+      - /url: https://demoqa.com
+  - generic [ref=f197e6]:
+    - generic [ref=f197e9]:
+      - generic [ref=f197e10]: Elements
+      - generic [ref=f197e22]:
+        - generic [ref=f197e23] [cursor=pointer]: Forms
+        - list [ref=f197e36]:
+          - listitem [ref=f197e37] [cursor=pointer]:
+            - link "Practice Form" [ref=f197e38]:
+              - /url: /automation-practice-form
+      - generic [ref=f197e41]: Alerts, Frame & Windows
+      - generic [ref=f197e53]: Widgets
+      - generic [ref=f197e66]: Interactions
+      - generic [ref=f197e78]: Book Store Application
+    - generic [ref=f197e91]:
+      - heading "Practice Form" [level=1] [ref=f197e92]
+      - heading "Student Registration Form" [level=5] [ref=f197e93]
+      - generic [ref=f197e94]:
+        - generic [ref=f197e95]:
+          - generic [ref=f197e96]: Name
+          - textbox "First Name" [ref=f197e99]
+          - textbox "Last Name" [ref=f197e101]
+        - generic [ref=f197e102]:
+          - generic [ref=f197e103]: Email
+          - textbox "name@example.com" [ref=f197e106]
+        - generic [ref=f197e107]:
+          - generic [ref=f197e108]: Gender
+          - generic [ref=f197e109]:
+            - generic [ref=f197e110]:
+              - radio "Male" [ref=f197e111]
+              - generic [ref=f197e112]: Male
+            - generic [ref=f197e113]:
+              - radio "Female" [ref=f197e114]
+              - generic [ref=f197e115]: Female
+            - generic [ref=f197e116]:
+              - radio "Other" [ref=f197e117]
+              - generic [ref=f197e118]: Other
+        - generic [ref=f197e119]:
+          - generic [ref=f197e120]: Mobile(10 Digits)
+          - textbox "Mobile Number" [ref=f197e123]
+        - generic [ref=f197e124]:
+          - generic [ref=f197e125]: Date of Birth
+          - textbox [ref=f197e130]: 01 Nov 2026
+        - generic [ref=f197e131]:
+          - generic [ref=f197e132]: Subjects
+          - generic [ref=f197e135]:
+            - log [ref=f197e137]
+            - combobox [ref=f197e141]
+        - generic [ref=f197e144]:
+          - generic [ref=f197e145]: Hobbies
+          - generic [ref=f197e147]:
+            - generic [ref=f197e148]:
+              - checkbox "Sports" [ref=f197e149]
+              - generic [ref=f197e150]: Sports
+            - generic [ref=f197e151]:
+              - checkbox "Reading" [ref=f197e152]
+              - generic [ref=f197e153]: Reading
+            - generic [ref=f197e154]:
+              - checkbox "Music" [ref=f197e155]
+              - generic [ref=f197e156]: Music
+        - generic [ref=f197e157]:
+          - generic [ref=f197e158]: Picture
+          - button "Choose File" [ref=f197e161] [cursor=pointer]
+        - generic [ref=f197e162]:
+          - generic [ref=f197e163]: Current Address
+          - textbox "Current Address" [ref=f197e166]
+        - generic [ref=f197e167]:
+          - generic [ref=f197e168]: State and City
+          - generic [ref=f197e171]:
+            - log [ref=f197e173]
+            - generic [ref=f197e175]:
+              - generic [ref=f197e176]: Select State
+              - combobox [ref=f197e178]
+          - generic [ref=f197e184]:
+            - generic:
+              - log
+              - generic: Select City
+        - button "Submit" [ref=f197e187] [cursor=pointer]
+  - contentinfo [ref=f197e194]:
+    - generic [ref=f197e195]: © 2013-2026 TOOLSQA.COM | ALL RIGHTS RESERVED.
+```

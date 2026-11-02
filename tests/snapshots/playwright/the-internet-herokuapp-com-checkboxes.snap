@@ -1,0 +1,31 @@
+---
+source: tests/playwright_fixtures.rs
+---
+<untouched>
+### Page
+- Page URL: https://the-internet.herokuapp.com/checkboxes
+- Page Title: The Internet
+- Console: 3 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f154e1]:
+  - text: The Internet
+  - generic [ref=f154e4]:
+    - link "Fork me on GitHub":
+      - /url: https://github.com/saucelabs/the-internet
+      - img "Fork me on GitHub" [ref=f154e5] [cursor=pointer]
+    - generic [ref=f154e7]:
+      - heading "Checkboxes" [level=3] [ref=f154e8]
+      - generic [ref=f154e9]:
+        - checkbox [ref=f154e10]
+        - text: checkbox 1
+        - checkbox [checked] [ref=f154e11]
+        - text: checkbox 2
+  - generic [ref=f154e14]:
+    - text: Powered by
+    - link "Elemental Selenium" [ref=f154e15] [cursor=pointer]:
+      - /url: http://elementalselenium.com/
+    - text: and
+    - link "Sauce Labs" [ref=f154e16] [cursor=pointer]:
+      - /url: https://saucelabs.com/
+```

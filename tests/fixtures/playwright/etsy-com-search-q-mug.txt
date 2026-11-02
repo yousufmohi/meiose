@@ -1,0 +1,25 @@
+### Page
+- Page URL: https://www.etsy.com/search?q=mug
+- Page Title: etsy.com
+- HTTP status: 403
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- iframe [ref=f149e2]:
+  - generic [ref=f150e2]:
+    - paragraph [ref=f150e9]: Access is temporarily restricted
+    - generic [ref=f150e11]:
+      - generic [ref=f150e12]:
+        - paragraph [ref=f150e13]: We detected unusual activity from your device or network.
+        - paragraph [ref=f150e14]: "Reasons may include:"
+        - list [ref=f150e15]:
+          - listitem [ref=f150e16]: "- Rapid taps or clicks"
+          - listitem [ref=f150e17]: "- JavaScript disabled or not working"
+          - listitem [ref=f150e18]: "- Automated (bot) activity on your network (IP 173.32.207.181)"
+          - listitem [ref=f150e19]: "- Use of developer or inspection tools"
+      - generic [ref=f150e20]:
+        - paragraph [ref=f150e21]:
+          - text: Need help?
+          - button "Submit feedback." [ref=f150e22] [cursor=pointer]
+        - paragraph [ref=f150e23]: "ID: 4611ad77-2a5b-f9f0-baf8-a2c8de8f4520"
+```

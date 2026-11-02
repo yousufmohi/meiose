@@ -1,0 +1,883 @@
+---
+source: tests/playwright_fixtures.rs
+---
+### Page
+- Page URL: https://docs.rs/tokio/latest/tokio/
+- Page Title: tokio - Rust
+- Console: 0 errors, 7 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f85e1]:
+  - navigation "Main navigation" [ref=f85e4]:
+    - generic:
+      - link "Docs.rs" [ref=f85e6]:
+        - /url: /
+        - generic "Docs.rs":
+          - generic [aria-hidden]: 
+        - text: Docs.rs
+      - list:
+        - listitem:
+          - link "tokio-1.54.1 ▼" [ref=f85e11]:
+            - /url: "#"
+            - generic [aria-hidden]: 
+            - generic: tokio-1.54.1
+            - text: ▼
+          - text:            
+        - listitem:
+          - link "Platform" [ref=f85e15]:
+            - /url: "#"
+            - generic [aria-hidden]: 
+            - text: ▼
+        - listitem:
+          - link "Feature flags" [ref=f85e19]:
+            - /url: /crate/tokio/latest/features
+            - generic [aria-hidden]: 
+      - list:
+        - listitem:
+          - link "docs.rs" [ref=f85e25]:
+            - /url: "#"
+            - text: docs.rs ▼
+          - text:         
+      - list:
+        - listitem:
+          - link "Rust" [ref=f85e28]:
+            - /url: "#"
+            - text: Rust ▼
+      - generic:
+        - generic [aria-hidden] [ref=f85e31] [cursor=pointer]: 
+        - textbox "Find crate by search query" [ref=f85e32]:
+          - /placeholder: Find crate
+  - generic:
+    - link "Skip to main content" [ref=f85e34]:
+      - /url: "#main-content"
+    - navigation [ref=f85e35]:
+      - heading "tokio 1.54.1" [level=2] [ref=f85e37]:
+        - link "tokio" [ref=f85e38]:
+          - /url: ../tokio/index.html
+        - generic: 1.54.1
+      - generic:
+        - list:
+          - listitem:
+            - link "All Items" [ref=f85e43]:
+              - /url: all.html
+        - generic:
+          - heading [level=3] [ref=f85e45]:
+            - link "Sections" [ref=f85e46]:
+              - /url: "#"
+          - list:
+            - listitem:
+              - link "A Tour of Tokio" [ref=f85e49]:
+                - /url: "#a-tour-of-tokio"
+              - list:
+                - listitem:
+                  - link "Authoring applications" [ref=f85e52]:
+                    - /url: "#authoring-applications"
+                - listitem:
+                  - link "Authoring libraries" [ref=f85e54]:
+                    - /url: "#authoring-libraries"
+                - listitem:
+                  - link "Working With Tasks" [ref=f85e56]:
+                    - /url: "#working-with-tasks"
+                - listitem:
+                  - link "CPU-bound tasks and blocking code" [ref=f85e58]:
+                    - /url: "#cpu-bound-tasks-and-blocking-code"
+                - listitem:
+                  - link "Asynchronous IO" [ref=f85e60]:
+                    - /url: "#asynchronous-io"
+            - listitem:
+              - link "Examples" [ref=f85e62]:
+                - /url: "#examples"
+            - listitem:
+              - link "Feature flags" [ref=f85e64]:
+                - /url: "#feature-flags"
+              - list:
+                - listitem:
+                  - link "Unstable features" [ref=f85e67]:
+                    - /url: "#unstable-features"
+            - listitem:
+              - link "Supported platforms" [ref=f85e69]:
+                - /url: "#supported-platforms"
+              - list:
+                - listitem:
+                  - link [ref=f85e72]:
+                    - /url: "#wasm-support"
+                    - code: WASM
+                    - text: support
+          - heading [level=3] [ref=f85e74]:
+            - link "Crate Items" [ref=f85e75]:
+              - /url: "#reexports"
+          - list:
+            - listitem:
+              - link "Re-exports" [ref=f85e78]:
+                - /url: "#reexports"
+            - listitem:
+              - link "Modules" [ref=f85e80]:
+                - /url: "#modules"
+            - listitem:
+              - link "Macros" [ref=f85e82]:
+                - /url: "#macros"
+            - listitem:
+              - link "Attribute Macros" [ref=f85e84]:
+                - /url: "#attributes"
+        - generic:
+          - heading "Crates" [level=3] [ref=f85e86]
+          - list:
+            - listitem:
+              - link "tokio" [ref=f85e89]:
+                - /url: ../tokio/index.html
+    - generic "Drag to resize sidebar"
+    - main [ref=f85e91]:
+      - generic:
+        - generic:
+          - heading [level=1] [ref=f85e95]:
+            - text: Crate tokio
+            - button "Copy item path" [ref=f85e96]
+          - generic:
+            - link "Search" [ref=f85e99]:
+              - /url: https://docs.rs/tokio/latest/tokio/?search=
+            - link "Settings" [ref=f85e102]:
+              - /url: ../settings.html
+            - link "Help" [ref=f85e105]:
+              - /url: ../help.html
+            - button "Summary" [ref=f85e107]
+          - link "Source" [ref=f85e110]:
+            - /url: ../src/tokio/lib.rs.html#1-754
+        - group:
+          - generic "Collapse" [ref=f85e112] [cursor=pointer]
+          - generic:
+            - paragraph: A runtime for writing reliable network applications without compromising speed.
+            - paragraph: "Tokio is an event-driven, non-blocking I/O platform for writing asynchronous applications with the Rust programming language. At a high level, it provides a few major components:"
+            - list:
+              - listitem:
+                - text: Tools for
+                - link "working with asynchronous tasks" [ref=f85e118]:
+                  - /url: "#working-with-tasks"
+                - text: ", including"
+                - link "synchronization primitives and channels" [ref=f85e119]:
+                  - /url: sync/index.html
+                - text: and
+                - link "timeouts, sleeps, and intervals" [ref=f85e120]:
+                  - /url: time/index.html
+                - text: .
+              - listitem:
+                - text: APIs for
+                - link "performing asynchronous I/O" [ref=f85e122]:
+                  - /url: "#asynchronous-io"
+                - text: ", including"
+                - link "TCP and UDP" [ref=f85e123]:
+                  - /url: net/index.html
+                - text: sockets,
+                - link "filesystem" [ref=f85e124]:
+                  - /url: fs/index.html
+                - text: operations, and
+                - link "process" [ref=f85e125]:
+                  - /url: process/index.html
+                - text: and
+                - link "signal" [ref=f85e126]:
+                  - /url: signal/index.html
+                - text: management.
+              - listitem:
+                - text: A
+                - link "runtime" [ref=f85e128]:
+                  - /url: runtime/index.html
+                - text: for executing asynchronous code, including a task scheduler, an I/O driver backed by the operating system’s event queue (
+                - code: epoll
+                - code: kqueue
+                - code: IOCP
+                - text: ", etc…), and a high performance timer."
+            - paragraph:
+              - text: Guide level documentation is found on the
+              - link "website" [ref=f85e133]:
+                - /url: https://tokio.rs/tokio/tutorial
+              - text: .
+            - heading "A Tour of Tokio" [level=2] [ref=f85e134]
+            - paragraph: Tokio consists of a number of modules that provide a range of functionality essential for implementing asynchronous applications in Rust. In this section, we will take a brief tour of Tokio, summarizing the major APIs and their uses.
+            - paragraph:
+              - text: The easiest way to get started is to enable all features. Do this by enabling the
+              - code: full
+              - text: "feature flag:"
+            - code: "tokio = { version = \"1\", features = [\"full\"] }"
+            - heading "Authoring applications" [level=4] [ref=f85e141]
+            - paragraph:
+              - text: Tokio is great for writing applications and most users in this case shouldn’t worry too much about what features they should pick. If you’re unsure, we suggest going with
+              - code: full
+              - text: to ensure that you don’t run into any road blocks while you’re building your application.
+            - heading "Example" [level=5] [ref=f85e144]
+            - paragraph: This example shows the quickest way to get started with Tokio.
+            - code: "tokio = { version = \"1\", features = [\"full\"] }"
+            - heading "Authoring libraries" [level=4] [ref=f85e149]
+            - paragraph: As a library author your goal should be to provide the lightest weight crate that is based on Tokio. To achieve this you should ensure that you only enable the features you need. This allows users to pick up your crate without having to enable unnecessary features.
+            - heading "Example" [level=5] [ref=f85e151]
+            - paragraph:
+              - text: This example shows how you may want to import features for a library that just needs to
+              - code: tokio::spawn
+              - text: and use a
+              - code: TcpStream
+              - text: .
+            - code: "tokio = { version = \"1\", features = [\"rt\", \"net\"] }"
+            - heading "Working With Tasks" [level=3] [ref=f85e158]
+            - paragraph:
+              - text: Asynchronous programs in Rust are based around lightweight, non-blocking units of execution called
+              - link [ref=f85e160]:
+                - /url: "#working-with-tasks"
+                - emphasis: tasks
+              - text: . The
+              - link [ref=f85e162]:
+                - /url: task/index.html
+                - code: tokio::task
+              - text: "module provides important tools for working with tasks:"
+            - list:
+              - listitem:
+                - text: The
+                - link [ref=f85e166]:
+                  - /url: task/fn.spawn.html
+                  - code: spawn
+                - text: function and
+                - link [ref=f85e168]:
+                  - /url: task/struct.JoinHandle.html
+                  - code: JoinHandle
+                - text: type, for scheduling a new task on the Tokio runtime and awaiting the output of a spawned task, respectively,
+              - listitem:
+                - text: Functions for
+                - link "running blocking operations" [ref=f85e171]:
+                  - /url: task/index.html#blocking-and-yielding
+                - text: in an asynchronous task context.
+            - paragraph:
+              - text: The
+              - link [ref=f85e173]:
+                - /url: task/index.html
+                - code: tokio::task
+              - text: module is present only when the “rt” feature flag is enabled.
+            - paragraph:
+              - text: The
+              - link [ref=f85e176]:
+                - /url: sync/index.html
+                - code: tokio::sync
+              - text: "module contains synchronization primitives to use when needing to communicate or share data. These include:"
+            - list:
+              - listitem:
+                - text: channels (
+                - link [ref=f85e180]:
+                  - /url: sync/oneshot/index.html
+                  - code: oneshot
+                - link [ref=f85e182]:
+                  - /url: sync/mpsc/index.html
+                  - code: mpsc
+                - link [ref=f85e184]:
+                  - /url: sync/watch/index.html
+                  - code: watch
+                - text: ", and"
+                - link [ref=f85e186]:
+                  - /url: sync/broadcast/index.html
+                  - code: broadcast
+                - text: ), for sending values between tasks,
+              - listitem:
+                - text: a non-blocking
+                - link [ref=f85e189]:
+                  - /url: sync/struct.Mutex.html
+                  - code: Mutex
+                - text: ", for controlling access to a shared, mutable value,"
+              - listitem:
+                - text: an asynchronous
+                - link [ref=f85e192]:
+                  - /url: sync/struct.Barrier.html
+                  - code: Barrier
+                - text: type, for multiple tasks to synchronize before beginning a computation.
+            - paragraph:
+              - text: The
+              - code: tokio::sync
+              - text: module is present only when the “sync” feature flag is enabled.
+            - paragraph:
+              - text: The
+              - link [ref=f85e197]:
+                - /url: time/index.html
+                - code: tokio::time
+              - text: module provides utilities for tracking time and scheduling work. This includes functions for setting
+              - link "timeouts" [ref=f85e199]:
+                - /url: time/fn.timeout.html
+              - text: for tasks,
+              - link "sleeping" [ref=f85e200]:
+                - /url: time/fn.sleep.html
+              - text: work to run in the future, or
+              - link "repeating an operation at an interval" [ref=f85e201]:
+                - /url: time/fn.interval.html
+              - text: .
+            - paragraph:
+              - text: In order to use
+              - code: tokio::time
+              - text: ", the “time” feature flag must be enabled."
+            - paragraph:
+              - text: Finally, Tokio provides a
+              - emphasis: runtime
+              - text: for executing asynchronous tasks. Most applications can use the
+              - link [ref=f85e206]:
+                - /url: attr.main.html
+                - code: "#[tokio::main]"
+              - text: macro to run their code on the Tokio runtime. However, this macro provides only basic configuration options. As an alternative, the
+              - link [ref=f85e208]:
+                - /url: runtime/index.html
+                - code: tokio::runtime
+              - text: module provides more powerful APIs for configuring and managing runtimes. You should use that module if the
+              - code: "#[tokio::main]"
+              - text: macro doesn’t provide the functionality you need.
+            - paragraph:
+              - text: Using the runtime requires the “rt” or “rt-multi-thread” feature flags, to enable the current-thread
+              - link "single-threaded scheduler" [ref=f85e212]:
+                - /url: runtime/index.html#current-thread-scheduler
+              - text: and the
+              - link "multi-thread scheduler" [ref=f85e213]:
+                - /url: runtime/index.html#multi-thread-scheduler
+              - text: ", respectively. See the"
+              - link [ref=f85e214]:
+                - /url: runtime/index.html#runtime-scheduler
+                - code: runtime
+                - text: module documentation
+              - text: for details. In addition, the “macros” feature flag enables the
+              - code: "#[tokio::main]"
+              - text: and
+              - code: "#[tokio::test]"
+              - text: attributes.
+            - heading "CPU-bound tasks and blocking code" [level=3] [ref=f85e218]
+            - paragraph:
+              - text: Tokio is able to concurrently run many tasks on a few threads by repeatedly swapping the currently running task on each thread. However, this kind of swapping can only happen at
+              - code: .await
+              - text: points, so code that spends a long time without reaching an
+              - code: .await
+              - text: "will prevent other tasks from running. To combat this, Tokio provides two kinds of threads: Core threads and blocking threads."
+            - paragraph:
+              - text: The core threads are where all asynchronous code runs, and Tokio will by default spawn one for each CPU core. You can use the environment variable
+              - code: TOKIO_WORKER_THREADS
+              - text: to override the default value.
+            - paragraph:
+              - text: The blocking threads are spawned on demand, can be used to run blocking code that would otherwise block other tasks from running and are kept alive when not used for a certain amount of time which can be configured with
+              - link [ref=f85e225]:
+                - /url: runtime/struct.Builder.html#method.thread_keep_alive
+                - code: thread_keep_alive
+              - text: . Since it is not possible for Tokio to swap out blocking tasks, like it can do with asynchronous code, the upper limit on the number of blocking threads is very large. These limits can be configured on the
+              - link [ref=f85e227]:
+                - /url: runtime/struct.Builder.html
+                - code: Builder
+              - text: .
+            - paragraph:
+              - text: To spawn a blocking task, you should use the
+              - link [ref=f85e230]:
+                - /url: task/fn.spawn_blocking.html
+                - code: spawn_blocking
+              - text: function.
+            - code: "#[tokio::main] async fn main() { // This is running on a core thread. let blocking_task = tokio::task::spawn_blocking(|| { // This is running on a blocking thread. // Blocking here is ok. }); // We can wait for the blocking task like this: // If the blocking task panics, the unwrap below will propagate the // panic. blocking_task.await.unwrap(); }"
+            - paragraph:
+              - text: If your code is CPU-bound and you wish to limit the number of threads used to run it, you should use a separate thread pool dedicated to CPU bound tasks. For example, you could consider using the
+              - link "rayon" [ref=f85e236]:
+                - /url: https://docs.rs/rayon
+              - text: library for CPU-bound tasks. It is also possible to create an extra Tokio runtime dedicated to CPU-bound tasks, but if you do this, you should be careful that the extra runtime runs
+              - emphasis: only
+              - text: CPU-bound tasks, as IO-bound tasks on that runtime will behave poorly.
+            - paragraph:
+              - text: "Hint: If using rayon, you can use a"
+              - link [ref=f85e239]:
+                - /url: sync/oneshot/index.html
+                - code: oneshot
+              - text: channel to send the result back to Tokio when the rayon task finishes.
+            - heading "Asynchronous IO" [level=3] [ref=f85e241]
+            - paragraph: As well as scheduling and running tasks, Tokio provides everything you need to perform input and output asynchronously.
+            - paragraph:
+              - text: The
+              - link [ref=f85e244]:
+                - /url: io/index.html
+                - code: tokio::io
+              - text: module provides Tokio’s asynchronous core I/O primitives, the
+              - link [ref=f85e246]:
+                - /url: io/trait.AsyncRead.html
+                - code: AsyncRead
+              - link [ref=f85e248]:
+                - /url: io/trait.AsyncWrite.html
+                - code: AsyncWrite
+              - text: ", and"
+              - link [ref=f85e250]:
+                - /url: io/trait.AsyncBufRead.html
+                - code: AsyncBufRead
+              - text: traits. In addition, when the “io-util” feature flag is enabled, it also provides combinators and functions for working with these traits, forming as an asynchronous counterpart to
+              - link [ref=f85e252]:
+                - /url: https://doc.rust-lang.org/nightly/std/io/index.html
+                - code: std::io
+              - text: .
+            - paragraph: "Tokio also includes APIs for performing various kinds of I/O and interacting with the operating system asynchronously. These include:"
+            - list:
+              - listitem:
+                - link [ref=f85e257]:
+                  - /url: net/index.html
+                  - code: tokio::net
+                - text: ", which contains non-blocking versions of"
+                - link "TCP" [ref=f85e259]:
+                  - /url: net/tcp/index.html
+                - link "UDP" [ref=f85e260]:
+                  - /url: net/struct.UdpSocket.html
+                - text: ", and"
+                - link "Unix Domain Sockets" [ref=f85e261]:
+                  - /url: net/unix/index.html
+                - text: (enabled by the “net” feature flag),
+              - listitem:
+                - link [ref=f85e263]:
+                  - /url: fs/index.html
+                  - code: tokio::fs
+                - text: ", similar to"
+                - link [ref=f85e265]:
+                  - /url: https://doc.rust-lang.org/nightly/std/fs/index.html
+                  - code: std::fs
+                - text: but for performing filesystem I/O asynchronously (enabled by the “fs” feature flag),
+              - listitem:
+                - link [ref=f85e268]:
+                  - /url: signal/index.html
+                  - code: tokio::signal
+                - text: ", for asynchronously handling Unix and Windows OS signals (enabled by the “signal” feature flag),"
+              - listitem:
+                - link [ref=f85e271]:
+                  - /url: process/index.html
+                  - code: tokio::process
+                - text: ", for spawning and managing child processes (enabled by the “process” feature flag)."
+            - heading "Examples" [level=2] [ref=f85e273]
+            - paragraph: "A simple TCP echo server:"
+            - code: "use tokio::net::TcpListener; use tokio::io::{AsyncReadExt, AsyncWriteExt}; #[tokio::main] async fn main() -> Result<(), Box<dyn std::error::Error>> { let listener = TcpListener::bind(\"127.0.0.1:8080\").await?; loop { let (mut socket, _) = listener.accept().await?; tokio::spawn(async move { let mut buf = [0; 1024]; // In a loop, read data from the socket and write the data back. loop { let n = match socket.read(&mut buf).await { // socket closed Ok(0) => return, Ok(n) => n, Err(e) => { eprintln!(\"failed to read from socket; err = {:?}\", e); return; } }; // Write the data back if let Err(e) = socket.write_all(&buf[0..n]).await { eprintln!(\"failed to write to socket; err = {:?}\", e); return; } } }); } }"
+            - heading "Feature flags" [level=2] [ref=f85e278]
+            - paragraph:
+              - text: Tokio uses a set of
+              - link "feature flags" [ref=f85e280]:
+                - /url: https://doc.rust-lang.org/cargo/reference/manifest.html#the-features-section
+              - text: to reduce the amount of compiled code. It is possible to just enable certain features over others. By default, Tokio does not enable any features but allows one to enable a subset for their use case. Below is a list of the available feature flags. You may also notice above each function, struct and trait there is listed one or more feature flags that are required for that item to be used. If you are new to Tokio it is recommended that you use the
+              - code: full
+              - text: feature flag which will enable all public APIs. Beware though that this will pull in many extra dependencies that you may not need.
+            - list:
+              - listitem:
+                - code: full
+                - text: ": Enables all features listed below except"
+                - code: test-util
+                - text: and unstable features.
+              - listitem:
+                - code: rt
+                - text: ": Enables"
+                - code: tokio::spawn
+                - text: ", the current-thread scheduler, and non-scheduler utilities."
+              - listitem:
+                - code: rt-multi-thread
+                - text: ": Enables the heavier, multi-threaded, work-stealing scheduler."
+              - listitem:
+                - code: io-util
+                - text: ": Enables the IO based"
+                - code: Ext
+                - text: traits.
+              - listitem:
+                - code: io-std
+                - text: ": Enable"
+                - code: Stdout
+                - code: Stdin
+                - text: and
+                - code: Stderr
+                - text: types.
+              - listitem:
+                - code: net
+                - text: ": Enables"
+                - code: tokio::net
+                - text: types such as
+                - code: TcpStream
+                - code: UnixStream
+                - text: and
+                - code: UdpSocket
+                - text: ", as well as (on Unix-like systems)"
+                - code: AsyncFd
+                - text: and (on FreeBSD)
+                - code: PollAio
+                - text: .
+              - listitem:
+                - code: time
+                - text: ": Enables"
+                - code: tokio::time
+                - text: types and allows the schedulers to enable the built-in timer.
+              - listitem:
+                - code: process
+                - text: ": Enables"
+                - code: tokio::process
+                - text: types.
+              - listitem:
+                - code: macros
+                - text: ": Enables"
+                - code: "#[tokio::main]"
+                - text: and
+                - code: "#[tokio::test]"
+                - text: macros.
+              - listitem:
+                - code: sync
+                - text: ": Enables all"
+                - code: tokio::sync
+                - text: types.
+              - listitem:
+                - code: signal
+                - text: ": Enables all"
+                - code: tokio::signal
+                - text: types.
+              - listitem:
+                - code: fs
+                - text: ": Enables"
+                - code: tokio::fs
+                - text: types.
+              - listitem:
+                - code: test-util
+                - text: ": Enables testing based infrastructure for the Tokio runtime."
+              - listitem:
+                - code: parking_lot
+                - text: ": As a potential optimization, use the"
+                - link [ref=f85e330]:
+                  - /url: https://docs.rs/parking_lot/0.12.5/x86_64-unknown-linux-gnu/parking_lot/index.html
+                  - code: parking_lot
+                - text: crate’s synchronization primitives internally. Also, this dependency is necessary to construct some of our primitives in a
+                - code: const
+                - text: context.
+                - code: MSRV
+                - text: may increase according to the
+                - link [ref=f85e334]:
+                  - /url: https://docs.rs/parking_lot/0.12.5/x86_64-unknown-linux-gnu/parking_lot/index.html
+                  - code: parking_lot
+                - text: release in use.
+            - paragraph:
+              - emphasis:
+                - text: "Note:"
+                - code: AsyncRead
+                - text: and
+                - code: AsyncWrite
+                - text: traits do not require any features and are always available.
+            - heading "Unstable features" [level=3] [ref=f85e340]
+            - paragraph:
+              - text: Some feature flags are only available when specifying the
+              - code: tokio_unstable
+              - text: "flag:"
+            - list:
+              - listitem:
+                - code: tracing
+                - text: ": Enables tracing events."
+              - listitem:
+                - code: schedule-latency
+                - text: ": Allows measurement of task scheduling latencies."
+              - listitem:
+                - code: io-uring
+                - text: ": Enables"
+                - code: io-uring
+                - text: (Linux only).
+              - listitem:
+                - code: taskdump
+                - text: ": Enables"
+                - code: taskdump
+                - text: (Linux only).
+            - paragraph: Likewise, this flag enables access to unstable APIs.
+            - paragraph:
+              - text: This flag enables
+              - strong: unstable
+              - text: features. The public API of these features may break in 1.x releases. To enable these features, the
+              - code: "--cfg tokio_unstable"
+              - text: argument must be passed to
+              - code: rustc
+              - text: when compiling. This serves to explicitly opt-in to features which may break semver conventions, since Cargo
+              - link "does not yet directly support such opt-ins" [ref=f85e359]:
+                - /url: https://internals.rust-lang.org/t/feature-request-unstable-opt-in-non-transitive-crate-features/16193#why-not-a-crate-feature-2
+              - text: .
+            - paragraph:
+              - text: You can specify it in your project’s
+              - code: .cargo/config.toml
+              - text: "file:"
+            - code: "[build] rustflags = [\"--cfg\", \"tokio_unstable\"]"
+            - generic:
+              - text: ⓘ The
+              - code: "[build]"
+              - text: section does
+              - strong: not
+              - text: go in a
+              - code: Cargo.toml
+              - text: file. Instead it must be placed in the Cargo config file
+              - code: .cargo/config.toml
+              - text: .
+            - paragraph: "Alternatively, you can specify it with an environment variable:"
+            - code: "## Many *nix shells: export RUSTFLAGS=\"--cfg tokio_unstable\" cargo build"
+            - code: "## Windows PowerShell: $Env:RUSTFLAGS=\"--cfg tokio_unstable\" cargo build"
+            - heading "Supported platforms" [level=2] [ref=f85e377]
+            - paragraph: "Tokio currently guarantees support for the following platforms:"
+            - list:
+              - listitem: Linux
+              - listitem: Windows
+              - listitem: Android (API level 21)
+              - listitem: macOS
+              - listitem: iOS
+              - listitem: FreeBSD
+            - paragraph: Tokio will continue to support these platforms in the future. However, future releases may change requirements such as the minimum required libc version on Linux, the API level on Android, or the supported FreeBSD release.
+            - paragraph:
+              - text: Beyond the above platforms, Tokio is intended to work on all platforms supported by the mio crate. You can find a longer list
+              - link "in mio’s documentation" [ref=f85e388]:
+                - /url: https://crates.io/crates/mio#platforms
+              - text: . However, these additional platforms may become unsupported in the future.
+            - paragraph: Note that Wine is considered to be a different platform from Windows. See mio’s documentation for more information on Wine support.
+            - heading [level=3] [ref=f85e390]:
+              - code: WASM
+              - text: support
+            - paragraph: Tokio has some limited support for Wasm platforms.
+            - paragraph: "Many of Tokio’s feature flags are restricted on Wasm, and unsupported combinations of feature flags will fail to build. However, all Wasm targets can be built with the following features:"
+            - list:
+              - listitem:
+                - code: sync
+              - listitem:
+                - code: macros
+              - listitem:
+                - code: io-util
+              - listitem:
+                - code: rt
+              - listitem:
+                - code: time
+            - paragraph:
+              - text: Enabling any other feature (including
+              - code: full
+              - text: ") will cause a compilation failure. Furthermore, some operations available under these feature flags may panic if they are unsupported. For example:"
+            - list:
+              - listitem: Using timers will panic on Wasm targets that do not support blocking the thread.
+              - listitem: If the runtime becomes indefinitely idle (e.g., the program triggers a deadlock), then this will panic on most Wasm targets.
+              - listitem:
+                - text: Operations such as
+                - code: spawn_blocking
+                - text: that involve spawning threads will panic on Wasm targets that do not support threads.
+            - paragraph:
+              - text: All Wasm targets are still experimental, and breaking behavior changes can occur in an effort to make Tokio use native Wasm operations. For instance, the behavior of timers could be changed from panicking or blocking the thread to starting a JavaScript timer. As another example, the
+              - code: spawn_blocking
+              - text: method could be changed from starting a new thread to creating a new cooperatively scheduled context of execution, if the Wasm target supports such contexts. As a third example, the
+              - code: "#[tokio::main]"
+              - text: or
+              - code: "#[tokio::test]"
+              - text: macros could be changed to work better with the Wasm environment.
+            - heading [level=4] [ref=f85e416]:
+              - code: WASI
+              - text: support
+            - paragraph:
+              - text: The
+              - code: wasm32-wasip1
+              - text: and
+              - code: wasm32-wasip2
+              - text: targets support the above features. Timers work correctly as blocking the thread is supported.
+            - paragraph:
+              - text: Under the
+              - code: tokio_unstable
+              - text: flag, these targets support the use of
+              - code: tokio::net
+              - text: . On
+              - code: wasm32-wasip1
+              - text: ", not all methods are available on the networking types as this target does not support the creation of new sockets from within"
+              - code: WASM
+              - text: . Because of this, sockets must currently be created via the
+              - code: FromRawFd
+              - text: trait on
+              - code: wasm32-wasip1
+              - text: . The
+              - code: wasm32-wasip2
+              - text: target does not have this limitation.
+            - heading "Emscripten support" [level=4] [ref=f85e429]
+            - paragraph:
+              - text: The
+              - code: wasm32-unknown-emscripten
+              - text: target supports the single-threaded runtime with the
+              - code: rt
+              - code: time
+              - code: sync
+              - code: macros
+              - code: fs
+              - code: io-util
+              - code: io-std
+              - text: ", and"
+              - code: test-util
+              - text: features. The
+              - code: rt-multi-thread
+              - text: feature is additionally supported when building with Emscripten pthreads (
+              - code: "-pthread"
+              - text: ). The
+              - code: net
+              - code: process
+              - text: ", and"
+              - code: signal
+              - text: features are not supported.
+            - paragraph:
+              - text: Emscripten’s filesystem is synchronous, so
+              - code: tokio::fs
+              - text: and
+              - code: io-std
+              - text: run their operations inline on the calling thread rather than on the blocking pool, in pthreads builds too.
+            - paragraph: When the build links WebAssembly JavaScript Promise Integration (JSPI), a wait that would block suspends on the host event loop rather than blocking. This requires Emscripten 6.0.10 or later. Builds without JSPI will spin on timed parks, and panic otherwise.
+            - paragraph:
+              - text: Suspension requires the current export to have been wrapped with
+              - code: WebAssembly.promising
+              - text: . A wait from any other activation throws
+              - code: WebAssembly.SuspendError
+              - text: . That is a foreign exception rather than a Rust panic, so it can’t be caught by
+              - code: catch_unwind
+              - text: .
+        - heading "Re-exports" [level=2] [ref=f85e453]
+        - term:
+          - code:
+            - text: "pub use task::"
+            - link "spawn" [ref=f85e457]:
+              - /url: task/fn.spawn.html
+            - text: ;
+          - 'generic "Available on crate feature `rt` only" [ref=f85e458]':
+            - code: rt
+        - heading "Modules" [level=2] [ref=f85e460]
+        - generic:
+          - term:
+            - link "doc" [ref=f85e463]:
+              - /url: doc/index.html
+            - 'generic "Available on `docsrs` and Unix only" [ref=f85e464]':
+              - code: docsrs
+              - text: and Unix
+          - definition: Types which are documented locally in the Tokio crate, but does not actually live here.
+          - term:
+            - link "fs" [ref=f85e468]:
+              - /url: fs/index.html
+            - 'generic "Available on crate feature `fs` only" [ref=f85e469]':
+              - code: fs
+          - definition: Asynchronous file utilities.
+          - term:
+            - link "io" [ref=f85e473]:
+              - /url: io/index.html
+          - definition: Traits, helpers, and type definitions for asynchronous I/O functionality.
+          - term:
+            - link "net" [ref=f85e476]:
+              - /url: net/index.html
+          - definition:
+            - text: TCP/UDP/Unix bindings for
+            - code: tokio
+            - text: .
+          - term:
+            - link "process" [ref=f85e480]:
+              - /url: process/index.html
+            - 'generic "Available on crate feature `process` only" [ref=f85e481]':
+              - code: process
+          - definition: An implementation of asynchronous process management for Tokio.
+          - term:
+            - link "runtime" [ref=f85e485]:
+              - /url: runtime/index.html
+            - 'generic "Available on crate feature `rt` only" [ref=f85e486]':
+              - code: rt
+          - definition: The Tokio runtime.
+          - term:
+            - link "signal" [ref=f85e490]:
+              - /url: signal/index.html
+            - 'generic "Available on crate feature `signal` only" [ref=f85e491]':
+              - code: signal
+          - definition: Asynchronous signal handling for Tokio.
+          - term:
+            - link "stream" [ref=f85e495]:
+              - /url: stream/index.html
+          - definition:
+            - text: Due to the
+            - code: Stream
+            - text: trait’s inclusion in
+            - code: std
+            - text: landing later than Tokio’s 1.0 release, most of the Tokio stream utilities have been moved into the
+            - link [ref=f85e499]:
+              - /url: https://docs.rs/tokio-stream
+              - code: tokio-stream
+            - text: crate.
+          - term:
+            - link "sync" [ref=f85e502]:
+              - /url: sync/index.html
+            - 'generic "Available on crate feature `sync` only" [ref=f85e503]':
+              - code: sync
+          - definition: Synchronization primitives for use in asynchronous contexts.
+          - term:
+            - link "task" [ref=f85e507]:
+              - /url: task/index.html
+            - 'generic "Available on crate feature `rt` only" [ref=f85e508]':
+              - code: rt
+          - definition: Asynchronous green-threads.
+          - term:
+            - link "time" [ref=f85e512]:
+              - /url: time/index.html
+            - 'generic "Available on crate feature `time` only" [ref=f85e513]':
+              - code: time
+          - definition: Utilities for tracking time.
+        - heading "Macros" [level=2] [ref=f85e516]
+        - generic:
+          - term:
+            - link "join" [ref=f85e519]:
+              - /url: macro.join.html
+            - 'generic "Available on crate feature `macros` only" [ref=f85e520]':
+              - code: macros
+          - definition:
+            - text: Waits on multiple concurrent branches, returning when
+            - strong: all
+            - text: branches complete.
+          - term:
+            - link "pin" [ref=f85e525]:
+              - /url: macro.pin.html
+          - definition: Pins a value on the stack.
+          - term:
+            - link "select" [ref=f85e528]:
+              - /url: macro.select.html
+            - 'generic "Available on crate feature `macros` only" [ref=f85e529]':
+              - code: macros
+          - definition:
+            - text: Waits on multiple concurrent branches, returning when the
+            - strong: first
+            - text: branch completes, cancelling the remaining branches.
+          - term:
+            - link "task_local" [ref=f85e534]:
+              - /url: macro.task_local.html
+            - 'generic "Available on crate feature `rt` only" [ref=f85e535]':
+              - code: rt
+          - definition:
+            - text: Declares a new task-local key of type
+            - link [ref=f85e538]:
+              - /url: task/struct.LocalKey.html
+              - code: tokio::task::LocalKey
+            - text: .
+          - term:
+            - link "try_join" [ref=f85e541]:
+              - /url: macro.try_join.html
+            - 'generic "Available on crate feature `macros` only" [ref=f85e542]':
+              - code: macros
+          - definition:
+            - text: Waits on multiple concurrent branches, returning when
+            - strong: all
+            - text: branches complete with
+            - code: Ok(_)
+            - text: or on the first
+            - code: Err(_)
+            - text: .
+        - heading "Attribute Macros" [level=2] [ref=f85e548]
+        - generic:
+          - term:
+            - link "main" [ref=f85e551]:
+              - /url: attr.main.html
+            - 'generic "Available on crate features `macros` and `rt` only" [ref=f85e552]':
+              - code: macros
+              - text: and
+              - code: rt
+          - definition:
+            - text: Marks async function to be executed by the selected runtime. This macro helps set up a
+            - code: Runtime
+            - text: without requiring the user to use
+            - link "Runtime" [ref=f85e557]:
+              - /url: ../tokio/runtime/struct.Runtime.html
+            - text: or
+            - link "Builder" [ref=f85e558]:
+              - /url: ../tokio/runtime/struct.Builder.html
+            - text: directly.
+          - term:
+            - link "test" [ref=f85e560]:
+              - /url: attr.test.html
+            - 'generic "Available on crate features `macros` and `rt` only" [ref=f85e561]':
+              - code: macros
+              - text: and
+              - code: rt
+          - definition:
+            - text: Marks async function to be executed by runtime, suitable to test environment. This macro helps set up a
+            - code: Runtime
+            - text: without requiring the user to use
+            - link "Runtime" [ref=f85e566]:
+              - /url: ../tokio/runtime/struct.Runtime.html
+            - text: or
+            - link "Builder" [ref=f85e567]:
+              - /url: ../tokio/runtime/struct.Builder.html
+            - text: directly.
+```
+[meiose: 15 nodes trimmed, 375 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]

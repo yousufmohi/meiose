@@ -1,0 +1,135 @@
+### Page
+- Page URL: https://the-internet.herokuapp.com/tables
+- Page Title: The Internet
+- Console: 4 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f155e1]:
+  - text: The Internet
+  - generic [ref=f155e4]:
+    - link "Fork me on GitHub":
+      - /url: https://github.com/saucelabs/the-internet
+      - img "Fork me on GitHub" [ref=f155e5] [cursor=pointer]
+    - generic [ref=f155e7]:
+      - heading "Data Tables" [level=3] [ref=f155e8]
+      - paragraph [ref=f155e9]: Often times when you see a table it contains data which is sortable -- sometimes with actions that can be taken within each row (e.g. edit, delete). And it can be challenging to automate interaction with sets of data in a table depending on how it is constructed.
+      - heading "Example 1" [level=4] [ref=f155e10]
+      - paragraph [ref=f155e11]: No Class or ID attributes to signify groupings of rows and columns
+      - table [ref=f155e12]:
+        - rowgroup [ref=f155e13]:
+          - row [ref=f155e14]:
+            - columnheader "Last Name" [ref=f155e15]
+            - columnheader "First Name" [ref=f155e16]
+            - columnheader "Email" [ref=f155e17]
+            - columnheader "Due" [ref=f155e18]
+            - columnheader "Web Site" [ref=f155e19]
+            - columnheader "Action" [ref=f155e20]
+        - rowgroup [ref=f155e21]:
+          - row [ref=f155e22]:
+            - cell "Smith" [ref=f155e23]
+            - cell "John" [ref=f155e24]
+            - cell "jsmith@gmail.com" [ref=f155e25]
+            - cell "$50.00" [ref=f155e26]
+            - cell "http://www.jsmith.com" [ref=f155e27]
+            - cell [ref=f155e28]:
+              - link "edit" [ref=f155e29] [cursor=pointer]:
+                - /url: "#edit"
+              - link "delete" [ref=f155e30] [cursor=pointer]:
+                - /url: "#delete"
+          - row [ref=f155e31]:
+            - cell "Bach" [ref=f155e32]
+            - cell "Frank" [ref=f155e33]
+            - cell "fbach@yahoo.com" [ref=f155e34]
+            - cell "$51.00" [ref=f155e35]
+            - cell "http://www.frank.com" [ref=f155e36]
+            - cell [ref=f155e37]:
+              - link "edit" [ref=f155e38] [cursor=pointer]:
+                - /url: "#edit"
+              - link "delete" [ref=f155e39] [cursor=pointer]:
+                - /url: "#delete"
+          - row [ref=f155e40]:
+            - cell "Doe" [ref=f155e41]
+            - cell "Jason" [ref=f155e42]
+            - cell "jdoe@hotmail.com" [ref=f155e43]
+            - cell "$100.00" [ref=f155e44]
+            - cell "http://www.jdoe.com" [ref=f155e45]
+            - cell [ref=f155e46]:
+              - link "edit" [ref=f155e47] [cursor=pointer]:
+                - /url: "#edit"
+              - link "delete" [ref=f155e48] [cursor=pointer]:
+                - /url: "#delete"
+          - row [ref=f155e49]:
+            - cell "Conway" [ref=f155e50]
+            - cell "Tim" [ref=f155e51]
+            - cell "tconway@earthlink.net" [ref=f155e52]
+            - cell "$50.00" [ref=f155e53]
+            - cell "http://www.timconway.com" [ref=f155e54]
+            - cell [ref=f155e55]:
+              - link "edit" [ref=f155e56] [cursor=pointer]:
+                - /url: "#edit"
+              - link "delete" [ref=f155e57] [cursor=pointer]:
+                - /url: "#delete"
+      - heading "Example 2" [level=4] [ref=f155e58]
+      - paragraph [ref=f155e59]: Class and ID attributes to signify groupings of rows and columns
+      - table [ref=f155e60]:
+        - rowgroup [ref=f155e61]:
+          - row [ref=f155e62]:
+            - columnheader "Last Name" [ref=f155e63]
+            - columnheader "First Name" [ref=f155e64]
+            - columnheader "Email" [ref=f155e65]
+            - columnheader "Due" [ref=f155e66]
+            - columnheader "Web Site" [ref=f155e67]
+            - columnheader "Action" [ref=f155e68]
+        - rowgroup [ref=f155e69]:
+          - row [ref=f155e70]:
+            - cell "Smith" [ref=f155e71]
+            - cell "John" [ref=f155e72]
+            - cell "jsmith@gmail.com" [ref=f155e73]
+            - cell "$50.00" [ref=f155e74]
+            - cell "http://www.jsmith.com" [ref=f155e75]
+            - cell [ref=f155e76]:
+              - link "edit" [ref=f155e77] [cursor=pointer]:
+                - /url: "#edit"
+              - link "delete" [ref=f155e78] [cursor=pointer]:
+                - /url: "#delete"
+          - row [ref=f155e79]:
+            - cell "Bach" [ref=f155e80]
+            - cell "Frank" [ref=f155e81]
+            - cell "fbach@yahoo.com" [ref=f155e82]
+            - cell "$51.00" [ref=f155e83]
+            - cell "http://www.frank.com" [ref=f155e84]
+            - cell [ref=f155e85]:
+              - link "edit" [ref=f155e86] [cursor=pointer]:
+                - /url: "#edit"
+              - link "delete" [ref=f155e87] [cursor=pointer]:
+                - /url: "#delete"
+          - row [ref=f155e88]:
+            - cell "Doe" [ref=f155e89]
+            - cell "Jason" [ref=f155e90]
+            - cell "jdoe@hotmail.com" [ref=f155e91]
+            - cell "$100.00" [ref=f155e92]
+            - cell "http://www.jdoe.com" [ref=f155e93]
+            - cell [ref=f155e94]:
+              - link "edit" [ref=f155e95] [cursor=pointer]:
+                - /url: "#edit"
+              - link "delete" [ref=f155e96] [cursor=pointer]:
+                - /url: "#delete"
+          - row [ref=f155e97]:
+            - cell "Conway" [ref=f155e98]
+            - cell "Tim" [ref=f155e99]
+            - cell "tconway@earthlink.net" [ref=f155e100]
+            - cell "$50.00" [ref=f155e101]
+            - cell "http://www.timconway.com" [ref=f155e102]
+            - cell [ref=f155e103]:
+              - link "edit" [ref=f155e104] [cursor=pointer]:
+                - /url: "#edit"
+              - link "delete" [ref=f155e105] [cursor=pointer]:
+                - /url: "#delete"
+  - generic [ref=f155e108]:
+    - text: Powered by
+    - link "Elemental Selenium" [ref=f155e109] [cursor=pointer]:
+      - /url: http://elementalselenium.com/
+    - text: and
+    - link "Sauce Labs" [ref=f155e110] [cursor=pointer]:
+      - /url: https://saucelabs.com/
+```

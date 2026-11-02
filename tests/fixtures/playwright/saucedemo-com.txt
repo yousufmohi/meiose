@@ -1,0 +1,20 @@
+### Page
+- Page URL: https://www.saucedemo.com/
+- Page Title: Swag Labs
+### Snapshot
+```yaml
+- generic [ref=f205e3]:
+  - generic [ref=f205e4]: Swag Labs
+  - main [ref=f205e5]:
+    - form "Login" [ref=f205e9]:
+      - textbox "Username" [ref=f205e11]
+      - textbox "Password" [ref=f205e13]
+      - button "Login" [ref=f205e15] [cursor=pointer]
+    - generic [ref=f205e17]:
+      - generic [ref=f205e18]:
+        - heading "Accepted usernames are:" [level=4] [ref=f205e19]
+        - text: standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_user
+      - generic [ref=f205e20]:
+        - heading "Password for all users:" [level=4] [ref=f205e21]
+        - text: secret_sauce
+```

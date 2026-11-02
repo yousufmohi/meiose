@@ -1,0 +1,40 @@
+---
+source: tests/playwright_fixtures.rs
+---
+<untouched>
+### Page
+- Page URL: https://the-internet.herokuapp.com/login
+- Page Title: The Internet
+- Console: 2 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f152e1]:
+  - text: The Internet
+  - generic [ref=f152e4]:
+    - link "Fork me on GitHub":
+      - /url: https://github.com/saucelabs/the-internet
+      - img "Fork me on GitHub" [ref=f152e5] [cursor=pointer]
+    - generic [ref=f152e7]:
+      - heading "Login Page" [level=2] [ref=f152e8]
+      - heading [level=4] [ref=f152e9]:
+        - text: This is where you can log into the secure area. Enter
+        - emphasis [ref=f152e10]: tomsmith
+        - text: for the username and
+        - emphasis [ref=f152e11]: SuperSecretPassword!
+        - text: for the password. If the information is wrong you should see error messages.
+      - generic [ref=f152e12]:
+        - generic [ref=f152e14]:
+          - generic [ref=f152e15] [cursor=pointer]: Username
+          - textbox "Username" [ref=f152e16]
+        - generic [ref=f152e18]:
+          - generic [ref=f152e19] [cursor=pointer]: Password
+          - textbox "Password" [ref=f152e20]
+        - button " Login" [ref=f152e21] [cursor=pointer]
+  - generic [ref=f152e25]:
+    - text: Powered by
+    - link "Elemental Selenium" [ref=f152e26] [cursor=pointer]:
+      - /url: http://elementalselenium.com/
+    - text: and
+    - link "Sauce Labs" [ref=f152e27] [cursor=pointer]:
+      - /url: https://saucelabs.com/
+```

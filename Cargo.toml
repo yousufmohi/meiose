@@ -1,0 +1,29 @@
+[package]
+name = "meiose"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.104"
+clap = { version = "4.6.7", features = ["derive"] }
+dirs = "7.0.0"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+thiserror = "2.0.21"
+tiktoken-rs = "0.12.1"
+tokio = { version = "1.54.1", features = ["rt-multi-thread", "macros", "io-util", "io-std", "process", "sync", "time", "signal", "fs"] }
+tracing = "0.1.44"
+tracing-appender = "0.2.5"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
+which = "8.0.6"
+
+[dev-dependencies]
+criterion = "0.8.2"
+insta = "1.49.0"
+proptest = "1.12.0"
+serde_json = "1.0.154"
+tempfile = "3.27.0"
+
+[[bench]]
+name = "prune"
+harness = false

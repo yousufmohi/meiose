@@ -1,0 +1,6 @@
+/target
+.playwright-mcp/
+# private fixtures from your own recordings (may contain personal data)
+/tests/fixtures/local/
+*.pending-snap
+*.snap.new

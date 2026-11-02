@@ -1,0 +1,63 @@
+---
+source: tests/playwright_fixtures.rs
+---
+<untouched>
+### Page
+- Page URL: https://httpbin.org/forms/post
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f158e2]:
+  - paragraph [ref=f158e3]:
+    - generic [ref=f158e4]:
+      - text: "Customer name:"
+      - textbox "Customer name:" [ref=f158e5]
+  - paragraph [ref=f158e6]:
+    - generic [ref=f158e7]:
+      - text: "Telephone:"
+      - textbox "Telephone:" [ref=f158e8]
+  - paragraph [ref=f158e9]:
+    - generic [ref=f158e10]:
+      - text: "E-mail address:"
+      - textbox "E-mail address:" [ref=f158e11]
+  - group "Pizza Size" [ref=f158e12]:
+    - paragraph [ref=f158e14]:
+      - generic [ref=f158e15]:
+        - radio "Small" [ref=f158e16]
+        - text: Small
+    - paragraph [ref=f158e17]:
+      - generic [ref=f158e18]:
+        - radio "Medium" [ref=f158e19]
+        - text: Medium
+    - paragraph [ref=f158e20]:
+      - generic [ref=f158e21]:
+        - radio "Large" [ref=f158e22]
+        - text: Large
+  - group "Pizza Toppings" [ref=f158e23]:
+    - paragraph [ref=f158e25]:
+      - generic [ref=f158e26]:
+        - checkbox "Bacon" [ref=f158e27]
+        - text: Bacon
+    - paragraph [ref=f158e28]:
+      - generic [ref=f158e29]:
+        - checkbox "Extra Cheese" [ref=f158e30]
+        - text: Extra Cheese
+    - paragraph [ref=f158e31]:
+      - generic [ref=f158e32]:
+        - checkbox "Onion" [ref=f158e33]
+        - text: Onion
+    - paragraph [ref=f158e34]:
+      - generic [ref=f158e35]:
+        - checkbox "Mushroom" [ref=f158e36]
+        - text: Mushroom
+  - paragraph [ref=f158e37]:
+    - generic [ref=f158e38]:
+      - text: "Preferred delivery time:"
+      - textbox "Preferred delivery time:" [ref=f158e39]
+  - paragraph [ref=f158e40]:
+    - generic [ref=f158e41]:
+      - text: "Delivery instructions:"
+      - textbox "Delivery instructions:" [ref=f158e42]
+  - paragraph [ref=f158e43]:
+    - button "Submit order" [ref=f158e44]
+```

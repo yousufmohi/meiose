@@ -1,0 +1,25 @@
+### Page
+- Page URL: https://demo.playwright.dev/todomvc/#/
+- Page Title: React • TodoMVC
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f157e1]:
+  - generic [ref=f157e2]:
+    - text: This is just a demo of TodoMVC for testing, not the
+    - link "real TodoMVC app." [ref=f157e3] [cursor=pointer]:
+      - /url: https://todomvc.com/
+  - generic [ref=f157e6]:
+    - heading "todos" [level=1] [ref=f157e7]
+    - textbox "What needs to be done?" [active] [ref=f157e8]
+  - contentinfo [ref=f157e9]:
+    - paragraph [ref=f157e10]: Double-click to edit a todo
+    - paragraph [ref=f157e11]:
+      - text: Created by
+      - link "Remo H. Jansen" [ref=f157e12] [cursor=pointer]:
+        - /url: http://github.com/remojansen/
+    - paragraph [ref=f157e13]:
+      - text: Part of
+      - link "TodoMVC" [ref=f157e14] [cursor=pointer]:
+        - /url: http://todomvc.com
+```

@@ -1,0 +1,977 @@
+### Page
+- Page URL: https://github.com/rust-lang/rust
+- Page Title: GitHub - rust-lang/rust: Empowering everyone to build reliable and efficient software. · GitHub
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=f126e2]:
+  - generic [ref=f126e3]:
+    - link "Skip to content" [ref=f126e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=f126e9]:
+      - heading "Navigation Menu" [level=2] [ref=f126e10]
+      - generic [ref=f126e11]:
+        - link "Homepage" [ref=f126e14] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f126e17]:
+          - navigation "Global" [ref=f126e18]:
+            - list [ref=f126e19]:
+              - listitem [ref=f126e20]:
+                - button "Products" [ref=f126e22] [cursor=pointer]
+              - listitem [ref=f126e25]:
+                - button "Developers" [ref=f126e27] [cursor=pointer]
+              - listitem [ref=f126e30]:
+                - button "Businesses" [ref=f126e32] [cursor=pointer]
+              - listitem [ref=f126e35]:
+                - button "Resources" [ref=f126e37] [cursor=pointer]
+              - listitem [ref=f126e40]:
+                - link "Pricing" [ref=f126e41] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+          - generic [ref=f126e42]:
+            - button "Search or jump to, type / to search" [ref=f126e44] [cursor=pointer]:
+              - generic [ref=f126e47]:
+                - generic [ref=f126e48]: Search
+                - generic [aria-hidden] [ref=f126e49]: /
+            - generic [ref=f126e50]:
+              - link "Sign in" [ref=f126e52] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Frust-lang%2Frust
+              - link "Sign up" [ref=f126e55] [cursor=pointer]:
+                - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=rust-lang%2Frust
+              - button "Appearance settings" [ref=f126e58] [cursor=pointer]
+  - main [ref=f126e65]:
+    - generic "Global navigation menu" [ref=f126e68]:
+      - navigation "Breadcrumbs" [ref=f126e71]:
+        - list [ref=f126e72]:
+          - listitem [ref=f126e73]:
+            - link "rust-lang" [ref=f126e74] [cursor=pointer]:
+              - /url: /rust-lang
+          - listitem [ref=f126e76]:
+            - link "rust" [ref=f126e77] [cursor=pointer]:
+              - /url: /rust-lang/rust
+      - heading "Repository navigation" [level=2] [ref=f126e80]
+      - navigation "Repository" [ref=f126e81]:
+        - list [ref=f126e82]:
+          - listitem [ref=f126e83]:
+            - link "Code" [ref=f126e84] [cursor=pointer]:
+              - /url: /rust-lang/rust
+          - listitem [ref=f126e89]:
+            - link "Issues (5k+)" [ref=f126e90] [cursor=pointer]:
+              - /url: /rust-lang/rust/issues
+              - generic [ref=f126e95]: Issues
+              - generic [ref=f126e96]:
+                - generic [aria-hidden] [ref=f126e97]: 5k+
+                - generic [ref=f126e98]: (5k+)
+          - listitem [ref=f126e99]:
+            - link "Pull requests (1.4k)" [ref=f126e100] [cursor=pointer]:
+              - /url: /rust-lang/rust/pulls
+              - generic [ref=f126e104]: Pull requests
+              - generic [ref=f126e105]:
+                - generic [aria-hidden] [ref=f126e106]: 1.4k
+                - generic [ref=f126e107]: (1.4k)
+          - listitem [ref=f126e108]:
+            - link "Actions" [ref=f126e109] [cursor=pointer]:
+              - /url: /rust-lang/rust/actions
+          - listitem [ref=f126e114]:
+            - link "Projects" [ref=f126e115] [cursor=pointer]:
+              - /url: /rust-lang/rust/projects
+          - listitem [ref=f126e120]:
+            - link "Security and quality (6)" [ref=f126e121] [cursor=pointer]:
+              - /url: /rust-lang/rust/security
+              - generic [ref=f126e125]: Security and quality
+              - generic [ref=f126e126]:
+                - generic [aria-hidden] [ref=f126e127]: "6"
+                - generic [ref=f126e128]: (6)
+          - listitem [ref=f126e129]:
+            - link "Insights" [ref=f126e130] [cursor=pointer]:
+              - /url: /rust-lang/rust/pulse
+    - generic [ref=f126e147]:
+      - generic [ref=f126e151]:
+        - generic [ref=f126e154]:
+          - img "rust-lang" [ref=f126e155]
+          - generic "rust" [ref=f126e156]:
+            - strong [ref=f126e157]:
+              - link "rust" [ref=f126e158] [cursor=pointer]:
+                - /url: /rust-lang/rust
+          - generic [ref=f126e159]: Public
+        - list [ref=f126e161]:
+          - listitem [ref=f126e162]:
+            - button "Sponsor rust-lang/rust" [ref=f126e163] [cursor=pointer]:
+              - generic [ref=f126e164]: Sponsor
+          - listitem [ref=f126e166]:
+            - link "You must be signed in to change notification settings" [ref=f126e167] [cursor=pointer]:
+              - /url: /login?return_to=%2Frust-lang%2Frust
+              - generic [ref=f126e168]: Notifications
+          - listitem [ref=f126e170]:
+            - link "You must be signed in to fork a repository" [ref=f126e171] [cursor=pointer]:
+              - /url: /login?return_to=%2Frust-lang%2Frust
+              - generic [ref=f126e173]:
+                - text: Fork
+                - generic [aria-hidden] [ref=f126e174]: 17.4k
+                - generic [ref=f126e175]: (17.4k)
+          - listitem [ref=f126e176]:
+            - link "Star (121k)" [ref=f126e177] [cursor=pointer]:
+              - /url: /login?return_to=%2Frust-lang%2Frust
+              - generic [ref=f126e179]:
+                - text: Star
+                - generic [aria-hidden] [ref=f126e180]: 121k
+                - generic [ref=f126e181]: (121k)
+      - generic [ref=f126e182]:
+        - generic [ref=f126e185]:
+          - generic [ref=f126e186]:
+            - generic [ref=f126e187]:
+              - button "main branch" [ref=f126e189] [cursor=pointer]:
+                - generic [ref=f126e190]: main
+              - generic [ref=f126e194]:
+                - link [ref=f126e1028] [cursor=pointer]:
+                  - /url: /rust-lang/rust/branches
+                  - generic [ref=f126e1029]:
+                    - strong [ref=f126e1030]: "10"
+                    - text: Branches
+                - link [ref=f126e1031] [cursor=pointer]:
+                  - /url: /rust-lang/rust/tags
+                  - generic [ref=f126e1032]:
+                    - strong [ref=f126e1033]: "165"
+                    - text: Tags
+            - generic [ref=f126e201]:
+              - combobox "Go to file" [ref=f126e209]
+              - button "Code" [ref=f126e210] [cursor=pointer]
+          - generic [ref=f126e213]:
+            - generic [ref=f126e214]:
+              - generic [ref=f126e216]:
+                - heading "Latest commit" [level=2] [ref=f126e217]
+                - generic [ref=f126e1034]:
+                  - generic [ref=f126e1036]:
+                    - link [ref=f126e1037] [cursor=pointer]:
+                      - /url: /bors
+                      - img "bors" [ref=f126e1038]
+                    - link "commits by bors" [ref=f126e1039] [cursor=pointer]:
+                      - /url: /rust-lang/rust/commits?author=bors
+                      - text: bors
+                  - generic [ref=f126e1040]:
+                    - generic [ref=f126e1042]:
+                      - link "Auto merge of" [ref=f126e1043] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
+                      - link "#165286" [ref=f126e1044] [cursor=pointer]:
+                        - /url: https://github.com/rust-lang/rust/pull/165286
+                      - link "- JonathanBrouwer:rollup-YvLOWxp, r=JonathanBro…" [ref=f126e1045] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
+                    - button "Open commit details" [ref=f126e1046] [cursor=pointer]
+                    - button "success" [ref=f126e1049] [cursor=pointer]
+                - generic [ref=f126e219]:
+                  - generic [ref=f126e1053]:
+                    - link "Commit 3e92e1a" [ref=f126e1054] [cursor=pointer]:
+                      - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
+                      - text: 3e92e1a
+                    - text: ·
+                    - generic "Nov 1, 2026, 3:45 PM EST" [ref=f126e1055]: 4 hours ago
+                  - generic [ref=f126e220]:
+                    - heading "History" [level=2] [ref=f126e221]
+                    - link "345,512 Commits" [ref=f126e222] [cursor=pointer]:
+                      - /url: /rust-lang/rust/commits/main/
+              - heading "Folders and files" [level=2] [ref=f126e225]
+              - table "Folders and files" [ref=f126e227]:
+                - rowgroup:
+                  - row "Name Last commit message Last commit date":
+                    - columnheader "Name"
+                    - columnheader "Last commit message"
+                    - columnheader "Last commit date"
+                - rowgroup [ref=f126e228]:
+                  - row [ref=f126e1056]:
+                    - cell [ref=f126e230]:
+                      - link ".github, (Directory)" [ref=f126e237] [cursor=pointer]:
+                        - /url: /rust-lang/rust/tree/main/.github
+                        - text: .github
+                    - cell [ref=f126e1057]:
+                      - generic [ref=f126e1059]:
+                        - link "Rollup merge of" [ref=f126e1060] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/3685bec01242b1faaa9e00837e8b205742d7960f
+                        - link "#165276" [ref=f126e1061] [cursor=pointer]:
+                          - /url: https://github.com/rust-lang/rust/pull/165276
+                        - link "- theemathas:fcw-issue-template-labels, r=Kiv…" [ref=f126e1062] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/3685bec01242b1faaa9e00837e8b205742d7960f
+                    - cell "7 hours ago" [ref=f126e1063]
+                  - row [ref=f126e1064]:
+                    - cell [ref=f126e244]:
+                      - link "LICENSES, (Directory)" [ref=f126e251] [cursor=pointer]:
+                        - /url: /rust-lang/rust/tree/main/LICENSES
+                        - text: LICENSES
+                    - cell [ref=f126e1065]:
+                      - link "Synchronize Unicode license text from unicode.org" [ref=f126e1068] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/6d2a3e9786ec43a0e0af20386e7046328296ac86
+                    - cell "2 years ago" [ref=f126e1069]
+                  - row [ref=f126e1070]:
+                    - cell [ref=f126e258]:
+                      - link "compiler, (Directory)" [ref=f126e265] [cursor=pointer]:
+                        - /url: /rust-lang/rust/tree/main/compiler
+                        - text: compiler
+                    - cell [ref=f126e1071]:
+                      - generic [ref=f126e1073]:
+                        - link "Auto merge of" [ref=f126e1074] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
+                        - link "#165286" [ref=f126e1075] [cursor=pointer]:
+                          - /url: https://github.com/rust-lang/rust/pull/165286
+                        - link "- JonathanBrouwer:rollup-YvLOWxp, r=JonathanBro…" [ref=f126e1076] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
+                    - cell "4 hours ago" [ref=f126e1077]
+                  - row [ref=f126e1078]:
+                    - cell [ref=f126e272]:
+                      - link "library, (Directory)" [ref=f126e279] [cursor=pointer]:
+                        - /url: /rust-lang/rust/tree/main/library
+                        - text: library
+                    - cell [ref=f126e1079]:
+                      - generic [ref=f126e1081]:
+                        - link "Rollup merge of" [ref=f126e1082] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/2e8e03211ec450117b80be37bbba12f098568afd
+                        - link "#165086" [ref=f126e1083] [cursor=pointer]:
+                          - /url: https://github.com/rust-lang/rust/pull/165086
+                        - link "- goldpanth3r:fix-mem-take-docs-165065, r=joboet" [ref=f126e1084] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/2e8e03211ec450117b80be37bbba12f098568afd
+                    - cell "7 hours ago" [ref=f126e1085]
+                  - row [ref=f126e1086]:
+                    - cell [ref=f126e286]:
+                      - link "src, (Directory)" [ref=f126e293] [cursor=pointer]:
+                        - /url: /rust-lang/rust/tree/main/src
+                        - text: src
+                    - cell [ref=f126e1087]:
+                      - generic [ref=f126e1089]:
+                        - link "Rollup merge of" [ref=f126e1090] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/46835f49d83e5e768bd04a78daf791713e1c3fb2
+                        - link "#164262" [ref=f126e1091] [cursor=pointer]:
+                          - /url: https://github.com/rust-lang/rust/pull/164262
+                        - link "- PaulDance:test-client-connect-timeout, r=Ma…" [ref=f126e1092] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/46835f49d83e5e768bd04a78daf791713e1c3fb2
+                    - cell "7 hours ago" [ref=f126e1093]
+                  - row [ref=f126e1094]:
+                    - cell [ref=f126e300]:
+                      - link "tests, (Directory)" [ref=f126e307] [cursor=pointer]:
+                        - /url: /rust-lang/rust/tree/main/tests
+                        - text: tests
+                    - cell [ref=f126e1095]:
+                      - generic [ref=f126e1097]:
+                        - link "Rollup merge of" [ref=f126e1098] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/8d10715d733fb49ead6c21527205dc23b0aa205a
+                        - link "#165088" [ref=f126e1099] [cursor=pointer]:
+                          - /url: https://github.com/rust-lang/rust/pull/165088
+                        - link "- estebank:issue-66067, r=petrochenkov" [ref=f126e1100] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/8d10715d733fb49ead6c21527205dc23b0aa205a
+                    - cell "7 hours ago" [ref=f126e1101]
+                  - row [ref=f126e1102]:
+                    - cell [ref=f126e314]:
+                      - link ".clang-format, (File)" [ref=f126e321] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/.clang-format
+                        - text: .clang-format
+                    - cell [ref=f126e1103]:
+                      - link [ref=f126e1106] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/57c8f6f2527ad94b2ff7f16288693c2cd6d550b5
+                        - text: Add
+                        - code [ref=f126e1107]: .clang-format
+                    - cell "2 years ago" [ref=f126e1108]
+                  - row [ref=f126e1109]:
+                    - cell [ref=f126e328]:
+                      - link ".editorconfig, (File)" [ref=f126e335] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/.editorconfig
+                        - text: .editorconfig
+                    - cell [ref=f126e1110]:
+                      - 'link "editorconfig: css uses tabs" [ref=f126e1113] [cursor=pointer]':
+                        - /url: /rust-lang/rust/commit/db26b5b8e01a621417e08a7609f4216b6768ad43
+                    - cell "8 months ago" [ref=f126e1114]
+                  - row [ref=f126e1115]:
+                    - cell [ref=f126e342]:
+                      - link ".git-blame-ignore-revs, (File)" [ref=f126e349] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/.git-blame-ignore-revs
+                        - text: .git-blame-ignore-revs
+                    - cell [ref=f126e1116]:
+                      - 'link "std: connect sys::sync::futex and drop the pal declarations" [ref=f126e1119] [cursor=pointer]':
+                        - /url: /rust-lang/rust/commit/5b40f3d400ed3ebb3794b1c9911d3640267635fc
+                    - cell "4 months ago" [ref=f126e1120]
+                  - row [ref=f126e1121]:
+                    - cell [ref=f126e356]:
+                      - link ".gitattributes, (File)" [ref=f126e363] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/.gitattributes
+                        - text: .gitattributes
+                    - cell [ref=f126e1122]:
+                      - link "Mark .pp files as Rust" [ref=f126e1125] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/daeb449640b189069f76a13a4a208b1a6d6a32b6
+                    - cell "last year" [ref=f126e1126]
+                  - row [ref=f126e1127]:
+                    - cell [ref=f126e370]:
+                      - link ".gitignore, (File)" [ref=f126e377] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/.gitignore
+                        - text: .gitignore
+                    - cell [ref=f126e1128]:
+                      - link "Add gram config to gitignore" [ref=f126e1131] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/de13fc77e5cd3839fb40598b876904ba7fa518c1
+                    - cell "3 months ago" [ref=f126e1132]
+                  - row [ref=f126e1133]:
+                    - cell [ref=f126e384]:
+                      - link ".gitmodules, (File)" [ref=f126e391] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/.gitmodules
+                        - text: .gitmodules
+                    - cell [ref=f126e1134]:
+                      - link "Add bootstrap step to build the TPDE plugin" [ref=f126e1137] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/7d58ad7df3fe097351ab243368f597001143ce76
+                    - cell "2 weeks ago" [ref=f126e1138]
+                  - row [ref=f126e1139]:
+                    - cell [ref=f126e398]:
+                      - link ".ignore, (File)" [ref=f126e405] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/.ignore
+                        - text: .ignore
+                    - cell [ref=f126e1140]:
+                      - link "change config.toml to bootstrap.toml for bootstrap module" [ref=f126e1143] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/1954494ec9aa84983f55646fb8f5cac433a3b7bc
+                    - cell "last year" [ref=f126e1144]
+                  - row [ref=f126e1145]:
+                    - cell [ref=f126e412]:
+                      - link ".mailmap, (File)" [ref=f126e419] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/.mailmap
+                        - text: .mailmap
+                    - cell [ref=f126e1146]:
+                      - link "Add mailmap entry" [ref=f126e1149] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/eb4108a9859ebfa071a57b9f7e90cc8815311996
+                    - cell "last month" [ref=f126e1150]
+                  - row [ref=f126e1151]:
+                    - cell [ref=f126e426]:
+                      - link "AGENTS.md, (File)" [ref=f126e433] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/AGENTS.md
+                        - text: AGENTS.md
+                    - cell [ref=f126e1152]:
+                      - 'link "AGENTS.md: Permit local experimentation, per the online policy." [ref=f126e1155] [cursor=pointer]':
+                        - /url: /rust-lang/rust/commit/03e4c769ec9f936506cb12d9688e6a9535e936ad
+                    - cell "2 months ago" [ref=f126e1156]
+                  - row [ref=f126e1157]:
+                    - cell [ref=f126e440]:
+                      - link "CODE_OF_CONDUCT.md, (File)" [ref=f126e447] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/CODE_OF_CONDUCT.md
+                        - text: CODE_OF_CONDUCT.md
+                    - cell [ref=f126e1158]:
+                      - generic [ref=f126e1160]:
+                        - link "Remove the code of conduct; instead link" [ref=f126e1161] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/45835e9957e2872a3918eda0504d4a1ecc1642cd
+                        - link "https://www.rust-lang.org/co…" [ref=f126e1162] [cursor=pointer]:
+                          - /url: https://www.rust-lang.org/conduct.html
+                    - cell "7 years ago" [ref=f126e1163]
+                  - row [ref=f126e1164]:
+                    - cell [ref=f126e454]:
+                      - link "CONTRIBUTING.md, (File)" [ref=f126e461] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/CONTRIBUTING.md
+                        - text: CONTRIBUTING.md
+                    - cell [ref=f126e1165]:
+                      - link "[blocked] Link to proposed LLM policy in CONTRIBUTING and pull reques…" [ref=f126e1168] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/833ec34ae8f7b582ea4f9202fd19b01943f89cbe
+                    - cell "4 months ago" [ref=f126e1169]
+                  - row [ref=f126e1170]:
+                    - cell [ref=f126e468]:
+                      - link "COPYRIGHT, (File)" [ref=f126e475] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/COPYRIGHT
+                        - text: COPYRIGHT
+                    - cell [ref=f126e1171]:
+                      - 'link "dist: Re-work how we describe the licence of Rust in our distributions" [ref=f126e1174] [cursor=pointer]':
+                        - /url: /rust-lang/rust/commit/f9c16997dc016a3ef1456f56df2ab564a1c48cb2
+                    - cell "2 years ago" [ref=f126e1175]
+                  - row [ref=f126e1176]:
+                    - cell [ref=f126e482]:
+                      - link "Cargo.lock, (File)" [ref=f126e489] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/Cargo.lock
+                        - text: Cargo.lock
+                    - cell [ref=f126e1177]:
+                      - generic [ref=f126e1179]:
+                        - link "Rollup merge of" [ref=f126e1180] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/3cb4b760591bd2e840a0b6df4e89cd4ac5f58c36
+                        - link "#163525" [ref=f126e1181] [cursor=pointer]:
+                          - /url: https://github.com/rust-lang/rust/pull/163525
+                        - link "- oli-obk:resolver_lang_items, r=petrochenkov" [ref=f126e1182] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/3cb4b760591bd2e840a0b6df4e89cd4ac5f58c36
+                    - cell "yesterday" [ref=f126e1183]
+                  - row [ref=f126e1184]:
+                    - cell [ref=f126e496]:
+                      - link "Cargo.toml, (File)" [ref=f126e503] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/Cargo.toml
+                        - text: Cargo.toml
+                    - cell [ref=f126e1185]:
+                      - 'link "test-float-parse: Be more accurate about optimization warning" [ref=f126e1188] [cursor=pointer]':
+                        - /url: /rust-lang/rust/commit/d94cc7d50d856fe4a8c1932ccad6c73734311bff
+                    - cell "2 weeks ago" [ref=f126e1189]
+                  - row [ref=f126e1190]:
+                    - cell [ref=f126e510]:
+                      - link "INSTALL.md, (File)" [ref=f126e517] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/INSTALL.md
+                        - text: INSTALL.md
+                    - cell [ref=f126e1191]:
+                      - 'link "INSTALL.md: use UCRT64 instead of MINGW64 in MSYS2 section" [ref=f126e1194] [cursor=pointer]':
+                        - /url: /rust-lang/rust/commit/a2ca8f2a33d0a28514bfeddde965ed6018b9a70e
+                    - cell "last month" [ref=f126e1195]
+                  - row [ref=f126e1196]:
+                    - cell [ref=f126e524]:
+                      - link "LICENSE-APACHE, (File)" [ref=f126e531] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/LICENSE-APACHE
+                        - text: LICENSE-APACHE
+                    - cell [ref=f126e1197]:
+                      - link "Remove appendix from LICENCE-APACHE" [ref=f126e1200] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/2ccf65c7eba519dcc407cb76f08d04ac00d05851
+                    - cell "7 years ago" [ref=f126e1201]
+                  - row [ref=f126e1202]:
+                    - cell [ref=f126e538]:
+                      - link "LICENSE-MIT, (File)" [ref=f126e545] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/LICENSE-MIT
+                        - text: LICENSE-MIT
+                    - cell [ref=f126e1203]:
+                      - 'link "dist: Re-work how we describe the licence of Rust in our distributions" [ref=f126e1206] [cursor=pointer]':
+                        - /url: /rust-lang/rust/commit/f9c16997dc016a3ef1456f56df2ab564a1c48cb2
+                    - cell "2 years ago" [ref=f126e1207]
+                  - row [ref=f126e1208]:
+                    - cell [ref=f126e552]:
+                      - link "README.md, (File)" [ref=f126e559] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/README.md
+                        - text: README.md
+                    - cell [ref=f126e1209]:
+                      - link "Add direct link to rustc-dev-guide in README" [ref=f126e1212] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/f0f849d96ff7c1ea57eca1de63a966e8f832baf5
+                    - cell "9 months ago" [ref=f126e1213]
+                  - row [ref=f126e1214]:
+                    - cell [ref=f126e566]:
+                      - link "RELEASES.md, (File)" [ref=f126e573] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/RELEASES.md
+                        - text: RELEASES.md
+                    - cell [ref=f126e1215]:
+                      - generic [ref=f126e1217]:
+                        - link "Rollup merge of" [ref=f126e1218] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/1658b7c22fa5bb84123a302341140ccbaa6f6d3f
+                        - link "#164248" [ref=f126e1219] [cursor=pointer]:
+                          - /url: https://github.com/rust-lang/rust/pull/164248
+                        - link "- theemathas:missing-relnotes, r=Mark-Simulacrum" [ref=f126e1220] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/1658b7c22fa5bb84123a302341140ccbaa6f6d3f
+                    - cell "last week" [ref=f126e1221]
+                  - row [ref=f126e1222]:
+                    - cell [ref=f126e580]:
+                      - link "REUSE.toml, (File)" [ref=f126e587] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/REUSE.toml
+                        - text: REUSE.toml
+                    - cell [ref=f126e1223]:
+                      - link "[PAC] Provide information on where the SipHash tests were derived from" [ref=f126e1226] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/1b80b2dbb5358bceb51598e3089326b72ec8685f
+                    - cell "3 months ago" [ref=f126e1227]
+                  - row [ref=f126e1228]:
+                    - cell [ref=f126e594]:
+                      - link "bootstrap.example.toml, (File)" [ref=f126e601] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/bootstrap.example.toml
+                        - text: bootstrap.example.toml
+                    - cell [ref=f126e1229]:
+                      - generic [ref=f126e1231]:
+                        - link "Auto merge of" [ref=f126e1232] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/158f79d5c24d262f820fa45da96e7b77bc29a338
+                        - link "#163731" [ref=f126e1233] [cursor=pointer]:
+                          - /url: https://github.com/rust-lang/rust/pull/163731
+                        - link "- TechnoPorg:bootstrap/tpde-step, r=Kobzol" [ref=f126e1234] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/158f79d5c24d262f820fa45da96e7b77bc29a338
+                    - cell "2 weeks ago" [ref=f126e1235]
+                  - row [ref=f126e1236]:
+                    - cell [ref=f126e608]:
+                      - link "configure, (File)" [ref=f126e615] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/configure
+                        - text: configure
+                    - cell [ref=f126e1237]:
+                      - link [ref=f126e1240] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/d855ca044da4ed42eb60dbd20cc1341f35d8e0fc
+                        - text: Ensure
+                        - code [ref=f126e1241]: ./configure
+                        - text: works when
+                        - code [ref=f126e1242]: configure.py
+                        - text: path contains spaces
+                    - cell "2 years ago" [ref=f126e1243]
+                  - row [ref=f126e1244]:
+                    - cell [ref=f126e622]:
+                      - link "license-metadata.json, (File)" [ref=f126e629] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/license-metadata.json
+                        - text: license-metadata.json
+                    - cell [ref=f126e1245]:
+                      - link "[PAC] Update license-metadata.json" [ref=f126e1248] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/415f5ad64d4cdc0180a218e290cb6ad26afe3c91
+                    - cell "3 months ago" [ref=f126e1249]
+                  - row [ref=f126e1250]:
+                    - cell [ref=f126e636]:
+                      - link "package.json, (File)" [ref=f126e643] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/package.json
+                        - text: package.json
+                    - cell [ref=f126e1251]:
+                      - link [ref=f126e1254] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/b0f83b7d0a099fe4af956785ae79aa0edc2d5860
+                        - text: Update
+                        - code [ref=f126e1255]: browser-ui-test
+                        - text: version to
+                        - code [ref=f126e1256]: 0.25.2
+                    - cell "2 months ago" [ref=f126e1257]
+                  - row [ref=f126e1258]:
+                    - cell [ref=f126e650]:
+                      - link "rust-bors.toml, (File)" [ref=f126e657] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/rust-bors.toml
+                        - text: rust-bors.toml
+                    - cell [ref=f126e1259]:
+                      - link "Switch dist-aarch64-linux to EC2 and update dist-x86_64-linux" [ref=f126e1262] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/af2d4bc7bd39e7b3d2abae51881625b74b9f4486
+                    - cell "3 months ago" [ref=f126e1263]
+                  - row [ref=f126e1264]:
+                    - cell [ref=f126e664]:
+                      - link "rustfmt.toml, (File)" [ref=f126e671] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/rustfmt.toml
+                        - text: rustfmt.toml
+                    - cell [ref=f126e1265]:
+                      - 'link "rustfmt.toml: drop ignore of deleted test" [ref=f126e1268] [cursor=pointer]':
+                        - /url: /rust-lang/rust/commit/3add6f19d0a4370c198ec83a248ce7bad9de9c6a
+                    - cell "8 months ago" [ref=f126e1269]
+                  - row [ref=f126e1270]:
+                    - cell [ref=f126e678]:
+                      - link "triagebot.toml, (File)" [ref=f126e685] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/triagebot.toml
+                        - text: triagebot.toml
+                    - cell [ref=f126e1271]:
+                      - generic [ref=f126e1273]:
+                        - link "Rollup merge of" [ref=f126e1274] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/7868d28a813f2bc206d7d959a9c01d2375676876
+                        - link "#164508" [ref=f126e1275] [cursor=pointer]:
+                          - /url: https://github.com/rust-lang/rust/pull/164508
+                        - link "- RalfJung:layout-invariant-ping, r=jieyouxu" [ref=f126e1276] [cursor=pointer]:
+                          - /url: /rust-lang/rust/commit/7868d28a813f2bc206d7d959a9c01d2375676876
+                    - cell "last week" [ref=f126e1277]
+                  - row [ref=f126e1278]:
+                    - cell [ref=f126e692]:
+                      - link "typos.toml, (File)" [ref=f126e699] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/typos.toml
+                        - text: typos.toml
+                    - cell [ref=f126e1279]:
+                      - link "Improve diagnostic deduplication" [ref=f126e1282] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/434157508f02ec9092907d63e220e971d6dc34ad
+                    - cell "2 months ago" [ref=f126e1283]
+                  - row [ref=f126e1284]:
+                    - cell [ref=f126e706]:
+                      - link "x, (File)" [ref=f126e713] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/x
+                        - text: x
+                    - cell [ref=f126e1285]:
+                      - link "use extended regex syntax" [ref=f126e1288] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/f33b5cb590ed4cf520b30dc0c6ea07f9f49299e5
+                    - cell "8 months ago" [ref=f126e1289]
+                  - row [ref=f126e1290]:
+                    - cell [ref=f126e720]:
+                      - link "x.ps1, (File)" [ref=f126e727] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/x.ps1
+                        - text: x.ps1
+                    - cell [ref=f126e1291]:
+                      - link [ref=f126e1294] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/2cf54e9f99f83e314256808b1e0753779d49e652
+                        - text: use
+                        - code [ref=f126e1295]: "&"
+                        - text: instead of start-process in x.ps1
+                    - cell "3 years ago" [ref=f126e1296]
+                  - row [ref=f126e1297]:
+                    - cell [ref=f126e734]:
+                      - link "x.py, (File)" [ref=f126e741] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/x.py
+                        - text: x.py
+                    - cell [ref=f126e1298]:
+                      - link [ref=f126e1301] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/536516f949ff37b0e10eaed835c2d3592d03e576
+                        - text: Reformat Python code with
+                        - code [ref=f126e1302]: ruff
+                    - cell "2 years ago" [ref=f126e1303]
+                  - row [ref=f126e1304]:
+                    - cell [ref=f126e748]:
+                      - link "yarn.lock, (File)" [ref=f126e755] [cursor=pointer]:
+                        - /url: /rust-lang/rust/blob/main/yarn.lock
+                        - text: yarn.lock
+                    - cell [ref=f126e1305]:
+                      - link [ref=f126e1308] [cursor=pointer]:
+                        - /url: /rust-lang/rust/commit/b0f83b7d0a099fe4af956785ae79aa0edc2d5860
+                        - text: Update
+                        - code [ref=f126e1309]: browser-ui-test
+                        - text: version to
+                        - code [ref=f126e1310]: 0.25.2
+                    - cell "2 months ago" [ref=f126e1311]
+            - generic [ref=f126e762]:
+              - generic [ref=f126e763]:
+                - heading "Repository files navigation" [level=2] [ref=f126e764]
+                - navigation "Repository files" [ref=f126e765]:
+                  - list [ref=f126e766]:
+                    - listitem [ref=f126e767]:
+                      - link "README" [ref=f126e768] [cursor=pointer]:
+                        - /url: "#"
+                    - listitem [ref=f126e773]:
+                      - link "Code of conduct" [ref=f126e774] [cursor=pointer]:
+                        - /url: "#"
+                    - listitem [ref=f126e779]:
+                      - link "Contributing" [ref=f126e780] [cursor=pointer]:
+                        - /url: "#"
+                    - listitem [ref=f126e785]:
+                      - link "Apache-2.0 license" [ref=f126e786] [cursor=pointer]:
+                        - /url: "#"
+                    - listitem [ref=f126e791]:
+                      - link "MIT license" [ref=f126e792] [cursor=pointer]:
+                        - /url: "#"
+                  - button "More items" [ref=f126e811] [cursor=pointer]:
+                    - generic [ref=f126e814]:
+                      - text: More
+                      - generic [ref=f126e815]: items
+                - button "Outline" [ref=f126e816] [cursor=pointer]
+              - article [ref=f126e820]:
+                - generic [ref=f126e821]:
+                  - 'img "The Rust Programming Language: A language empowering everyone to build reliable and efficient software" [ref=f126e824]'
+                  - paragraph [ref=f126e825]:
+                    - link "Website" [ref=f126e826] [cursor=pointer]:
+                      - /url: https://www.rust-lang.org/
+                    - text: "|"
+                    - link "Getting started" [ref=f126e827] [cursor=pointer]:
+                      - /url: https://www.rust-lang.org/learn/get-started
+                    - text: "|"
+                    - link "Learn" [ref=f126e828] [cursor=pointer]:
+                      - /url: https://www.rust-lang.org/learn
+                    - text: "|"
+                    - link "Documentation" [ref=f126e829] [cursor=pointer]:
+                      - /url: https://www.rust-lang.org/learn#learn-use
+                    - text: "|"
+                    - link "Contributing" [ref=f126e830] [cursor=pointer]:
+                      - /url: /rust-lang/rust/blob/main/CONTRIBUTING.md
+                - paragraph [ref=f126e831]:
+                  - text: This is the main source code repository for
+                  - link "Rust" [ref=f126e832] [cursor=pointer]:
+                    - /url: https://www.rust-lang.org/
+                  - text: . It contains the compiler, standard library, and documentation.
+                - generic [ref=f126e833]:
+                  - heading "Why Rust?" [level=2] [ref=f126e834]
+                  - 'link "Permalink: Why Rust?" [ref=f126e835] [cursor=pointer]':
+                    - /url: "#why-rust"
+                - list [ref=f126e838]:
+                  - listitem [ref=f126e839]:
+                    - paragraph [ref=f126e840]:
+                      - strong [ref=f126e841]: "Performance:"
+                      - text: Fast and memory-efficient, suitable for critical services, embedded devices, and easily integrated with other languages.
+                  - listitem [ref=f126e842]:
+                    - paragraph [ref=f126e843]:
+                      - strong [ref=f126e844]: "Reliability:"
+                      - text: Our rich type system and ownership model ensure memory and thread safety, reducing bugs at compile-time.
+                  - listitem [ref=f126e845]:
+                    - paragraph [ref=f126e846]:
+                      - strong [ref=f126e847]: "Productivity:"
+                      - text: Comprehensive documentation, a compiler committed to providing great diagnostics, and advanced tooling including package manager and build tool (
+                      - link "Cargo" [ref=f126e848] [cursor=pointer]:
+                        - /url: https://github.com/rust-lang/cargo
+                      - text: ), auto-formatter (
+                      - link "rustfmt" [ref=f126e849] [cursor=pointer]:
+                        - /url: https://github.com/rust-lang/rustfmt
+                      - text: ), linter (
+                      - link "Clippy" [ref=f126e850] [cursor=pointer]:
+                        - /url: https://github.com/rust-lang/rust-clippy
+                      - text: ) and editor support (
+                      - link "rust-analyzer" [ref=f126e851] [cursor=pointer]:
+                        - /url: https://github.com/rust-lang/rust-analyzer
+                      - text: ).
+                - generic [ref=f126e852]:
+                  - heading "Quick Start" [level=2] [ref=f126e853]
+                  - 'link "Permalink: Quick Start" [ref=f126e854] [cursor=pointer]':
+                    - /url: "#quick-start"
+                - paragraph [ref=f126e857]:
+                  - text: Read
+                  - link "\"Installation\"" [ref=f126e858] [cursor=pointer]:
+                    - /url: https://doc.rust-lang.org/book/ch01-01-installation.html
+                  - text: from
+                  - link "The Book" [ref=f126e859] [cursor=pointer]:
+                    - /url: https://doc.rust-lang.org/book/index.html
+                  - text: .
+                - generic [ref=f126e860]:
+                  - heading "Installing from Source" [level=2] [ref=f126e861]
+                  - 'link "Permalink: Installing from Source" [ref=f126e862] [cursor=pointer]':
+                    - /url: "#installing-from-source"
+                - paragraph [ref=f126e865]:
+                  - text: If you really want to install from source (though this is not recommended), see
+                  - link "INSTALL.md" [ref=f126e866] [cursor=pointer]:
+                    - /url: /rust-lang/rust/blob/main/INSTALL.md
+                  - text: .
+                - generic [ref=f126e867]:
+                  - heading "Getting Help" [level=2] [ref=f126e868]
+                  - 'link "Permalink: Getting Help" [ref=f126e869] [cursor=pointer]':
+                    - /url: "#getting-help"
+                - paragraph [ref=f126e872]:
+                  - text: See
+                  - link "https://www.rust-lang.org/community" [ref=f126e873] [cursor=pointer]:
+                    - /url: https://www.rust-lang.org/community
+                  - text: for a list of chat platforms and forums.
+                - generic [ref=f126e874]:
+                  - heading "Contributing" [level=2] [ref=f126e875]
+                  - 'link "Permalink: Contributing" [ref=f126e876] [cursor=pointer]':
+                    - /url: "#contributing"
+                - paragraph [ref=f126e879]:
+                  - text: See
+                  - link "CONTRIBUTING.md" [ref=f126e880] [cursor=pointer]:
+                    - /url: /rust-lang/rust/blob/main/CONTRIBUTING.md
+                  - text: .
+                - paragraph [ref=f126e881]:
+                  - text: For a detailed explanation of the compiler's architecture and how to begin contributing, see the
+                  - link "rustc-dev-guide" [ref=f126e882] [cursor=pointer]:
+                    - /url: https://rustc-dev-guide.rust-lang.org/
+                  - text: .
+                - generic [ref=f126e883]:
+                  - heading "License" [level=2] [ref=f126e884]
+                  - 'link "Permalink: License" [ref=f126e885] [cursor=pointer]':
+                    - /url: "#license"
+                - paragraph [ref=f126e888]: Rust is primarily distributed under the terms of both the MIT license and the Apache License (Version 2.0), with portions covered by various BSD-like licenses.
+                - paragraph [ref=f126e889]:
+                  - text: See
+                  - link "LICENSE-APACHE" [ref=f126e890] [cursor=pointer]:
+                    - /url: /rust-lang/rust/blob/main/LICENSE-APACHE
+                  - text: ","
+                  - link "LICENSE-MIT" [ref=f126e891] [cursor=pointer]:
+                    - /url: /rust-lang/rust/blob/main/LICENSE-MIT
+                  - text: ", and"
+                  - link "COPYRIGHT" [ref=f126e892] [cursor=pointer]:
+                    - /url: /rust-lang/rust/blob/main/COPYRIGHT
+                  - text: for details.
+                - generic [ref=f126e893]:
+                  - heading "Trademark" [level=2] [ref=f126e894]
+                  - 'link "Permalink: Trademark" [ref=f126e895] [cursor=pointer]':
+                    - /url: "#trademark"
+                - paragraph [ref=f126e898]:
+                  - link "The Rust Foundation" [ref=f126e899] [cursor=pointer]:
+                    - /url: https://rustfoundation.org/
+                  - text: owns and protects the Rust and Cargo trademarks and logos (the "Rust Trademarks").
+                - paragraph [ref=f126e900]:
+                  - text: If you want to use these names or brands, please read the
+                  - link "Rust language trademark policy" [ref=f126e901] [cursor=pointer]:
+                    - /url: https://rustfoundation.org/policy/rust-trademark-policy/
+                  - text: .
+                - paragraph [ref=f126e902]:
+                  - text: Third-party logos may be subject to third-party copyrights and trademarks. See
+                  - link "Licenses" [ref=f126e903] [cursor=pointer]:
+                    - /url: https://www.rust-lang.org/policies/licenses
+                  - text: for details.
+        - generic [ref=f126e906]:
+          - generic [ref=f126e907]:
+            - heading "About" [level=2] [ref=f126e908]
+            - paragraph [ref=f126e909]: Empowering everyone to build reliable and efficient software.
+            - generic "https://www.rust-lang.org" [ref=f126e913]:
+              - link "www.rust-lang.org" [ref=f126e914] [cursor=pointer]:
+                - /url: https://www.rust-lang.org
+            - heading "Topics" [level=3] [ref=f126e915]
+            - generic [ref=f126e916]:
+              - link "compiler" [ref=f126e917] [cursor=pointer]:
+                - /url: /topics/compiler
+              - link "language" [ref=f126e918] [cursor=pointer]:
+                - /url: /topics/language
+              - link "rust" [ref=f126e919] [cursor=pointer]:
+                - /url: /topics/rust
+            - heading "Resources" [level=3] [ref=f126e920]
+            - link "Readme" [ref=f126e922] [cursor=pointer]:
+              - /url: "#readme-ov-file"
+            - button "Apache-2.0 and 2 other licenses found" [ref=f126e926] [cursor=pointer]
+            - heading "Code of conduct" [level=3] [ref=f126e931]
+            - link "Code of conduct" [ref=f126e933] [cursor=pointer]:
+              - /url: /rust-lang/rust#coc-ov-file
+            - heading "Contributing" [level=3] [ref=f126e936]
+            - link "Contributing" [ref=f126e938] [cursor=pointer]:
+              - /url: "#contributing-ov-file"
+            - heading "Security policy" [level=3] [ref=f126e941]
+            - link "Security policy" [ref=f126e943] [cursor=pointer]:
+              - /url: "#security-ov-file"
+            - generic [ref=f126e946]:
+              - generic [ref=f126e947]:
+                - link "Activity" [ref=f126e949] [cursor=pointer]:
+                  - /url: /rust-lang/rust/activity
+                - link "Custom properties" [ref=f126e953] [cursor=pointer]:
+                  - /url: /rust-lang/rust/custom-properties
+              - generic [ref=f126e956]:
+                - heading "Stars" [level=3] [ref=f126e957]
+                - generic [ref=f126e959]:
+                  - strong [ref=f126e962]: 121.0k
+                  - text: stars
+                - heading "Watchers" [level=3] [ref=f126e963]
+                - generic [ref=f126e965]:
+                  - strong [ref=f126e968]: 1.6k
+                  - text: watching
+                - heading "Forks" [level=3] [ref=f126e969]
+                - link [ref=f126e971] [cursor=pointer]:
+                  - /url: /rust-lang/rust/forks
+                  - strong [ref=f126e975]: 17.4k
+                  - text: forks
+            - link "Report repository" [ref=f126e977] [cursor=pointer]:
+              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Frust-lang%2Frust&report=rust-lang+%28user%29
+          - generic [ref=f126e1312]:
+            - heading "Releases (157)" [level=2] [ref=f126e1313]:
+              - generic [ref=f126e1314]:
+                - link "Releases" [ref=f126e1315] [cursor=pointer]:
+                  - /url: /rust-lang/rust/releases
+                - generic [aria-hidden] [ref=f126e1316]: "157"
+                - generic [ref=f126e1317]: (157)
+            - link "Rust 1.99.1 Latest 2 weeks ago" [ref=f126e1318] [cursor=pointer]:
+              - /url: /rust-lang/rust/releases/tag/1.99.1
+              - generic [ref=f126e1321]:
+                - generic [ref=f126e1322]:
+                  - generic "Rust 1.99.1" [ref=f126e1323]
+                  - generic [ref=f126e1324]: Latest
+                - generic [ref=f126e1325]: 2 weeks ago
+            - link "+ 156 releases" [ref=f126e1327] [cursor=pointer]:
+              - /url: /rust-lang/rust/releases
+          - generic [ref=f126e1328]:
+            - heading "Sponsor this project" [level=2] [ref=f126e1329]
+            - list [ref=f126e1330]:
+              - listitem [ref=f126e1331]:
+                - link [ref=f126e1332] [cursor=pointer]:
+                  - /url: /rustfoundation
+                  - img "@rustfoundation" [ref=f126e1333]
+                - generic [ref=f126e1334]:
+                  - link [ref=f126e1335] [cursor=pointer]:
+                    - /url: /rustfoundation
+                    - strong [ref=f126e1336]: rustfoundation
+                  - text: Rust Foundation
+                - link "Sponsor @rustfoundation" [ref=f126e1337] [cursor=pointer]:
+                  - /url: /sponsors/rustfoundation
+            - list [ref=f126e1340]:
+              - listitem [ref=f126e1341]:
+                - link "https://rust-lang.org/funding" [ref=f126e1346] [cursor=pointer]:
+                  - /url: https://rust-lang.org/funding
+            - link "Learn more about GitHub Sponsors" [ref=f126e1348] [cursor=pointer]:
+              - /url: /sponsors
+          - generic [ref=f126e1349]:
+            - heading "Contributors (6,967)" [level=2] [ref=f126e1350]:
+              - generic [ref=f126e1351]:
+                - link "Contributors" [ref=f126e1352] [cursor=pointer]:
+                  - /url: /rust-lang/rust/graphs/contributors
+                - generic [aria-hidden] [ref=f126e1353]: 6,967
+                - generic [ref=f126e1354]: (6,967)
+            - list [ref=f126e1355]:
+              - listitem [ref=f126e1356]:
+                - link [ref=f126e1357] [cursor=pointer]:
+                  - /url: /bors
+                  - img "@bors" [ref=f126e1358]
+              - listitem [ref=f126e1359]:
+                - link [ref=f126e1360] [cursor=pointer]:
+                  - /url: /matthiaskrgr
+                  - img "@matthiaskrgr" [ref=f126e1361]
+              - listitem [ref=f126e1362]:
+                - link [ref=f126e1363] [cursor=pointer]:
+                  - /url: /RalfJung
+                  - img "@RalfJung" [ref=f126e1364]
+              - listitem [ref=f126e1365]:
+                - link [ref=f126e1366] [cursor=pointer]:
+                  - /url: /GuillaumeGomez
+                  - img "@GuillaumeGomez" [ref=f126e1367]
+              - listitem [ref=f126e1368]:
+                - link [ref=f126e1369] [cursor=pointer]:
+                  - /url: /matklad
+                  - img "@matklad" [ref=f126e1370]
+              - listitem [ref=f126e1371]:
+                - link [ref=f126e1372] [cursor=pointer]:
+                  - /url: /bors[bot]
+                  - img "@bors[bot]" [ref=f126e1373]
+              - listitem [ref=f126e1374]:
+                - link [ref=f126e1375] [cursor=pointer]:
+                  - /url: /oli-obk
+                  - img "@oli-obk" [ref=f126e1376]
+              - listitem [ref=f126e1377]:
+                - link [ref=f126e1378] [cursor=pointer]:
+                  - /url: /bjorn3
+                  - img "@bjorn3" [ref=f126e1379]
+              - listitem [ref=f126e1380]:
+                - link [ref=f126e1381] [cursor=pointer]:
+                  - /url: /alexcrichton
+                  - img "@alexcrichton" [ref=f126e1382]
+              - listitem [ref=f126e1383]:
+                - link [ref=f126e1384] [cursor=pointer]:
+                  - /url: /brson
+                  - img "@brson" [ref=f126e1385]
+              - listitem [ref=f126e1386]:
+                - link [ref=f126e1387] [cursor=pointer]:
+                  - /url: /Veykril
+                  - img "@Veykril" [ref=f126e1388]
+              - listitem [ref=f126e1389]:
+                - link [ref=f126e1390] [cursor=pointer]:
+                  - /url: /compiler-errors
+                  - img "@compiler-errors" [ref=f126e1391]
+              - listitem [ref=f126e1392]:
+                - link [ref=f126e1393] [cursor=pointer]:
+                  - /url: /JonathanBrouwer
+                  - img "@JonathanBrouwer" [ref=f126e1394]
+              - listitem [ref=f126e1395]:
+                - link [ref=f126e1396] [cursor=pointer]:
+                  - /url: /nikomatsakis
+                  - img "@nikomatsakis" [ref=f126e1397]
+            - link "+ 6,953 contributors" [ref=f126e1399] [cursor=pointer]:
+              - /url: /rust-lang/rust/graphs/contributors
+          - generic [ref=f126e1400]:
+            - heading "Languages" [level=2] [ref=f126e1401]
+            - generic [ref=f126e1403]:
+              - 'progressbar "Rust: 90.6%" [ref=f126e1404]'
+              - 'progressbar "HTML: 6.3%" [ref=f126e1405]'
+              - 'progressbar "Shell: 0.8%" [ref=f126e1406]'
+              - 'progressbar "C: 0.7%" [ref=f126e1407]'
+              - 'progressbar "JavaScript: 0.5%" [ref=f126e1408]'
+              - 'progressbar "Python: 0.4%" [ref=f126e1409]'
+              - 'progressbar "Other: 0.7%" [ref=f126e1410]'
+            - list [ref=f126e1411]:
+              - listitem [ref=f126e1412]:
+                - link "Rust 90.6%" [ref=f126e1413] [cursor=pointer]:
+                  - /url: /rust-lang/rust/search?l=rust
+                  - generic [ref=f126e1415]: Rust
+                  - generic [ref=f126e1416]: 90.6%
+              - listitem [ref=f126e1417]:
+                - link "HTML 6.3%" [ref=f126e1418] [cursor=pointer]:
+                  - /url: /rust-lang/rust/search?l=html
+                  - generic [ref=f126e1420]: HTML
+                  - generic [ref=f126e1421]: 6.3%
+              - listitem [ref=f126e1422]:
+                - link "Shell 0.8%" [ref=f126e1423] [cursor=pointer]:
+                  - /url: /rust-lang/rust/search?l=shell
+                  - generic [ref=f126e1425]: Shell
+                  - generic [ref=f126e1426]: 0.8%
+              - listitem [ref=f126e1427]:
+                - link "C 0.7%" [ref=f126e1428] [cursor=pointer]:
+                  - /url: /rust-lang/rust/search?l=c
+                  - generic [ref=f126e1430]: C
+                  - generic [ref=f126e1431]: 0.7%
+              - listitem [ref=f126e1432]:
+                - link "JavaScript 0.5%" [ref=f126e1433] [cursor=pointer]:
+                  - /url: /rust-lang/rust/search?l=javascript
+                  - generic [ref=f126e1435]: JavaScript
+                  - generic [ref=f126e1436]: 0.5%
+              - listitem [ref=f126e1437]:
+                - link "Python 0.4%" [ref=f126e1438] [cursor=pointer]:
+                  - /url: /rust-lang/rust/search?l=python
+                  - generic [ref=f126e1440]: Python
+                  - generic [ref=f126e1441]: 0.4%
+              - listitem [ref=f126e1442]:
+                - link "Other 0.7%" [ref=f126e1443] [cursor=pointer]:
+                  - /url: /rust-lang/rust/search?l=Other
+                  - generic [ref=f126e1445]: Other
+                  - generic [ref=f126e1446]: 0.7%
+  - contentinfo [ref=f126e995]:
+    - heading "Footer" [level=2] [ref=f126e996]
+    - generic [ref=f126e997]:
+      - generic [ref=f126e998]:
+        - link "GitHub Homepage" [ref=f126e999] [cursor=pointer]:
+          - /url: https://github.com
+        - generic [ref=f126e1002]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=f126e1003]:
+        - heading "Footer navigation" [level=3] [ref=f126e1004]
+        - list "Footer navigation" [ref=f126e1005]:
+          - listitem [ref=f126e1006]:
+            - link "Terms" [ref=f126e1007] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=f126e1008]:
+            - link "Privacy" [ref=f126e1009] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=f126e1010]:
+            - link "Security" [ref=f126e1011] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=f126e1012]:
+            - link "Status" [ref=f126e1013] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=f126e1014]:
+            - link "Community" [ref=f126e1015] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=f126e1016]:
+            - link "Docs" [ref=f126e1017] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=f126e1018]:
+            - link "Contact" [ref=f126e1019] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=f126e1020]:
+            - button "Manage cookies" [ref=f126e1022] [cursor=pointer]
+          - listitem [ref=f126e1023]:
+            - button "Do not share my personal information" [ref=f126e1025] [cursor=pointer]
+```

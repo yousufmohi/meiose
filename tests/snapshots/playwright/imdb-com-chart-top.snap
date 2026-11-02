@@ -1,0 +1,13 @@
+---
+source: tests/playwright_fixtures.rs
+---
+<untouched>
+### Page
+- Page URL: https://www.imdb.com/chart/top/
+- Page Title: 403 Forbidden
+- HTTP status: 403
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- heading "403 Forbidden" [level=1] [ref=f151e3]
+```

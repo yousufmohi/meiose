@@ -1,0 +1,241 @@
+---
+source: tests/playwright_fixtures.rs
+---
+### Page
+- Page URL: https://www.weather.gov/
+- Page Title: National Weather Service
+- Console: 2 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f207e1]:
+  - generic:
+    - link [ref=f207e4]:
+      - /url: https://www.weather.gov
+      - img "National Weather Service" [ref=f207e5]
+    - link [ref=f207e6]:
+      - /url: http://www.commerce.gov
+      - img "United States Department of Commerce" [ref=f207e7]
+    - link "National Oceanic and Atmospheric Administration" [ref=f207e8]:
+      - /url: http://www.noaa.gov
+  - generic:
+    - list:
+      - listitem:
+        - link "HOME" [ref=f207e16]:
+          - /url: "#"
+      - listitem:
+        - link "FORECAST" [ref=f207e18]:
+          - /url: https://www.weather.gov/forecastmaps/
+      - listitem:
+        - link "PAST WEATHER" [ref=f207e20]:
+          - /url: https://www.weather.gov/wrh/climate
+      - listitem:
+        - link "SAFETY" [ref=f207e22]:
+          - /url: https://www.weather.gov/safety/
+      - listitem:
+        - link "INFORMATION" [ref=f207e24]:
+          - /url: https://www.weather.gov/informationcenter
+      - listitem:
+        - link "EDUCATION" [ref=f207e26]:
+          - /url: https://www.weather.gov/education/
+      - listitem:
+        - link "NEWS" [ref=f207e28]:
+          - /url: https://www.weather.gov/news
+      - listitem:
+        - link "SEARCH" [ref=f207e30]:
+          - /url: https://www.weather.gov/search/
+      - listitem:
+        - link "ABOUT" [ref=f207e32]:
+          - /url: https://www.weather.gov/about/
+    - generic:
+      - generic:
+        - generic:
+          - generic: Local forecast by "City, St" or ZIP code
+          - textbox "Local forecast by \"City, St\" or ZIP code" [ref=f207e38]: Enter location ...
+          - button "Go" [ref=f207e39]
+          - link "Location Help" [ref=f207e41]:
+            - /url: javascript:void(window.open('https://www.weather.gov/ForecastSearchHelp.html','locsearchhelp','status=0,toolbar=0,location=0,menubar=0,directories=0,resizable=1,scrollbars=1,height=500,width=530').focus());
+        - generic:
+          - heading "Heavy Rainfall and Flooding in the Southwest and Four Corners; Unsettled Weather in Florida" [level=1] [ref=f207e45]
+          - paragraph:
+            - text: Heavy to excessive rainfall will continue today across portions of the Southwest and Four Corners Region, leading to flash, urban and small stream flooding. Significant river flooding is expected through Monday. Heavy rainfall is expected across southern and eastern Florida through Monday, with isolated flash flooding possible.
+            - link "Read More >" [ref=f207e47]:
+              - /url: http://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=pmdspd
+      - generic:
+        - generic:
+          - generic:
+            - text: Customize Your
+            - strong: Weather.gov
+          - generic:
+            - textbox "Enter Your City, ST or ZIP Code" [ref=f207e57]: City, ST
+            - text: Enter Your City, ST or ZIP Code
+            - checkbox "Remember Me" [ref=f207e58]
+            - text: Remember Me
+          - generic:
+            - button "Get Weather" [ref=f207e60]
+            - paragraph:
+              - link "Privacy Policy" [ref=f207e62]:
+                - /url: /privacy.php
+        - generic:
+          - list:
+            - listitem:
+              - link "ACTIVE ALERTS" [ref=f207e68]:
+                - /url: /alerts
+            - listitem:
+              - link "FORECAST MAPS" [ref=f207e70]:
+                - /url: /forecastmaps/
+            - listitem:
+              - link "RADAR" [ref=f207e72]:
+                - /url: https://radar.weather.gov/region/conus/standard
+            - listitem:
+              - link "RIVERS, LAKES, RAINFALL" [ref=f207e74]:
+                - /url: https://water.noaa.gov/
+            - listitem:
+              - link "AIR QUALITY" [ref=f207e76]:
+                - /url: https://airquality.weather.gov
+            - listitem:
+              - link "SATELLITE" [ref=f207e78]:
+                - /url: /satellite
+            - listitem:
+              - link "CURRENT" [ref=f207e80]:
+                - /url: /current
+          - generic:
+            - generic:
+              - link "American Samoa" [ref=f207e89]:
+                - /url: /ppg/
+              - link "Guam" [ref=f207e90]:
+                - /url: /gum/
+              - link "Puerto Rico/Virgin Islands" [ref=f207e91]:
+                - /url: /sju/
+            - generic:
+              - text: Click on the map above for detailed alerts
+              - link "Public Alerts in XML/CAP v1.2 and ATOM Formats" [ref=f207e95]:
+                - /url: https://vlab.noaa.gov/web/nws-common-alerting-protocol
+              - generic:
+                - list:
+                  - listitem:
+                    - link "Flash Flood Warning" [ref=f207e100]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flash%20Flood%20Warning
+                  - listitem:
+                    - link "Winter Storm Warning" [ref=f207e103]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Winter%20Storm%20Warning
+                  - listitem:
+                    - link "High Wind Warning" [ref=f207e106]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=High%20Wind%20Warning
+                  - listitem:
+                    - link "Flood Warning" [ref=f207e109]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flood%20Warning
+                  - listitem:
+                    - link "Severe Thunderstorm Watch" [ref=f207e112]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Severe%20Thunderstorm%20Watch
+                - list:
+                  - listitem:
+                    - link "Gale Warning" [ref=f207e117]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Gale%20Warning
+                  - listitem:
+                    - link "Winter Weather Advisory" [ref=f207e120]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Winter%20Weather%20Advisory
+                  - listitem:
+                    - link "Flood Advisory" [ref=f207e123]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flood%20Advisory
+                  - listitem:
+                    - link "Coastal Flood Advisory" [ref=f207e126]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Coastal%20Flood%20Advisory
+                  - listitem:
+                    - link "High Surf Advisory" [ref=f207e129]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=High%20Surf%20Advisory
+                - list:
+                  - listitem:
+                    - link "Dense Fog Advisory" [ref=f207e134]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Dense%20Fog%20Advisory
+                  - listitem:
+                    - link "Small Craft Advisory" [ref=f207e137]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Small%20Craft%20Advisory
+                  - listitem:
+                    - link "Wind Advisory" [ref=f207e140]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Wind%20Advisory
+                  - listitem:
+                    - link "Frost Advisory" [ref=f207e143]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Frost%20Advisory
+                  - listitem:
+                    - link "Rip Current Statement" [ref=f207e146]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Rip%20Current%20Statement
+                - list:
+                  - listitem:
+                    - link "Beach Hazards Statement" [ref=f207e151]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Beach%20Hazards%20Statement
+                  - listitem:
+                    - link "Flood Watch" [ref=f207e154]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flood%20Watch
+                  - listitem:
+                    - link "High Wind Watch" [ref=f207e157]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=High%20Wind%20Watch
+                  - listitem:
+                    - link "Coastal Flood Statement" [ref=f207e160]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Coastal%20Flood%20Statement
+                  - listitem:
+                    - link "Special Weather Statement" [ref=f207e163]:
+                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Special%20Weather%20Statement
+      - paragraph:
+        - link [ref=f207e169]:
+          - /url: http://weather.gov/safety
+          - img "Safety" [ref=f207e170]
+      - generic:
+        - link [ref=f207e175]:
+          - /url: http://twitter.com/nws
+          - img "Follow us on X" [ref=f207e176]
+          - text: Follow us on X
+        - link [ref=f207e179]:
+          - /url: http://www.facebook.com/nws
+          - img "Follow us on Facebook" [ref=f207e180]
+          - text: Follow us on Facebook
+        - link [ref=f207e183]:
+          - /url: http://www.youtube.com/usweathergov
+          - img "Follow us on YouTube" [ref=f207e184]
+          - text: Follow us on YouTube
+        - link [ref=f207e187]:
+          - /url: https://instagram.com/nws
+          - img "Follow us on Instagram" [ref=f207e188]
+          - text: Follow us on Instagram
+        - link [ref=f207e191]:
+          - /url: https://bsky.app/profile/nws.noaa.gov
+          - img "Follow us on Bluesky" [ref=f207e192]
+          - text: Follow us on Bluesky
+        - link [ref=f207e196]:
+          - /url: /rss_page.php?site_name=nws
+          - img "NWS RSS Feed" [ref=f207e197]
+          - text: NWS RSS Feed
+  - generic:
+    - link [ref=f207e202]:
+      - /url: http://www.usa.gov
+      - img "usa.gov" [ref=f207e203]
+    - paragraph:
+      - link "US Dept of Commerce" [ref=f207e206]:
+        - /url: http://www.commerce.gov
+      - link "National Oceanic and Atmospheric Administration" [ref=f207e207]:
+        - /url: http://www.noaa.gov
+      - link "National Weather Service" [ref=f207e208]:
+        - /url: https://www.weather.gov
+      - text: 1325 East West Highway Silver Spring, MD 20910
+      - link "Comments? Questions? Please Contact Us." [ref=f207e209]:
+        - /url: https://www.weather.gov/Contact
+    - generic:
+      - generic:
+        - link "Disclaimer" [ref=f207e212]:
+          - /url: https://www.weather.gov/disclaimer
+        - link "Information Quality" [ref=f207e213]:
+          - /url: http://www.cio.noaa.gov/services_programs/info_quality.html
+        - link "Help" [ref=f207e214]:
+          - /url: https://www.weather.gov/help
+        - link "Glossary" [ref=f207e215]:
+          - /url: /glossary
+      - generic:
+        - link "Privacy Policy" [ref=f207e217]:
+          - /url: https://www.weather.gov/privacy
+        - link "Freedom of Information Act (FOIA)" [ref=f207e218]:
+          - /url: https://www.noaa.gov/foia-freedom-of-information-act
+        - link "About Us" [ref=f207e219]:
+          - /url: https://www.weather.gov/about
+        - link "Career Opportunities" [ref=f207e220]:
+          - /url: https://www.weather.gov/careers
+```
+[meiose: 3 nodes trimmed, 67 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]

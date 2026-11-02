@@ -1,0 +1,988 @@
+### Page
+- Page URL: https://stackoverflow.com/questions/tagged/rust
+- Page Title: Newest 'rust' Questions - Stack Overflow
+- Console: 54 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f145e1]:
+  - banner [ref=f145e2]:
+    - link "Skip to main content" [ref=f145e3] [cursor=pointer]:
+      - /url: "#content"
+    - generic [ref=f145e4]:
+      - link "Stack Overflow Home" [ref=f145e5] [cursor=pointer]:
+        - /url: https://stackoverflow.com
+      - link "About" [ref=f145e8] [cursor=pointer]:
+        - /url: https://stackoverflow.co/
+      - button "Products" [ref=f145e10] [cursor=pointer]
+      - link "Stack Internal" [ref=f145e12] [cursor=pointer]:
+        - /url: https://stackoverflow.co/internal/?utm_medium=referral&utm_source=stackoverflow-community&utm_content=top-nav
+      - search [ref=f145e14]:
+        - combobox "Search" [ref=f145e16]: "[rust]"
+      - navigation "Topbar" [ref=f145e17]:
+        - list [ref=f145e18]:
+          - listitem [ref=f145e19]:
+            - link "Help Center and other resources" [ref=f145e20] [cursor=pointer]:
+              - /url: /help
+          - listitem [ref=f145e23]:
+            - link "Site switcher" [ref=f145e24] [cursor=pointer]:
+              - /url: https://stackexchange.com
+          - listitem
+          - listitem
+          - listitem [ref=f145e27]:
+            - link "Log in" [ref=f145e28] [cursor=pointer]:
+              - /url: https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2ftagged%2frust
+          - listitem [ref=f145e29]:
+            - link "Sign up" [ref=f145e30] [cursor=pointer]:
+              - /url: https://stackoverflow.com/users/signup?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2ftagged%2frust
+  - generic [ref=f145e31]:
+    - navigation "Primary" [ref=f145e34]:
+      - list [ref=f145e35]:
+        - listitem [ref=f145e36]:
+          - list [ref=f145e37]:
+            - listitem [ref=f145e38]:
+              - link "Home" [ref=f145e39] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f145e44]:
+              - link "Questions" [ref=f145e45] [cursor=pointer]:
+                - /url: /questions
+            - listitem [ref=f145e50]:
+              - link "AI Assist" [ref=f145e51] [cursor=pointer]:
+                - /url: https://stackoverflow.com/ai-assist
+            - listitem [ref=f145e57]:
+              - link "Tags" [ref=f145e58] [cursor=pointer]:
+                - /url: /tags
+            - listitem [ref=f145e64]
+            - listitem [ref=f145e65]:
+              - link "Stack Overflow for Agents" [ref=f145e66] [cursor=pointer]:
+                - /url: http://agents.stackoverflow.com
+            - listitem [ref=f145e72]
+            - listitem [ref=f145e73]:
+              - link "Challenges" [ref=f145e74] [cursor=pointer]:
+                - /url: /beta/challenges
+            - listitem [ref=f145e79]:
+              - link "Chat" [expanded] [ref=f145e80] [cursor=pointer]:
+                - /url: https://chat.stackoverflow.com/?tab=explore
+            - listitem [ref=f145e89]:
+              - link "Articles" [ref=f145e90] [cursor=pointer]:
+                - /url: https://stackoverflow.blog/contributed?utm_medium=referral&utm_source=stackoverflow-community&utm_campaign=so-blog&utm_content=experiment-articles
+            - listitem [ref=f145e96]:
+              - link "Users" [ref=f145e97] [cursor=pointer]:
+                - /url: /users
+            - listitem [ref=f145e102]
+            - listitem [ref=f145e103]:
+              - link "Companies" [ref=f145e104] [cursor=pointer]:
+                - /url: https://stackoverflow.com/jobs/companies?so_medium=stackoverflow&so_source=SiteNav
+            - listitem [ref=f145e109]:
+              - link "Developer Story" [ref=f145e110] [cursor=pointer]:
+                - /url: https://stackoverflow.com/developer-story
+            - listitem [ref=f145e116]:
+              - button "Collectives" [ref=f145e118] [cursor=pointer]
+            - listitem [ref=f145e123]:
+              - paragraph [ref=f145e124]:
+                - text: Communities for your favorite technologies.
+                - link "Explore all Collectives" [ref=f145e125] [cursor=pointer]:
+                  - /url: /collectives-all
+        - listitem [ref=f145e126]:
+          - generic [ref=f145e127]: Stack Internal
+          - generic [ref=f145e128]:
+            - paragraph [ref=f145e129]: Turn scattered docs and code into trusted AI context. Explore the new Stack Internal platform.
+            - link "Create a workspace" [ref=f145e130] [cursor=pointer]:
+              - /url: https://stackoverflow.co/lp/stack-internal-signup?utm_medium=referral&utm_source=stackoverflow-community&utm_campaign=stack-internal-sept-launch&utm_content=left-rail-tile
+    - generic [ref=f145e131]:
+      - generic [ref=f145e132]:
+        - generic [ref=f145e133]:
+          - generic [ref=f145e134]:
+            - heading "43,980 questions" [level=2] [ref=f145e135]
+            - generic [ref=f145e137]:
+              - generic [ref=f145e138]:
+                - link "Newest" [ref=f145e139] [cursor=pointer]:
+                  - /url: /questions/tagged/rust?tab=Newest
+                - link "Active" [ref=f145e141] [cursor=pointer]:
+                  - /url: /questions/tagged/rust?tab=Active
+                - link "Bountied" [ref=f145e143] [cursor=pointer]:
+                  - /url: /questions/tagged/rust?tab=Bounties
+                - link "Unanswered" [ref=f145e145] [cursor=pointer]:
+                  - /url: /questions/tagged/rust?tab=Unanswered
+                - button "More" [ref=f145e147] [cursor=pointer]
+              - button "Filter" [ref=f145e150] [cursor=pointer]
+          - region "Question list filters"
+        - region "43,980 questions" [ref=f145e154]:
+          - generic [ref=f145e156]:
+            - generic [ref=f145e157]:
+              - generic "Score of -3" [ref=f145e158]:
+                - generic [aria-hidden] [ref=f145e160]: "-3"
+                - generic [aria-hidden] [ref=f145e161]: votes
+              - generic [ref=f145e162]:
+                - generic [ref=f145e163]: 0 answers
+                - generic [aria-hidden] [ref=f145e164]: "0"
+                - generic [aria-hidden] [ref=f145e165]: answers
+              - generic [ref=f145e166]:
+                - generic [ref=f145e167]: 121 views
+                - generic [aria-hidden] [ref=f145e168]: "121"
+                - generic [aria-hidden] [ref=f145e169]: views
+            - generic [ref=f145e170]:
+              - heading [level=3] [ref=f145e171]:
+                - link "How to use multiple files with egui" [ref=f145e172] [cursor=pointer]:
+                  - /url: /questions/80013269/how-to-use-multiple-files-with-egui
+              - generic [ref=f145e173]: The GUI is a 3 panel setup, top, left and center. Clicking a button in the left panel changes the content of the center panel. There are several center pages, so I wanted to separate them into ...
+              - generic [ref=f145e174]:
+                - list [ref=f145e176]:
+                  - listitem [ref=f145e177]:
+                    - link "show questions tagged 'rust'" [ref=f145e178] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e179]:
+                    - link "show questions tagged 'egui'" [ref=f145e180] [cursor=pointer]:
+                      - /url: /questions/tagged/egui
+                      - text: egui
+                - generic [ref=f145e181]:
+                  - link [aria-hidden] [ref=f145e182] [cursor=pointer]:
+                    - /url: /users/littledrummerboy
+                  - generic [ref=f145e185]:
+                    - link "littleDrummerBoy" [ref=f145e187] [cursor=pointer]:
+                      - /url: /users/littledrummerboy
+                    - generic [aria-hidden] [ref=f145e188]: "163"
+                    - generic [ref=f145e189]: reputation score 163
+                  - time [ref=f145e190]: asked Oct 29 at 2:55
+          - generic [ref=f145e192]:
+            - generic [ref=f145e193]:
+              - generic "Score of 1" [ref=f145e194]:
+                - generic [aria-hidden] [ref=f145e196]: "1"
+                - generic [aria-hidden] [ref=f145e197]: vote
+              - generic [ref=f145e198]:
+                - generic [ref=f145e199]: 1 answer
+                - generic [aria-hidden] [ref=f145e200]: "1"
+                - generic [aria-hidden] [ref=f145e201]: answer
+              - generic [ref=f145e202]:
+                - generic [ref=f145e203]: 78 views
+                - generic [aria-hidden] [ref=f145e204]: "78"
+                - generic [aria-hidden] [ref=f145e205]: views
+            - generic [ref=f145e206]:
+              - heading [level=3] [ref=f145e207]:
+                - link "Ignore unknown command line arguments with Clap" [ref=f145e208] [cursor=pointer]:
+                  - /url: /questions/80013218/ignore-unknown-command-line-arguments-with-clap
+              - generic [ref=f145e209]: I'm looking for either a way to not error on unknown command line arguments with Clap or an alternative parser that is about as easy to use as Clap with this additional feature.
+              - generic [ref=f145e210]:
+                - list [ref=f145e212]:
+                  - listitem [ref=f145e213]:
+                    - link "show questions tagged 'rust'" [ref=f145e214] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e215]:
+                    - link "show questions tagged 'clap'" [ref=f145e216] [cursor=pointer]:
+                      - /url: /questions/tagged/clap
+                      - text: clap
+                - generic [ref=f145e217]:
+                  - link [aria-hidden] [ref=f145e218] [cursor=pointer]:
+                    - /url: /users/19211765/flansel
+                  - generic [ref=f145e221]:
+                    - link "flansel" [ref=f145e223] [cursor=pointer]:
+                      - /url: /users/19211765/flansel
+                    - generic [aria-hidden] [ref=f145e224]: "63"
+                    - generic [ref=f145e225]: reputation score 63
+                  - time [ref=f145e226]: asked Oct 28 at 20:12
+          - generic [ref=f145e228]:
+            - generic [ref=f145e229]:
+              - generic "Score of 1" [ref=f145e230]:
+                - generic [aria-hidden] [ref=f145e232]: "1"
+                - generic [aria-hidden] [ref=f145e233]: vote
+              - generic [ref=f145e234]:
+                - generic [ref=f145e235]: 1 answer
+                - generic [aria-hidden] [ref=f145e236]: "1"
+                - generic [aria-hidden] [ref=f145e237]: answer
+              - generic [ref=f145e238]:
+                - generic [ref=f145e239]: 85 views
+                - generic [aria-hidden] [ref=f145e240]: "85"
+                - generic [aria-hidden] [ref=f145e241]: views
+            - generic [ref=f145e242]:
+              - heading [level=3] [ref=f145e243]:
+                - link "Load multiple copies of shared library in Rust C FFI" [ref=f145e244] [cursor=pointer]:
+                  - /url: /questions/80013017/load-multiple-copies-of-shared-library-in-rust-c-ffi
+              - generic [ref=f145e245]: There have been several questions (e.g. this) on SO regarding loading multiple copies of a shared library in C, but I'm trying to figure out how to do it in Rust. Similar to the background in the ...
+              - generic [ref=f145e246]:
+                - list [ref=f145e248]:
+                  - listitem [ref=f145e249]:
+                    - link "show questions tagged 'linux'" [ref=f145e250] [cursor=pointer]:
+                      - /url: /questions/tagged/linux
+                      - text: linux
+                  - listitem [ref=f145e251]:
+                    - link "show questions tagged 'rust'" [ref=f145e252] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e253]:
+                    - link "show questions tagged 'shared-libraries'" [ref=f145e254] [cursor=pointer]:
+                      - /url: /questions/tagged/shared-libraries
+                      - text: shared-libraries
+                  - listitem [ref=f145e255]:
+                    - link "show questions tagged 'ffi'" [ref=f145e256] [cursor=pointer]:
+                      - /url: /questions/tagged/ffi
+                      - text: ffi
+                  - listitem [ref=f145e257]:
+                    - link "show questions tagged 'rust-bindgen'" [ref=f145e258] [cursor=pointer]:
+                      - /url: /questions/tagged/rust-bindgen
+                      - text: rust-bindgen
+                - generic [ref=f145e259]:
+                  - link [aria-hidden] [ref=f145e260] [cursor=pointer]:
+                    - /url: /users/6305831/ryan
+                  - generic [ref=f145e263]:
+                    - link "Ryan" [ref=f145e265] [cursor=pointer]:
+                      - /url: /users/6305831/ryan
+                    - generic [aria-hidden] [ref=f145e266]: 1,254
+                    - generic [ref=f145e267]: reputation score 1254
+                  - time [ref=f145e268]: asked Oct 28 at 6:00
+          - generic [ref=f145e270]:
+            - generic [ref=f145e271]:
+              - generic "Score of 0" [ref=f145e272]:
+                - generic [aria-hidden] [ref=f145e274]: "0"
+                - generic [aria-hidden] [ref=f145e275]: votes
+              - generic "one of the answers was accepted as the correct answer" [ref=f145e276]:
+                - generic [ref=f145e277]: 1 answer
+                - generic [aria-hidden] [ref=f145e281]: "1"
+                - generic [aria-hidden] [ref=f145e282]: answer
+              - generic [ref=f145e283]:
+                - generic [ref=f145e284]: 136 views
+                - generic [aria-hidden] [ref=f145e285]: "136"
+                - generic [aria-hidden] [ref=f145e286]: views
+            - generic [ref=f145e287]:
+              - heading [level=3] [ref=f145e288]:
+                - link "How can I prevent an older auto-save request from overwriting a newer edit?" [ref=f145e289] [cursor=pointer]:
+                  - /url: /questions/80012674/how-can-i-prevent-an-older-auto-save-request-from-overwriting-a-newer-edit
+              - generic [ref=f145e290]: I’m implementing auto-save in Angular with a Rust backend (Axum and SQLx) and PostgreSQL. The editor waits 500 ms after the user stops typing before sending an update. My concern is that two ...
+              - generic [ref=f145e291]:
+                - list [ref=f145e293]:
+                  - listitem [ref=f145e294]:
+                    - link "show questions tagged 'angular'" [ref=f145e295] [cursor=pointer]:
+                      - /url: /questions/tagged/angular
+                      - text: angular
+                  - listitem [ref=f145e296]:
+                    - link "show questions tagged 'postgresql'" [ref=f145e297] [cursor=pointer]:
+                      - /url: /questions/tagged/postgresql
+                      - text: postgresql
+                  - listitem [ref=f145e298]:
+                    - link "show questions tagged 'rust'" [ref=f145e299] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e300]:
+                    - link "show questions tagged 'concurrency'" [ref=f145e301] [cursor=pointer]:
+                      - /url: /questions/tagged/concurrency
+                      - text: concurrency
+                  - listitem [ref=f145e302]:
+                    - link "show questions tagged 'autosave'" [ref=f145e303] [cursor=pointer]:
+                      - /url: /questions/tagged/autosave
+                      - text: autosave
+                - generic [ref=f145e304]:
+                  - link [aria-hidden] [ref=f145e305] [cursor=pointer]:
+                    - /url: /users/33238406/ijosephwu
+                  - generic [ref=f145e308]:
+                    - link "iJosephWu" [ref=f145e310] [cursor=pointer]:
+                      - /url: /users/33238406/ijosephwu
+                    - generic [aria-hidden] [ref=f145e311]: "65"
+                    - generic [ref=f145e312]: reputation score 65
+                  - time [ref=f145e313]: asked Oct 26 at 18:29
+          - generic [ref=f145e315]:
+            - generic [ref=f145e316]:
+              - generic "Score of 0" [ref=f145e317]:
+                - generic [aria-hidden] [ref=f145e319]: "0"
+                - generic [aria-hidden] [ref=f145e320]: votes
+              - generic [ref=f145e321]:
+                - generic [ref=f145e322]: 1 answer
+                - generic [aria-hidden] [ref=f145e323]: "1"
+                - generic [aria-hidden] [ref=f145e324]: answer
+              - generic [ref=f145e325]:
+                - generic [ref=f145e326]: 104 views
+                - generic [aria-hidden] [ref=f145e327]: "104"
+                - generic [aria-hidden] [ref=f145e328]: views
+            - generic [ref=f145e329]:
+              - heading [level=3] [ref=f145e330]:
+                - link "Code completion is not working in rust-clippy repository using Zed editor" [ref=f145e331] [cursor=pointer]:
+                  - /url: /questions/80012532/code-completion-is-not-working-in-rust-clippy-repository-using-zed-editor
+              - generic [ref=f145e332]: I was using Linux, the Zed editor and the rustc 1.101.0-nightly (7df81381d 2026-10-14) version. When I cloned the Clippy repository and ran cargo check then it succeeds, but the code completion is not ...
+              - generic [ref=f145e333]:
+                - list [ref=f145e335]:
+                  - listitem [ref=f145e336]:
+                    - link "show questions tagged 'rust'" [ref=f145e337] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e338]:
+                    - link "show questions tagged 'code-completion'" [ref=f145e339] [cursor=pointer]:
+                      - /url: /questions/tagged/code-completion
+                      - text: code-completion
+                  - listitem [ref=f145e340]:
+                    - link "show questions tagged 'rust-clippy'" [ref=f145e341] [cursor=pointer]:
+                      - /url: /questions/tagged/rust-clippy
+                      - text: rust-clippy
+                  - listitem [ref=f145e342]:
+                    - link "show questions tagged 'zed'" [ref=f145e343] [cursor=pointer]:
+                      - /url: /questions/tagged/zed
+                      - text: zed
+                - generic [ref=f145e344]:
+                  - link [aria-hidden] [ref=f145e345] [cursor=pointer]:
+                    - /url: /users/peter-szilvasi
+                  - generic [ref=f145e348]:
+                    - link "Péter Szilvási" [ref=f145e350] [cursor=pointer]:
+                      - /url: /users/peter-szilvasi
+                    - generic [aria-hidden] [ref=f145e351]: 2,755
+                    - generic [ref=f145e352]: reputation score 2755
+                  - time [ref=f145e353]: asked Oct 26 at 6:45
+          - generic [ref=f145e355]:
+            - generic [ref=f145e356]:
+              - generic "Score of 1" [ref=f145e357]:
+                - generic [aria-hidden] [ref=f145e359]: "1"
+                - generic [aria-hidden] [ref=f145e360]: vote
+              - generic "one of the answers was accepted as the correct answer" [ref=f145e361]:
+                - generic [ref=f145e362]: 2 answers
+                - generic [aria-hidden] [ref=f145e366]: "2"
+                - generic [aria-hidden] [ref=f145e367]: answers
+              - generic [ref=f145e368]:
+                - generic [ref=f145e369]: 194 views
+                - generic [aria-hidden] [ref=f145e370]: "194"
+                - generic [aria-hidden] [ref=f145e371]: views
+            - generic [ref=f145e372]:
+              - heading [level=3] [ref=f145e373]:
+                - link "How should I define structs if I want to load data into them and then immediately change its type" [ref=f145e374] [cursor=pointer]:
+                  - /url: /questions/80011241/how-should-i-define-structs-if-i-want-to-load-data-into-them-and-then-immediatel
+              - generic [ref=f145e375]: I have come across a situation where I need to load information from a JSON file and then slightly modify certain fields. The modifications include changing the type of the information, in this case ...
+              - generic [ref=f145e376]:
+                - list [ref=f145e378]:
+                  - listitem [ref=f145e379]:
+                    - link "show questions tagged 'best-practices'" [ref=f145e380] [cursor=pointer]:
+                      - /url: /questions/tagged/best-practices
+                      - text: best-practices
+                  - listitem [ref=f145e384]:
+                    - link "show questions tagged 'json'" [ref=f145e385] [cursor=pointer]:
+                      - /url: /questions/tagged/json
+                      - text: json
+                  - listitem [ref=f145e386]:
+                    - link "show questions tagged 'rust'" [ref=f145e387] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e388]:
+                    - link "show questions tagged 'struct'" [ref=f145e389] [cursor=pointer]:
+                      - /url: /questions/tagged/struct
+                      - text: struct
+                  - listitem [ref=f145e390]:
+                    - link "show questions tagged 'serde'" [ref=f145e391] [cursor=pointer]:
+                      - /url: /questions/tagged/serde
+                      - text: serde
+                - generic [ref=f145e392]:
+                  - link [aria-hidden] [ref=f145e393] [cursor=pointer]:
+                    - /url: /users/32028126/cknott
+                  - generic [ref=f145e396]:
+                    - link "cknott" [ref=f145e398] [cursor=pointer]:
+                      - /url: /users/32028126/cknott
+                    - generic [aria-hidden] [ref=f145e399]: "53"
+                    - generic [ref=f145e400]: reputation score 53
+                  - time [ref=f145e401]: asked Oct 20 at 6:18
+          - generic [ref=f145e403]:
+            - generic [ref=f145e404]:
+              - generic "Score of -6" [ref=f145e405]:
+                - generic [aria-hidden] [ref=f145e407]: "-6"
+                - generic [aria-hidden] [ref=f145e408]: votes
+              - generic [ref=f145e409]:
+                - generic [ref=f145e410]: 0 answers
+                - generic [aria-hidden] [ref=f145e411]: "0"
+                - generic [aria-hidden] [ref=f145e412]: answers
+              - generic [ref=f145e413]:
+                - generic [ref=f145e414]: 117 views
+                - generic [aria-hidden] [ref=f145e415]: "117"
+                - generic [aria-hidden] [ref=f145e416]: views
+            - generic [ref=f145e417]:
+              - heading [level=3] [ref=f145e418]:
+                - link "What constitutes a unit test vs. an integration test in Rust? Testing best practices [closed]" [ref=f145e419] [cursor=pointer]:
+                  - /url: /questions/80011234/what-constitutes-a-unit-test-vs-an-integration-test-in-rust-testing-best-pract
+              - generic [ref=f145e420]: "This is mainly for Rust but could apply to any language. I've read: Test Organization What is the difference between integration and unit tests? What's the difference between unit tests and ..."
+              - generic [ref=f145e421]:
+                - list [ref=f145e423]:
+                  - listitem [ref=f145e424]:
+                    - link "show questions tagged 'best-practices'" [ref=f145e425] [cursor=pointer]:
+                      - /url: /questions/tagged/best-practices
+                      - text: best-practices
+                  - listitem [ref=f145e429]:
+                    - link "show questions tagged 'unit-testing'" [ref=f145e430] [cursor=pointer]:
+                      - /url: /questions/tagged/unit-testing
+                      - text: unit-testing
+                  - listitem [ref=f145e431]:
+                    - link "show questions tagged 'testing'" [ref=f145e432] [cursor=pointer]:
+                      - /url: /questions/tagged/testing
+                      - text: testing
+                  - listitem [ref=f145e433]:
+                    - link "show questions tagged 'rust'" [ref=f145e434] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                - generic [ref=f145e435]:
+                  - link [aria-hidden] [ref=f145e436] [cursor=pointer]:
+                    - /url: /users/29561254/quantasm
+                  - generic [ref=f145e439]:
+                    - link "Quantasm" [ref=f145e441] [cursor=pointer]:
+                      - /url: /users/29561254/quantasm
+                    - generic [aria-hidden] [ref=f145e442]: "53"
+                    - generic [ref=f145e443]: reputation score 53
+                  - time [ref=f145e444]: asked Oct 20 at 5:13
+          - generic [ref=f145e446]:
+            - generic [ref=f145e447]:
+              - generic "Score of 2" [ref=f145e448]:
+                - generic [aria-hidden] [ref=f145e450]: "2"
+                - generic [aria-hidden] [ref=f145e451]: votes
+              - generic [ref=f145e452]:
+                - generic [ref=f145e453]: 0 answers
+                - generic [aria-hidden] [ref=f145e454]: "0"
+                - generic [aria-hidden] [ref=f145e455]: answers
+              - generic [ref=f145e456]:
+                - generic [ref=f145e457]: 121 views
+                - generic [aria-hidden] [ref=f145e458]: "121"
+                - generic [aria-hidden] [ref=f145e459]: views
+            - generic [ref=f145e460]:
+              - heading [level=3] [ref=f145e461]:
+                - link "Bindgen doesn't convert functions for WASI" [ref=f145e462] [cursor=pointer]:
+                  - /url: /questions/80011010/bindgen-doesnt-convert-functions-for-wasi
+              - generic [ref=f145e463]: "I created a file minimal.h: int my_function(void); I converted it to Rust: bindgen.exe minimal.h -o minimal.rs and got as expected: unsafe extern \"C\" { pub fn my_function() -> ..."
+              - generic [ref=f145e464]:
+                - list [ref=f145e466]:
+                  - listitem [ref=f145e467]:
+                    - link "show questions tagged 'rust'" [ref=f145e468] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e469]:
+                    - link "show questions tagged 'wasm-bindgen'" [ref=f145e470] [cursor=pointer]:
+                      - /url: /questions/tagged/wasm-bindgen
+                      - text: wasm-bindgen
+                - generic [ref=f145e471]:
+                  - link [aria-hidden] [ref=f145e472] [cursor=pointer]:
+                    - /url: /users/dmitry-kapustin
+                  - generic [ref=f145e475]:
+                    - link "Dmitry Kapustin" [ref=f145e477] [cursor=pointer]:
+                      - /url: /users/dmitry-kapustin
+                    - generic [aria-hidden] [ref=f145e478]: "129"
+                    - generic [ref=f145e479]: reputation score 129
+                  - time [ref=f145e480]: asked Oct 19 at 8:42
+          - generic [ref=f145e482]:
+            - generic [ref=f145e483]:
+              - generic "Score of -4" [ref=f145e484]:
+                - generic [aria-hidden] [ref=f145e486]: "-4"
+                - generic [aria-hidden] [ref=f145e487]: votes
+              - generic [ref=f145e488]:
+                - generic [ref=f145e489]: 0 answers
+                - generic [aria-hidden] [ref=f145e490]: "0"
+                - generic [aria-hidden] [ref=f145e491]: answers
+              - generic [ref=f145e492]:
+                - generic [ref=f145e493]: 143 views
+                - generic [aria-hidden] [ref=f145e494]: "143"
+                - generic [aria-hidden] [ref=f145e495]: views
+            - generic [ref=f145e496]:
+              - heading [level=3] [ref=f145e497]:
+                - link "Rust in Visual Studio - Console closes automatically" [ref=f145e498] [cursor=pointer]:
+                  - /url: /questions/80010510/rust-in-visual-studio-console-closes-automatically
+              - generic [ref=f145e499]: "When writing rust programs with Visual Studio 2026 I have the problem that the console immediately closes after program exit (all different modes: debugging, release, test - with and without Debugging)..."
+              - generic [ref=f145e500]:
+                - list [ref=f145e502]:
+                  - listitem [ref=f145e503]:
+                    - link "show questions tagged 'rust'" [ref=f145e504] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e505]:
+                    - link "show questions tagged 'visual-studio-2026'" [ref=f145e506] [cursor=pointer]:
+                      - /url: /questions/tagged/visual-studio-2026
+                      - text: visual-studio-2026
+                - generic [ref=f145e507]:
+                  - link [aria-hidden] [ref=f145e508] [cursor=pointer]:
+                    - /url: /users/vlad-tepesch
+                  - generic [ref=f145e511]:
+                    - link "vlad_tepesch" [ref=f145e513] [cursor=pointer]:
+                      - /url: /users/vlad-tepesch
+                    - generic [aria-hidden] [ref=f145e514]: 7,165
+                    - generic [ref=f145e515]: reputation score 7165
+                  - time [ref=f145e516]: asked Oct 16 at 9:24
+          - generic [ref=f145e518]:
+            - generic [ref=f145e519]:
+              - generic "Score of -1" [ref=f145e520]:
+                - generic [aria-hidden] [ref=f145e522]: "-1"
+                - generic [aria-hidden] [ref=f145e523]: votes
+              - generic "one of the answers was accepted as the correct answer" [ref=f145e524]:
+                - generic [ref=f145e525]: 2 answers
+                - generic [aria-hidden] [ref=f145e529]: "2"
+                - generic [aria-hidden] [ref=f145e530]: answers
+              - generic [ref=f145e531]:
+                - generic [ref=f145e532]: 128 views
+                - generic [aria-hidden] [ref=f145e533]: "128"
+                - generic [aria-hidden] [ref=f145e534]: views
+            - generic [ref=f145e535]:
+              - heading [level=3] [ref=f145e536]:
+                - link "Ad-hoc, temporary print-based debugging Rust code without new type constraints" [ref=f145e537] [cursor=pointer]:
+                  - /url: /questions/80010479/ad-hoc-temporary-print-based-debugging-rust-code-without-new-type-constraints
+              - generic [ref=f145e538]: "Suppose I have some Rust code like fn foo<T>(x: T) { // Complicated function. } fn function_that_calls_foo_to_honor_the_request_in_comments<T>(x: T) { foo(x) } that is called from a ..."
+              - generic [ref=f145e539]:
+                - list [ref=f145e541]:
+                  - listitem [ref=f145e542]:
+                    - link "show questions tagged 'best-practices'" [ref=f145e543] [cursor=pointer]:
+                      - /url: /questions/tagged/best-practices
+                      - text: best-practices
+                  - listitem [ref=f145e547]:
+                    - link "show questions tagged 'debugging'" [ref=f145e548] [cursor=pointer]:
+                      - /url: /questions/tagged/debugging
+                      - text: debugging
+                  - listitem [ref=f145e549]:
+                    - link "show questions tagged 'rust'" [ref=f145e550] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                - generic [ref=f145e551]:
+                  - link [aria-hidden] [ref=f145e552] [cursor=pointer]:
+                    - /url: /users/gspr
+                  - generic [ref=f145e555]:
+                    - link "gspr" [ref=f145e557] [cursor=pointer]:
+                      - /url: /users/gspr
+                    - generic [aria-hidden] [ref=f145e558]: 11.2k
+                    - generic [ref=f145e559]: reputation score 11243
+                  - time [ref=f145e560]: asked Oct 16 at 7:03
+          - generic [ref=f145e562]:
+            - generic [ref=f145e563]:
+              - generic "Score of -3" [ref=f145e564]:
+                - generic [aria-hidden] [ref=f145e566]: "-3"
+                - generic [aria-hidden] [ref=f145e567]: votes
+              - generic "one of the answers was accepted as the correct answer" [ref=f145e568]:
+                - generic [ref=f145e569]: 1 answer
+                - generic [aria-hidden] [ref=f145e573]: "1"
+                - generic [aria-hidden] [ref=f145e574]: answer
+              - generic [ref=f145e575]:
+                - generic [ref=f145e576]: 189 views
+                - generic [aria-hidden] [ref=f145e577]: "189"
+                - generic [aria-hidden] [ref=f145e578]: views
+            - generic [ref=f145e579]:
+              - heading [level=3] [ref=f145e580]:
+                - link "How to Use Cargo to Build LKM? [closed]" [ref=f145e581] [cursor=pointer]:
+                  - /url: /questions/80009560/how-to-use-cargo-to-build-lkm
+              - generic [ref=f145e582]: I have an out-of-tree Rust kernel module which is built via Kbuild and a Makefile, so it's not built via cargo. Now I am working on a build.rs file to create some Rust abstractions for my LKM, but ...
+              - generic [ref=f145e583]:
+                - list [ref=f145e585]:
+                  - listitem [ref=f145e586]:
+                    - link "show questions tagged 'rust'" [ref=f145e587] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e588]:
+                    - link "show questions tagged 'rust-cargo'" [ref=f145e589] [cursor=pointer]:
+                      - /url: /questions/tagged/rust-cargo
+                      - text: rust-cargo
+                  - listitem [ref=f145e590]:
+                    - link "show questions tagged 'kernel-module'" [ref=f145e591] [cursor=pointer]:
+                      - /url: /questions/tagged/kernel-module
+                      - text: kernel-module
+                  - listitem [ref=f145e592]:
+                    - link "show questions tagged 'kbuild'" [ref=f145e593] [cursor=pointer]:
+                      - /url: /questions/tagged/kbuild
+                      - text: kbuild
+                - generic [ref=f145e594]:
+                  - link [aria-hidden] [ref=f145e595] [cursor=pointer]:
+                    - /url: /users/1718761/ender
+                  - generic [ref=f145e598]:
+                    - link "Ender" [ref=f145e600] [cursor=pointer]:
+                      - /url: /users/1718761/ender
+                    - generic [aria-hidden] [ref=f145e601]: 1,954
+                    - generic [ref=f145e602]: reputation score 1954
+                  - time [ref=f145e603]: asked Oct 12 at 21:50
+          - generic [ref=f145e605]:
+            - generic [ref=f145e606]:
+              - generic "Score of 1" [ref=f145e607]:
+                - generic [aria-hidden] [ref=f145e609]: "1"
+                - generic [aria-hidden] [ref=f145e610]: vote
+              - generic "one of the answers was accepted as the correct answer" [ref=f145e611]:
+                - generic [ref=f145e612]: 1 answer
+                - generic [aria-hidden] [ref=f145e616]: "1"
+                - generic [aria-hidden] [ref=f145e617]: answer
+              - generic [ref=f145e618]:
+                - generic [ref=f145e619]: 107 views
+                - generic [aria-hidden] [ref=f145e620]: "107"
+                - generic [aria-hidden] [ref=f145e621]: views
+            - generic [ref=f145e622]:
+              - heading [level=3] [ref=f145e623]:
+                - link "Rust Ownership and Lifetimes in Multi-threaded Matrix Multiplication (No Locks)" [ref=f145e624] [cursor=pointer]:
+                  - /url: /questions/80008554/rust-ownership-and-lifetimes-in-multi-threaded-matrix-multiplication-no-locks
+              - generic [ref=f145e625]: As a way to try to learn Rust, I'm implementing multi-threaded, naive matrix-vector multiplication. More specifically, each of the ncpus threads processes a partition of the row-vector dot-products ...
+              - generic [ref=f145e626]:
+                - list [ref=f145e628]:
+                  - listitem [ref=f145e629]:
+                    - link "show questions tagged 'multithreading'" [ref=f145e630] [cursor=pointer]:
+                      - /url: /questions/tagged/multithreading
+                      - text: multithreading
+                  - listitem [ref=f145e631]:
+                    - link "show questions tagged 'rust'" [ref=f145e632] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e633]:
+                    - link "show questions tagged 'matrix-multiplication'" [ref=f145e634] [cursor=pointer]:
+                      - /url: /questions/tagged/matrix-multiplication
+                      - text: matrix-multiplication
+                - generic [ref=f145e635]:
+                  - link [aria-hidden] [ref=f145e636] [cursor=pointer]:
+                    - /url: /users/nondairyneutrino
+                  - generic [ref=f145e639]:
+                    - link "NonDairyNeutrino" [ref=f145e641] [cursor=pointer]:
+                      - /url: /users/nondairyneutrino
+                    - generic [aria-hidden] [ref=f145e642]: "113"
+                    - generic [ref=f145e643]: reputation score 113
+                  - time [ref=f145e644]: asked Oct 7 at 21:05
+          - generic [ref=f145e646]:
+            - generic [ref=f145e647]:
+              - generic "Score of 0" [ref=f145e648]:
+                - generic [aria-hidden] [ref=f145e650]: "0"
+                - generic [aria-hidden] [ref=f145e651]: votes
+              - generic [ref=f145e652]:
+                - generic [ref=f145e653]: 0 answers
+                - generic [aria-hidden] [ref=f145e654]: "0"
+                - generic [aria-hidden] [ref=f145e655]: answers
+              - generic [ref=f145e656]:
+                - generic [ref=f145e657]: 138 views
+                - generic [aria-hidden] [ref=f145e658]: "138"
+                - generic [aria-hidden] [ref=f145e659]: views
+            - generic [ref=f145e660]:
+              - heading [level=3] [ref=f145e661]:
+                - link "How to handle send and release key in custom BLE tasks when implementing keyboard with trouble-host rust crate" [ref=f145e662] [cursor=pointer]:
+                  - /url: /questions/80008001/how-to-handle-send-and-release-key-in-custom-ble-tasks-when-implementing-keyboar
+              - generic [ref=f145e663]: I'm writing my own keyboard firmware in no_std rust using trouble-host crate. And I'm implementing the BLE protocol. I kinda stuck to the examples on Github for trouble-host. I try to send the key 'a' ...
+              - generic [ref=f145e664]:
+                - list [ref=f145e666]:
+                  - listitem [ref=f145e667]:
+                    - link "show questions tagged 'rust'" [ref=f145e668] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e669]:
+                    - link "show questions tagged 'driver'" [ref=f145e670] [cursor=pointer]:
+                      - /url: /questions/tagged/driver
+                      - text: driver
+                  - listitem [ref=f145e671]:
+                    - link "show questions tagged 'firmware'" [ref=f145e672] [cursor=pointer]:
+                      - /url: /questions/tagged/firmware
+                      - text: firmware
+                - generic [ref=f145e673]:
+                  - link [aria-hidden] [ref=f145e674] [cursor=pointer]:
+                    - /url: /users/24559946/anh-kh%c3%b4i-tr%c6%b0%c6%a1ng
+                  - generic [ref=f145e677]:
+                    - link "Anh Khôi Trương" [ref=f145e679] [cursor=pointer]:
+                      - /url: /users/24559946/anh-kh%c3%b4i-tr%c6%b0%c6%a1ng
+                    - generic [aria-hidden] [ref=f145e680]: "11"
+                    - generic [ref=f145e681]: reputation score 11
+                  - time [ref=f145e682]: asked Oct 5 at 13:47
+          - generic [ref=f145e684]:
+            - generic [ref=f145e685]:
+              - generic "Score of 1" [ref=f145e686]:
+                - generic [aria-hidden] [ref=f145e688]: "1"
+                - generic [aria-hidden] [ref=f145e689]: vote
+              - generic [ref=f145e690]:
+                - generic [ref=f145e691]: 1 answer
+                - generic [aria-hidden] [ref=f145e692]: "1"
+                - generic [aria-hidden] [ref=f145e693]: answer
+              - generic [ref=f145e694]:
+                - generic [ref=f145e695]: 249 views
+                - generic [aria-hidden] [ref=f145e696]: "249"
+                - generic [aria-hidden] [ref=f145e697]: views
+            - generic [ref=f145e698]:
+              - heading [level=3] [ref=f145e699]:
+                - link "If “pub impl” is not valid syntax, why is it allowed by the grammar in the Rust Reference?" [ref=f145e700] [cursor=pointer]:
+                  - /url: /questions/80007166/if-pub-impl-is-not-valid-syntax-why-is-it-allowed-by-the-grammar-in-the-rust
+              - generic [ref=f145e701]: "According to the the reference: a VisItem consists of a Visibility (optional, such as pub) followed by, for example, an Implementation. However, pub is not permitted in front of impl. This seems to ..."
+              - generic [ref=f145e702]:
+                - list [ref=f145e704]:
+                  - listitem [ref=f145e705]:
+                    - link "show questions tagged 'rust'" [ref=f145e706] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                - generic [ref=f145e707]:
+                  - link [aria-hidden] [ref=f145e708] [cursor=pointer]:
+                    - /url: /users/32953762/andy-wade
+                  - generic [ref=f145e711]:
+                    - link "Andy Wade" [ref=f145e713] [cursor=pointer]:
+                      - /url: /users/32953762/andy-wade
+                    - generic [aria-hidden] [ref=f145e714]: "41"
+                    - generic [ref=f145e715]: reputation score 41
+                  - time [ref=f145e716]: asked Oct 1 at 6:01
+          - generic [ref=f145e718]:
+            - generic [ref=f145e719]:
+              - generic "Score of 0" [ref=f145e720]:
+                - generic [aria-hidden] [ref=f145e722]: "0"
+                - generic [aria-hidden] [ref=f145e723]: votes
+              - generic [ref=f145e724]:
+                - generic [ref=f145e725]: 1 answer
+                - generic [aria-hidden] [ref=f145e726]: "1"
+                - generic [aria-hidden] [ref=f145e727]: answer
+              - generic [ref=f145e728]:
+                - generic [ref=f145e729]: 75 views
+                - generic [aria-hidden] [ref=f145e730]: "75"
+                - generic [aria-hidden] [ref=f145e731]: views
+            - generic [ref=f145e732]:
+              - heading [level=3] [ref=f145e733]:
+                - 'link "Limitations of `min_specialization` when specializing a generic implementation?" [ref=f145e734] [cursor=pointer]':
+                  - /url: /questions/80007094/limitations-of-min-specialization-when-specializing-a-generic-implementation
+              - generic [ref=f145e735]: "I'm trying to understand #![feature(specialization)] vs. #![feature(min_specialization)] to inform the design of my types, but I haven't been able to find any novice-accessible documentation. How do ..."
+              - generic [ref=f145e736]:
+                - list [ref=f145e738]:
+                  - listitem [ref=f145e739]:
+                    - link "show questions tagged 'generics'" [ref=f145e740] [cursor=pointer]:
+                      - /url: /questions/tagged/generics
+                      - text: generics
+                  - listitem [ref=f145e741]:
+                    - link "show questions tagged 'rust'" [ref=f145e742] [cursor=pointer]:
+                      - /url: /questions/tagged/rust
+                      - text: rust
+                  - listitem [ref=f145e743]:
+                    - link "show questions tagged 'specialization'" [ref=f145e744] [cursor=pointer]:
+                      - /url: /questions/tagged/specialization
+                      - text: specialization
+                - generic [ref=f145e745]:
+                  - link [aria-hidden] [ref=f145e746] [cursor=pointer]:
+                    - /url: /users/712605/richard-hansen
+                  - generic [ref=f145e749]:
+                    - link "Richard Hansen" [ref=f145e751] [cursor=pointer]:
+                      - /url: /users/712605/richard-hansen
+                    - generic [aria-hidden] [ref=f145e752]: 55.1k
+                    - generic [ref=f145e753]: reputation score 55104
+                  - time [ref=f145e754]: asked Sep 30 at 20:31
+        - generic [ref=f145e755]:
+          - link "15" [ref=f145e756] [cursor=pointer]:
+            - /url: /questions/tagged/rust?tab=newest&pagesize=15
+          - link "30" [ref=f145e757] [cursor=pointer]:
+            - /url: /questions/tagged/rust?tab=newest&pagesize=30
+          - link "50" [ref=f145e758] [cursor=pointer]:
+            - /url: /questions/tagged/rust?tab=newest&pagesize=50
+          - generic [ref=f145e759]: per page
+        - generic [ref=f145e760]:
+          - generic [ref=f145e761]: "1"
+          - link "Go to page 2" [ref=f145e762] [cursor=pointer]:
+            - /url: /questions/tagged/rust?tab=newest&page=2&pagesize=15
+            - text: "2"
+          - link "Go to page 3" [ref=f145e763] [cursor=pointer]:
+            - /url: /questions/tagged/rust?tab=newest&page=3&pagesize=15
+            - text: "3"
+          - link "Go to page 4" [ref=f145e764] [cursor=pointer]:
+            - /url: /questions/tagged/rust?tab=newest&page=4&pagesize=15
+            - text: "4"
+          - link "Go to page 5" [ref=f145e765] [cursor=pointer]:
+            - /url: /questions/tagged/rust?tab=newest&page=5&pagesize=15
+            - text: "5"
+          - generic [ref=f145e766]: …
+          - link "Go to page 2932" [ref=f145e767] [cursor=pointer]:
+            - /url: /questions/tagged/rust?tab=newest&page=2932&pagesize=15
+            - text: "2932"
+          - link "Go to next page" [ref=f145e768] [cursor=pointer]:
+            - /url: /questions/tagged/rust?tab=newest&page=2&pagesize=15
+            - text: Next
+      - generic [ref=f145e769]:
+        - complementary "Stack Overflow for Agents" [ref=f145e770]:
+          - generic [ref=f145e771]:
+            - heading "Try Stack Overflow for Agents" [level=2] [ref=f145e772]
+            - text: Verified knowledge for the agentic era
+            - paragraph [ref=f145e773]: "Paste this into your AI coding assistant:"
+            - generic [ref=f145e774]:
+              - generic [ref=f145e775]: Help me join Stack Overflow for Agents here. Read https://agents.stackoverflow.com/skill.md, then start onboarding.
+              - button "Copy onboarding snippet" [ref=f145e776]
+            - paragraph [ref=f145e780]: Supports Claude Code, Cursor, Codex, Windsurf and more.
+            - link "Explore Stack Overflow for Agents" [ref=f145e781] [cursor=pointer]:
+              - /url: https://agents.stackoverflow.com
+        - list [ref=f145e783]:
+          - listitem [ref=f145e784]: The Overflow Blog
+          - listitem [ref=f145e785]:
+            - link "A JSON schema Is not an AI governance layer" [ref=f145e791] [cursor=pointer]:
+              - /url: https://stackoverflow.blog/2026/10/28/a-json-schema-is-not-an-ai-governance-layer/
+          - listitem [ref=f145e792]:
+            - link "It’s ok that computers are (sometimes) better than us" [ref=f145e798] [cursor=pointer]:
+              - /url: https://stackoverflow.blog/2026/10/30/it-s-ok-that-computers-are-sometimes-better-than-us/
+          - listitem [ref=f145e799]: Featured on Meta
+          - listitem [ref=f145e800]:
+            - generic "Meta Stack Exchange" [ref=f145e802]
+            - link "We’ve reworked automatic question deletion. Let’s talk about why" [ref=f145e804] [cursor=pointer]:
+              - /url: https://meta.stackexchange.com/questions/419988/we-ve-reworked-automatic-question-deletion-let-s-talk-about-why
+          - listitem [ref=f145e805]:
+            - generic "Meta Stack Exchange" [ref=f145e807]
+            - link "How can we improve duplicate handling?" [ref=f145e809] [cursor=pointer]:
+              - /url: https://meta.stackexchange.com/questions/420011/how-can-we-improve-duplicate-handling
+          - listitem [ref=f145e810]:
+            - generic "Meta Stack Overflow" [ref=f145e812]
+            - 'link "Policy: Generative AI (e.g., ChatGPT) is banned" [ref=f145e814] [cursor=pointer]':
+              - /url: https://meta.stackoverflow.com/questions/421831/policy-generative-ai-e-g-chatgpt-is-banned
+          - listitem [ref=f145e815]:
+            - generic "Meta Stack Overflow" [ref=f145e817]
+            - 'link "You''re doing it wrong: A plea for sanity in close voting" [ref=f145e819] [cursor=pointer]':
+              - /url: https://meta.stackoverflow.com/questions/440569/youre-doing-it-wrong-a-plea-for-sanity-in-close-voting
+        - generic [ref=f145e821]:
+          - heading [level=4] [ref=f145e822]:
+            - link "Hot Network Questions" [ref=f145e823] [cursor=pointer]:
+              - /url: https://stackexchange.com/questions?tab=hot
+          - list [ref=f145e824]:
+            - listitem [ref=f145e825]:
+              - generic "Philosophy Stack Exchange" [ref=f145e826]
+              - link "Which kind of object is a law of nature?" [ref=f145e827] [cursor=pointer]:
+                - /url: https://philosophy.stackexchange.com/questions/143035/which-kind-of-object-is-a-law-of-nature
+            - listitem [ref=f145e828]:
+              - generic "Role-playing Games Stack Exchange" [ref=f145e829]
+              - link "Does one pellet of Dust of Dryness really contain 25,246 gallons of water?" [ref=f145e830] [cursor=pointer]:
+                - /url: https://rpg.stackexchange.com/questions/221166/does-one-pellet-of-dust-of-dryness-really-contain-25-246-gallons-of-water
+            - listitem [ref=f145e831]:
+              - generic "Science Fiction & Fantasy Stack Exchange" [ref=f145e832]
+              - link "Sci-fi manga where people could speak in programming codes that affect the world around them" [ref=f145e833] [cursor=pointer]:
+                - /url: https://scifi.stackexchange.com/questions/306389/sci-fi-manga-where-people-could-speak-in-programming-codes-that-affect-the-world
+            - listitem [ref=f145e834]:
+              - generic "Mathematica Stack Exchange" [ref=f145e835]
+              - link "Cannot reproduce a Wolfram example of MissenseVariantPlot3D" [ref=f145e836] [cursor=pointer]:
+                - /url: https://mathematica.stackexchange.com/questions/320130/cannot-reproduce-a-wolfram-example-of-missensevariantplot3d
+            - listitem [ref=f145e837]:
+              - generic "Movies & TV Stack Exchange" [ref=f145e838]
+              - link "What are these pieces of art in Cosmo's office in Sneakers (1992)?" [ref=f145e839] [cursor=pointer]:
+                - /url: https://movies.stackexchange.com/questions/133539/what-are-these-pieces-of-art-in-cosmos-office-in-sneakers-1992
+            - listitem [ref=f145e840]:
+              - generic "TeX - LaTeX Stack Exchange" [ref=f145e841]
+              - link "Consistency of pdfx standards and color profile using includepdf" [ref=f145e842] [cursor=pointer]:
+                - /url: https://tex.stackexchange.com/questions/767643/consistency-of-pdfx-standards-and-color-profile-using-includepdf
+            - listitem [ref=f145e843]:
+              - generic "Stack Overflow" [ref=f145e844]
+              - link "Computing li(x) the logarithmic integral accurately in double precision when x ~ 10^16" [ref=f145e845] [cursor=pointer]:
+                - /url: https://stackoverflow.com/questions/80013640/computing-lix-the-logarithmic-integral-accurately-in-double-precision-when-x
+            - listitem [ref=f145e846]:
+              - generic "English Language & Usage Stack Exchange" [ref=f145e847]
+              - link "Is \"notifying X to Y\" actually used in modern English?" [ref=f145e848] [cursor=pointer]:
+                - /url: https://english.stackexchange.com/questions/641814/is-notifying-x-to-y-actually-used-in-modern-english
+            - listitem [ref=f145e849]:
+              - generic "Blender Stack Exchange" [ref=f145e850]
+              - link "for a halftoneshader, is there a way to make the voronoi texture more dense?" [ref=f145e851] [cursor=pointer]:
+                - /url: https://blender.stackexchange.com/questions/349725/for-a-halftoneshader-is-there-a-way-to-make-the-voronoi-texture-more-dense
+            - listitem [ref=f145e852]:
+              - generic "Mi Yodeya" [ref=f145e853]
+              - link "How Does Hashem Rest on Shabbos if He Continuously Recreates the World Every Moment?" [ref=f145e854] [cursor=pointer]:
+                - /url: https://judaism.stackexchange.com/questions/157669/how-does-hashem-rest-on-shabbos-if-he-continuously-recreates-the-world-every-mom
+            - listitem [ref=f145e855]:
+              - generic "Super User" [ref=f145e856]
+              - link "How to save Shopify receipts in Firefox?" [ref=f145e857] [cursor=pointer]:
+                - /url: https://superuser.com/questions/1941290/how-to-save-shopify-receipts-in-firefox
+            - listitem [ref=f145e858]:
+              - generic "Physics Stack Exchange" [ref=f145e859]
+              - link "Why can horsehair worms untie themselves?" [ref=f145e860] [cursor=pointer]:
+                - /url: https://physics.stackexchange.com/questions/877343/why-can-horsehair-worms-untie-themselves
+          - link "more hot questions" [ref=f145e861] [cursor=pointer]:
+            - /url: "#"
+        - link "Newest rust questions feed" [ref=f145e863] [cursor=pointer]:
+          - /url: /feeds/tag?tagnames=rust&sort=newest
+  - contentinfo [ref=f145e866]:
+    - generic [ref=f145e867]:
+      - link "Stack Overflow" [ref=f145e869] [cursor=pointer]:
+        - /url: https://stackoverflow.com
+      - navigation "Footer" [ref=f145e872]:
+        - generic [ref=f145e873]:
+          - heading [level=5] [ref=f145e874]:
+            - link "Stack Overflow" [ref=f145e875] [cursor=pointer]:
+              - /url: https://stackoverflow.com
+          - list [ref=f145e876]:
+            - listitem [ref=f145e877]:
+              - link "Questions" [ref=f145e878] [cursor=pointer]:
+                - /url: /questions
+            - listitem [ref=f145e879]:
+              - link "Help" [ref=f145e880] [cursor=pointer]:
+                - /url: /help
+            - listitem [ref=f145e881]:
+              - link "Chat" [ref=f145e882] [cursor=pointer]:
+                - /url: https://chat.stackoverflow.com/?tab=explore
+        - generic [ref=f145e883]:
+          - heading [level=5] [ref=f145e884]:
+            - link "Business" [ref=f145e885] [cursor=pointer]:
+              - /url: https://stackoverflow.co/
+          - list [ref=f145e886]:
+            - listitem [ref=f145e887]:
+              - link "Stack Internal" [ref=f145e888] [cursor=pointer]:
+                - /url: https://stackoverflow.co/internal/?utm_medium=referral&utm_source=stackoverflow-community&utm_content=footer
+            - listitem [ref=f145e889]:
+              - link "Stack Data Licensing" [ref=f145e890] [cursor=pointer]:
+                - /url: https://stackoverflow.co/data-licensing/?utm_medium=referral&utm_source=stackoverflow-community&utm_campaign=footer&utm_content=data-licensing
+            - listitem [ref=f145e891]:
+              - link "Stack Ads" [ref=f145e892] [cursor=pointer]:
+                - /url: https://stackoverflow.co/advertising/?utm_medium=referral&utm_source=stackoverflow-community&utm_campaign=footer&utm_content=advertising
+        - generic [ref=f145e893]:
+          - heading [level=5] [ref=f145e894]:
+            - link "Company" [ref=f145e895] [cursor=pointer]:
+              - /url: https://stackoverflow.co/
+          - list [ref=f145e896]:
+            - listitem [ref=f145e897]:
+              - link "About" [ref=f145e898] [cursor=pointer]:
+                - /url: https://stackoverflow.co/
+            - listitem [ref=f145e899]:
+              - link "Press" [ref=f145e900] [cursor=pointer]:
+                - /url: https://stackoverflow.co/company/press/
+            - listitem [ref=f145e901]:
+              - link "Work Here" [ref=f145e902] [cursor=pointer]:
+                - /url: https://stackoverflow.co/company/work-here/
+            - listitem [ref=f145e903]:
+              - link "Legal" [ref=f145e904] [cursor=pointer]:
+                - /url: https://stackoverflow.com/legal
+            - listitem [ref=f145e905]:
+              - link "Privacy Policy" [ref=f145e906] [cursor=pointer]:
+                - /url: https://stackoverflow.com/legal/privacy-policy
+            - listitem [ref=f145e907]:
+              - link "Terms of Service" [ref=f145e908] [cursor=pointer]:
+                - /url: https://stackoverflow.com/legal/terms-of-service/public
+            - listitem [ref=f145e909]:
+              - link "Contact Us" [ref=f145e910] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=f145e911]:
+              - button "Cookie Settings" [ref=f145e912] [cursor=pointer]
+            - listitem [ref=f145e913]:
+              - link "Cookie Policy" [ref=f145e914] [cursor=pointer]:
+                - /url: https://policies.stackoverflow.co/stack-overflow/cookie-policy
+        - generic [ref=f145e916]:
+          - heading [level=5] [ref=f145e917]:
+            - link "Stack Overflow’s open communities" [ref=f145e918] [cursor=pointer]:
+              - /url: https://stackexchange.com
+          - list [ref=f145e919]:
+            - listitem [ref=f145e920]:
+              - link "Technology" [ref=f145e921] [cursor=pointer]:
+                - /url: https://stackexchange.com/sites#technology
+            - listitem [ref=f145e922]:
+              - link "Culture & recreation" [ref=f145e923] [cursor=pointer]:
+                - /url: https://stackexchange.com/sites#culturerecreation
+            - listitem [ref=f145e924]:
+              - link "Life & arts" [ref=f145e925] [cursor=pointer]:
+                - /url: https://stackexchange.com/sites#lifearts
+            - listitem [ref=f145e926]:
+              - link "Science" [ref=f145e927] [cursor=pointer]:
+                - /url: https://stackexchange.com/sites#science
+            - listitem [ref=f145e928]:
+              - link "Professional" [ref=f145e929] [cursor=pointer]:
+                - /url: https://stackexchange.com/sites#professional
+            - listitem [ref=f145e930]:
+              - link "Business" [ref=f145e931] [cursor=pointer]:
+                - /url: https://stackexchange.com/sites#business
+            - listitem [ref=f145e932]:
+              - link "API" [ref=f145e933] [cursor=pointer]:
+                - /url: https://api.stackexchange.com/
+            - listitem [ref=f145e934]:
+              - link "Data" [ref=f145e935] [cursor=pointer]:
+                - /url: https://data.stackexchange.com/
+      - generic [ref=f145e936]:
+        - list [ref=f145e937]:
+          - listitem [ref=f145e938]:
+            - link "Blog" [ref=f145e939] [cursor=pointer]:
+              - /url: https://stackoverflow.blog?blb=1
+          - listitem [ref=f145e940]:
+            - link "Facebook" [ref=f145e941] [cursor=pointer]:
+              - /url: https://www.facebook.com/officialstackoverflow/
+          - listitem [ref=f145e942]:
+            - link "Twitter" [ref=f145e943] [cursor=pointer]:
+              - /url: https://twitter.com/stackoverflow
+          - listitem [ref=f145e944]:
+            - link "LinkedIn" [ref=f145e945] [cursor=pointer]:
+              - /url: https://linkedin.com/company/stack-overflow
+          - listitem [ref=f145e946]:
+            - link "Instagram" [ref=f145e947] [cursor=pointer]:
+              - /url: https://www.instagram.com/thestackoverflow
+        - paragraph [ref=f145e948]:
+          - text: Site design / logo © 2026 Stack Exchange Inc; user contributions licensed under
+          - link "CC BY-SA" [ref=f145e949] [cursor=pointer]:
+            - /url: https://stackoverflow.com/help/licensing
+          - text: . rev 2026.10.29.47177
+  - dialog "Privacy" [ref=f145e951]:
+    - generic [ref=f145e952]:
+      - generic [ref=f145e954]:
+        - text: By continuing to use this website, you agree Stack Exchange can store cookies on your device and disclose information in accordance with our
+        - link "Cookie Policy" [ref=f145e955] [cursor=pointer]:
+          - /url: https://policies.stackoverflow.co/stack-overflow/cookie-policy/
+        - text: . By exiting this window, default cookies will be accepted. To reject cookies, select an option from below.
+      - generic [ref=f145e957]:
+        - button "Necessary cookies only" [ref=f145e959] [cursor=pointer]
+        - button "Customize settings, Opens the preference center dialog" [ref=f145e960] [cursor=pointer]: Customize settings
+      - button "Close" [ref=f145e962] [cursor=pointer]
+```
+### Events
+- New console entries: .playwright-mcp\console-2026-11-02T01-26-03-016Z.log#L54-L55

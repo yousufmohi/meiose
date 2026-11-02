@@ -291,3 +291,24 @@ fn diff_after_a_budget_outline_only_refers_to_what_the_agent_saw() {
     }
     s.finish();
 }
+
+#[test]
+fn query_and_full_expands_are_logged_apart() {
+    let mut s = Session::start(HN, &[]);
+    s.init();
+    let snap = s.call("browser_snapshot", json!({}));
+    let eid = expand_id(text_of(&snap));
+    s.call("meiose_expand", json!({"id": eid, "query": "comments"}));
+    s.call("meiose_expand", json!({"id": eid}));
+    let data = s.finish();
+    let conn = rusqlite::Connection::open(data.path().join("meiose.db")).unwrap();
+    let mut kinds: Vec<Option<String>> = conn
+        .prepare("SELECT handler FROM calls WHERE kind = 'expand' ORDER BY rowid")
+        .unwrap()
+        .query_map([], |r| r.get(0))
+        .unwrap()
+        .map(Result::unwrap)
+        .collect();
+    kinds.sort();
+    assert_eq!(kinds, [None, Some("query".to_string())]);
+}

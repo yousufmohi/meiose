@@ -221,7 +221,8 @@ impl Interceptor {
                         server: self.cfg.server.clone(),
                         tool: EXPAND_TOOL.into(),
                         kind: "expand",
-                        handler: None,
+                        // Lets stats and the eval tell partial from full expands.
+                        handler: query.map(|_| "query"),
                         text_before: String::new(),
                         text_after: found.clone().unwrap_or_else(|| content_text(&raw)),
                         trim_us: 0,

@@ -12,6 +12,7 @@ pub mod install;
 pub mod intercept;
 pub mod logging;
 pub mod paths;
+pub mod procgroup;
 pub mod proxy;
 pub mod record;
 pub mod report;

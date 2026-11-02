@@ -29,6 +29,7 @@ use tokio::task::JoinHandle;
 
 use crate::frame::{READ_BUF, read_frame, write_frames};
 use crate::intercept::{ClientAction, Interceptor};
+use crate::procgroup;
 use crate::record::{Dir, Recorder};
 
 pub struct Options {
@@ -77,23 +78,26 @@ fn spawn(cmd: &[String]) -> Result<Child, SpawnError> {
     let path = which::which(program).map_err(|_| SpawnError::NotFound {
         program: program.clone(),
     })?;
-    Command::new(&path)
+    let mut command = Command::new(&path);
+    command
         .args(args)
         .stdin(Stdio::piped())
         .stdout(Stdio::piped())
         .stderr(Stdio::piped())
-        .kill_on_drop(true)
-        .spawn()
-        .map_err(|source| SpawnError::Io {
-            program: program.clone(),
-            path,
-            source,
-        })
+        .kill_on_drop(true);
+    procgroup::configure(&mut command);
+    command.spawn().map_err(|source| SpawnError::Io {
+        program: program.clone(),
+        path,
+        source,
+    })
 }
 
 /// Run the proxy until the session ends. Returns the exit code to use.
 pub async fn run(opts: Options) -> anyhow::Result<i32> {
     let mut child = spawn(&opts.cmd)?;
+    // Kept alive until we exit: on Windows, closing it kills the server tree.
+    let tree = procgroup::Tree::attach(&child);
     tracing::info!(cmd = ?opts.cmd, pid = child.id(), "started MCP server");
 
     let child_stdin = child.stdin.take().expect("piped");
@@ -130,18 +134,23 @@ pub async fn run(opts: Options) -> anyhow::Result<i32> {
         }
         _ = &mut c2s => {
             tracing::info!("agent closed stdin; closed server stdin, waiting for it to exit");
-            wait_or_kill(&mut child, opts.grace).await
+            wait_or_kill(&mut child, &tree, opts.grace).await
+        }
+        _ = shutdown_signal() => {
+            tracing::info!("meiose was asked to stop; stopping the MCP server");
+            tree.kill(&mut child).await;
+            child.wait().await
         }
         res = &mut writer => match res {
             // The server closed its stdout and everything was delivered:
             // server-initiated shutdown. It should exit on its own.
             Ok(Ok(())) => {
                 tracing::info!("MCP server closed stdout; waiting for it to exit");
-                wait_or_kill(&mut child, opts.grace).await
+                wait_or_kill(&mut child, &tree, opts.grace).await
             }
             res => {
                 tracing::warn!(?res, "agent stopped reading stdout; killing MCP server");
-                child.kill().await.ok();
+                tree.kill(&mut child).await;
                 child.wait().await
             }
         },
@@ -166,15 +175,63 @@ pub async fn run(opts: Options) -> anyhow::Result<i32> {
 
 async fn wait_or_kill(
     child: &mut Child,
+    tree: &procgroup::Tree,
     grace: Duration,
 ) -> std::io::Result<std::process::ExitStatus> {
     match tokio::time::timeout(grace, child.wait()).await {
         Ok(status) => status,
         Err(_) => {
-            tracing::warn!(?grace, "MCP server did not exit in time; killing it");
-            child.kill().await.ok();
+            tracing::warn!(
+                ?grace,
+                "MCP server did not exit in time; killing it and its children"
+            );
+            tree.kill(child).await;
             child.wait().await
         }
+    }
+}
+
+/// Ctrl-C (and SIGTERM on Unix, Ctrl-Break on Windows). If a handler cannot
+/// be installed (no console, etc.), that source simply never fires.
+async fn shutdown_signal() {
+    #[cfg(unix)]
+    {
+        use tokio::signal::unix::{SignalKind, signal};
+        let term = async {
+            match signal(SignalKind::terminate()) {
+                Ok(mut s) => {
+                    s.recv().await;
+                }
+                Err(_) => std::future::pending::<()>().await,
+            }
+        };
+        tokio::select! {
+            _ = ctrl_c() => {}
+            _ = term => {}
+        }
+    }
+    #[cfg(windows)]
+    {
+        let brk = async {
+            match tokio::signal::windows::ctrl_break() {
+                Ok(mut s) => {
+                    s.recv().await;
+                }
+                Err(_) => std::future::pending::<()>().await,
+            }
+        };
+        tokio::select! {
+            _ = ctrl_c() => {}
+            _ = brk => {}
+        }
+    }
+    #[cfg(not(any(unix, windows)))]
+    ctrl_c().await
+}
+
+async fn ctrl_c() {
+    if tokio::signal::ctrl_c().await.is_err() {
+        std::future::pending::<()>().await;
     }
 }
 

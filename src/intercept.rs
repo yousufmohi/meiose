@@ -132,6 +132,7 @@ impl Interceptor {
     }
 
     fn client_inner(&self, frame: &[u8]) -> ClientAction {
+        inject_fault("client");
         let Some(env) = Envelope::parse(frame) else {
             return ClientAction::Forward;
         };
@@ -252,6 +253,7 @@ impl Interceptor {
     }
 
     fn server_inner(&self, frame: &[u8]) -> Option<Vec<u8>> {
+        inject_fault("server");
         let env = Envelope::parse(frame)?;
         if !env.is_response() {
             return None;
@@ -407,6 +409,18 @@ impl Interceptor {
         }
         trimmed.map(|(h, t)| (h, t.text))
     }
+}
+
+/// Debug builds only: `MEIOSE_TEST_PANIC=client|server` makes that side of
+/// the intercept panic, so tests can prove the fail-open path end to end.
+#[inline]
+fn inject_fault(side: &str) {
+    #[cfg(debug_assertions)]
+    if std::env::var("MEIOSE_TEST_PANIC").is_ok_and(|v| v == side) {
+        panic!("injected test fault ({side})");
+    }
+    #[cfg(not(debug_assertions))]
+    let _ = side;
 }
 
 fn insert_pending(st: &mut State, key: String, p: Pending) {

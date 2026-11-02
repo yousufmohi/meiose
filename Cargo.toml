@@ -31,3 +31,9 @@ tempfile = "3.27.0"
 [[bench]]
 name = "prune"
 harness = false
+
+[target."cfg(windows)".dependencies]
+windows-sys = { version = "0.61.2", features = ["Win32_Foundation", "Win32_System_JobObjects", "Win32_Security"] }
+
+[target."cfg(unix)".dependencies]
+libc = "0.2.191"

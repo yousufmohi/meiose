@@ -4,6 +4,8 @@
 
 #![allow(dead_code)]
 
+pub mod session;
+
 use std::path::{Path, PathBuf};
 
 /// Committed fixtures, plus any private ones in tests/fixtures/local/.

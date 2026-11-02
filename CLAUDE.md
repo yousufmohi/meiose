@@ -15,8 +15,8 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 | M1 | Passthrough proxy + `record` | Done (2026-11-01) |
 | M2 | Playwright handler + snapshot/property tests + benchmark | Done (2026-11-01) |
 | M3 | `meiose_expand` + store + `stats` + `log` + json/text handlers + snapshot diffing | Done (2026-11-01) |
-| M4 | `install` / `uninstall` / `doctor` + install tests | **Done (2026-11-01), awaiting user review** |
-| M5 | Protocol test suite + fail-open hardening | not started |
+| M4 | `install` / `uninstall` / `doctor` + install tests | Done (2026-11-01) |
+| M5 | Protocol test suite + fail-open hardening | **Done (2026-11-01), awaiting user review** |
 | M6 | Eval harness + README + cargo-dist + npm wrapper | not started |
 
 Work one milestone at a time. After each: report what was built, test results
@@ -218,8 +218,22 @@ claude mcp add --scope user pw-meiose -- meiose record -- npx -y @playwright/mcp
   dropping it blocks on the pending stdin read (regression-tested by
   `server_exit_code_is_propagated` / `server_initiated_shutdown_*`).
 
-## Known gaps (tracked for M5)
+## Hardening (M5)
 
-- Windows: killing `npx.cmd` kills cmd.exe but may orphan node; needs a Job
-  Object. Graceful path (close stdin) works and is what clients use.
-- No Ctrl-C/SIGTERM handling yet; we rely on `kill_on_drop` and stdin EOF.
+- Process tree: Windows Job Object (KILL_ON_JOB_CLOSE) — the server and all
+  its descendants die with meiose, even if meiose is TerminateProcess'd.
+  Unix: own process group, SIGKILL to the group on forced kill.
+  (`src/procgroup.rs`). Known Unix gap: if meiose is SIGKILLed, the server
+  only gets stdin EOF (well-behaved servers exit on it).
+- Ctrl-C / SIGTERM / Ctrl-Break: stop the server tree and exit.
+- Fail open: `MEIOSE_TEST_PANIC=client|server` (debug builds only) injects a
+  panic into the intercept; tests prove traffic still flows unchanged.
+  Unusable store (MEIOSE_DATA_DIR not a dir) → nothing injected or trimmed.
+- tests/protocol.rs: out-of-order ids under load, notifications mid-stream,
+  5 MB snapshot (trim + byte-exact expand), malformed server lines,
+  malformed/batch/CRLF client lines, partial writes, slow server, server
+  crash mid-request, agent that stops reading, stuck server's grandchild,
+  hard-killed meiose (Windows).
+- Windows testing gotcha: child processes inherit every inheritable handle;
+  an orphaned test server can hold cargo's output pipe and hang the run.
+  The grandchild in fake_server uses null stdio for this reason.

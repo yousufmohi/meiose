@@ -683,6 +683,7 @@ dependencies = [
  "criterion",
  "dirs",
  "insta",
+ "libc",
  "proptest",
  "rusqlite",
  "serde",
@@ -696,6 +697,7 @@ dependencies = [
  "tracing-appender",
  "tracing-subscriber",
  "which",
+ "windows-sys",
 ]
 
 [[package]]

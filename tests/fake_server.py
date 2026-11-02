@@ -71,39 +71,87 @@ TOOLS_PAGE_2 = [
 
 
 def mcp(fixture: str, stdin, stdout) -> int:
-    """Tools:
-      browser_snapshot {checked?: bool}  the fixture text; `checked` flips one
-                                         checkbox line, for diff tests
-      get_rows                           ~150 KB JSON array
-      small                              tiny text
-      fails                              JSON-RPC error response
-      collide                            first sends a server→client request
-                                         reusing the client's id, then answers
-    Any meiose_expand call reaching us is a bug in the proxy: we answer with a
-    JSON-RPC error saying so.
+    """A scripted MCP server. Tools (arguments in braces):
+
+      browser_snapshot {checked?}   the fixture; `checked` flips one checkbox
+      huge_snapshot                 the fixture's tree repeated to ~5 MB
+      get_rows                      ~150 KB JSON array
+      small                         tiny text
+      fails                         JSON-RPC error response
+      collide                       sends a server->client request reusing the
+                                    client's id, then answers
+      echo {text, delay_ms?}        returns `text` after a delay, answered on
+                                    its own thread (so responses interleave)
+      notify {count}                `count` progress notifications, then answers
+      garbage                       a malformed line, then answers
+      split                         writes its response in two parts, 300 ms apart
+      crash                         exits immediately with code 3
+      spawn_grandchild              starts a long-lived grandchild (pid written
+                                    to $GRANDCHILD_PID) and from then on ignores
+                                    stdin EOF, so the proxy must kill the tree
+
+    Every line written goes to $FAKE_LOG, every line received to $FAKE_IN_LOG.
+    Malformed client lines are logged and skipped. Any meiose_expand that
+    reaches us is a proxy bug: answered with an error saying so.
     """
     import json
     import os
+    import subprocess
+    import threading
+    import time
 
     log_path = os.environ.get("FAKE_LOG")
+    in_log_path = os.environ.get("FAKE_IN_LOG")
     snapshot = open(fixture, encoding="utf-8").read()
+    lock = threading.Lock()
+    hang_on_eof = False
+
+    def write_raw(data: bytes):
+        # Log first: a test may look a line up as soon as it receives it.
+        with lock:
+            if log_path:
+                with open(log_path, "ab") as f:
+                    f.write(data)
+            stdout.write(data)
+            stdout.flush()
 
     def send(obj):
-        line = json.dumps(obj, ensure_ascii=False).encode("utf-8") + b"\n"
-        stdout.write(line)
-        stdout.flush()
-        if log_path:
-            with open(log_path, "ab") as f:
-                f.write(line)
+        write_raw(json.dumps(obj, ensure_ascii=False).encode("utf-8") + b"\n")
 
     def result(rid, res):
         send({"jsonrpc": "2.0", "id": rid, "result": res})
 
+    def text_result(rid, text):
+        result(rid, {"content": [{"type": "text", "text": text}]})
+
+    def huge():
+        head, rest = snapshot.split("```yaml\n", 1)
+        body, tail = rest.split("\n```", 1)
+        reps = 5 * 1024 * 1024 // max(len(body), 1) + 1
+        return head + "```yaml\n" + "\n".join([body] * reps) + "\n```" + tail
+
+    def delayed_echo(rid, text, delay):
+        time.sleep(delay)
+        text_result(rid, text)
+
     while True:
         line = stdin.readline()
         if not line:
+            if hang_on_eof:
+                while True:
+                    time.sleep(60)
             return 0
-        msg = json.loads(line)
+        if in_log_path:
+            with open(in_log_path, "ab") as f:
+                f.write(line)
+        try:
+            msg = json.loads(line)
+        except ValueError:
+            sys.stderr.buffer.write(b"fake: skipped malformed line\n")
+            sys.stderr.buffer.flush()
+            continue
+        if not isinstance(msg, dict):
+            continue  # batches and other shapes: logged above, otherwise ignored
         rid, method = msg.get("id"), msg.get("method")
         params = msg.get("params") or {}
         if method is None:
@@ -123,18 +171,55 @@ def mcp(fixture: str, stdin, stdout) -> int:
                 text = snapshot
                 if args.get("checked"):
                     text = text.replace("- checkbox [ref=e5]", "- checkbox [checked] [ref=e5]", 1)
-                result(rid, {"content": [{"type": "text", "text": text}]})
+                text_result(rid, text)
+            elif name == "huge_snapshot":
+                text_result(rid, huge())
             elif name == "get_rows":
                 rows = [{"id": i, "name": f"user{i}", "email": f"user{i}@example.com",
                          "bio": "lorem ipsum " * 8} for i in range(1000)]
-                result(rid, {"content": [{"type": "text", "text": json.dumps(rows)}]})
+                text_result(rid, json.dumps(rows))
             elif name == "small":
-                result(rid, {"content": [{"type": "text", "text": "ok"}]})
+                text_result(rid, "ok")
             elif name == "fails":
                 send({"jsonrpc": "2.0", "id": rid, "error": {"code": -32000, "message": "boom"}})
-            elif name == "collide":  # tools list does not advertise it; tests call it directly
+            elif name == "collide":
                 send({"jsonrpc": "2.0", "id": rid, "method": "roots/list"})
-                result(rid, {"content": [{"type": "text", "text": snapshot}]})
+                text_result(rid, snapshot)
+            elif name == "echo":
+                threading.Thread(target=delayed_echo, daemon=True,
+                                 args=(rid, args.get("text", ""), args.get("delay_ms", 0) / 1000)).start()
+            elif name == "notify":
+                for i in range(args.get("count", 3)):
+                    send({"jsonrpc": "2.0", "method": "notifications/progress",
+                          "params": {"progressToken": rid, "progress": i, "total": args.get("count", 3)}})
+                text_result(rid, "notified")
+            elif name == "garbage":
+                write_raw(b"{this is not json\n")
+                text_result(rid, "after garbage")
+            elif name == "split":
+                data = json.dumps({"jsonrpc": "2.0", "id": rid,
+                                   "result": {"content": [{"type": "text", "text": "split ok"}]}}).encode() + b"\n"
+                with lock:
+                    if log_path:
+                        with open(log_path, "ab") as f:
+                            f.write(data)
+                    stdout.write(data[:20])
+                    stdout.flush()
+                    time.sleep(0.3)
+                    stdout.write(data[20:])
+                    stdout.flush()
+            elif name == "crash":
+                os._exit(3)
+            elif name == "spawn_grandchild":
+                # Null stdio: if it ever survives, it must not hold the test's
+                # pipes open (that would turn a test failure into a hang).
+                gc = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(600)"],
+                                      stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                                      stderr=subprocess.DEVNULL)
+                with open(os.environ["GRANDCHILD_PID"], "w") as f:
+                    f.write(str(gc.pid))
+                hang_on_eof = True
+                text_result(rid, f"grandchild {gc.pid}")
             else:
                 send({"jsonrpc": "2.0", "id": rid,
                       "error": {"code": -32602, "message": f"fake server got unexpected tool {name}"}})

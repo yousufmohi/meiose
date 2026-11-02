@@ -20,6 +20,49 @@ pub enum Command {
     Stats(StatsArgs),
     /// Recent tool calls, raw vs trimmed
     Log(LogArgs),
+    /// Wrap the MCP servers in Claude Code, Claude Desktop and Cursor configs
+    Install(InstallArgs),
+    /// Undo `meiose install`
+    Uninstall(UninstallArgs),
+    /// Check configs, paths and versions, and print fixes
+    Doctor,
+}
+
+#[derive(Debug, Args)]
+pub struct InstallArgs {
+    /// Apply without asking for confirmation
+    #[arg(long, short = 'y')]
+    pub yes: bool,
+
+    /// Show what would change, change nothing
+    #[arg(long)]
+    pub dry_run: bool,
+
+    /// Only wrap servers with these names (repeatable or comma-separated)
+    #[arg(long, value_delimiter = ',', value_name = "NAME")]
+    pub only: Vec<String>,
+
+    /// Only touch these apps (repeatable or comma-separated)
+    #[arg(long, value_enum, value_delimiter = ',', value_name = "APP")]
+    pub client: Vec<ClientArg>,
+
+    /// The meiose binary to put into configs [default: this one]
+    #[arg(long, value_name = "PATH")]
+    pub meiose_path: Option<PathBuf>,
+}
+
+#[derive(Debug, Args)]
+pub struct UninstallArgs {
+    /// Apply without asking for confirmation
+    #[arg(long, short = 'y')]
+    pub yes: bool,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, clap::ValueEnum)]
+pub enum ClientArg {
+    ClaudeCode,
+    ClaudeDesktop,
+    Cursor,
 }
 
 /// Options shared by `run` and `record`.

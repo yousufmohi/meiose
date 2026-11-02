@@ -7,7 +7,7 @@ use meiose::cli::{Cli, Command, ProxyFlags};
 use meiose::handlers::Mode;
 use meiose::intercept::{Config, Interceptor};
 use meiose::store::{self, StoreHandle};
-use meiose::{logging, paths, proxy, record, report};
+use meiose::{doctor, logging, paths, proxy, record, report, setup};
 
 fn main() {
     let cli = Cli::parse();
@@ -146,6 +146,16 @@ async fn dispatch(cli: Cli) -> anyhow::Result<i32> {
             let rows = store::recent_calls(&conn, args.limit)?;
             print!("{}", report::log(store::now_ms(), &rows));
             Ok(0)
+        }
+        Command::Install(args) => setup::install(args),
+        Command::Uninstall(args) => setup::uninstall(args),
+        Command::Doctor => {
+            let roots = setup::roots()?;
+            let checks = doctor::run(&roots);
+            print!("{}", doctor::render(&checks));
+            Ok(i32::from(
+                checks.iter().any(|c| c.status == doctor::Status::Fail),
+            ))
         }
     }
 }

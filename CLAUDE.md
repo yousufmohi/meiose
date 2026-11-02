@@ -14,8 +14,8 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 |---|---|---|
 | M1 | Passthrough proxy + `record` | Done (2026-11-01) |
 | M2 | Playwright handler + snapshot/property tests + benchmark | Done (2026-11-01) |
-| M3 | `meiose_expand` + store + `stats` + `log` + json/text handlers + snapshot diffing | **Done (2026-11-01), awaiting user review** |
-| M4 | `install` / `uninstall` / `doctor` + install tests | not started |
+| M3 | `meiose_expand` + store + `stats` + `log` + json/text handlers + snapshot diffing | Done (2026-11-01) |
+| M4 | `install` / `uninstall` / `doctor` + install tests | **Done (2026-11-01), awaiting user review** |
 | M5 | Protocol test suite + fail-open hardening | not started |
 | M6 | Eval harness + README + cargo-dist + npm wrapper | not started |
 
@@ -143,18 +143,40 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   against savings.
 - Playwright 1.65 renamed `browser_click`'s `ref` argument to `target`.
 
+## Install / uninstall / doctor (M4)
+
+- Configs: Claude Code `~/.claude.json` (or `$CLAUDE_CONFIG_DIR/.claude.json`;
+  top-level `mcpServers` AND per-project `projects.<path>.mcpServers`),
+  Claude Desktop `<config dir>/Claude/claude_desktop_config.json` (+ MSIX
+  `%LOCALAPPDATA%/Packages/Claude_*/LocalCache/Roaming/Claude/…`), Cursor
+  `~/.cursor/mcp.json`. Project `.mcp.json` / `.cursor/mcp.json` are not touched.
+- Wrap = `command: <meiose>`, `args: ["run","--",<old command>,…old args]`.
+  Remote (url/http/sse) and already-wrapped (`meiose run|record …`) skipped.
+- Files are re-rendered with their detected style (indent, CRLF, trailing
+  newline; key order and exact numbers preserved). The real 79 KB
+  ~/.claude.json round-trips byte-identically, so only command/args lines
+  change. The printed diff shows command/args only — never `env` (secrets).
+- Backups + "what we wrote" copies + manifest in `<data>/install/`.
+  Uninstall: file unchanged since our write → byte-for-byte restore; else
+  unwrap only entries still exactly as we wrote them, keep other edits.
+  Claude Code rewrites its file constantly, so expect the second path there.
+- `install` refuses to embed a throwaway meiose path (npx cache, temp,
+  target/debug) unless `--meiose-path` is given.
+- `MEIOSE_FAKE_HOME` roots all config paths in one dir (tests, safe trials).
+
 ## Layout
 
 ```
 src/main.rs  src/lib.rs  src/cli.rs  src/proxy.rs  src/frame.rs  src/record.rs
 src/paths.rs  src/logging.rs  src/tokens.rs  src/rpc.rs (envelope, raw splicing)
 src/intercept.rs  src/diff.rs  src/store.rs (SQLite + memory)  src/report.rs (stats/log text)
+src/install.rs (config discovery, wrap/unwrap, backups)  src/setup.rs (install/uninstall UX)  src/doctor.rs
 src/handlers/{mod.rs (trait + fail-open trim_text), playwright.rs, json.rs, text.rs}
 tests/fixtures/playwright/*.txt     40 public-page snapshots (committed)
 tests/fixtures/local/               your private fixtures (git-ignored)
 tests/snapshots/playwright/*.snap   approved conservative outputs (insta)
 tests/common/mod.rs                 independent invariant checker
-tests/{passthrough,playwright_fixtures,playwright_props,expand}.rs
+tests/{passthrough,playwright_fixtures,playwright_props,expand,install}.rs
 tests/fake_server.py (modes: mirror, exit, burst, hang, mcp)  tests/fixtures/proxy/
 benches/prune.rs  examples/report.rs
 scripts/capture_fixtures.py         drive real Playwright MCP → fixtures
@@ -175,7 +197,9 @@ cargo insta review                  # approve/reject changed snapshot outputs
 python scripts/capture_fixtures.py --meiose target/release/meiose.exe   # recapture
 python scripts/extract_fixtures.py  # your recordings → tests/fixtures/local/
 
-meiose stats [--days 7]  ·  meiose log [-n 20] [--show ID]
+meiose stats [--days 7]  ·  meiose log [-n 20] [--show ID]  ·  meiose doctor
+meiose install [--dry-run] [--yes] [--only a,b] [--client claude-code,cursor] [--meiose-path P]
+meiose uninstall [--yes]
 meiose run [--passthrough | --aggressive] [--no-diff] -- <server cmd>
 
 # try it with Claude Code (installed user-scope on the dev machine as pw-meiose)

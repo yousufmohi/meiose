@@ -57,7 +57,7 @@ struct State {
     pending: HashMap<String, Pending>,
     expand_advertised: bool,
     server_has_expand: bool,
-    /// (page url, conservative trimmed yaml body, when)
+    /// (page url, yaml body exactly as sent to the agent, when)
     last_snapshot: Option<(String, String, Instant)>,
 }
 
@@ -402,8 +402,16 @@ impl Interceptor {
     /// the previous snapshot of the same page.
     fn trim_one(&self, text: &str, cx: &TrimContext) -> Option<(&'static str, String)> {
         let trimmed = handlers::trim_text(&self.handlers, text, cx);
+        let normal = trimmed.as_ref().map_or(text, |(_, t)| t.text.as_str());
+        // Apply the budget before diffing, so a diff (and the snapshot kept
+        // for the next one) is always relative to what the agent was sent.
+        let fitted = self.fit_budget(text, normal, cx);
         // What the agent sees if we do not send a diff.
-        let view = trimmed.as_ref().map_or(text, |(_, t)| t.text.as_str());
+        let (handler, view): (Option<&'static str>, &str) = match (&fitted, &trimmed) {
+            (Some((h, t)), _) => (Some(*h), t.as_str()),
+            (None, Some((h, t))) => (Some(*h), t.text.as_str()),
+            (None, None) => (None, text),
+        };
         if let Some(url) = diff::page_url(view)
             && let Some(body) = diff::body(view)
         {
@@ -424,10 +432,7 @@ impl Interceptor {
                 return Some(("playwright-diff", d));
             }
         }
-        if let Some(fitted) = self.fit_budget(text, view, cx) {
-            return Some(fitted);
-        }
-        trimmed.map(|(h, t)| (h, t.text))
+        handler.map(|h| (h, view.to_string()))
     }
 
     /// Shrink a snapshot that is over `--budget`: aggressive trimming first,

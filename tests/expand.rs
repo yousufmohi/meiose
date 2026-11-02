@@ -268,3 +268,26 @@ fn keep_days_zero_keeps_originals_in_memory_only() {
         .unwrap();
     assert_eq!(n, 0);
 }
+
+#[test]
+fn diff_after_a_budget_outline_only_refers_to_what_the_agent_saw() {
+    // A budget small enough that the form page becomes an outline.
+    let mut s = Session::start(FORM, &["--budget", "1500"]);
+    s.init();
+    let first = s.call("browser_snapshot", json!({}));
+    let seen = text_of(&first).to_string();
+    assert!(seen.contains("outline only"), "{seen}");
+    let second = s.call("browser_snapshot", json!({"checked": true}));
+    let d = text_of(&second);
+    if let Some(start) = d.find("```diff\n") {
+        // Every unchanged or removed line must be one the agent was shown.
+        for line in d[start + 8..].lines().take_while(|l| *l != "```") {
+            if let Some(old) = line.strip_prefix(' ').or_else(|| line.strip_prefix('-')) {
+                assert!(seen.contains(old), "diff refers to an unseen line: {old:?}");
+            }
+        }
+    } else {
+        assert!(!d.contains("Unchanged since"), "{d}");
+    }
+    s.finish();
+}

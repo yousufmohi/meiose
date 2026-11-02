@@ -11,9 +11,9 @@ different PATH than your terminal.
 
 ## The agent misses something on a page
 
-It should call `meiose_expand`; smaller models sometimes don't. Try `--no-diff`,
-or `--passthrough` to compare, and open an issue with the output of
-`meiose log --show <id>`.
+The agent is meant to call `meiose_expand` when a trimmed result lacks what it
+needs. If it doesn't, try `--no-diff`, or `--passthrough` to compare, and open
+an issue with the output of `meiose log --show <id>`.
 
 ## `meiose install` refuses: "running from a temporary location"
 

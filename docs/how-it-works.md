@@ -83,7 +83,11 @@ note reaches the agent.
 ## Other handlers
 
 JSON: arrays longer than 40 items keep their first 10 plus the item keys.
-Numbers are preserved exactly.
+Strings over 4,000 characters are shortened. If the result is still over
+45,000 characters (Claude Code shows at most 50,000), it is shrunk to fit:
+one-line fields such as ids, states and URLs are kept first, lists keep whole
+items, and nested values that do not fit become one-line summaries. The output
+is always valid JSON, and numbers are preserved exactly.
 
 Text: outputs longer than 40 KB keep the head and the tail.
 

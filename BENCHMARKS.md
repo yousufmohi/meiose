@@ -75,9 +75,9 @@ o200k tokens:
 
 | output | tokens | default | aggressive | handler |
 |---|---:|---:|---:|---|
-| `list_issues` microsoft/playwright, 100 open | 78,757 | 12,876 (−84%) | 3,214 (−96%) | json |
-| `search_issues` playwright "screenshot" | 100,677 | 18,211 (−82%) | 3,901 (−96%) | json |
-| `list_commits` rust-lang/rust, 50 | 94,554 | 21,839 (−77%) | 5,370 (−94%) | json |
+| `list_issues` microsoft/playwright, 100 open | 78,757 | 11,915 (−85%) | 3,214 (−96%) | json |
+| `search_issues` playwright "screenshot" | 100,677 | 11,892 (−88%) | 3,901 (−96%) | json |
+| `list_commits` rust-lang/rust, 50 | 94,554 | 14,970 (−84%) | 5,370 (−94%) | json |
 | `search_repositories` "model context protocol" | 17,954 | 3,533 (−80%) | 1,093 (−94%) | json |
 | `list_pull_requests` playwright (16 open) | 25,013 | 4,889 (−80%) | 4,579 (−82%) | json |
 | `get_file_contents` (a directory) | 4,284 | untouched | 656 (−85%) | — |
@@ -98,6 +98,16 @@ the bytes). It used to fall through to the text handler, which keeps the first
 the 40-item rule but over 40 KB of JSON now keeps whole items up to 16 KB
 (here 3 of 16), so the output stays valid JSON (−80%). Lists of more than 40
 items keep their 10 samples as before.
+
+Finally, JSON output is capped at 45,000 characters, under the 50,000 at which
+Claude Code saves a tool result to a file instead of showing it. Before the
+cap, the 10 sampled issues of the "screenshot" search came to 70K characters
+and the 10 commits to 81K, so in Claude Code the agent would have seen
+neither. Over the cap, an object keeps its one-line fields (ids, states, URLs)
+first, then nested values in order while they fit; the rest become one-line
+summaries such as `{…900 keys: a, b, …}`, and lists keep whole items in order.
+The output stays valid JSON, and the marker says what was summarized. Real
+GitHub outputs trim in 0.3–1.5 ms.
 
 ## Footprint on the host
 

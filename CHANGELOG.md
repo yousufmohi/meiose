@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- JSON output is capped at 45,000 characters, under Claude Code's 50,000
+  limit, and stays valid JSON. One big object no longer falls through to the
+  text handler's head-and-tail cut, and 10 sampled GitHub issues (70K
+  characters) now fit (−82% → −88%). Over the cap, one-line fields come
+  first, lists keep whole items, and nested values that don't fit are
+  summarized (`{…900 keys: a, b, …}`).
+
 ## 0.2.1 — 2026-11-02
 
 - A short JSON list of big items (16 GitHub pull requests, 85 KB) was cut

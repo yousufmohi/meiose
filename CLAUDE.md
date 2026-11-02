@@ -168,8 +168,10 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   rejected: refs change after the reload, so it never fires.
 - Handler order: playwright → json (arrays > 40 keep 10; arrays ≤ 40 items but
   > 40 KB compact keep whole items up to 16 KB, so short lists of big objects
-  never reach the text cut; numbers exact via `arbitrary_precision`) → text
-  (> 40 KB: head 16 KB + tail 4 KB).
+  never reach the text cut; then a 45,000-char output cap (Claude Code shows
+  ≤ 50,000) via `json::fit`: one-line fields first, whole list items, nested
+  values summarized; always valid JSON; numbers exact via
+  `arbitrary_precision`) → text (> 40 KB: head 16 KB + tail 4 KB).
 - Stats rows are written by the store thread, so SQLite is off the message
   path. Tokens are *estimated* (`tokens::estimate`: other bytes/3.75 +
   indent/8 + 7 per ref; estimated fixture saving 31.8% vs exact 31.1%) so the

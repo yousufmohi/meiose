@@ -1,4 +1,10 @@
-//! End-to-end measurement through the real Interceptor (no network).
+//! Measures the trimming paths through the real Interceptor (no network):
+//! totals over the 40 committed fixtures for the default mode and for
+//! `--budget`, how many pages stay over Claude Code's limits (25,000 tokens,
+//! and 50,000 characters for text results), and the tokens needed to recover
+//! one fact with a full expand vs `meiose_expand(id, query=...)`.
+//!
+//!   cargo run --release --example measure
 use meiose::handlers::Mode;
 use meiose::intercept::{ClientAction, Config, Interceptor};
 use meiose::store::StoreHandle;
@@ -99,17 +105,23 @@ fn main() {
             .collect();
     names.sort();
     let before: usize = names.iter().map(|n| tokens::count(&page(n))).sum();
-    for (b, label) in [(0, "new default (no budget)"), (20000, "--budget 20000")] {
-        let (mut tot, mut over, mut maxt) = (0, 0, 0);
+    for (b, label) in [
+        (0, "default (no budget)"),
+        (20000, "--budget 20000"),
+        (12000, "--budget 12000"),
+    ] {
+        let (mut tot, mut over, mut over_chars, mut maxt) = (0, 0, 0, 0);
         for (i, n) in names.iter().enumerate() {
             let mut p = Px::new(b, dir.path(), &format!("a{b}-{i}"));
-            let t = tokens::count(&p.call(&page(n)));
+            let out = p.call(&page(n));
+            let t = tokens::count(&out);
+            over_chars += usize::from(out.chars().count() > 50_000);
             tot += t;
             over += usize::from(t > 25000);
             maxt = maxt.max(t);
         }
         println!(
-            "{label:<26} {before} -> {tot}  ({:.1}% saved) pages>25K: {over} max {maxt}",
+            "{label:<26} {before} -> {tot}  ({:.1}% saved) pages>25K tokens: {over}  >50K chars: {over_chars}  max {maxt}",
             100.0 * (before - tot) as f64 / before as f64
         );
     }

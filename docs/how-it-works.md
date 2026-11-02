@@ -42,8 +42,10 @@ Playwright snapshots, default mode:
 runs of structurally similar siblings and shortens text sooner.
 
 A repeat snapshot of the same page, within 10 minutes of the previous one, is
-sent as a diff of what changed. Playwright refs stay stable across snapshots of
-a page, so unchanged elements remain valid in the agent's context.
+sent as a diff of what changed. Playwright refs are stable within one loaded
+page, so unchanged elements remain valid in the agent's context. They are not
+stable across navigations: reloading a page renames every ref, so a snapshot
+after a reload differs almost everywhere and is sent in full.
 `--no-diff` turns this off.
 
 JSON: arrays longer than 40 items keep their first 10 plus the item keys.

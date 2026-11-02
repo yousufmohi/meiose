@@ -130,11 +130,15 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
 - The original `result` raw bytes are stored *before* the trimmed response is
   sent; `meiose_expand` splices them back verbatim (tested byte-for-byte).
   Originals live in memory (128 MB cap) and SQLite (7-day TTL, 512 MB cap).
-- Snapshot diff: Playwright refs are stable across snapshots (verified with
-  real Playwright 1.65). A repeat snapshot of the *same URL* as the
-  *immediately previous* snapshot (< 10 min old) is sent as a ```diff of the
-  trimmed views with ancestor context, if < 40% of lines changed. `--no-diff`
-  disables it. Measured: Wikipedia repeat 134K → 81 tokens.
+- Snapshot diff: Playwright refs are stable within one loaded document, NOT
+  across navigations (a reload renamed `e3` → `f2e3`; verified with real
+  Playwright 1.65), so diffs only help repeat snapshots of the page you are
+  on. A repeat snapshot of the *same URL* as the *immediately previous*
+  snapshot (< 10 min old) is sent as a ```diff of the view the agent was
+  sent, with ancestor context, if < 40% of lines changed (a reload changes
+  every ref, so it falls back to full). `--no-diff` disables it. Measured:
+  Wikipedia repeat 134K → 79 tokens. A → B → A diffing was tried and
+  rejected: refs change after the reload, so it never fires.
 - Handler order: playwright → json (arrays > 40 keep 10, numbers exact via
   `arbitrary_precision`) → text (> 40 KB: head 16 KB + tail 4 KB).
 - Stats rows are written by the store thread, which also counts tokens, so

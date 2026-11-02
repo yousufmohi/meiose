@@ -67,6 +67,34 @@ Criterion, `cargo bench --bench prune`, Windows laptop:
 Measured back to back with the code before the URL rules (2.3, 4.3 and
 4.8 ms), because timings on this laptop drift by 10% or more between sessions.
 
+## JSON tools: GitHub's MCP server
+
+Seven real outputs from `@modelcontextprotocol/server-github` (public repos,
+no token), saved and measured offline with `examples/json_probe.rs`.
+o200k tokens:
+
+| output | tokens | default | aggressive | handler |
+|---|---:|---:|---:|---|
+| `list_issues` microsoft/playwright, 100 open | 78,757 | 12,876 (−84%) | 3,214 (−96%) | json |
+| `search_issues` playwright "screenshot" | 100,677 | 18,211 (−82%) | 3,901 (−96%) | json |
+| `list_commits` rust-lang/rust, 50 | 94,554 | 21,839 (−77%) | 5,370 (−94%) | json |
+| `search_repositories` "model context protocol" | 17,954 | 3,533 (−80%) | 1,093 (−94%) | json |
+| `list_pull_requests` playwright (16 open) | 25,013 | 5,859 (−77%) | 4,579 (−82%) | text |
+| `get_file_contents` (a directory) | 4,284 | untouched | 656 (−85%) | — |
+| `get_issue` | 1,202 | untouched | untouched | — |
+
+The JSON handler keeps the first 10 items of a long list, so the rest are
+reachable only through `meiose_expand`. The probe asks `query` for the **last**
+item by its title and checks the result contains that item's URL. Before this
+change it failed on 4 of 6 lists: a GitHub issue is 100+ lines of JSON, so the
+match came back with its ancestors only. A JSON match now also brings the
+one-line fields of its object (number, state, URLs, dates): 6 of 6 found, at
+185–2,068 tokens per query.
+
+The pull-request list has only 16 items, under the JSON handler's 40-item
+threshold, so it falls through to the text handler, which keeps the first 16 KB
+and last 4 KB: the agent sees the start and end of the array, cut mid-item.
+
 ## Footprint on the host
 
 meiose's own process during a session with five 924K-character snapshots

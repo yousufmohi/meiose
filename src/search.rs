@@ -29,6 +29,17 @@ fn parent(lines: &[&str], i: usize) -> Option<usize> {
     (0..i).rev().find(|&j| indent(lines[j]) < ind)
 }
 
+/// A pretty-printed JSON line that holds a whole value: `"state": "open",`,
+/// not one that opens or closes an object or array.
+fn is_one_line_field(line: &str) -> bool {
+    let t = line.trim().trim_end_matches(',');
+    !(t.is_empty()
+        || t.ends_with('{')
+        || t.ends_with('[')
+        || t.starts_with('}')
+        || t.starts_with(']'))
+}
+
 /// The lines of `text` containing any `|`-separated term in `query`, each with
 /// its ancestors and nearby siblings, in document order.
 pub fn search(text: &str, query: &str) -> String {
@@ -38,6 +49,7 @@ pub fn search(text: &str, query: &str) -> String {
         .filter(|t| !t.is_empty())
         .collect();
     let lines: Vec<&str> = text.lines().collect();
+    let is_json = text.trim_start().starts_with(['{', '[']);
     let hits: Vec<usize> = lines
         .iter()
         .enumerate()
@@ -73,6 +85,17 @@ pub fn search(text: &str, query: &str) -> String {
         }
         let end = subtree_end(&lines, start).min(start + MAX_CONTEXT_LINES);
         add.extend(start..end);
+        // JSON: when the enclosing object is too big to send whole (a GitHub
+        // issue is 100+ lines), still send its one-line fields, so a match
+        // on a title arrives with the number, state and URL beside it.
+        if is_json && let Some(p) = up {
+            let width = indent(lines[start]);
+            let fields = (p + 1..subtree_end(&lines, p))
+                .filter(|&j| indent(lines[j]) == width && is_one_line_field(lines[j]))
+                .take(MAX_CONTEXT_LINES);
+            add.extend(fields);
+            add.push(p);
+        }
         while let Some(p) = a {
             add.push(p);
             a = parent(&lines, p);
@@ -170,6 +193,59 @@ mod tests {
             !r.contains("1.0.0"),
             "a neighbour's version must not leak in: {r}"
         );
+    }
+
+    /// GitHub-style JSON: each item is far over the context limit, so a
+    /// match on its title must still bring its one-line fields.
+    fn issues_json() -> String {
+        let items: Vec<serde_json::Value> = (0..30)
+            .map(|i| {
+                let mut v = serde_json::json!({
+                    "url": format!("https://api.github.com/repos/o/r/issues/{i}"),
+                    "html_url": format!("https://github.com/o/r/issues/{i}"),
+                    "number": i,
+                    "title": format!("Issue title {i}"),
+                    "state": "open",
+                    "user": {"login": format!("user{i}"), "id": i},
+                    "labels": [{"name": "bug", "color": "red"}],
+                });
+                // A long nested block, like GitHub's reactions/user objects.
+                v["reactions"] = (0..60)
+                    .map(|k| (format!("r{k}"), serde_json::json!(k)))
+                    .collect::<serde_json::Map<_, _>>()
+                    .into();
+                v
+            })
+            .collect();
+        serde_json::to_string_pretty(&items).unwrap()
+    }
+
+    #[test]
+    fn a_json_match_brings_its_objects_one_line_fields() {
+        let r = search(&issues_json(), "Issue title 27");
+        assert!(r.contains("https://github.com/o/r/issues/27"), "{r}");
+        assert!(r.contains("\"number\": 27"), "{r}");
+        assert!(r.contains("\"state\": \"open\""), "{r}");
+        // Nested blocks and other items stay out.
+        assert!(!r.contains("\"r59\""), "{r}");
+        assert!(!r.contains("issues/26\""), "{r}");
+    }
+
+    #[test]
+    fn one_line_fields_are_json_only() {
+        // The same shape as a snapshot: no extra siblings come along.
+        let mut p = String::from(
+            "- list:
+",
+        );
+        for i in 0..60 {
+            p.push_str(&format!(
+                "  - listitem: entry {i}
+"
+            ));
+        }
+        let r = search(&p, "entry 42");
+        assert!(r.contains("entry 42") && !r.contains("entry 41"), "{r}");
     }
 
     #[test]

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 — 2026-11-02
+
+- Faster dedupe signatures: text is hashed in 8-byte words and only for
+  elements inside long sibling lists. Output is unchanged.
+- README rewritten: per-page token table, manual setup for Claude Code,
+  Claude Desktop and Cursor, and a "Why shouldn't I use meiose?" section.
+  Benchmarks moved to BENCHMARKS.md.
+
 ## 0.1.0 — 2026-11-02
 
 First release.

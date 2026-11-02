@@ -1,0 +1,5 @@
+# Source and scripts: always LF.
+* text=auto eol=lf
+# Fixtures and approved snapshots must stay byte-exact on every OS.
+tests/fixtures/** -text
+tests/snapshots/** -text

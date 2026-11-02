@@ -68,7 +68,7 @@ fn main() {
         );
     }
     for path in &pages {
-        let text = std::fs::read_to_string(&path).unwrap();
+        let text = std::fs::read_to_string(path).unwrap();
         let name = path.file_stem().unwrap().to_string_lossy();
         let before = tokens::count(&text);
         let mut row = vec![];

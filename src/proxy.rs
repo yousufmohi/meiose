@@ -19,6 +19,7 @@
 
 use std::path::PathBuf;
 use std::process::Stdio;
+use std::sync::Arc;
 use std::time::Duration;
 
 use tokio::io::{AsyncBufRead, AsyncWrite, AsyncWriteExt, BufReader};
@@ -27,11 +28,14 @@ use tokio::sync::mpsc;
 use tokio::task::JoinHandle;
 
 use crate::frame::{READ_BUF, read_frame, write_frames};
+use crate::intercept::{ClientAction, Interceptor};
 use crate::record::{Dir, Recorder};
 
 pub struct Options {
     pub cmd: Vec<String>,
     pub recorder: Option<Recorder>,
+    /// Trimming/expand logic; `None` is a pure byte passthrough.
+    pub intercept: Option<Arc<Interceptor>>,
     /// How long the child gets to exit after its stdin is closed.
     pub grace: Duration,
 }
@@ -102,11 +106,16 @@ pub async fn run(opts: Options) -> anyhow::Result<i32> {
         BufReader::with_capacity(READ_BUF, tokio::io::stdin()),
         child_stdin,
         opts.recorder.clone(),
+        opts.intercept.clone(),
+        // Weak: the writer must still finish once the server's output ends,
+        // even while the agent keeps our stdin open.
+        out_tx.downgrade(),
     ));
     let s2c = tokio::spawn(server_to_client(
         BufReader::with_capacity(READ_BUF, child_stdout),
         out_tx,
         opts.recorder.clone(),
+        opts.intercept.clone(),
     ));
     let errp = tokio::spawn(copy_stderr(
         BufReader::with_capacity(READ_BUF, child_stderr),
@@ -193,8 +202,13 @@ fn exit_code(status: std::process::ExitStatus) -> i32 {
 
 /// agent → server. Returning (for any reason) drops the child's stdin,
 /// which is the spec's graceful shutdown signal.
-async fn client_to_server<R, W>(mut from: R, mut to: W, rec: Option<Recorder>)
-where
+async fn client_to_server<R, W>(
+    mut from: R,
+    mut to: W,
+    rec: Option<Recorder>,
+    intercept: Option<Arc<Interceptor>>,
+    out: mpsc::WeakSender<Vec<u8>>,
+) where
     R: AsyncBufRead + Unpin,
     W: AsyncWrite + Unpin,
 {
@@ -210,6 +224,28 @@ where
         if let Some(r) = &rec {
             r.log(Dir::C2s, &frame).await;
         }
+        if let Some(ic) = &intercept
+            && let ClientAction::Expand {
+                id_raw,
+                expand_id,
+                terminator,
+            } = ic.on_client_frame(&frame)
+        {
+            // Answered locally; never forwarded to the server.
+            let ic = ic.clone();
+            let reply = tokio::task::spawn_blocking(move || {
+                ic.expand_reply(&id_raw, expand_id.as_deref(), terminator)
+            })
+            .await;
+            match (reply, out.upgrade()) {
+                (Ok(reply), Some(tx)) => {
+                    let _ = tx.send(reply).await;
+                }
+                (Err(e), _) => tracing::error!(error = %e, "meiose_expand failed"),
+                (_, None) => tracing::warn!("agent stdout closed; dropping meiose_expand reply"),
+            }
+            continue;
+        }
         if let Err(e) = async {
             to.write_all(&frame).await?;
             to.flush().await
@@ -223,8 +259,12 @@ where
 }
 
 /// server → agent, via the single stdout writer.
-async fn server_to_client<R>(mut from: R, out: mpsc::Sender<Vec<u8>>, rec: Option<Recorder>)
-where
+async fn server_to_client<R>(
+    mut from: R,
+    out: mpsc::Sender<Vec<u8>>,
+    rec: Option<Recorder>,
+    intercept: Option<Arc<Interceptor>>,
+) where
     R: AsyncBufRead + Unpin,
 {
     loop {
@@ -239,6 +279,10 @@ where
         if let Some(r) = &rec {
             r.log(Dir::S2c, &frame).await;
         }
+        let frame = match &intercept {
+            Some(ic) => ic.on_server_frame(frame),
+            None => frame,
+        };
         if out.send(frame).await.is_err() {
             return; // agent stdout writer is gone
         }
@@ -282,7 +326,8 @@ mod tests {
     async fn c2s_forwards_exact_bytes_and_stops_at_eof() {
         let input: &[u8] = b"{\"id\":1}\n{\"id\":2}\r\nno-newline";
         let mut sink = Vec::new();
-        client_to_server(BufReader::new(input), &mut sink, None).await;
+        let (tx, _rx) = mpsc::channel(1);
+        client_to_server(BufReader::new(input), &mut sink, None, None, tx.downgrade()).await;
         assert_eq!(sink, input);
     }
 
@@ -290,7 +335,7 @@ mod tests {
     async fn s2c_forwards_exact_frames_in_order() {
         let input: &[u8] = b"{\"a\":1}\n{\"b\":2}\n";
         let (tx, mut rx) = mpsc::channel(8);
-        server_to_client(BufReader::new(input), tx, None).await;
+        server_to_client(BufReader::new(input), tx, None, None).await;
         assert_eq!(rx.recv().await.unwrap(), b"{\"a\":1}\n");
         assert_eq!(rx.recv().await.unwrap(), b"{\"b\":2}\n");
         assert!(rx.recv().await.is_none());

@@ -13,8 +13,8 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 | Milestone | Scope | Status |
 |---|---|---|
 | M1 | Passthrough proxy + `record` | Done (2026-11-01) |
-| M2 | Playwright handler + snapshot/property tests + benchmark | **Done (2026-11-01), awaiting user review** |
-| M3 | `meiose_expand` + store + `stats` + `log` + json/text handlers | not started |
+| M2 | Playwright handler + snapshot/property tests + benchmark | Done (2026-11-01) |
+| M3 | `meiose_expand` + store + `stats` + `log` + json/text handlers + snapshot diffing | **Done (2026-11-01), awaiting user review** |
 | M4 | `install` / `uninstall` / `doctor` + install tests | not started |
 | M5 | Protocol test suite + fail-open hardening | not started |
 | M6 | Eval harness + README + cargo-dist + npm wrapper | not started |
@@ -117,17 +117,45 @@ Perf: 244K-token page 1.9 ms, synthetic 488K-token page 3.9 ms (criterion).
 **Not yet verified:** that agents succeed as often with trimmed snapshots —
 that is the M6 eval. The structural-ref hiding is the riskiest rule.
 
+## Proxy intercept (M3)
+
+- `src/intercept.rs` is the only place traffic is changed. Client requests
+  (`tools/call`, `tools/list`) are tracked by id; only server *responses* are
+  looked up, so server-initiated requests reusing an id are never confused.
+- `tools/list` first page (no `cursor`) gets `meiose_expand` appended. If the
+  server already has a tool by that name, trimming is off for the session.
+- Nothing is trimmed until `meiose_expand` was advertised in this process,
+  nor when the store failed to open, nor for `resultType` ≠ complete, errors,
+  or `--passthrough`.
+- The original `result` raw bytes are stored *before* the trimmed response is
+  sent; `meiose_expand` splices them back verbatim (tested byte-for-byte).
+  Originals live in memory (128 MB cap) and SQLite (7-day TTL, 512 MB cap).
+- Snapshot diff: Playwright refs are stable across snapshots (verified with
+  real Playwright 1.65). A repeat snapshot of the *same URL* as the
+  *immediately previous* snapshot (< 10 min old) is sent as a ```diff of the
+  trimmed views with ancestor context, if < 40% of lines changed. `--no-diff`
+  disables it. Measured: Wikipedia repeat 134K → 81 tokens.
+- Handler order: playwright → json (arrays > 40 keep 10, numbers exact via
+  `arbitrary_precision`) → text (> 40 KB: head 16 KB + tail 4 KB).
+- Stats rows are written by the store thread, which also counts tokens, so
+  neither SQLite nor tiktoken sits on the message path. Whole intercept path
+  for a 500 KB snapshot: 2.0–2.6 ms. `meiose stats` counts expanded tokens
+  against savings.
+- Playwright 1.65 renamed `browser_click`'s `ref` argument to `target`.
+
 ## Layout
 
 ```
 src/main.rs  src/lib.rs  src/cli.rs  src/proxy.rs  src/frame.rs  src/record.rs
-src/paths.rs  src/logging.rs  src/tokens.rs
-src/handlers/{mod.rs (trait + fail-open trim_text), playwright.rs}
+src/paths.rs  src/logging.rs  src/tokens.rs  src/rpc.rs (envelope, raw splicing)
+src/intercept.rs  src/diff.rs  src/store.rs (SQLite + memory)  src/report.rs (stats/log text)
+src/handlers/{mod.rs (trait + fail-open trim_text), playwright.rs, json.rs, text.rs}
 tests/fixtures/playwright/*.txt     40 public-page snapshots (committed)
 tests/fixtures/local/               your private fixtures (git-ignored)
 tests/snapshots/playwright/*.snap   approved conservative outputs (insta)
 tests/common/mod.rs                 independent invariant checker
-tests/{passthrough,playwright_fixtures,playwright_props}.rs  tests/fake_server.py
+tests/{passthrough,playwright_fixtures,playwright_props,expand}.rs
+tests/fake_server.py (modes: mirror, exit, burst, hang, mcp)  tests/fixtures/proxy/
 benches/prune.rs  examples/report.rs
 scripts/capture_fixtures.py         drive real Playwright MCP → fixtures
 scripts/extract_fixtures.py         your recordings → tests/fixtures/local/
@@ -146,6 +174,9 @@ cargo insta review                  # approve/reject changed snapshot outputs
 
 python scripts/capture_fixtures.py --meiose target/release/meiose.exe   # recapture
 python scripts/extract_fixtures.py  # your recordings → tests/fixtures/local/
+
+meiose stats [--days 7]  ·  meiose log [-n 20] [--show ID]
+meiose run [--passthrough | --aggressive] [--no-diff] -- <server cmd>
 
 # try it with Claude Code (installed user-scope on the dev machine as pw-meiose)
 cargo install --path .              # close Claude sessions using it first (Windows lock)

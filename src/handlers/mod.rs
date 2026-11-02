@@ -5,7 +5,9 @@
 //! that panics, or produces something no smaller than its input, results in
 //! the original text being forwarded unchanged (fail open).
 
+pub mod json;
 pub mod playwright;
+pub mod text;
 
 use std::panic::{AssertUnwindSafe, catch_unwind};
 
@@ -39,7 +41,11 @@ pub trait Handler: Send + Sync {
 }
 
 pub fn all() -> Vec<Box<dyn Handler>> {
-    vec![Box::new(playwright::Playwright)]
+    vec![
+        Box::new(playwright::Playwright),
+        Box::new(json::Json),
+        Box::new(text::Text),
+    ]
 }
 
 /// Try each handler in order; first one to produce a smaller result wins.

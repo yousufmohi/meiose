@@ -1,0 +1,405 @@
+//! M3 end-to-end: the real `meiose` binary in front of the scripted MCP
+//! server in `tests/fake_server.py` (`mcp` mode). Covers tools/list
+//! injection, trimming, meiose_expand byte-for-byte, diffs, passthrough,
+//! id collisions, errors, and the `stats` / `log` commands.
+
+mod common;
+
+use std::io::{BufRead, BufReader, Write};
+use std::path::{Path, PathBuf};
+use std::process::{Child, ChildStdin, Command, Stdio};
+use std::sync::mpsc;
+use std::time::Duration;
+
+use serde_json::value::RawValue;
+use serde_json::{Value, json};
+
+const TIMEOUT: Duration = Duration::from_secs(20);
+
+fn python() -> String {
+    std::env::var("MEIOSE_TEST_PYTHON")
+        .unwrap_or_else(|_| if cfg!(windows) { "python" } else { "python3" }.to_string())
+}
+
+fn root() -> &'static Path {
+    Path::new(env!("CARGO_MANIFEST_DIR"))
+}
+
+struct Session {
+    child: Child,
+    stdin: ChildStdin,
+    lines: mpsc::Receiver<String>,
+    data: tempfile::TempDir,
+    server_log: PathBuf,
+    next_id: u64,
+}
+
+impl Session {
+    fn start(fixture: &str, flags: &[&str]) -> Session {
+        Session::start_in(tempfile::tempdir().unwrap(), fixture, flags)
+    }
+
+    fn start_in(data: tempfile::TempDir, fixture: &str, flags: &[&str]) -> Session {
+        let server_log = data.path().join("server-output.jsonl");
+        let mut child = Command::new(env!("CARGO_BIN_EXE_meiose"))
+            .arg("run")
+            .args(flags)
+            .arg("--")
+            .arg(python())
+            .arg("-u")
+            .arg(root().join("tests/fake_server.py"))
+            .arg("mcp")
+            .arg(root().join(fixture))
+            .env("MEIOSE_DATA_DIR", data.path())
+            .env("FAKE_LOG", &server_log)
+            .stdin(Stdio::piped())
+            .stdout(Stdio::piped())
+            .stderr(Stdio::null())
+            .spawn()
+            .expect("spawn meiose");
+        let stdin = child.stdin.take().unwrap();
+        let stdout = child.stdout.take().unwrap();
+        let (tx, lines) = mpsc::channel();
+        std::thread::spawn(move || {
+            for line in BufReader::new(stdout).lines() {
+                let Ok(line) = line else { break };
+                if tx.send(line).is_err() {
+                    break;
+                }
+            }
+        });
+        Session {
+            child,
+            stdin,
+            lines,
+            data,
+            server_log,
+            next_id: 100,
+        }
+    }
+
+    fn send(&mut self, v: &Value) {
+        let mut line = serde_json::to_vec(v).unwrap();
+        line.push(b'\n');
+        self.stdin.write_all(&line).unwrap();
+        self.stdin.flush().unwrap();
+    }
+
+    fn recv_line(&self) -> String {
+        self.lines
+            .recv_timeout(TIMEOUT)
+            .expect("meiose did not answer in time (hang?)")
+    }
+
+    /// Send a request and return the raw response line with that id,
+    /// collecting any other messages that arrive first.
+    fn request_raw(&mut self, method: &str, params: Value) -> (String, Vec<Value>) {
+        self.next_id += 1;
+        let id = self.next_id;
+        self.send(&json!({"jsonrpc":"2.0","id":id,"method":method,"params":params}));
+        let mut others = Vec::new();
+        loop {
+            let line = self.recv_line();
+            let v: Value = serde_json::from_str(&line).expect("agent got invalid JSON");
+            if v.get("id") == Some(&json!(id)) && v.get("method").is_none() {
+                return (line, others);
+            }
+            others.push(v);
+        }
+    }
+
+    fn request(&mut self, method: &str, params: Value) -> Value {
+        serde_json::from_str(&self.request_raw(method, params).0).unwrap()
+    }
+
+    fn call(&mut self, tool: &str, args: Value) -> Value {
+        self.request("tools/call", json!({"name": tool, "arguments": args}))
+    }
+
+    fn init(&mut self) -> Vec<String> {
+        self.request("initialize", json!({"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"t","version":"0"}}));
+        self.send(&json!({"jsonrpc":"2.0","method":"notifications/initialized"}));
+        let tools = self.request("tools/list", json!({}));
+        tools["result"]["tools"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|t| t["name"].as_str().unwrap().to_string())
+            .collect()
+    }
+
+    /// Raw `result` bytes of the server's response with this id.
+    fn server_result_raw(&self, id: u64) -> String {
+        let log = std::fs::read_to_string(&self.server_log).unwrap();
+        for line in log.lines() {
+            #[derive(serde::Deserialize)]
+            struct R<'a> {
+                #[serde(borrow)]
+                id: Option<&'a RawValue>,
+                #[serde(borrow)]
+                result: Option<&'a RawValue>,
+            }
+            let r: R = serde_json::from_str(line).unwrap();
+            if r.id.map(|i| i.get()) == Some(&id.to_string())
+                && let Some(res) = r.result
+            {
+                return res.get().to_string();
+            }
+        }
+        panic!("server never answered id {id}");
+    }
+
+    fn finish(mut self) -> tempfile::TempDir {
+        drop(self.stdin);
+        let start = std::time::Instant::now();
+        while self.child.try_wait().unwrap().is_none() {
+            assert!(start.elapsed() < TIMEOUT, "meiose did not exit");
+            std::thread::sleep(Duration::from_millis(20));
+        }
+        self.data
+    }
+}
+
+fn text_of(resp: &Value) -> &str {
+    resp["result"]["content"][0]["text"]
+        .as_str()
+        .expect("text content")
+}
+
+fn expand_id(text: &str) -> String {
+    let s = text.rfind("meiose_expand(\"").expect("marker") + "meiose_expand(\"".len();
+    text[s..s + text[s..].find('"').unwrap()].to_string()
+}
+
+/// `result` bytes exactly as they appear in a response line.
+fn result_raw_of(line: &str) -> String {
+    #[derive(serde::Deserialize)]
+    struct R<'a> {
+        #[serde(borrow)]
+        result: &'a RawValue,
+    }
+    let r: R = serde_json::from_str(line).unwrap();
+    r.result.get().to_string()
+}
+
+const HN: &str = "tests/fixtures/playwright/news-ycombinator-com.txt";
+const FORM: &str = "tests/fixtures/proxy/form-page.txt";
+
+#[test]
+fn expand_tool_is_added_to_the_first_tools_page_only() {
+    let mut s = Session::start(HN, &[]);
+    let names = s.init();
+    assert_eq!(names, ["browser_snapshot", "get_rows", "meiose_expand"]);
+    let page2 = s.request("tools/list", json!({"cursor": "page2"}));
+    let names: Vec<&str> = page2["result"]["tools"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|t| t["name"].as_str().unwrap())
+        .collect();
+    assert_eq!(names, ["small", "fails"]);
+    s.finish();
+}
+
+#[test]
+fn snapshot_is_trimmed_and_expand_returns_the_original_byte_for_byte() {
+    let mut s = Session::start(HN, &[]);
+    s.init();
+    let original = std::fs::read_to_string(root().join(HN)).unwrap();
+
+    let id = s.next_id + 1;
+    let resp = s.call("browser_snapshot", json!({}));
+    let trimmed = text_of(&resp);
+    assert!(trimmed.len() < original.len());
+    common::check_invariants(&original, trimmed, &expand_id(trimmed));
+
+    let (line, _) = s.request_raw(
+        "tools/call",
+        json!({"name":"meiose_expand","arguments":{"id": expand_id(trimmed)}}),
+    );
+    assert_eq!(
+        result_raw_of(&line),
+        s.server_result_raw(id),
+        "meiose_expand must return the server's original result byte-for-byte"
+    );
+    let expanded: Value = serde_json::from_str(&line).unwrap();
+    assert_eq!(text_of(&expanded), original);
+    // The expand call never reached the server.
+    let log = std::fs::read_to_string(&s.server_log).unwrap();
+    assert!(!log.contains("unexpected tool"));
+    s.finish();
+}
+
+#[test]
+fn unknown_expand_id_is_a_helpful_tool_error() {
+    let mut s = Session::start(HN, &[]);
+    s.init();
+    let resp = s.call("meiose_expand", json!({"id": "nope1234"}));
+    assert_eq!(resp["result"]["isError"], true);
+    assert!(text_of(&resp).contains("no stored output for id \"nope1234\""));
+    assert!(text_of(&resp).contains("Re-run the original tool call"));
+    let resp = s.call("meiose_expand", json!({}));
+    assert_eq!(resp["result"]["isError"], true);
+    assert!(text_of(&resp).contains("needs an \"id\" argument"));
+    s.finish();
+}
+
+#[test]
+fn large_json_is_trimmed_and_expandable() {
+    let mut s = Session::start(HN, &[]);
+    s.init();
+    let resp = s.call("get_rows", json!({}));
+    let text = text_of(&resp);
+    assert!(
+        text.contains("…990 more items with keys: id, name, email, bio"),
+        "{}",
+        &text[text.len().saturating_sub(300)..]
+    );
+    let full = s.call("meiose_expand", json!({"id": expand_id(text)}));
+    let rows: Vec<Value> = serde_json::from_str(text_of(&full)).unwrap();
+    assert_eq!(rows.len(), 1000);
+    s.finish();
+}
+
+#[test]
+fn repeat_snapshot_of_the_same_page_is_sent_as_a_diff() {
+    let mut s = Session::start(FORM, &[]);
+    s.init();
+    let first = s.call("browser_snapshot", json!({}));
+    assert!(text_of(&first).contains("```yaml"));
+
+    let second = s.call("browser_snapshot", json!({"checked": true}));
+    let d = text_of(&second);
+    assert!(d.contains("```diff"), "{d}");
+    assert!(d.contains("+      - checkbox [checked] [ref=e5]"), "{d}");
+    assert!(d.contains("-      - checkbox [ref=e5]"), "{d}");
+    assert!(
+        d.len() < text_of(&first).len() / 5,
+        "a one-line change must be small"
+    );
+
+    let third = s.call("browser_snapshot", json!({"checked": true}));
+    assert!(text_of(&third).contains("Unchanged since your previous snapshot"));
+
+    // The full page is one expand away, byte-for-byte.
+    let full = s.call("meiose_expand", json!({"id": expand_id(d)}));
+    assert!(text_of(&full).contains("- checkbox [checked] [ref=e5]"));
+    assert!(text_of(&full).contains("```yaml"));
+    s.finish();
+}
+
+#[test]
+fn no_diff_flag_always_sends_full_snapshots() {
+    let mut s = Session::start(FORM, &["--no-diff"]);
+    s.init();
+    s.call("browser_snapshot", json!({}));
+    let second = s.call("browser_snapshot", json!({"checked": true}));
+    assert!(text_of(&second).contains("```yaml"));
+    assert!(!text_of(&second).contains("```diff"));
+    s.finish();
+}
+
+#[test]
+fn passthrough_changes_nothing() {
+    let mut s = Session::start(HN, &["--passthrough"]);
+    s.request("initialize", json!({}));
+    let id = s.next_id + 1;
+    let (line, _) = s.request_raw("tools/list", json!({}));
+    assert_eq!(result_raw_of(&line), s.server_result_raw(id));
+    let id = s.next_id + 1;
+    let (line, _) = s.request_raw(
+        "tools/call",
+        json!({"name":"browser_snapshot","arguments":{}}),
+    );
+    assert_eq!(result_raw_of(&line), s.server_result_raw(id));
+    s.finish();
+}
+
+#[test]
+fn nothing_is_trimmed_before_expand_was_advertised() {
+    let mut s = Session::start(HN, &[]);
+    s.request("initialize", json!({}));
+    // No tools/list yet: the agent does not know meiose_expand exists.
+    let id = s.next_id + 1;
+    let (line, _) = s.request_raw(
+        "tools/call",
+        json!({"name":"browser_snapshot","arguments":{}}),
+    );
+    assert_eq!(result_raw_of(&line), s.server_result_raw(id));
+    s.finish();
+}
+
+#[test]
+fn server_request_reusing_a_client_id_is_not_confused_with_the_response() {
+    let mut s = Session::start(HN, &[]);
+    s.init();
+    let (line, others) = s.request_raw("tools/call", json!({"name":"collide","arguments":{}}));
+    // The server's own request came through untouched...
+    assert_eq!(others.len(), 1);
+    assert_eq!(others[0]["method"], "roots/list");
+    // ...and the real response was still recognised and trimmed.
+    let resp: Value = serde_json::from_str(&line).unwrap();
+    assert!(text_of(&resp).contains("meiose_expand(\""));
+    s.finish();
+}
+
+#[test]
+fn error_responses_and_small_results_pass_through_untouched() {
+    let mut s = Session::start(HN, &[]);
+    s.init();
+    let id = s.next_id + 1;
+    let (line, _) = s.request_raw("tools/call", json!({"name":"fails","arguments":{}}));
+    let v: Value = serde_json::from_str(&line).unwrap();
+    assert_eq!(v["error"]["message"], "boom");
+    let id2 = s.next_id + 1;
+    let (line, _) = s.request_raw("tools/call", json!({"name":"small","arguments":{}}));
+    assert_eq!(result_raw_of(&line), s.server_result_raw(id2));
+    let _ = id;
+    s.finish();
+}
+
+#[test]
+fn stats_and_log_report_the_session() {
+    let mut s = Session::start(HN, &[]);
+    s.init();
+    let snap = s.call("browser_snapshot", json!({}));
+    let eid = expand_id(text_of(&snap));
+    s.call("small", json!({}));
+    s.call("meiose_expand", json!({"id": eid}));
+    let data = s.finish();
+
+    let run = |args: &[&str]| {
+        let out = Command::new(env!("CARGO_BIN_EXE_meiose"))
+            .args(args)
+            .env("MEIOSE_DATA_DIR", data.path())
+            .output()
+            .unwrap();
+        assert!(
+            out.status.success(),
+            "{}",
+            String::from_utf8_lossy(&out.stderr)
+        );
+        String::from_utf8(out.stdout).unwrap()
+    };
+    let stats = run(&["stats"]);
+    assert!(stats.starts_with("Last 7 days: "), "{stats}");
+    assert!(stats.contains("% saved"), "{stats}");
+    assert!(
+        stats.contains("2 tool calls, 1 trimmed · 1 expands"),
+        "{stats}"
+    );
+    assert!(stats.contains("browser_snapshot"), "{stats}");
+
+    let log = run(&["log"]);
+    assert!(log.contains("browser_snapshot"), "{log}");
+    assert!(log.contains(&format!("id={eid}")), "{log}");
+    assert!(log.contains("expand"), "{log}");
+
+    let show = run(&["log", "--show", &eid]);
+    assert!(show.contains("=== trimmed (what the agent saw) ==="));
+    assert!(show.contains("=== original (what meiose_expand returns) ==="));
+    assert!(
+        show.contains("[cursor=pointer]"),
+        "original keeps everything"
+    );
+}

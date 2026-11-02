@@ -138,7 +138,7 @@ fn unix_ms() -> u128 {
 }
 
 /// `["npx", "@playwright/mcp@latest"]` → `npx-playwright-mcp-latest`.
-fn file_stem(cmd: &[String]) -> String {
+pub fn file_stem(cmd: &[String]) -> String {
     let program = cmd
         .first()
         .and_then(|p| Path::new(p).file_stem())

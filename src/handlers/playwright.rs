@@ -216,7 +216,7 @@ struct Node<'a> {
 }
 
 /// Locate the yaml body: bytes between "```yaml\n" and the "```" fence line.
-fn find_block(text: &str) -> Option<Range<usize>> {
+pub fn find_block(text: &str) -> Option<Range<usize>> {
     const OPEN: &str = "### Snapshot\n```yaml\n";
     let start = text.find(OPEN)? + OPEN.len();
     let mut off = 0;

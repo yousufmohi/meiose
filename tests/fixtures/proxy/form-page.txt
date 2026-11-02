@@ -1,0 +1,615 @@
+### Page
+- Page URL: https://settings.example/account
+- Page Title: Account settings
+### Snapshot
+```yaml
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - heading "Account settings" [level=1] [ref=e3]
+  - main [ref=e4]:
+    - generic [ref=e6]:
+      - checkbox [ref=e5]
+      - generic [ref=e7]: Email me about new features
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - paragraph [ref=e102]: Setting 0 controls how notification batch 0 is delivered to your inbox.
+        - link "Learn more about setting 0" [ref=e103] [cursor=pointer]:
+          - /url: /help/settings/0
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - paragraph [ref=e106]: Setting 1 controls how notification batch 1 is delivered to your inbox.
+        - link "Learn more about setting 1" [ref=e107] [cursor=pointer]:
+          - /url: /help/settings/1
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - paragraph [ref=e110]: Setting 2 controls how notification batch 2 is delivered to your inbox.
+        - link "Learn more about setting 2" [ref=e111] [cursor=pointer]:
+          - /url: /help/settings/2
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - paragraph [ref=e114]: Setting 3 controls how notification batch 3 is delivered to your inbox.
+        - link "Learn more about setting 3" [ref=e115] [cursor=pointer]:
+          - /url: /help/settings/3
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - paragraph [ref=e118]: Setting 4 controls how notification batch 4 is delivered to your inbox.
+        - link "Learn more about setting 4" [ref=e119] [cursor=pointer]:
+          - /url: /help/settings/4
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - paragraph [ref=e122]: Setting 5 controls how notification batch 5 is delivered to your inbox.
+        - link "Learn more about setting 5" [ref=e123] [cursor=pointer]:
+          - /url: /help/settings/5
+    - generic [ref=e124]:
+      - generic [ref=e125]:
+        - paragraph [ref=e126]: Setting 6 controls how notification batch 6 is delivered to your inbox.
+        - link "Learn more about setting 6" [ref=e127] [cursor=pointer]:
+          - /url: /help/settings/6
+    - generic [ref=e128]:
+      - generic [ref=e129]:
+        - paragraph [ref=e130]: Setting 7 controls how notification batch 7 is delivered to your inbox.
+        - link "Learn more about setting 7" [ref=e131] [cursor=pointer]:
+          - /url: /help/settings/7
+    - generic [ref=e132]:
+      - generic [ref=e133]:
+        - paragraph [ref=e134]: Setting 8 controls how notification batch 8 is delivered to your inbox.
+        - link "Learn more about setting 8" [ref=e135] [cursor=pointer]:
+          - /url: /help/settings/8
+    - generic [ref=e136]:
+      - generic [ref=e137]:
+        - paragraph [ref=e138]: Setting 9 controls how notification batch 9 is delivered to your inbox.
+        - link "Learn more about setting 9" [ref=e139] [cursor=pointer]:
+          - /url: /help/settings/9
+    - generic [ref=e140]:
+      - generic [ref=e141]:
+        - paragraph [ref=e142]: Setting 10 controls how notification batch 10 is delivered to your inbox.
+        - link "Learn more about setting 10" [ref=e143] [cursor=pointer]:
+          - /url: /help/settings/10
+    - generic [ref=e144]:
+      - generic [ref=e145]:
+        - paragraph [ref=e146]: Setting 11 controls how notification batch 11 is delivered to your inbox.
+        - link "Learn more about setting 11" [ref=e147] [cursor=pointer]:
+          - /url: /help/settings/11
+    - generic [ref=e148]:
+      - generic [ref=e149]:
+        - paragraph [ref=e150]: Setting 12 controls how notification batch 12 is delivered to your inbox.
+        - link "Learn more about setting 12" [ref=e151] [cursor=pointer]:
+          - /url: /help/settings/12
+    - generic [ref=e152]:
+      - generic [ref=e153]:
+        - paragraph [ref=e154]: Setting 13 controls how notification batch 13 is delivered to your inbox.
+        - link "Learn more about setting 13" [ref=e155] [cursor=pointer]:
+          - /url: /help/settings/13
+    - generic [ref=e156]:
+      - generic [ref=e157]:
+        - paragraph [ref=e158]: Setting 14 controls how notification batch 14 is delivered to your inbox.
+        - link "Learn more about setting 14" [ref=e159] [cursor=pointer]:
+          - /url: /help/settings/14
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - paragraph [ref=e162]: Setting 15 controls how notification batch 15 is delivered to your inbox.
+        - link "Learn more about setting 15" [ref=e163] [cursor=pointer]:
+          - /url: /help/settings/15
+    - generic [ref=e164]:
+      - generic [ref=e165]:
+        - paragraph [ref=e166]: Setting 16 controls how notification batch 16 is delivered to your inbox.
+        - link "Learn more about setting 16" [ref=e167] [cursor=pointer]:
+          - /url: /help/settings/16
+    - generic [ref=e168]:
+      - generic [ref=e169]:
+        - paragraph [ref=e170]: Setting 17 controls how notification batch 17 is delivered to your inbox.
+        - link "Learn more about setting 17" [ref=e171] [cursor=pointer]:
+          - /url: /help/settings/17
+    - generic [ref=e172]:
+      - generic [ref=e173]:
+        - paragraph [ref=e174]: Setting 18 controls how notification batch 18 is delivered to your inbox.
+        - link "Learn more about setting 18" [ref=e175] [cursor=pointer]:
+          - /url: /help/settings/18
+    - generic [ref=e176]:
+      - generic [ref=e177]:
+        - paragraph [ref=e178]: Setting 19 controls how notification batch 19 is delivered to your inbox.
+        - link "Learn more about setting 19" [ref=e179] [cursor=pointer]:
+          - /url: /help/settings/19
+    - generic [ref=e180]:
+      - generic [ref=e181]:
+        - paragraph [ref=e182]: Setting 20 controls how notification batch 20 is delivered to your inbox.
+        - link "Learn more about setting 20" [ref=e183] [cursor=pointer]:
+          - /url: /help/settings/20
+    - generic [ref=e184]:
+      - generic [ref=e185]:
+        - paragraph [ref=e186]: Setting 21 controls how notification batch 21 is delivered to your inbox.
+        - link "Learn more about setting 21" [ref=e187] [cursor=pointer]:
+          - /url: /help/settings/21
+    - generic [ref=e188]:
+      - generic [ref=e189]:
+        - paragraph [ref=e190]: Setting 22 controls how notification batch 22 is delivered to your inbox.
+        - link "Learn more about setting 22" [ref=e191] [cursor=pointer]:
+          - /url: /help/settings/22
+    - generic [ref=e192]:
+      - generic [ref=e193]:
+        - paragraph [ref=e194]: Setting 23 controls how notification batch 23 is delivered to your inbox.
+        - link "Learn more about setting 23" [ref=e195] [cursor=pointer]:
+          - /url: /help/settings/23
+    - generic [ref=e196]:
+      - generic [ref=e197]:
+        - paragraph [ref=e198]: Setting 24 controls how notification batch 24 is delivered to your inbox.
+        - link "Learn more about setting 24" [ref=e199] [cursor=pointer]:
+          - /url: /help/settings/24
+    - generic [ref=e200]:
+      - generic [ref=e201]:
+        - paragraph [ref=e202]: Setting 25 controls how notification batch 25 is delivered to your inbox.
+        - link "Learn more about setting 25" [ref=e203] [cursor=pointer]:
+          - /url: /help/settings/25
+    - generic [ref=e204]:
+      - generic [ref=e205]:
+        - paragraph [ref=e206]: Setting 26 controls how notification batch 26 is delivered to your inbox.
+        - link "Learn more about setting 26" [ref=e207] [cursor=pointer]:
+          - /url: /help/settings/26
+    - generic [ref=e208]:
+      - generic [ref=e209]:
+        - paragraph [ref=e210]: Setting 27 controls how notification batch 27 is delivered to your inbox.
+        - link "Learn more about setting 27" [ref=e211] [cursor=pointer]:
+          - /url: /help/settings/27
+    - generic [ref=e212]:
+      - generic [ref=e213]:
+        - paragraph [ref=e214]: Setting 28 controls how notification batch 28 is delivered to your inbox.
+        - link "Learn more about setting 28" [ref=e215] [cursor=pointer]:
+          - /url: /help/settings/28
+    - generic [ref=e216]:
+      - generic [ref=e217]:
+        - paragraph [ref=e218]: Setting 29 controls how notification batch 29 is delivered to your inbox.
+        - link "Learn more about setting 29" [ref=e219] [cursor=pointer]:
+          - /url: /help/settings/29
+    - generic [ref=e220]:
+      - generic [ref=e221]:
+        - paragraph [ref=e222]: Setting 30 controls how notification batch 30 is delivered to your inbox.
+        - link "Learn more about setting 30" [ref=e223] [cursor=pointer]:
+          - /url: /help/settings/30
+    - generic [ref=e224]:
+      - generic [ref=e225]:
+        - paragraph [ref=e226]: Setting 31 controls how notification batch 31 is delivered to your inbox.
+        - link "Learn more about setting 31" [ref=e227] [cursor=pointer]:
+          - /url: /help/settings/31
+    - generic [ref=e228]:
+      - generic [ref=e229]:
+        - paragraph [ref=e230]: Setting 32 controls how notification batch 32 is delivered to your inbox.
+        - link "Learn more about setting 32" [ref=e231] [cursor=pointer]:
+          - /url: /help/settings/32
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - paragraph [ref=e234]: Setting 33 controls how notification batch 33 is delivered to your inbox.
+        - link "Learn more about setting 33" [ref=e235] [cursor=pointer]:
+          - /url: /help/settings/33
+    - generic [ref=e236]:
+      - generic [ref=e237]:
+        - paragraph [ref=e238]: Setting 34 controls how notification batch 34 is delivered to your inbox.
+        - link "Learn more about setting 34" [ref=e239] [cursor=pointer]:
+          - /url: /help/settings/34
+    - generic [ref=e240]:
+      - generic [ref=e241]:
+        - paragraph [ref=e242]: Setting 35 controls how notification batch 35 is delivered to your inbox.
+        - link "Learn more about setting 35" [ref=e243] [cursor=pointer]:
+          - /url: /help/settings/35
+    - generic [ref=e244]:
+      - generic [ref=e245]:
+        - paragraph [ref=e246]: Setting 36 controls how notification batch 36 is delivered to your inbox.
+        - link "Learn more about setting 36" [ref=e247] [cursor=pointer]:
+          - /url: /help/settings/36
+    - generic [ref=e248]:
+      - generic [ref=e249]:
+        - paragraph [ref=e250]: Setting 37 controls how notification batch 37 is delivered to your inbox.
+        - link "Learn more about setting 37" [ref=e251] [cursor=pointer]:
+          - /url: /help/settings/37
+    - generic [ref=e252]:
+      - generic [ref=e253]:
+        - paragraph [ref=e254]: Setting 38 controls how notification batch 38 is delivered to your inbox.
+        - link "Learn more about setting 38" [ref=e255] [cursor=pointer]:
+          - /url: /help/settings/38
+    - generic [ref=e256]:
+      - generic [ref=e257]:
+        - paragraph [ref=e258]: Setting 39 controls how notification batch 39 is delivered to your inbox.
+        - link "Learn more about setting 39" [ref=e259] [cursor=pointer]:
+          - /url: /help/settings/39
+    - generic [ref=e260]:
+      - generic [ref=e261]:
+        - paragraph [ref=e262]: Setting 40 controls how notification batch 40 is delivered to your inbox.
+        - link "Learn more about setting 40" [ref=e263] [cursor=pointer]:
+          - /url: /help/settings/40
+    - generic [ref=e264]:
+      - generic [ref=e265]:
+        - paragraph [ref=e266]: Setting 41 controls how notification batch 41 is delivered to your inbox.
+        - link "Learn more about setting 41" [ref=e267] [cursor=pointer]:
+          - /url: /help/settings/41
+    - generic [ref=e268]:
+      - generic [ref=e269]:
+        - paragraph [ref=e270]: Setting 42 controls how notification batch 42 is delivered to your inbox.
+        - link "Learn more about setting 42" [ref=e271] [cursor=pointer]:
+          - /url: /help/settings/42
+    - generic [ref=e272]:
+      - generic [ref=e273]:
+        - paragraph [ref=e274]: Setting 43 controls how notification batch 43 is delivered to your inbox.
+        - link "Learn more about setting 43" [ref=e275] [cursor=pointer]:
+          - /url: /help/settings/43
+    - generic [ref=e276]:
+      - generic [ref=e277]:
+        - paragraph [ref=e278]: Setting 44 controls how notification batch 44 is delivered to your inbox.
+        - link "Learn more about setting 44" [ref=e279] [cursor=pointer]:
+          - /url: /help/settings/44
+    - generic [ref=e280]:
+      - generic [ref=e281]:
+        - paragraph [ref=e282]: Setting 45 controls how notification batch 45 is delivered to your inbox.
+        - link "Learn more about setting 45" [ref=e283] [cursor=pointer]:
+          - /url: /help/settings/45
+    - generic [ref=e284]:
+      - generic [ref=e285]:
+        - paragraph [ref=e286]: Setting 46 controls how notification batch 46 is delivered to your inbox.
+        - link "Learn more about setting 46" [ref=e287] [cursor=pointer]:
+          - /url: /help/settings/46
+    - generic [ref=e288]:
+      - generic [ref=e289]:
+        - paragraph [ref=e290]: Setting 47 controls how notification batch 47 is delivered to your inbox.
+        - link "Learn more about setting 47" [ref=e291] [cursor=pointer]:
+          - /url: /help/settings/47
+    - generic [ref=e292]:
+      - generic [ref=e293]:
+        - paragraph [ref=e294]: Setting 48 controls how notification batch 48 is delivered to your inbox.
+        - link "Learn more about setting 48" [ref=e295] [cursor=pointer]:
+          - /url: /help/settings/48
+    - generic [ref=e296]:
+      - generic [ref=e297]:
+        - paragraph [ref=e298]: Setting 49 controls how notification batch 49 is delivered to your inbox.
+        - link "Learn more about setting 49" [ref=e299] [cursor=pointer]:
+          - /url: /help/settings/49
+    - generic [ref=e300]:
+      - generic [ref=e301]:
+        - paragraph [ref=e302]: Setting 50 controls how notification batch 50 is delivered to your inbox.
+        - link "Learn more about setting 50" [ref=e303] [cursor=pointer]:
+          - /url: /help/settings/50
+    - generic [ref=e304]:
+      - generic [ref=e305]:
+        - paragraph [ref=e306]: Setting 51 controls how notification batch 51 is delivered to your inbox.
+        - link "Learn more about setting 51" [ref=e307] [cursor=pointer]:
+          - /url: /help/settings/51
+    - generic [ref=e308]:
+      - generic [ref=e309]:
+        - paragraph [ref=e310]: Setting 52 controls how notification batch 52 is delivered to your inbox.
+        - link "Learn more about setting 52" [ref=e311] [cursor=pointer]:
+          - /url: /help/settings/52
+    - generic [ref=e312]:
+      - generic [ref=e313]:
+        - paragraph [ref=e314]: Setting 53 controls how notification batch 53 is delivered to your inbox.
+        - link "Learn more about setting 53" [ref=e315] [cursor=pointer]:
+          - /url: /help/settings/53
+    - generic [ref=e316]:
+      - generic [ref=e317]:
+        - paragraph [ref=e318]: Setting 54 controls how notification batch 54 is delivered to your inbox.
+        - link "Learn more about setting 54" [ref=e319] [cursor=pointer]:
+          - /url: /help/settings/54
+    - generic [ref=e320]:
+      - generic [ref=e321]:
+        - paragraph [ref=e322]: Setting 55 controls how notification batch 55 is delivered to your inbox.
+        - link "Learn more about setting 55" [ref=e323] [cursor=pointer]:
+          - /url: /help/settings/55
+    - generic [ref=e324]:
+      - generic [ref=e325]:
+        - paragraph [ref=e326]: Setting 56 controls how notification batch 56 is delivered to your inbox.
+        - link "Learn more about setting 56" [ref=e327] [cursor=pointer]:
+          - /url: /help/settings/56
+    - generic [ref=e328]:
+      - generic [ref=e329]:
+        - paragraph [ref=e330]: Setting 57 controls how notification batch 57 is delivered to your inbox.
+        - link "Learn more about setting 57" [ref=e331] [cursor=pointer]:
+          - /url: /help/settings/57
+    - generic [ref=e332]:
+      - generic [ref=e333]:
+        - paragraph [ref=e334]: Setting 58 controls how notification batch 58 is delivered to your inbox.
+        - link "Learn more about setting 58" [ref=e335] [cursor=pointer]:
+          - /url: /help/settings/58
+    - generic [ref=e336]:
+      - generic [ref=e337]:
+        - paragraph [ref=e338]: Setting 59 controls how notification batch 59 is delivered to your inbox.
+        - link "Learn more about setting 59" [ref=e339] [cursor=pointer]:
+          - /url: /help/settings/59
+    - generic [ref=e340]:
+      - generic [ref=e341]:
+        - paragraph [ref=e342]: Setting 60 controls how notification batch 60 is delivered to your inbox.
+        - link "Learn more about setting 60" [ref=e343] [cursor=pointer]:
+          - /url: /help/settings/60
+    - generic [ref=e344]:
+      - generic [ref=e345]:
+        - paragraph [ref=e346]: Setting 61 controls how notification batch 61 is delivered to your inbox.
+        - link "Learn more about setting 61" [ref=e347] [cursor=pointer]:
+          - /url: /help/settings/61
+    - generic [ref=e348]:
+      - generic [ref=e349]:
+        - paragraph [ref=e350]: Setting 62 controls how notification batch 62 is delivered to your inbox.
+        - link "Learn more about setting 62" [ref=e351] [cursor=pointer]:
+          - /url: /help/settings/62
+    - generic [ref=e352]:
+      - generic [ref=e353]:
+        - paragraph [ref=e354]: Setting 63 controls how notification batch 63 is delivered to your inbox.
+        - link "Learn more about setting 63" [ref=e355] [cursor=pointer]:
+          - /url: /help/settings/63
+    - generic [ref=e356]:
+      - generic [ref=e357]:
+        - paragraph [ref=e358]: Setting 64 controls how notification batch 64 is delivered to your inbox.
+        - link "Learn more about setting 64" [ref=e359] [cursor=pointer]:
+          - /url: /help/settings/64
+    - generic [ref=e360]:
+      - generic [ref=e361]:
+        - paragraph [ref=e362]: Setting 65 controls how notification batch 65 is delivered to your inbox.
+        - link "Learn more about setting 65" [ref=e363] [cursor=pointer]:
+          - /url: /help/settings/65
+    - generic [ref=e364]:
+      - generic [ref=e365]:
+        - paragraph [ref=e366]: Setting 66 controls how notification batch 66 is delivered to your inbox.
+        - link "Learn more about setting 66" [ref=e367] [cursor=pointer]:
+          - /url: /help/settings/66
+    - generic [ref=e368]:
+      - generic [ref=e369]:
+        - paragraph [ref=e370]: Setting 67 controls how notification batch 67 is delivered to your inbox.
+        - link "Learn more about setting 67" [ref=e371] [cursor=pointer]:
+          - /url: /help/settings/67
+    - generic [ref=e372]:
+      - generic [ref=e373]:
+        - paragraph [ref=e374]: Setting 68 controls how notification batch 68 is delivered to your inbox.
+        - link "Learn more about setting 68" [ref=e375] [cursor=pointer]:
+          - /url: /help/settings/68
+    - generic [ref=e376]:
+      - generic [ref=e377]:
+        - paragraph [ref=e378]: Setting 69 controls how notification batch 69 is delivered to your inbox.
+        - link "Learn more about setting 69" [ref=e379] [cursor=pointer]:
+          - /url: /help/settings/69
+    - generic [ref=e380]:
+      - generic [ref=e381]:
+        - paragraph [ref=e382]: Setting 70 controls how notification batch 70 is delivered to your inbox.
+        - link "Learn more about setting 70" [ref=e383] [cursor=pointer]:
+          - /url: /help/settings/70
+    - generic [ref=e384]:
+      - generic [ref=e385]:
+        - paragraph [ref=e386]: Setting 71 controls how notification batch 71 is delivered to your inbox.
+        - link "Learn more about setting 71" [ref=e387] [cursor=pointer]:
+          - /url: /help/settings/71
+    - generic [ref=e388]:
+      - generic [ref=e389]:
+        - paragraph [ref=e390]: Setting 72 controls how notification batch 72 is delivered to your inbox.
+        - link "Learn more about setting 72" [ref=e391] [cursor=pointer]:
+          - /url: /help/settings/72
+    - generic [ref=e392]:
+      - generic [ref=e393]:
+        - paragraph [ref=e394]: Setting 73 controls how notification batch 73 is delivered to your inbox.
+        - link "Learn more about setting 73" [ref=e395] [cursor=pointer]:
+          - /url: /help/settings/73
+    - generic [ref=e396]:
+      - generic [ref=e397]:
+        - paragraph [ref=e398]: Setting 74 controls how notification batch 74 is delivered to your inbox.
+        - link "Learn more about setting 74" [ref=e399] [cursor=pointer]:
+          - /url: /help/settings/74
+    - generic [ref=e400]:
+      - generic [ref=e401]:
+        - paragraph [ref=e402]: Setting 75 controls how notification batch 75 is delivered to your inbox.
+        - link "Learn more about setting 75" [ref=e403] [cursor=pointer]:
+          - /url: /help/settings/75
+    - generic [ref=e404]:
+      - generic [ref=e405]:
+        - paragraph [ref=e406]: Setting 76 controls how notification batch 76 is delivered to your inbox.
+        - link "Learn more about setting 76" [ref=e407] [cursor=pointer]:
+          - /url: /help/settings/76
+    - generic [ref=e408]:
+      - generic [ref=e409]:
+        - paragraph [ref=e410]: Setting 77 controls how notification batch 77 is delivered to your inbox.
+        - link "Learn more about setting 77" [ref=e411] [cursor=pointer]:
+          - /url: /help/settings/77
+    - generic [ref=e412]:
+      - generic [ref=e413]:
+        - paragraph [ref=e414]: Setting 78 controls how notification batch 78 is delivered to your inbox.
+        - link "Learn more about setting 78" [ref=e415] [cursor=pointer]:
+          - /url: /help/settings/78
+    - generic [ref=e416]:
+      - generic [ref=e417]:
+        - paragraph [ref=e418]: Setting 79 controls how notification batch 79 is delivered to your inbox.
+        - link "Learn more about setting 79" [ref=e419] [cursor=pointer]:
+          - /url: /help/settings/79
+    - generic [ref=e420]:
+      - generic [ref=e421]:
+        - paragraph [ref=e422]: Setting 80 controls how notification batch 80 is delivered to your inbox.
+        - link "Learn more about setting 80" [ref=e423] [cursor=pointer]:
+          - /url: /help/settings/80
+    - generic [ref=e424]:
+      - generic [ref=e425]:
+        - paragraph [ref=e426]: Setting 81 controls how notification batch 81 is delivered to your inbox.
+        - link "Learn more about setting 81" [ref=e427] [cursor=pointer]:
+          - /url: /help/settings/81
+    - generic [ref=e428]:
+      - generic [ref=e429]:
+        - paragraph [ref=e430]: Setting 82 controls how notification batch 82 is delivered to your inbox.
+        - link "Learn more about setting 82" [ref=e431] [cursor=pointer]:
+          - /url: /help/settings/82
+    - generic [ref=e432]:
+      - generic [ref=e433]:
+        - paragraph [ref=e434]: Setting 83 controls how notification batch 83 is delivered to your inbox.
+        - link "Learn more about setting 83" [ref=e435] [cursor=pointer]:
+          - /url: /help/settings/83
+    - generic [ref=e436]:
+      - generic [ref=e437]:
+        - paragraph [ref=e438]: Setting 84 controls how notification batch 84 is delivered to your inbox.
+        - link "Learn more about setting 84" [ref=e439] [cursor=pointer]:
+          - /url: /help/settings/84
+    - generic [ref=e440]:
+      - generic [ref=e441]:
+        - paragraph [ref=e442]: Setting 85 controls how notification batch 85 is delivered to your inbox.
+        - link "Learn more about setting 85" [ref=e443] [cursor=pointer]:
+          - /url: /help/settings/85
+    - generic [ref=e444]:
+      - generic [ref=e445]:
+        - paragraph [ref=e446]: Setting 86 controls how notification batch 86 is delivered to your inbox.
+        - link "Learn more about setting 86" [ref=e447] [cursor=pointer]:
+          - /url: /help/settings/86
+    - generic [ref=e448]:
+      - generic [ref=e449]:
+        - paragraph [ref=e450]: Setting 87 controls how notification batch 87 is delivered to your inbox.
+        - link "Learn more about setting 87" [ref=e451] [cursor=pointer]:
+          - /url: /help/settings/87
+    - generic [ref=e452]:
+      - generic [ref=e453]:
+        - paragraph [ref=e454]: Setting 88 controls how notification batch 88 is delivered to your inbox.
+        - link "Learn more about setting 88" [ref=e455] [cursor=pointer]:
+          - /url: /help/settings/88
+    - generic [ref=e456]:
+      - generic [ref=e457]:
+        - paragraph [ref=e458]: Setting 89 controls how notification batch 89 is delivered to your inbox.
+        - link "Learn more about setting 89" [ref=e459] [cursor=pointer]:
+          - /url: /help/settings/89
+    - generic [ref=e460]:
+      - generic [ref=e461]:
+        - paragraph [ref=e462]: Setting 90 controls how notification batch 90 is delivered to your inbox.
+        - link "Learn more about setting 90" [ref=e463] [cursor=pointer]:
+          - /url: /help/settings/90
+    - generic [ref=e464]:
+      - generic [ref=e465]:
+        - paragraph [ref=e466]: Setting 91 controls how notification batch 91 is delivered to your inbox.
+        - link "Learn more about setting 91" [ref=e467] [cursor=pointer]:
+          - /url: /help/settings/91
+    - generic [ref=e468]:
+      - generic [ref=e469]:
+        - paragraph [ref=e470]: Setting 92 controls how notification batch 92 is delivered to your inbox.
+        - link "Learn more about setting 92" [ref=e471] [cursor=pointer]:
+          - /url: /help/settings/92
+    - generic [ref=e472]:
+      - generic [ref=e473]:
+        - paragraph [ref=e474]: Setting 93 controls how notification batch 93 is delivered to your inbox.
+        - link "Learn more about setting 93" [ref=e475] [cursor=pointer]:
+          - /url: /help/settings/93
+    - generic [ref=e476]:
+      - generic [ref=e477]:
+        - paragraph [ref=e478]: Setting 94 controls how notification batch 94 is delivered to your inbox.
+        - link "Learn more about setting 94" [ref=e479] [cursor=pointer]:
+          - /url: /help/settings/94
+    - generic [ref=e480]:
+      - generic [ref=e481]:
+        - paragraph [ref=e482]: Setting 95 controls how notification batch 95 is delivered to your inbox.
+        - link "Learn more about setting 95" [ref=e483] [cursor=pointer]:
+          - /url: /help/settings/95
+    - generic [ref=e484]:
+      - generic [ref=e485]:
+        - paragraph [ref=e486]: Setting 96 controls how notification batch 96 is delivered to your inbox.
+        - link "Learn more about setting 96" [ref=e487] [cursor=pointer]:
+          - /url: /help/settings/96
+    - generic [ref=e488]:
+      - generic [ref=e489]:
+        - paragraph [ref=e490]: Setting 97 controls how notification batch 97 is delivered to your inbox.
+        - link "Learn more about setting 97" [ref=e491] [cursor=pointer]:
+          - /url: /help/settings/97
+    - generic [ref=e492]:
+      - generic [ref=e493]:
+        - paragraph [ref=e494]: Setting 98 controls how notification batch 98 is delivered to your inbox.
+        - link "Learn more about setting 98" [ref=e495] [cursor=pointer]:
+          - /url: /help/settings/98
+    - generic [ref=e496]:
+      - generic [ref=e497]:
+        - paragraph [ref=e498]: Setting 99 controls how notification batch 99 is delivered to your inbox.
+        - link "Learn more about setting 99" [ref=e499] [cursor=pointer]:
+          - /url: /help/settings/99
+    - generic [ref=e500]:
+      - generic [ref=e501]:
+        - paragraph [ref=e502]: Setting 100 controls how notification batch 100 is delivered to your inbox.
+        - link "Learn more about setting 100" [ref=e503] [cursor=pointer]:
+          - /url: /help/settings/100
+    - generic [ref=e504]:
+      - generic [ref=e505]:
+        - paragraph [ref=e506]: Setting 101 controls how notification batch 101 is delivered to your inbox.
+        - link "Learn more about setting 101" [ref=e507] [cursor=pointer]:
+          - /url: /help/settings/101
+    - generic [ref=e508]:
+      - generic [ref=e509]:
+        - paragraph [ref=e510]: Setting 102 controls how notification batch 102 is delivered to your inbox.
+        - link "Learn more about setting 102" [ref=e511] [cursor=pointer]:
+          - /url: /help/settings/102
+    - generic [ref=e512]:
+      - generic [ref=e513]:
+        - paragraph [ref=e514]: Setting 103 controls how notification batch 103 is delivered to your inbox.
+        - link "Learn more about setting 103" [ref=e515] [cursor=pointer]:
+          - /url: /help/settings/103
+    - generic [ref=e516]:
+      - generic [ref=e517]:
+        - paragraph [ref=e518]: Setting 104 controls how notification batch 104 is delivered to your inbox.
+        - link "Learn more about setting 104" [ref=e519] [cursor=pointer]:
+          - /url: /help/settings/104
+    - generic [ref=e520]:
+      - generic [ref=e521]:
+        - paragraph [ref=e522]: Setting 105 controls how notification batch 105 is delivered to your inbox.
+        - link "Learn more about setting 105" [ref=e523] [cursor=pointer]:
+          - /url: /help/settings/105
+    - generic [ref=e524]:
+      - generic [ref=e525]:
+        - paragraph [ref=e526]: Setting 106 controls how notification batch 106 is delivered to your inbox.
+        - link "Learn more about setting 106" [ref=e527] [cursor=pointer]:
+          - /url: /help/settings/106
+    - generic [ref=e528]:
+      - generic [ref=e529]:
+        - paragraph [ref=e530]: Setting 107 controls how notification batch 107 is delivered to your inbox.
+        - link "Learn more about setting 107" [ref=e531] [cursor=pointer]:
+          - /url: /help/settings/107
+    - generic [ref=e532]:
+      - generic [ref=e533]:
+        - paragraph [ref=e534]: Setting 108 controls how notification batch 108 is delivered to your inbox.
+        - link "Learn more about setting 108" [ref=e535] [cursor=pointer]:
+          - /url: /help/settings/108
+    - generic [ref=e536]:
+      - generic [ref=e537]:
+        - paragraph [ref=e538]: Setting 109 controls how notification batch 109 is delivered to your inbox.
+        - link "Learn more about setting 109" [ref=e539] [cursor=pointer]:
+          - /url: /help/settings/109
+    - generic [ref=e540]:
+      - generic [ref=e541]:
+        - paragraph [ref=e542]: Setting 110 controls how notification batch 110 is delivered to your inbox.
+        - link "Learn more about setting 110" [ref=e543] [cursor=pointer]:
+          - /url: /help/settings/110
+    - generic [ref=e544]:
+      - generic [ref=e545]:
+        - paragraph [ref=e546]: Setting 111 controls how notification batch 111 is delivered to your inbox.
+        - link "Learn more about setting 111" [ref=e547] [cursor=pointer]:
+          - /url: /help/settings/111
+    - generic [ref=e548]:
+      - generic [ref=e549]:
+        - paragraph [ref=e550]: Setting 112 controls how notification batch 112 is delivered to your inbox.
+        - link "Learn more about setting 112" [ref=e551] [cursor=pointer]:
+          - /url: /help/settings/112
+    - generic [ref=e552]:
+      - generic [ref=e553]:
+        - paragraph [ref=e554]: Setting 113 controls how notification batch 113 is delivered to your inbox.
+        - link "Learn more about setting 113" [ref=e555] [cursor=pointer]:
+          - /url: /help/settings/113
+    - generic [ref=e556]:
+      - generic [ref=e557]:
+        - paragraph [ref=e558]: Setting 114 controls how notification batch 114 is delivered to your inbox.
+        - link "Learn more about setting 114" [ref=e559] [cursor=pointer]:
+          - /url: /help/settings/114
+    - generic [ref=e560]:
+      - generic [ref=e561]:
+        - paragraph [ref=e562]: Setting 115 controls how notification batch 115 is delivered to your inbox.
+        - link "Learn more about setting 115" [ref=e563] [cursor=pointer]:
+          - /url: /help/settings/115
+    - generic [ref=e564]:
+      - generic [ref=e565]:
+        - paragraph [ref=e566]: Setting 116 controls how notification batch 116 is delivered to your inbox.
+        - link "Learn more about setting 116" [ref=e567] [cursor=pointer]:
+          - /url: /help/settings/116
+    - generic [ref=e568]:
+      - generic [ref=e569]:
+        - paragraph [ref=e570]: Setting 117 controls how notification batch 117 is delivered to your inbox.
+        - link "Learn more about setting 117" [ref=e571] [cursor=pointer]:
+          - /url: /help/settings/117
+    - generic [ref=e572]:
+      - generic [ref=e573]:
+        - paragraph [ref=e574]: Setting 118 controls how notification batch 118 is delivered to your inbox.
+        - link "Learn more about setting 118" [ref=e575] [cursor=pointer]:
+          - /url: /help/settings/118
+    - generic [ref=e576]:
+      - generic [ref=e577]:
+        - paragraph [ref=e578]: Setting 119 controls how notification batch 119 is delivered to your inbox.
+        - link "Learn more about setting 119" [ref=e579] [cursor=pointer]:
+          - /url: /help/settings/119
+  - contentinfo [ref=e9000]:
+    - button "Save" [ref=e9001] [cursor=pointer]
+```

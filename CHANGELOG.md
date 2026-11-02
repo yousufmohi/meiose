@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.2 — 2026-11-02
 
 - JSON output is capped at 45,000 characters, under Claude Code's 50,000
   limit, and stays valid JSON. One big object no longer falls through to the

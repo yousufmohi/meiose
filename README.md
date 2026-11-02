@@ -17,20 +17,11 @@ Playwright MCP, 2 runs each ([details](docs/benchmarks.md)). Claude Code
 already hides tool results above ~25K tokens from the model, so it gains less
 than agents without that limit.
 
-<!-- TODO: demo GIF (docs/demo.gif) of `meiose install`, a browsing session, then `meiose stats` -->
+![meiose install --dry-run, meiose log and meiose stats after a real Playwright session](docs/demo.gif)
 
-Output of `meiose stats` after a short Playwright session (one large page was
-expanded on purpose, which counts against the savings):
-
-```
-Last 7 days: 269K tokens → 251K (6% saved)
-  7 tool calls, 3 trimmed · 1 expands (134K tokens, included above)
-
-  server                     tool               calls    before     after   saved
-  npx-playwright-mcp-latest  browser_snapshot       4      268K      117K     56%
-  npx-playwright-mcp-latest  browser_navigate       2       222       222      0%
-  npx-playwright-mcp-latest  browser_click          1       126       126      0%
-```
+A real session: Hacker News twice, then a checkbox click. The repeat snapshot
+is sent as a diff, so this example saves more than a typical task
+([benchmarks](docs/benchmarks.md)).
 
 ## Install
 

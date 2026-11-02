@@ -5,7 +5,7 @@ Output docs/demo.gif
 Set Shell "powershell"
 Set FontSize 18
 Set Width 1300
-Set Height 720
+Set Height 800
 Set Padding 24
 Set Theme "Catppuccin Mocha"
 Set TypingSpeed 35ms

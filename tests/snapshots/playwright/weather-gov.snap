@@ -15,51 +15,39 @@ source: tests/playwright_fixtures.rs
     - link [ref=f207e6]:
       - /url: http://www.commerce.gov
       - img "United States Department of Commerce" [ref=f207e7]
-    - link "National Oceanic and Atmospheric Administration" [ref=f207e8]:
-      - /url: http://www.noaa.gov
+    - link "National Oceanic and Atmospheric Administration" [ref=f207e8]: http://www.noaa.gov
   - generic:
     - list:
       - listitem:
-        - link "HOME" [ref=f207e16]:
-          - /url: "#"
+        - link "HOME" [ref=f207e16]: "#"
       - listitem:
-        - link "FORECAST" [ref=f207e18]:
-          - /url: https://www.weather.gov/forecastmaps/
+        - link "FORECAST" [ref=f207e18]: https://www.weather.gov/forecastmaps/
       - listitem:
-        - link "PAST WEATHER" [ref=f207e20]:
-          - /url: https://www.weather.gov/wrh/climate
+        - link "PAST WEATHER" [ref=f207e20]: https://www.weather.gov/wrh/climate
       - listitem:
-        - link "SAFETY" [ref=f207e22]:
-          - /url: https://www.weather.gov/safety/
+        - link "SAFETY" [ref=f207e22]: https://www.weather.gov/safety/
       - listitem:
-        - link "INFORMATION" [ref=f207e24]:
-          - /url: https://www.weather.gov/informationcenter
+        - link "INFORMATION" [ref=f207e24]: https://www.weather.gov/informationcenter
       - listitem:
-        - link "EDUCATION" [ref=f207e26]:
-          - /url: https://www.weather.gov/education/
+        - link "EDUCATION" [ref=f207e26]: https://www.weather.gov/education/
       - listitem:
-        - link "NEWS" [ref=f207e28]:
-          - /url: https://www.weather.gov/news
+        - link "NEWS" [ref=f207e28]: https://www.weather.gov/news
       - listitem:
-        - link "SEARCH" [ref=f207e30]:
-          - /url: https://www.weather.gov/search/
+        - link "SEARCH" [ref=f207e30]: https://www.weather.gov/search/
       - listitem:
-        - link "ABOUT" [ref=f207e32]:
-          - /url: https://www.weather.gov/about/
+        - link "ABOUT" [ref=f207e32]: https://www.weather.gov/about/
     - generic:
       - generic:
         - generic:
           - generic: Local forecast by "City, St" or ZIP code
           - textbox "Local forecast by \"City, St\" or ZIP code" [ref=f207e38]: Enter location ...
           - button "Go" [ref=f207e39]
-          - link "Location Help" [ref=f207e41]:
-            - /url: javascript:void(window.open('https://www.weather.gov/ForecastSearchHelp.html','locsearchhelp','status=0,toolbar=0,location=0,menubar=0,directories=0,resizable=1,scrollbars=1,height=500,width=530').focus());
+          - link "Location Help" [ref=f207e41]: javascript:void(window.open('https://www.weather.gov/ForecastSearchHelp.html','locsearchhelp','status=0,toolbar=0,location=0,menubar=0,directories=0,resizable=1,scrollbars=1,height=500,width=530').focus());
         - generic:
           - heading "Heavy Rainfall and Flooding in the Southwest and Four Corners; Unsettled Weather in Florida" [level=1] [ref=f207e45]
           - paragraph:
             - text: Heavy to excessive rainfall will continue today across portions of the Southwest and Four Corners Region, leading to flash, urban and small stream flooding. Significant river flooding is expected through Monday. Heavy rainfall is expected across southern and eastern Florida through Monday, with isolated flash flooding possible.
-            - link "Read More >" [ref=f207e47]:
-              - /url: http://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=pmdspd
+            - link "Read More >" [ref=f207e47]: http://www.wpc.ncep.noaa.gov/discussions/hpcdiscussions.php?disc=pmdspd
       - generic:
         - generic:
           - generic:
@@ -73,108 +61,76 @@ source: tests/playwright_fixtures.rs
           - generic:
             - button "Get Weather" [ref=f207e60]
             - paragraph:
-              - link "Privacy Policy" [ref=f207e62]:
-                - /url: /privacy.php
+              - link "Privacy Policy" [ref=f207e62]: /privacy.php
         - generic:
           - list:
             - listitem:
-              - link "ACTIVE ALERTS" [ref=f207e68]:
-                - /url: /alerts
+              - link "ACTIVE ALERTS" [ref=f207e68]: /alerts
             - listitem:
-              - link "FORECAST MAPS" [ref=f207e70]:
-                - /url: /forecastmaps/
+              - link "FORECAST MAPS" [ref=f207e70]: /forecastmaps/
             - listitem:
-              - link "RADAR" [ref=f207e72]:
-                - /url: https://radar.weather.gov/region/conus/standard
+              - link "RADAR" [ref=f207e72]: https://radar.weather.gov/region/conus/standard
             - listitem:
-              - link "RIVERS, LAKES, RAINFALL" [ref=f207e74]:
-                - /url: https://water.noaa.gov/
+              - link "RIVERS, LAKES, RAINFALL" [ref=f207e74]: https://water.noaa.gov/
             - listitem:
-              - link "AIR QUALITY" [ref=f207e76]:
-                - /url: https://airquality.weather.gov
+              - link "AIR QUALITY" [ref=f207e76]: https://airquality.weather.gov
             - listitem:
-              - link "SATELLITE" [ref=f207e78]:
-                - /url: /satellite
+              - link "SATELLITE" [ref=f207e78]: /satellite
             - listitem:
-              - link "CURRENT" [ref=f207e80]:
-                - /url: /current
+              - link "CURRENT" [ref=f207e80]: /current
           - generic:
             - generic:
-              - link "American Samoa" [ref=f207e89]:
-                - /url: /ppg/
-              - link "Guam" [ref=f207e90]:
-                - /url: /gum/
-              - link "Puerto Rico/Virgin Islands" [ref=f207e91]:
-                - /url: /sju/
+              - link "American Samoa" [ref=f207e89]: /ppg/
+              - link "Guam" [ref=f207e90]: /gum/
+              - link "Puerto Rico/Virgin Islands" [ref=f207e91]: /sju/
             - generic:
               - text: Click on the map above for detailed alerts
-              - link "Public Alerts in XML/CAP v1.2 and ATOM Formats" [ref=f207e95]:
-                - /url: https://vlab.noaa.gov/web/nws-common-alerting-protocol
+              - link "Public Alerts in XML/CAP v1.2 and ATOM Formats" [ref=f207e95]: https://vlab.noaa.gov/web/nws-common-alerting-protocol
               - generic:
                 - list:
                   - listitem:
-                    - link "Flash Flood Warning" [ref=f207e100]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flash%20Flood%20Warning
+                    - link "Flash Flood Warning" [ref=f207e100]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flash%20Flood%20Warning
                   - listitem:
-                    - link "Winter Storm Warning" [ref=f207e103]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Winter%20Storm%20Warning
+                    - link "Winter Storm Warning" [ref=f207e103]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Winter%20Storm%20Warning
                   - listitem:
-                    - link "High Wind Warning" [ref=f207e106]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=High%20Wind%20Warning
+                    - link "High Wind Warning" [ref=f207e106]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=High%20Wind%20Warning
                   - listitem:
-                    - link "Flood Warning" [ref=f207e109]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flood%20Warning
+                    - link "Flood Warning" [ref=f207e109]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flood%20Warning
                   - listitem:
-                    - link "Severe Thunderstorm Watch" [ref=f207e112]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Severe%20Thunderstorm%20Watch
+                    - link "Severe Thunderstorm Watch" [ref=f207e112]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Severe%20Thunderstorm%20Watch
                 - list:
                   - listitem:
-                    - link "Gale Warning" [ref=f207e117]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Gale%20Warning
+                    - link "Gale Warning" [ref=f207e117]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Gale%20Warning
                   - listitem:
-                    - link "Winter Weather Advisory" [ref=f207e120]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Winter%20Weather%20Advisory
+                    - link "Winter Weather Advisory" [ref=f207e120]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Winter%20Weather%20Advisory
                   - listitem:
-                    - link "Flood Advisory" [ref=f207e123]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flood%20Advisory
+                    - link "Flood Advisory" [ref=f207e123]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flood%20Advisory
                   - listitem:
-                    - link "Coastal Flood Advisory" [ref=f207e126]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Coastal%20Flood%20Advisory
+                    - link "Coastal Flood Advisory" [ref=f207e126]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Coastal%20Flood%20Advisory
                   - listitem:
-                    - link "High Surf Advisory" [ref=f207e129]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=High%20Surf%20Advisory
+                    - link "High Surf Advisory" [ref=f207e129]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=High%20Surf%20Advisory
                 - list:
                   - listitem:
-                    - link "Dense Fog Advisory" [ref=f207e134]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Dense%20Fog%20Advisory
+                    - link "Dense Fog Advisory" [ref=f207e134]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Dense%20Fog%20Advisory
                   - listitem:
-                    - link "Small Craft Advisory" [ref=f207e137]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Small%20Craft%20Advisory
+                    - link "Small Craft Advisory" [ref=f207e137]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Small%20Craft%20Advisory
                   - listitem:
-                    - link "Wind Advisory" [ref=f207e140]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Wind%20Advisory
+                    - link "Wind Advisory" [ref=f207e140]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Wind%20Advisory
                   - listitem:
-                    - link "Frost Advisory" [ref=f207e143]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Frost%20Advisory
+                    - link "Frost Advisory" [ref=f207e143]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Frost%20Advisory
                   - listitem:
-                    - link "Rip Current Statement" [ref=f207e146]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Rip%20Current%20Statement
+                    - link "Rip Current Statement" [ref=f207e146]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Rip%20Current%20Statement
                 - list:
                   - listitem:
-                    - link "Beach Hazards Statement" [ref=f207e151]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Beach%20Hazards%20Statement
+                    - link "Beach Hazards Statement" [ref=f207e151]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Beach%20Hazards%20Statement
                   - listitem:
-                    - link "Flood Watch" [ref=f207e154]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flood%20Watch
+                    - link "Flood Watch" [ref=f207e154]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Flood%20Watch
                   - listitem:
-                    - link "High Wind Watch" [ref=f207e157]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=High%20Wind%20Watch
+                    - link "High Wind Watch" [ref=f207e157]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=High%20Wind%20Watch
                   - listitem:
-                    - link "Coastal Flood Statement" [ref=f207e160]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Coastal%20Flood%20Statement
+                    - link "Coastal Flood Statement" [ref=f207e160]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Coastal%20Flood%20Statement
                   - listitem:
-                    - link "Special Weather Statement" [ref=f207e163]:
-                      - /url: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Special%20Weather%20Statement
+                    - link "Special Weather Statement" [ref=f207e163]: https://forecast.weather.gov/wwamap/wwatxtget.php?cwa=usa&wwa=Special%20Weather%20Statement
       - paragraph:
         - link [ref=f207e169]:
           - /url: http://weather.gov/safety
@@ -209,33 +165,21 @@ source: tests/playwright_fixtures.rs
       - /url: http://www.usa.gov
       - img "usa.gov" [ref=f207e203]
     - paragraph:
-      - link "US Dept of Commerce" [ref=f207e206]:
-        - /url: http://www.commerce.gov
-      - link "National Oceanic and Atmospheric Administration" [ref=f207e207]:
-        - /url: http://www.noaa.gov
-      - link "National Weather Service" [ref=f207e208]:
-        - /url: https://www.weather.gov
+      - link "US Dept of Commerce" [ref=f207e206]
+      - link "National Oceanic and Atmospheric Administration" [ref=f207e207]
+      - link "National Weather Service" [ref=f207e208]
       - text: 1325 East West Highway Silver Spring, MD 20910
-      - link "Comments? Questions? Please Contact Us." [ref=f207e209]:
-        - /url: https://www.weather.gov/Contact
+      - link "Comments? Questions? Please Contact Us." [ref=f207e209]: https://www.weather.gov/Contact
     - generic:
       - generic:
-        - link "Disclaimer" [ref=f207e212]:
-          - /url: https://www.weather.gov/disclaimer
-        - link "Information Quality" [ref=f207e213]:
-          - /url: http://www.cio.noaa.gov/services_programs/info_quality.html
-        - link "Help" [ref=f207e214]:
-          - /url: https://www.weather.gov/help
-        - link "Glossary" [ref=f207e215]:
-          - /url: /glossary
+        - link "Disclaimer" [ref=f207e212]: https://www.weather.gov/disclaimer
+        - link "Information Quality" [ref=f207e213]: http://www.cio.noaa.gov/services_programs/info_quality.html
+        - link "Help" [ref=f207e214]: https://www.weather.gov/help
+        - link "Glossary" [ref=f207e215]: /glossary
       - generic:
-        - link "Privacy Policy" [ref=f207e217]:
-          - /url: https://www.weather.gov/privacy
-        - link "Freedom of Information Act (FOIA)" [ref=f207e218]:
-          - /url: https://www.noaa.gov/foia-freedom-of-information-act
-        - link "About Us" [ref=f207e219]:
-          - /url: https://www.weather.gov/about
-        - link "Career Opportunities" [ref=f207e220]:
-          - /url: https://www.weather.gov/careers
+        - link "Privacy Policy" [ref=f207e217]: https://www.weather.gov/privacy
+        - link "Freedom of Information Act (FOIA)" [ref=f207e218]: https://www.noaa.gov/foia-freedom-of-information-act
+        - link "About Us" [ref=f207e219]: https://www.weather.gov/about
+        - link "Career Opportunities" [ref=f207e220]: https://www.weather.gov/careers
 ```
-[meiose: 3 nodes trimmed, 67 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 3 nodes trimmed, 67 non-interactive refs hidden, 3 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

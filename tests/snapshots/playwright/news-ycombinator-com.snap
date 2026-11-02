@@ -14,29 +14,19 @@ source: tests/playwright_fixtures.rs
           - rowgroup:
             - row:
               - cell:
-                - link [ref=f94e11]:
-                  - /url: https://news.ycombinator.com
+                - link [ref=f94e11]: https://news.ycombinator.com
               - cell:
                 - generic:
-                  - link "Hacker News" [ref=f94e16]:
-                    - /url: news
-                  - link "new" [ref=f94e17]:
-                    - /url: newest
-                  - link "past" [ref=f94e18]:
-                    - /url: front
-                  - link "comments" [ref=f94e19]:
-                    - /url: newcomments
-                  - link "ask" [ref=f94e20]:
-                    - /url: ask
-                  - link "show" [ref=f94e21]:
-                    - /url: show
-                  - link "jobs" [ref=f94e22]:
-                    - /url: jobs
-                  - link "submit" [ref=f94e23]:
-                    - /url: submit
+                  - link "Hacker News" [ref=f94e16]: news
+                  - link "new" [ref=f94e17]: newest
+                  - link "past" [ref=f94e18]: front
+                  - link "comments" [ref=f94e19]: newcomments
+                  - link "ask" [ref=f94e20]: ask
+                  - link "show" [ref=f94e21]: show
+                  - link "jobs" [ref=f94e22]: jobs
+                  - link "submit" [ref=f94e23]: submit
               - cell:
-                - link "login" [ref=f94e26]:
-                  - /url: login?goto=news
+                - link "login" [ref=f94e26]: login?goto=news
     - row:
       - cell:
         - table [ref=f94e30]:
@@ -44,116 +34,90 @@ source: tests/playwright_fixtures.rs
             - row:
               - cell "1."
               - cell:
-                - link "upvote" [ref=f94e36]:
-                  - /url: vote?id=50326821&how=up&goto=news
+                - link "upvote" [ref=f94e36]: vote?id=50326821&how=up&goto=news
               - cell:
                 - generic:
                   - 'link "Show HN: HackerBooks – HackerTube, but for books mentioned on HN" [ref=f94e40] [cursor=pointer]':
                     - /url: https://hackerbooks.org
                   - generic:
                     - text: (
-                    - link "hackerbooks.org" [ref=f94e42]:
-                      - /url: from?site=hackerbooks.org
+                    - link "hackerbooks.org" [ref=f94e42]: from?site=hackerbooks.org
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 906 points by
-                  - link "roansh" [ref=f94e47]:
-                    - /url: user?id=roansh
+                  - link "roansh" [ref=f94e47]: user?id=roansh
                   - generic "2026-11-01T15:58:28":
-                    - link "9 hours ago" [ref=f94e49]:
-                      - /url: item?id=50326821
-                  - link "hide" [ref=f94e50]:
-                    - /url: hide?id=50326821&goto=news
-                  - link "178 comments" [ref=f94e51]:
-                    - /url: item?id=50326821
+                    - link "9 hours ago" [ref=f94e49]: item?id=50326821
+                  - link "hide" [ref=f94e50]: hide?id=50326821&goto=news
+                  - link "178 comments" [ref=f94e51]
             - row:
               - cell "2."
               - cell:
-                - link "upvote" [ref=f94e57]:
-                  - /url: vote?id=50312408&how=up&goto=news
+                - link "upvote" [ref=f94e57]: vote?id=50312408&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Postgres 19 is late, and it's AI's fault" [ref=f94e61]:
-                    - /url: http://rhaas.blogspot.com/2026/10/postgres-19-is-late-and-its-ais-fault.html
+                  - link "Postgres 19 is late, and it's AI's fault" [ref=f94e61]: http://rhaas.blogspot.com/2026/10/postgres-19-is-late-and-its-ais-fault.html
                   - generic:
                     - text: (
-                    - link "rhaas.blogspot.com" [ref=f94e63]:
-                      - /url: from?site=rhaas.blogspot.com
+                    - link "rhaas.blogspot.com" [ref=f94e63]: from?site=rhaas.blogspot.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 44 points by
-                  - link "soheilpro" [ref=f94e68]:
-                    - /url: user?id=soheilpro
+                  - link "soheilpro" [ref=f94e68]: user?id=soheilpro
                   - generic "2026-10-31T01:38:56":
-                    - link "2 hours ago" [ref=f94e70]:
-                      - /url: item?id=50312408
-                  - link "hide" [ref=f94e71]:
-                    - /url: hide?id=50312408&goto=news
-                  - link "36 comments" [ref=f94e72]:
-                    - /url: item?id=50312408
+                    - link "2 hours ago" [ref=f94e70]: item?id=50312408
+                  - link "hide" [ref=f94e71]: hide?id=50312408&goto=news
+                  - link "36 comments" [ref=f94e72]
             - row:
               - cell "3."
               - cell:
-                - link "upvote" [ref=f94e78]:
-                  - /url: vote?id=50319510&how=up&goto=news
+                - link "upvote" [ref=f94e78]: vote?id=50319510&how=up&goto=news
               - cell:
                 - generic:
                   - 'link "HackerTube: YouTube built from videos recommended by HN" [ref=f94e82] [cursor=pointer]':
                     - /url: https://karpathy.bearblog.dev/hacker-tube/
                   - generic:
                     - text: (
-                    - link "karpathy.bearblog.dev" [ref=f94e84]:
-                      - /url: from?site=karpathy.bearblog.dev
+                    - link "karpathy.bearblog.dev" [ref=f94e84]: from?site=karpathy.bearblog.dev
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 2280 points by
-                  - link "karpathy" [ref=f94e89]:
-                    - /url: user?id=karpathy
+                  - link "karpathy" [ref=f94e89]: user?id=karpathy
                   - generic "2026-10-31T19:56:53":
-                    - link "1 day ago" [ref=f94e91]:
-                      - /url: item?id=50319510
-                  - link "hide" [ref=f94e92]:
-                    - /url: hide?id=50319510&goto=news
-                  - link "538 comments" [ref=f94e93]:
-                    - /url: item?id=50319510
+                    - link "1 day ago" [ref=f94e91]: item?id=50319510
+                  - link "hide" [ref=f94e92]: hide?id=50319510&goto=news
+                  - link "538 comments" [ref=f94e93]
             - row:
               - cell "4."
               - cell:
-                - link "upvote" [ref=f94e99]:
-                  - /url: vote?id=50299811&how=up&goto=news
+                - link "upvote" [ref=f94e99]: vote?id=50299811&how=up&goto=news
               - cell:
                 - generic:
                   - 'link "Nibnib: Image compression with extreme decompression speed" [ref=f94e103] [cursor=pointer]':
                     - /url: https://github.com/raphlinus/nibnib
                   - generic:
                     - text: (
-                    - link "github.com/raphlinus" [ref=f94e105]:
-                      - /url: from?site=github.com/raphlinus
+                    - link "github.com/raphlinus" [ref=f94e105]: from?site=github.com/raphlinus
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 90 points by
-                  - link "raphlinus" [ref=f94e110]:
-                    - /url: user?id=raphlinus
+                  - link "raphlinus" [ref=f94e110]: user?id=raphlinus
                   - generic "2026-10-30T04:17:06":
-                    - link "6 hours ago" [ref=f94e112]:
-                      - /url: item?id=50299811
-                  - link "hide" [ref=f94e113]:
-                    - /url: hide?id=50299811&goto=news
-                  - link "12 comments" [ref=f94e114]:
-                    - /url: item?id=50299811
+                    - link "6 hours ago" [ref=f94e112]: item?id=50299811
+                  - link "hide" [ref=f94e113]: hide?id=50299811&goto=news
+                  - link "12 comments" [ref=f94e114]
             - row:
               - cell "5."
               - cell:
-                - link "upvote" [ref=f94e120]:
-                  - /url: vote?id=50328896&how=up&goto=news
+                - link "upvote" [ref=f94e120]: vote?id=50328896&how=up&goto=news
               - cell:
                 - 'link "Ask HN: Which TV do you recommend for privacy?" [ref=f94e124] [cursor=pointer]':
                   - /url: item?id=50328896
@@ -161,721 +125,537 @@ source: tests/playwright_fixtures.rs
               - cell:
                 - generic:
                   - text: 131 points by
-                  - link "LecroJS" [ref=f94e129]:
-                    - /url: user?id=LecroJS
+                  - link "LecroJS" [ref=f94e129]: user?id=LecroJS
                   - generic "2026-11-01T19:35:27":
-                    - link "5 hours ago" [ref=f94e131]:
-                      - /url: item?id=50328896
-                  - link "hide" [ref=f94e132]:
-                    - /url: hide?id=50328896&goto=news
-                  - link "236 comments" [ref=f94e133]:
-                    - /url: item?id=50328896
+                    - link "5 hours ago" [ref=f94e131]
+                  - link "hide" [ref=f94e132]: hide?id=50328896&goto=news
+                  - link "236 comments" [ref=f94e133]
             - row:
               - cell "6."
               - cell:
-                - link "upvote" [ref=f94e139]:
-                  - /url: vote?id=50331404&how=up&goto=news
+                - link "upvote" [ref=f94e139]: vote?id=50331404&how=up&goto=news
               - cell:
                 - generic:
                   - 'link "America on Data Centers: 10k city council comments" [ref=f94e143] [cursor=pointer]':
                     - /url: https://www.americansentiment.com/datacenters
                   - generic:
                     - text: (
-                    - link "americansentiment.com" [ref=f94e145]:
-                      - /url: from?site=americansentiment.com
+                    - link "americansentiment.com" [ref=f94e145]: from?site=americansentiment.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 10 points by
-                  - link "afandrew" [ref=f94e150]:
-                    - /url: user?id=afandrew
+                  - link "afandrew" [ref=f94e150]: user?id=afandrew
                   - generic "2026-11-02T00:17:33":
-                    - link "1 hour ago" [ref=f94e152]:
-                      - /url: item?id=50331404
-                  - link "hide" [ref=f94e153]:
-                    - /url: hide?id=50331404&goto=news
-                  - link "6 comments" [ref=f94e154]:
-                    - /url: item?id=50331404
+                    - link "1 hour ago" [ref=f94e152]: item?id=50331404
+                  - link "hide" [ref=f94e153]: hide?id=50331404&goto=news
+                  - link "6 comments" [ref=f94e154]
             - row:
               - cell "7."
               - cell:
-                - link "upvote" [ref=f94e160]:
-                  - /url: vote?id=50271106&how=up&goto=news
+                - link "upvote" [ref=f94e160]: vote?id=50271106&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Tips for more effective fuzz testing with AFL++" [ref=f94e164]:
-                    - /url: https://nullprogram.com/blog/2025/02/05/
+                  - link "Tips for more effective fuzz testing with AFL++" [ref=f94e164]: https://nullprogram.com/blog/2025/02/05/
                   - generic:
                     - text: (
-                    - link "nullprogram.com" [ref=f94e166]:
-                      - /url: from?site=nullprogram.com
+                    - link "nullprogram.com" [ref=f94e166]: from?site=nullprogram.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 73 points by
-                  - link "luu" [ref=f94e171]:
-                    - /url: user?id=luu
+                  - link "luu" [ref=f94e171]: user?id=luu
                   - generic "2026-10-28T09:46:12":
-                    - link "6 hours ago" [ref=f94e173]:
-                      - /url: item?id=50271106
-                  - link "hide" [ref=f94e174]:
-                    - /url: hide?id=50271106&goto=news
-                  - link "13 comments" [ref=f94e175]:
-                    - /url: item?id=50271106
+                    - link "6 hours ago" [ref=f94e173]: item?id=50271106
+                  - link "hide" [ref=f94e174]: hide?id=50271106&goto=news
+                  - link "13 comments" [ref=f94e175]
             - row:
               - cell "8."
               - cell:
-                - link "upvote" [ref=f94e181]:
-                  - /url: vote?id=50303088&how=up&goto=news
+                - link "upvote" [ref=f94e181]: vote?id=50303088&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Keeping Up Appearances – The women taking over the funeral industry" [ref=f94e185]:
-                    - /url: https://lareviewofbooks.org/article/death-industry-mortuary-programs-women-andie-eisen-quarterly/
+                  - link "Keeping Up Appearances – The women taking over the funeral industry" [ref=f94e185]: https://lareviewofbooks.org/article/death-industry-mortuary-programs-women-andie-eisen-quarterly/
                   - generic:
                     - text: (
-                    - link "lareviewofbooks.org" [ref=f94e187]:
-                      - /url: from?site=lareviewofbooks.org
+                    - link "lareviewofbooks.org" [ref=f94e187]: from?site=lareviewofbooks.org
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 18 points by
-                  - link "TMWNN" [ref=f94e192]:
-                    - /url: user?id=TMWNN
+                  - link "TMWNN" [ref=f94e192]: user?id=TMWNN
                   - generic "2026-10-30T12:40:08":
-                    - link "3 hours ago" [ref=f94e194]:
-                      - /url: item?id=50303088
-                  - link "hide" [ref=f94e195]:
-                    - /url: hide?id=50303088&goto=news
-                  - link "2 comments" [ref=f94e196]:
-                    - /url: item?id=50303088
+                    - link "3 hours ago" [ref=f94e194]: item?id=50303088
+                  - link "hide" [ref=f94e195]: hide?id=50303088&goto=news
+                  - link "2 comments" [ref=f94e196]
             - row:
               - cell "9."
               - cell:
-                - link "upvote" [ref=f94e202]:
-                  - /url: vote?id=50299427&how=up&goto=news
+                - link "upvote" [ref=f94e202]: vote?id=50299427&how=up&goto=news
               - cell:
                 - generic:
-                  - link "New 3D thermal invisibility cloak makes objects disappear from infrared cameras" [ref=f94e206]:
-                    - /url: https://www.sciencedaily.com/releases/2026/10/261025073051.htm
+                  - link "New 3D thermal invisibility cloak makes objects disappear from infrared cameras" [ref=f94e206]: https://www.sciencedaily.com/releases/2026/10/261025073051.htm
                   - generic:
                     - text: (
-                    - link "sciencedaily.com" [ref=f94e208]:
-                      - /url: from?site=sciencedaily.com
+                    - link "sciencedaily.com" [ref=f94e208]: from?site=sciencedaily.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 39 points by
-                  - link "stevenalowe" [ref=f94e213]:
-                    - /url: user?id=stevenalowe
+                  - link "stevenalowe" [ref=f94e213]: user?id=stevenalowe
                   - generic "2026-10-30T03:06:52":
-                    - link "5 hours ago" [ref=f94e215]:
-                      - /url: item?id=50299427
-                  - link "hide" [ref=f94e216]:
-                    - /url: hide?id=50299427&goto=news
-                  - link "22 comments" [ref=f94e217]:
-                    - /url: item?id=50299427
+                    - link "5 hours ago" [ref=f94e215]: item?id=50299427
+                  - link "hide" [ref=f94e216]: hide?id=50299427&goto=news
+                  - link "22 comments" [ref=f94e217]
             - row:
               - cell "10."
               - cell:
-                - link "upvote" [ref=f94e223]:
-                  - /url: vote?id=50325253&how=up&goto=news
+                - link "upvote" [ref=f94e223]: vote?id=50325253&how=up&goto=news
               - cell:
                 - generic:
                   - 'link "Show HN: OmniDiff – Opensource, super fast, content aware Git difftool, in Rust" [ref=f94e227] [cursor=pointer]':
                     - /url: https://github.com/ivankovic/omnidiff
                   - generic:
                     - text: (
-                    - link "github.com/ivankovic" [ref=f94e229]:
-                      - /url: from?site=github.com/ivankovic
+                    - link "github.com/ivankovic" [ref=f94e229]: from?site=github.com/ivankovic
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 156 points by
-                  - link "FabCH" [ref=f94e234]:
-                    - /url: user?id=FabCH
+                  - link "FabCH" [ref=f94e234]: user?id=FabCH
                   - generic "2026-11-01T13:02:30":
-                    - link "12 hours ago" [ref=f94e236]:
-                      - /url: item?id=50325253
-                  - link "hide" [ref=f94e237]:
-                    - /url: hide?id=50325253&goto=news
-                  - link "40 comments" [ref=f94e238]:
-                    - /url: item?id=50325253
+                    - link "12 hours ago" [ref=f94e236]: item?id=50325253
+                  - link "hide" [ref=f94e237]: hide?id=50325253&goto=news
+                  - link "40 comments" [ref=f94e238]
             - row:
               - cell "11."
               - cell:
-                - link "upvote" [ref=f94e244]:
-                  - /url: vote?id=50328251&how=up&goto=news
+                - link "upvote" [ref=f94e244]: vote?id=50328251&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Mathematics has changed. Let's act like it" [ref=f94e248]:
-                    - /url: https://terrytao.wordpress.com/2026/11/01/mathematics-has-changed-lets-act-like-it/
+                  - link "Mathematics has changed. Let's act like it" [ref=f94e248]: https://terrytao.wordpress.com/2026/11/01/mathematics-has-changed-lets-act-like-it/
                   - generic:
                     - text: (
-                    - link "terrytao.wordpress.com" [ref=f94e250]:
-                      - /url: from?site=terrytao.wordpress.com
+                    - link "terrytao.wordpress.com" [ref=f94e250]: from?site=terrytao.wordpress.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 218 points by
-                  - link "smilelamp" [ref=f94e255]:
-                    - /url: user?id=smilelamp
+                  - link "smilelamp" [ref=f94e255]: user?id=smilelamp
                   - generic "2026-11-01T18:28:42":
-                    - link "6 hours ago" [ref=f94e257]:
-                      - /url: item?id=50328251
-                  - link "hide" [ref=f94e258]:
-                    - /url: hide?id=50328251&goto=news
-                  - link "239 comments" [ref=f94e259]:
-                    - /url: item?id=50328251
+                    - link "6 hours ago" [ref=f94e257]: item?id=50328251
+                  - link "hide" [ref=f94e258]: hide?id=50328251&goto=news
+                  - link "239 comments" [ref=f94e259]
             - row:
               - cell "12."
               - cell:
-                - link "upvote" [ref=f94e265]:
-                  - /url: vote?id=50330456&how=up&goto=news
+                - link "upvote" [ref=f94e265]: vote?id=50330456&how=up&goto=news
               - cell:
                 - generic:
-                  - link "AI delivers 'zero financial payoff' to most companies, Apollo economist says" [ref=f94e269]:
-                    - /url: https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/
+                  - link "AI delivers 'zero financial payoff' to most companies, Apollo economist says" [ref=f94e269]: https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/
                   - generic:
                     - text: (
-                    - link "techcrunch.com" [ref=f94e271]:
-                      - /url: from?site=techcrunch.com
+                    - link "techcrunch.com" [ref=f94e271]: from?site=techcrunch.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 149 points by
-                  - link "throwoutway" [ref=f94e276]:
-                    - /url: user?id=throwoutway
+                  - link "throwoutway" [ref=f94e276]: user?id=throwoutway
                   - generic "2026-11-01T22:10:45":
-                    - link "3 hours ago" [ref=f94e278]:
-                      - /url: item?id=50330456
-                  - link "hide" [ref=f94e279]:
-                    - /url: hide?id=50330456&goto=news
-                  - link "126 comments" [ref=f94e280]:
-                    - /url: item?id=50330456
+                    - link "3 hours ago" [ref=f94e278]: item?id=50330456
+                  - link "hide" [ref=f94e279]: hide?id=50330456&goto=news
+                  - link "126 comments" [ref=f94e280]
             - row:
               - cell "13."
               - cell:
-                - link "upvote" [ref=f94e286]:
-                  - /url: vote?id=50308754&how=up&goto=news
+                - link "upvote" [ref=f94e286]: vote?id=50308754&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Copper – A minimal low-level programming language with OOP and generics" [ref=f94e290]:
-                    - /url: https://tibleiz.net/copper/
+                  - link "Copper – A minimal low-level programming language with OOP and generics" [ref=f94e290]: https://tibleiz.net/copper/
                   - generic:
                     - text: (
-                    - link "tibleiz.net" [ref=f94e292]:
-                      - /url: from?site=tibleiz.net
+                    - link "tibleiz.net" [ref=f94e292]: from?site=tibleiz.net
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 124 points by
-                  - link "bogdanoff_2" [ref=f94e297]:
-                    - /url: user?id=bogdanoff_2
+                  - link "bogdanoff_2" [ref=f94e297]: user?id=bogdanoff_2
                   - generic "2026-10-30T19:09:33":
-                    - link "11 hours ago" [ref=f94e299]:
-                      - /url: item?id=50308754
-                  - link "hide" [ref=f94e300]:
-                    - /url: hide?id=50308754&goto=news
-                  - link "74 comments" [ref=f94e301]:
-                    - /url: item?id=50308754
+                    - link "11 hours ago" [ref=f94e299]: item?id=50308754
+                  - link "hide" [ref=f94e300]: hide?id=50308754&goto=news
+                  - link "74 comments" [ref=f94e301]
             - row:
               - cell "14."
               - cell:
-                - link "upvote" [ref=f94e307]:
-                  - /url: vote?id=50325454&how=up&goto=news
+                - link "upvote" [ref=f94e307]: vote?id=50325454&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Proving and improving the Platonic Representation Hypothesis with JEPAs" [ref=f94e311]:
-                    - /url: https://arxiv.org/abs/2610.39302
+                  - link "Proving and improving the Platonic Representation Hypothesis with JEPAs" [ref=f94e311]: https://arxiv.org/abs/2610.39302
                   - generic:
                     - text: (
-                    - link "arxiv.org" [ref=f94e313]:
-                      - /url: from?site=arxiv.org
+                    - link "arxiv.org" [ref=f94e313]: from?site=arxiv.org
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 108 points by
-                  - link "Anon84" [ref=f94e318]:
-                    - /url: user?id=Anon84
+                  - link "Anon84" [ref=f94e318]: user?id=Anon84
                   - generic "2026-11-01T13:24:49":
-                    - link "12 hours ago" [ref=f94e320]:
-                      - /url: item?id=50325454
-                  - link "hide" [ref=f94e321]:
-                    - /url: hide?id=50325454&goto=news
-                  - link "60 comments" [ref=f94e322]:
-                    - /url: item?id=50325454
+                    - link "12 hours ago" [ref=f94e320]: item?id=50325454
+                  - link "hide" [ref=f94e321]: hide?id=50325454&goto=news
+                  - link "60 comments" [ref=f94e322]
             - row:
               - cell "15."
               - cell:
-                - link "upvote" [ref=f94e328]:
-                  - /url: vote?id=50318129&how=up&goto=news
+                - link "upvote" [ref=f94e328]: vote?id=50318129&how=up&goto=news
               - cell:
                 - generic:
-                  - link "The She-Wolves of Jülich" [ref=f94e332]:
-                    - /url: https://www.historytoday.com/archive/history-matters/she-wolves-julich
+                  - link "The She-Wolves of Jülich" [ref=f94e332]: https://www.historytoday.com/archive/history-matters/she-wolves-julich
                   - generic:
                     - text: (
-                    - link "historytoday.com" [ref=f94e334]:
-                      - /url: from?site=historytoday.com
+                    - link "historytoday.com" [ref=f94e334]: from?site=historytoday.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 13 points by
-                  - link "Thevet" [ref=f94e339]:
-                    - /url: user?id=Thevet
+                  - link "Thevet" [ref=f94e339]: user?id=Thevet
                   - generic "2026-10-31T17:29:39":
-                    - link "4 hours ago" [ref=f94e341]:
-                      - /url: item?id=50318129
-                  - link "hide" [ref=f94e342]:
-                    - /url: hide?id=50318129&goto=news
-                  - link "1 comment" [ref=f94e343]:
-                    - /url: item?id=50318129
+                    - link "4 hours ago" [ref=f94e341]: item?id=50318129
+                  - link "hide" [ref=f94e342]: hide?id=50318129&goto=news
+                  - link "1 comment" [ref=f94e343]
             - row:
               - cell "16."
               - cell:
-                - link "upvote" [ref=f94e349]:
-                  - /url: vote?id=50326099&how=up&goto=news
+                - link "upvote" [ref=f94e349]: vote?id=50326099&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Lenovo's 'encrypted' fingerprint USB is just an unencrypted SD card in a case" [ref=f94e353]:
-                    - /url: https://www.reddit.com/r/technology/comments/1xl2pr3/lenovos_encrypted_fingerprint_usb_drive_is_just/
+                  - link "Lenovo's 'encrypted' fingerprint USB is just an unencrypted SD card in a case" [ref=f94e353]: https://www.reddit.com/r/technology/comments/1xl2pr3/lenovos_encrypted_fingerprint_usb_drive_is_just/
                   - generic:
                     - text: (
-                    - link "reddit.com" [ref=f94e355]:
-                      - /url: from?site=reddit.com
+                    - link "reddit.com" [ref=f94e355]: from?site=reddit.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 390 points by
-                  - link "entryleveljobsc" [ref=f94e360]:
-                    - /url: user?id=entryleveljobsc
+                  - link "entryleveljobsc" [ref=f94e360]: user?id=entryleveljobsc
                   - generic "2026-11-01T14:34:43":
-                    - link "10 hours ago" [ref=f94e362]:
-                      - /url: item?id=50326099
-                  - link "hide" [ref=f94e363]:
-                    - /url: hide?id=50326099&goto=news
-                  - link "142 comments" [ref=f94e364]:
-                    - /url: item?id=50326099
+                    - link "10 hours ago" [ref=f94e362]: item?id=50326099
+                  - link "hide" [ref=f94e363]: hide?id=50326099&goto=news
+                  - link "142 comments" [ref=f94e364]
             - row:
               - cell "17."
               - cell:
-                - link "upvote" [ref=f94e370]:
-                  - /url: vote?id=50319749&how=up&goto=news
+                - link "upvote" [ref=f94e370]: vote?id=50319749&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Bidirectional charging during grid outages" [ref=f94e374]:
-                    - /url: https://www.jefftk.com/p/bidirectional-charging-during-grid-outages
+                  - link "Bidirectional charging during grid outages" [ref=f94e374]: https://www.jefftk.com/p/bidirectional-charging-during-grid-outages
                   - generic:
                     - text: (
-                    - link "jefftk.com" [ref=f94e376]:
-                      - /url: from?site=jefftk.com
+                    - link "jefftk.com" [ref=f94e376]: from?site=jefftk.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 84 points by
-                  - link "luu" [ref=f94e381]:
-                    - /url: user?id=luu
+                  - link "luu" [ref=f94e381]
                   - generic "2026-10-31T20:21:55":
-                    - link "10 hours ago" [ref=f94e383]:
-                      - /url: item?id=50319749
-                  - link "hide" [ref=f94e384]:
-                    - /url: hide?id=50319749&goto=news
-                  - link "122 comments" [ref=f94e385]:
-                    - /url: item?id=50319749
+                    - link "10 hours ago" [ref=f94e383]: item?id=50319749
+                  - link "hide" [ref=f94e384]: hide?id=50319749&goto=news
+                  - link "122 comments" [ref=f94e385]
             - row:
               - cell "18."
               - cell:
-                - link "upvote" [ref=f94e391]:
-                  - /url: vote?id=50314617&how=up&goto=news
+                - link "upvote" [ref=f94e391]: vote?id=50314617&how=up&goto=news
               - cell:
                 - generic:
-                  - link "One-minute frequency disturbances from synchronization in power systems" [ref=f94e395]:
-                    - /url: https://www.nature.com/articles/s41560-026-02144-0
+                  - link "One-minute frequency disturbances from synchronization in power systems" [ref=f94e395]: https://www.nature.com/articles/s41560-026-02144-0
                   - generic:
                     - text: (
-                    - link "nature.com" [ref=f94e397]:
-                      - /url: from?site=nature.com
+                    - link "nature.com" [ref=f94e397]: from?site=nature.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 122 points by
-                  - link "croes" [ref=f94e402]:
-                    - /url: user?id=croes
+                  - link "croes" [ref=f94e402]: user?id=croes
                   - generic "2026-10-31T10:14:08":
-                    - link "13 hours ago" [ref=f94e404]:
-                      - /url: item?id=50314617
-                  - link "hide" [ref=f94e405]:
-                    - /url: hide?id=50314617&goto=news
-                  - link "40 comments" [ref=f94e406]:
-                    - /url: item?id=50314617
+                    - link "13 hours ago" [ref=f94e404]: item?id=50314617
+                  - link "hide" [ref=f94e405]: hide?id=50314617&goto=news
+                  - link "40 comments" [ref=f94e406]
             - row:
               - cell "19."
               - cell:
-                - link "upvote" [ref=f94e412]:
-                  - /url: vote?id=50323088&how=up&goto=news
+                - link "upvote" [ref=f94e412]: vote?id=50323088&how=up&goto=news
               - cell:
                 - generic:
-                  - link "The AI cost of JavaScript frameworks" [ref=f94e416]:
-                    - /url: https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/
+                  - link "The AI cost of JavaScript frameworks" [ref=f94e416]: https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/
                   - generic:
                     - text: (
-                    - link "nolanlawson.com" [ref=f94e418]:
-                      - /url: from?site=nolanlawson.com
+                    - link "nolanlawson.com" [ref=f94e418]: from?site=nolanlawson.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 293 points by
-                  - link "luu" [ref=f94e423]:
-                    - /url: user?id=luu
+                  - link "luu" [ref=f94e423]
                   - generic "2026-11-01T06:06:19":
-                    - link "19 hours ago" [ref=f94e425]:
-                      - /url: item?id=50323088
-                  - link "hide" [ref=f94e426]:
-                    - /url: hide?id=50323088&goto=news
-                  - link "228 comments" [ref=f94e427]:
-                    - /url: item?id=50323088
+                    - link "19 hours ago" [ref=f94e425]: item?id=50323088
+                  - link "hide" [ref=f94e426]: hide?id=50323088&goto=news
+                  - link "228 comments" [ref=f94e427]
             - row:
               - cell "20."
               - cell:
-                - link "upvote" [ref=f94e433]:
-                  - /url: vote?id=50325694&how=up&goto=news
+                - link "upvote" [ref=f94e433]: vote?id=50325694&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Novellas with Groff" [ref=f94e437]:
-                    - /url: https://movq.de/blog/postings/2026-10-31/0/POSTING-en.html
+                  - link "Novellas with Groff" [ref=f94e437]: https://movq.de/blog/postings/2026-10-31/0/POSTING-en.html
                   - generic:
                     - text: (
-                    - link "movq.de" [ref=f94e439]:
-                      - /url: from?site=movq.de
+                    - link "movq.de" [ref=f94e439]: from?site=movq.de
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 110 points by
-                  - link "dverlaeckt80" [ref=f94e444]:
-                    - /url: user?id=dverlaeckt80
+                  - link "dverlaeckt80" [ref=f94e444]: user?id=dverlaeckt80
                   - generic "2026-11-01T13:51:41":
-                    - link "11 hours ago" [ref=f94e446]:
-                      - /url: item?id=50325694
-                  - link "hide" [ref=f94e447]:
-                    - /url: hide?id=50325694&goto=news
-                  - link "49 comments" [ref=f94e448]:
-                    - /url: item?id=50325694
+                    - link "11 hours ago" [ref=f94e446]: item?id=50325694
+                  - link "hide" [ref=f94e447]: hide?id=50325694&goto=news
+                  - link "49 comments" [ref=f94e448]
             - row:
               - cell "21."
               - cell:
-                - link "upvote" [ref=f94e454]:
-                  - /url: vote?id=50280131&how=up&goto=news
+                - link "upvote" [ref=f94e454]: vote?id=50280131&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Radiation Map of the World" [ref=f94e458]:
-                    - /url: https://radiaverse.com/
+                  - link "Radiation Map of the World" [ref=f94e458]: https://radiaverse.com/
                   - generic:
                     - text: (
-                    - link "radiaverse.com" [ref=f94e460]:
-                      - /url: from?site=radiaverse.com
+                    - link "radiaverse.com" [ref=f94e460]: from?site=radiaverse.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 127 points by
-                  - link "slater" [ref=f94e465]:
-                    - /url: user?id=slater
+                  - link "slater" [ref=f94e465]: user?id=slater
                   - generic "2026-10-28T20:06:27":
-                    - link "14 hours ago" [ref=f94e467]:
-                      - /url: item?id=50280131
-                  - link "hide" [ref=f94e468]:
-                    - /url: hide?id=50280131&goto=news
-                  - link "39 comments" [ref=f94e469]:
-                    - /url: item?id=50280131
+                    - link "14 hours ago" [ref=f94e467]: item?id=50280131
+                  - link "hide" [ref=f94e468]: hide?id=50280131&goto=news
+                  - link "39 comments" [ref=f94e469]
             - row:
               - cell "22."
               - cell:
-                - link "upvote" [ref=f94e475]:
-                  - /url: vote?id=50327058&how=up&goto=news
+                - link "upvote" [ref=f94e475]: vote?id=50327058&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Seoul Viosys begins production of rare-earth-free white light emitter" [ref=f94e479]:
-                    - /url: https://www.semiconductor-today.com/news_items/2026/oct/seoul-291026.shtml
+                  - link "Seoul Viosys begins production of rare-earth-free white light emitter" [ref=f94e479]: https://www.semiconductor-today.com/news_items/2026/oct/seoul-291026.shtml
                   - generic:
                     - text: (
-                    - link "semiconductor-today.com" [ref=f94e481]:
-                      - /url: from?site=semiconductor-today.com
+                    - link "semiconductor-today.com" [ref=f94e481]: from?site=semiconductor-today.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 135 points by
-                  - link "gmays" [ref=f94e486]:
-                    - /url: user?id=gmays
+                  - link "gmays" [ref=f94e486]: user?id=gmays
                   - generic "2026-11-01T16:23:26":
-                    - link "9 hours ago" [ref=f94e488]:
-                      - /url: item?id=50327058
-                  - link "hide" [ref=f94e489]:
-                    - /url: hide?id=50327058&goto=news
-                  - link "33 comments" [ref=f94e490]:
-                    - /url: item?id=50327058
+                    - link "9 hours ago" [ref=f94e488]: item?id=50327058
+                  - link "hide" [ref=f94e489]: hide?id=50327058&goto=news
+                  - link "33 comments" [ref=f94e490]
             - row:
               - cell "23."
               - cell:
-                - link "upvote" [ref=f94e496]:
-                  - /url: vote?id=50314508&how=up&goto=news
+                - link "upvote" [ref=f94e496]: vote?id=50314508&how=up&goto=news
               - cell:
                 - generic:
                   - 'link "Show HN: I rebuilt my old canvas 3D library as a small WebGL 2 library – phoria2" [ref=f94e500] [cursor=pointer]':
                     - /url: https://kevs3d.co.uk/phoria2/
                   - generic:
                     - text: (
-                    - link "kevs3d.co.uk" [ref=f94e502]:
-                      - /url: from?site=kevs3d.co.uk
+                    - link "kevs3d.co.uk" [ref=f94e502]: from?site=kevs3d.co.uk
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 74 points by
-                  - link "kevs3d" [ref=f94e507]:
-                    - /url: user?id=kevs3d
+                  - link "kevs3d" [ref=f94e507]: user?id=kevs3d
                   - generic "2026-10-31T09:49:42":
-                    - link "12 hours ago" [ref=f94e509]:
-                      - /url: item?id=50314508
-                  - link "hide" [ref=f94e510]:
-                    - /url: hide?id=50314508&goto=news
-                  - link "11 comments" [ref=f94e511]:
-                    - /url: item?id=50314508
+                    - link "12 hours ago" [ref=f94e509]: item?id=50314508
+                  - link "hide" [ref=f94e510]: hide?id=50314508&goto=news
+                  - link "11 comments" [ref=f94e511]
             - row:
               - cell "24."
               - cell:
-                - link "upvote" [ref=f94e517]:
-                  - /url: vote?id=50313227&how=up&goto=news
+                - link "upvote" [ref=f94e517]: vote?id=50313227&how=up&goto=news
               - cell:
                 - generic:
                   - 'link "Parchment Paper History: How We Got Paper Perfect for Baking (2019)" [ref=f94e521] [cursor=pointer]':
                     - /url: https://tedium.co/2019/11/21/nonstick-parchment-paper-history/
                   - generic:
                     - text: (
-                    - link "tedium.co" [ref=f94e523]:
-                      - /url: from?site=tedium.co
+                    - link "tedium.co" [ref=f94e523]: from?site=tedium.co
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 36 points by
-                  - link "colinprince" [ref=f94e528]:
-                    - /url: user?id=colinprince
+                  - link "colinprince" [ref=f94e528]: user?id=colinprince
                   - generic "2026-10-31T04:31:06":
-                    - link "7 hours ago" [ref=f94e530]:
-                      - /url: item?id=50313227
-                  - link "hide" [ref=f94e531]:
-                    - /url: hide?id=50313227&goto=news
-                  - link "18 comments" [ref=f94e532]:
-                    - /url: item?id=50313227
+                    - link "7 hours ago" [ref=f94e530]: item?id=50313227
+                  - link "hide" [ref=f94e531]: hide?id=50313227&goto=news
+                  - link "18 comments" [ref=f94e532]
             - row:
               - cell "25."
               - cell:
-                - link "upvote" [ref=f94e538]:
-                  - /url: vote?id=50290533&how=up&goto=news
+                - link "upvote" [ref=f94e538]: vote?id=50290533&how=up&goto=news
               - cell:
                 - generic:
                   - 'link "Show HN: Point your camera at a landscape to learn about its geology" [ref=f94e542] [cursor=pointer]':
                     - /url: https://outcrop.rocks/
                   - generic:
                     - text: (
-                    - link "outcrop.rocks" [ref=f94e544]:
-                      - /url: from?site=outcrop.rocks
+                    - link "outcrop.rocks" [ref=f94e544]: from?site=outcrop.rocks
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 150 points by
-                  - link "headsupernova" [ref=f94e549]:
-                    - /url: user?id=headsupernova
+                  - link "headsupernova" [ref=f94e549]: user?id=headsupernova
                   - generic "2026-10-29T15:22:41":
-                    - link "16 hours ago" [ref=f94e551]:
-                      - /url: item?id=50290533
-                  - link "hide" [ref=f94e552]:
-                    - /url: hide?id=50290533&goto=news
-                  - link "37 comments" [ref=f94e553]:
-                    - /url: item?id=50290533
+                    - link "16 hours ago" [ref=f94e551]: item?id=50290533
+                  - link "hide" [ref=f94e552]: hide?id=50290533&goto=news
+                  - link "37 comments" [ref=f94e553]
             - row:
               - cell "26."
               - cell:
-                - link "upvote" [ref=f94e559]:
-                  - /url: vote?id=50324371&how=up&goto=news
+                - link "upvote" [ref=f94e559]: vote?id=50324371&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Domain hacks with unusual Unicode characters (2018)" [ref=f94e563]:
-                    - /url: https://shkspr.mobi/blog/2018/11/domain-hacks-with-unusual-unicode-characters/
+                  - link "Domain hacks with unusual Unicode characters (2018)" [ref=f94e563]: https://shkspr.mobi/blog/2018/11/domain-hacks-with-unusual-unicode-characters/
                   - generic:
                     - text: (
-                    - link "shkspr.mobi" [ref=f94e565]:
-                      - /url: from?site=shkspr.mobi
+                    - link "shkspr.mobi" [ref=f94e565]: from?site=shkspr.mobi
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 54 points by
-                  - link "n_plus_1_acc" [ref=f94e570]:
-                    - /url: user?id=n_plus_1_acc
+                  - link "n_plus_1_acc" [ref=f94e570]: user?id=n_plus_1_acc
                   - generic "2026-11-01T10:44:20":
-                    - link "14 hours ago" [ref=f94e572]:
-                      - /url: item?id=50324371
-                  - link "hide" [ref=f94e573]:
-                    - /url: hide?id=50324371&goto=news
-                  - link "47 comments" [ref=f94e574]:
-                    - /url: item?id=50324371
+                    - link "14 hours ago" [ref=f94e572]: item?id=50324371
+                  - link "hide" [ref=f94e573]: hide?id=50324371&goto=news
+                  - link "47 comments" [ref=f94e574]
             - row:
               - cell "27."
               - cell:
-                - link "upvote" [ref=f94e580]:
-                  - /url: vote?id=50327266&how=up&goto=news
+                - link "upvote" [ref=f94e580]: vote?id=50327266&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Frontier Airlines Likely Breached" [ref=f94e584]:
-                    - /url: https://www.reddit.com/r/frontierairlines/comments/1xl20e8/psa_email_scam/
+                  - link "Frontier Airlines Likely Breached" [ref=f94e584]: https://www.reddit.com/r/frontierairlines/comments/1xl20e8/psa_email_scam/
                   - generic:
                     - text: (
-                    - link "reddit.com" [ref=f94e586]:
-                      - /url: from?site=reddit.com
+                    - link "reddit.com" [ref=f94e586]
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 171 points by
-                  - link "999900000999" [ref=f94e591]:
-                    - /url: user?id=999900000999
+                  - link "999900000999" [ref=f94e591]: user?id=999900000999
                   - generic "2026-11-01T16:46:33":
-                    - link "8 hours ago" [ref=f94e593]:
-                      - /url: item?id=50327266
-                  - link "hide" [ref=f94e594]:
-                    - /url: hide?id=50327266&goto=news
-                  - link "63 comments" [ref=f94e595]:
-                    - /url: item?id=50327266
+                    - link "8 hours ago" [ref=f94e593]: item?id=50327266
+                  - link "hide" [ref=f94e594]: hide?id=50327266&goto=news
+                  - link "63 comments" [ref=f94e595]
             - row:
               - cell "28."
               - cell:
-                - link "upvote" [ref=f94e601]:
-                  - /url: vote?id=50327650&how=up&goto=news
+                - link "upvote" [ref=f94e601]: vote?id=50327650&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Patrick Stewart taught us what good men do with power" [ref=f94e605]:
-                    - /url: https://www.vox.com/politics/508526/patrick-stewart-jean-luc-picard-star-trek-liberalism
+                  - link "Patrick Stewart taught us what good men do with power" [ref=f94e605]: https://www.vox.com/politics/508526/patrick-stewart-jean-luc-picard-star-trek-liberalism
                   - generic:
                     - text: (
-                    - link "vox.com" [ref=f94e607]:
-                      - /url: from?site=vox.com
+                    - link "vox.com" [ref=f94e607]: from?site=vox.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 365 points by
-                  - link "rhaynes" [ref=f94e612]:
-                    - /url: user?id=rhaynes
+                  - link "rhaynes" [ref=f94e612]: user?id=rhaynes
                   - generic "2026-11-01T17:28:16":
-                    - link "7 hours ago" [ref=f94e614]:
-                      - /url: item?id=50327650
-                  - link "hide" [ref=f94e615]:
-                    - /url: hide?id=50327650&goto=news
-                  - link "261 comments" [ref=f94e616]:
-                    - /url: item?id=50327650
+                    - link "7 hours ago" [ref=f94e614]: item?id=50327650
+                  - link "hide" [ref=f94e615]: hide?id=50327650&goto=news
+                  - link "261 comments" [ref=f94e616]
             - row:
               - cell "29."
               - cell:
-                - link "upvote" [ref=f94e622]:
-                  - /url: vote?id=50326609&how=up&goto=news
+                - link "upvote" [ref=f94e622]: vote?id=50326609&how=up&goto=news
               - cell:
                 - generic:
-                  - link "Landline phones will switch off across Britland in 100 days, no extensions" [ref=f94e626]:
-                    - /url: https://www.theregister.com/networks/2026/11/01/landline-phones-will-switch-off-across-britland-in-100-days-no-extensions-openreach/5306673
+                  - link "Landline phones will switch off across Britland in 100 days, no extensions" [ref=f94e626]: https://www.theregister.com/networks/2026/11/01/landline-phones-will-switch-off-across-britland-in-100-days-no-extensions-openreach/5306673
                   - generic:
                     - text: (
-                    - link "theregister.com" [ref=f94e628]:
-                      - /url: from?site=theregister.com
+                    - link "theregister.com" [ref=f94e628]: from?site=theregister.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 132 points by
-                  - link "edward" [ref=f94e633]:
-                    - /url: user?id=edward
+                  - link "edward" [ref=f94e633]: user?id=edward
                   - generic "2026-11-01T15:33:49":
-                    - link "9 hours ago" [ref=f94e635]:
-                      - /url: item?id=50326609
-                  - link "hide" [ref=f94e636]:
-                    - /url: hide?id=50326609&goto=news
-                  - link "107 comments" [ref=f94e637]:
-                    - /url: item?id=50326609
+                    - link "9 hours ago" [ref=f94e635]: item?id=50326609
+                  - link "hide" [ref=f94e636]: hide?id=50326609&goto=news
+                  - link "107 comments" [ref=f94e637]
             - row:
               - cell "30."
               - cell:
-                - link "upvote" [ref=f94e643]:
-                  - /url: vote?id=50320963&how=up&goto=news
+                - link "upvote" [ref=f94e643]: vote?id=50320963&how=up&goto=news
               - cell:
                 - generic:
-                  - link "An Italian farmer found some unknown seeds in his attic and planted them" [ref=f94e647]:
-                    - /url: https://www.smithsonianmag.com/science-nature/italian-farmer-found-unknown-seeds-attic-with-nothing-lose-planted-them-result-biblical-180989644/
+                  - link "An Italian farmer found some unknown seeds in his attic and planted them" [ref=f94e647]: https://www.smithsonianmag.com/science-nature/italian-farmer-found-unknown-seeds-attic-with-nothing-lose-planted-them-result-biblical-180989644/
                   - generic:
                     - text: (
-                    - link "smithsonianmag.com" [ref=f94e649]:
-                      - /url: from?site=smithsonianmag.com
+                    - link "smithsonianmag.com" [ref=f94e649]: from?site=smithsonianmag.com
                     - text: )
             - row:
               - cell:
                 - generic:
                   - text: 769 points by
-                  - link "ecares" [ref=f94e654]:
-                    - /url: user?id=ecares
+                  - link "ecares" [ref=f94e654]: user?id=ecares
                   - generic "2026-10-31T22:41:06":
-                    - link "1 day ago" [ref=f94e656]:
-                      - /url: item?id=50320963
-                  - link "hide" [ref=f94e657]:
-                    - /url: hide?id=50320963&goto=news
-                  - link "199 comments" [ref=f94e658]:
-                    - /url: item?id=50320963
+                    - link "1 day ago" [ref=f94e656]: item?id=50320963
+                  - link "hide" [ref=f94e657]: hide?id=50320963&goto=news
+                  - link "199 comments" [ref=f94e658]
             - row:
               - cell:
-                - link "More" [ref=f94e664]:
-                  - /url: "?p=2"
+                - link "More" [ref=f94e664]: "?p=2"
     - row:
       - cell:
         - table [ref=f94e667]:
           - rowgroup:
             - row:
-        - link "Consider applying for YC's Winter 2027 batch! Applications are open till November 2." [ref=f94e672]:
-          - /url: https://www.ycombinator.com/apply/
+        - link "Consider applying for YC's Winter 2027 batch! Applications are open till November 2." [ref=f94e672]: https://www.ycombinator.com/apply/
         - generic:
           - generic:
-            - link "Guidelines" [ref=f94e675]:
-              - /url: newsguidelines.html
-            - link "FAQ" [ref=f94e676]:
-              - /url: newsfaq.html
-            - link "Lists" [ref=f94e677]:
-              - /url: lists
-            - link "API" [ref=f94e678]:
-              - /url: https://github.com/HackerNews/API
-            - link "Security" [ref=f94e679]:
-              - /url: security.html
-            - link "Legal" [ref=f94e680]:
-              - /url: https://www.ycombinator.com/legal/
-            - link "Apply to YC" [ref=f94e681]:
-              - /url: https://www.ycombinator.com/apply/
-            - link "Contact" [ref=f94e682]:
-              - /url: mailto:hn@ycombinator.com
+            - link "Guidelines" [ref=f94e675]: newsguidelines.html
+            - link "FAQ" [ref=f94e676]: newsfaq.html
+            - link "Lists" [ref=f94e677]: lists
+            - link "API" [ref=f94e678]: https://github.com/HackerNews/API
+            - link "Security" [ref=f94e679]: security.html
+            - link "Legal" [ref=f94e680]: https://www.ycombinator.com/legal/
+            - link "Apply to YC" [ref=f94e681]
+            - link "Contact" [ref=f94e682]: mailto:hn@ycombinator.com
           - generic:
             - text: "Search:"
             - textbox [ref=f94e684]
 ```
-[meiose: 137 nodes trimmed, 319 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 137 nodes trimmed, 319 non-interactive refs hidden, 35 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

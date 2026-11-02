@@ -35,10 +35,8 @@ source: tests/playwright_fixtures.rs
             - cell "$50.00"
             - cell "http://www.jsmith.com"
             - cell:
-              - link "edit" [ref=f155e29]:
-                - /url: "#edit"
-              - link "delete" [ref=f155e30]:
-                - /url: "#delete"
+              - link "edit" [ref=f155e29]: "#edit"
+              - link "delete" [ref=f155e30]: "#delete"
           - row:
             - cell "Bach"
             - cell "Frank"
@@ -46,10 +44,8 @@ source: tests/playwright_fixtures.rs
             - cell "$51.00"
             - cell "http://www.frank.com"
             - cell:
-              - link "edit" [ref=f155e38]:
-                - /url: "#edit"
-              - link "delete" [ref=f155e39]:
-                - /url: "#delete"
+              - link "edit" [ref=f155e38]
+              - link "delete" [ref=f155e39]
           - row:
             - cell "Doe"
             - cell "Jason"
@@ -57,10 +53,8 @@ source: tests/playwright_fixtures.rs
             - cell "$100.00"
             - cell "http://www.jdoe.com"
             - cell:
-              - link "edit" [ref=f155e47]:
-                - /url: "#edit"
-              - link "delete" [ref=f155e48]:
-                - /url: "#delete"
+              - link "edit" [ref=f155e47]
+              - link "delete" [ref=f155e48]
           - row:
             - cell "Conway"
             - cell "Tim"
@@ -68,10 +62,8 @@ source: tests/playwright_fixtures.rs
             - cell "$50.00"
             - cell "http://www.timconway.com"
             - cell:
-              - link "edit" [ref=f155e56]:
-                - /url: "#edit"
-              - link "delete" [ref=f155e57]:
-                - /url: "#delete"
+              - link "edit" [ref=f155e56]
+              - link "delete" [ref=f155e57]
       - heading "Example 2" [level=4] [ref=f155e58]
       - paragraph: Class and ID attributes to signify groupings of rows and columns
       - table [ref=f155e60]:
@@ -91,10 +83,8 @@ source: tests/playwright_fixtures.rs
             - cell "$50.00"
             - cell "http://www.jsmith.com"
             - cell:
-              - link "edit" [ref=f155e77]:
-                - /url: "#edit"
-              - link "delete" [ref=f155e78]:
-                - /url: "#delete"
+              - link "edit" [ref=f155e77]
+              - link "delete" [ref=f155e78]
           - row:
             - cell "Bach"
             - cell "Frank"
@@ -102,10 +92,8 @@ source: tests/playwright_fixtures.rs
             - cell "$51.00"
             - cell "http://www.frank.com"
             - cell:
-              - link "edit" [ref=f155e86]:
-                - /url: "#edit"
-              - link "delete" [ref=f155e87]:
-                - /url: "#delete"
+              - link "edit" [ref=f155e86]
+              - link "delete" [ref=f155e87]
           - row:
             - cell "Doe"
             - cell "Jason"
@@ -113,10 +101,8 @@ source: tests/playwright_fixtures.rs
             - cell "$100.00"
             - cell "http://www.jdoe.com"
             - cell:
-              - link "edit" [ref=f155e95]:
-                - /url: "#edit"
-              - link "delete" [ref=f155e96]:
-                - /url: "#delete"
+              - link "edit" [ref=f155e95]
+              - link "delete" [ref=f155e96]
           - row:
             - cell "Conway"
             - cell "Tim"
@@ -124,16 +110,12 @@ source: tests/playwright_fixtures.rs
             - cell "$50.00"
             - cell "http://www.timconway.com"
             - cell:
-              - link "edit" [ref=f155e104]:
-                - /url: "#edit"
-              - link "delete" [ref=f155e105]:
-                - /url: "#delete"
+              - link "edit" [ref=f155e104]
+              - link "delete" [ref=f155e105]
   - generic:
     - text: Powered by
-    - link "Elemental Selenium" [ref=f155e109]:
-      - /url: http://elementalselenium.com/
+    - link "Elemental Selenium" [ref=f155e109]: http://elementalselenium.com/
     - text: and
-    - link "Sauce Labs" [ref=f155e110]:
-      - /url: https://saucelabs.com/
+    - link "Sauce Labs" [ref=f155e110]: https://saucelabs.com/
 ```
-[meiose: 0 nodes trimmed, 68 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 0 nodes trimmed, 68 non-interactive refs hidden, 14 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

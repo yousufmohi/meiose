@@ -9,13 +9,11 @@ source: tests/playwright_fixtures.rs
 ```yaml
 - generic:
   - generic:
-    - link "Skip to content" [ref=f126e4]:
-      - /url: "#start-of-content"
+    - link "Skip to content" [ref=f126e4]: "#start-of-content"
     - banner [ref=f126e9]:
       - heading "Navigation Menu" [level=2] [ref=f126e10]
       - generic:
-        - link "Homepage" [ref=f126e14]:
-          - /url: /
+        - link "Homepage" [ref=f126e14]: /
         - generic:
           - navigation "Global" [ref=f126e18]:
             - list:
@@ -28,35 +26,29 @@ source: tests/playwright_fixtures.rs
               - listitem:
                 - button "Resources" [ref=f126e37]
               - listitem:
-                - link "Pricing" [ref=f126e41]:
-                  - /url: https://github.com/pricing
+                - link "Pricing" [ref=f126e41]: https://github.com/pricing
           - generic:
             - button "Search or jump to, type / to search" [ref=f126e44]:
               - generic:
                 - generic: Search
                 - generic [aria-hidden]: /
             - generic:
-              - link "Sign in" [ref=f126e52]:
-                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Frust-lang%2Frust
-              - link "Sign up" [ref=f126e55]:
-                - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=rust-lang%2Frust
+              - link "Sign in" [ref=f126e52]: /login?return_to=https%3A%2F%2Fgithub.com%2Frust-lang%2Frust
+              - link "Sign up" [ref=f126e55]: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=rust-lang%2Frust
               - button "Appearance settings" [ref=f126e58]
   - main [ref=f126e65]:
     - generic "Global navigation menu":
       - navigation "Breadcrumbs" [ref=f126e71]:
         - list:
           - listitem:
-            - link "rust-lang" [ref=f126e74]:
-              - /url: /rust-lang
+            - link "rust-lang" [ref=f126e74]: /rust-lang
           - listitem:
-            - link "rust" [ref=f126e77]:
-              - /url: /rust-lang/rust
+            - link "rust" [ref=f126e77]: /rust-lang/rust
       - heading "Repository navigation" [level=2] [ref=f126e80]
       - navigation "Repository" [ref=f126e81]:
         - list:
           - listitem:
-            - link "Code" [ref=f126e84]:
-              - /url: /rust-lang/rust
+            - link "Code" [ref=f126e84]
           - listitem:
             - link "Issues (5k+)" [ref=f126e90]:
               - /url: /rust-lang/rust/issues
@@ -72,11 +64,9 @@ source: tests/playwright_fixtures.rs
                 - generic [aria-hidden]: 1.4k
                 - generic: (1.4k)
           - listitem:
-            - link "Actions" [ref=f126e109]:
-              - /url: /rust-lang/rust/actions
+            - link "Actions" [ref=f126e109]: /rust-lang/rust/actions
           - listitem:
-            - link "Projects" [ref=f126e115]:
-              - /url: /rust-lang/rust/projects
+            - link "Projects" [ref=f126e115]: /rust-lang/rust/projects
           - listitem:
             - link "Security and quality (6)" [ref=f126e121]:
               - /url: /rust-lang/rust/security
@@ -85,16 +75,14 @@ source: tests/playwright_fixtures.rs
                 - generic [aria-hidden]: "6"
                 - generic: (6)
           - listitem:
-            - link "Insights" [ref=f126e130]:
-              - /url: /rust-lang/rust/pulse
+            - link "Insights" [ref=f126e130]: /rust-lang/rust/pulse
     - generic:
       - generic:
         - generic:
           - img "rust-lang" [ref=f126e155]
           - generic "rust":
             - strong:
-              - link "rust" [ref=f126e158]:
-                - /url: /rust-lang/rust
+              - link "rust" [ref=f126e158]
           - generic: Public
         - list:
           - listitem:
@@ -106,14 +94,12 @@ source: tests/playwright_fixtures.rs
               - generic: Notifications
           - listitem:
             - link "You must be signed in to fork a repository" [ref=f126e171]:
-              - /url: /login?return_to=%2Frust-lang%2Frust
               - generic:
                 - text: Fork
                 - generic [aria-hidden]: 17.4k
                 - generic: (17.4k)
           - listitem:
             - link "Star (121k)" [ref=f126e177]:
-              - /url: /login?return_to=%2Frust-lang%2Frust
               - generic:
                 - text: Star
                 - generic [aria-hidden]: 121k
@@ -152,24 +138,19 @@ source: tests/playwright_fixtures.rs
                       - text: bors
                   - generic:
                     - generic:
-                      - link "Auto merge of" [ref=f126e1043]:
-                        - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
-                      - link "#165286" [ref=f126e1044]:
-                        - /url: https://github.com/rust-lang/rust/pull/165286
-                      - link "- JonathanBrouwer:rollup-YvLOWxp, r=JonathanBro…" [ref=f126e1045]:
-                        - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
+                      - link "Auto merge of" [ref=f126e1043]: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
+                      - link "#165286" [ref=f126e1044]: https://github.com/rust-lang/rust/pull/165286
+                      - link "- JonathanBrouwer:rollup-YvLOWxp, r=JonathanBro…" [ref=f126e1045]
                     - button "Open commit details" [ref=f126e1046]
                     - button "success" [ref=f126e1049]
                 - generic:
                   - generic:
                     - link "Commit 3e92e1a" [ref=f126e1054]:
-                      - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
                       - text: 3e92e1a
                     - generic "Nov 1, 2026, 3:45 PM EST": 4 hours ago
                   - generic:
                     - heading "History" [level=2] [ref=f126e221]
-                    - link "345,512 Commits" [ref=f126e222]:
-                      - /url: /rust-lang/rust/commits/main/
+                    - link "345,512 Commits" [ref=f126e222]: /rust-lang/rust/commits/main/
               - heading "Folders and files" [level=2] [ref=f126e225]
               - table "Folders and files" [ref=f126e227]:
                 - rowgroup:
@@ -185,12 +166,9 @@ source: tests/playwright_fixtures.rs
                         - text: .github
                     - cell:
                       - generic:
-                        - link "Rollup merge of" [ref=f126e1060]:
-                          - /url: /rust-lang/rust/commit/3685bec01242b1faaa9e00837e8b205742d7960f
-                        - link "#165276" [ref=f126e1061]:
-                          - /url: https://github.com/rust-lang/rust/pull/165276
-                        - link "- theemathas:fcw-issue-template-labels, r=Kiv…" [ref=f126e1062]:
-                          - /url: /rust-lang/rust/commit/3685bec01242b1faaa9e00837e8b205742d7960f
+                        - link "Rollup merge of" [ref=f126e1060]: /rust-lang/rust/commit/3685bec01242b1faaa9e00837e8b205742d7960f
+                        - link "#165276" [ref=f126e1061]: https://github.com/rust-lang/rust/pull/165276
+                        - link "- theemathas:fcw-issue-template-labels, r=Kiv…" [ref=f126e1062]
                     - cell "7 hours ago"
                   - row:
                     - cell:
@@ -198,8 +176,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/tree/main/LICENSES
                         - text: LICENSES
                     - cell:
-                      - link "Synchronize Unicode license text from unicode.org" [ref=f126e1068]:
-                        - /url: /rust-lang/rust/commit/6d2a3e9786ec43a0e0af20386e7046328296ac86
+                      - link "Synchronize Unicode license text from unicode.org" [ref=f126e1068]: /rust-lang/rust/commit/6d2a3e9786ec43a0e0af20386e7046328296ac86
                     - cell "2 years ago"
                   - row:
                     - cell:
@@ -208,12 +185,9 @@ source: tests/playwright_fixtures.rs
                         - text: compiler
                     - cell:
                       - generic:
-                        - link "Auto merge of" [ref=f126e1074]:
-                          - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
-                        - link "#165286" [ref=f126e1075]:
-                          - /url: https://github.com/rust-lang/rust/pull/165286
-                        - link "- JonathanBrouwer:rollup-YvLOWxp, r=JonathanBro…" [ref=f126e1076]:
-                          - /url: /rust-lang/rust/commit/3e92e1a2d20b991ef23a6c6064c34d57ee8c98d3
+                        - link "Auto merge of" [ref=f126e1074]
+                        - link "#165286" [ref=f126e1075]
+                        - link "- JonathanBrouwer:rollup-YvLOWxp, r=JonathanBro…" [ref=f126e1076]
                     - cell "4 hours ago"
                   - row:
                     - cell:
@@ -222,12 +196,9 @@ source: tests/playwright_fixtures.rs
                         - text: library
                     - cell:
                       - generic:
-                        - link "Rollup merge of" [ref=f126e1082]:
-                          - /url: /rust-lang/rust/commit/2e8e03211ec450117b80be37bbba12f098568afd
-                        - link "#165086" [ref=f126e1083]:
-                          - /url: https://github.com/rust-lang/rust/pull/165086
-                        - link "- goldpanth3r:fix-mem-take-docs-165065, r=joboet" [ref=f126e1084]:
-                          - /url: /rust-lang/rust/commit/2e8e03211ec450117b80be37bbba12f098568afd
+                        - link "Rollup merge of" [ref=f126e1082]: /rust-lang/rust/commit/2e8e03211ec450117b80be37bbba12f098568afd
+                        - link "#165086" [ref=f126e1083]: https://github.com/rust-lang/rust/pull/165086
+                        - link "- goldpanth3r:fix-mem-take-docs-165065, r=joboet" [ref=f126e1084]
                     - cell "7 hours ago"
                   - row:
                     - cell:
@@ -236,12 +207,9 @@ source: tests/playwright_fixtures.rs
                         - text: src
                     - cell:
                       - generic:
-                        - link "Rollup merge of" [ref=f126e1090]:
-                          - /url: /rust-lang/rust/commit/46835f49d83e5e768bd04a78daf791713e1c3fb2
-                        - link "#164262" [ref=f126e1091]:
-                          - /url: https://github.com/rust-lang/rust/pull/164262
-                        - link "- PaulDance:test-client-connect-timeout, r=Ma…" [ref=f126e1092]:
-                          - /url: /rust-lang/rust/commit/46835f49d83e5e768bd04a78daf791713e1c3fb2
+                        - link "Rollup merge of" [ref=f126e1090]: /rust-lang/rust/commit/46835f49d83e5e768bd04a78daf791713e1c3fb2
+                        - link "#164262" [ref=f126e1091]: https://github.com/rust-lang/rust/pull/164262
+                        - link "- PaulDance:test-client-connect-timeout, r=Ma…" [ref=f126e1092]
                     - cell "7 hours ago"
                   - row:
                     - cell:
@@ -250,12 +218,9 @@ source: tests/playwright_fixtures.rs
                         - text: tests
                     - cell:
                       - generic:
-                        - link "Rollup merge of" [ref=f126e1098]:
-                          - /url: /rust-lang/rust/commit/8d10715d733fb49ead6c21527205dc23b0aa205a
-                        - link "#165088" [ref=f126e1099]:
-                          - /url: https://github.com/rust-lang/rust/pull/165088
-                        - link "- estebank:issue-66067, r=petrochenkov" [ref=f126e1100]:
-                          - /url: /rust-lang/rust/commit/8d10715d733fb49ead6c21527205dc23b0aa205a
+                        - link "Rollup merge of" [ref=f126e1098]: /rust-lang/rust/commit/8d10715d733fb49ead6c21527205dc23b0aa205a
+                        - link "#165088" [ref=f126e1099]: https://github.com/rust-lang/rust/pull/165088
+                        - link "- estebank:issue-66067, r=petrochenkov" [ref=f126e1100]
                     - cell "7 hours ago"
                   - row:
                     - cell:
@@ -292,8 +257,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/.gitattributes
                         - text: .gitattributes
                     - cell:
-                      - link "Mark .pp files as Rust" [ref=f126e1125]:
-                        - /url: /rust-lang/rust/commit/daeb449640b189069f76a13a4a208b1a6d6a32b6
+                      - link "Mark .pp files as Rust" [ref=f126e1125]: /rust-lang/rust/commit/daeb449640b189069f76a13a4a208b1a6d6a32b6
                     - cell "last year"
                   - row:
                     - cell:
@@ -301,8 +265,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/.gitignore
                         - text: .gitignore
                     - cell:
-                      - link "Add gram config to gitignore" [ref=f126e1131]:
-                        - /url: /rust-lang/rust/commit/de13fc77e5cd3839fb40598b876904ba7fa518c1
+                      - link "Add gram config to gitignore" [ref=f126e1131]: /rust-lang/rust/commit/de13fc77e5cd3839fb40598b876904ba7fa518c1
                     - cell "3 months ago"
                   - row:
                     - cell:
@@ -310,8 +273,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/.gitmodules
                         - text: .gitmodules
                     - cell:
-                      - link "Add bootstrap step to build the TPDE plugin" [ref=f126e1137]:
-                        - /url: /rust-lang/rust/commit/7d58ad7df3fe097351ab243368f597001143ce76
+                      - link "Add bootstrap step to build the TPDE plugin" [ref=f126e1137]: /rust-lang/rust/commit/7d58ad7df3fe097351ab243368f597001143ce76
                     - cell "2 weeks ago"
                   - row:
                     - cell:
@@ -319,8 +281,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/.ignore
                         - text: .ignore
                     - cell:
-                      - link "change config.toml to bootstrap.toml for bootstrap module" [ref=f126e1143]:
-                        - /url: /rust-lang/rust/commit/1954494ec9aa84983f55646fb8f5cac433a3b7bc
+                      - link "change config.toml to bootstrap.toml for bootstrap module" [ref=f126e1143]: /rust-lang/rust/commit/1954494ec9aa84983f55646fb8f5cac433a3b7bc
                     - cell "last year"
                   - row:
                     - cell:
@@ -328,8 +289,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/.mailmap
                         - text: .mailmap
                     - cell:
-                      - link "Add mailmap entry" [ref=f126e1149]:
-                        - /url: /rust-lang/rust/commit/eb4108a9859ebfa071a57b9f7e90cc8815311996
+                      - link "Add mailmap entry" [ref=f126e1149]: /rust-lang/rust/commit/eb4108a9859ebfa071a57b9f7e90cc8815311996
                     - cell "last month"
                   - row:
                     - cell:
@@ -347,10 +307,8 @@ source: tests/playwright_fixtures.rs
                         - text: CODE_OF_CONDUCT.md
                     - cell:
                       - generic:
-                        - link "Remove the code of conduct; instead link" [ref=f126e1161]:
-                          - /url: /rust-lang/rust/commit/45835e9957e2872a3918eda0504d4a1ecc1642cd
-                        - link "https://www.rust-lang.org/co…" [ref=f126e1162]:
-                          - /url: https://www.rust-lang.org/conduct.html
+                        - link "Remove the code of conduct; instead link" [ref=f126e1161]: /rust-lang/rust/commit/45835e9957e2872a3918eda0504d4a1ecc1642cd
+                        - link "https://www.rust-lang.org/co…" [ref=f126e1162]: https://www.rust-lang.org/conduct.html
                     - cell "7 years ago"
                   - row:
                     - cell:
@@ -358,8 +316,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/CONTRIBUTING.md
                         - text: CONTRIBUTING.md
                     - cell:
-                      - link "[blocked] Link to proposed LLM policy in CONTRIBUTING and pull reques…" [ref=f126e1168]:
-                        - /url: /rust-lang/rust/commit/833ec34ae8f7b582ea4f9202fd19b01943f89cbe
+                      - link "[blocked] Link to proposed LLM policy in CONTRIBUTING and pull reques…" [ref=f126e1168]: /rust-lang/rust/commit/833ec34ae8f7b582ea4f9202fd19b01943f89cbe
                     - cell "4 months ago"
                   - row:
                     - cell:
@@ -377,12 +334,9 @@ source: tests/playwright_fixtures.rs
                         - text: Cargo.lock
                     - cell:
                       - generic:
-                        - link "Rollup merge of" [ref=f126e1180]:
-                          - /url: /rust-lang/rust/commit/3cb4b760591bd2e840a0b6df4e89cd4ac5f58c36
-                        - link "#163525" [ref=f126e1181]:
-                          - /url: https://github.com/rust-lang/rust/pull/163525
-                        - link "- oli-obk:resolver_lang_items, r=petrochenkov" [ref=f126e1182]:
-                          - /url: /rust-lang/rust/commit/3cb4b760591bd2e840a0b6df4e89cd4ac5f58c36
+                        - link "Rollup merge of" [ref=f126e1180]: /rust-lang/rust/commit/3cb4b760591bd2e840a0b6df4e89cd4ac5f58c36
+                        - link "#163525" [ref=f126e1181]: https://github.com/rust-lang/rust/pull/163525
+                        - link "- oli-obk:resolver_lang_items, r=petrochenkov" [ref=f126e1182]
                     - cell "yesterday"
                   - row:
                     - cell:
@@ -408,8 +362,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/LICENSE-APACHE
                         - text: LICENSE-APACHE
                     - cell:
-                      - link "Remove appendix from LICENCE-APACHE" [ref=f126e1200]:
-                        - /url: /rust-lang/rust/commit/2ccf65c7eba519dcc407cb76f08d04ac00d05851
+                      - link "Remove appendix from LICENCE-APACHE" [ref=f126e1200]: /rust-lang/rust/commit/2ccf65c7eba519dcc407cb76f08d04ac00d05851
                     - cell "7 years ago"
                   - row:
                     - cell:
@@ -418,7 +371,6 @@ source: tests/playwright_fixtures.rs
                         - text: LICENSE-MIT
                     - cell:
                       - 'link "dist: Re-work how we describe the licence of Rust in our distributions" [ref=f126e1206] [cursor=pointer]':
-                        - /url: /rust-lang/rust/commit/f9c16997dc016a3ef1456f56df2ab564a1c48cb2
                     - cell "2 years ago"
                   - row:
                     - cell:
@@ -426,8 +378,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/README.md
                         - text: README.md
                     - cell:
-                      - link "Add direct link to rustc-dev-guide in README" [ref=f126e1212]:
-                        - /url: /rust-lang/rust/commit/f0f849d96ff7c1ea57eca1de63a966e8f832baf5
+                      - link "Add direct link to rustc-dev-guide in README" [ref=f126e1212]: /rust-lang/rust/commit/f0f849d96ff7c1ea57eca1de63a966e8f832baf5
                     - cell "9 months ago"
                   - row:
                     - cell:
@@ -436,12 +387,9 @@ source: tests/playwright_fixtures.rs
                         - text: RELEASES.md
                     - cell:
                       - generic:
-                        - link "Rollup merge of" [ref=f126e1218]:
-                          - /url: /rust-lang/rust/commit/1658b7c22fa5bb84123a302341140ccbaa6f6d3f
-                        - link "#164248" [ref=f126e1219]:
-                          - /url: https://github.com/rust-lang/rust/pull/164248
-                        - link "- theemathas:missing-relnotes, r=Mark-Simulacrum" [ref=f126e1220]:
-                          - /url: /rust-lang/rust/commit/1658b7c22fa5bb84123a302341140ccbaa6f6d3f
+                        - link "Rollup merge of" [ref=f126e1218]: /rust-lang/rust/commit/1658b7c22fa5bb84123a302341140ccbaa6f6d3f
+                        - link "#164248" [ref=f126e1219]: https://github.com/rust-lang/rust/pull/164248
+                        - link "- theemathas:missing-relnotes, r=Mark-Simulacrum" [ref=f126e1220]
                     - cell "last week"
                   - row:
                     - cell:
@@ -449,8 +397,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/REUSE.toml
                         - text: REUSE.toml
                     - cell:
-                      - link "[PAC] Provide information on where the SipHash tests were derived from" [ref=f126e1226]:
-                        - /url: /rust-lang/rust/commit/1b80b2dbb5358bceb51598e3089326b72ec8685f
+                      - link "[PAC] Provide information on where the SipHash tests were derived from" [ref=f126e1226]: /rust-lang/rust/commit/1b80b2dbb5358bceb51598e3089326b72ec8685f
                     - cell "3 months ago"
                   - row:
                     - cell:
@@ -459,12 +406,9 @@ source: tests/playwright_fixtures.rs
                         - text: bootstrap.example.toml
                     - cell:
                       - generic:
-                        - link "Auto merge of" [ref=f126e1232]:
-                          - /url: /rust-lang/rust/commit/158f79d5c24d262f820fa45da96e7b77bc29a338
-                        - link "#163731" [ref=f126e1233]:
-                          - /url: https://github.com/rust-lang/rust/pull/163731
-                        - link "- TechnoPorg:bootstrap/tpde-step, r=Kobzol" [ref=f126e1234]:
-                          - /url: /rust-lang/rust/commit/158f79d5c24d262f820fa45da96e7b77bc29a338
+                        - link "Auto merge of" [ref=f126e1232]: /rust-lang/rust/commit/158f79d5c24d262f820fa45da96e7b77bc29a338
+                        - link "#163731" [ref=f126e1233]: https://github.com/rust-lang/rust/pull/163731
+                        - link "- TechnoPorg:bootstrap/tpde-step, r=Kobzol" [ref=f126e1234]
                     - cell "2 weeks ago"
                   - row:
                     - cell:
@@ -486,8 +430,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/license-metadata.json
                         - text: license-metadata.json
                     - cell:
-                      - link "[PAC] Update license-metadata.json" [ref=f126e1248]:
-                        - /url: /rust-lang/rust/commit/415f5ad64d4cdc0180a218e290cb6ad26afe3c91
+                      - link "[PAC] Update license-metadata.json" [ref=f126e1248]: /rust-lang/rust/commit/415f5ad64d4cdc0180a218e290cb6ad26afe3c91
                     - cell "3 months ago"
                   - row:
                     - cell:
@@ -508,8 +451,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/rust-bors.toml
                         - text: rust-bors.toml
                     - cell:
-                      - link "Switch dist-aarch64-linux to EC2 and update dist-x86_64-linux" [ref=f126e1262]:
-                        - /url: /rust-lang/rust/commit/af2d4bc7bd39e7b3d2abae51881625b74b9f4486
+                      - link "Switch dist-aarch64-linux to EC2 and update dist-x86_64-linux" [ref=f126e1262]: /rust-lang/rust/commit/af2d4bc7bd39e7b3d2abae51881625b74b9f4486
                     - cell "3 months ago"
                   - row:
                     - cell:
@@ -527,12 +469,9 @@ source: tests/playwright_fixtures.rs
                         - text: triagebot.toml
                     - cell:
                       - generic:
-                        - link "Rollup merge of" [ref=f126e1274]:
-                          - /url: /rust-lang/rust/commit/7868d28a813f2bc206d7d959a9c01d2375676876
-                        - link "#164508" [ref=f126e1275]:
-                          - /url: https://github.com/rust-lang/rust/pull/164508
-                        - link "- RalfJung:layout-invariant-ping, r=jieyouxu" [ref=f126e1276]:
-                          - /url: /rust-lang/rust/commit/7868d28a813f2bc206d7d959a9c01d2375676876
+                        - link "Rollup merge of" [ref=f126e1274]: /rust-lang/rust/commit/7868d28a813f2bc206d7d959a9c01d2375676876
+                        - link "#164508" [ref=f126e1275]: https://github.com/rust-lang/rust/pull/164508
+                        - link "- RalfJung:layout-invariant-ping, r=jieyouxu" [ref=f126e1276]
                     - cell "last week"
                   - row:
                     - cell:
@@ -540,8 +479,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/typos.toml
                         - text: typos.toml
                     - cell:
-                      - link "Improve diagnostic deduplication" [ref=f126e1282]:
-                        - /url: /rust-lang/rust/commit/434157508f02ec9092907d63e220e971d6dc34ad
+                      - link "Improve diagnostic deduplication" [ref=f126e1282]: /rust-lang/rust/commit/434157508f02ec9092907d63e220e971d6dc34ad
                     - cell "2 months ago"
                   - row:
                     - cell:
@@ -549,8 +487,7 @@ source: tests/playwright_fixtures.rs
                         - /url: /rust-lang/rust/blob/main/x
                         - text: x
                     - cell:
-                      - link "use extended regex syntax" [ref=f126e1288]:
-                        - /url: /rust-lang/rust/commit/f33b5cb590ed4cf520b30dc0c6ea07f9f49299e5
+                      - link "use extended regex syntax" [ref=f126e1288]: /rust-lang/rust/commit/f33b5cb590ed4cf520b30dc0c6ea07f9f49299e5
                     - cell "8 months ago"
                   - row:
                     - cell:
@@ -582,7 +519,6 @@ source: tests/playwright_fixtures.rs
                         - text: yarn.lock
                     - cell:
                       - link [ref=f126e1308]:
-                        - /url: /rust-lang/rust/commit/b0f83b7d0a099fe4af956785ae79aa0edc2d5860
                         - text: Update
                         - code: browser-ui-test
                         - text: version to
@@ -594,20 +530,15 @@ source: tests/playwright_fixtures.rs
                 - navigation "Repository files" [ref=f126e765]:
                   - list:
                     - listitem:
-                      - link "README" [ref=f126e768]:
-                        - /url: "#"
+                      - link "README" [ref=f126e768]: "#"
                     - listitem:
-                      - link "Code of conduct" [ref=f126e774]:
-                        - /url: "#"
+                      - link "Code of conduct" [ref=f126e774]
                     - listitem:
-                      - link "Contributing" [ref=f126e780]:
-                        - /url: "#"
+                      - link "Contributing" [ref=f126e780]
                     - listitem:
-                      - link "Apache-2.0 license" [ref=f126e786]:
-                        - /url: "#"
+                      - link "Apache-2.0 license" [ref=f126e786]
                     - listitem:
-                      - link "MIT license" [ref=f126e792]:
-                        - /url: "#"
+                      - link "MIT license" [ref=f126e792]
                   - button "More items" [ref=f126e811]:
                     - generic:
                       - text: More
@@ -617,20 +548,14 @@ source: tests/playwright_fixtures.rs
                 - generic:
                   - 'img "The Rust Programming Language: A language empowering everyone to build reliable and efficient software" [ref=f126e824]'
                   - paragraph:
-                    - link "Website" [ref=f126e826]:
-                      - /url: https://www.rust-lang.org/
-                    - link "Getting started" [ref=f126e827]:
-                      - /url: https://www.rust-lang.org/learn/get-started
-                    - link "Learn" [ref=f126e828]:
-                      - /url: https://www.rust-lang.org/learn
-                    - link "Documentation" [ref=f126e829]:
-                      - /url: https://www.rust-lang.org/learn#learn-use
-                    - link "Contributing" [ref=f126e830]:
-                      - /url: /rust-lang/rust/blob/main/CONTRIBUTING.md
+                    - link "Website" [ref=f126e826]: https://www.rust-lang.org/
+                    - link "Getting started" [ref=f126e827]: https://www.rust-lang.org/learn/get-started
+                    - link "Learn" [ref=f126e828]: https://www.rust-lang.org/learn
+                    - link "Documentation" [ref=f126e829]: https://www.rust-lang.org/learn#learn-use
+                    - link "Contributing" [ref=f126e830]
                 - paragraph:
                   - text: This is the main source code repository for
-                  - link "Rust" [ref=f126e832]:
-                    - /url: https://www.rust-lang.org/
+                  - link "Rust" [ref=f126e832]
                   - text: . It contains the compiler, standard library, and documentation.
                 - generic:
                   - heading "Why Rust?" [level=2] [ref=f126e834]
@@ -649,17 +574,13 @@ source: tests/playwright_fixtures.rs
                     - paragraph:
                       - strong: "Productivity:"
                       - text: Comprehensive documentation, a compiler committed to providing great diagnostics, and advanced tooling including package manager and build tool (
-                      - link "Cargo" [ref=f126e848]:
-                        - /url: https://github.com/rust-lang/cargo
+                      - link "Cargo" [ref=f126e848]: https://github.com/rust-lang/cargo
                       - text: ), auto-formatter (
-                      - link "rustfmt" [ref=f126e849]:
-                        - /url: https://github.com/rust-lang/rustfmt
+                      - link "rustfmt" [ref=f126e849]: https://github.com/rust-lang/rustfmt
                       - text: ), linter (
-                      - link "Clippy" [ref=f126e850]:
-                        - /url: https://github.com/rust-lang/rust-clippy
+                      - link "Clippy" [ref=f126e850]: https://github.com/rust-lang/rust-clippy
                       - text: ) and editor support (
-                      - link "rust-analyzer" [ref=f126e851]:
-                        - /url: https://github.com/rust-lang/rust-analyzer
+                      - link "rust-analyzer" [ref=f126e851]: https://github.com/rust-lang/rust-analyzer
                       - text: ).
                 - generic:
                   - heading "Quick Start" [level=2] [ref=f126e853]
@@ -667,11 +588,9 @@ source: tests/playwright_fixtures.rs
                     - /url: "#quick-start"
                 - paragraph:
                   - text: Read
-                  - link "\"Installation\"" [ref=f126e858]:
-                    - /url: https://doc.rust-lang.org/book/ch01-01-installation.html
+                  - link "\"Installation\"" [ref=f126e858]: https://doc.rust-lang.org/book/ch01-01-installation.html
                   - text: from
-                  - link "The Book" [ref=f126e859]:
-                    - /url: https://doc.rust-lang.org/book/index.html
+                  - link "The Book" [ref=f126e859]: https://doc.rust-lang.org/book/index.html
                   - text: .
                 - generic:
                   - heading "Installing from Source" [level=2] [ref=f126e861]
@@ -679,8 +598,7 @@ source: tests/playwright_fixtures.rs
                     - /url: "#installing-from-source"
                 - paragraph:
                   - text: If you really want to install from source (though this is not recommended), see
-                  - link "INSTALL.md" [ref=f126e866]:
-                    - /url: /rust-lang/rust/blob/main/INSTALL.md
+                  - link "INSTALL.md" [ref=f126e866]
                   - text: .
                 - generic:
                   - heading "Getting Help" [level=2] [ref=f126e868]
@@ -688,8 +606,7 @@ source: tests/playwright_fixtures.rs
                     - /url: "#getting-help"
                 - paragraph:
                   - text: See
-                  - link "https://www.rust-lang.org/community" [ref=f126e873]:
-                    - /url: https://www.rust-lang.org/community
+                  - link "https://www.rust-lang.org/community" [ref=f126e873]: https://www.rust-lang.org/community
                   - text: for a list of chat platforms and forums.
                 - generic:
                   - heading "Contributing" [level=2] [ref=f126e875]
@@ -697,13 +614,11 @@ source: tests/playwright_fixtures.rs
                     - /url: "#contributing"
                 - paragraph:
                   - text: See
-                  - link "CONTRIBUTING.md" [ref=f126e880]:
-                    - /url: /rust-lang/rust/blob/main/CONTRIBUTING.md
+                  - link "CONTRIBUTING.md" [ref=f126e880]
                   - text: .
                 - paragraph:
                   - text: For a detailed explanation of the compiler's architecture and how to begin contributing, see the
-                  - link "rustc-dev-guide" [ref=f126e882]:
-                    - /url: https://rustc-dev-guide.rust-lang.org/
+                  - link "rustc-dev-guide" [ref=f126e882]: https://rustc-dev-guide.rust-lang.org/
                   - text: .
                 - generic:
                   - heading "License" [level=2] [ref=f126e884]
@@ -712,66 +627,50 @@ source: tests/playwright_fixtures.rs
                 - paragraph: Rust is primarily distributed under the terms of both the MIT license and the Apache License (Version 2.0), with portions covered by various BSD-like licenses.
                 - paragraph:
                   - text: See
-                  - link "LICENSE-APACHE" [ref=f126e890]:
-                    - /url: /rust-lang/rust/blob/main/LICENSE-APACHE
-                  - link "LICENSE-MIT" [ref=f126e891]:
-                    - /url: /rust-lang/rust/blob/main/LICENSE-MIT
+                  - link "LICENSE-APACHE" [ref=f126e890]
+                  - link "LICENSE-MIT" [ref=f126e891]
                   - text: ", and"
-                  - link "COPYRIGHT" [ref=f126e892]:
-                    - /url: /rust-lang/rust/blob/main/COPYRIGHT
+                  - link "COPYRIGHT" [ref=f126e892]
                   - text: for details.
                 - generic:
                   - heading "Trademark" [level=2] [ref=f126e894]
                   - 'link "Permalink: Trademark" [ref=f126e895] [cursor=pointer]':
                     - /url: "#trademark"
                 - paragraph:
-                  - link "The Rust Foundation" [ref=f126e899]:
-                    - /url: https://rustfoundation.org/
+                  - link "The Rust Foundation" [ref=f126e899]: https://rustfoundation.org/
                   - text: owns and protects the Rust and Cargo trademarks and logos (the "Rust Trademarks").
                 - paragraph:
                   - text: If you want to use these names or brands, please read the
-                  - link "Rust language trademark policy" [ref=f126e901]:
-                    - /url: https://rustfoundation.org/policy/rust-trademark-policy/
+                  - link "Rust language trademark policy" [ref=f126e901]: https://rustfoundation.org/policy/rust-trademark-policy/
                   - text: .
                 - paragraph:
                   - text: Third-party logos may be subject to third-party copyrights and trademarks. See
-                  - link "Licenses" [ref=f126e903]:
-                    - /url: https://www.rust-lang.org/policies/licenses
+                  - link "Licenses" [ref=f126e903]: https://www.rust-lang.org/policies/licenses
                   - text: for details.
         - generic:
           - generic:
             - heading "About" [level=2] [ref=f126e908]
             - paragraph: Empowering everyone to build reliable and efficient software.
             - generic "https://www.rust-lang.org":
-              - link "www.rust-lang.org" [ref=f126e914]:
-                - /url: https://www.rust-lang.org
+              - link "www.rust-lang.org" [ref=f126e914]: https://www.rust-lang.org
             - heading "Topics" [level=3] [ref=f126e915]
             - generic:
-              - link "compiler" [ref=f126e917]:
-                - /url: /topics/compiler
-              - link "language" [ref=f126e918]:
-                - /url: /topics/language
-              - link "rust" [ref=f126e919]:
-                - /url: /topics/rust
+              - link "compiler" [ref=f126e917]: /topics/compiler
+              - link "language" [ref=f126e918]: /topics/language
+              - link "rust" [ref=f126e919]: /topics/rust
             - heading "Resources" [level=3] [ref=f126e920]
-            - link "Readme" [ref=f126e922]:
-              - /url: "#readme-ov-file"
+            - link "Readme" [ref=f126e922]: "#readme-ov-file"
             - button "Apache-2.0 and 2 other licenses found" [ref=f126e926]
             - heading "Code of conduct" [level=3] [ref=f126e931]
-            - link "Code of conduct" [ref=f126e933]:
-              - /url: /rust-lang/rust#coc-ov-file
+            - link "Code of conduct" [ref=f126e933]: /rust-lang/rust#coc-ov-file
             - heading "Contributing" [level=3] [ref=f126e936]
-            - link "Contributing" [ref=f126e938]:
-              - /url: "#contributing-ov-file"
+            - link "Contributing" [ref=f126e938]: "#contributing-ov-file"
             - heading "Security policy" [level=3] [ref=f126e941]
-            - link "Security policy" [ref=f126e943]:
-              - /url: "#security-ov-file"
+            - link "Security policy" [ref=f126e943]: "#security-ov-file"
             - generic:
               - generic:
-                - link "Activity" [ref=f126e949]:
-                  - /url: /rust-lang/rust/activity
-                - link "Custom properties" [ref=f126e953]:
-                  - /url: /rust-lang/rust/custom-properties
+                - link "Activity" [ref=f126e949]: /rust-lang/rust/activity
+                - link "Custom properties" [ref=f126e953]: /rust-lang/rust/custom-properties
               - generic:
                 - heading "Stars" [level=3] [ref=f126e957]
                 - generic:
@@ -786,13 +685,11 @@ source: tests/playwright_fixtures.rs
                   - /url: /rust-lang/rust/forks
                   - strong: 17.4k
                   - text: forks
-            - link "Report repository" [ref=f126e977]:
-              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Frust-lang%2Frust&report=rust-lang+%28user%29
+            - link "Report repository" [ref=f126e977]: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Frust-lang%2Frust&report=rust-lang+%28user%29
           - generic:
             - heading "Releases (157)" [level=2] [ref=f126e1313]:
               - generic:
-                - link "Releases" [ref=f126e1315]:
-                  - /url: /rust-lang/rust/releases
+                - link "Releases" [ref=f126e1315]: /rust-lang/rust/releases
                 - generic [aria-hidden]: "157"
                 - generic: (157)
             - link "Rust 1.99.1 Latest 2 weeks ago" [ref=f126e1318]:
@@ -802,8 +699,7 @@ source: tests/playwright_fixtures.rs
                   - generic "Rust 1.99.1"
                   - generic: Latest
                 - generic: 2 weeks ago
-            - link "+ 156 releases" [ref=f126e1327]:
-              - /url: /rust-lang/rust/releases
+            - link "+ 156 releases" [ref=f126e1327]
           - generic:
             - heading "Sponsor this project" [level=2] [ref=f126e1329]
             - list:
@@ -813,28 +709,22 @@ source: tests/playwright_fixtures.rs
                   - img "@rustfoundation" [ref=f126e1333]
                 - generic:
                   - link [ref=f126e1335]:
-                    - /url: /rustfoundation
                     - strong: rustfoundation
                   - text: Rust Foundation
-                - link "Sponsor @rustfoundation" [ref=f126e1337]:
-                  - /url: /sponsors/rustfoundation
+                - link "Sponsor @rustfoundation" [ref=f126e1337]: /sponsors/rustfoundation
             - list:
               - listitem:
-                - link "https://rust-lang.org/funding" [ref=f126e1346]:
-                  - /url: https://rust-lang.org/funding
-            - link "Learn more about GitHub Sponsors" [ref=f126e1348]:
-              - /url: /sponsors
+                - link "https://rust-lang.org/funding" [ref=f126e1346]: https://rust-lang.org/funding
+            - link "Learn more about GitHub Sponsors" [ref=f126e1348]: /sponsors
           - generic:
             - heading "Contributors (6,967)" [level=2] [ref=f126e1350]:
               - generic:
-                - link "Contributors" [ref=f126e1352]:
-                  - /url: /rust-lang/rust/graphs/contributors
+                - link "Contributors" [ref=f126e1352]: /rust-lang/rust/graphs/contributors
                 - generic [aria-hidden]: 6,967
                 - generic: (6,967)
             - list:
               - listitem:
                 - link [ref=f126e1357]:
-                  - /url: /bors
                   - img "@bors" [ref=f126e1358]
               - listitem:
                 - link [ref=f126e1360]:
@@ -888,8 +778,7 @@ source: tests/playwright_fixtures.rs
                 - link [ref=f126e1396]:
                   - /url: /nikomatsakis
                   - img "@nikomatsakis" [ref=f126e1397]
-            - link "+ 6,953 contributors" [ref=f126e1399]:
-              - /url: /rust-lang/rust/graphs/contributors
+            - link "+ 6,953 contributors" [ref=f126e1399]
           - generic:
             - heading "Languages" [level=2] [ref=f126e1401]
             - generic:
@@ -940,36 +829,28 @@ source: tests/playwright_fixtures.rs
     - heading "Footer" [level=2] [ref=f126e996]
     - generic:
       - generic:
-        - link "GitHub Homepage" [ref=f126e999]:
-          - /url: https://github.com
+        - link "GitHub Homepage" [ref=f126e999]: https://github.com
         - generic: © 2026 GitHub, Inc.
       - navigation "Footer" [ref=f126e1003]:
         - heading "Footer navigation" [level=3] [ref=f126e1004]
         - list "Footer navigation":
           - listitem:
-            - link "Terms" [ref=f126e1007]:
-              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+            - link "Terms" [ref=f126e1007]: https://docs.github.com/site-policy/github-terms/github-terms-of-service
           - listitem:
-            - link "Privacy" [ref=f126e1009]:
-              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+            - link "Privacy" [ref=f126e1009]: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
           - listitem:
-            - link "Security" [ref=f126e1011]:
-              - /url: https://github.com/security
+            - link "Security" [ref=f126e1011]: https://github.com/security
           - listitem:
-            - link "Status" [ref=f126e1013]:
-              - /url: https://www.githubstatus.com/
+            - link "Status" [ref=f126e1013]: https://www.githubstatus.com/
           - listitem:
-            - link "Community" [ref=f126e1015]:
-              - /url: https://github.community/
+            - link "Community" [ref=f126e1015]: https://github.community/
           - listitem:
-            - link "Docs" [ref=f126e1017]:
-              - /url: https://docs.github.com/
+            - link "Docs" [ref=f126e1017]: https://docs.github.com/
           - listitem:
-            - link "Contact" [ref=f126e1019]:
-              - /url: https://support.github.com?tags=dotcom-footer
+            - link "Contact" [ref=f126e1019]: https://support.github.com?tags=dotcom-footer
           - listitem:
             - button "Manage cookies" [ref=f126e1022]
           - listitem:
             - button "Do not share my personal information" [ref=f126e1025]
 ```
-[meiose: 6 nodes trimmed, 377 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 6 nodes trimmed, 377 non-interactive refs hidden, 34 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

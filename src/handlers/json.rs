@@ -73,7 +73,7 @@ pub fn trim_json_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Option<T
         serde_json::to_string(&v).ok()?
     };
     out.push_str(&format!(
-        "\n[meiose: {} array items trimmed{} — call meiose_expand(\"{}\") for the full output]",
+        "\n[meiose: {} array items trimmed{} — call meiose_expand(\"{}\") for the full output, or add query=\"…\" for only the lines you need]",
         stats.items,
         if stats.strings > 0 {
             format!(", {} long strings shortened", stats.strings)

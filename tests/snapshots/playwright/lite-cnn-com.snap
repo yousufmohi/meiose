@@ -9,325 +9,228 @@ source: tests/playwright_fixtures.rs
 ```yaml
 - generic [active] [ref=f122e1]:
   - banner [ref=f122e2]:
-    - link "CNN" [ref=f122e3]:
-      - /url: /
+    - link "CNN" [ref=f122e3]: /
     - text: 11/1/2026
   - generic:
     - paragraph: Latest Stories
     - list:
       - listitem:
-        - link "9 killed after a Learjet crashes and erupts into flames in Palm Beach County, Florida" [ref=f122e11]:
-          - /url: /2026/11/01/us/south-florida-plane-crash
+        - link "9 killed after a Learjet crashes and erupts into flames in Palm Beach County, Florida" [ref=f122e11]: /2026/11/01/us/south-florida-plane-crash
       - listitem:
-        - link "1 dead, 8 injured in pair of shootings after college football game in Alabama" [ref=f122e13]:
-          - /url: /2026/11/01/us/alabama-college-football-game-shooting
+        - link "1 dead, 8 injured in pair of shootings after college football game in Alabama" [ref=f122e13]: /2026/11/01/us/alabama-college-football-game-shooting
       - listitem:
         - 'link "Reunited after 1,711 days: Oleshky evacuees return to Ukraine under Melania Trump-brokered ceasefire" [ref=f122e15] [cursor=pointer]':
           - /url: /2026/10/31/europe/oleshky-ceasefire-russia-ukraine-arrivals-intl
       - listitem:
-        - link "Lions All-Pro LB Jack Campbell placed on backboard, carted off field after a tackle against Vikings" [ref=f122e17]:
-          - /url: /2026/11/01/sport/jack-campbell-lions-carted-off
+        - link "Lions All-Pro LB Jack Campbell placed on backboard, carted off field after a tackle against Vikings" [ref=f122e17]: /2026/11/01/sport/jack-campbell-lions-carted-off
       - listitem:
-        - link "Here is how CNN’s Sightline real-time election insights tool works" [ref=f122e19]:
-          - /url: /2026/11/01/politics/cnn-sightline-explainer
+        - link "Here is how CNN’s Sightline real-time election insights tool works" [ref=f122e19]: /2026/11/01/politics/cnn-sightline-explainer
       - listitem:
-        - link "Middle East on edge as fears mount that Iran war could restart after the midterms" [ref=f122e21]:
-          - /url: /2026/10/31/middleeast/gulf-braces-us-midterms-intl
+        - link "Middle East on edge as fears mount that Iran war could restart after the midterms" [ref=f122e21]: /2026/10/31/middleeast/gulf-braces-us-midterms-intl
       - listitem:
-        - link "Sen. Chris Murphy hospitalized with stroke and expected to make full recovery, his team says" [ref=f122e23]:
-          - /url: /2026/11/01/politics/chris-murphy-stroke
+        - link "Sen. Chris Murphy hospitalized with stroke and expected to make full recovery, his team says" [ref=f122e23]: /2026/11/01/politics/chris-murphy-stroke
       - listitem:
-        - link "4 killed, about 15 injured after multiple overnight shootings in Dallas neighborhood, police say" [ref=f122e25]:
-          - /url: /2026/11/01/us/dallas-halloween-night-shootings
+        - link "4 killed, about 15 injured after multiple overnight shootings in Dallas neighborhood, police say" [ref=f122e25]: /2026/11/01/us/dallas-halloween-night-shootings
       - listitem:
-        - link "Authorities rule out new ransom note as not credible in the Nancy Guthrie case. Here’s the latest" [ref=f122e27]:
-          - /url: /us/timeline-nancy-guthrie-search
+        - link "Authorities rule out new ransom note as not credible in the Nancy Guthrie case. Here’s the latest" [ref=f122e27]: /us/timeline-nancy-guthrie-search
       - listitem:
-        - link "The last-minute surprises and sideshows of the 2026 campaign" [ref=f122e29]:
-          - /url: /2026/11/01/politics/midterm-election-cheesecake-factory
+        - link "The last-minute surprises and sideshows of the 2026 campaign" [ref=f122e29]: /2026/11/01/politics/midterm-election-cheesecake-factory
       - listitem:
-        - link "Russia’s security service detains a teenager planning a ‘terror attack’ after a US tip-off" [ref=f122e31]:
-          - /url: /2026/11/01/europe/russia-terror-attack-us-warning-intl
+        - link "Russia’s security service detains a teenager planning a ‘terror attack’ after a US tip-off" [ref=f122e31]: /2026/11/01/europe/russia-terror-attack-us-warning-intl
       - listitem:
-        - link "A record number of health professionals are running for office. Could they help heal US politics?" [ref=f122e33]:
-          - /url: /2026/11/01/health/health-candidates-midterms
+        - link "A record number of health professionals are running for office. Could they help heal US politics?" [ref=f122e33]: /2026/11/01/health/health-candidates-midterms
       - listitem:
-        - link "Binance withdrawals resume following $6 billion hack" [ref=f122e35]:
-          - /url: /2026/11/01/business/binance-withdrawals-crypto-heist
+        - link "Binance withdrawals resume following $6 billion hack" [ref=f122e35]: /2026/11/01/business/binance-withdrawals-crypto-heist
       - listitem:
-        - link "Democratic leaders enter the midterms ‘confident and paranoid’" [ref=f122e37]:
-          - /url: /2026/11/01/politics/democrats-midterms-hakeem-jeffries
+        - link "Democratic leaders enter the midterms ‘confident and paranoid’" [ref=f122e37]: /2026/11/01/politics/democrats-midterms-hakeem-jeffries
       - listitem:
-        - link "Anthropic says you can’t be mean to Claude. It’s not about feelings" [ref=f122e39]:
-          - /url: /2026/11/01/business/anthropic-dont-be-mean-claude-ban
+        - link "Anthropic says you can’t be mean to Claude. It’s not about feelings" [ref=f122e39]: /2026/11/01/business/anthropic-dont-be-mean-claude-ban
       - listitem:
-        - link "A field guide to the conspiracy theories you’ll likely see on Election Day" [ref=f122e41]:
-          - /url: /2026/11/01/politics/conspiracy-theories-election-day-field-guide
+        - link "A field guide to the conspiracy theories you’ll likely see on Election Day" [ref=f122e41]: /2026/11/01/politics/conspiracy-theories-election-day-field-guide
       - listitem:
-        - link "Hero teacher who tackled Bend gunman speaks out as community prepares to reopen school" [ref=f122e43]:
-          - /url: /2026/11/01/us/bend-oregon-hero-teacher
+        - link "Hero teacher who tackled Bend gunman speaks out as community prepares to reopen school" [ref=f122e43]: /2026/11/01/us/bend-oregon-hero-teacher
       - listitem:
-        - link "Germany blames infiltrators as Gen Z protests turn violent" [ref=f122e45]:
-          - /url: /2026/11/01/europe/germany-gen-z-protests-turn-violent-intl
+        - link "Germany blames infiltrators as Gen Z protests turn violent" [ref=f122e45]: /2026/11/01/europe/germany-gen-z-protests-turn-violent-intl
       - listitem:
-        - link "Bitter spat between Poland’s pro-Europe PM and pro-Trump president erupts" [ref=f122e47]:
-          - /url: /2026/11/01/europe/poland-constitutional-tribunal-tusk-intl
+        - link "Bitter spat between Poland’s pro-Europe PM and pro-Trump president erupts" [ref=f122e47]: /2026/11/01/europe/poland-constitutional-tribunal-tusk-intl
       - listitem:
-        - link "Federal officials investigate suspected arson at beleaguered police department in Mississippi" [ref=f122e49]:
-          - /url: /2026/11/01/us/senatobia-mississippi-police-arson-investigation
+        - link "Federal officials investigate suspected arson at beleaguered police department in Mississippi" [ref=f122e49]: /2026/11/01/us/senatobia-mississippi-police-arson-investigation
       - listitem:
         - 'link "“Nobody’s listening”: 5 things Americans told me about the economy that Washington needs to hear" [ref=f122e51] [cursor=pointer]':
           - /url: /2026/11/01/economy/americans-midterm-personal-economics
       - listitem:
-        - link "The story behind Megan Thee Stallion’s elaborately spooky Halloween costume" [ref=f122e53]:
-          - /url: /2026/11/01/entertainment/megan-thee-stallion-halloween-costume
+        - link "The story behind Megan Thee Stallion’s elaborately spooky Halloween costume" [ref=f122e53]: /2026/11/01/entertainment/megan-thee-stallion-halloween-costume
       - listitem:
-        - link "Flock was founded in Atlanta. Thousands of cameras later, the company is getting pushback in its hometown" [ref=f122e55]:
-          - /url: /2026/11/01/us/flock-cameras-atlanta-privacy-backlash
+        - link "Flock was founded in Atlanta. Thousands of cameras later, the company is getting pushback in its hometown" [ref=f122e55]: /2026/11/01/us/flock-cameras-atlanta-privacy-backlash
       - listitem:
-        - link "The Cheesecake Factory can’t get enough of the Gen Z ‘Tuscan moms’" [ref=f122e57]:
-          - /url: /2026/11/01/business/cheesecake-factory-tuscan-moms
+        - link "The Cheesecake Factory can’t get enough of the Gen Z ‘Tuscan moms’" [ref=f122e57]: /2026/11/01/business/cheesecake-factory-tuscan-moms
       - listitem:
-        - link "Obamacare continues to shrink as enrollment opens for 2027" [ref=f122e59]:
-          - /url: /2026/11/01/politics/obamacare-continues-to-shrink-as-enrollment-opens-for-2027
+        - link "Obamacare continues to shrink as enrollment opens for 2027" [ref=f122e59]: /2026/11/01/politics/obamacare-continues-to-shrink-as-enrollment-opens-for-2027
       - listitem:
-        - link "How to follow along with CNN’s election coverage" [ref=f122e61]:
-          - /url: /2026/11/01/politics/midterms-cnn-election-coverage
+        - link "How to follow along with CNN’s election coverage" [ref=f122e61]: /2026/11/01/politics/midterms-cnn-election-coverage
       - listitem:
-        - link "Italian taxpayers are paying millions to keep Russian yachts afloat" [ref=f122e63]:
-          - /url: /2026/11/01/europe/italy-russian-superyachts-sanctions-taxpayers-intl
+        - link "Italian taxpayers are paying millions to keep Russian yachts afloat" [ref=f122e63]: /2026/11/01/europe/italy-russian-superyachts-sanctions-taxpayers-intl
       - listitem:
-        - link "Golden State Valkyries make history with first WNBA title in the team’s second year of existence" [ref=f122e65]:
-          - /url: /2026/10/31/sport/valkyries-dream-wnba-finals-game-7
+        - link "Golden State Valkyries make history with first WNBA title in the team’s second year of existence" [ref=f122e65]: /2026/10/31/sport/valkyries-dream-wnba-finals-game-7
       - listitem:
-        - link "Judge tosses Trump’s lawsuit against Wall Street Journal again, this time for good" [ref=f122e67]:
-          - /url: /2026/10/31/media/trump-wall-street-journal-murdoch-lawsuit-dismissed
+        - link "Judge tosses Trump’s lawsuit against Wall Street Journal again, this time for good" [ref=f122e67]: /2026/10/31/media/trump-wall-street-journal-murdoch-lawsuit-dismissed
       - listitem:
-        - link "Top Kennedy Center official urged closure due to financial problems, not poor conditions, lawyers argue" [ref=f122e69]:
-          - /url: /2026/10/31/politics/kennedy-center-court-documents
+        - link "Top Kennedy Center official urged closure due to financial problems, not poor conditions, lawyers argue" [ref=f122e69]: /2026/10/31/politics/kennedy-center-court-documents
       - listitem:
-        - link "Protests spread to Germany as hundreds of thousands march again in France" [ref=f122e71]:
-          - /url: /2026/10/31/europe/protests-europe-germany-halloween-intl
+        - link "Protests spread to Germany as hundreds of thousands march again in France" [ref=f122e71]: /2026/10/31/europe/protests-europe-germany-halloween-intl
       - listitem:
-        - link "Pregnant woman killed, 6 others wounded in targeted shooting at California Spirit Halloween store, police say" [ref=f122e73]:
-          - /url: /2026/10/31/us/shooting-spirit-halloween-store-california
+        - link "Pregnant woman killed, 6 others wounded in targeted shooting at California Spirit Halloween store, police say" [ref=f122e73]: /2026/10/31/us/shooting-spirit-halloween-store-california
       - listitem:
-        - link "Mamdani says Trump agrees to grant visa to mother of teen from Ghana killed in Bronx shooting" [ref=f122e75]:
-          - /url: /2026/10/31/us/mamdani-javits-frimpong-visa-trump
+        - link "Mamdani says Trump agrees to grant visa to mother of teen from Ghana killed in Bronx shooting" [ref=f122e75]: /2026/10/31/us/mamdani-javits-frimpong-visa-trump
       - listitem:
-        - link "Tensions over Poland’s top court ignite as the country’s prime minister and president square off" [ref=f122e77]:
-          - /url: /2026/10/31/europe/poland-protests-president-nawrocki-latam-intl
+        - link "Tensions over Poland’s top court ignite as the country’s prime minister and president square off" [ref=f122e77]: /2026/10/31/europe/poland-protests-president-nawrocki-latam-intl
       - listitem:
-        - link "On Day of the Dead, tourists bump shoulders with celebrating families in San Andrés Mixquic" [ref=f122e79]:
-          - /url: /2026/10/31/americas/day-of-the-dead-tourism-intl-latam
+        - link "On Day of the Dead, tourists bump shoulders with celebrating families in San Andrés Mixquic" [ref=f122e79]: /2026/10/31/americas/day-of-the-dead-tourism-intl-latam
       - listitem:
-        - link "Judge imposes sweeping emergency order halting DOJ pressure campaign on election officials across the country" [ref=f122e81]:
-          - /url: /2026/10/30/politics/emergency-order-halts-doj-pressure-campaign-election-officials
+        - link "Judge imposes sweeping emergency order halting DOJ pressure campaign on election officials across the country" [ref=f122e81]: /2026/10/30/politics/emergency-order-halts-doj-pressure-campaign-election-officials
       - listitem:
-        - link "Michigan man charged with threatening to kill FBI Director Kash Patel" [ref=f122e83]:
-          - /url: /2026/10/31/us/michigan-threats-fbi-kash-patel
+        - link "Michigan man charged with threatening to kill FBI Director Kash Patel" [ref=f122e83]: /2026/10/31/us/michigan-threats-fbi-kash-patel
       - listitem:
-        - link "Scientists say decades-old theory on the origin of life might be wrong" [ref=f122e85]:
-          - /url: /2026/10/31/science/origin-life-theory-comet-simulation
+        - link "Scientists say decades-old theory on the origin of life might be wrong" [ref=f122e85]: /2026/10/31/science/origin-life-theory-comet-simulation
       - listitem:
-        - link "Notorious hacker says stolen crypto is like ‘holding a hot potato’" [ref=f122e87]:
-          - /url: /2026/10/31/business/crypto-hacker-money-laundering
+        - link "Notorious hacker says stolen crypto is like ‘holding a hot potato’" [ref=f122e87]: /2026/10/31/business/crypto-hacker-money-laundering
       - listitem:
         - 'link "Americans voting from Mexico share a concern ahead of the midterms: the future of democracy" [ref=f122e89] [cursor=pointer]':
           - /url: /2026/10/31/americas/american-expats-mexico-midterms-latam-intl
       - listitem:
-        - link "Storm set to hit central US on Election Day as key midterm races hang in balance" [ref=f122e91]:
-          - /url: /2026/10/31/weather/election-day-storm-climate
+        - link "Storm set to hit central US on Election Day as key midterm races hang in balance" [ref=f122e91]: /2026/10/31/weather/election-day-storm-climate
       - listitem:
-        - link "Trump’s triumphal arch faces more opposition, with judge asking if desire is to ‘bedazzle’ DC" [ref=f122e93]:
-          - /url: /2026/10/30/politics/judge-slams-trumps-arch-plans-bedazzle
+        - link "Trump’s triumphal arch faces more opposition, with judge asking if desire is to ‘bedazzle’ DC" [ref=f122e93]: /2026/10/30/politics/judge-slams-trumps-arch-plans-bedazzle
       - listitem:
-        - link "MAHA helped power Trump’s 2024 victory — but now RFK Jr. is exposing a GOP midterm vulnerability" [ref=f122e95]:
-          - /url: /2026/10/31/politics/rfk-measles-midterms-pennsylvania
+        - link "MAHA helped power Trump’s 2024 victory — but now RFK Jr. is exposing a GOP midterm vulnerability" [ref=f122e95]: /2026/10/31/politics/rfk-measles-midterms-pennsylvania
       - listitem:
-        - link "It’s the world’s largest passenger plane. But he still fit some of it inside his home" [ref=f122e97]:
-          - /url: /2026/10/31/travel/worlds-largest-plane-partly-inside-his-home
+        - link "It’s the world’s largest passenger plane. But he still fit some of it inside his home" [ref=f122e97]: /2026/10/31/travel/worlds-largest-plane-partly-inside-his-home
       - listitem:
-        - link "Zelensky welcomes sale of crucial US Patriot missiles but warns delivery could take years" [ref=f122e99]:
-          - /url: /2026/10/30/politics/us-approves-potential-patriot-missile-sale-ukraine
+        - link "Zelensky welcomes sale of crucial US Patriot missiles but warns delivery could take years" [ref=f122e99]: /2026/10/30/politics/us-approves-potential-patriot-missile-sale-ukraine
       - listitem:
-        - link "Republicans try to save Max Miller as child custody dispute roils his race" [ref=f122e101]:
-          - /url: /2026/10/31/politics/republicans-max-miller-midterms
+        - link "Republicans try to save Max Miller as child custody dispute roils his race" [ref=f122e101]: /2026/10/31/politics/republicans-max-miller-midterms
       - listitem:
-        - link "Hundreds evacuate Ukrainian city of Oleshky under Melania Trump-brokered ceasefire" [ref=f122e103]:
-          - /url: /2026/10/30/world/evacuations-oleshky-melania-trump-ceasefire-intl
+        - link "Hundreds evacuate Ukrainian city of Oleshky under Melania Trump-brokered ceasefire" [ref=f122e103]: /2026/10/30/world/evacuations-oleshky-melania-trump-ceasefire-intl
       - listitem:
         - 'link "‘You Can’t See Anything’: the slow rollout of Nathan Fielder’s movie is agony for foreign filmgoers" [ref=f122e105] [cursor=pointer]':
           - /url: /2026/10/31/entertainment/you-can-see-everything-foreign-release
       - listitem:
-        - link "This retired professor was arrested for blocking a delivery robot. She says she’ll do it again" [ref=f122e107]:
-          - /url: /2026/10/31/us/philadelphia-woman-delivery-robots-cec
+        - link "This retired professor was arrested for blocking a delivery robot. She says she’ll do it again" [ref=f122e107]: /2026/10/31/us/philadelphia-woman-delivery-robots-cec
       - listitem:
-        - link "Americans may feel a bit spooked by Halloween prices" [ref=f122e109]:
-          - /url: /2026/10/31/business/halloween-costume-prices
+        - link "Americans may feel a bit spooked by Halloween prices" [ref=f122e109]: /2026/10/31/business/halloween-costume-prices
       - listitem:
-        - link "What do Kylian Mbappé and Hello Kitty have in common? They’ve both angered China" [ref=f122e111]:
-          - /url: /2026/10/31/china/mbappe-sanrio-china-controversies-intl-hnk
+        - link "What do Kylian Mbappé and Hello Kitty have in common? They’ve both angered China" [ref=f122e111]: /2026/10/31/china/mbappe-sanrio-china-controversies-intl-hnk
       - listitem:
-        - link "Putin wants Africa on his side. African leaders are playing their own game" [ref=f122e113]:
-          - /url: /2026/10/31/africa/putin-russia-africa-cooperation-intl
+        - link "Putin wants Africa on his side. African leaders are playing their own game" [ref=f122e113]: /2026/10/31/africa/putin-russia-africa-cooperation-intl
       - listitem:
-        - link "3 dead after 2 helicopters collide midair near Oregon airport, sheriff says" [ref=f122e115]:
-          - /url: /2026/10/29/us/oregon-helicopters-crash
+        - link "3 dead after 2 helicopters collide midair near Oregon airport, sheriff says" [ref=f122e115]: /2026/10/29/us/oregon-helicopters-crash
       - listitem:
-        - link "G20 photo scrapped amid tensions over Russian foreign minister’s presence" [ref=f122e117]:
-          - /url: /2026/10/30/politics/g20-tensions-photo-canceled-lavrov-rubio
+        - link "G20 photo scrapped amid tensions over Russian foreign minister’s presence" [ref=f122e117]: /2026/10/30/politics/g20-tensions-photo-canceled-lavrov-rubio
       - listitem:
         - 'link "Christa Pike makes first public comments since botched execution: ‘Healing is not the same as being okay’" [ref=f122e119] [cursor=pointer]':
           - /url: /2026/10/30/us/christa-pike-case-first-statement
       - listitem:
-        - link "Tennessee prison escapee crossed state lines before prison officials alerted external law enforcement, district attorney says" [ref=f122e121]:
-          - /url: /2026/10/28/us/tennessee-prison-escape
+        - link "Tennessee prison escapee crossed state lines before prison officials alerted external law enforcement, district attorney says" [ref=f122e121]: /2026/10/28/us/tennessee-prison-escape
       - listitem:
         - 'link "From death row to a botched execution and back: A timeline of Christa Pike’s case" [ref=f122e123] [cursor=pointer]':
           - /url: /us/christa-pike-case-timeline
       - listitem:
-        - link "Hackers just stole $6 billion in crypto. It’s not the first time, and it won’t be the last" [ref=f122e125]:
-          - /url: /2026/10/30/business/binance-hackers-crypto-safety
+        - link "Hackers just stole $6 billion in crypto. It’s not the first time, and it won’t be the last" [ref=f122e125]: /2026/10/30/business/binance-hackers-crypto-safety
       - listitem:
-        - link "Nasdaq suffers worst month in over a year as AI nerves roil markets" [ref=f122e127]:
-          - /url: /2026/10/30/investing/us-stocks-ai-investment
+        - link "Nasdaq suffers worst month in over a year as AI nerves roil markets" [ref=f122e127]: /2026/10/30/investing/us-stocks-ai-investment
       - listitem:
         - 'link "‘They killed us’: Russia’s last independent newspaper falls silent amid pressure from Kremlin" [ref=f122e129] [cursor=pointer]':
           - /url: /2026/10/30/business/novaya-gazeta-russian-newspaper-shutdown-intl
       - listitem:
-        - link "Trump fumed at coverage of rally cancellations before ordering the events back on" [ref=f122e131]:
-          - /url: /2026/10/30/politics/trump-rally-cancellation-midterms
+        - link "Trump fumed at coverage of rally cancellations before ordering the events back on" [ref=f122e131]: /2026/10/30/politics/trump-rally-cancellation-midterms
       - listitem:
-        - link "The real question we should all be asking about AI" [ref=f122e133]:
-          - /url: /2026/10/30/business/ai-stocks-bonds-debt
+        - link "The real question we should all be asking about AI" [ref=f122e133]: /2026/10/30/business/ai-stocks-bonds-debt
       - listitem:
-        - link "An ICE officer has been charged after striking a man with a car in Houston" [ref=f122e135]:
-          - /url: /2026/10/30/us/ice-officer-charged-houston
+        - link "An ICE officer has been charged after striking a man with a car in Houston" [ref=f122e135]: /2026/10/30/us/ice-officer-charged-houston
       - listitem:
-        - link "Judge tears into senior DOJ official and orders investigation into Trump’s golf course plans" [ref=f122e137]:
-          - /url: /2026/10/30/politics/dc-golf-course-trump-justice-woodward-reyes
+        - link "Judge tears into senior DOJ official and orders investigation into Trump’s golf course plans" [ref=f122e137]: /2026/10/30/politics/dc-golf-course-trump-justice-woodward-reyes
       - listitem:
-        - link "Judge blocks Trump administration’s Medicaid rule forcing sick recipients to prove they can’t work" [ref=f122e139]:
-          - /url: /2026/10/30/health/medicaid-frailty-decision
+        - link "Judge blocks Trump administration’s Medicaid rule forcing sick recipients to prove they can’t work" [ref=f122e139]: /2026/10/30/health/medicaid-frailty-decision
       - listitem:
-        - link "Justice Department tells judge it may bring more charges against James Comey" [ref=f122e141]:
-          - /url: /2026/10/30/politics/comey-motion-hearing-leak-charges
+        - link "Justice Department tells judge it may bring more charges against James Comey" [ref=f122e141]: /2026/10/30/politics/comey-motion-hearing-leak-charges
       - listitem:
-        - link "Fire at South Carolina nuclear site triggers emergency but no contamination found outside lab, officials say" [ref=f122e143]:
-          - /url: /2026/10/28/us/savannah-river-national-lab-fire-nuclear-south-carolina
+        - link "Fire at South Carolina nuclear site triggers emergency but no contamination found outside lab, officials say" [ref=f122e143]: /2026/10/28/us/savannah-river-national-lab-fire-nuclear-south-carolina
       - listitem:
-        - link "Pope Leo makes history by voting in US midterms" [ref=f122e145]:
-          - /url: /2026/10/30/europe/pope-leo-voting-us-midterms-intl
+        - link "Pope Leo makes history by voting in US midterms" [ref=f122e145]: /2026/10/30/europe/pope-leo-voting-us-midterms-intl
       - listitem:
-        - link "Major anti-government protests sweep across Italy" [ref=f122e147]:
-          - /url: /2026/10/30/europe/italy-protests-anti-government-meloni-intl
+        - link "Major anti-government protests sweep across Italy" [ref=f122e147]: /2026/10/30/europe/italy-protests-anti-government-meloni-intl
       - listitem:
-        - link "Egyptian highway billboard hacked to show porn" [ref=f122e149]:
-          - /url: /2026/10/30/middleeast/egyptian-highway-billboard-hacked-porn-intl-scli
+        - link "Egyptian highway billboard hacked to show porn" [ref=f122e149]: /2026/10/30/middleeast/egyptian-highway-billboard-hacked-porn-intl-scli
       - listitem:
-        - link "World’s largest crypto exchange hit by suspected North Korean hack in world’s largest heist" [ref=f122e151]:
-          - /url: /2026/10/30/tech/binance-crypto-heist-hnk-intl
+        - link "World’s largest crypto exchange hit by suspected North Korean hack in world’s largest heist" [ref=f122e151]: /2026/10/30/tech/binance-crypto-heist-hnk-intl
       - listitem:
-        - link "Canada’s economic break with the US in 5 charts" [ref=f122e153]:
-          - /url: /2026/10/30/economy/canada-us-trade-economy-vis
+        - link "Canada’s economic break with the US in 5 charts" [ref=f122e153]: /2026/10/30/economy/canada-us-trade-economy-vis
       - listitem:
-        - link "What caused the deadly train crash in Spain? What we know so far" [ref=f122e155]:
-          - /url: /2026/10/28/europe/spain-train-crash-cause-what-we-know-intl
+        - link "What caused the deadly train crash in Spain? What we know so far" [ref=f122e155]: /2026/10/28/europe/spain-train-crash-cause-what-we-know-intl
       - listitem:
-        - link "Israel’s election ended in deadlock. Here are four ways out" [ref=f122e157]:
-          - /url: /2026/10/29/middleeast/israel-election-results-deadlock-vis-intl
+        - link "Israel’s election ended in deadlock. Here are four ways out" [ref=f122e157]: /2026/10/29/middleeast/israel-election-results-deadlock-vis-intl
       - listitem:
-        - link "How one billionaire could ‘singlehandedly’ alter the course of the midterms" [ref=f122e159]:
-          - /url: /2026/10/30/politics/elon-musk-midterm-spending-republicans
+        - link "How one billionaire could ‘singlehandedly’ alter the course of the midterms" [ref=f122e159]: /2026/10/30/politics/elon-musk-midterm-spending-republicans
       - listitem:
-        - link "Visit Norway makes toilets ‘great again’ after Trump’s ‘sh*t house country’ jab" [ref=f122e161]:
-          - /url: /2026/10/30/travel/visit-norway-toilets-trump-scli-intl
+        - link "Visit Norway makes toilets ‘great again’ after Trump’s ‘sh*t house country’ jab" [ref=f122e161]: /2026/10/30/travel/visit-norway-toilets-trump-scli-intl
       - listitem:
-        - link "Why Trump’s favorite CNN video of Harry Enten is ‘not the full story’" [ref=f122e163]:
-          - /url: /2026/10/30/media/why-trumps-favorite-cnn-video-of-harry-enten-is-not-the-full-story
+        - link "Why Trump’s favorite CNN video of Harry Enten is ‘not the full story’" [ref=f122e163]: /2026/10/30/media/why-trumps-favorite-cnn-video-of-harry-enten-is-not-the-full-story
       - listitem:
-        - link "Republicans’ attacks on El-Sayed aren’t just bigoted. They’re unconstitutional" [ref=f122e165]:
-          - /url: /2026/10/30/politics/trump-abdul-el-sayed-midterms
+        - link "Republicans’ attacks on El-Sayed aren’t just bigoted. They’re unconstitutional" [ref=f122e165]: /2026/10/30/politics/trump-abdul-el-sayed-midterms
       - listitem:
-        - link "Patrick Stewart, ‘Star Trek’ and ‘X-Men’ actor, dead at 86" [ref=f122e167]:
-          - /url: /2026/10/29/entertainment/patrick-stewart-death
+        - link "Patrick Stewart, ‘Star Trek’ and ‘X-Men’ actor, dead at 86" [ref=f122e167]: /2026/10/29/entertainment/patrick-stewart-death
       - listitem:
-        - link "Police probe Jeffrey Epstein’s time spent at Balmoral with Andrew Mountbatten-Windsor" [ref=f122e169]:
-          - /url: /2026/10/30/europe/police-balmoral-epstein-andrew-mountbatten-windsor-intl
+        - link "Police probe Jeffrey Epstein’s time spent at Balmoral with Andrew Mountbatten-Windsor" [ref=f122e169]: /2026/10/30/europe/police-balmoral-epstein-andrew-mountbatten-windsor-intl
       - listitem:
-        - link "Big Oil is raking in huge profits. Shareholders like Trump are cashing in. You’re paying for it with high gas prices." [ref=f122e171]:
-          - /url: /2026/10/30/business/big-oil-profits-trump-gas-prices
+        - link "Big Oil is raking in huge profits. Shareholders like Trump are cashing in. You’re paying for it with high gas prices." [ref=f122e171]: /2026/10/30/business/big-oil-profits-trump-gas-prices
       - listitem:
-        - link "Election Day storm could impact voter turnout in key midterm races in the central US" [ref=f122e173]:
-          - /url: /2026/10/28/weather/election-day-storm-voter-turnout-climate
+        - link "Election Day storm could impact voter turnout in key midterm races in the central US" [ref=f122e173]: /2026/10/28/weather/election-day-storm-voter-turnout-climate
       - listitem:
-        - link "Pete Hegseth’s political future could be on the line if Democrats win the House" [ref=f122e175]:
-          - /url: /2026/10/30/politics/pete-hegseth-impeachment-democrats
+        - link "Pete Hegseth’s political future could be on the line if Democrats win the House" [ref=f122e175]: /2026/10/30/politics/pete-hegseth-impeachment-democrats
       - listitem:
-        - link "Protests and violence now go hand in hand in France. It wasn’t always like this" [ref=f122e177]:
-          - /url: /2026/10/30/europe/france-violence-protests-intl
+        - link "Protests and violence now go hand in hand in France. It wasn’t always like this" [ref=f122e177]: /2026/10/30/europe/france-violence-protests-intl
       - listitem:
-        - link "Packers’ Watson makes improbable ‘Thursday Night Football’ return after mid-game trip to hospital" [ref=f122e179]:
-          - /url: /2026/10/30/sport/packers-watson-tnf-hospital-return
+        - link "Packers’ Watson makes improbable ‘Thursday Night Football’ return after mid-game trip to hospital" [ref=f122e179]: /2026/10/30/sport/packers-watson-tnf-hospital-return
       - listitem:
         - 'link "‘We just have to bother the crap out of these people’: How the GOP is confronting its voter enthusiasm deficit" [ref=f122e181] [cursor=pointer]':
           - /url: /2026/10/30/politics/republican-turnout-voter-enthusiasm-midterms
       - listitem:
-        - link "Russia strikes Dnipro train station in central Ukraine, killing 15" [ref=f122e183]:
-          - /url: /2026/10/29/europe/russia-ukraine-strikes-dnipro-train-station-intl
+        - link "Russia strikes Dnipro train station in central Ukraine, killing 15" [ref=f122e183]: /2026/10/29/europe/russia-ukraine-strikes-dnipro-train-station-intl
       - listitem:
         - 'link "‘Bravest person I know’: Father’s pride as school shooting victim leaves hospital after 262 days" [ref=f122e185] [cursor=pointer]':
           - /url: /2026/10/30/americas/tumbler-ride-shooting-survivor-canada-hnk
       - listitem:
-        - link "After decades of boycotts, Palestinian citizens of Israel turned out to vote. It could shape what comes next" [ref=f122e187]:
-          - /url: /2026/10/30/middleeast/palestinian-israelis-vote-what-next-intl
+        - link "After decades of boycotts, Palestinian citizens of Israel turned out to vote. It could shape what comes next" [ref=f122e187]: /2026/10/30/middleeast/palestinian-israelis-vote-what-next-intl
       - listitem:
-        - link "Mushroom killer to be jailed for life after appeals court finds sentence too light" [ref=f122e189]:
-          - /url: /2026/10/29/australia/australia-mushroom-patterson-appeal-ruling-intl-hnk
+        - link "Mushroom killer to be jailed for life after appeals court finds sentence too light" [ref=f122e189]: /2026/10/29/australia/australia-mushroom-patterson-appeal-ruling-intl-hnk
       - listitem:
-        - link "Bukele adds a wildcard to Haiti’s fractured security landscape" [ref=f122e191]:
-          - /url: /2026/10/29/americas/haiti-bukele-salvador-soldiers-intl-latam
+        - link "Bukele adds a wildcard to Haiti’s fractured security landscape" [ref=f122e191]: /2026/10/29/americas/haiti-bukele-salvador-soldiers-intl-latam
       - listitem:
-        - link "Russia and US discussing sanctions relief for Moscow’s sovereign wealth fund, Kremlin aide says" [ref=f122e193]:
-          - /url: /2026/10/29/europe/russia-us-sanctions-investment-fund-intl-hnk
+        - link "Russia and US discussing sanctions relief for Moscow’s sovereign wealth fund, Kremlin aide says" [ref=f122e193]: /2026/10/29/europe/russia-us-sanctions-investment-fund-intl-hnk
       - listitem:
-        - link "The final Israeli election results are in. Netanyahu hasn’t won – but he hasn’t lost either" [ref=f122e195]:
-          - /url: /2026/10/28/middleeast/netanyahu-israel-election-intl
+        - link "The final Israeli election results are in. Netanyahu hasn’t won – but he hasn’t lost either" [ref=f122e195]: /2026/10/28/middleeast/netanyahu-israel-election-intl
       - listitem:
-        - link "Justice Department’s Dan Sullivan criminal probe accelerates after Alaska campaign revelations" [ref=f122e197]:
-          - /url: /2026/10/29/politics/justice-department-dan-sullivan-investigation-criminal-urgency
+        - link "Justice Department’s Dan Sullivan criminal probe accelerates after Alaska campaign revelations" [ref=f122e197]: /2026/10/29/politics/justice-department-dan-sullivan-investigation-criminal-urgency
       - listitem:
-        - link "Shares of Google’s parent company just had their worst day ever. Here’s what it means" [ref=f122e199]:
-          - /url: /2026/10/29/investing/alphabet-google-stock-ai
+        - link "Shares of Google’s parent company just had their worst day ever. Here’s what it means" [ref=f122e199]: /2026/10/29/investing/alphabet-google-stock-ai
       - listitem:
-        - link "Judge sharply questions lawyers over request to remove Letitia James from Cornell sex assault investigation" [ref=f122e201]:
-          - /url: /2026/10/29/us/cornell-investigation-letitia-james
+        - link "Judge sharply questions lawyers over request to remove Letitia James from Cornell sex assault investigation" [ref=f122e201]: /2026/10/29/us/cornell-investigation-letitia-james
       - listitem:
-        - link "Hegseth ousts Pentagon’s chief planner as renewed action against Iran looms, source says" [ref=f122e203]:
-          - /url: /2026/10/29/politics/pentagon-top-planner-sylvia-ousted-hegseth-hnk-ml
+        - link "Hegseth ousts Pentagon’s chief planner as renewed action against Iran looms, source says" [ref=f122e203]: /2026/10/29/politics/pentagon-top-planner-sylvia-ousted-hegseth-hnk-ml
       - listitem:
-        - link "‘Ghoul’ is a political insult with real bite" [ref=f122e205]:
-          - /url: /2026/10/29/us/word-of-week-ghoul-politics-insult-cec
+        - link "‘Ghoul’ is a political insult with real bite" [ref=f122e205]: /2026/10/29/us/word-of-week-ghoul-politics-insult-cec
       - listitem:
-        - link "FDA plans to update infant formula nutrition requirements for first time in nearly 30 years" [ref=f122e207]:
-          - /url: /2026/10/29/health/infant-formula-nutrition-fda
+        - link "FDA plans to update infant formula nutrition requirements for first time in nearly 30 years" [ref=f122e207]: /2026/10/29/health/infant-formula-nutrition-fda
       - listitem:
-        - link "Atlanta holds off furious Golden State comeback to force Game 7 in WNBA Finals" [ref=f122e209]:
-          - /url: /2026/10/29/sport/atlanta-dream-win-game-6-wnba-finals
+        - link "Atlanta holds off furious Golden State comeback to force Game 7 in WNBA Finals" [ref=f122e209]: /2026/10/29/sport/atlanta-dream-win-game-6-wnba-finals
   - contentinfo [ref=f122e211]:
     - paragraph:
-      - link "Go to the full CNN experience" [ref=f122e213]:
-        - /url: https://www.cnn.com/
+      - link "Go to the full CNN experience" [ref=f122e213]: https://www.cnn.com/
     - paragraph: © 2026 Cable News Network. A Warner Bros. Discovery Company. All Rights Reserved.
     - paragraph:
-      - link "Terms of Use" [ref=f122e216]:
-        - /url: https://www.cnn.com/terms
-      - link "Privacy Policy" [ref=f122e217]:
-        - /url: https://www.cnn.com/privacy
-      - link "Ad Choices" [ref=f122e218]:
-        - /url: https://www.cnn.com/ad-choices
-      - link "Cookie Settings" [ref=f122e219]:
-        - /url: ""
+      - link "Terms of Use" [ref=f122e216]: https://www.cnn.com/terms
+      - link "Privacy Policy" [ref=f122e217]: https://www.cnn.com/privacy
+      - link "Ad Choices" [ref=f122e218]: https://www.cnn.com/ad-choices
+      - link "Cookie Settings" [ref=f122e219]: ""
 ```
-[meiose: 3 nodes trimmed, 106 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 3 nodes trimmed, 106 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

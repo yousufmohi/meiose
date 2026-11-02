@@ -8,8 +8,7 @@ source: tests/playwright_fixtures.rs
 ### Snapshot
 ```yaml
 - generic [active] [ref=f141e1]:
-  - link "Skip to main content" [ref=f141e2]:
-    - /url: "#content"
+  - link "Skip to main content" [ref=f141e2]: "#content"
   - banner [ref=f141e3]:
     - generic:
       - generic:
@@ -25,17 +24,13 @@ source: tests/playwright_fixtures.rs
         - navigation "Main navigation" [ref=f141e18]:
           - list:
             - listitem:
-              - link "Blog" [ref=f141e21]:
-                - /url: https://blog.pypi.org
+              - link "Blog" [ref=f141e21]: https://blog.pypi.org
             - listitem:
-              - link "Docs" [ref=f141e23]:
-                - /url: https://docs.pypi.org/
+              - link "Docs" [ref=f141e23]: https://docs.pypi.org/
             - listitem:
-              - link "Log in" [ref=f141e25]:
-                - /url: /account/login/?next=https%3A%2F%2Fpypi.org%2Fproject%2Frequests%2F
+              - link "Log in" [ref=f141e25]: /account/login/?next=https%3A%2F%2Fpypi.org%2Fproject%2Frequests%2F
             - listitem:
-              - link "Register" [ref=f141e27]:
-                - /url: /account/register/
+              - link "Register" [ref=f141e27]: /account/register/
         - navigation "Localization" [ref=f141e28]:
           - button "Change language" [ref=f141e29]
   - main [ref=f141e31]:
@@ -62,8 +57,7 @@ source: tests/playwright_fixtures.rs
             - generic:
               - heading "Requests" [level=1] [ref=f141e63]:
                 - text: Requests
-                - link:
-                  - /url: "#user-content-requests"
+                - link: "#user-content-requests"
               - paragraph:
                 - link [ref=f141e65]:
                   - /url: https://pypi.org/project/requests/
@@ -96,22 +90,19 @@ source: tests/playwright_fixtures.rs
                 - text: Requests is one of the most downloaded Python packages today, pulling in around
                 - code: 300M downloads / week
                 - text: — according to GitHub, Requests is currently
-                - link "depended upon" [ref=f141e84]:
-                  - /url: https://github.com/psf/requests/network/dependents?package_id=UGFja2FnZS01NzA4OTExNg%3D%3D
+                - link "depended upon" [ref=f141e84]: https://github.com/psf/requests/network/dependents?package_id=UGFja2FnZS01NzA4OTExNg%3D%3D
                 - text: by
                 - code: 4,000,000+
                 - text: repositories.
               - heading "Installing Requests and Supported Versions" [level=2] [ref=f141e86]:
                 - text: Installing Requests and Supported Versions
-                - link:
-                  - /url: "#user-content-installing-requests-and-supported-versions"
+                - link: "#user-content-installing-requests-and-supported-versions"
               - paragraph: "Requests is available on PyPI:"
               - generic: $ python -m pip install requests
               - paragraph: Requests officially supports Python 3.10+.
               - heading "Supported Features & Best–Practices" [level=2] [ref=f141e90]:
                 - text: Supported Features & Best–Practices
-                - link:
-                  - /url: "#user-content-supported-features--bestpractices"
+                - link: "#user-content-supported-features--bestpractices"
               - paragraph: Requests is ready for the demands of building robust and reliable HTTP–speaking applications, for the needs of today.
               - list:
                 - listitem: Keep-Alive & Connection Pooling
@@ -134,14 +125,12 @@ source: tests/playwright_fixtures.rs
                 - listitem: Chunked HTTP Requests
               - heading "Cloning the repository" [level=2] [ref=f141e108]:
                 - text: Cloning the repository
-                - link:
-                  - /url: "#user-content-cloning-the-repository"
+                - link: "#user-content-cloning-the-repository"
               - paragraph:
                 - text: When cloning the Requests repository, you may need to add the
                 - code: "-c fetch.fsck.badTimezone=ignore"
                 - text: flag to avoid an error about a bad commit timestamp (see
-                - link "this issue" [ref=f141e111]:
-                  - /url: https://github.com/psf/requests/issues/2690
+                - link "this issue" [ref=f141e111]: https://github.com/psf/requests/issues/2690
                 - text: "for more background):"
               - generic: git clone -c fetch.fsck.badTimezone=ignore https://github.com/psf/requests.git
               - paragraph: "You can also apply this setting to your global Git config:"
@@ -161,12 +150,10 @@ source: tests/playwright_fixtures.rs
                     - generic "Data verified by PyPI on May 14, 2026 ›" [ref=f141e126] [cursor=pointer]
                   - list:
                     - listitem:
-                      - link "Source" [ref=f141e130]:
-                        - /url: https://github.com/psf/requests
+                      - link "Source" [ref=f141e130]: https://github.com/psf/requests
                 - list:
                   - listitem:
-                    - link "Documentation" [ref=f141e135]:
-                      - /url: https://requests.readthedocs.io
+                    - link "Documentation" [ref=f141e135]
               - generic:
                 - heading "Key dates" [level=2] [ref=f141e138]
                 - generic:
@@ -198,12 +185,10 @@ source: tests/playwright_fixtures.rs
                 - generic:
                   - paragraph:
                     - strong: "Author:"
-                    - link "Kenneth Reitz" [ref=f141e168]:
-                      - /url: mailto:me@kennethreitz.org
+                    - link "Kenneth Reitz" [ref=f141e168]: mailto:me@kennethreitz.org
                   - paragraph:
                     - strong: "Maintainer:"
-                    - link "Ian Stapleton Cordasco" [ref=f141e171]:
-                      - /url: mailto:graffatcolmingov@gmail.com
+                    - link "Ian Stapleton Cordasco" [ref=f141e171]: mailto:graffatcolmingov@gmail.com
               - generic:
                 - heading "GitHub Statistics" [level=2] [ref=f141e173]
                 - generic:
@@ -211,8 +196,7 @@ source: tests/playwright_fixtures.rs
                     - generic "Data verified by PyPI on May 14, 2026 ›" [ref=f141e176] [cursor=pointer]
                   - list:
                     - listitem:
-                      - link "Repository" [ref=f141e180]:
-                        - /url: https://github.com/psf/requests
+                      - link "Repository" [ref=f141e180]
                     - listitem:
                       - link [ref=f141e183]:
                         - /url: https://github.com/psf/requests/stargazers
@@ -236,8 +220,7 @@ source: tests/playwright_fixtures.rs
               - generic:
                 - heading [level=2] [ref=f141e199]:
                   - text: Provenance
-                  - link "About provenance" [ref=f141e200]:
-                    - /url: https://docs.pypi.org/using-pypi/package-security/provenance/
+                  - link "About provenance" [ref=f141e200]: https://docs.pypi.org/using-pypi/package-security/provenance/
                 - generic:
                   - group:
                     - generic "Data verified by PyPI on May 14, 2026 ›" [ref=f141e204] [cursor=pointer]
@@ -246,8 +229,7 @@ source: tests/playwright_fixtures.rs
                       - strong: Full provenance
                     - paragraph: All 2 files in this release have provenance metadata.
                     - paragraph:
-                      - link "View provenance details" [ref=f141e211]:
-                        - /url: "#security"
+                      - link "View provenance details" [ref=f141e211]: "#security"
               - generic:
                 - heading "License" [level=2] [ref=f141e213]
                 - paragraph: Apache Software License (Apache-2.0)
@@ -269,20 +251,17 @@ source: tests/playwright_fixtures.rs
                     - text: Development Status
                     - list:
                       - listitem:
-                        - link "5 - Production/Stable" [ref=f141e235]:
-                          - /url: /search/?c=Development+Status+%3A%3A+5+-+Production%2FStable
+                        - link "5 - Production/Stable" [ref=f141e235]: /search/?c=Development+Status+%3A%3A+5+-+Production%2FStable
                   - listitem:
                     - text: Environment
                     - list:
                       - listitem:
-                        - link "Web Environment" [ref=f141e239]:
-                          - /url: /search/?c=Environment+%3A%3A+Web+Environment
+                        - link "Web Environment" [ref=f141e239]: /search/?c=Environment+%3A%3A+Web+Environment
                   - listitem:
                     - text: Intended Audience
                     - list:
                       - listitem:
-                        - link "Developers" [ref=f141e243]:
-                          - /url: /search/?c=Intended+Audience+%3A%3A+Developers
+                        - link "Developers" [ref=f141e243]: /search/?c=Intended+Audience+%3A%3A+Developers
                   - listitem:
                     - text: License
                     - list:
@@ -293,20 +272,17 @@ source: tests/playwright_fixtures.rs
                     - text: Natural Language
                     - list:
                       - listitem:
-                        - link "English" [ref=f141e251]:
-                          - /url: /search/?c=Natural+Language+%3A%3A+English
+                        - link "English" [ref=f141e251]: /search/?c=Natural+Language+%3A%3A+English
                   - listitem:
                     - text: Operating System
                     - list:
                       - listitem:
-                        - link "OS Independent" [ref=f141e255]:
-                          - /url: /search/?c=Operating+System+%3A%3A+OS+Independent
+                        - link "OS Independent" [ref=f141e255]: /search/?c=Operating+System+%3A%3A+OS+Independent
                   - listitem:
                     - text: Programming Language
                     - list:
                       - listitem:
-                        - link "Python" [ref=f141e259]:
-                          - /url: /search/?c=Programming+Language+%3A%3A+Python
+                        - link "Python" [ref=f141e259]: /search/?c=Programming+Language+%3A%3A+Python
                       - listitem:
                         - 'link "Python :: 3" [ref=f141e261] [cursor=pointer]':
                           - /url: /search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3
@@ -353,95 +329,72 @@ source: tests/playwright_fixtures.rs
   - contentinfo [ref=f141e288]:
     - generic:
       - generic:
-        - link "PyPI" [ref=f141e291]:
-          - /url: /
+        - link "PyPI" [ref=f141e291]
         - paragraph:
           - text: Developed and maintained by the
-          - link "Python Software Foundation" [ref=f141e294]:
-            - /url: https://www.python.org/psf/
+          - link "Python Software Foundation" [ref=f141e294]: https://www.python.org/psf/
           - text: and Python community, for the Python community.
         - paragraph:
           - 'link "Status: All Systems Operational" [ref=f141e297] [cursor=pointer]':
             - /url: https://status.python.org/
-        - link "Donate today!" [ref=f141e299]:
-          - /url: https://donate.pypi.org
+        - link "Donate today!" [ref=f141e299]: https://donate.pypi.org
       - generic:
         - generic:
           - heading "Help" [level=2] [ref=f141e302]
           - navigation "Help navigation" [ref=f141e303]:
             - list:
               - listitem:
-                - link "PyPI documentation" [ref=f141e306]:
-                  - /url: https://docs.pypi.org/
+                - link "PyPI documentation" [ref=f141e306]
               - listitem:
-                - link "Getting help" [ref=f141e308]:
-                  - /url: https://docs.pypi.org/about/getting-help/
+                - link "Getting help" [ref=f141e308]: https://docs.pypi.org/about/getting-help/
               - listitem:
-                - link "Installing packages" [ref=f141e310]:
-                  - /url: https://packaging.python.org/tutorials/installing-packages/
+                - link "Installing packages" [ref=f141e310]: https://packaging.python.org/tutorials/installing-packages/
               - listitem:
-                - link "Uploading packages" [ref=f141e312]:
-                  - /url: https://packaging.python.org/tutorials/packaging-projects/
+                - link "Uploading packages" [ref=f141e312]: https://packaging.python.org/tutorials/packaging-projects/
               - listitem:
-                - link "Packaging user guide" [ref=f141e314]:
-                  - /url: https://packaging.python.org/
+                - link "Packaging user guide" [ref=f141e314]: https://packaging.python.org/
         - generic:
           - heading "About PyPI" [level=2] [ref=f141e316]
           - navigation "About PyPI navigation" [ref=f141e317]:
             - list:
               - listitem:
-                - link "PyPI blog" [ref=f141e320]:
-                  - /url: https://blog.pypi.org
+                - link "PyPI blog" [ref=f141e320]
               - listitem:
-                - link "Infrastructure dashboard" [ref=f141e322]:
-                  - /url: https://dtdg.co/pypi
+                - link "Infrastructure dashboard" [ref=f141e322]: https://dtdg.co/pypi
               - listitem:
-                - link "Statistics" [ref=f141e324]:
-                  - /url: /stats/
+                - link "Statistics" [ref=f141e324]: /stats/
               - listitem:
-                - link "Logos & trademarks" [ref=f141e326]:
-                  - /url: /trademarks/
+                - link "Logos & trademarks" [ref=f141e326]: /trademarks/
               - listitem:
-                - link "Our sponsors" [ref=f141e328]:
-                  - /url: /sponsors/
+                - link "Our sponsors" [ref=f141e328]: /sponsors/
         - generic:
           - heading "Contributing to PyPI" [level=2] [ref=f141e330]
           - navigation "How to contribute navigation" [ref=f141e331]:
             - list:
               - listitem:
-                - link "Bugs and feedback" [ref=f141e334]:
-                  - /url: https://docs.pypi.org/about/contributing/#reporting-bugs
+                - link "Bugs and feedback" [ref=f141e334]: https://docs.pypi.org/about/contributing/#reporting-bugs
               - listitem:
-                - link "Contribute on GitHub" [ref=f141e336]:
-                  - /url: https://github.com/pypi/warehouse
+                - link "Contribute on GitHub" [ref=f141e336]: https://github.com/pypi/warehouse
               - listitem:
-                - link "Translate PyPI" [ref=f141e338]:
-                  - /url: https://hosted.weblate.org/projects/pypa/warehouse/
+                - link "Translate PyPI" [ref=f141e338]: https://hosted.weblate.org/projects/pypa/warehouse/
               - listitem:
-                - link "Sponsor PyPI" [ref=f141e340]:
-                  - /url: /sponsors/
+                - link "Sponsor PyPI" [ref=f141e340]
               - listitem:
-                - link "Development credits" [ref=f141e342]:
-                  - /url: https://github.com/pypi/warehouse/graphs/contributors
+                - link "Development credits" [ref=f141e342]: https://github.com/pypi/warehouse/graphs/contributors
         - generic:
           - heading "Using PyPI" [level=2] [ref=f141e344]
           - navigation "Using PyPI navigation" [ref=f141e345]:
             - list:
               - listitem:
-                - link "Terms of Service" [ref=f141e348]:
-                  - /url: https://policies.python.org/pypi.org/Terms-of-Service/
+                - link "Terms of Service" [ref=f141e348]: https://policies.python.org/pypi.org/Terms-of-Service/
               - listitem:
-                - link "Report security issue" [ref=f141e350]:
-                  - /url: /security/
+                - link "Report security issue" [ref=f141e350]: /security/
               - listitem:
-                - link "Code of conduct" [ref=f141e352]:
-                  - /url: https://policies.python.org/python.org/code-of-conduct/
+                - link "Code of conduct" [ref=f141e352]: https://policies.python.org/python.org/code-of-conduct/
               - listitem:
-                - link "Privacy Notice" [ref=f141e354]:
-                  - /url: https://policies.python.org/pypi.org/Privacy-Notice/
+                - link "Privacy Notice" [ref=f141e354]: https://policies.python.org/pypi.org/Privacy-Notice/
               - listitem:
-                - link "Acceptable Use Policy" [ref=f141e356]:
-                  - /url: https://policies.python.org/pypi.org/Acceptable-Use-Policy/
+                - link "Acceptable Use Policy" [ref=f141e356]: https://policies.python.org/pypi.org/Acceptable-Use-Policy/
   - generic:
     - link "Anthropic, PBC Visionary sponsor" [ref=f141e358]:
       - /url: https://www.anthropic.com/
@@ -498,19 +451,15 @@ source: tests/playwright_fixtures.rs
   - list:
     - listitem:
       - text: "\"PyPI\", \"Python Package Index\", and the blocks logos are registered"
-      - link "trademarks" [ref=f141e413]:
-        - /url: /trademarks/
+      - link "trademarks" [ref=f141e413]
       - text: of the
-      - link "Python Software Foundation" [ref=f141e414]:
-        - /url: https://www.python.org/psf-landing
+      - link "Python Software Foundation" [ref=f141e414]: https://www.python.org/psf-landing
       - text: .
     - listitem:
       - text: © 2026
-      - link "Python Software Foundation" [ref=f141e416]:
-        - /url: https://www.python.org/psf-landing/
+      - link "Python Software Foundation" [ref=f141e416]: https://www.python.org/psf-landing/
     - listitem:
-      - link "Site map" [ref=f141e418]:
-        - /url: /sitemap/
+      - link "Site map" [ref=f141e418]: /sitemap/
     - listitem:
       - text: Deployed from
       - link [ref=f141e420]:
@@ -518,4 +467,4 @@ source: tests/playwright_fixtures.rs
         - code: ce99a6d
         - text: 
 ```
-[meiose: 3 nodes trimmed, 220 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 3 nodes trimmed, 220 non-interactive refs hidden, 7 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

@@ -1,6 +1,5 @@
 ---
 source: tests/playwright_fixtures.rs
-assertion_line: 31
 ---
 ### Page
 - Page URL: https://the-internet.herokuapp.com/large
@@ -2827,10 +2826,8 @@ assertion_line: 31
               - cell "50.50"
       - generic:
         - text: Powered by
-        - link "Elemental Selenium" [ref=f156e2834]:
-          - /url: http://elementalselenium.com/
+        - link "Elemental Selenium" [ref=f156e2834]: http://elementalselenium.com/
         - text: and
-        - link "Sauce Labs" [ref=f156e2835]:
-          - /url: https://saucelabs.com/
+        - link "Sauce Labs" [ref=f156e2835]: https://saucelabs.com/
 ```
-[meiose: 0 nodes trimmed, 2672 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot]
+[meiose: 0 nodes trimmed, 2672 non-interactive refs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

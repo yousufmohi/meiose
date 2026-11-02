@@ -30,6 +30,7 @@
 //! - aggressive only: strip refs from non-interactive elements.
 
 use std::borrow::Cow;
+use std::collections::HashSet;
 use std::fmt::Write as _;
 use std::ops::Range;
 
@@ -299,6 +300,9 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
     let mut texts_shortened = 0;
     let mut refs_stripped = 0;
     let mut any_edit = false;
+    let mut urls_hidden = 0;
+    // Only URLs actually emitted count as seen, so a URL is never lost.
+    let mut seen_urls: HashSet<&str> = HashSet::new();
     let mut i = 0;
     while i < n {
         let nd = &nodes[i];
@@ -322,11 +326,40 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
             i += 1;
             continue;
         }
+        if is_url(nd) && !seen_urls.insert(nd.line) {
+            urls_hidden += 1; // already shown once on this page
+            i += 1;
+            continue;
+        }
         push_indent(&mut out, nd.depth - s);
         let e = emit_line(&mut out, nd, &limits);
         texts_shortened += usize::from(e.shortened);
         refs_stripped += usize::from(e.ref_stripped);
         any_edit |= e.cursor_stripped;
+        // `- link "x":` whose only child is its URL fits on one line.
+        if nd.kind == Kind::Element
+            && !nd.has_value
+            && nd.n_children == 1
+            && nd.line.ends_with(':')
+            && !nd.line.starts_with("- '") // quoted lines are never edited
+            && nodes.get(i + 1).is_some_and(is_url)
+        {
+            let url = nodes[i + 1].line;
+            if drop[i + 1] {
+                out.pop();
+                nodes_trimmed += 1;
+            } else if seen_urls.insert(url) {
+                out.push(' ');
+                out.push_str(&url["- /url: ".len()..]);
+            } else {
+                out.pop();
+                urls_hidden += 1;
+            }
+            any_edit = true;
+            out.push('\n');
+            i += 2;
+            continue;
+        }
         out.push('\n');
         i += 1;
     }
@@ -350,9 +383,12 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
     if refs_stripped > 0 {
         let _ = write!(out, ", {refs_stripped} non-interactive refs hidden");
     }
+    if urls_hidden > 0 {
+        let _ = write!(out, ", {urls_hidden} repeated URLs hidden");
+    }
     let _ = write!(
         out,
-        " — call meiose_expand(\"{}\") for the full snapshot]",
+        " — call meiose_expand(\"{}\") for the full snapshot, or add query=\"…\" for only the lines you need]",
         cx.expand_id
     );
     if out.len() >= text.len() {
@@ -363,6 +399,102 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
         nodes_trimmed,
         texts_shortened,
     })
+}
+
+fn is_url(nd: &Node) -> bool {
+    nd.kind == Kind::Prop && nd.line.starts_with("- /url: ")
+}
+
+/// What an outline keeps first: the page's structure, then its form controls.
+const OUTLINE_STRUCTURE: &[&str] = &[
+    "banner",
+    "contentinfo",
+    "form",
+    "heading",
+    "main",
+    "navigation",
+    "region",
+    "search",
+];
+const OUTLINE_CONTROLS: &[&str] = &[
+    "button",
+    "checkbox",
+    "combobox",
+    "listbox",
+    "radio",
+    "searchbox",
+    "slider",
+    "spinbutton",
+    "switch",
+    "tab",
+    "textbox",
+];
+
+/// Last resort for a page that is over budget even when trimmed aggressively:
+/// structure and form controls first, then the rest of the page in document
+/// order until `max_bytes`. Unlike every other rule this CAN omit interactive
+/// elements, so its marker says so and points at search.
+pub fn outline(snapshot: &str, expand_id: &str, max_bytes: usize) -> Option<String> {
+    let block = find_block(snapshot)?;
+    let lines: Vec<&str> = snapshot[block.clone()].split('\n').collect();
+    let tier = |l: &str| {
+        let s = l.trim_start_matches(' ').trim_start_matches("- ");
+        let s = s.trim_start_matches('\'');
+        let role = &s[..s.bytes().take_while(u8::is_ascii_lowercase).count()];
+        if OUTLINE_STRUCTURE.contains(&role) {
+            0
+        } else if OUTLINE_CONTROLS.contains(&role) {
+            1
+        } else {
+            2
+        }
+    };
+    let mut keep = vec![false; lines.len()];
+    let mut used = 0;
+    for pass in 0..3 {
+        for (i, l) in lines.iter().enumerate() {
+            if !keep[i] && tier(l) == pass && used + l.len() < max_bytes {
+                keep[i] = true;
+                used += l.len() + 1;
+            }
+        }
+    }
+    let shown = keep.iter().filter(|k| **k).count();
+    if shown == 0 || shown == lines.len() {
+        return None;
+    }
+    let mut out = String::with_capacity(max_bytes + 512);
+    out.push_str(&snapshot[..block.start]);
+    // Omitted lines can skip levels; clamp so the block stays well-formed.
+    let mut prev = None;
+    for (i, l) in lines.iter().enumerate() {
+        if keep[i] {
+            let s = l.trim_start_matches(' ');
+            let depth = (l.len() - s.len()) / 2;
+            let depth = prev.map_or(0, |p: usize| depth.min(p + 1));
+            prev = Some(depth);
+            push_indent(&mut out, depth);
+            out.push_str(s);
+            out.push('\n');
+        }
+    }
+    out.pop();
+    for line in snapshot[block.end..].split_inclusive('\n') {
+        if !line.starts_with("[meiose: ") {
+            out.push_str(line);
+        }
+    }
+    if !out.ends_with('\n') {
+        out.push('\n');
+    }
+    let _ = write!(
+        out,
+        "[meiose: page too large, outline only ({shown} of {} lines); some links may be missing — \
+         call meiose_expand(\"{expand_id}\", query=\"…\") to search the page, or \
+         meiose_expand(\"{expand_id}\") for all of it]",
+        lines.len()
+    );
+    (out.len() < snapshot.len()).then_some(out)
 }
 
 fn push_indent(out: &mut String, depth: usize) {
@@ -842,7 +974,7 @@ mod tests {
         assert_eq!(body(&out), "- button \"Go\" [ref=e4]");
         // 3 wrappers + the padding nodes.
         assert!(out.ends_with(&format!(
-            "[meiose: {} nodes trimmed — call meiose_expand(\"id1\") for the full snapshot]",
+            "[meiose: {} nodes trimmed — call meiose_expand(\"id1\") for the full snapshot, or add query=\"…\" for only the lines you need]",
             3 + PAD
         )));
     }
@@ -895,7 +1027,7 @@ mod tests {
         .unwrap();
         assert_eq!(
             body(&out),
-            "- main:\n  - heading \"T\" [level=1]\n  - link \"x\" [ref=e3]:\n  - paragraph: a\n  - paragraph: b"
+            "- main:\n  - heading \"T\" [level=1]\n  - link \"x\" [ref=e3]\n  - paragraph: a\n  - paragraph: b"
         );
     }
 

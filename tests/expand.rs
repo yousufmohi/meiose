@@ -117,6 +117,25 @@ fn repeat_snapshot_of_the_same_page_is_sent_as_a_diff() {
 }
 
 #[test]
+fn expand_with_a_query_returns_only_matching_lines() {
+    let mut s = Session::start(FORM, &[]);
+    s.init();
+    let first = s.call("browser_snapshot", json!({}));
+    let id = expand_id(text_of(&first)).to_string();
+    let hit = s.call("meiose_expand", json!({"id": id, "query": "checkbox"}));
+    let t = text_of(&hit);
+    assert!(
+        t.contains("match \"checkbox\"") && t.contains("[ref=e5]"),
+        "{t}"
+    );
+    let full = s.call("meiose_expand", json!({"id": id}));
+    assert!(t.len() < text_of(&full).len() / 2);
+    let miss = s.call("meiose_expand", json!({"id": id, "query": "no such text"}));
+    assert!(text_of(&miss).starts_with("No lines match"));
+    s.finish();
+}
+
+#[test]
 fn no_diff_flag_always_sends_full_snapshots() {
     let mut s = Session::start(FORM, &["--no-diff"]);
     s.init();

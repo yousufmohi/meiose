@@ -17,6 +17,7 @@ pub mod proxy;
 pub mod record;
 pub mod report;
 pub mod rpc;
+pub mod search;
 pub mod setup;
 pub mod store;
 pub mod tokens;

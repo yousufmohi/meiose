@@ -25,8 +25,9 @@ use std::time::{Duration, Instant};
 use serde_json::Value;
 
 use crate::diff;
-use crate::handlers::{self, Handler, Mode, TrimContext};
+use crate::handlers::{self, Handler, Mode, TrimContext, playwright};
 use crate::rpc::{self, Envelope};
+use crate::search;
 use crate::store::{CallRecord, StoreHandle};
 
 pub const EXPAND_TOOL: &str = "meiose_expand";
@@ -40,6 +41,8 @@ pub struct Config {
     /// False with `--passthrough`: nothing is modified (stats still recorded).
     pub trim: bool,
     pub diff: bool,
+    /// Largest Playwright snapshot to send, in bytes; 0 means no limit.
+    pub budget_bytes: usize,
     /// Short label for stats, e.g. "npx-playwright-mcp".
     pub server: String,
 }
@@ -54,7 +57,7 @@ struct State {
     pending: HashMap<String, Pending>,
     expand_advertised: bool,
     server_has_expand: bool,
-    /// (page url, trimmed yaml body the agent saw, when)
+    /// (page url, conservative trimmed yaml body, when)
     last_snapshot: Option<(String, String, Instant)>,
 }
 
@@ -65,6 +68,7 @@ pub enum ClientAction {
     Expand {
         id_raw: String,
         expand_id: Option<String>,
+        query: Option<String>,
         terminator: &'static [u8],
     },
 }
@@ -173,6 +177,13 @@ impl Interceptor {
                             .and_then(|a| a.get("id"))
                             .and_then(Value::as_str)
                             .map(|s| s.trim().trim_matches('"').to_string()),
+                        query: params
+                            .get("arguments")
+                            .and_then(|a| a.get("query"))
+                            .and_then(Value::as_str)
+                            .map(str::trim)
+                            .filter(|q| !q.is_empty())
+                            .map(str::to_string),
                         terminator: rpc::terminator(frame),
                     };
                 }
@@ -193,6 +204,7 @@ impl Interceptor {
         &self,
         id_raw: &str,
         expand_id: Option<&str>,
+        query: Option<&str>,
         terminator: &[u8],
     ) -> Vec<u8> {
         let mut out = match (expand_id, &self.store) {
@@ -204,17 +216,21 @@ impl Interceptor {
             ),
             (Some(eid), Some(store)) => match store.get_output(eid) {
                 Some(raw) => {
+                    let found = query.map(|q| search::search(&content_text(&raw), q));
                     store.record_call(CallRecord {
                         server: self.cfg.server.clone(),
                         tool: EXPAND_TOOL.into(),
                         kind: "expand",
                         handler: None,
                         text_before: String::new(),
-                        text_after: content_text(&raw),
+                        text_after: found.clone().unwrap_or_else(|| content_text(&raw)),
                         trim_us: 0,
                         expand_id: Some(eid.to_string()),
                     });
-                    rpc::response_with_raw_result(id_raw, &raw)
+                    match found {
+                        Some(text) => rpc::tool_text_response(id_raw, &text, false),
+                        None => rpc::response_with_raw_result(id_raw, &raw),
+                    }
                 }
                 None => rpc::tool_text_response(
                     id_raw,
@@ -408,7 +424,36 @@ impl Interceptor {
                 return Some(("playwright-diff", d));
             }
         }
+        if let Some(fitted) = self.fit_budget(text, view, cx) {
+            return Some(fitted);
+        }
         trimmed.map(|(h, t)| (h, t.text))
+    }
+
+    /// Shrink a snapshot that is over `--budget`: aggressive trimming first,
+    /// then an outline. `None` when no budget applies.
+    fn fit_budget(
+        &self,
+        text: &str,
+        view: &str,
+        cx: &TrimContext,
+    ) -> Option<(&'static str, String)> {
+        let budget = self.cfg.budget_bytes;
+        if budget == 0 || view.len() <= budget || playwright::find_block(text).is_none() {
+            return None;
+        }
+        let hard = TrimContext {
+            expand_id: cx.expand_id,
+            mode: Mode::Aggressive,
+        };
+        let aggressive =
+            playwright::trim_snapshot(text, &hard).map_or_else(|| text.to_string(), |t| t.text);
+        if aggressive.len() <= budget {
+            return Some(("playwright-budget", aggressive));
+        }
+        // Leave room for the header and the note.
+        let room = budget.saturating_sub(1024);
+        playwright::outline(&aggressive, cx.expand_id, room).map(|o| ("playwright-outline", o))
     }
 }
 
@@ -439,13 +484,18 @@ pub fn expand_tool_definition() -> Value {
             shortened to save context. Use it when a result ends with a note like \
             [meiose: … call meiose_expand(\"<id>\") …] and you need something that was left out: \
             refs of non-interactive elements, shortened text, omitted rows or items, or the full \
-            page behind a snapshot diff.",
+            page behind a snapshot diff. Pass query to get only the matching lines with their \
+            context, which is much smaller; prefer it unless you need everything.",
         "inputSchema": {
             "type": "object",
             "properties": {
                 "id": {
                     "type": "string",
                     "description": "The id from the meiose note, e.g. \"k3x9q2ab\"."
+                },
+                "query": {
+                    "type": "string",
+                    "description": "Optional text to find, case-insensitive. Separate alternatives with |."
                 }
             },
             "required": ["id"],

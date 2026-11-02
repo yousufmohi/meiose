@@ -79,6 +79,11 @@ pub struct ProxyFlags {
     /// Always send full snapshots, never a diff against the previous one
     #[arg(long)]
     pub no_diff: bool,
+
+    /// Largest Playwright snapshot to send, in tokens (0 = no limit). Pages
+    /// over it are trimmed aggressively, then reduced to a searchable outline
+    #[arg(long, default_value_t = 0, value_name = "TOKENS")]
+    pub budget: usize,
 }
 
 #[derive(Debug, Args)]

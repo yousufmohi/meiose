@@ -69,6 +69,9 @@ fn interceptor(flags: ProxyFlags, cmd: &[String]) -> (Arc<Interceptor>, Option<S
         },
         trim: !flags.passthrough,
         diff: !flags.no_diff,
+        // ~3 bytes per token, on the safe side of the ~3.7 seen on real pages.
+        // Counting exactly would put tiktoken on the message path.
+        budget_bytes: flags.budget.saturating_mul(3),
         server: record::file_stem(cmd),
     };
     (Arc::new(Interceptor::new(cfg, store.clone())), store)

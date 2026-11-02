@@ -134,7 +134,9 @@ Diffs are computed against the view actually sent (fix in this branch).
 
 `meiose_expand(id, query)` (`src/search.rs`): each hit brings the largest
 ancestor whose subtree is ≤ 40 lines (a cell's row, a rustdoc method header
-with its version badge), plus ancestors; ≤ 30 hits, ≤ 24 KB. Query expands are
+with its version badge), plus ancestors; ≤ 30 hits, ≤ 24 KB. JSON only: when
+the enclosing object is bigger, its one-line fields come too (GitHub issues
+are 100+ lines; last-item probe 2/6 → 6/6, `examples/json_probe.rs`). Query expands are
 recorded with handler "query".
 
 **Not yet verified:** that agents succeed as often with trimmed snapshots —
@@ -264,6 +266,7 @@ tests/fake_server.py (modes: mirror, exit, burst, hang, mcp)  tests/fixtures/pro
 benches/prune.rs  examples/report.rs (per page; --local adds private fixtures)
 examples/measure.rs (budget totals, pages over CC limits, full vs query expand)
 examples/search_probe.rs (are known answers in query results)
+examples/json_probe.rs (JSON outputs saved as .txt: savings + last-item query)
 eval/run_eval.py  eval/agent_loop.py (uncapped agent)  eval/tasks.json (19 tasks)
 scripts/capture_fixtures.py         drive real Playwright MCP → fixtures
 scripts/extract_fixtures.py         your recordings → tests/fixtures/local/

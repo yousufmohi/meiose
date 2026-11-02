@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- `meiose_expand(query=…)` on JSON outputs: a match also brings the one-line
+  fields of its object (number, state, URLs), so a title found in a GitHub
+  issue list arrives with the issue's number and link. Measured on real GitHub
+  MCP outputs: the last item of each list found 2/6 → 6/6.
+
 ## 0.2.0 — 2026-11-02
 
 - `meiose_expand(id, query="…")` returns only the matching lines of a stored

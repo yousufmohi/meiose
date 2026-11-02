@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- `meiose stats` says "1 tool call" and "1 expand" in the singular.
+
 ## 0.2.2 — 2026-11-02
 
 - JSON output is capped at 45,000 characters, under Claude Code's 50,000

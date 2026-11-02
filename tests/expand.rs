@@ -232,7 +232,7 @@ fn stats_and_log_report_the_session() {
     assert!(stats.starts_with("Last 7 days: "), "{stats}");
     assert!(stats.contains("% saved"), "{stats}");
     assert!(
-        stats.contains("2 tool calls, 1 trimmed · 1 expands"),
+        stats.contains("2 tool calls, 1 trimmed · 1 expand ("),
         "{stats}"
     );
     assert!(stats.contains("browser_snapshot"), "{stats}");

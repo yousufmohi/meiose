@@ -20,6 +20,15 @@ pub fn short(n: i64) -> String {
     }
 }
 
+/// 1 → "1 expand", 2 → "2 expands".
+fn plural(n: i64, word: &str) -> String {
+    if n == 1 {
+        format!("1 {word}")
+    } else {
+        format!("{n} {word}s")
+    }
+}
+
 fn pct_saved(before: i64, after: i64) -> f64 {
     if before <= 0 {
         0.0
@@ -50,10 +59,10 @@ pub fn stats(days: u32, t: &Totals, per_tool: &[ToolTotals]) -> String {
     );
     let _ = writeln!(
         s,
-        "  {} tool calls, {} trimmed · {} expands ({} tokens, included above)",
-        t.calls,
+        "  {}, {} trimmed · {} ({} tokens, included above)",
+        plural(t.calls, "tool call"),
         t.trimmed_calls,
-        t.expands,
+        plural(t.expands, "expand"),
         short(t.expand_tokens)
     );
     if !per_tool.is_empty() {
@@ -212,6 +221,23 @@ mod tests {
             "{out}"
         );
         assert!(out.contains("2 expands"));
+    }
+
+    #[test]
+    fn stats_counts_read_right_in_the_singular() {
+        let t = Totals {
+            calls: 1,
+            trimmed_calls: 1,
+            tokens_before: 20_000,
+            tokens_after: 5_000,
+            expands: 1,
+            expand_tokens: 400,
+        };
+        let out = stats(7, &t, &[]);
+        assert!(
+            out.contains("  1 tool call, 1 trimmed · 1 expand (400 tokens, included above)"),
+            "{out}"
+        );
     }
 
     #[test]

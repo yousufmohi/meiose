@@ -1,5 +1,6 @@
 # Renders docs/demo.gif with VHS (https://github.com/charmbracelet/vhs).
-# Run docs/demo/record.ps1, which fills the demo database first.
+# Run docs/demo/record.ps1: it fills the demo database first and sets
+# PATH, MEIOSE_FAKE_HOME and MEIOSE_DATA_DIR for the shell VHS starts.
 Output docs/demo.gif
 
 Set Shell "powershell"
@@ -12,7 +13,7 @@ Set TypingSpeed 35ms
 Set WindowBar Colorful
 
 Hide
-Type "$env:MEIOSE_FAKE_HOME = (Resolve-Path docs/demo/home).Path; function prompt { '> ' }; Clear-Host"
+Type "function prompt { '> ' }; Clear-Host"
 Enter
 Sleep 1s
 Show

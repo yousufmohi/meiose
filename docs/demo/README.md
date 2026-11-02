@@ -12,8 +12,11 @@ directory, then VHS types the commands.
 
    With Scoop: `scoop install vhs` (pulls in ttyd and ffmpeg).
    On macOS: `brew install vhs`.
-2. Make sure `meiose`, `npx` and `python` work in a new terminal.
+2. Make sure `cargo`, `npx` and `python` work in a new terminal.
 3. From the repo root: `powershell -File docs/demo/record.ps1`
 
-`install --dry-run` runs against the sample config in `docs/demo/home/`, so
-your own configs are never touched.
+`install --dry-run` runs against a copy of the sample config in
+`docs/demo/home/`, so your own configs are never touched. The script copies
+this repo's release build and that config to `C:\Users\Public\meiose-demo`
+and runs from there, so no path in the GIF contains your user name; the folder
+is removed afterwards.

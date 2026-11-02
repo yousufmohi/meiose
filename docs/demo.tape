@@ -22,7 +22,7 @@ Sleep 400ms
 Enter
 Sleep 4s
 
-Type "meiose log -n 8"
+Type "meiose log -n 9"
 Sleep 400ms
 Enter
 Sleep 5s

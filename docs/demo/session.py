@@ -3,7 +3,8 @@
 usage: python docs/demo/session.py   (with MEIOSE_DATA_DIR set, see record.ps1)
 
 Drives Playwright MCP through `meiose run` the way an agent would: Hacker News,
-the same page again (sent as a diff), then a checkbox click and re-snapshot.
+one line of it fetched with meiose_expand(query=...), the same page again (sent
+as a diff), then a checkbox click and re-snapshot.
 """
 import json
 import os
@@ -47,7 +48,10 @@ p.stdin.flush()
 request("tools/list")
 
 call("browser_navigate", {"url": "https://news.ycombinator.com/"})
-call("browser_snapshot")
+hn = call("browser_snapshot")
+# Only the lines the agent needs from the full page, not the whole page.
+expand_id = hn.split('meiose_expand("')[1].split('"')[0]
+call("meiose_expand", {"id": expand_id, "query": "login"})
 call("browser_snapshot")
 call("browser_navigate", {"url": "https://the-internet.herokuapp.com/checkboxes"})
 snap = call("browser_snapshot")

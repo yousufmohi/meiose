@@ -7,7 +7,7 @@ An MCP proxy that trims oversized tool outputs before they reach your agent, wri
 [![npm](https://img.shields.io/npm/v/meiose.svg)](https://www.npmjs.com/package/meiose)
 [![License: MIT OR Apache-2.0](https://img.shields.io/crates/l/meiose.svg)](#license)
 
-![meiose install --dry-run, meiose log and meiose stats after a real Playwright session](docs/demo.gif)
+![meiose install --dry-run, then meiose log and meiose stats after a real Playwright session: a trimmed page, a query expand and a diff](docs/demo.gif)
 
 Playwright MCP snapshots of real pages, in tokens:
 

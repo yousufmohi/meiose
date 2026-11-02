@@ -10,3 +10,6 @@
 
 # demo recording data
 /docs/demo/.data/
+
+# Python bytecode
+__pycache__/

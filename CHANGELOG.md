@@ -18,7 +18,14 @@
 - `meiose log` and stats tell query expands from full ones.
 - The report counts only committed fixtures (`--local` adds private ones); the
   README total previously included one private page.
-- Trimming a 488K-token page takes 5.5 ms, up from 4.7 ms.
+- Lighter on the host: stats use a token estimate instead of loading the
+  o200k vocabulary, the runtime uses 2 worker threads instead of one per core,
+  the in-memory cache of originals is capped at 32 MB (they are also on disk;
+  128 MB with `MEIOSE_KEEP_DAYS=0`), and only the last 7 daily log files are
+  kept. One meiose process went from 52.8 MB to 14.8 MB and from 23 to 13
+  threads. `MEIOSE_EXACT_TOKENS=1` restores exact token counts.
+- Trimming a 400K-token page takes 4.1 ms; a 488K-token page 5.1 ms (4.8 ms
+  before the URL rules).
 
 ## 0.1.1 — 2026-11-02
 

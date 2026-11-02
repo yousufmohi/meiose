@@ -32,6 +32,7 @@
 use std::borrow::Cow;
 use std::collections::HashSet;
 use std::fmt::Write as _;
+use std::hash::{BuildHasherDefault, Hasher};
 use std::ops::Range;
 
 use super::{Handler, Mode, TrimContext, Trimmed};
@@ -302,7 +303,7 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
     let mut any_edit = false;
     let mut urls_hidden = 0;
     // Only URLs actually emitted count as seen, so a URL is never lost.
-    let mut seen_urls: HashSet<&str> = HashSet::new();
+    let mut seen_urls: HashSet<&str, BuildHasherDefault<WordHasher>> = HashSet::default();
     let mut i = 0;
     while i < n {
         let nd = &nodes[i];
@@ -399,6 +400,21 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
         nodes_trimmed,
         texts_shortened,
     })
+}
+
+/// `fnv` (8 bytes per step) as a `Hasher`: the URL set hashes every URL on
+/// the page, and the default SipHash showed up in the trim time. Keys come
+/// from the page itself, so hash flooding only slows that one page.
+#[derive(Default)]
+struct WordHasher(u64);
+
+impl Hasher for WordHasher {
+    fn write(&mut self, bytes: &[u8]) {
+        self.0 = self.0.rotate_left(7) ^ fnv(bytes);
+    }
+    fn finish(&self) -> u64 {
+        self.0
+    }
 }
 
 fn is_url(nd: &Node) -> bool {

@@ -21,7 +21,7 @@ Playwright MCP snapshots of real pages, in tokens:
 | repeat snapshot of an unchanged page | 133,862 | 79 | — |
 | one method from the `Vec` docs, via `query` | 244,156 | 1,399 | — |
 
-Trimming the largest page takes 2.6 ms. In Claude Code the end-to-end saving is
+Trimming the largest page takes 2.4 ms. In Claude Code the end-to-end saving is
 7% of cost at the same accuracy; agents without an output limit save far more
 with `--budget`. [BENCHMARKS.md](BENCHMARKS.md) has the evals.
 

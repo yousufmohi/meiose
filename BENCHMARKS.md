@@ -60,11 +60,32 @@ Criterion, `cargo bench --bench prune`, Windows laptop:
 
 | input | time |
 |---|---:|
-| Rust `Vec` docs, 244K tokens | 2.6 ms |
-| the same page doubled, 488K tokens (synthetic) | 5.5 ms |
+| Rust `Vec` docs, 244K tokens | 2.4 ms |
+| the `Vec` page doubled and cut at 400K tokens (synthetic) | 4.1 ms |
+| the same page doubled, 488K tokens (synthetic) | 5.1 ms |
 
-The 488K-token case was 4.7 ms before the URL rules were added; it is now above
-the 5 ms target, which is stated for 400K tokens and was not measured directly.
+Measured back to back with the code before the URL rules (2.3, 4.3 and
+4.8 ms), because timings on this laptop drift by 10% or more between sessions.
+
+## Footprint on the host
+
+meiose's own process during a session with five 924K-character snapshots
+(Windows, 12 cores):
+
+| | before | after |
+|---|---:|---:|
+| private memory | 52.8 MB | 14.8 MB |
+| threads | 23 | 13 |
+| CPU time | 0.36 s | 0.09 s |
+
+Most of the difference is the token counter: stats now use an estimate instead
+of loading the o200k vocabulary (about 36 MB per process, and every wrapped
+MCP server runs its own meiose). On the 40 fixtures the estimated saving is
+31.8% against an exact 31.1%. `MEIOSE_EXACT_TOKENS=1` restores exact counts;
+the eval harness sets it, so every eval number above is exact. The rest is two
+runtime threads instead of one per core and a 32 MB in-memory cache of
+originals (they are also on disk). The browser that Playwright MCP starts is
+far larger than meiose and is stopped with it.
 
 ## Claude Code's limits
 

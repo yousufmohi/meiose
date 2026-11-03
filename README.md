@@ -20,14 +20,30 @@
   <a href="SECURITY.md">Security</a>
 </p>
 
+<p align="center">
+  Agents that pass tool output to the model in full: 93% lower cost, 54 of 57 eval tasks right (57 without meiose).<br>
+  Claude Code, which already moves large outputs to a file: 7% lower cost, 57 of 57.
+</p>
+
 ![meiose install --dry-run, then meiose log and meiose stats after a real Playwright session: a trimmed page, a query expand and a diff](docs/demo.gif)
 
 ## Why meiose?
 
 MCP servers return whatever they have. A Playwright snapshot of one docs page
-is 244,000 tokens; a GitHub issue list is 79,000. meiose sits between the agent
-and the server, cuts what the agent does not need, and keeps the original one
-tool call away.
+is 244,000 tokens; a GitHub issue list is 79,000. Many clients send all of it to
+the model on every turn (Cline, for one, passes MCP results through uncut:
+[cline#15470](https://github.com/cline/cline/issues/15470)). meiose sits between
+the agent and the server, cuts what the agent does not need, and keeps the
+original one tool call away.
+
+On 19 browsing tasks × 3 runs with Claude Haiku ([BENCHMARKS.md](BENCHMARKS.md)):
+
+| agent | without meiose | with meiose |
+|---|---|---|
+| a loop that passes tool output in full, `--budget 20000` | $0.0466 per task, 57/57 right | $0.0034 per task (−93%, 95% CI 42–96%), 54/57 right |
+| Claude Code, defaults | $0.0073 per task, 57/57 right | $0.0068 per task (−7%, 95% CI 3–11%), 57/57 right |
+
+Per output:
 
 | | without meiose | with meiose |
 |---|---|---|
@@ -39,10 +55,8 @@ tool call away.
 | getting the full output back | re-run the tool | `meiose_expand(id)`, exactly as the server sent it |
 | added latency | | 2.4 ms on the largest page |
 
-In Claude Code the end-to-end saving is 7% of cost at the same accuracy,
-because Claude Code already moves outputs over 50,000 characters to a file.
-Agents without that limit save far more with `--budget`.
-[BENCHMARKS.md](BENCHMARKS.md) has the evals.
+The loop is `eval/agent_loop.py`, a minimal agent, not a shipping client;
+measurements in Cline and Codex CLI are next.
 
 ## Install
 

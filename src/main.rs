@@ -61,6 +61,10 @@ fn main() {
 fn interceptor(flags: ProxyFlags, cmd: &[String]) -> (Arc<Interceptor>, Option<StoreHandle>) {
     let store = match store::default_path() {
         Some(path) => match StoreHandle::open(&path) {
+            Ok(s) if flags.no_store => {
+                tracing::info!("--no-store: originals stay in memory for this session only");
+                Some(s.memory_only())
+            }
             Ok(s) => Some(s),
             Err(e) => {
                 tracing::warn!("{e:#}");
@@ -155,7 +159,8 @@ async fn dispatch(cli: Cli) -> anyhow::Result<i32> {
             if let Some(id) = args.show {
                 let Some((original, trimmed)) = store::output_pair(&conn, &id)? else {
                     anyhow::bail!(
-                        "no stored output with id {id:?}\n  → ids are listed by `meiose log`; outputs are kept for 7 days"
+                        "no stored output with id {id:?}\n  → ids are listed by `meiose log`; outputs are kept for {} (MEIOSE_KEEP_HOURS), and servers run with --no-store keep none",
+                        store::retention_text(store::keep_hours())
                     );
                 };
                 emit(&format!(

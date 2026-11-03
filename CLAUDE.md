@@ -155,8 +155,9 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   or `--passthrough`.
 - The original `result` raw bytes are stored *before* the trimmed response is
   sent; `meiose_expand` splices them back verbatim (tested byte-for-byte).
-  Originals live in memory (32 MB cap; 128 MB with MEIOSE_KEEP_DAYS=0) and
-  SQLite (7-day TTL, 512 MB cap on db + WAL as on disk; `secure_delete`,
+  Originals live in memory (32 MB cap; 128 MB with `--no-store` or
+  MEIOSE_KEEP_HOURS=0) and SQLite (24-hour TTL, decided 2026-11-03; 512 MB
+  cap on db + WAL as on disk; `secure_delete`,
   incremental auto-vacuum, WAL truncated by prunes and on close).
   Expand is scoped by `store::server_key` (hash of cwd + full cmd); ids are
   13 chars from `getrandom`. Store queue bounded (1024 jobs / 64 MB): when
@@ -264,7 +265,9 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   CARGO_TARGET_DIR.
 - `install::program_name` splits on both `/` and `\` (configs travel between
   OSes; `Path::file_stem` on Linux does not split Windows paths).
-- `MEIOSE_KEEP_DAYS` (default 7; 0 = originals never written to disk).
+- `MEIOSE_KEEP_HOURS` (default 24; 0 = originals never written to disk;
+  `MEIOSE_KEEP_DAYS` honoured when it is unset). `run --no-store` = memory
+  only for one server (`StoreHandle::memory_only`); stats still on disk.
 
 ## Layout
 
@@ -308,7 +311,7 @@ python scripts/extract_fixtures.py  # your recordings → tests/fixtures/local/
 meiose stats [--days 7]  ·  meiose log [-n 20] [--show ID]  ·  meiose doctor
 meiose install [--dry-run] [--yes] [--only a,b] [--client claude-code,cursor] [--meiose-path P]
 meiose uninstall [--yes] [--keep-backups]  ·  meiose purge [--yes]
-meiose run [--passthrough | --aggressive] [--no-diff] -- <server cmd>
+meiose run [--passthrough | --aggressive] [--no-diff] [--no-store] -- <server cmd>
 
 # try it with Claude Code (installed user-scope on the dev machine as pw-meiose)
 cargo install --path .              # close Claude sessions using it first (Windows lock)

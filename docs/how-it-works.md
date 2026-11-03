@@ -135,11 +135,17 @@ forced stop. Ctrl-C, SIGTERM and Ctrl-Break stop the server and exit.
 ## Storage and retention
 
 Original tool outputs (what pages or tools returned) are kept in SQLite in your
-data directory so `meiose_expand` and `meiose log` work. They expire after 7
-days (`MEIOSE_KEEP_DAYS`; `0` keeps originals in memory for the session only)
-and are deleted by the next meiose process that runs after that: each one
-prunes when it starts, then every hour or every 200 stored outputs. So an
-output can outlive its 7 days until meiose runs again. Stored originals are
+data directory so `meiose_expand` and `meiose log` work. They expire after 24
+hours (`MEIOSE_KEEP_HOURS`; `0` keeps originals in memory for the session
+only) and are deleted by the next meiose process that runs after that: each
+one prunes when it starts, then every hour, every 200 stored outputs or every
+16 MB. So an output can outlive its 24 hours until meiose runs again. An
+expand of an output from an earlier session works while it is kept.
+
+For a server whose outputs hold secrets (a database, mail), add `--no-store`
+to its command (`meiose run --no-store -- <server>`): its originals stay in
+memory only, so `meiose_expand` works until that session ends and nothing of
+its output reaches the disk. Its calls still show up in `meiose stats`. Stored originals are
 also capped at 512 MB of disk, oldest first, counting the database file and
 its write-ahead log as they are on disk. Several meiose processes writing
 large outputs at once can briefly go over it while the log waits for a
@@ -150,7 +156,8 @@ so a pruned output is gone from the files, not just hidden. If another meiose
 process is reading at that moment, the log is truncated on a later prune.
 
 Recent originals are also cached in memory, up to 32 MB per meiose process
-(128 MB with `MEIOSE_KEEP_DAYS=0`, where memory is the only copy). Logs go to
+(128 MB with `--no-store` or `MEIOSE_KEEP_HOURS=0`, where memory is the only
+copy). Logs go to
 daily files in `<data dir>/logs/`; the last 7 are kept. Logs never contain
 server arguments, which often carry credentials, only the program name.
 

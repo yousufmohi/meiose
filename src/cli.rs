@@ -93,6 +93,12 @@ pub struct ProxyFlags {
     #[arg(long)]
     pub no_diff: bool,
 
+    /// Keep this server's original outputs in memory only, never on disk:
+    /// meiose_expand works until the session ends (for servers whose
+    /// outputs hold secrets, e.g. databases or mail)
+    #[arg(long)]
+    pub no_store: bool,
+
     /// Largest Playwright snapshot to send, in tokens (0 = no limit). Pages
     /// over it are trimmed aggressively, then reduced to a searchable outline
     #[arg(long, default_value_t = 0, value_name = "TOKENS")]

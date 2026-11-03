@@ -41,9 +41,10 @@ contain credentials. meiose must:
 - keep them readable by you only on macOS and Linux (directories `700`,
   files `600`, set at creation) and keep the permissions of the config files
   it edits;
-- keep them no longer than needed: outputs expire after 7 days
-  (`MEIOSE_KEEP_DAYS`) and are deleted the next time meiose runs, overwritten
-  in the database rather than just unlinked; `meiose uninstall` deletes its
+- keep them no longer than needed: outputs expire after 24 hours
+  (`MEIOSE_KEEP_HOURS`) and are deleted the next time meiose runs, overwritten
+  in the database rather than just unlinked; a server run with `--no-store`
+  never has its outputs written to disk; `meiose uninstall` deletes its
   backups; `meiose purge` deletes everything else;
 - not copy server arguments (which often carry API keys) into logs, stats or
   file names, and hide secret-looking values where it shows a command line.

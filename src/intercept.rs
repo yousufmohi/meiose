@@ -219,9 +219,9 @@ impl Interceptor {
                     id_raw,
                     &format!(
                         "meiose has no stored output for id \"{eid}\" from this server. Outputs are kept for {} \
-                         day(s) (MEIOSE_KEEP_DAYS) and only while disk space allows. Re-run the \
-                         original tool call to get a fresh, complete result.",
-                        crate::store::keep_days()
+                         (MEIOSE_KEEP_HOURS), for this session only with --no-store, and only while \
+                         disk space allows. Re-run the original tool call to get a fresh, complete result.",
+                        crate::store::retention_text(crate::store::keep_hours())
                     ),
                     true,
                 ),

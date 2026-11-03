@@ -9,6 +9,7 @@ There is no config file. Everything below is optional.
 | `meiose run --aggressive -- …` | trim harder: hide all non-interactive refs, drop link URLs, shorten more |
 | `meiose run --budget 12000 -- …` | cap Playwright snapshots at about this many tokens; larger pages become an outline (off by default; see [how it works](how-it-works.md#budget)) |
 | `meiose run --no-diff -- …` | always send full snapshots |
+| `meiose run --no-store -- …` | keep this server's originals in memory only: expand works until the session ends, nothing is written to disk (stats still are) |
 | `meiose run --passthrough -- …` | change nothing (still records stats) |
 | `meiose record -- …` | passthrough plus a JSONL log of all traffic, for debugging and fixtures |
 | `meiose install --only playwright` | wrap only some servers |
@@ -39,7 +40,7 @@ from a trim note:
 
 | | |
 |---|---|
-| `MEIOSE_KEEP_DAYS` | days before originals on disk expire (default 7, `0` = memory only); expired ones are deleted the next time meiose runs |
+| `MEIOSE_KEEP_HOURS` | hours before originals on disk expire (default 24, `0` = memory only); expired ones are deleted the next time meiose runs. `MEIOSE_KEEP_DAYS` still works when this is not set |
 | `MEIOSE_DATA_DIR` | where the database, logs and backups live |
 | `MEIOSE_EXACT_TOKENS=1` | count tokens exactly for `meiose stats` (loads a ~36 MB vocabulary per process); by default they are estimated, within about 10% |
 | `MEIOSE_LOG=debug` | more detail in `<data dir>/logs/` |

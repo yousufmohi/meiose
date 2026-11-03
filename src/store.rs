@@ -17,39 +17,46 @@ use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 use anyhow::Context;
 use rusqlite::{Connection, OptionalExtension, params};
 
-/// Default: originals older than this many days are deleted.
-pub const DEFAULT_KEEP_DAYS: u64 = 7;
+/// Default: originals older than this many hours are deleted.
+pub const DEFAULT_KEEP_HOURS: u64 = 24;
 
-/// How long original outputs are kept on disk, from `MEIOSE_KEEP_DAYS`
-/// (default 7). `0` means originals are never written to disk: they live in
-/// memory for the session only (expand still works within it; `meiose log
-/// --show` does not).
-pub fn keep_days() -> u64 {
-    std::env::var("MEIOSE_KEEP_DAYS")
-        .ok()
-        .and_then(|v| v.trim().parse().ok())
-        .unwrap_or(DEFAULT_KEEP_DAYS)
+/// How long original outputs are kept on disk: `MEIOSE_KEEP_HOURS`, else
+/// `MEIOSE_KEEP_DAYS` (the older setting, still honoured), else 24 hours.
+/// `0` means originals are never written to disk: they live in memory for
+/// the session only (expand still works within it; `meiose log --show`
+/// does not). `meiose run --no-store` does the same for one server.
+pub fn keep_hours() -> u64 {
+    retention_hours(
+        std::env::var("MEIOSE_KEEP_HOURS").ok().as_deref(),
+        std::env::var("MEIOSE_KEEP_DAYS").ok().as_deref(),
+    )
+}
+
+fn retention_hours(hours: Option<&str>, days: Option<&str>) -> u64 {
+    let parse = |v: Option<&str>| v.and_then(|v| v.trim().parse::<u64>().ok());
+    parse(hours)
+        .or_else(|| parse(days).map(|d| d.saturating_mul(24)))
+        .unwrap_or(DEFAULT_KEEP_HOURS)
+}
+
+/// "24 hours", "7 days", "1 hour": for messages.
+pub fn retention_text(hours: u64) -> String {
+    match hours {
+        1 => "1 hour".into(),
+        h if h >= 48 && h % 24 == 0 => format!("{} days", h / 24),
+        h => format!("{h} hours"),
+    }
 }
 
 fn output_ttl() -> Duration {
-    Duration::from_secs(keep_days() * 24 * 3600)
+    Duration::from_secs(keep_hours().saturating_mul(3600))
 }
 /// Total size cap for stored originals; oldest go first.
 pub const OUTPUT_CAP_BYTES: i64 = 512 * 1024 * 1024;
 /// Per-process in-memory cap for originals.
 const MEMORY_CAP_BYTES: usize = 32 * 1024 * 1024;
-/// With `MEIOSE_KEEP_DAYS=0` memory is the only copy, so keep more of it.
+/// When memory is the only copy (`--no-store`, or retention 0), keep more.
 const MEMORY_ONLY_CAP_BYTES: usize = 128 * 1024 * 1024;
-
-/// Originals are also on disk (unless `MEIOSE_KEEP_DAYS=0`), so memory only
-/// needs the recent ones; an expand of an older id reads it from SQLite.
-fn memory_cap() -> usize {
-    if keep_days() == 0 {
-        MEMORY_ONLY_CAP_BYTES
-    } else {
-        MEMORY_CAP_BYTES
-    }
-}
 
 pub fn now_ms() -> i64 {
     SystemTime::now()
@@ -142,6 +149,9 @@ struct Memory {
 
 #[derive(Clone)]
 pub struct StoreHandle {
+    /// Originals stay in memory only, never on disk (`--no-store` or
+    /// retention 0). Stats are still written.
+    memory_only: bool,
     tx: std_mpsc::SyncSender<Job>,
     memory: Arc<Mutex<Memory>>,
     /// Bytes of queued jobs not yet written.
@@ -160,10 +170,28 @@ impl StoreHandle {
             .spawn(move || run(conn, rx, q))
             .context("could not start the store thread")?;
         Ok(StoreHandle {
+            memory_only: keep_hours() == 0,
             tx,
             memory: Arc::default(),
             queued,
         })
+    }
+
+    /// This server's originals stay in memory for the session only
+    /// (`meiose run --no-store`): expand works until the process exits.
+    pub fn memory_only(mut self) -> StoreHandle {
+        self.memory_only = true;
+        self
+    }
+
+    /// Originals are also on disk unless memory-only, so memory then only
+    /// needs the recent ones; an expand of an older id reads it from SQLite.
+    fn memory_cap(&self) -> usize {
+        if self.memory_only {
+            MEMORY_ONLY_CAP_BYTES
+        } else {
+            MEMORY_CAP_BYTES
+        }
     }
 
     /// Queue a job of `bytes` without blocking the message path. False if
@@ -189,7 +217,7 @@ impl StoreHandle {
         result: &str,
         trimmed: &str,
     ) -> bool {
-        if keep_days() > 0 {
+        if !self.memory_only {
             let job = Job::Output {
                 id: id.into(),
                 server_key: server_key.into(),
@@ -210,7 +238,7 @@ impl StoreHandle {
         m.map
             .insert(id.to_string(), (server_key.to_string(), Arc::from(result)));
         m.order.push_back(id.to_string());
-        let cap = memory_cap();
+        let cap = self.memory_cap();
         while m.bytes > cap && m.order.len() > 1 {
             if let Some(old) = m.order.pop_front()
                 && let Some((_, v)) = m.map.remove(&old)
@@ -955,6 +983,19 @@ mod tests {
         if let Some(long_ago) = now.checked_sub(PRUNE_EVERY + Duration::from_secs(1)) {
             assert!(prune_due(1, 0, long_ago));
         }
+    }
+
+    #[test]
+    fn retention_defaults_to_24_hours_and_reads_the_old_variable() {
+        assert_eq!(retention_hours(None, None), 24);
+        assert_eq!(retention_hours(Some("6"), None), 6);
+        assert_eq!(retention_hours(None, Some("7")), 168);
+        assert_eq!(retention_hours(Some("2"), Some("7")), 2, "hours win");
+        assert_eq!(retention_hours(None, Some("0")), 0);
+        assert_eq!(retention_hours(Some("junk"), None), 24);
+        assert_eq!(retention_text(24), "24 hours");
+        assert_eq!(retention_text(168), "7 days");
+        assert_eq!(retention_text(1), "1 hour");
     }
 
     #[test]

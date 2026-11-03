@@ -4,6 +4,15 @@
 
 - `meiose stats` says "1 tool call" and "1 expand" in the singular.
 
+- **Stored outputs now expire after 24 hours, not 7 days.** Expanding an
+  output from a session more than a day old no longer works.
+  `MEIOSE_KEEP_HOURS` sets it; `MEIOSE_KEEP_DAYS` still works if
+  `MEIOSE_KEEP_HOURS` is not set, so `MEIOSE_KEEP_DAYS=7` restores the old
+  behaviour.
+- `meiose run --no-store -- <server>` keeps that server's original outputs in
+  memory only, for servers whose outputs hold secrets. Expand works until the
+  session ends; stats are still recorded.
+
 Security: secrets on disk.
 
 - `meiose install` and `uninstall` keep a config file's permissions. A `600`

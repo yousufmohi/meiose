@@ -312,3 +312,27 @@ fn query_and_full_expands_are_logged_apart() {
     kinds.sort();
     assert_eq!(kinds, [None, Some("query".to_string())]);
 }
+
+#[test]
+fn no_store_keeps_this_servers_originals_in_memory_only() {
+    let mut s = Session::start(HN, &["--no-store"]);
+    s.init();
+    let snap = s.call("browser_snapshot", json!({}));
+    let eid = expand_id(text_of(&snap));
+    // Expand still works within the session...
+    let full = s.call("meiose_expand", json!({"id": eid}));
+    assert!(text_of(&full).contains("[cursor=pointer]"));
+    let data = s.finish();
+    let conn = rusqlite::Connection::open(data.path().join("meiose.db")).unwrap();
+    // ...nothing was written to disk, but the call is still in the stats.
+    let outputs: i64 = conn
+        .query_row("SELECT COUNT(*) FROM outputs", [], |r| r.get(0))
+        .unwrap();
+    assert_eq!(outputs, 0);
+    let calls: i64 = conn
+        .query_row("SELECT COUNT(*) FROM calls WHERE kind = 'call'", [], |r| {
+            r.get(0)
+        })
+        .unwrap();
+    assert_eq!(calls, 1);
+}

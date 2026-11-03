@@ -13,6 +13,7 @@
 //! - Writes are atomic (temp file + rename).
 //! - Remote (url/http/sse) servers and already-wrapped servers are skipped.
 
+use std::io::Write;
 use std::path::{Path, PathBuf};
 
 use anyhow::{Context, bail};
@@ -167,9 +168,11 @@ impl Launch {
         Some(Launch { command, args })
     }
 
+    /// The command line for people to read, with secret values hidden
+    /// (`--api-key ***`, `postgres://user:***@host`); see [`crate::redact`].
     pub fn display(&self) -> String {
         let mut s = shell_word(&self.command);
-        for a in &self.args {
+        for a in &crate::redact::args(&self.args) {
             s.push(' ');
             s.push_str(&shell_word(a));
         }
@@ -488,7 +491,8 @@ impl InstallDir {
     }
 
     pub fn save(&self, m: &Manifest) -> anyhow::Result<()> {
-        std::fs::create_dir_all(&self.dir)?;
+        crate::secure::create_private_dir(&self.dir)
+            .with_context(|| format!("could not create {}", self.dir.display()))?;
         write_atomic(&self.manifest_path(), &serde_json::to_vec_pretty(m)?)
     }
 
@@ -512,6 +516,9 @@ fn fnv(b: &[u8]) -> u64 {
 }
 
 /// Write via a temp file in the same directory, then rename over the target.
+/// The temp file is created owner-only and, on Unix, given the target's
+/// mode before the rename, so a `600` config stays `600` and nothing is
+/// readable by others in between. It is removed if anything fails.
 pub fn write_atomic(path: &Path, bytes: &[u8]) -> anyhow::Result<()> {
     let dir = path
         .parent()
@@ -520,14 +527,45 @@ pub fn write_atomic(path: &Path, bytes: &[u8]) -> anyhow::Result<()> {
         ".{}.meiose-tmp",
         path.file_name().unwrap_or_default().to_string_lossy()
     ));
-    std::fs::write(&tmp, bytes).with_context(|| format!("could not write {}", tmp.display()))?;
-    std::fs::rename(&tmp, path).with_context(|| {
+    // A leftover from a crash may have any mode: start from a fresh file.
+    let _ = std::fs::remove_file(&tmp);
+    let res = (|| {
+        let mut f = crate::secure::create_new_private(&tmp)
+            .with_context(|| format!("could not write {}", tmp.display()))?;
+        f.write_all(bytes)
+            .and_then(|()| f.sync_all())
+            .with_context(|| format!("could not write {}", tmp.display()))?;
+        drop(f);
+        copy_mode(path, &tmp)?;
+        std::fs::rename(&tmp, path).with_context(|| {
+            format!(
+                "could not replace {}
+  → close the app that has it open and try again",
+                path.display()
+            )
+        })
+    })();
+    if res.is_err() {
         let _ = std::fs::remove_file(&tmp);
-        format!(
-            "could not replace {}\n  → close the app that has it open and try again",
-            path.display()
-        )
-    })
+    }
+    res
+}
+
+/// Give `tmp` the permissions of `target`, if it exists (Unix only; on
+/// Windows the file inherits its directory's ACLs, as before).
+fn copy_mode(target: &Path, tmp: &Path) -> anyhow::Result<()> {
+    #[cfg(unix)]
+    if let Ok(m) = std::fs::metadata(target) {
+        std::fs::set_permissions(tmp, m.permissions()).with_context(|| {
+            format!(
+                "could not give the new {} the permissions of the old one",
+                target.display()
+            )
+        })?;
+    }
+    #[cfg(not(unix))]
+    let _ = (target, tmp);
+    Ok(())
 }
 
 // ---------------- high-level operations ----------------
@@ -578,7 +616,7 @@ pub fn apply(dir: &InstallDir, manifest: &mut Manifest, fp: &FilePlan) -> anyhow
     let Some(new_text) = &fp.plan.new_text else {
         return Ok(());
     };
-    std::fs::create_dir_all(&dir.dir)
+    crate::secure::create_private_dir(&dir.dir)
         .with_context(|| format!("could not create {}", dir.dir.display()))?;
     let existing = manifest.files.iter().position(|f| f.path == fp.path);
     let record = match existing {
@@ -593,7 +631,7 @@ pub fn apply(dir: &InstallDir, manifest: &mut Manifest, fp: &FilePlan) -> anyhow
         }
         None => {
             let backup = dir.slot(fp.client, &fp.path, "backup");
-            std::fs::write(&backup, &fp.original)
+            crate::secure::write_private(&backup, &fp.original)
                 .with_context(|| format!("could not back up {}", fp.path.display()))?;
             manifest.files.push(FileRecord {
                 client: fp.client,
@@ -609,7 +647,8 @@ pub fn apply(dir: &InstallDir, manifest: &mut Manifest, fp: &FilePlan) -> anyhow
     record
         .changes
         .extend(fp.plan.changes.iter().map(RecordedChange::from));
-    std::fs::write(&record.written, new_text.as_bytes())?;
+    crate::secure::write_private(&record.written, new_text.as_bytes())
+        .with_context(|| format!("could not write {}", record.written.display()))?;
     // Manifest first: if writing the config fails, uninstall still knows.
     dir.save(manifest)?;
     write_atomic(&fp.path, new_text.as_bytes())

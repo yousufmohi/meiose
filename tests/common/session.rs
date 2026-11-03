@@ -40,11 +40,22 @@ impl Session {
     }
 
     pub fn start_with(fixture: &str, flags: &[&str], env: &[(&str, &str)]) -> Session {
+        Session::start_full("run", fixture, flags, env, &[])
+    }
+
+    /// `meiose <sub> <flags> -- python fake_server.py mcp <fixture> <server_args>`.
+    pub fn start_full(
+        sub: &str,
+        fixture: &str,
+        flags: &[&str],
+        env: &[(&str, &str)],
+        server_args: &[&str],
+    ) -> Session {
         let data = tempfile::tempdir().unwrap();
         let server_log = data.path().join("server-output.jsonl");
         let server_in_log = data.path().join("server-input.jsonl");
         let mut cmd = Command::new(env!("CARGO_BIN_EXE_meiose"));
-        cmd.arg("run")
+        cmd.arg(sub)
             .args(flags)
             .arg("--")
             .arg(python())
@@ -52,6 +63,7 @@ impl Session {
             .arg(root().join("tests/fake_server.py"))
             .arg("mcp")
             .arg(root().join(fixture))
+            .args(server_args)
             .env("MEIOSE_DATA_DIR", data.path())
             .env("FAKE_LOG", &server_log)
             .env("FAKE_IN_LOG", &server_in_log)

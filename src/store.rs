@@ -11,7 +11,7 @@ use std::collections::{HashMap, VecDeque};
 use std::path::{Path, PathBuf};
 use std::sync::mpsc as std_mpsc;
 use std::sync::{Arc, Mutex};
-use std::time::{Duration, SystemTime, UNIX_EPOCH};
+use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 
 use anyhow::Context;
 use rusqlite::{Connection, OptionalExtension, params};
@@ -92,6 +92,8 @@ enum Job {
         reply: std_mpsc::Sender<Option<String>>,
     },
     Flush(std_mpsc::Sender<()>),
+    /// Nothing arrived for a while: only a chance to prune.
+    Tick,
 }
 
 #[derive(Default)]
@@ -187,13 +189,17 @@ impl StoreHandle {
 
 pub fn open_db(path: &Path) -> anyhow::Result<Connection> {
     if let Some(dir) = path.parent() {
-        std::fs::create_dir_all(dir).with_context(|| {
+        crate::secure::create_dir(dir).with_context(|| {
             format!(
                 "could not create {}\n  → set MEIOSE_DATA_DIR to a writable directory",
                 dir.display()
             )
         })?;
     }
+    // Create the file owner-only before SQLite does: SQLite gives the WAL
+    // and SHM files the database file's permissions. A failure here shows
+    // up as a clearer error from `Connection::open` just below.
+    let _ = crate::secure::touch_private(path);
     let conn = Connection::open(path).with_context(|| {
         format!(
             "could not open the meiose database at {}\n  → check permissions, or set MEIOSE_DATA_DIR to a writable directory",
@@ -203,6 +209,9 @@ pub fn open_db(path: &Path) -> anyhow::Result<Connection> {
     conn.busy_timeout(Duration::from_secs(5))?;
     conn.pragma_update(None, "journal_mode", "WAL")?;
     conn.pragma_update(None, "synchronous", "NORMAL")?;
+    // Deleted rows are overwritten with zeros, so a pruned output is gone
+    // from the file, not just unlinked from the table.
+    conn.pragma_update(None, "secure_delete", "ON")?;
     conn.execute_batch(
         "CREATE TABLE IF NOT EXISTS outputs(
             id TEXT PRIMARY KEY,
@@ -232,13 +241,29 @@ pub fn open_db(path: &Path) -> anyhow::Result<Connection> {
     Ok(conn)
 }
 
+/// A running proxy prunes after this many stored outputs...
+const PRUNE_EVERY_OUTPUTS: u32 = 200;
+/// ...or this long after its last prune, whichever comes first.
+const PRUNE_EVERY: Duration = Duration::from_secs(3600);
+
+fn prune_due(since_prune: u32, last_prune: Instant) -> bool {
+    since_prune >= PRUNE_EVERY_OUTPUTS || last_prune.elapsed() >= PRUNE_EVERY
+}
+
 fn run(conn: Connection, rx: std_mpsc::Receiver<Job>) {
     if let Err(e) = prune(&conn) {
         tracing::warn!(error = %e, "store prune failed");
     }
     let mut since_prune = 0u32;
-    while let Ok(job) = rx.recv() {
+    let mut last_prune = Instant::now();
+    loop {
+        let job = match rx.recv_timeout(PRUNE_EVERY) {
+            Ok(job) => job,
+            Err(std_mpsc::RecvTimeoutError::Timeout) => Job::Tick,
+            Err(std_mpsc::RecvTimeoutError::Disconnected) => break,
+        };
         let res = match job {
+            Job::Tick => Ok(()),
             Job::Output {
                 id,
                 server,
@@ -273,8 +298,9 @@ fn run(conn: Connection, rx: std_mpsc::Receiver<Job>) {
         if let Err(e) = res {
             tracing::warn!(error = %e, "store write failed");
         }
-        if since_prune >= 200 {
+        if prune_due(since_prune, last_prune) {
             since_prune = 0;
+            last_prune = Instant::now();
             if let Err(e) = prune(&conn) {
                 tracing::warn!(error = %e, "store prune failed");
             }
@@ -311,10 +337,20 @@ fn insert_call(conn: &Connection, rec: &CallRecord) -> rusqlite::Result<()> {
 }
 
 /// Delete expired originals, then the oldest until under the size cap.
-/// Call rows are kept for 90 days.
+/// Call rows are kept for 90 days. With `secure_delete` the freed pages are
+/// zeroed; the WAL, which still holds copies of them, is then checkpointed
+/// and truncated (fully only if no other meiose process is mid-read).
 pub fn prune(conn: &Connection) -> rusqlite::Result<()> {
+    if prune_rows(conn)? > 0 {
+        conn.query_row("PRAGMA wal_checkpoint(TRUNCATE)", [], |_| Ok(()))?;
+    }
+    Ok(())
+}
+
+/// The deletes of [`prune`]; returns how many output rows went.
+fn prune_rows(conn: &Connection) -> rusqlite::Result<usize> {
     let cutoff = now_ms() - output_ttl().as_millis() as i64;
-    conn.execute("DELETE FROM outputs WHERE created_ms < ?1", [cutoff])?;
+    let mut deleted = conn.execute("DELETE FROM outputs WHERE created_ms < ?1", [cutoff])?;
     conn.execute(
         "DELETE FROM calls WHERE ts_ms < ?1",
         [now_ms() - 90 * 24 * 3600 * 1000],
@@ -341,10 +377,28 @@ pub fn prune(conn: &Connection) -> rusqlite::Result<()> {
             .map(|(id, _)| id)
             .collect();
         for id in victims {
-            conn.execute("DELETE FROM outputs WHERE id = ?1", [id])?;
+            deleted += conn.execute("DELETE FROM outputs WHERE id = ?1", [id])?;
         }
     }
-    Ok(())
+    Ok(deleted)
+}
+
+/// (number of stored outputs, their total bytes).
+pub fn output_totals(conn: &Connection) -> rusqlite::Result<(i64, i64)> {
+    conn.query_row(
+        "SELECT COUNT(*), COALESCE(SUM(LENGTH(result) + LENGTH(trimmed)), 0) FROM outputs",
+        [],
+        |r| Ok((r.get(0)?, r.get(1)?)),
+    )
+}
+
+/// Delete every stored output and leave no copy in the database files:
+/// zeroed pages (`secure_delete`), a VACUUM, then a truncated WAL.
+pub fn purge_outputs(conn: &Connection) -> rusqlite::Result<usize> {
+    let n = conn.execute("DELETE FROM outputs", [])?;
+    conn.execute_batch("VACUUM")?;
+    conn.query_row("PRAGMA wal_checkpoint(TRUNCATE)", [], |_| Ok(()))?;
+    Ok(n)
 }
 
 // ---------- queries for `meiose stats` / `meiose log` ----------
@@ -516,6 +570,16 @@ mod tests {
         let recent = recent_calls(&conn, 10).unwrap();
         assert_eq!(recent.len(), 3);
         assert_eq!(recent[0].kind, "expand");
+    }
+
+    #[test]
+    fn prune_runs_by_count_or_by_time() {
+        let now = Instant::now();
+        assert!(!prune_due(0, now));
+        assert!(prune_due(PRUNE_EVERY_OUTPUTS, now));
+        if let Some(long_ago) = now.checked_sub(PRUNE_EVERY + Duration::from_secs(1)) {
+            assert!(prune_due(1, long_ago));
+        }
     }
 
     #[test]

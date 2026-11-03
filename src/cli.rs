@@ -26,6 +26,8 @@ pub enum Command {
     Uninstall(UninstallArgs),
     /// Check configs, paths and versions, and print fixes
     Doctor,
+    /// Delete stored outputs, logs, recordings and leftover backups
+    Purge(PurgeArgs),
 }
 
 #[derive(Debug, Args)]
@@ -54,6 +56,17 @@ pub struct InstallArgs {
 #[derive(Debug, Args)]
 pub struct UninstallArgs {
     /// Apply without asking for confirmation
+    #[arg(long, short = 'y')]
+    pub yes: bool,
+
+    /// Keep the config backups (they are deleted once a file is undone)
+    #[arg(long)]
+    pub keep_backups: bool,
+}
+
+#[derive(Debug, Args)]
+pub struct PurgeArgs {
+    /// Delete without asking for confirmation
     #[arg(long, short = 'y')]
     pub yes: bool,
 }

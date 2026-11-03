@@ -14,7 +14,7 @@ pub fn roots() -> anyhow::Result<Roots> {
     )
 }
 
-fn install_dir() -> anyhow::Result<InstallDir> {
+pub fn install_dir() -> anyhow::Result<InstallDir> {
     let data = crate::paths::data_dir().context(
         "could not find a data directory for backups\n  → set MEIOSE_DATA_DIR to a writable directory",
     )?;
@@ -22,7 +22,7 @@ fn install_dir() -> anyhow::Result<InstallDir> {
 }
 
 /// Ask a yes/no question on the terminal. EOF or anything but y/yes is "no".
-fn confirm(question: &str) -> bool {
+pub fn confirm(question: &str) -> bool {
     print!("{question} [y/N] ");
     let _ = std::io::stdout().flush();
     let mut line = String::new();
@@ -177,29 +177,70 @@ pub fn uninstall(args: UninstallArgs) -> anyhow::Result<i32> {
     }
     let mut failed = false;
     let mut remaining = Vec::new();
+    // Backups hold whole config files, secrets included, so they are deleted
+    // once a file is undone (unless --keep-backups). A file that is gone, or
+    // no longer has our entries, keeps its backup: it may be the only copy.
+    let mut kept = 0;
     for f in std::mem::take(&mut manifest.files) {
-        match install::undo_file(&f) {
-            Ok(Undo::Restored) => println!("✓ restored {}", f.path.display()),
-            Ok(Undo::Unwrapped(n)) => {
-                println!("✓ unwrapped {n} server(s) in {}", f.path.display())
+        let undone = match install::undo_file(&f) {
+            Ok(Undo::Restored) => {
+                println!("✓ restored {}", f.path.display());
+                true
             }
-            Ok(Undo::NothingToUndo) => println!(
-                "· {}: none of meiose's entries are there any more; left as is",
-                f.path.display()
-            ),
-            Ok(Undo::Missing) => println!("· {}: file is gone; skipped", f.path.display()),
+            Ok(Undo::Unwrapped(n)) => {
+                println!("✓ unwrapped {n} server(s) in {}", f.path.display());
+                true
+            }
+            Ok(Undo::NothingToUndo) => {
+                println!(
+                    "· {}: none of meiose's entries are there any more; left as is",
+                    f.path.display()
+                );
+                false
+            }
+            Ok(Undo::Missing) => {
+                println!("· {}: file is gone; skipped", f.path.display());
+                false
+            }
             Err(e) => {
                 println!("✗ {}: {e:#}", f.path.display());
                 failed = true;
                 remaining.push(f);
+                continue;
+            }
+        };
+        if !undone || args.keep_backups {
+            kept += 1;
+            continue;
+        }
+        for p in [&f.backup, &f.written] {
+            match std::fs::remove_file(p) {
+                Ok(()) => {}
+                Err(e) if e.kind() == std::io::ErrorKind::NotFound => {}
+                Err(e) => {
+                    kept += 1;
+                    println!(
+                        "! could not delete the backup {}: {e}\n  → delete it by hand, or run `meiose purge`",
+                        p.display()
+                    );
+                }
             }
         }
     }
+    let unfinished = !remaining.is_empty();
     manifest.files = remaining;
     dir.save(&manifest)?;
-    println!(
-        "\nBackups are kept in {} in case you need them. Restart your agents to apply.",
-        dir.dir.display()
-    );
+    if unfinished {
+        println!(
+            "\nBackups are kept in {} for the file(s) that failed; fix the problem above and run `meiose uninstall` again.",
+            dir.dir.display()
+        );
+    } else if kept > 0 {
+        println!(
+            "\nBackups are kept in {} in case you need them; `meiose purge` deletes them.",
+            dir.dir.display()
+        );
+    }
+    println!("Restart your agents to apply.");
     Ok(i32::from(failed))
 }

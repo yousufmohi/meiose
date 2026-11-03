@@ -55,23 +55,29 @@ impl Recorder {
         dir: &Path,
         cmd: &[String],
     ) -> anyhow::Result<(Recorder, JoinHandle<io::Result<()>>, PathBuf)> {
-        tokio::fs::create_dir_all(dir).await.with_context(|| {
+        // A directory meiose creates is private; an existing one (a custom
+        // --out) is the user's and is left as it is. The file is always private.
+        crate::secure::create_dir(dir).with_context(|| {
             format!(
-                "could not create the recording directory {}\n  \
-                 → pass a writable directory with --out <DIR>",
+                "could not create the recording directory {}
+                   → pass a writable directory with --out <DIR>",
                 dir.display()
             )
         })?;
         let now_ms = unix_ms();
         let path = dir.join(format!("{now_ms}-{}.jsonl", file_stem(cmd)));
-        let file = tokio::fs::File::create(&path).await.with_context(|| {
+        let file = crate::secure::create_private(&path).with_context(|| {
             format!(
-                "could not create the recording file {}\n  \
-                 → pass a writable directory with --out <DIR>",
+                "could not create the recording file {}
+                   → pass a writable directory with --out <DIR>",
                 path.display()
             )
         })?;
+        let file = tokio::fs::File::from_std(file);
 
+        // The header names the command with secret values hidden; the frames
+        // that follow are the traffic itself, exactly as it was.
+        let cmd = crate::redact::args(cmd);
         let header = json!({ "meiose_recording": 1, "cmd": cmd, "started_unix_ms": now_ms });
         let (tx, rx) = mpsc::channel(256);
         let task = tokio::spawn(write_entries(BufWriter::new(file), header, rx));
@@ -137,18 +143,27 @@ fn unix_ms() -> u128 {
         .unwrap_or(0)
 }
 
-/// `["npx", "@playwright/mcp@latest"]` → `npx-playwright-mcp-latest`.
+/// `["npx", "@playwright/mcp@latest"]` → `npx-playwright-mcp-latest`. Used
+/// for recording filenames and as the server label in stats, so it never
+/// takes a secret: flag values with secret names, URLs, assignments and
+/// token-like arguments are skipped (see [`crate::redact`]).
 pub fn file_stem(cmd: &[String]) -> String {
     let program = cmd
         .first()
-        .and_then(|p| Path::new(p).file_stem())
-        .map(|f| f.to_string_lossy().into_owned())
+        .map(|p| crate::install::program_name(p))
         .unwrap_or_default();
-    // First non-flag argument: `npx -y @playwright/mcp` names the package, not `-y`.
-    let first_arg = cmd
+    let rest = crate::redact::args(cmd.get(1..).unwrap_or_default());
+    // First argument that names the server: `npx -y @playwright/mcp` names
+    // the package, not `-y`.
+    let first_arg = rest
         .iter()
-        .skip(1)
-        .find(|a| !a.starts_with('-'))
+        .find(|a| {
+            !a.starts_with('-')
+                && *a != crate::redact::MASK
+                && !a.contains("://")
+                && !a.contains('=')
+                && !a.get(2..).unwrap_or_default().contains(':')
+        })
         .map(String::as_str)
         .unwrap_or_default();
     let joined = format!("{program}-{first_arg}");
@@ -181,6 +196,17 @@ mod tests {
         let cmd = ["/opt/tools/node.exe".to_string(), "server.js".to_string()];
         assert_eq!(file_stem(&cmd), "node-server-js");
         assert_eq!(file_stem(&["???".to_string()]), "session");
+    }
+
+    #[test]
+    fn stem_never_takes_a_secret() {
+        let stem = |a: &[&str]| file_stem(&a.iter().map(|s| s.to_string()).collect::<Vec<_>>());
+        assert_eq!(stem(&["srv", "--api-key", "abc", "serve"]), "srv-serve");
+        assert_eq!(stem(&["srv", "postgres://u:hunter2@h/db"]), "srv");
+        assert_eq!(stem(&["srv", "admin:hunter2"]), "srv");
+        assert_eq!(stem(&["srv", "TOKEN=x"]), "srv");
+        assert_eq!(stem(&["srv", "sk-live-0123456789abcdef"]), "srv");
+        assert_eq!(stem(&["node", r"C:\srv\server.js"]), "node-c-srv-server-js");
     }
 
     #[tokio::test]

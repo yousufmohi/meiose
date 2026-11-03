@@ -123,20 +123,42 @@ forced stop. Ctrl-C, SIGTERM and Ctrl-Break stop the server and exit.
 ## Storage and retention
 
 Original tool outputs (what pages or tools returned) are kept in SQLite in your
-data directory for 7 days, so `meiose_expand` and `meiose log` work. Set
-`MEIOSE_KEEP_DAYS` to change that; `MEIOSE_KEEP_DAYS=0` keeps originals in
-memory for the session only. Stored originals are capped at 512 MB, oldest
-first.
+data directory so `meiose_expand` and `meiose log` work. They expire after 7
+days (`MEIOSE_KEEP_DAYS`; `0` keeps originals in memory for the session only)
+and are deleted by the next meiose process that runs after that: each one
+prunes when it starts, then every hour or every 200 stored outputs. So an
+output can outlive its 7 days until meiose runs again. Stored originals are
+also capped at 512 MB, oldest first. Deleted rows are overwritten with zeros
+(SQLite `secure_delete`) and the write-ahead log is truncated after a prune,
+so a pruned output is gone from the files, not just hidden. If another meiose
+process is reading at that moment, the log is truncated on a later prune.
 
 Recent originals are also cached in memory, up to 32 MB per meiose process
 (128 MB with `MEIOSE_KEEP_DAYS=0`, where memory is the only copy). Logs go to
-daily files in `<data dir>/logs/`; the last 7 are kept.
+daily files in `<data dir>/logs/`; the last 7 are kept. Logs never contain
+server arguments, which often carry credentials, only the program name.
 
 `meiose install` keeps backups of the config files it changes in the same
 directory. Those are full copies, including any `env` values (API keys).
+`meiose uninstall` deletes them once a file is restored or unwrapped
+(`--keep-backups` keeps them), and keeps them if it could not undo a file.
 
 `meiose record` writes every message to a JSONL file, including anything typed
-into forms. Use it for debugging only.
+into forms. Use it for debugging only. The header names the server command
+with secret-looking values (`--api-key …`, URL passwords, `TOKEN=…`) replaced
+by `***`.
+
+On macOS and Linux everything meiose writes is readable by you only: its
+directories are `700` and its files `600`, set when they are created. Data
+directories from older versions are tightened when meiose starts. A recording
+saved with `--out` into an existing directory is `600`; the directory is left
+as it is. `meiose install` keeps each config file's permissions. On Windows
+files get the default permissions of your profile folder.
+
+`meiose purge` deletes stored outputs, logs, recordings in the data directory
+and leftover backups, after showing what it will delete (`--yes` skips the
+question). It keeps the backups of configs that are still wrapped; run
+`meiose uninstall` first. Call stats are kept.
 
 Data directory: `%LOCALAPPDATA%\meiose` on Windows,
 `~/Library/Application Support/meiose` on macOS, `~/.local/share/meiose` on

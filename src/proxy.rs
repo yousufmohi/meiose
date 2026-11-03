@@ -98,7 +98,12 @@ pub async fn run(opts: Options) -> anyhow::Result<i32> {
     let mut child = spawn(&opts.cmd)?;
     // Kept alive until we exit: on Windows, closing it kills the server tree.
     let tree = procgroup::Tree::attach(&child);
-    tracing::info!(cmd = ?opts.cmd, pid = child.id(), "started MCP server");
+    // The program only: arguments often carry credentials (`--api-key …`).
+    tracing::info!(
+        program = %crate::install::program_name(&opts.cmd[0]),
+        pid = child.id(),
+        "started MCP server"
+    );
 
     let child_stdin = child.stdin.take().expect("piped");
     let child_stdout = child.stdout.take().expect("piped");

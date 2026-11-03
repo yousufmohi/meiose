@@ -138,8 +138,10 @@ sends no telemetry. Details in [docs/how-it-works.md](docs/how-it-works.md).
   with `query` on large pages, but this is less certain than a full snapshot.
 - A link whose URL already appeared earlier on the page is shown without it.
   The link can still be clicked; `meiose_expand` shows its URL.
-- It keeps copies of tool outputs on disk for 7 days by default.
-  `MEIOSE_KEEP_DAYS=0` keeps them in memory only.
+- It keeps copies of tool outputs on disk, readable by you only, for 7 days
+  by default; they are deleted the next time meiose runs after that.
+  `MEIOSE_KEEP_DAYS=0` keeps them in memory only, and `meiose purge` deletes
+  them now.
 - Text outputs over 40 KB are cut to their head and tail. If that output is a
   file you want to edit, the agent has to call `meiose_expand` first.
 - Only Playwright snapshots get structure-aware trimming. Other servers get the

@@ -7,11 +7,20 @@ use meiose::cli::{Cli, Command, ProxyFlags};
 use meiose::handlers::Mode;
 use meiose::intercept::{Config, Interceptor};
 use meiose::store::{self, StoreHandle};
-use meiose::{doctor, logging, paths, proxy, record, report, setup};
+use meiose::{doctor, logging, paths, proxy, purge, record, report, secure, setup};
 
 fn main() {
     let cli = Cli::parse();
-    let log_guard = logging::init();
+    // `purge` deletes the logs, so it does not open one.
+    let log_guard = if matches!(cli.command, Command::Purge(_)) {
+        None
+    } else {
+        logging::init()
+    };
+    // Installs from before 0.3 created group- and world-readable files.
+    if let Some(data) = paths::data_dir() {
+        secure::tighten_data_dir(&data);
+    }
 
     // The proxy mostly waits on pipes and trims in a few milliseconds, so two
     // workers are plenty; the default (one per core) only adds idle threads,
@@ -160,6 +169,7 @@ async fn dispatch(cli: Cli) -> anyhow::Result<i32> {
         }
         Command::Install(args) => setup::install(args),
         Command::Uninstall(args) => setup::uninstall(args),
+        Command::Purge(args) => purge::run(args),
         Command::Doctor => {
             let roots = setup::roots()?;
             let checks = doctor::run(&roots);

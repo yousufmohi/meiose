@@ -4,6 +4,26 @@
 
 - `meiose stats` says "1 tool call" and "1 expand" in the singular.
 
+Security: secrets on disk.
+
+- `meiose install` and `uninstall` keep a config file's permissions. A `600`
+  `~/.claude.json` used to become `644`. The temporary file is created
+  owner-only and removed if the write fails.
+- On macOS and Linux the data directory is private: directories `700`, the
+  database (and its WAL and SHM files), logs, backups, the manifest and
+  recordings `600`, from the moment they are created, including recordings
+  saved with `--out`. Existing data directories are tightened on startup.
+- `meiose uninstall` deletes its config backups once a file is restored or
+  unwrapped (`--keep-backups` keeps them). New `meiose purge` deletes stored
+  outputs, logs, recordings and leftover backups after asking.
+- Server arguments are no longer logged (only the program name). Recording
+  headers and the install diff hide secret-looking values, and the server
+  label in stats and recording filenames never includes a URL, an
+  assignment or a flag's secret value.
+- Pruned outputs are overwritten in the database (`secure_delete`) and the
+  write-ahead log is truncated, so they are gone from disk. A running proxy
+  also prunes every hour, not only every 200 outputs.
+
 ## 0.2.2 — 2026-11-02
 
 - JSON output is capped at 45,000 characters, under Claude Code's 50,000

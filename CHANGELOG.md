@@ -24,6 +24,25 @@ Security: secrets on disk.
   write-ahead log is truncated, so they are gone from disk. A running proxy
   also prunes every hour, not only every 200 outputs.
 
+Security: hostile pages and servers.
+
+- `meiose log`, `log --show` and `stats` strip control characters (OSC 52
+  clipboard writes, colours, cursor moves) from what they print, including
+  tool and server names. Stored originals and `meiose_expand` are unchanged.
+  Piping them into `head` no longer panics.
+- `meiose_expand` only returns outputs stored by the same server (same
+  command line and directory), in memory and in the database. Outputs stored
+  by older versions can no longer be expanded; `log --show` still shows them.
+  Expand ids are 13 characters with 65 random bits from the OS (were 8).
+- Messages over 16 MB pass through untouched, in chunks, without being
+  parsed, trimmed or stored. A 300 MB output took 1.7 GB of memory; now 30 MB.
+- The store queue is bounded (1024 jobs, 64 MB). When it is full, outputs go
+  through untrimmed and call stats are dropped.
+- The 512 MB cap counts the database and its write-ahead log on disk. Four
+  processes writing 3.2 GB used to leave 3.1 GB (2.4 GB of it log); now
+  under 500 MB at the end and about 850 MB at peak. meiose closes its
+  database on exit, so the log is removed.
+
 ## 0.2.2 — 2026-11-02
 
 - JSON output is capped at 45,000 characters, under Claude Code's 50,000

@@ -34,6 +34,7 @@ impl Px {
                 diff: true,
                 budget_bytes: budget * 3,
                 server: "m".into(),
+                server_key: "m".into(),
             },
             Some(store),
         );

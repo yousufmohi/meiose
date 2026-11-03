@@ -492,7 +492,8 @@ fn pruned_outputs_leave_no_trace_in_the_database_files() {
     let big = format!("{{\"text\":\"{}{API_KEY}\"}}", "x".repeat(200_000));
     for (id, result) in [("small", &small), ("big", &big)] {
         conn.execute(
-            "INSERT INTO outputs VALUES (?1, 0, 's', 't', ?2, ?2)",
+            "INSERT INTO outputs(id, created_ms, server, tool, result, trimmed)
+             VALUES (?1, 0, 's', 't', ?2, ?2)",
             [id, result.as_str()],
         )
         .unwrap();

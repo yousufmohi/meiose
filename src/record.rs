@@ -39,6 +39,8 @@ struct Entry {
     t_ms: u64,
     dir: Dir,
     raw: Vec<u8>,
+    /// Set for a frame too big to record: its length.
+    oversized: Option<usize>,
 }
 
 /// Cheap to clone; every pump task holds one. The file is flushed and closed
@@ -91,11 +93,23 @@ impl Recorder {
         ))
     }
 
+    /// An oversized frame went through: noted by size only, never stored.
+    pub async fn note_oversized(&self, dir: Dir, bytes: usize) {
+        let entry = Entry {
+            t_ms: self.start.elapsed().as_millis() as u64,
+            dir,
+            raw: Vec::new(),
+            oversized: Some(bytes),
+        };
+        let _ = self.tx.send(entry).await;
+    }
+
     pub async fn log(&self, dir: Dir, raw: &[u8]) {
         let entry = Entry {
             t_ms: self.start.elapsed().as_millis() as u64,
             dir,
             raw: raw.to_vec(),
+            oversized: None,
         };
         // If the writer died (disk full, etc.) recording stops but proxying
         // continues; the error surfaces when the task is awaited.
@@ -110,9 +124,10 @@ async fn write_entries<W: tokio::io::AsyncWrite + Unpin>(
 ) -> io::Result<()> {
     write_json_line(&mut w, &header).await?;
     while let Some(e) = rx.recv().await {
-        let line = match std::str::from_utf8(&e.raw) {
-            Ok(s) => json!({ "t_ms": e.t_ms, "dir": e.dir.as_str(), "raw": s }),
-            Err(_) => json!({
+        let line = match (e.oversized, std::str::from_utf8(&e.raw)) {
+            (Some(n), _) => json!({ "t_ms": e.t_ms, "dir": e.dir.as_str(), "oversized_bytes": n }),
+            (None, Ok(s)) => json!({ "t_ms": e.t_ms, "dir": e.dir.as_str(), "raw": s }),
+            (None, Err(_)) => json!({
                 "t_ms": e.t_ms,
                 "dir": e.dir.as_str(),
                 "raw": String::from_utf8_lossy(&e.raw),

@@ -15,11 +15,8 @@
 //! - Every entry point catches panics and falls back to the original frame.
 
 use std::collections::HashMap;
-use std::collections::hash_map::RandomState;
-use std::hash::{BuildHasher, Hasher};
 use std::panic::{AssertUnwindSafe, catch_unwind};
 use std::sync::Mutex;
-use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::{Duration, Instant};
 
 use serde_json::Value;
@@ -45,6 +42,9 @@ pub struct Config {
     pub budget_bytes: usize,
     /// Short label for stats, e.g. "npx-playwright-mcp".
     pub server: String,
+    /// Identity of this server ([`crate::store::server_key`]): expand only
+    /// returns outputs stored under it.
+    pub server_key: String,
 }
 
 enum Pending {
@@ -78,27 +78,15 @@ pub struct Interceptor {
     handlers: Vec<Box<dyn Handler>>,
     store: Option<StoreHandle>,
     state: Mutex<State>,
-    id_seed: u64,
-    id_counter: AtomicU64,
 }
 
 impl Interceptor {
     pub fn new(cfg: Config, store: Option<StoreHandle>) -> Interceptor {
-        let mut h = RandomState::new().build_hasher();
-        h.write_u128(
-            std::time::SystemTime::now()
-                .duration_since(std::time::UNIX_EPOCH)
-                .map(|d| d.as_nanos())
-                .unwrap_or(0),
-        );
-        h.write_u32(std::process::id());
         Interceptor {
             cfg,
             handlers: handlers::all(),
             store,
             state: Mutex::default(),
-            id_seed: h.finish(),
-            id_counter: AtomicU64::new(0),
         }
     }
 
@@ -110,17 +98,11 @@ impl Interceptor {
         self.cfg.trim && self.store.is_some()
     }
 
-    /// Short, unguessable-enough id like `k3x9q2ab`.
-    fn new_expand_id(&self) -> String {
-        let n = self.id_counter.fetch_add(1, Ordering::Relaxed);
-        let mut x = self.id_seed ^ n.wrapping_mul(0x9E37_79B9_7F4A_7C15);
-        x ^= x >> 31;
-        x = x.wrapping_mul(0xBF58_476D_1CE4_E5B9);
-        x ^= x >> 29;
-        const ALPHABET: &[u8] = b"abcdefghijkmnpqrstuvwxyz23456789";
-        (0..8)
-            .map(|i| ALPHABET[((x >> (i * 5)) & 31) as usize] as char)
-            .collect()
+    /// A fresh expand id like `k3x9q2abm7tw4`: 13 symbols of a 32-letter
+    /// alphabet, 65 random bits from the OS. `None` if the OS has no
+    /// randomness to give (then the output is not trimmed).
+    fn new_expand_id(&self) -> Option<String> {
+        new_expand_id()
     }
 
     // ---------------- agent → server ----------------
@@ -214,7 +196,7 @@ impl Interceptor {
                  [meiose: … meiose_expand(\"<id>\")] note of the result you want in full.",
                 true,
             ),
-            (Some(eid), Some(store)) => match store.get_output(eid) {
+            (Some(eid), Some(store)) => match store.get_output(eid, &self.cfg.server_key) {
                 Some(raw) => {
                     let found = query.map(|q| search::search(&content_text(&raw), q));
                     store.record_call(CallRecord {
@@ -236,7 +218,7 @@ impl Interceptor {
                 None => rpc::tool_text_response(
                     id_raw,
                     &format!(
-                        "meiose has no stored output for id \"{eid}\". Outputs are kept for {} \
+                        "meiose has no stored output for id \"{eid}\" from this server. Outputs are kept for {} \
                          day(s) (MEIOSE_KEEP_DAYS) and only while disk space allows. Re-run the \
                          original tool call to get a fresh, complete result.",
                         crate::store::keep_days()
@@ -351,7 +333,11 @@ impl Interceptor {
             return None;
         }
 
-        let expand_id = self.new_expand_id();
+        let Some(expand_id) = self.new_expand_id() else {
+            tracing::warn!("no randomness for an expand id; sending this output untrimmed");
+            record(None, text_before.clone(), None, 0);
+            return None;
+        };
         let cx = TrimContext {
             expand_id: &expand_id,
             mode: self.cfg.mode,
@@ -384,7 +370,17 @@ impl Interceptor {
         let new_result = result.to_string();
         // Store the original before the trimmed output can reach the agent.
         let store = self.store.as_ref().expect("active() checked");
-        store.put_output(&expand_id, &self.cfg.server, tool, result_raw, &new_result);
+        if !store.put_output(
+            &expand_id,
+            &self.cfg.server_key,
+            &self.cfg.server,
+            tool,
+            result_raw,
+            &new_result,
+        ) {
+            // Never send a trimmed output whose original we could not keep.
+            return None;
+        }
         let us = started.elapsed().as_micros() as u64;
         record(
             Some(handler),
@@ -497,7 +493,7 @@ pub fn expand_tool_definition() -> Value {
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "The id from the meiose note, e.g. \"k3x9q2ab\"."
+                    "description": "The id from the meiose note, e.g. \"k3x9q2abm7tw4\"."
                 },
                 "query": {
                     "type": "string",
@@ -508,6 +504,20 @@ pub fn expand_tool_definition() -> Value {
             "additionalProperties": false
         }
     })
+}
+
+const ID_ALPHABET: &[u8] = b"abcdefghijkmnpqrstuvwxyz23456789";
+/// Symbols per expand id: 13 × 5 bits = 65 bits.
+pub const ID_LEN: usize = 13;
+
+fn new_expand_id() -> Option<String> {
+    let mut b = [0u8; ID_LEN];
+    getrandom::fill(&mut b).ok()?;
+    Some(
+        b.iter()
+            .map(|x| ID_ALPHABET[usize::from(x & 31)] as char)
+            .collect(),
+    )
 }
 
 /// All text content of a tool result, joined (for token stats).

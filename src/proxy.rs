@@ -27,7 +27,7 @@ use tokio::process::{Child, Command};
 use tokio::sync::mpsc;
 use tokio::task::JoinHandle;
 
-use crate::frame::{READ_BUF, read_frame, write_frames};
+use crate::frame::{Frame, Out, READ_BUF, max_frame, next_chunk, read_frame_limited, write_frames};
 use crate::intercept::{ClientAction, Interceptor};
 use crate::procgroup;
 use crate::record::{Dir, Recorder};
@@ -109,7 +109,7 @@ pub async fn run(opts: Options) -> anyhow::Result<i32> {
     let child_stdout = child.stdout.take().expect("piped");
     let child_stderr = child.stderr.take().expect("piped");
 
-    let (out_tx, out_rx) = mpsc::channel::<Vec<u8>>(64);
+    let (out_tx, out_rx) = mpsc::channel::<Out>(64);
     let mut writer = tokio::spawn(write_frames(tokio::io::stdout(), out_rx));
     let mut c2s = tokio::spawn(client_to_server(
         BufReader::with_capacity(READ_BUF, tokio::io::stdin()),
@@ -269,14 +269,34 @@ async fn client_to_server<R, W>(
     mut to: W,
     rec: Option<Recorder>,
     intercept: Option<Arc<Interceptor>>,
-    out: mpsc::WeakSender<Vec<u8>>,
+    out: mpsc::WeakSender<Out>,
 ) where
     R: AsyncBufRead + Unpin,
     W: AsyncWrite + Unpin,
 {
+    let max = max_frame();
     loop {
-        let frame = match read_frame(&mut from).await {
-            Ok(Some(f)) => f,
+        let frame = match read_frame_limited(&mut from, max).await {
+            Ok(Some(Frame::Whole(f))) => f,
+            Ok(Some(Frame::Oversized(head))) => {
+                // Too big to process: straight to the server, in chunks.
+                match copy_rest(&mut from, head, &mut to).await {
+                    Ok(n) => {
+                        tracing::warn!(
+                            bytes = n,
+                            "passed an oversized agent message through untouched"
+                        );
+                        if let Some(r) = &rec {
+                            r.note_oversized(Dir::C2s, n).await;
+                        }
+                        continue;
+                    }
+                    Err(e) => {
+                        tracing::warn!(error = %e, "forwarding an oversized agent message failed");
+                        return;
+                    }
+                }
+            }
             Ok(None) => return,
             Err(e) => {
                 tracing::error!(error = %e, "reading agent stdin failed");
@@ -302,7 +322,7 @@ async fn client_to_server<R, W>(
             .await;
             match (reply, out.upgrade()) {
                 (Ok(reply), Some(tx)) => {
-                    let _ = tx.send(reply).await;
+                    let _ = tx.send(Out::Frame(reply)).await;
                 }
                 (Err(e), _) => tracing::error!(error = %e, "meiose_expand failed"),
                 (_, None) => tracing::warn!("agent stdout closed; dropping meiose_expand reply"),
@@ -324,15 +344,41 @@ async fn client_to_server<R, W>(
 /// server → agent, via the single stdout writer.
 async fn server_to_client<R>(
     mut from: R,
-    out: mpsc::Sender<Vec<u8>>,
+    out: mpsc::Sender<Out>,
     rec: Option<Recorder>,
     intercept: Option<Arc<Interceptor>>,
 ) where
     R: AsyncBufRead + Unpin,
 {
+    let max = max_frame();
     loop {
-        let frame = match read_frame(&mut from).await {
-            Ok(Some(f)) => f,
+        let frame = match read_frame_limited(&mut from, max).await {
+            Ok(Some(Frame::Whole(f))) => f,
+            Ok(Some(Frame::Oversized(head))) => {
+                // Too big to process: to the agent untouched, in chunks,
+                // never parsed, trimmed or stored.
+                let (tx, rx) = mpsc::channel(8);
+                if out.send(Out::Stream(rx)).await.is_err() {
+                    return;
+                }
+                match send_rest(&mut from, head, tx).await {
+                    Ok(n) => {
+                        tracing::warn!(
+                            bytes = n,
+                            limit = max,
+                            "passed an oversized server message through untouched (not trimmed or stored)"
+                        );
+                        if let Some(r) = &rec {
+                            r.note_oversized(Dir::S2c, n).await;
+                        }
+                        continue;
+                    }
+                    Err(e) => {
+                        tracing::error!(error = %e, "reading MCP server stdout failed");
+                        return;
+                    }
+                }
+            }
             Ok(None) => return,
             Err(e) => {
                 tracing::error!(error = %e, "reading MCP server stdout failed");
@@ -346,7 +392,7 @@ async fn server_to_client<R>(
             Some(ic) => ic.on_server_frame(frame),
             None => frame,
         };
-        if out.send(frame).await.is_err() {
+        if out.send(Out::Frame(frame)).await.is_err() {
             return; // agent stdout writer is gone
         }
     }
@@ -358,16 +404,75 @@ where
     R: AsyncBufRead + Unpin,
     W: AsyncWrite + Unpin,
 {
-    while let Ok(Some(line)) = read_frame(&mut from).await {
-        if let Some(r) = &rec {
-            r.log(Dir::Stderr, &line).await;
-        }
-        if to.write_all(&line).await.is_err() || to.flush().await.is_err() {
+    let max = max_frame();
+    while let Ok(Some(frame)) = read_frame_limited(&mut from, max).await {
+        let ok = match frame {
+            Frame::Whole(line) => {
+                if let Some(r) = &rec {
+                    r.log(Dir::Stderr, &line).await;
+                }
+                to.write_all(&line).await.is_ok() && to.flush().await.is_ok()
+            }
+            Frame::Oversized(head) => match copy_rest(&mut from, head, &mut to).await {
+                Ok(n) => {
+                    if let Some(r) = &rec {
+                        r.note_oversized(Dir::Stderr, n).await;
+                    }
+                    true
+                }
+                Err(_) => false,
+            },
+        };
+        if !ok {
             // Our stderr is gone; keep draining so the child never blocks on it.
-            while let Ok(Some(_)) = read_frame(&mut from).await {}
+            while let Ok(Some((_, _))) = next_chunk(&mut from).await {}
             return;
         }
     }
+}
+
+/// Write `head`, then the rest of an oversized frame chunk by chunk, to
+/// `to`. Returns the frame's length.
+async fn copy_rest<R, W>(from: &mut R, head: Vec<u8>, to: &mut W) -> std::io::Result<usize>
+where
+    R: AsyncBufRead + Unpin,
+    W: AsyncWrite + Unpin,
+{
+    let mut n = head.len();
+    to.write_all(&head).await?;
+    while let Some((chunk, ended)) = next_chunk(from).await? {
+        n += chunk.len();
+        to.write_all(&chunk).await?;
+        if ended {
+            break;
+        }
+    }
+    to.flush().await?;
+    Ok(n)
+}
+
+/// Like [`copy_rest`], into the stdout writer's stream channel. If the
+/// writer is gone, the frame is still read to its end.
+async fn send_rest<R>(
+    from: &mut R,
+    head: Vec<u8>,
+    tx: mpsc::Sender<Vec<u8>>,
+) -> std::io::Result<usize>
+where
+    R: AsyncBufRead + Unpin,
+{
+    let mut n = head.len();
+    let mut open = tx.send(head).await.is_ok();
+    while let Some((chunk, ended)) = next_chunk(from).await? {
+        n += chunk.len();
+        if open {
+            open = tx.send(chunk).await.is_ok();
+        }
+        if ended {
+            break;
+        }
+    }
+    Ok(n)
 }
 
 #[cfg(test)]
@@ -399,8 +504,12 @@ mod tests {
         let input: &[u8] = b"{\"a\":1}\n{\"b\":2}\n";
         let (tx, mut rx) = mpsc::channel(8);
         server_to_client(BufReader::new(input), tx, None, None).await;
-        assert_eq!(rx.recv().await.unwrap(), b"{\"a\":1}\n");
-        assert_eq!(rx.recv().await.unwrap(), b"{\"b\":2}\n");
+        let frame = |o: Option<Out>| match o {
+            Some(Out::Frame(f)) => f,
+            _ => panic!("expected a whole frame"),
+        };
+        assert_eq!(frame(rx.recv().await), b"{\"a\":1}\n");
+        assert_eq!(frame(rx.recv().await), b"{\"b\":2}\n");
         assert!(rx.recv().await.is_none());
     }
 }

@@ -32,8 +32,8 @@ from a trim note:
 
 | arguments | returns |
 |---|---|
-| `{"id": "k3x9q2ab"}` | the original result, exactly as the server sent it |
-| `{"id": "k3x9q2ab", "query": "Canada"}` | only the matching lines, with their context; `\|` separates alternatives |
+| `{"id": "k3x9q2abm7tw4"}` | the original result, exactly as the server sent it |
+| `{"id": "k3x9q2abm7tw4", "query": "Canada"}` | only the matching lines, with their context; `\|` separates alternatives |
 
 ## Environment variables
 

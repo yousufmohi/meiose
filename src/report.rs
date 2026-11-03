@@ -20,6 +20,18 @@ pub fn short(n: i64) -> String {
     }
 }
 
+/// `s` without control characters other than newline and tab: no terminal
+/// escape sequence (ESC, CSI, OSC, bell, carriage return, C1 codes) can
+/// reach the terminal through stored or server-supplied text.
+pub fn printable(s: &str) -> std::borrow::Cow<'_, str> {
+    let bad = |c: char| c.is_control() && c != '\n' && c != '\t';
+    if s.chars().any(bad) {
+        s.chars().filter(|&c| !bad(c)).collect::<String>().into()
+    } else {
+        s.into()
+    }
+}
+
 /// 1 → "1 expand", 2 → "2 expands".
 fn plural(n: i64, word: &str) -> String {
     if n == 1 {
@@ -196,6 +208,16 @@ pub fn result_text(result_json: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn printable_drops_control_characters_but_keeps_newlines_and_tabs() {
+        let evil = "a\u{1b}]52;c;ZXZpbA==\u{7}b\u{1b}[31mc\r\u{9b}2J\td\ne";
+        assert_eq!(printable(evil), "a]52;c;ZXZpbA==b[31mc2J\td\ne");
+        assert!(matches!(
+            printable("plain\n"),
+            std::borrow::Cow::Borrowed(_)
+        ));
+    }
 
     #[test]
     fn short_numbers() {

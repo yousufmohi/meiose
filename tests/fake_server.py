@@ -85,6 +85,9 @@ def mcp(fixture: str, stdin, stdout) -> int:
       notify {count}                `count` progress notifications, then answers
       garbage                       a malformed line, then answers
       split                         writes its response in two parts, 300 ms apart
+      hostile                       the fixture with terminal escapes (OSC 52
+                                    clipboard write, colours, a bell) in its text
+      big_text {kb}                 plain text of about `kb` KiB
       crash                         exits immediately with code 3
       spawn_grandchild              starts a long-lived grandchild (pid written
                                     to $GRANDCHILD_PID) and from then on ignores
@@ -193,6 +196,12 @@ def mcp(fixture: str, stdin, stdout) -> int:
                     send({"jsonrpc": "2.0", "method": "notifications/progress",
                           "params": {"progressToken": rid, "progress": i, "total": args.get("count", 3)}})
                 text_result(rid, "notified")
+            elif name == "hostile":
+                evil = "\x1b]52;c;ZXZpbA==\x07\x1b[31mred\x1b[0m\r\x9b2J\x07"
+                text_result(rid, evil + snapshot)
+            elif name == "big_text":
+                line = "the quick brown fox jumps over the lazy dog 0123456789\n"
+                text_result(rid, line * (int(args.get("kb", 1)) * 1024 // len(line) + 1))
             elif name == "garbage":
                 write_raw(b"{this is not json\n")
                 text_result(rid, "after garbage")

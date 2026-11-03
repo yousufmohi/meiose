@@ -20,7 +20,7 @@ A trimmed result ends with a note like this one, from the Hacker News front
 page:
 
 ```text
-[meiose: 137 nodes trimmed, 319 non-interactive refs hidden, 35 repeated URLs hidden — call meiose_expand("k3x9q2ab") for the full snapshot, or add query="…" for only the lines you need]
+[meiose: 137 nodes trimmed, 319 non-interactive refs hidden, 35 repeated URLs hidden — call meiose_expand("k3x9q2abm7tw4") for the full snapshot, or add query="…" for only the lines you need]
 ```
 
 When the agent needs something that was left out, it calls `meiose_expand`
@@ -108,6 +108,19 @@ These properties are tested on every commit on macOS, Linux and Windows.
 - meiose fails open. If trimming fails or panics, if the store cannot be
   opened, or if the agent never saw `meiose_expand`, the original passes
   through unchanged.
+- `meiose_expand` only returns outputs stored by the same server: the same
+  command line in the same directory. Expand ids carry 65 random bits from
+  the operating system.
+- Messages over 16 MB are passed through exactly as they are, in chunks,
+  without being parsed, trimmed or stored, so a huge or hostile output cannot
+  make meiose hold it in memory (a 300 MB output: 1.7 GB of memory before,
+  30 MB now). `meiose record` notes only their size.
+- If meiose's store falls behind (it keeps at most 64 MB waiting to be
+  written), outputs are sent untrimmed rather than trimmed without a stored
+  original, and some call stats are dropped.
+- `meiose log`, `meiose log --show` and `meiose stats` remove control
+  characters (terminal escape sequences) from what they print; the stored
+  originals and `meiose_expand` stay byte-for-byte.
 - The proxy does not hang on slow servers, crashing servers, 5 MB messages,
   malformed JSON or out-of-order responses.
 - meiose makes no network calls and sends no telemetry. It never writes logs
@@ -128,7 +141,11 @@ days (`MEIOSE_KEEP_DAYS`; `0` keeps originals in memory for the session only)
 and are deleted by the next meiose process that runs after that: each one
 prunes when it starts, then every hour or every 200 stored outputs. So an
 output can outlive its 7 days until meiose runs again. Stored originals are
-also capped at 512 MB, oldest first. Deleted rows are overwritten with zeros
+also capped at 512 MB of disk, oldest first, counting the database file and
+its write-ahead log as they are on disk. Several meiose processes writing
+large outputs at once can briefly go over it while the log waits for a
+checkpoint (about 850 MB peak in a stress test of four processes writing
+1 MB outputs back to back); each prune brings it back under. Deleted rows are overwritten with zeros
 (SQLite `secure_delete`) and the write-ahead log is truncated after a prune,
 so a pruned output is gone from the files, not just hidden. If another meiose
 process is reading at that moment, the log is truncated on a later prune.

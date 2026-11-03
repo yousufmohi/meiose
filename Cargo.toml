@@ -17,6 +17,7 @@ include = ["src/**/*", "Cargo.toml", "Cargo.lock", "README.md", "CHANGELOG.md", 
 anyhow = "1.0.104"
 clap = { version = "4.6.7", features = ["derive"] }
 dirs = "7.0.0"
+getrandom = "0.4.3"
 rusqlite = { version = "0.41.1", features = ["bundled"] }
 serde = { version = "1.0.229", features = ["derive"] }
 serde_json = { version = "1.0.154", features = ["raw_value", "preserve_order", "arbitrary_precision"] }

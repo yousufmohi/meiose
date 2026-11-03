@@ -682,6 +682,7 @@ dependencies = [
  "clap",
  "criterion",
  "dirs",
+ "getrandom",
  "insta",
  "libc",
  "proptest",

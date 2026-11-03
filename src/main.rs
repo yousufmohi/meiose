@@ -90,6 +90,7 @@ fn interceptor(flags: ProxyFlags, cmd: &[String]) -> (Arc<Interceptor>, Option<S
         // Counting exactly would put tiktoken on the message path.
         budget_bytes: flags.budget.saturating_mul(3),
         server: record::file_stem(cmd),
+        server_key: store::server_key(cmd),
     };
     (Arc::new(Interceptor::new(cfg, store.clone())), store)
 }
@@ -108,8 +109,8 @@ async fn run_proxy(
     })
     .await?;
     if let Some(s) = store {
-        // Persist the last stats rows before we exit.
-        let _ = tokio::task::spawn_blocking(move || s.flush()).await;
+        // Persist the last stats rows and close the database before we exit.
+        let _ = tokio::task::spawn_blocking(move || s.close()).await;
     }
     Ok(code)
 }
@@ -146,7 +147,7 @@ async fn dispatch(cli: Cli) -> anyhow::Result<i32> {
             let since = store::now_ms() - i64::from(args.days) * 24 * 3600 * 1000;
             let totals = store::totals_since(&conn, since)?;
             let per_tool = store::per_tool_since(&conn, since)?;
-            print!("{}", report::stats(args.days, &totals, &per_tool));
+            emit(&report::stats(args.days, &totals, &per_tool));
             Ok(0)
         }
         Command::Log(args) => {
@@ -157,14 +158,15 @@ async fn dispatch(cli: Cli) -> anyhow::Result<i32> {
                         "no stored output with id {id:?}\n  → ids are listed by `meiose log`; outputs are kept for 7 days"
                     );
                 };
-                println!("=== trimmed (what the agent saw) ===");
-                println!("{}", report::result_text(&trimmed));
-                println!("\n=== original (what meiose_expand returns) ===");
-                println!("{}", report::result_text(&original));
+                emit(&format!(
+                    "=== trimmed (what the agent saw) ===\n{}\n\n=== original (what meiose_expand returns) ===\n{}\n",
+                    report::result_text(&trimmed),
+                    report::result_text(&original)
+                ));
                 return Ok(0);
             }
             let rows = store::recent_calls(&conn, args.limit)?;
-            print!("{}", report::log(store::now_ms(), &rows));
+            emit(&report::log(store::now_ms(), &rows));
             Ok(0)
         }
         Command::Install(args) => setup::install(args),
@@ -173,12 +175,25 @@ async fn dispatch(cli: Cli) -> anyhow::Result<i32> {
         Command::Doctor => {
             let roots = setup::roots()?;
             let checks = doctor::run(&roots);
-            print!("{}", doctor::render(&checks));
+            emit(&doctor::render(&checks));
             Ok(i32::from(
                 checks.iter().any(|c| c.status == doctor::Status::Fail),
             ))
         }
     }
+}
+
+/// Print report text. Pages and servers put whatever they like into tool
+/// output and names, so control characters (terminal escapes such as an
+/// OSC 52 clipboard write) are removed here, at output time; the stored
+/// originals, and `meiose_expand`, stay byte-for-byte. A reader that goes
+/// away (`meiose log --show ID | head`) ends the output quietly.
+fn emit(text: &str) {
+    use std::io::Write;
+    let mut out = std::io::stdout().lock();
+    let _ = out
+        .write_all(report::printable(text).as_bytes())
+        .and_then(|()| out.flush());
 }
 
 fn open_existing_db() -> anyhow::Result<rusqlite::Connection> {

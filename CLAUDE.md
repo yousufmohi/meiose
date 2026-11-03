@@ -39,7 +39,7 @@ Name check (2026-11-01): `meiose` is free on crates.io, npm, Homebrew
      outline may omit them; they must stay reachable through `meiose_expand`
      (full or `query`). Never turn `--budget` on by default without asking.
    - Every trimmed output has a marker:
-     `[312 nodes trimmed — call meiose_expand("abc123")]`.
+     `[312 nodes trimmed — call meiose_expand("k3x9q2abm7tw4")]`.
    - `meiose_expand` returns the original output byte-for-byte.
 4. **Fail open.** If trimming errors or panics, forward the original and log it.
    Never hang, deadlock or corrupt the stream.
@@ -156,7 +156,16 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
 - The original `result` raw bytes are stored *before* the trimmed response is
   sent; `meiose_expand` splices them back verbatim (tested byte-for-byte).
   Originals live in memory (32 MB cap; 128 MB with MEIOSE_KEEP_DAYS=0) and
-  SQLite (7-day TTL, 512 MB cap).
+  SQLite (7-day TTL, 512 MB cap on db + WAL as on disk; `secure_delete`,
+  incremental auto-vacuum, WAL truncated by prunes and on close).
+  Expand is scoped by `store::server_key` (hash of cwd + full cmd); ids are
+  13 chars from `getrandom`. Store queue bounded (1024 jobs / 64 MB): when
+  full, outputs go untrimmed (never trim without a stored original).
+- Frames > 16 MB (`frame::MAX_FRAME`; debug: MEIOSE_TEST_MAX_FRAME_KB) are
+  streamed through in chunks, never parsed/trimmed/stored; the stdout writer
+  takes `Out::Stream` so nothing interleaves inside one.
+- `log`/`stats`/`doctor` output goes through `report::printable` (control
+  chars removed) and ignores a closed stdout.
 - Snapshot diff: Playwright refs are stable within one loaded document, NOT
   across navigations (a reload renamed `e3` → `f2e3`; verified with real
   Playwright 1.65), so diffs only help repeat snapshots of the page you are
@@ -271,8 +280,8 @@ tests/fixtures/playwright/*.txt     40 public-page snapshots (committed)
 tests/fixtures/local/               your private fixtures (git-ignored)
 tests/snapshots/playwright/*.snap   approved conservative outputs (insta)
 tests/common/mod.rs                 independent invariant checker
-tests/{passthrough,playwright_fixtures,playwright_props,expand,install,secrets}.rs
-tests/fake_server.py (modes: mirror, exit, burst, hang, mcp)  tests/fixtures/proxy/
+tests/{passthrough,playwright_fixtures,playwright_props,expand,install,secrets,hostile}.rs
+tests/fake_server.py (modes: mirror, exit, burst, hang, mcp; mcp tools incl. hostile, big_text)  tests/fixtures/proxy/
 benches/prune.rs  examples/report.rs (per page; --local adds private fixtures)
 examples/measure.rs (budget totals, pages over CC limits, full vs query expand)
 examples/search_probe.rs (are known answers in query results)

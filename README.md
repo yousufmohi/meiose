@@ -1,49 +1,89 @@
-# meiose
+<h1 align="center">meiose</h1>
 
-An MCP proxy that trims oversized tool outputs before they reach your agent, written in Rust.
+<p align="center">
+  An MCP proxy that trims oversized tool outputs before they reach your agent.<br>
+  One Rust binary. Works with any stdio MCP server. Runs locally, no telemetry.
+</p>
 
-[![CI](https://github.com/yousufmohi/meiose/actions/workflows/ci.yml/badge.svg)](https://github.com/yousufmohi/meiose/actions/workflows/ci.yml)
-[![crates.io](https://img.shields.io/crates/v/meiose.svg)](https://crates.io/crates/meiose)
-[![npm](https://img.shields.io/npm/v/meiose.svg)](https://www.npmjs.com/package/meiose)
-[![License: MIT OR Apache-2.0](https://img.shields.io/crates/l/meiose.svg)](#license)
+<p align="center">
+  <a href="https://github.com/yousufmohi/meiose/actions/workflows/ci.yml"><img src="https://github.com/yousufmohi/meiose/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://crates.io/crates/meiose"><img src="https://img.shields.io/crates/v/meiose.svg" alt="crates.io"></a>
+  <a href="https://www.npmjs.com/package/meiose"><img src="https://img.shields.io/npm/v/meiose.svg" alt="npm"></a>
+  <a href="#license"><img src="https://img.shields.io/crates/l/meiose.svg" alt="License: MIT OR Apache-2.0"></a>
+</p>
+
+<p align="center">
+  <a href="docs/configuration.md">Docs</a> ·
+  <a href="BENCHMARKS.md">Benchmarks</a> ·
+  <a href="https://github.com/yousufmohi/meiose/releases">Releases</a> ·
+  <a href="CHANGELOG.md">Changelog</a> ·
+  <a href="SECURITY.md">Security</a>
+</p>
 
 ![meiose install --dry-run, then meiose log and meiose stats after a real Playwright session: a trimmed page, a query expand and a diff](docs/demo.gif)
 
-Playwright MCP snapshots of real pages, in tokens:
+## Why meiose?
 
-| page | before | default | `--aggressive` |
-|---|---:|---:|---:|
-| Rust `Vec` docs | 244,156 | 166,563 (−32%) | 133,879 (−45%) |
-| MDN `<input>` reference | 166,768 | 112,891 (−32%) | 93,199 (−44%) |
-| Wikipedia "Rust" | 133,768 | 105,700 (−21%) | 81,203 (−39%) |
-| Hacker News | 13,713 | 8,262 (−40%) | 5,696 (−58%) |
-| all 40 test pages | 943,239 | 650,329 (−31%) | 488,437 (−48%) |
-| repeat snapshot of an unchanged page | 133,862 | 79 | — |
-| one method from the `Vec` docs, via `query` | 244,156 | 1,399 | — |
+MCP servers return whatever they have. A Playwright snapshot of one docs page
+is 244,000 tokens; a GitHub issue list is 79,000. meiose sits between the agent
+and the server, cuts what the agent does not need, and keeps the original one
+tool call away.
 
-Trimming the largest page takes 2.4 ms. In Claude Code the end-to-end saving is
-7% of cost at the same accuracy; agents without an output limit save far more
-with `--budget`. [BENCHMARKS.md](BENCHMARKS.md) has the evals.
+| | without meiose | with meiose |
+|---|---|---|
+| Rust `Vec` docs snapshot | 244,156 tokens | 166,563 (−32%) |
+| all 40 test pages | 943,239 tokens | 650,329 (−31%), 488,437 (−48%) with `--aggressive` |
+| GitHub `list_issues`, 100 issues | 78,757 tokens | 11,915 (−85%) |
+| the same page, snapshotted again | 133,862 tokens | 79 (a diff) |
+| one method from the `Vec` docs | the whole page | 1,399 tokens, via `query` |
+| getting the full output back | re-run the tool | `meiose_expand(id)`, exactly as the server sent it |
+| added latency | | 2.4 ms on the largest page |
+
+In Claude Code the end-to-end saving is 7% of cost at the same accuracy,
+because Claude Code already moves outputs over 50,000 characters to a file.
+Agents without that limit save far more with `--budget`.
+[BENCHMARKS.md](BENCHMARKS.md) has the evals.
 
 ## Install
 
-```sh
-brew install yousufmohi/tap/meiose
-npm install -g meiose
-cargo install meiose
-curl -LsSf https://github.com/yousufmohi/meiose/releases/latest/download/meiose-installer.sh | sh
-```
+| | |
+|---|---|
+| Homebrew | `brew install yousufmohi/tap/meiose` |
+| npm | `npm install -g meiose` |
+| Cargo | `cargo install meiose` |
+| macOS / Linux | `curl -LsSf https://github.com/yousufmohi/meiose/releases/latest/download/meiose-installer.sh \| sh` |
+| Windows | `irm https://github.com/yousufmohi/meiose/releases/latest/download/meiose-installer.ps1 \| iex` |
 
-```powershell
-irm https://github.com/yousufmohi/meiose/releases/latest/download/meiose-installer.ps1 | iex
+### Download
+
+Prebuilt binaries are on the [releases page](https://github.com/yousufmohi/meiose/releases/latest):
+
+| platform | archive |
+|---|---|
+| macOS, Apple silicon | `meiose-aarch64-apple-darwin.tar.xz` |
+| macOS, Intel | `meiose-x86_64-apple-darwin.tar.xz` |
+| Linux x64 | `meiose-x86_64-unknown-linux-gnu.tar.xz` |
+| Linux arm64 | `meiose-aarch64-unknown-linux-gnu.tar.xz` |
+| Windows x64 | `meiose-x86_64-pc-windows-msvc.zip` |
+
+Each has a `.sha256` file. Releases after 0.2.2 also carry a GitHub artifact
+attestation: `gh attestation verify <archive> --repo yousufmohi/meiose`.
+
+### Build from source
+
+```sh
+git clone https://github.com/yousufmohi/meiose
+cd meiose
+cargo build --release      # Rust 1.88 or newer; binary in target/release/meiose
 ```
 
 ## Quick start
 
-1. Run `meiose install`. It finds your Claude Code, Claude Desktop and Cursor
-   configs, shows each change, asks, and backs up every file it edits.
-2. Restart your agent and use it as usual.
-3. Run `meiose stats`:
+```sh
+meiose install     # find your agent configs, show each change, ask, back up every file
+# restart your agent and use it as usual
+meiose stats       # what was saved
+```
 
 ```text
 Last 7 days: 26K tokens → 10K (61% saved)
@@ -56,13 +96,14 @@ Last 7 days: 26K tokens → 10K (61% saved)
   npx-playwright-mcp-latest  browser_close          1        29        29      0%
 ```
 
-`meiose doctor` checks the setup and prints a fix for each problem.
-`meiose uninstall` undoes the install.
+`meiose install` knows Claude Code, Claude Desktop and Cursor. `meiose doctor`
+checks the setup and prints a fix for each problem; `meiose uninstall` undoes
+the install.
 
 ## Manual setup
 
-Put `meiose run --` in front of the server's command. `meiose install` writes
-the same entries, with the full path to meiose. Playwright MCP as the example:
+Put `meiose run --` in front of any stdio server's command. Playwright MCP as
+the example:
 
 <details>
 <summary>Claude Code</summary>
@@ -102,7 +143,80 @@ Add the same `playwright` entry as for Claude Desktop to `~/.cursor/mcp.json`.
 
 </details>
 
-Any stdio MCP server works the same way: `meiose run -- <command> <args>`.
+<details>
+<summary>Any other agent</summary>
+
+Wherever the agent takes a server command, use
+`meiose run -- <command> <args>` instead.
+
+</details>
+
+## Features
+
+### Trimming
+
+| server output | what meiose does |
+|---|---|
+| Playwright snapshots | drops wrapper nodes, refs of non-interactive elements and repeated URLs; every link, button and input keeps its ref |
+| JSON (GitHub, databases, APIs) | long lists keep 10 samples and name the rest; output stays valid JSON, under 45,000 characters |
+| other text over 40 KB | keeps the first 16 KB and the last 4 KB |
+| anything else | passed through unchanged |
+
+Every trimmed output ends with a note like
+`[meiose: … call meiose_expand("k3x9q2abm7tw4") for the full snapshot]`.
+
+### Expand and query
+
+meiose adds one tool, `meiose_expand`, answered locally:
+
+| call | returns |
+|---|---|
+| `meiose_expand(id)` | the original output, exactly as the server sent it |
+| `meiose_expand(id, query="Canada")` | only the matching lines, with their context; `\|` separates alternatives |
+
+### Snapshot diffs
+
+A repeat snapshot of the page you are on is sent as a diff of what changed
+(133,862 tokens → 79 for an unchanged Wikipedia page). `--no-diff` turns it off.
+
+### Budget
+
+`--budget 20000` caps Playwright snapshots at about that many tokens: larger
+pages are trimmed harder, then become a searchable outline. It is off by
+default; see [which settings to use](docs/configuration.md#which-settings-to-use).
+
+### Privacy and storage
+
+meiose runs locally and sends no telemetry. Originals are kept so expand works,
+for 24 hours (readable by you only on macOS and Linux), then deleted. `--no-store` keeps one
+server's outputs in memory only; `meiose purge` deletes everything now. Server
+arguments never reach the logs. Details in [SECURITY.md](SECURITY.md).
+
+## CLI reference
+
+| command | |
+|---|---|
+| `meiose run [flags] -- <server cmd>` | run a server behind the proxy |
+| `meiose record [--out DIR] [flags] -- <server cmd>` | like `run`, and log every message to a JSONL file (debugging) |
+| `meiose install [--dry-run] [--yes] [--only NAME] [--client APP] [--meiose-path P]` | wrap the servers in your agent configs |
+| `meiose uninstall [--yes] [--keep-backups]` | undo `install` |
+| `meiose stats [--days 7]` | token savings |
+| `meiose log [-n 20] [--show ID]` | recent calls; `--show` prints one call's trimmed and original output |
+| `meiose doctor` | check configs, paths and versions |
+| `meiose purge [--yes]` | delete stored outputs, logs, recordings and leftover backups |
+
+`run` and `record` flags:
+
+| flag | |
+|---|---|
+| `--aggressive` | trim harder: hide all non-interactive refs, drop link URLs, shorten more |
+| `--budget TOKENS` | cap Playwright snapshots (0 = no limit, the default) |
+| `--no-diff` | always send full snapshots |
+| `--no-store` | keep this server's originals in memory only |
+| `--passthrough` | change nothing (stats are still recorded) |
+
+Environment variables (`MEIOSE_KEEP_HOURS`, `MEIOSE_DATA_DIR`, `MEIOSE_LOG`,
+`MEIOSE_EXACT_TOKENS`) are in [docs/configuration.md](docs/configuration.md).
 
 ## How it works
 
@@ -116,58 +230,36 @@ Any stdio MCP server works the same way: `meiose run -- <command> <args>`.
                     └─ stores originals and stats in SQLite (local only)
 ```
 
-meiose passes through every message it does not intentionally change. When a
-tool returns a large result, meiose trims its text and adds a note with an id.
-The agent can call `meiose_expand(id)` to get the original byte-for-byte, or
-`meiose_expand(id, query="…")` to get only the matching lines with their
-context. A repeat snapshot of the same page is sent as a diff of what changed.
-In the default mode, links, buttons, inputs and anything clickable always keep
-their refs. With `--budget`, a page over the budget becomes an outline that can
-leave some of them out; they stay reachable through `meiose_expand`. If anything
-inside meiose fails, the original result passes through; it runs locally and
-sends no telemetry. Details in [docs/how-it-works.md](docs/how-it-works.md).
+Every message meiose does not intentionally change is forwarded as is. If
+anything inside meiose fails, the original result passes through. Rules,
+guarantees and protocol support are in [docs/how-it-works.md](docs/how-it-works.md).
 
-## Why shouldn't I use meiose?
+## Limitations
 
-- In Claude Code the gains are small. Claude Code already saves MCP text
-  results over 50,000 characters to a file instead of showing them to the
-  model, so meiose only saves on mid-size outputs and repeat snapshots. In the
-  end-to-end eval that was 7% lower cost and no change in tokens.
-- `--budget` cuts cost sharply for agents without that limit, but its outlines
-  can leave out links and buttons. In testing, agents found what they needed
-  with `query` on large pages, but this is less certain than a full snapshot.
-- A link whose URL already appeared earlier on the page is shown without it.
-  The link can still be clicked; `meiose_expand` shows its URL.
-- It keeps copies of tool outputs on disk, readable by you only, for 24
-  hours by default; they are deleted the next time meiose runs after that.
-  `meiose run --no-store` keeps one server's outputs in memory only,
-  `MEIOSE_KEEP_HOURS=0` does that for all of them, and `meiose purge`
-  deletes them now.
+- In Claude Code the gains are small (7% of cost in the eval), since Claude
+  Code already moves outputs over 50,000 characters to a file.
+- `--budget` outlines can leave out links and buttons. They stay reachable
+  through `meiose_expand`, but that is less certain than a full snapshot.
+- A link whose URL appeared earlier on the page is shown without it; it can
+  still be clicked.
 - Text outputs over 40 KB are cut to their head and tail. If that output is a
   file you want to edit, the agent has to call `meiose_expand` first.
-- Only Playwright snapshots get structure-aware trimming. Other servers get the
-  generic JSON and text handlers, and remote HTTP/SSE servers are not proxied.
-- It has been tested live with Claude Code and Playwright MCP 1.65. Setup for
-  Claude Desktop and Cursor is tested on sample config files only.
+- Only Playwright gets structure-aware trimming, and remote HTTP/SSE servers
+  are not proxied.
+- Tested live with Claude Code and Playwright MCP 1.65. Setup for Claude
+  Desktop and Cursor is tested on sample config files only.
 
 ## Documentation
 
 - [Configuration](docs/configuration.md): flags, environment variables, supported servers, uninstall
 - [Troubleshooting](docs/troubleshooting.md)
 - [How it works](docs/how-it-works.md): trimming rules, guarantees, storage, protocol support
-- [Benchmarks](BENCHMARKS.md)
-- [Testing](TESTING.md)
-- [Changelog](CHANGELOG.md)
-- [Security](SECURITY.md): reporting a vulnerability, threat model, verifying releases
+- [Benchmarks](BENCHMARKS.md) · [Testing](TESTING.md) · [Changelog](CHANGELOG.md) · [Security](SECURITY.md)
 
 ## License
 
-Licensed under either of
-
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE))
-- MIT license ([LICENSE-MIT](LICENSE-MIT))
-
-at your option.
+Licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or
+[MIT license](LICENSE-MIT), at your option.
 
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in meiose by you, as defined in the Apache-2.0 license, shall be

@@ -1,7 +1,7 @@
 """A/B eval: the same browser tasks with and without meiose.
 
 usage:
-  python eval/run_eval.py [--client claude-code|loop] [--modes baseline,meiose,budget20000]
+  python eval/run_eval.py [--client claude-code|loop|cline] [--modes baseline,meiose,budget20000]
                           [--runs 2] [--model haiku] [--tasks id1,id2] [--quick] [--jobs 1]
                           [--no-read] [--meiose PATH]
 
@@ -12,6 +12,12 @@ Clients:
                that file, as it would interactively (--no-read to disallow).
   loop         eval/agent_loop.py: a minimal agent with no output cap. The
                harness calls the MCP server and pastes every result in full.
+  cline        the Cline CLI (`npm i -g cline`) in headless JSON mode with an
+               OpenRouter model (--model, e.g. nvidia/nemotron-3.5-super-vl:free).
+               Cline passes MCP results to the model uncut. The key is read
+               from $OPENROUTER_API_KEY or ~/.openrouter_key and never printed.
+               Each run gets its own Cline config, data dir and MCP settings
+               (CLINE_MCP_SETTINGS_PATH). Free models report $0; compare tokens.
 
 Modes:
   pure        plain `npx @playwright/mcp`, no meiose at all
@@ -53,6 +59,8 @@ INSTRUCTIONS = (
     "Finish with one final line of the form 'ANSWER: <your answer>'."
 )
 LOOP_INSTRUCTIONS = "\n\nRead pages with browser_snapshot."
+# The four tasks with the most tool output (31K-227K tokens without meiose).
+LARGE = ["wiki-un-mongolia", "vec-dedup-by-key", "vec-extract-if", "countries-vanuatu"]
 QUICK = ["books-travel-upc", "countries-vanuatu", "vec-extract-if", "hockey-1992", "todomvc"]
 # Claude Code's note when it moves a large tool result to a file.
 OFFLOAD = re.compile(r"exceeds maximum allowed tokens|has been saved to|saved to a file", re.I)
@@ -136,6 +144,100 @@ def run_claude_code(task, cmd, env, args, work: Path) -> dict:
     return d
 
 
+def openrouter_key() -> str:
+    k = os.environ.get("OPENROUTER_API_KEY", "").strip()
+    if not k:
+        f = Path.home() / ".openrouter_key"
+        k = f.read_text(encoding="utf-8").strip() if f.is_file() else ""
+    if not k:
+        sys.exit("no OpenRouter key: set OPENROUTER_API_KEY or put it in ~/.openrouter_key")
+    return k
+
+
+def cline_exe() -> str:
+    for name in ["cline.cmd", "cline"]:
+        if p := shutil.which(name):
+            return p
+    prefix = subprocess.run(["npm", "prefix", "-g"], capture_output=True, text=True,
+                            shell=os.name == "nt").stdout.strip()
+    for cand in [Path(prefix) / "cline.cmd", Path(prefix) / "bin" / "cline"]:
+        if cand.is_file():
+            return str(cand)
+    sys.exit("`cline` not found: npm i -g cline")
+
+
+def _num(v):
+    return v if isinstance(v, (int, float)) and not isinstance(v, bool) else 0
+
+
+# Playwright MCP tools outside TOOLS. Cline gets the same tool set as the
+# other clients (it otherwise reads pages with browser_find or
+# browser_run_code_unsafe and never takes a snapshot).
+PW_OTHER = ["browser_close", "browser_console_messages", "browser_drag", "browser_drop",
+            "browser_emulate_media", "browser_evaluate", "browser_file_upload", "browser_find",
+            "browser_handle_dialog", "browser_hover", "browser_network_request",
+            "browser_network_requests", "browser_resize", "browser_run_code_unsafe",
+            "browser_tabs", "browser_take_screenshot"]
+# Cline's own tools that would bypass the browser (it downloaded pages with
+# Invoke-WebRequest) or edit files. read_files stays, like Read for Claude Code.
+CLINE_OFF = ["run_commands", "fetch_web_content", "editor", "apply_patch"]
+
+
+def run_cline(task, cmd, env, args, work: Path) -> dict:
+    settings = work / "cline-global-settings.json"
+    settings.write_text(json.dumps({"disabledTools": [f"pw__{t}" for t in PW_OTHER] + CLINE_OFF}),
+                        encoding="utf-8")
+    mcp = work / "cline_mcp_settings.json"
+    mcp.write_text(json.dumps({"mcpServers": {"pw": {
+        "command": cmd[0], "args": cmd[1:], "env": env, "disabled": False,
+        "timeout": 600, "autoApprove": TOOLS}}}), encoding="utf-8")
+    argv = [cline_exe(), "--json", "--auto-approve", "true", "-P", "openrouter",
+            "-k", args.key, "-m", args.model, "-c", str(work),
+            "--config", str(work / "cline"), "--data-dir", str(work / "cline-data"),
+            "-t", str(args.timeout), task["prompt"] + INSTRUCTIONS]
+    run_env = dict(os.environ, CLINE_MCP_SETTINGS_PATH=str(mcp),
+                   CLINE_GLOBAL_SETTINGS_PATH=str(settings))
+    try:
+        p = subprocess.run(argv, cwd=work, capture_output=True, timeout=args.timeout + 60,
+                           encoding="utf-8", errors="replace", env=run_env)
+    except subprocess.TimeoutExpired:
+        return {"is_error": True, "result": f"TIMEOUT after {args.timeout}s"}
+    # Keep the raw event stream next to the results for inspection.
+    (args.out_dir / f"cline-{task['id']}-{work.name}.jsonl").write_text(p.stdout, encoding="utf-8")
+    u, result, turns, errors, tools = {}, "", 0, [], []
+    for line in p.stdout.splitlines():
+        try:
+            m = json.loads(line)
+        except ValueError:
+            continue
+        if m.get("type") == "run_result":
+            result = m.get("text") or result
+            u = m.get("usage") or {}
+            turns = m.get("iterations") or turns
+        elif m.get("type") == "agent_event":
+            ev = m.get("event") or {}
+            if ev.get("type") == "content_start" and ev.get("toolName"):
+                tools.append(ev["toolName"])
+            if ev.get("type") == "error" or ev.get("error"):
+                errors.append(json.dumps(ev)[:300])
+    if not result:
+        result = (p.stdout[-400:] + p.stderr[-400:]).strip()
+    # OpenRouter's free tier allows 50 requests a day: a run that hits the
+    # limit is skipped, not counted as a wrong answer.
+    if not result.strip() or errors:
+        if re.search(r"\b429\b|rate.?limit|too many requests|free-models-per-day",
+                     p.stdout[-20000:] + p.stderr[-5000:], re.I):
+            return {"quota": True}
+    cache_read = _num(u.get("cacheReadTokens"))
+    return {"is_error": not bool(result) or p.returncode != 0, "result": result,
+            "usage": {"input_tokens": max(0, _num(u.get("inputTokens")) - cache_read),
+                      "output_tokens": _num(u.get("outputTokens")),
+                      "cache_read_input_tokens": cache_read,
+                      "cache_creation_input_tokens": _num(u.get("cacheWriteTokens"))},
+            "total_cost_usd": float(_num(u.get("totalCost"))), "num_turns": turns,
+            "returncode": p.returncode, "errors": errors[:3], "tools_used": tools}
+
+
 def run_one(task: dict, mode: str, rep: int, args, out_dir: Path) -> dict:
     work = Path(tempfile.mkdtemp(prefix=f"meiose-eval-{task['id']}-{mode}-"))
     data = work / "data"
@@ -144,8 +246,15 @@ def run_one(task: dict, mode: str, rep: int, args, out_dir: Path) -> dict:
     if args.client == "loop":
         env = dict(os.environ, MEIOSE_DATA_DIR=str(data), MEIOSE_EXACT_TOKENS="1")
         d = agent_loop.run(task["prompt"] + LOOP_INSTRUCTIONS, cmd, env, args.model, TOOLS, args.timeout)
+    elif args.client == "cline":
+        d = run_cline(task, cmd, {"MEIOSE_DATA_DIR": str(data), "MEIOSE_EXACT_TOKENS": "1"}, args, work)
     else:
         d = run_claude_code(task, cmd, {"MEIOSE_DATA_DIR": str(data), "MEIOSE_EXACT_TOKENS": "1"}, args, work)
+    if d.get("quota"):
+        print(f"  SKIP {task['id']:<22} {mode:<12} #{rep}  OpenRouter rate limit; run again later",
+              flush=True)
+        shutil.rmtree(work, ignore_errors=True)
+        return None
     u = d.get("usage") or {}
     result = d.get("result") or ""
     m = re.findall(r"ANSWER:\s*(.+)", result)
@@ -165,6 +274,7 @@ def run_one(task: dict, mode: str, rep: int, args, out_dir: Path) -> dict:
         "offloads": d.get("offloads", 0),
         "reads": d.get("reads", 0),
         "largest_tool_result_chars": d.get("largest_tool_result_chars"),
+        "tools_used": d.get("tools_used", []),
     }
     rec["billed_tokens"] = (rec["input_tokens"] + rec["cache_write_tokens"]
                             + rec["cache_read_tokens"] + rec["output_tokens"])
@@ -279,8 +389,9 @@ def report(runs: list, modes: list, tasks: list, args) -> str:
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--client", choices=["claude-code", "loop"], default="claude-code")
+    ap.add_argument("--client", choices=["claude-code", "loop", "cline"], default="claude-code")
     ap.add_argument("--quick", action="store_true", help="5 representative tasks, 1 run per mode")
+    ap.add_argument("--large", action="store_true", help="only the 4 large-page tasks")
     ap.add_argument("--runs", type=int, default=2)
     ap.add_argument("--model", default="haiku")
     ap.add_argument("--modes", default="baseline,meiose")
@@ -292,13 +403,16 @@ def main():
     args = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
     args.meiose = args.meiose or default_meiose()
-    if not shutil.which("claude"):
+    if args.client == "cline":
+        args.key = openrouter_key()
+        cline_exe()
+    elif not shutil.which("claude"):
         sys.exit("`claude` (Claude Code CLI) not found on PATH")
     if not shutil.which("npx"):
         sys.exit("`npx` not found on PATH: install Node.js")
 
     all_tasks = json.loads((ROOT / "eval" / "tasks.json").read_text(encoding="utf-8"))
-    wanted = [t for t in args.tasks.split(",") if t] or (QUICK if args.quick else [])
+    wanted = [t for t in args.tasks.split(",") if t] or (QUICK if args.quick else LARGE if args.large else [])
     tasks = [t for t in all_tasks if not wanted or t["id"] in wanted]
     if args.quick:
         args.runs = 1
@@ -307,13 +421,15 @@ def main():
         server_cmd(m, args.meiose)  # fail fast on a typo
     out_dir = ROOT / "eval" / "results" / time.strftime("%Y%m%d-%H%M%S")
     out_dir.mkdir(parents=True, exist_ok=True)
+    args.out_dir = out_dir
     jobs = [(t, m, r) for r in range(1, args.runs + 1) for t in tasks for m in modes]
     print(f"{len(jobs)} runs ({len(tasks)} tasks × {len(modes)} modes × {args.runs}), client {args.client}, "
           f"model {args.model}, meiose {args.meiose}\nresults → {out_dir}", flush=True)
     runs = []
     with cf.ThreadPoolExecutor(max_workers=max(1, args.jobs)) as ex:
         for fut in cf.as_completed([ex.submit(run_one, t, m, r, args, out_dir) for t, m, r in jobs]):
-            runs.append(fut.result())
+            if (r := fut.result()) is not None:
+                runs.append(r)
     rep = report(runs, modes, tasks, args)
     (out_dir / "report.md").write_text(rep, encoding="utf-8")
     print("\n" + rep)

@@ -43,6 +43,16 @@ Security: hostile pages and servers.
   under 500 MB at the end and about 850 MB at peak. meiose closes its
   database on exit, so the log is removed.
 
+Security: release pipeline.
+
+- Every GitHub Action in the release and CI workflows is pinned to a full
+  commit SHA (release pins live in `dist-workspace.toml`).
+- Release archives get GitHub artifact attestations
+  (`gh attestation verify <file> --repo yousufmohi/meiose`).
+- CI runs with a read-only token and runs `cargo audit`; Dependabot opens
+  weekly update PRs for Cargo dependencies and CI actions.
+- New SECURITY.md: how to report a vulnerability, and the threat model.
+
 ## 0.2.2 — 2026-11-02
 
 - JSON output is capped at 45,000 characters, under Claude Code's 50,000

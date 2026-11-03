@@ -352,5 +352,15 @@ claude mcp add --scope user pw-meiose -- meiose record -- npx -y @playwright/mcp
   **Bypass 2FA** enabled, or CI publish fails with E403. After publish, npm
   shows a `0.0.0-stage` placeholder for ~1 minute before the real version.
 - Rerun only failed release jobs: `gh run rerun <run-id> --failed`.
+- Release actions are pinned by SHA in `dist-workspace.toml`
+  (`[dist.github-action-commits]`) and artifacts are attested
+  (`github-attestations = true`). Never hand-edit release.yml: change the
+  config, `dist generate`, `dist plan` (a hand edit fails `dist plan`).
+  When bumping `cargo-dist-version`, re-check which actions it uses and pin
+  them all (`grep uses: .github/workflows/release.yml`).
+- ci.yml: `permissions: contents: read`, SHA-pinned actions, `cargo audit`
+  job. Dependabot (`.github/dependabot.yml`) covers cargo + ci.yml actions.
+- npm still publishes with the NPM_TOKEN secret: trusted publishing (OIDC)
+  needs hand edits to release.yml that dist 0.32 cannot generate.
 - crates.io publishing is manual (`cargo publish`); bump the version in
   Cargo.toml, update CHANGELOG.md, push, then tag `vX.Y.Z`.

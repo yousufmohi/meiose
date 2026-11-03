@@ -113,8 +113,7 @@ These properties are tested on every commit on macOS, Linux and Windows.
   the operating system.
 - Messages over 16 MB are passed through exactly as they are, in chunks,
   without being parsed, trimmed or stored, so a huge or hostile output cannot
-  make meiose hold it in memory (a 300 MB output: 1.7 GB of memory before,
-  30 MB now). `meiose record` notes only their size.
+  make meiose hold it in memory. `meiose record` notes only their size.
 - If meiose's store falls behind (it keeps at most 64 MB waiting to be
   written), outputs are sent untrimmed rather than trimmed without a stored
   original, and some call stats are dropped.
@@ -176,6 +175,9 @@ files get the default permissions of your profile folder.
 and leftover backups, after showing what it will delete (`--yes` skips the
 question). It keeps the backups of configs that are still wrapped; run
 `meiose uninstall` first. Call stats are kept.
+
+What meiose protects against, and what it does not, is in
+[SECURITY.md](../SECURITY.md).
 
 Data directory: `%LOCALAPPDATA%\meiose` on Windows,
 `~/Library/Application Support/meiose` on macOS, `~/.local/share/meiose` on

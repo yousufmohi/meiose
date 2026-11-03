@@ -157,6 +157,7 @@ sends no telemetry. Details in [docs/how-it-works.md](docs/how-it-works.md).
 - [Benchmarks](BENCHMARKS.md)
 - [Testing](TESTING.md)
 - [Changelog](CHANGELOG.md)
+- [Security](SECURITY.md): reporting a vulnerability, threat model, verifying releases
 
 ## License
 

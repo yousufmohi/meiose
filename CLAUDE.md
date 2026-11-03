@@ -20,6 +20,7 @@ agent ⇄ meiose ⇄ real MCP server (e.g. npx @playwright/mcp)
 | M6 | Eval harness + README + cargo-dist + npm wrapper | Done — **v0.1.0 released 2026-11-02** (GitHub, Homebrew tap, crates.io, npm); 0.1.1 released |
 | Perf | URL rules, `query` expand, `--budget`, uncapped-agent eval, lighter footprint | Done — **0.2.0 released 2026-11-02** (PR #1) |
 | JSON | measured on GitHub MCP; query brings JSON fields; short big lists stay valid JSON | Done — **0.2.2 released 2026-11-02** (0.2.1: query fields, short lists; 0.2.2: 45K output cap) |
+| Security | audit fixes: private files, purge, redaction, secure delete, escapes, scoped expand, size limits, pinned/attested releases; 24 h retention, `--no-store` | Done — **0.3.0 released 2026-11-03** |
 
 Work one milestone at a time. After each: report what was built, test results
 and open questions, then **wait for the user's go-ahead**.

@@ -1,9 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.3.0 — 2026-11-03
 
 - `meiose stats` says "1 tool call" and "1 expand" in the singular.
-
 - **Stored outputs now expire after 24 hours, not 7 days.** Expanding an
   output from a session more than a day old no longer works.
   `MEIOSE_KEEP_HOURS` sets it; `MEIOSE_KEEP_DAYS` still works if

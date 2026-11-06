@@ -89,6 +89,26 @@ fn large_json_is_trimmed_and_expandable() {
     s.finish();
 }
 
+/// `get_rows` is compact JSON (one line, like the official GitHub MCP
+/// server). A query used to return the whole 150 KB document as its one hit.
+#[test]
+fn query_on_compact_json_returns_only_the_matching_item() {
+    let mut s = Session::start(HN, &[]);
+    s.init();
+    let rows = s.call("get_rows", json!({}));
+    let id = expand_id(text_of(&rows));
+    let hit = s.call(
+        "meiose_expand",
+        json!({"id": id, "query": "user500@example.com"}),
+    );
+    let t = text_of(&hit);
+    assert!(t.contains("\"email\": \"user500@example.com\""), "{t}");
+    assert!(t.contains("\"id\": 500"), "{t}");
+    assert!(!t.contains("user499") && !t.contains("user501"), "{t}");
+    assert!(t.len() < 1_000, "{} bytes:\n{t}", t.len());
+    s.finish();
+}
+
 #[test]
 fn repeat_snapshot_of_the_same_page_is_sent_as_a_diff() {
     let mut s = Session::start(FORM, &[]);

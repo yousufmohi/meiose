@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- `meiose_expand(id, query)` on compact JSON (one line, as the official
+  GitHub MCP server sends it) now returns the matching items with their
+  fields instead of the whole document. The search works line by line, so
+  the one line that matched was all of it: 170 KB back for a query that
+  matched one e-mail address. Compact JSON is pretty-printed before the
+  search, and a line longer than 600 characters is shown as a window around
+  the match.
+
 ## 0.3.0 — 2026-11-03
 
 - `meiose stats` says "1 tool call" and "1 expand" in the singular.

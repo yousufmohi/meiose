@@ -139,7 +139,17 @@ ancestor whose subtree is ≤ 40 lines (a cell's row, a rustdoc method header
 with its version badge), plus ancestors; ≤ 30 hits, ≤ 24 KB. JSON only: when
 the enclosing object is bigger, its one-line fields come too (GitHub issues
 are 100+ lines; last-item probe 2/6 → 6/6, `examples/json_probe.rs`). Query expands are
-recorded with handler "query".
+recorded with handler "query". Compact JSON (one line, as the official
+GitHub MCP server sends it; the npm server the benchmark used pretty-prints)
+is pretty-printed before the search, since the one matching line would
+otherwise be the whole document (170 KB back for one e-mail address). Lines
+over 600 bytes are shown as a window around the match (context lines from
+their start), so one huge line cannot fill the result; a snapshot element
+line keeps its whole key (role, name, `[ref=…]`) and a JSON field line its
+`"key": `, so a query never returns an element without its ref or a value
+without its key. A query written the way the compact preview shows it
+(`"email":"x"`, `&`) matches nothing pretty-printed, so it falls back
+to the raw text, windowed.
 
 **Not yet verified:** that agents succeed as often with trimmed snapshots —
 that is the M6 eval. The structural-ref hiding is the riskiest rule.

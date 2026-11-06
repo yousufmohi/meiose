@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Snapshot diffs no longer assume the agent has the previous snapshot. A
+  repeat snapshot says "unchanged" only when the page itself is unchanged,
+  not just the trimmed view (under `--aggressive` or `--budget` most of a
+  page is hidden); every diff says to call `meiose_expand` if the previous
+  snapshot is gone (saved to a file by the client, taken by a subagent, lost
+  to context compaction); and for Claude Code, which saves results over
+  50,000 characters to a file, no diff is made against a snapshot that was
+  never shown to the model.
+
 ## 0.3.0 — 2026-11-03
 
 - `meiose stats` says "1 tool call" and "1 expand" in the singular.

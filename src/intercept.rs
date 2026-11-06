@@ -30,6 +30,20 @@ use crate::store::{CallRecord, StoreHandle};
 pub const EXPAND_TOOL: &str = "meiose_expand";
 /// Only diff against a snapshot the agent saw this recently.
 const DIFF_MAX_AGE: Duration = Duration::from_secs(10 * 60);
+/// Claude Code saves an MCP text result over this many characters to a file
+/// and shows the model a note instead. The model never saw such a view, so
+/// a diff against it would be relative to nothing it has.
+const CLAUDE_CODE_VISIBLE_CHARS: usize = 50_000;
+
+/// The largest text the client shows its model, when known from the name
+/// it gave in `initialize`. A modern-era session has no `initialize`, so
+/// its client stays unknown and every repeat snapshot is diffed as before.
+fn visible_chars(client_name: &str) -> Option<usize> {
+    match client_name.to_ascii_lowercase().as_str() {
+        "claude code" | "claude-code" => Some(CLAUDE_CODE_VISIBLE_CHARS),
+        _ => None,
+    }
+}
 /// Requests whose responses never come (cancelled, crashed) must not leak.
 const MAX_PENDING: usize = 10_000;
 
@@ -57,8 +71,25 @@ struct State {
     pending: HashMap<String, Pending>,
     expand_advertised: bool,
     server_has_expand: bool,
-    /// (page url, yaml body exactly as sent to the agent, when)
-    last_snapshot: Option<(String, String, Instant)>,
+    last_snapshot: Option<LastSnapshot>,
+    /// See [`visible_chars`]; `None` when the client is not known.
+    visible_chars: Option<usize>,
+}
+
+/// The previous Playwright snapshot, to diff the next one against.
+struct LastSnapshot {
+    url: String,
+    /// The yaml body exactly as the agent was sent it.
+    view_body: String,
+    /// The yaml body as the server sent it. Two views can be identical
+    /// while the page differs in parts the view does not show.
+    original_body: String,
+    /// Length of the text actually sent (the view, or a diff of it), to
+    /// tell whether the agent's client could show it at all. Bytes, compared
+    /// with a limit in characters, so multi-byte text errs towards not
+    /// diffing; per text item, which is all Playwright sends.
+    sent_len: usize,
+    when: Instant,
 }
 
 pub enum ClientAction {
@@ -174,6 +205,14 @@ impl Interceptor {
             "tools/list" => {
                 let first_page = params.get("cursor").is_none_or(Value::is_null);
                 insert_pending(&mut self.state(), id_key, Pending::ToolsList { first_page });
+            }
+            "initialize" => {
+                let client = params
+                    .get("clientInfo")
+                    .and_then(|c| c.get("name"))
+                    .and_then(Value::as_str)
+                    .unwrap_or("");
+                self.state().visible_chars = visible_chars(client);
             }
             _ => {}
         }
@@ -412,20 +451,35 @@ impl Interceptor {
         if let Some(url) = diff::page_url(view)
             && let Some(body) = diff::body(view)
         {
-            let mut st = self.state();
-            let prev = st.last_snapshot.take();
-            st.last_snapshot = Some((url.to_string(), body.to_string(), Instant::now()));
-            drop(st);
+            let original = diff::body(text).unwrap_or(body);
+            let (prev, visible) = {
+                let mut st = self.state();
+                (st.last_snapshot.take(), st.visible_chars)
+            };
+            let mut sent: Option<String> = None;
             if self.cfg.diff
-                && let Some((prev_url, prev_body, when)) = prev
-                && prev_url == url
-                && when.elapsed() < DIFF_MAX_AGE
-                && let Some(d) = catch_unwind(AssertUnwindSafe(|| {
-                    diff::render(&prev_body, view, cx.expand_id)
+                && let Some(prev) = &prev
+                && prev.url == url
+                && prev.when.elapsed() < DIFF_MAX_AGE
+                // A base the client never showed its model is no base.
+                && visible.is_none_or(|limit| prev.sent_len <= limit)
+            {
+                let page_unchanged = prev.original_body == original;
+                sent = catch_unwind(AssertUnwindSafe(|| {
+                    diff::render(&prev.view_body, view, cx.expand_id, page_unchanged)
                 }))
                 .ok()
-                .flatten()
-            {
+                .flatten();
+            }
+            // Whatever is sent, the agent's picture of the page is now this view.
+            self.state().last_snapshot = Some(LastSnapshot {
+                url: url.to_string(),
+                view_body: body.to_string(),
+                original_body: original.to_string(),
+                sent_len: sent.as_ref().map_or(view.len(), String::len),
+                when: Instant::now(),
+            });
+            if let Some(d) = sent {
                 return Some(("playwright-diff", d));
             }
         }

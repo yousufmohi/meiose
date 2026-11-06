@@ -39,24 +39,26 @@ original one tool call away.
 We ran 19 browsing tasks 3 times each (57 runs per setup) with Claude Haiku.
 Full results are in [BENCHMARKS.md](BENCHMARKS.md).
 
-| agent | meiose setting | cost per task, without → with | cost saved | correct answers, without → with |
-|---|---|---|---|---|
-| test agent that sends all tool output to the model | `--budget 20000` | $0.0466 → $0.0034 | 93% | 57 → 54 of 57 |
-| Claude Code | default | $0.0073 → $0.0068 | 7% | 57 → 57 of 57 |
+| agent | cost per task without meiose | cost per task with meiose | cost saved | correct without meiose | correct with meiose |
+|---|---|---|---|---|---|
+| test agent that sends all tool output to the model | $0.0466 | $0.0034 | 93% | 57 of 57 | 54 of 57 |
+| Claude Code | $0.0073 | $0.0068 | 7% | 57 of 57 | 57 of 57 |
+
+The test agent ran with `--budget 20000`. Claude Code ran with meiose's defaults.
 
 Costs vary between runs, so these savings are estimates. The 95% confidence
-range is 42–96% for the test agent and 3–11% for Claude Code.
+range is 42% to 96% for the test agent and 3% to 11% for Claude Code.
 
 Per output:
 
 | | without meiose | with meiose |
 |---|---|---|
-| Rust `Vec` docs snapshot | 244,156 tokens | 166,563 (−32%) |
-| all 40 test pages | 943,239 tokens | 650,329 (−31%), 488,437 (−48%) with `--aggressive` |
-| GitHub `list_issues`, 100 issues | 78,757 tokens | 11,915 (−85%) |
+| Rust `Vec` docs snapshot | 244,156 tokens | 166,563 (32% less) |
+| all 40 test pages | 943,239 tokens | 650,329 (31% less), 488,437 (48% less) with `--aggressive` |
+| GitHub `list_issues`, 100 issues | 78,757 tokens | 11,915 (85% less) |
 | the same page, snapshotted again | 133,862 tokens | 79 (a diff) |
 | one method from the `Vec` docs | the whole page | 1,399 tokens, via `query` |
-| getting the full output back | re-run the tool | `meiose_expand(id)`, exactly as the server sent it |
+| getting the full output back | re-run the tool | call `meiose_expand(id)` |
 | added latency | | 2.4 ms on the largest page |
 
 The test agent is `eval/agent_loop.py`, a minimal script, not a product you can
@@ -195,7 +197,7 @@ meiose adds one tool, `meiose_expand`, answered locally:
 ### Snapshot diffs
 
 A repeat snapshot of the page you are on is sent as a diff of what changed
-(133,862 tokens → 79 for an unchanged Wikipedia page). `--no-diff` turns it off.
+(from 133,862 tokens to 79 for an unchanged Wikipedia page). `--no-diff` turns it off.
 
 ### Budget
 

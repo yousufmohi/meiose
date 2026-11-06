@@ -47,7 +47,10 @@ Name check (2026-11-01): `meiose` is free on crates.io, npm, Homebrew
 5. **Overhead.** Trimming a 400K-token snapshot takes < 5 ms (benchmarked).
 6. **Zero config.** Conservative defaults; aggressive mode is opt-in.
 7. Every error message says what went wrong **and** what to do next.
-8. `install` prints a diff per config change and asks to confirm (`--yes` skips).
+8. `install` prints a diff per config change and asks to confirm (`--yes` skips),
+   and writes a file only if it is still what that diff was computed from;
+   otherwise it plans again from the current content (and asks again if the
+   diff changed). Never revert another program's edits.
 9. Write tests alongside code. **Never weaken a test to make it pass**; report it.
 10. Small readable modules; no abstraction beyond the handler trait.
 
@@ -227,6 +230,18 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   Uninstall: file unchanged since our write → byte-for-byte restore; else
   unwrap only entries still exactly as we wrote them, keep other edits.
   Claude Code rewrites its file constantly, so expect the second path there.
+- The plan is computed before the `[y/N]` question and applied after it,
+  minutes later if the user is slow; Claude Code may have rewritten the file
+  in between (startup counters, `claude mcp add`). `install::apply` re-reads
+  the file first and `write_atomic_if` compares once more right before the
+  rename: if the bytes differ, `Outcome::FileChanged`, nothing is written,
+  and a record made for that attempt is forgotten again (so the manifest and
+  `doctor` never name a file meiose did not write). `setup::install` then
+  plans again from the current content: same servers → applied after a
+  one-line note; different → the new diff is shown and the question asked
+  again; nothing left → skipped. Up to 5 replans per file, then it says to
+  close the app that is writing it. When no file was updated the closing
+  "Backups: …" lines are not printed.
 - `install` refuses to embed a throwaway meiose path (npx cache, temp,
   target/debug) unless `--meiose-path` is given.
 - `MEIOSE_FAKE_HOME` roots all config paths in one dir (tests, safe trials).

@@ -11,6 +11,14 @@
 - Empty table cells are kept, so a row's values stay in their columns (MDN
   compatibility tables, Hacker News). An empty cell used to be dropped, and
   everything after it in the row moved one column left.
+- `meiose install` no longer reverts edits another program made to a config
+  file while its `[y/N]` question was open. Claude Code rewrites
+  `~/.claude.json` constantly (startup counters, project entries, servers
+  added with `claude mcp add`); the plan was computed before the question and
+  written after it, so those edits were silently lost. The file is now
+  written only if it is still what the diff was computed from; otherwise
+  install plans again from the current content, and asks again if the diff
+  changed.
 
 ## 0.3.0 — 2026-11-03
 

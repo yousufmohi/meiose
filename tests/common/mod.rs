@@ -111,25 +111,7 @@ pub fn check_invariants(input: &str, output: &str, expand_id: &str) {
     );
 
     // 2. Every interactive ref survives, in the same order.
-    let before = interactive_refs(input);
-    let after_all: Vec<String> = {
-        let mut v = Vec::new();
-        let mut rest = output;
-        while let Some(p) = rest.find("[ref=") {
-            let s = p + 5;
-            let e = rest[s..].find(']').map(|e| e + s).unwrap_or(rest.len());
-            v.push(rest[s..e].to_string());
-            rest = &rest[e..];
-        }
-        v
-    };
-    let mut it = after_all.iter();
-    for r in &before {
-        assert!(
-            it.any(|a| a == r),
-            "interactive ref {r} is missing or out of order in the output"
-        );
-    }
+    assert_refs_survive(input, output);
 
     // 3. Marker with the expand id.
     assert!(
@@ -165,6 +147,29 @@ pub fn check_invariants(input: &str, output: &str, expand_id: &str) {
             Some(p) => assert!(d <= p + 1, "skipped a level: {line:?}"),
         }
         prev_depth = Some(d);
+    }
+}
+
+/// Every interactive ref of `input` is present in `output`, in the same order.
+pub fn assert_refs_survive(input: &str, output: &str) {
+    let before = interactive_refs(input);
+    let after_all: Vec<String> = {
+        let mut v = Vec::new();
+        let mut rest = output;
+        while let Some(p) = rest.find("[ref=") {
+            let s = p + 5;
+            let e = rest[s..].find(']').map(|e| e + s).unwrap_or(rest.len());
+            v.push(rest[s..e].to_string());
+            rest = &rest[e..];
+        }
+        v
+    };
+    let mut it = after_all.iter();
+    for r in &before {
+        assert!(
+            it.any(|a| a == r),
+            "interactive ref {r} is missing or out of order in the output"
+        );
     }
 }
 

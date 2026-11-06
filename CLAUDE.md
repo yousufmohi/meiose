@@ -103,7 +103,9 @@ So refs and wrappers are the levers, not text.
 
 Conservative (default, 31% saved over the 40 committed fixtures):
 - collapse unnamed, inert, single-child `generic` wrappers (children promoted);
-- drop empty inert nodes and separator-only text nodes (`- text: "|"`);
+- drop empty inert nodes and separator-only text nodes (`- text: "|"`),
+  except table cells (cell, columnheader, rowheader, gridcell): an empty
+  cell keeps its place so the row's other values stay in their columns;
 - hide `[ref=…]` on non-interactive **structural** roles (generic, cell, row,
   list(item), paragraph, code, text…); headings, img, landmarks keep refs;
 - remove `[cursor=pointer]` where the role implies it (link, button, option…);
@@ -124,7 +126,14 @@ interactive refs survive in order (test uses its own classifier), output is
 smaller than input, marker present, text outside the yaml block untouched,
 block stays well-formed. Unparseable lines are kept verbatim and treated as
 interactive. Inputs < 4096 bytes are never touched. Anything odd (odd indent,
-skipped level, `\r`) → return None (fail open).
+skipped level, a lone `\r`) → return None with one warning per process, and
+because the handler `claims` any text whose ```yaml fence holds a
+`- … [ref=…]` line, the json/text handlers never touch it either: the whole
+page is forwarded (fail open means the whole page, never a head-and-tail
+cut). CRLF is normalised to LF before parsing (`find_block` itself never
+returns a body with a CR, so diffs and outlines only see LF); the headers
+`### Snapshot` (1.5x), `- Page Snapshot:` (0.0.3x) and `- Page Snapshot`
+(≤ 0.0.29) are all accepted.
 
 Perf (criterion, same laptop, back to back with the pre-URL-rules code,
 2026-11-02): 244K-token page 2.4 ms (2.3), synthetic 400K-token page 4.1 ms
@@ -186,6 +195,10 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   ≤ 50,000) via `json::fit`: one-line fields first, whole list items, nested
   values summarized; always valid JSON; numbers exact via
   `arbitrary_precision`) → text (> 40 KB: head 16 KB + tail 4 KB).
+  A handler that `claims` an output it could not trim ends the chain
+  (`Handler::claims`): the output is forwarded whole, and the handler logs
+  why, once per process. Before this, a snapshot with one odd line fell
+  through to the text handler and lost about 95% of its interactive refs.
 - Stats rows are written by the store thread, so SQLite is off the message
   path. Tokens are *estimated* (`tokens::estimate`: other bytes/3.75 +
   indent/8 + 7 per ref; estimated fixture saving 31.8% vs exact 31.1%) so the

@@ -44,6 +44,7 @@ source: tests/playwright_fixtures.rs
                     - link "hackerbooks.org" [ref=f94e42]: from?site=hackerbooks.org
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 906 points by
@@ -64,6 +65,7 @@ source: tests/playwright_fixtures.rs
                     - link "rhaas.blogspot.com" [ref=f94e63]: from?site=rhaas.blogspot.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 44 points by
@@ -85,6 +87,7 @@ source: tests/playwright_fixtures.rs
                     - link "karpathy.bearblog.dev" [ref=f94e84]: from?site=karpathy.bearblog.dev
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 2280 points by
@@ -106,6 +109,7 @@ source: tests/playwright_fixtures.rs
                     - link "github.com/raphlinus" [ref=f94e105]: from?site=github.com/raphlinus
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 90 points by
@@ -122,6 +126,7 @@ source: tests/playwright_fixtures.rs
                 - 'link "Ask HN: Which TV do you recommend for privacy?" [ref=f94e124] [cursor=pointer]':
                   - /url: item?id=50328896
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 131 points by
@@ -143,6 +148,7 @@ source: tests/playwright_fixtures.rs
                     - link "americansentiment.com" [ref=f94e145]: from?site=americansentiment.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 10 points by
@@ -163,6 +169,7 @@ source: tests/playwright_fixtures.rs
                     - link "nullprogram.com" [ref=f94e166]: from?site=nullprogram.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 73 points by
@@ -183,6 +190,7 @@ source: tests/playwright_fixtures.rs
                     - link "lareviewofbooks.org" [ref=f94e187]: from?site=lareviewofbooks.org
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 18 points by
@@ -203,6 +211,7 @@ source: tests/playwright_fixtures.rs
                     - link "sciencedaily.com" [ref=f94e208]: from?site=sciencedaily.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 39 points by
@@ -224,6 +233,7 @@ source: tests/playwright_fixtures.rs
                     - link "github.com/ivankovic" [ref=f94e229]: from?site=github.com/ivankovic
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 156 points by
@@ -244,6 +254,7 @@ source: tests/playwright_fixtures.rs
                     - link "terrytao.wordpress.com" [ref=f94e250]: from?site=terrytao.wordpress.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 218 points by
@@ -264,6 +275,7 @@ source: tests/playwright_fixtures.rs
                     - link "techcrunch.com" [ref=f94e271]: from?site=techcrunch.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 149 points by
@@ -284,6 +296,7 @@ source: tests/playwright_fixtures.rs
                     - link "tibleiz.net" [ref=f94e292]: from?site=tibleiz.net
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 124 points by
@@ -304,6 +317,7 @@ source: tests/playwright_fixtures.rs
                     - link "arxiv.org" [ref=f94e313]: from?site=arxiv.org
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 108 points by
@@ -324,6 +338,7 @@ source: tests/playwright_fixtures.rs
                     - link "historytoday.com" [ref=f94e334]: from?site=historytoday.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 13 points by
@@ -344,6 +359,7 @@ source: tests/playwright_fixtures.rs
                     - link "reddit.com" [ref=f94e355]: from?site=reddit.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 390 points by
@@ -364,6 +380,7 @@ source: tests/playwright_fixtures.rs
                     - link "jefftk.com" [ref=f94e376]: from?site=jefftk.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 84 points by
@@ -384,6 +401,7 @@ source: tests/playwright_fixtures.rs
                     - link "nature.com" [ref=f94e397]: from?site=nature.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 122 points by
@@ -404,6 +422,7 @@ source: tests/playwright_fixtures.rs
                     - link "nolanlawson.com" [ref=f94e418]: from?site=nolanlawson.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 293 points by
@@ -424,6 +443,7 @@ source: tests/playwright_fixtures.rs
                     - link "movq.de" [ref=f94e439]: from?site=movq.de
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 110 points by
@@ -444,6 +464,7 @@ source: tests/playwright_fixtures.rs
                     - link "radiaverse.com" [ref=f94e460]: from?site=radiaverse.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 127 points by
@@ -464,6 +485,7 @@ source: tests/playwright_fixtures.rs
                     - link "semiconductor-today.com" [ref=f94e481]: from?site=semiconductor-today.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 135 points by
@@ -485,6 +507,7 @@ source: tests/playwright_fixtures.rs
                     - link "kevs3d.co.uk" [ref=f94e502]: from?site=kevs3d.co.uk
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 74 points by
@@ -506,6 +529,7 @@ source: tests/playwright_fixtures.rs
                     - link "tedium.co" [ref=f94e523]: from?site=tedium.co
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 36 points by
@@ -527,6 +551,7 @@ source: tests/playwright_fixtures.rs
                     - link "outcrop.rocks" [ref=f94e544]: from?site=outcrop.rocks
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 150 points by
@@ -547,6 +572,7 @@ source: tests/playwright_fixtures.rs
                     - link "shkspr.mobi" [ref=f94e565]: from?site=shkspr.mobi
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 54 points by
@@ -567,6 +593,7 @@ source: tests/playwright_fixtures.rs
                     - link "reddit.com" [ref=f94e586]
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 171 points by
@@ -587,6 +614,7 @@ source: tests/playwright_fixtures.rs
                     - link "vox.com" [ref=f94e607]: from?site=vox.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 365 points by
@@ -607,6 +635,7 @@ source: tests/playwright_fixtures.rs
                     - link "theregister.com" [ref=f94e628]: from?site=theregister.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 132 points by
@@ -627,6 +656,7 @@ source: tests/playwright_fixtures.rs
                     - link "smithsonianmag.com" [ref=f94e649]: from?site=smithsonianmag.com
                     - text: )
             - row:
+              - cell
               - cell:
                 - generic:
                   - text: 769 points by
@@ -636,6 +666,7 @@ source: tests/playwright_fixtures.rs
                   - link "hide" [ref=f94e657]: hide?id=50320963&goto=news
                   - link "199 comments" [ref=f94e658]
             - row:
+              - cell
               - cell:
                 - link "More" [ref=f94e664]: "?p=2"
     - row:
@@ -643,6 +674,7 @@ source: tests/playwright_fixtures.rs
         - table [ref=f94e667]:
           - rowgroup:
             - row:
+              - cell
         - link "Consider applying for YC's Winter 2027 batch! Applications are open till November 2." [ref=f94e672]: https://www.ycombinator.com/apply/
         - generic:
           - generic:
@@ -658,4 +690,4 @@ source: tests/playwright_fixtures.rs
             - text: "Search:"
             - textbox [ref=f94e684]
 ```
-[meiose: 137 nodes trimmed, 319 non-interactive refs hidden, 35 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]
+[meiose: 105 nodes trimmed, 351 non-interactive refs hidden, 35 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

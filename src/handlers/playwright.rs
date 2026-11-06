@@ -14,15 +14,23 @@
 //! ```
 //! ````
 //!
+//! The header line before the fence has been `### Snapshot` since Playwright
+//! MCP 1.5x; older releases wrote `- Page Snapshot` (≤ 0.0.29) or
+//! `- Page Snapshot:` (0.0.3x), and all three are accepted. CRLF line endings
+//! are normalised to LF before trimming.
+//!
 //! Everything outside the yaml block is kept verbatim. Inside it, each line
 //! is parsed just enough to know its depth, role, name, attributes and inline
 //! value. A line that does not parse is kept verbatim and treated as
-//! interactive, so it (and its ancestors) can never be removed.
+//! interactive, so it (and its ancestors) can never be removed. A block that
+//! does not parse at all (odd indentation, a skipped level) is left alone,
+//! and [`looks_like_snapshot`] keeps the other handlers off it too.
 //!
 //! Rules, all of which preserve every interactive element and its ref:
 //! - collapse unnamed, non-interactive `generic` wrappers that have a single
 //!   child (aggressive: any number of children), promoting the children;
-//! - drop empty nodes: no name, no value, no children, nothing interactive;
+//! - drop empty nodes: no name, no value, no children, nothing interactive —
+//!   except table cells, whose position in the row is their meaning;
 //! - dedupe long runs of structurally identical siblings that contain nothing
 //!   interactive, leaving a few and an "…and N more similar" line;
 //! - shorten very long inline texts;
@@ -34,6 +42,7 @@ use std::collections::HashSet;
 use std::fmt::Write as _;
 use std::hash::{BuildHasherDefault, Hasher};
 use std::ops::Range;
+use std::sync::atomic::{AtomicBool, Ordering};
 
 use super::{Handler, Mode, TrimContext, Trimmed};
 
@@ -46,6 +55,54 @@ impl Handler for Playwright {
 
     fn trim(&self, text: &str, cx: &TrimContext) -> Option<Trimmed> {
         trim_snapshot(text, cx)
+    }
+
+    fn claims(&self, text: &str) -> bool {
+        looks_like_snapshot(text)
+    }
+}
+
+/// Does `text` look like a Playwright snapshot, whether or not this handler
+/// can parse it: a ```yaml fence holding a `- … [ref=…]` list line? Such an
+/// output must never be cut by the generic handlers. (JSON that quotes a
+/// snapshot inside a string has no fence line of its own and does not count.)
+pub fn looks_like_snapshot(text: &str) -> bool {
+    if !text.contains("```yaml") {
+        return false;
+    }
+    let mut in_fence = false;
+    for line in text.lines() {
+        let line = line.trim_end_matches('\r');
+        if !in_fence {
+            in_fence = line == "```yaml";
+            continue;
+        }
+        if line == "```" {
+            in_fence = false;
+            continue;
+        }
+        let item = line.trim_start_matches(' ');
+        if item.starts_with("- ") && item.contains("[ref=") {
+            return true;
+        }
+    }
+    false
+}
+
+/// Logged once per process: a format change upstream would otherwise repeat
+/// it on every call. The output itself is forwarded whole either way (see
+/// `Handler::claims`), so this is diagnostic only.
+fn warn_unparsed(bytes: usize, reason: &str) {
+    static WARNED: AtomicBool = AtomicBool::new(false);
+    if !WARNED.swap(true, Ordering::Relaxed) {
+        tracing::warn!(
+            bytes,
+            reason,
+            "a Playwright snapshot could not be trimmed safely and was forwarded untouched (logged \
+             once per session). If this keeps happening the server's output format may have \
+             changed: capture a session with `meiose record` and report it at \
+             https://github.com/yousufmohi/meiose/issues"
+        );
     }
 }
 
@@ -121,6 +178,10 @@ const STRUCTURAL_ROLES: &[&str] = &[
     "text",
     "time",
 ];
+
+/// Table cells are kept even when empty: a row is read by position, so a
+/// missing cell shifts every value after it into the wrong column.
+const TABLE_CELL_ROLES: &[&str] = &["cell", "columnheader", "gridcell", "rowheader"];
 
 /// Outputs smaller than this are left alone: nothing worth saving, and the
 /// marker would eat the gain.
@@ -223,17 +284,33 @@ struct Node<'a> {
     sig: u64,
 }
 
-/// Locate the yaml body: bytes between "```yaml\n" and the "```" fence line.
+/// The line Playwright MCP writes just before the yaml fence, by release:
+/// `### Snapshot` (1.5x, current), `- Page Snapshot:` (0.0.3x) and
+/// `- Page Snapshot` (0.0.29 and older).
+const HEADERS: &[&str] = &["### Snapshot", "- Page Snapshot:", "- Page Snapshot"];
+
+/// Locate the yaml body: bytes between the "```yaml" line that follows a
+/// known header line and the "```" fence line. A body is never returned
+/// with a carriage return in it (the diff and outline code counts on LF
+/// lines); [`trim_snapshot_min`] normalises CRLF before calling this.
 pub fn find_block(text: &str) -> Option<Range<usize>> {
-    const OPEN: &str = "### Snapshot\n```yaml\n";
-    let start = text.find(OPEN)? + OPEN.len();
     let mut off = 0;
-    for line in text[start..].split_inclusive('\n') {
-        if line.trim_end_matches('\n') == "```" {
-            // The body excludes the '\n' before the fence, so `text[end..]`
-            // starts with "\n```".
-            return (off > 0).then(|| start..start + off - 1);
+    let mut prev = "";
+    let mut start = None;
+    for line in text.split_inclusive('\n') {
+        let content = line.trim_end_matches('\n').trim_end_matches('\r');
+        match start {
+            None if content == "```yaml" && HEADERS.contains(&prev) => {
+                start = Some(off + line.len());
+            }
+            Some(s) if content == "```" => {
+                // The body excludes the '\n' before the fence, so `text[end..]`
+                // starts with "\n```".
+                return (off > s && !text[s..off - 1].contains('\r')).then(|| s..off - 1);
+            }
+            _ => {}
         }
+        prev = content;
         off += line.len();
     }
     None
@@ -243,6 +320,17 @@ pub fn trim_snapshot(text: &str, cx: &TrimContext) -> Option<Trimmed> {
     trim_snapshot_min(text, cx, MIN_INPUT_BYTES)
 }
 
+/// `text` with CRLF line endings turned into LF, whole text, so everything
+/// that works on a snapshot (trimming, the budget outline, diffs) sees one
+/// line ending throughout. Never larger than the input.
+pub fn normalized(text: &str) -> Cow<'_, str> {
+    if text.contains("\r\n") {
+        Cow::Owned(text.replace("\r\n", "\n"))
+    } else {
+        Cow::Borrowed(text)
+    }
+}
+
 /// [`trim_snapshot`] with an explicit size floor (tests use 0 so small,
 /// readable inputs exercise every rule).
 #[doc(hidden)]
@@ -250,13 +338,23 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
     if text.len() < min_bytes {
         return None;
     }
-    let block = find_block(text)?;
+    let normalized = normalized(text);
+    let text: &str = &normalized;
+    let Some(block) = find_block(text) else {
+        if looks_like_snapshot(text) {
+            warn_unparsed(
+                text.len(),
+                "no known header line before the yaml fence, or a stray carriage return",
+            );
+        }
+        return None;
+    };
     let body = &text[block.clone()];
-    if body.contains('\r') {
-        return None; // unexpected line endings: don't risk it
-    }
     let limits = Limits::for_mode(cx.mode);
-    let mut nodes = parse(body)?;
+    let Some(mut nodes) = parse(body) else {
+        warn_unparsed(text.len(), "a line with an odd indent or a skipped level");
+        return None;
+    };
     analyze(&mut nodes, limits.dedupe_same_text, limits.dedupe_min_run);
 
     let n = nodes.len();
@@ -284,9 +382,10 @@ pub fn trim_snapshot_min(text: &str, cx: &TrimContext, min_bytes: usize) -> Opti
             // A wrapper: removing its line keeps all of its children,
             // interactive or not.
             collapse[i] = true;
-        } else if nd.n_children == 0 {
+        } else if nd.n_children == 0 && !TABLE_CELL_ROLES.contains(&nd.role.as_ref()) {
             // Empty and inert (no name, no value, no children). `interactive`
             // is false, and with no children nothing below it can keep it.
+            // An empty table cell stays: its position is its meaning.
             drop[i] = true;
         }
     }
@@ -1022,6 +1121,97 @@ mod tests {
     }
 
     #[test]
+    fn empty_table_cells_keep_their_place_in_the_row() {
+        // MDN's compatibility table: the corner cell is empty, and so is a
+        // "no data" cell. Dropping them would shift every column after them.
+        let out = trim(
+            "- table [ref=e1]:\n  - row [ref=e2]:\n    - cell [ref=e3]\n    - columnheader \"Chrome\" [ref=e4]\n    - columnheader \"Firefox\" [ref=e5]\n  - row [ref=e6]:\n    - rowheader \"basic\" [ref=e7]\n    - cell [ref=e8]\n    - cell \"0 (no)\" [ref=e9]\n  - generic [ref=e10]",
+            Mode::Conservative,
+        )
+        .unwrap();
+        assert_eq!(
+            body(&out),
+            "- table [ref=e1]:\n  - row:\n    - cell\n    - columnheader \"Chrome\" [ref=e4]\n    - columnheader \"Firefox\" [ref=e5]\n  - row:\n    - rowheader \"basic\" [ref=e7]\n    - cell\n    - cell \"0 (no)\""
+        );
+        // Aggressive mode keeps them too (and hides every inert ref).
+        let out = trim(
+            "- table [ref=e1]:\n  - row [ref=e2]:\n    - cell [ref=e3]\n    - cell \"x\" [ref=e4]",
+            Mode::Aggressive,
+        )
+        .unwrap();
+        assert_eq!(
+            body(&out),
+            "- table:\n  - row:\n    - cell\n    - cell \"x\""
+        );
+    }
+
+    #[test]
+    fn older_playwright_headers_and_crlf_are_accepted() {
+        let cx = TrimContext {
+            expand_id: "id1",
+            mode: Mode::Conservative,
+        };
+        let yaml = padded("- link \"x\" [ref=e1] [cursor=pointer]");
+        let modern = snap(&yaml);
+        let expected = trim_snapshot_min(&modern, &cx, 0).unwrap().text;
+        for header in ["- Page Snapshot", "- Page Snapshot:"] {
+            let old = modern.replacen("### Snapshot", header, 1);
+            let out = trim_snapshot_min(&old, &cx, 0).unwrap().text;
+            assert_eq!(out, expected.replacen("### Snapshot", header, 1));
+        }
+        // CRLF everywhere → trimmed, and the output is LF throughout.
+        let crlf = modern.replace('\n', "\r\n");
+        let out = trim_snapshot_min(&crlf, &cx, 0).unwrap().text;
+        assert_eq!(out, expected);
+        // A lone CR inside the block is still refused.
+        let lone = modern.replacen("[ref=e1]", "[ref=e1]\r", 1);
+        assert!(trim_snapshot_min(&lone, &cx, 0).is_none());
+    }
+
+    #[test]
+    fn find_block_needs_a_known_header_right_before_the_fence() {
+        let body = "- link \"x\" [ref=e1]";
+        for text in [
+            format!("### Snapshot\n```yaml\n{body}\n```\n"),
+            format!("- Page Snapshot\n```yaml\n{body}\n```\n"),
+            format!("### Page state\n- Page Snapshot:\n```yaml\n{body}\n```\n"),
+        ] {
+            let r = find_block(&text).unwrap_or_else(|| panic!("{text:?}"));
+            assert!(text[r.clone()].starts_with(body), "{text:?}");
+            assert!(text[r.end..].starts_with("\n```"), "{text:?}");
+        }
+        assert!(find_block(&format!("### Other\n```yaml\n{body}\n```\n")).is_none());
+        assert!(find_block(&format!("### Snapshot\n\n```yaml\n{body}\n```\n")).is_none());
+        assert!(find_block("### Snapshot\n```yaml\n```\n").is_none());
+        assert!(find_block(&format!("### Snapshot\n```yaml\n{body}\n")).is_none());
+        // A body with carriage returns is never returned: the trimmer
+        // normalises CRLF first, and nothing else may work on CR lines.
+        assert!(find_block(&format!("### Snapshot\r\n```yaml\r\n{body}\r\n```\r\n")).is_none());
+        assert!(find_block(&format!("### Snapshot\n```yaml\n{body}\r\n```\n")).is_none());
+    }
+
+    #[test]
+    fn looks_like_snapshot_needs_a_fence_line_holding_a_ref_item() {
+        assert!(looks_like_snapshot("x\n```yaml\n- a [ref=e1]\n```"));
+        assert!(looks_like_snapshot(
+            "```yaml\r\n  - link \"x\" [ref=e1]\r\n```\r\n"
+        ));
+        // A markdown file whose example snapshot is a real fence counts too.
+        assert!(looks_like_snapshot(
+            "# Docs\n\n```yaml\n- button \"Go\" [ref=e4]\n```\n"
+        ));
+        assert!(!looks_like_snapshot("```yaml\nkey: value\n```"));
+        // JSON quoting a snapshot inside a string: no fence line of its own.
+        assert!(!looks_like_snapshot(
+            r#"{"body": "see ```yaml\n- link [ref=e1]\n``` above"}"#
+        ));
+        assert!(!looks_like_snapshot(
+            "- link [ref=e1]\n```yaml\nkey: v\n```"
+        ));
+        assert!(!looks_like_snapshot("[ref=e1] and ```yaml on one line"));
+    }
+
+    #[test]
     fn heading_and_img_refs_survive_in_conservative_mode() {
         let out = trim(
             "- generic [ref=e1]:\n  - heading \"T\" [level=1] [ref=e2]\n  - img \"logo\" [ref=e3]\n  - paragraph [ref=e4]: text",
@@ -1156,7 +1346,8 @@ mod tests {
             "- generic [ref=e1]:\n   - odd indent",
             "- generic [ref=e1]:\n    - skipped level",
             "not a list item",
-            "- generic [ref=e1]:\r\n  - link [ref=e2]",
+            // A lone CR (CRLF is normalised and accepted).
+            "- generic [ref=e1]:\n  - link\r [ref=e2]",
         ] {
             assert!(trim(y, Mode::Aggressive).is_none(), "{y:?}");
         }

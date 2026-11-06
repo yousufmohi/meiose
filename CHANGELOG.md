@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+- A Playwright snapshot the handler cannot parse (an odd indent, a header it
+  does not know) is now forwarded whole. It used to fall through to the
+  plain-text handler, which kept the first 16 KB and last 4 KB of the page
+  and so dropped most of its interactive refs; a repeat snapshot was then
+  diffed against that cut. The older `- Page Snapshot` and `- Page Snapshot:`
+  headers and CRLF line endings are now trimmed normally.
+- Empty table cells are kept, so a row's values stay in their columns (MDN
+  compatibility tables, Hacker News). An empty cell used to be dropped, and
+  everything after it in the row moved one column left.
+
 ## 0.3.0 — 2026-11-03
 
 - `meiose stats` says "1 tool call" and "1 expand" in the singular.

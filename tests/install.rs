@@ -3,9 +3,12 @@
 //! byte-for-byte when nothing else touched it, and otherwise unwraps only
 //! what meiose wrapped while keeping everyone else's changes.
 
-use std::io::Write;
+use std::io::{Read, Write};
 use std::path::{Path, PathBuf};
-use std::process::{Command, Output, Stdio};
+use std::process::{Child, ChildStdin, Command, ExitStatus, Output, Stdio};
+use std::sync::{Arc, Mutex};
+use std::thread::JoinHandle;
+use std::time::{Duration, Instant};
 
 use meiose::install::Roots;
 use serde_json::{Value, json};
@@ -127,6 +130,79 @@ impl Env {
         let mut args = vec!["install", "--meiose-path", FAKE_MEIOSE];
         args.extend_from_slice(extra);
         self.meiose(&args, stdin)
+    }
+
+    /// `meiose install` without `--yes`, left waiting at its question.
+    fn install_interactive(&self, extra: &[&str]) -> Interactive {
+        let mut args = vec!["install", "--meiose-path", FAKE_MEIOSE];
+        args.extend_from_slice(extra);
+        let mut child = Command::new(env!("CARGO_BIN_EXE_meiose"))
+            .args(&args)
+            .env("MEIOSE_FAKE_HOME", self.home.path())
+            .env("MEIOSE_DATA_DIR", self.data.path())
+            .stdin(Stdio::piped())
+            .stdout(Stdio::piped())
+            .stderr(Stdio::inherit())
+            .spawn()
+            .unwrap();
+        let stdin = child.stdin.take().unwrap();
+        let mut stdout = child.stdout.take().unwrap();
+        let out = Arc::new(Mutex::new(Vec::new()));
+        let sink = out.clone();
+        let reader = std::thread::spawn(move || {
+            let mut buf = [0u8; 4096];
+            loop {
+                match stdout.read(&mut buf) {
+                    Ok(0) | Err(_) => break,
+                    Ok(n) => sink.lock().unwrap().extend_from_slice(&buf[..n]),
+                }
+            }
+        });
+        Interactive {
+            child,
+            stdin: Some(stdin),
+            out,
+            reader: Some(reader),
+        }
+    }
+}
+
+struct Interactive {
+    child: Child,
+    stdin: Option<ChildStdin>,
+    out: Arc<Mutex<Vec<u8>>>,
+    reader: Option<JoinHandle<()>>,
+}
+
+impl Interactive {
+    /// Everything printed so far, once `needle` has appeared `times` times.
+    fn wait_for(&self, needle: &str, times: usize) -> String {
+        let start = Instant::now();
+        loop {
+            let text = String::from_utf8_lossy(&self.out.lock().unwrap()).into_owned();
+            if text.matches(needle).count() >= times {
+                return text;
+            }
+            assert!(
+                start.elapsed() < Duration::from_secs(20),
+                "timed out waiting for {needle:?} (x{times}); output so far:\n{text}"
+            );
+            std::thread::sleep(Duration::from_millis(20));
+        }
+    }
+
+    fn answer(&mut self, line: &str) {
+        let stdin = self.stdin.as_mut().unwrap();
+        stdin.write_all(line.as_bytes()).unwrap();
+        stdin.flush().unwrap();
+    }
+
+    fn finish(mut self) -> (ExitStatus, String) {
+        drop(self.stdin.take());
+        let status = self.child.wait().unwrap();
+        self.reader.take().unwrap().join().unwrap();
+        let text = String::from_utf8_lossy(&self.out.lock().unwrap()).into_owned();
+        (status, text)
     }
 }
 
@@ -253,6 +329,95 @@ fn asks_before_changing_anything() {
     let (out, text) = env.install(&[], Some("y\n"));
     assert!(out.status.success(), "{text}");
     assert_ne!(read(&env.claude_code()), CLAUDE_CODE);
+}
+
+/// Claude Code rewrites `~/.claude.json` whenever something happens (a
+/// startup counter, a new project entry). Anything it writes while the
+/// install question is open used to be silently reverted by the write.
+#[test]
+fn edits_made_while_the_question_waits_are_kept() {
+    let env = Env::new();
+    let mut i = env.install_interactive(&["--client", "claude-code"]);
+    i.wait_for("[y/N]", 1);
+    let mut cc = json(&env.claude_code());
+    cc["numStartups"] = 13.into();
+    cc["projects"]["C:\\work\\other"] = json!({"allowedTools": ["Bash"]});
+    write(
+        &env.claude_code(),
+        &serde_json::to_string_pretty(&cc).unwrap(),
+    );
+    i.answer("y\n");
+    let (status, text) = i.finish();
+    assert!(status.success(), "{text}");
+    assert!(text.contains("changed while waiting"), "{text}");
+    // The same servers are wrapped, so no second question.
+    assert_eq!(text.matches("[y/N]").count(), 1, "{text}");
+    let cc = json(&env.claude_code());
+    assert_eq!(cc["numStartups"], 13, "an edit was reverted:\n{text}");
+    assert_eq!(cc["projects"]["C:\\work\\other"]["allowedTools"][0], "Bash");
+    assert_eq!(cc["mcpServers"]["playwright"]["command"], FAKE_MEIOSE);
+    assert_eq!(
+        cc["projects"]["C:\\work\\shop"]["mcpServers"]["db"]["command"],
+        FAKE_MEIOSE
+    );
+}
+
+/// A server added while the question is open changes the plan: the new diff
+/// is shown and the question asked again.
+#[test]
+fn a_server_added_while_the_question_waits_is_shown_and_asked_about() {
+    let env = Env::new();
+    let mut i = env.install_interactive(&["--client", "claude-code"]);
+    i.wait_for("[y/N]", 1);
+    let mut cc = json(&env.claude_code());
+    cc["mcpServers"]["added-while-waiting"] = json!({"command": "node", "args": ["srv.js"]});
+    write(
+        &env.claude_code(),
+        &serde_json::to_string_pretty(&cc).unwrap(),
+    );
+    i.answer("y\n");
+    let text = i.wait_for("[y/N]", 2);
+    assert!(text.contains("changed while waiting"), "{text}");
+    assert!(
+        text.contains("~ added-while-waiting\n    - node srv.js\n    + /opt/meiose/bin/meiose run -- node srv.js"),
+        "{text}"
+    );
+    i.answer("y\n");
+    let (status, text) = i.finish();
+    assert!(status.success(), "{text}");
+    let cc = json(&env.claude_code());
+    assert_eq!(
+        cc["mcpServers"]["added-while-waiting"]["args"],
+        json!(["run", "--", "node", "srv.js"])
+    );
+    assert_eq!(cc["mcpServers"]["playwright"]["command"], FAKE_MEIOSE);
+
+    // Everything wrapped, including the late server, is undone by uninstall.
+    let (out, text) = env.meiose(&["uninstall", "--yes"], None);
+    assert!(out.status.success(), "{text}");
+    let cc = json(&env.claude_code());
+    assert_eq!(cc["mcpServers"]["added-while-waiting"]["command"], "node");
+    assert_eq!(cc["mcpServers"]["playwright"]["command"], "npx");
+}
+
+#[test]
+fn declining_the_changed_plan_leaves_the_file_alone() {
+    let env = Env::new();
+    let mut i = env.install_interactive(&["--client", "claude-code"]);
+    i.wait_for("[y/N]", 1);
+    let mut cc = json(&env.claude_code());
+    cc["mcpServers"]["added-while-waiting"] = json!({"command": "node"});
+    let edited = serde_json::to_string_pretty(&cc).unwrap();
+    write(&env.claude_code(), &edited);
+    i.answer("y\n");
+    i.wait_for("[y/N]", 2);
+    i.answer("n\n");
+    let (status, text) = i.finish();
+    assert!(!status.success(), "{text}");
+    assert!(text.contains("Left"), "{text}");
+    assert_eq!(read(&env.claude_code()), edited);
+    let (_, text) = env.meiose(&["uninstall", "--yes"], None);
+    assert!(text.contains("Nothing to uninstall"), "{text}");
 }
 
 #[test]

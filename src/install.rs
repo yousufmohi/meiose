@@ -10,7 +10,11 @@
 //!   rewrites ~/.claude.json constantly), it instead unwraps only the
 //!   entries we wrapped, restoring their original command/args and keeping
 //!   every other change.
-//! - Writes are atomic (temp file + rename).
+//! - Writes are atomic (temp file + rename), and a config is only written if
+//!   it is still exactly what its plan was computed from. The confirmation
+//!   prompt can stay open for minutes, and Claude Code rewrites its file all
+//!   the time: [`apply`] reports [`Outcome::FileChanged`] instead of
+//!   reverting someone else's edits, and the caller plans again.
 //! - Remote (url/http/sse) servers and already-wrapped servers are skipped.
 
 use std::io::Write;
@@ -290,7 +294,7 @@ pub enum Skip {
     Filtered,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Change {
     pub location: Location,
     pub before: Launch,
@@ -425,7 +429,7 @@ pub struct FileRecord {
     pub changes: Vec<RecordedChange>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct RecordedChange {
     pub location: Location,
     pub before: Launch,
@@ -520,6 +524,18 @@ fn fnv(b: &[u8]) -> u64 {
 /// mode before the rename, so a `600` config stays `600` and nothing is
 /// readable by others in between. It is removed if anything fails.
 pub fn write_atomic(path: &Path, bytes: &[u8]) -> anyhow::Result<()> {
+    write_atomic_impl(path, bytes, None).map(|_| ())
+}
+
+/// [`write_atomic`], but only if `path` still holds exactly `expected` when
+/// the temp file is ready to be renamed over it. `Ok(false)` means it did
+/// not, and nothing was changed. The check sits right before the rename, so
+/// the window in which another writer can be overwritten is microseconds.
+pub fn write_atomic_if(path: &Path, bytes: &[u8], expected: &[u8]) -> anyhow::Result<bool> {
+    write_atomic_impl(path, bytes, Some(expected))
+}
+
+fn write_atomic_impl(path: &Path, bytes: &[u8], expected: Option<&[u8]>) -> anyhow::Result<bool> {
     let dir = path
         .parent()
         .context("config path has no parent directory")?;
@@ -537,15 +553,21 @@ pub fn write_atomic(path: &Path, bytes: &[u8]) -> anyhow::Result<()> {
             .with_context(|| format!("could not write {}", tmp.display()))?;
         drop(f);
         copy_mode(path, &tmp)?;
+        if let Some(expected) = expected
+            && std::fs::read(path).ok().as_deref() != Some(expected)
+        {
+            return Ok(false);
+        }
         std::fs::rename(&tmp, path).with_context(|| {
             format!(
                 "could not replace {}
   → close the app that has it open and try again",
                 path.display()
             )
-        })
+        })?;
+        Ok(true)
     })();
-    if res.is_err() {
+    if !matches!(res, Ok(true)) {
         let _ = std::fs::remove_file(&tmp);
     }
     res
@@ -577,6 +599,30 @@ pub struct FilePlan {
     pub plan: Plan,
 }
 
+/// Plan install for one config file, from its content on disk right now.
+pub fn plan_file(
+    client: Client,
+    path: &Path,
+    meiose: &str,
+    only: &[String],
+) -> anyhow::Result<FilePlan> {
+    let original =
+        std::fs::read(path).with_context(|| format!("could not read {}", path.display()))?;
+    let text = std::str::from_utf8(&original).context("the file is not UTF-8")?;
+    let plan = plan_install(text, meiose, only).with_context(|| {
+        format!(
+            "could not understand {}\n  → fix the JSON (or move the file aside) and run install again",
+            path.display()
+        )
+    })?;
+    Ok(FilePlan {
+        client,
+        path: path.to_path_buf(),
+        original,
+        plan,
+    })
+}
+
 /// Plan install for every config file found.
 pub fn plan_all(
     roots: &Roots,
@@ -589,37 +635,37 @@ pub fn plan_all(
         .into_iter()
         .filter(|(c, _)| clients.is_empty() || clients.contains(c))
         .map(|(client, path)| {
-            let r = (|| {
-                let original = std::fs::read(&path)
-                    .with_context(|| format!("could not read {}", path.display()))?;
-                let text = std::str::from_utf8(&original).context("the file is not UTF-8")?;
-                let plan = plan_install(text, meiose, only).with_context(|| {
-                    format!(
-                        "could not understand {}\n  → fix the JSON (or move the file aside) and run install again",
-                        path.display()
-                    )
-                })?;
-                Ok(FilePlan {
-                    client,
-                    path: path.clone(),
-                    original,
-                    plan,
-                })
-            })();
+            let r = plan_file(client, &path, meiose, only);
             (client, path, r)
         })
         .collect()
 }
 
-/// Apply one file's plan: backup (first time only), write, record.
-pub fn apply(dir: &InstallDir, manifest: &mut Manifest, fp: &FilePlan) -> anyhow::Result<()> {
+#[derive(Debug, PartialEq, Eq)]
+pub enum Outcome {
+    /// The file was written (or had nothing to change).
+    Applied,
+    /// The file is no longer what the plan was computed from: another
+    /// program wrote it meanwhile. Nothing was written, and nothing stays
+    /// recorded for this attempt; plan again from the current content.
+    FileChanged,
+}
+
+/// Apply one file's plan: backup (first time only), write, record. The file
+/// is written only if it is still exactly the content the plan came from.
+pub fn apply(dir: &InstallDir, manifest: &mut Manifest, fp: &FilePlan) -> anyhow::Result<Outcome> {
     let Some(new_text) = &fp.plan.new_text else {
-        return Ok(());
+        return Ok(Outcome::Applied);
     };
+    // The plan may be minutes old (the confirmation prompt); the app that
+    // owns this file may have rewritten it since.
+    if std::fs::read(&fp.path).ok().as_deref() != Some(fp.original.as_slice()) {
+        return Ok(Outcome::FileChanged);
+    }
     crate::secure::create_private_dir(&dir.dir)
         .with_context(|| format!("could not create {}", dir.dir.display()))?;
     let existing = manifest.files.iter().position(|f| f.path == fp.path);
-    let record = match existing {
+    let idx = match existing {
         Some(i) => {
             let r = &mut manifest.files[i];
             // Was the file changed by someone else since our last write?
@@ -627,7 +673,7 @@ pub fn apply(dir: &InstallDir, manifest: &mut Manifest, fp: &FilePlan) -> anyhow
             if ours.as_deref() != Some(fp.original.as_slice()) {
                 r.byte_restore_ok = false;
             }
-            r
+            i
         }
         None => {
             let backup = dir.slot(fp.client, &fp.path, "backup");
@@ -641,17 +687,45 @@ pub fn apply(dir: &InstallDir, manifest: &mut Manifest, fp: &FilePlan) -> anyhow
                 byte_restore_ok: true,
                 changes: vec![],
             });
-            manifest.files.last_mut().expect("just pushed")
+            manifest.files.len() - 1
         }
     };
-    record
-        .changes
-        .extend(fp.plan.changes.iter().map(RecordedChange::from));
+    let record = &mut manifest.files[idx];
+    let changes_before = record.changes.len();
+    // A plan applied again after the file changed under it records each
+    // wrap once.
+    for c in &fp.plan.changes {
+        let rc = RecordedChange::from(c);
+        if !record.changes.contains(&rc) {
+            record.changes.push(rc);
+        }
+    }
     crate::secure::write_private(&record.written, new_text.as_bytes())
         .with_context(|| format!("could not write {}", record.written.display()))?;
     // Manifest first: if writing the config fails, uninstall still knows.
     dir.save(manifest)?;
-    write_atomic(&fp.path, new_text.as_bytes())
+    // Checked once more right before the rename.
+    if write_atomic_if(&fp.path, new_text.as_bytes(), &fp.original)? {
+        return Ok(Outcome::Applied);
+    }
+    // The file changed between the first check and the rename: forget this
+    // attempt, so the manifest never names a file meiose did not write.
+    forget_attempt(manifest, idx, existing.is_none(), changes_before);
+    dir.save(manifest)?;
+    Ok(Outcome::FileChanged)
+}
+
+/// Undo what [`apply`] recorded for an attempt whose final check failed: a
+/// record created for it goes, with its backup and `written` copy; an older
+/// record keeps only the changes it had before.
+fn forget_attempt(manifest: &mut Manifest, idx: usize, created: bool, changes_before: usize) {
+    if created {
+        let rec = manifest.files.remove(idx);
+        let _ = std::fs::remove_file(&rec.backup);
+        let _ = std::fs::remove_file(&rec.written);
+    } else {
+        manifest.files[idx].changes.truncate(changes_before);
+    }
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -861,6 +935,99 @@ mod tests {
         let plan = plan_install(text, M, &[]).unwrap();
         let edited = r#"{"mcpServers":{"pw":{"command":"node","args":["mine.js"]}}}"#;
         assert_eq!(unwrap_recorded(edited, &plan.changes).unwrap().1, 0);
+    }
+
+    #[test]
+    fn apply_refuses_a_file_that_changed_since_it_was_planned() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join(".claude.json");
+        std::fs::write(
+            &path,
+            r#"{"mcpServers":{"pw":{"command":"npx","args":["a"]}}}"#,
+        )
+        .unwrap();
+        let fp = plan_file(Client::ClaudeCode, &path, M, &[]).unwrap();
+        // The app rewrites its file while the confirmation prompt is open.
+        let edited = r#"{"numStartups":2,"mcpServers":{"pw":{"command":"npx","args":["a"]},"new":{"command":"z"}}}"#;
+        std::fs::write(&path, edited).unwrap();
+
+        let idir = InstallDir::new(&dir.path().join("data"));
+        let mut manifest = Manifest::default();
+        assert_eq!(
+            apply(&idir, &mut manifest, &fp).unwrap(),
+            Outcome::FileChanged
+        );
+        assert_eq!(std::fs::read_to_string(&path).unwrap(), edited);
+        assert!(manifest.files.is_empty(), "nothing must be recorded");
+
+        // Planned again from the current content, it applies and keeps the edit.
+        let fp = plan_file(Client::ClaudeCode, &path, M, &[]).unwrap();
+        assert_eq!(apply(&idir, &mut manifest, &fp).unwrap(), Outcome::Applied);
+        let doc: Value = serde_json::from_str(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(doc["numStartups"], 2);
+        assert_eq!(doc["mcpServers"]["pw"]["command"], M);
+        assert_eq!(doc["mcpServers"]["new"]["command"], M);
+        assert_eq!(manifest.files[0].changes.len(), 2);
+    }
+
+    #[test]
+    fn a_failed_final_check_leaves_no_trace_in_the_manifest() {
+        let dir = tempfile::tempdir().unwrap();
+        let backup = dir.path().join("b.json");
+        let written = dir.path().join("w.json");
+        std::fs::write(&backup, b"{}").unwrap();
+        std::fs::write(&written, b"{}").unwrap();
+        let change = RecordedChange {
+            location: vec!["mcpServers".into(), "pw".into()],
+            before: l("npx", &["a"]),
+            after: l(M, &["run", "--", "npx", "a"]),
+        };
+        let mut m = Manifest {
+            version: 1,
+            files: vec![
+                FileRecord {
+                    client: Client::Cursor,
+                    path: dir.path().join("other.json"),
+                    backup: dir.path().join("o.json"),
+                    written: dir.path().join("ow.json"),
+                    byte_restore_ok: true,
+                    changes: vec![change.clone()],
+                },
+                FileRecord {
+                    client: Client::ClaudeCode,
+                    path: dir.path().join(".claude.json"),
+                    backup: backup.clone(),
+                    written: written.clone(),
+                    byte_restore_ok: true,
+                    changes: vec![change.clone(), change.clone()],
+                },
+            ],
+        };
+        // An older record keeps only what it had before this attempt.
+        forget_attempt(&mut m, 1, false, 1);
+        assert_eq!(m.files[1].changes.len(), 1);
+        assert!(backup.exists() && written.exists());
+        // A record created for this attempt goes, with its files.
+        forget_attempt(&mut m, 1, true, 0);
+        assert_eq!(m.files.len(), 1);
+        assert_eq!(m.files[0].client, Client::Cursor);
+        assert!(!backup.exists() && !written.exists());
+    }
+
+    #[test]
+    fn write_atomic_if_checks_right_before_the_rename() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("c.json");
+        std::fs::write(&path, b"one").unwrap();
+        assert!(!write_atomic_if(&path, b"two", b"zero").unwrap());
+        assert_eq!(std::fs::read(&path).unwrap(), b"one");
+        assert_eq!(
+            std::fs::read_dir(dir.path()).unwrap().count(),
+            1,
+            "the temp file must be removed"
+        );
+        assert!(write_atomic_if(&path, b"two", b"one").unwrap());
+        assert_eq!(std::fs::read(&path).unwrap(), b"two");
     }
 
     #[test]

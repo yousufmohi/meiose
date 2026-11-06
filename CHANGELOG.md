@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- `meiose install` no longer reverts edits another program made to a config
+  file while its `[y/N]` question was open. Claude Code rewrites
+  `~/.claude.json` constantly (startup counters, project entries, servers
+  added with `claude mcp add`); the plan was computed before the question and
+  written after it, so those edits were silently lost. The file is now
+  written only if it is still what the diff was computed from; otherwise
+  install plans again from the current content, and asks again if the diff
+  changed.
+
 ## 0.3.0 — 2026-11-03
 
 - `meiose stats` says "1 tool call" and "1 expand" in the singular.

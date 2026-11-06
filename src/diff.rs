@@ -126,8 +126,8 @@ pub fn render(prev_body: &str, new_text: &str, expand_id: &str) -> Option<String
     }
 
     let mut text = String::with_capacity(block.start + out.len() + 300);
-    // Header up to "### Snapshot\n"; drop the "```yaml\n" opener.
-    let header_end = block.start - "```yaml\n".len();
+    // Header up to "### Snapshot\n"; drop the "```yaml" opener line.
+    let header_end = new_text[..block.start].rfind("```yaml")?;
     text.push_str(&new_text[..header_end]);
     if changed == 0 {
         text.push_str(

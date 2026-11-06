@@ -6,7 +6,10 @@ use std::io::{BufRead, Write};
 use anyhow::Context;
 
 use crate::cli::{ClientArg, InstallArgs, UninstallArgs};
-use crate::install::{self, Client, InstallDir, Roots, Skip, Undo};
+use crate::install::{self, Client, FilePlan, InstallDir, Outcome, Roots, Skip, Undo};
+
+/// How often a file may change under us before we give up on it.
+const MAX_REPLANS: usize = 5;
 
 pub fn roots() -> anyhow::Result<Roots> {
     Roots::from_env().context(
@@ -65,29 +68,7 @@ pub fn install(args: InstallArgs) -> anyhow::Result<i32> {
                 failed = true;
             }
             Ok(fp) => {
-                for c in &fp.plan.changes {
-                    println!("  ~ {}", install::location_label(&c.location));
-                    println!("    - {}", c.before.display());
-                    println!("    + {}", c.after.display());
-                }
-                let skipped: Vec<String> = fp
-                    .plan
-                    .skipped
-                    .iter()
-                    .filter(|(_, why)| *why != Skip::Filtered)
-                    .map(|(loc, why)| {
-                        let why = match why {
-                            Skip::Remote => "remote server",
-                            Skip::AlreadyWrapped => "already through meiose",
-                            Skip::NoCommand => "no command",
-                            Skip::Filtered => unreachable!(),
-                        };
-                        format!("{} ({why})", install::location_label(loc))
-                    })
-                    .collect();
-                if !skipped.is_empty() {
-                    println!("  unchanged: {}", skipped.join(", "));
-                }
+                print_plan(&fp);
                 if fp.plan.changes.is_empty() {
                     println!("  nothing to change");
                 } else {
@@ -120,19 +101,83 @@ pub fn install(args: InstallArgs) -> anyhow::Result<i32> {
     let dir = install_dir()?;
     let mut manifest = dir.load()?;
     let mut hints = Vec::new();
-    for fp in &ready {
-        match install::apply(&dir, &mut manifest, fp) {
-            Ok(()) => {
-                println!("✓ updated {}", fp.path.display());
-                if !hints.contains(&fp.client) {
-                    hints.push(fp.client);
+    for mut fp in ready {
+        // The question above may have stayed open for minutes, and Claude
+        // Code rewrites its file all the time: a plan is only applied to the
+        // file it was computed from. Otherwise plan again from the current
+        // content, and ask again if that changes what would be done.
+        let mut replans = 0;
+        loop {
+            match install::apply(&dir, &mut manifest, &fp) {
+                Ok(Outcome::Applied) => {
+                    println!("✓ updated {}", fp.path.display());
+                    if !hints.contains(&fp.client) {
+                        hints.push(fp.client);
+                    }
+                    break;
+                }
+                Ok(Outcome::FileChanged) if replans >= MAX_REPLANS => {
+                    println!(
+                        "✗ {}: keeps changing while meiose tries to write it\n  → close the app that is writing it and run `meiose install` again",
+                        fp.path.display()
+                    );
+                    failed = true;
+                    break;
+                }
+                Ok(Outcome::FileChanged) => {
+                    replans += 1;
+                    match install::plan_file(fp.client, &fp.path, &meiose, &args.only) {
+                        Err(e) => {
+                            println!("✗ {} changed while waiting: {e:#}", fp.path.display());
+                            failed = true;
+                            break;
+                        }
+                        Ok(fresh) if fresh.plan.changes.is_empty() => {
+                            println!(
+                                "· {} changed while waiting and has nothing left to wrap",
+                                fp.path.display()
+                            );
+                            break;
+                        }
+                        Ok(fresh) if fresh.plan.changes == fp.plan.changes => {
+                            println!(
+                                "· {} changed while waiting (same servers to wrap; keeping the new content)",
+                                fp.path.display()
+                            );
+                            fp = fresh;
+                        }
+                        Ok(fresh) => {
+                            println!(
+                                "{} changed while waiting; it would now change like this:",
+                                fp.path.display()
+                            );
+                            print_plan(&fresh);
+                            if !args.yes
+                                && !confirm(&format!(
+                                    "Wrap {} server(s) in {}?",
+                                    fresh.plan.changes.len(),
+                                    fresh.path.display()
+                                ))
+                            {
+                                println!("Left {} unchanged.", fresh.path.display());
+                                failed = true;
+                                break;
+                            }
+                            fp = fresh;
+                        }
+                    }
+                }
+                Err(e) => {
+                    println!("✗ {}: {e:#}", fp.path.display());
+                    failed = true;
+                    break;
                 }
             }
-            Err(e) => {
-                println!("✗ {}: {e:#}", fp.path.display());
-                failed = true;
-            }
         }
+    }
+    if hints.is_empty() {
+        println!("\nNothing changed.");
+        return Ok(i32::from(failed));
     }
     println!("\nBackups: {}", dir.dir.display());
     for c in hints {
@@ -142,6 +187,34 @@ pub fn install(args: InstallArgs) -> anyhow::Result<i32> {
         "Then use your agent as usual. `meiose stats` shows the savings; `meiose uninstall` undoes this."
     );
     Ok(i32::from(failed))
+}
+
+/// The diff for one file: each wrap as before/after lines, then what is
+/// left alone and why. Never prints `env` (secrets).
+fn print_plan(fp: &FilePlan) {
+    for c in &fp.plan.changes {
+        println!("  ~ {}", install::location_label(&c.location));
+        println!("    - {}", c.before.display());
+        println!("    + {}", c.after.display());
+    }
+    let skipped: Vec<String> = fp
+        .plan
+        .skipped
+        .iter()
+        .filter(|(_, why)| *why != Skip::Filtered)
+        .map(|(loc, why)| {
+            let why = match why {
+                Skip::Remote => "remote server",
+                Skip::AlreadyWrapped => "already through meiose",
+                Skip::NoCommand => "no command",
+                Skip::Filtered => unreachable!(),
+            };
+            format!("{} ({why})", install::location_label(loc))
+        })
+        .collect();
+    if !skipped.is_empty() {
+        println!("  unchanged: {}", skipped.join(", "));
+    }
 }
 
 pub fn uninstall(args: UninstallArgs) -> anyhow::Result<i32> {

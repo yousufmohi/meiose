@@ -136,6 +136,67 @@ fn repeat_snapshot_of_the_same_page_is_sent_as_a_diff() {
     s.finish();
 }
 
+/// End to end: a page the Playwright handler cannot parse (one line with an
+/// odd indent) reaches the agent exactly as the server sent it. Before, the
+/// text handler cut it to a head and a tail, keeping about one ref in twenty.
+#[test]
+fn an_unparseable_snapshot_is_forwarded_byte_for_byte() {
+    const LARGE: &str = "tests/fixtures/playwright/the-internet-herokuapp-com-large.txt";
+    let text = std::fs::read_to_string(root().join(LARGE)).unwrap();
+    assert!(
+        text.len() > 40_000,
+        "must be big enough for the text handler"
+    );
+    let line = text.lines().skip(40).find(|l| l.contains("[ref=")).unwrap();
+    let mut s = Session::start(LARGE, &[]);
+    s.init();
+    let id = s.next_id + 1;
+    let (resp, _) = s.request_raw(
+        "tools/call",
+        json!({"name": "browser_snapshot", "arguments": {"replace": [format!("\n{line}"), format!("\n {line}")]}}),
+    );
+    assert_eq!(
+        result_raw_of(&resp),
+        s.server_result_raw(id),
+        "a snapshot the Playwright handler declines must be forwarded whole"
+    );
+    // The next, identical call is the first repeat of a page the agent saw
+    // in full, so it may be a diff; it must still not be a head-and-tail cut.
+    let again = s.call(
+        "browser_snapshot",
+        json!({"replace": [format!("\n{line}"), format!("\n {line}")]}),
+    );
+    assert!(!text_of(&again).contains("lines ("), "{}", text_of(&again));
+    s.finish();
+}
+
+/// `--budget` treats a CRLF page exactly like the LF one: the guard and the
+/// outline run on the normalised text.
+#[test]
+fn budget_applies_to_crlf_pages_too() {
+    const WIKI: &str =
+        "tests/fixtures/playwright/en-wikipedia-org-wiki-rust-programming-language.txt";
+    let text = std::fs::read_to_string(root().join(WIKI)).unwrap();
+    let mut s = Session::start(WIKI, &["--budget", "20000", "--no-diff"]);
+    s.init();
+    let lf = s.call("echo", json!({"text": text}));
+    let crlf = s.call("echo", json!({"text": text.replace('\n', "\r\n")}));
+    let (lf, crlf) = (text_of(&lf), text_of(&crlf));
+    assert!(lf.contains("outline only"), "{}", &lf[lf.len() - 300..]);
+    assert!(
+        crlf.contains("outline only"),
+        "{}",
+        &crlf[crlf.len() - 300..]
+    );
+    assert!(!crlf.contains('\r'));
+    assert_eq!(
+        lf.replace(&expand_id(lf), "ID"),
+        crlf.replace(&expand_id(crlf), "ID"),
+        "the CRLF page must get the same outline"
+    );
+    s.finish();
+}
+
 #[test]
 fn expand_with_a_query_returns_only_matching_lines() {
     let mut s = Session::start(FORM, &[]);

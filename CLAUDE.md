@@ -47,7 +47,10 @@ Name check (2026-11-01): `meiose` is free on crates.io, npm, Homebrew
 5. **Overhead.** Trimming a 400K-token snapshot takes < 5 ms (benchmarked).
 6. **Zero config.** Conservative defaults; aggressive mode is opt-in.
 7. Every error message says what went wrong **and** what to do next.
-8. `install` prints a diff per config change and asks to confirm (`--yes` skips).
+8. `install` prints a diff per config change and asks to confirm (`--yes` skips),
+   and writes a file only if it is still what that diff was computed from;
+   otherwise it plans again from the current content (and asks again if the
+   diff changed). Never revert another program's edits.
 9. Write tests alongside code. **Never weaken a test to make it pass**; report it.
 10. Small readable modules; no abstraction beyond the handler trait.
 
@@ -100,7 +103,9 @@ So refs and wrappers are the levers, not text.
 
 Conservative (default, 31% saved over the 40 committed fixtures):
 - collapse unnamed, inert, single-child `generic` wrappers (children promoted);
-- drop empty inert nodes and separator-only text nodes (`- text: "|"`);
+- drop empty inert nodes and separator-only text nodes (`- text: "|"`),
+  except table cells (cell, columnheader, rowheader, gridcell): an empty
+  cell keeps its place so the row's other values stay in their columns;
 - hide `[ref=…]` on non-interactive **structural** roles (generic, cell, row,
   list(item), paragraph, code, text…); headings, img, landmarks keep refs;
 - remove `[cursor=pointer]` where the role implies it (link, button, option…);
@@ -121,7 +126,14 @@ interactive refs survive in order (test uses its own classifier), output is
 smaller than input, marker present, text outside the yaml block untouched,
 block stays well-formed. Unparseable lines are kept verbatim and treated as
 interactive. Inputs < 4096 bytes are never touched. Anything odd (odd indent,
-skipped level, `\r`) → return None (fail open).
+skipped level, a lone `\r`) → return None with one warning per process, and
+because the handler `claims` any text whose ```yaml fence holds a
+`- … [ref=…]` line, the json/text handlers never touch it either: the whole
+page is forwarded (fail open means the whole page, never a head-and-tail
+cut). CRLF is normalised to LF before parsing (`find_block` itself never
+returns a body with a CR, so diffs and outlines only see LF); the headers
+`### Snapshot` (1.5x), `- Page Snapshot:` (0.0.3x) and `- Page Snapshot`
+(≤ 0.0.29) are all accepted.
 
 Perf (criterion, same laptop, back to back with the pre-URL-rules code,
 2026-11-02): 244K-token page 2.4 ms (2.3), synthetic 400K-token page 4.1 ms
@@ -193,6 +205,10 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   ≤ 50,000) via `json::fit`: one-line fields first, whole list items, nested
   values summarized; always valid JSON; numbers exact via
   `arbitrary_precision`) → text (> 40 KB: head 16 KB + tail 4 KB).
+  A handler that `claims` an output it could not trim ends the chain
+  (`Handler::claims`): the output is forwarded whole, and the handler logs
+  why, once per process. Before this, a snapshot with one odd line fell
+  through to the text handler and lost about 95% of its interactive refs.
 - Stats rows are written by the store thread, so SQLite is off the message
   path. Tokens are *estimated* (`tokens::estimate`: other bytes/3.75 +
   indent/8 + 7 per ref; estimated fixture saving 31.8% vs exact 31.1%) so the
@@ -224,6 +240,18 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   Uninstall: file unchanged since our write → byte-for-byte restore; else
   unwrap only entries still exactly as we wrote them, keep other edits.
   Claude Code rewrites its file constantly, so expect the second path there.
+- The plan is computed before the `[y/N]` question and applied after it,
+  minutes later if the user is slow; Claude Code may have rewritten the file
+  in between (startup counters, `claude mcp add`). `install::apply` re-reads
+  the file first and `write_atomic_if` compares once more right before the
+  rename: if the bytes differ, `Outcome::FileChanged`, nothing is written,
+  and a record made for that attempt is forgotten again (so the manifest and
+  `doctor` never name a file meiose did not write). `setup::install` then
+  plans again from the current content: same servers → applied after a
+  one-line note; different → the new diff is shown and the question asked
+  again; nothing left → skipped. Up to 5 replans per file, then it says to
+  close the app that is writing it. When no file was updated the closing
+  "Backups: …" lines are not printed.
 - `install` refuses to embed a throwaway meiose path (npx cache, temp,
   target/debug) unless `--meiose-path` is given.
 - `MEIOSE_FAKE_HOME` roots all config paths in one dir (tests, safe trials).

@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  A test agent that sends all tool output to the model: 93% lower cost, 3 more wrong answers out of 57.<br>
+  A test agent that sends all tool output to the model: 93% lower cost, 1 more wrong answer out of 57.<br>
   Claude Code, which already saves large outputs to a file: 7% lower cost, no more wrong answers.
 </p>
 
@@ -30,7 +30,7 @@
 ## Why meiose?
 
 MCP servers return whatever they have. A Playwright snapshot of one docs page
-is 244,000 tokens; a GitHub issue list is 79,000. Many clients send all of it to
+is 244,000 tokens; a GitHub issue list is 90,000. Many clients send all of it to
 the model on every turn (Cline, for one, passes MCP results through uncut:
 [cline#15470](https://github.com/cline/cline/issues/15470)). meiose sits between
 the agent and the server, cuts what the agent does not need, and keeps the
@@ -41,25 +41,25 @@ Full results are in [BENCHMARKS.md](BENCHMARKS.md).
 
 | agent | cost per task without meiose | cost per task with meiose | cost saved | correct without meiose | correct with meiose |
 |---|---|---|---|---|---|
-| test agent that sends all tool output to the model | $0.0466 | $0.0034 | 93% | 57 of 57 | 54 of 57 |
-| Claude Code | $0.0073 | $0.0068 | 7% | 57 of 57 | 57 of 57 |
+| test agent that sends all tool output to the model | $0.0463 | $0.0032 | 93% | 55 of 57 | 54 of 57 |
+| Claude Code | $0.0075 | $0.0069 | 7% | 57 of 57 | 57 of 57 |
 
 The test agent ran with `--budget 20000`. Claude Code ran with meiose's defaults.
 
 Costs vary between runs, so these savings are estimates. The 95% confidence
-range is 42% to 96% for the test agent and 3% to 11% for Claude Code.
+range is 44% to 96% for the test agent and 3% to 11% for Claude Code.
 
 Per output:
 
 | | without meiose | with meiose |
 |---|---|---|
 | Rust `Vec` docs snapshot | 244,156 tokens | 166,563 (32% less) |
-| all 40 test pages | 943,239 tokens | 650,329 (31% less), 488,437 (48% less) with `--aggressive` |
-| GitHub `list_issues`, 100 issues | 78,757 tokens | 11,915 (85% less) |
-| the same page, snapshotted again | 133,862 tokens | 79 (a diff) |
+| all 40 test pages | 943,239 tokens | 650,465 (31% less), 488,573 (48% less) with `--aggressive` |
+| GitHub `list_issues`, 57 issues | 89,946 tokens | 11,864 (87% less) |
+| the same page, snapshotted again | 135,571 tokens | 84 (a diff) |
 | one method from the `Vec` docs | the whole page | 1,399 tokens, via `query` |
 | getting the full output back | re-run the tool | call `meiose_expand(id)` |
-| added latency | | 2.4 ms on the largest page |
+| added latency | | 2.2 ms on the largest page |
 
 The test agent is `eval/agent_loop.py`, a minimal script, not a product you can
 install. A measurement in Cline is in progress.
@@ -197,7 +197,7 @@ meiose adds one tool, `meiose_expand`, answered locally:
 ### Snapshot diffs
 
 A repeat snapshot of the page you are on is sent as a diff of what changed
-(from 133,862 tokens to 79 for an unchanged Wikipedia page). `--no-diff` turns it off.
+(from 135,571 tokens to 84 for an unchanged Wikipedia page). `--no-diff` turns it off.
 
 ### Budget
 

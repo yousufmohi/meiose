@@ -87,7 +87,8 @@ impl Px {
 }
 fn eid(t: &str) -> String {
     let s = t.find("meiose_expand(\"").unwrap() + 15;
-    t[s..s + 8].to_string()
+    let e = t[s..].find('"').unwrap();
+    t[s..s + e].to_string()
 }
 
 fn main() {

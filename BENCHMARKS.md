@@ -1,7 +1,10 @@
 # Benchmarks
 
-Numbers below come from runs on 2026-11-01 and 2026-11-02 with Playwright MCP
-1.65. Token counts of tool outputs use OpenAI's `o200k_base` encoding as a
+Numbers below come from a run on 2026-11-06 at commit `a561c38`, with
+`@playwright/mcp@latest` (0.0.84) and Claude Code 2.1.319, except where a section
+says otherwise. The `--budget 12000` eval rows, the listing-page tasks, the
+footprint and the rule-change history are from 2026-11-01 and 2026-11-02 and were
+not re-run. Token counts of tool outputs use OpenAI's `o200k_base` encoding as a
 stand-in, because Claude's tokenizer is not public; ratios between before and
 after are what matter. Billed tokens and cost in the evals are what Claude
 reported.
@@ -14,15 +17,15 @@ Snapshots of 40 public pages (news, docs, shops, forms, Wikipedia) are stored in
 | page | tokens | default | `--aggressive` |
 |---|---:|---:|---:|
 | Rust `Vec` docs | 244,156 | 166,563 (-32%) | 133,879 (-45%) |
-| MDN `<input>` reference | 166,768 | 112,891 (-32%) | 93,199 (-44%) |
+| MDN `<input>` reference | 166,768 | 112,899 (-32%) | 93,207 (-44%) |
 | Wikipedia "Rust (programming language)" | 133,768 | 105,700 (-21%) | 81,203 (-39%) |
 | The Guardian front page | 39,101 | 30,194 (-23%) | 20,699 (-47%) |
-| Hacker News front page | 13,713 | 8,262 (-40%) | 5,696 (-58%) |
+| Hacker News front page | 13,713 | 8,390 (-39%) | 5,824 (-58%) |
 | books.toscrape.com | 8,660 | 5,697 (-34%) | 4,218 (-51%) |
-| all 40 pages | 943,239 | 650,329 (-31%) | 488,437 (-48%) |
+| all 40 pages | 943,239 | 650,465 (-31%) | 488,573 (-48%) |
 
 Repeat snapshot of an unchanged page, through real Playwright (Wikipedia
-"Rust"): 133,862 → 79 tokens. The second snapshot is sent as a note that
+"Rust"): 135,571 → 84 tokens. The second snapshot is sent as a note that
 nothing changed.
 
 ### Getting one fact back: full expand vs `query`
@@ -47,12 +50,12 @@ Code's limits for MCP results (25,000 tokens, and 50,000 characters for text):
 
 | mode | tokens | pages over 25K tokens | pages over 50K characters |
 |---|---:|---:|---:|
-| default | 650,431 (-31%) | 5 | 8 |
-| `--budget 20000` | 237,049 (-75%) | 0 | 6 |
-| `--budget 12000` | 180,523 (-81%) | 0 | 0 |
+| default | 650,656 (-31%) | 5 | 8 |
+| `--budget 20000` | 237,278 (-75%) | 0 | 6 |
+| `--budget 12000` | 180,742 (-81%) | 0 | 0 |
 
 The budget is converted at 3 bytes per token, so it is approximate: the largest
-page under `--budget 12000` came to 12,343 tokens.
+page under `--budget 12000` came to 12,341 tokens.
 
 ### Trim time
 
@@ -60,27 +63,28 @@ Criterion, `cargo bench --bench prune`, Windows laptop:
 
 | input | time |
 |---|---:|
-| Rust `Vec` docs, 244K tokens | 2.4 ms |
-| the `Vec` page doubled and cut at 400K tokens (synthetic) | 4.1 ms |
-| the same page doubled, 488K tokens (synthetic) | 5.1 ms |
+| Rust `Vec` docs, 244K tokens | 2.2 ms |
+| the `Vec` page doubled and cut at 400K tokens (synthetic) | 3.6 ms |
+| the same page doubled, 488K tokens (synthetic) | 4.5 ms |
 
-Measured back to back with the code before the URL rules (2.3, 4.3 and
-4.8 ms), because timings on this laptop drift by 10% or more between sessions.
+Timings on this laptop drift by 10% or more between sessions.
 
 ## JSON tools: GitHub's MCP server
 
 Seven real outputs from `@modelcontextprotocol/server-github` (public repos,
-no token), saved and measured offline with `examples/json_probe.rs`.
-o200k tokens:
+no token), saved and measured offline with `examples/json_probe.rs`. o200k
+tokens. These are live data, and the saved outputs from the first run were not
+kept, so on 2026-11-06 they were fetched again with the same tools and the
+parameters may differ. Compare them with earlier numbers only roughly.
 
 | output | tokens | default | aggressive | handler |
 |---|---:|---:|---:|---|
-| `list_issues` microsoft/playwright, 100 open | 78,757 | 11,915 (-85%) | 3,214 (-96%) | json |
-| `search_issues` playwright "screenshot" | 100,677 | 11,892 (-88%) | 3,901 (-96%) | json |
-| `list_commits` rust-lang/rust, 50 | 94,554 | 14,970 (-84%) | 5,370 (-94%) | json |
-| `search_repositories` "model context protocol" | 17,954 | 3,533 (-80%) | 1,093 (-94%) | json |
-| `list_pull_requests` playwright (16 open) | 25,013 | 4,889 (-80%) | 4,579 (-82%) | json |
-| `get_file_contents` (a directory) | 4,284 | untouched | 656 (-85%) | n/a |
+| `list_issues` microsoft/playwright, 57 returned | 89,946 | 11,864 (-87%) | 3,061 (-97%) | json |
+| `search_issues` playwright "screenshot" | 189,751 | 11,468 (-94%) | 4,024 (-98%) | json |
+| `list_commits` rust-lang/rust, 50 | 94,567 | 13,836 (-85%) | 4,551 (-95%) | json |
+| `search_repositories` "model context protocol", 30 | 10,593 | untouched | 1,094 (-90%) | n/a |
+| `list_pull_requests` playwright (20 open) | 30,791 | 4,554 (-85%) | 4,474 (-85%) | json |
+| `get_file_contents` (a directory) | 3,296 | untouched | 545 (-83%) | n/a |
 | `get_issue` | 1,202 | untouched | untouched | n/a |
 
 The JSON handler keeps the first 10 items of a long list, so the rest are
@@ -89,9 +93,9 @@ item by its title and checks the result contains that item's URL. Before this
 change it failed on 4 of 6 lists: a GitHub issue is 100+ lines of JSON, so the
 match came back with its ancestors only. A JSON match now also brings the
 one-line fields of its object (number, state, URLs, dates): 6 of 6 found, at
-185–2,068 tokens per query.
+342 to 1,792 tokens per query.
 
-The pull-request list has only 16 items, under the JSON handler's 40-item
+On 2026-11-02 the pull-request list had only 16 items, under the JSON handler's 40-item
 threshold, but they are big (nested `head`/`base` repository objects are 56% of
 the bytes). It used to fall through to the text handler, which keeps the first
 16 KB and last 4 KB and so cut the JSON mid-item (-77%). A list too short for
@@ -151,10 +155,10 @@ interval over tasks, and an interval that includes zero is marked as noise.
 
 | mode | correct | billed tokens / run | saving | cost / run | saving | runs with an expand |
 |---|---:|---:|---|---:|---|---:|
-| reference | 57/57 | 195,323 ± 72,763 | n/a | $0.0073 ± 0.0020 | n/a | 0 |
-| default | 57/57 | 196,884 ± 65,370 | -1% (noise) | $0.0068 ± 0.0014 | 7% [3, 11] | 0 |
-| `--budget 20000` | 56/57 | 226,706 ± 146,099 | -16% (noise) | $0.0076 ± 0.0034 | -4% (noise) | 8 |
-| `--budget 12000` | 57/57 | 217,379 ± 98,992 | -11% (noise) | $0.0076 ± 0.0025 | -3% (noise) | 10 |
+| reference | 57/57 | 197,008 ± 64,391 | n/a | $0.0075 ± 0.0020 | n/a | 0 |
+| default | 57/57 | 198,100 ± 66,573 | -1% (noise) | $0.0069 ± 0.0014 | 7% [3, 11] | 0 |
+| `--budget 20000` | 57/57 | 213,573 ± 76,202 | -8% (noise) | $0.0075 ± 0.0020 | 1% (noise) | 7 |
+| `--budget 12000` (2026-11-02) | 57/57 | 217,379 ± 98,992 | -11% (noise) | $0.0076 ± 0.0025 | -3% (noise) | 10 |
 
 In Claude Code, only the default mode's 7% cost saving is outside the noise.
 `--budget` adds turns (searches with `query`) and does not pay off there.
@@ -167,16 +171,17 @@ stream-JSON session with no built-in tools.
 
 | mode | correct | billed tokens / run | saving | cost / run | saving | runs with an expand |
 |---|---:|---:|---|---:|---|---:|
-| reference | 57/57 | 128,068 ± 159,071 | n/a | $0.0466 ± 0.1082 | n/a | 0 |
-| default | 54/57 | 129,214 ± 177,727 | -1% (noise) | $0.0362 ± 0.0806 | 22% (noise) | 0 |
-| `--budget 20000` | 54/57 | 63,378 ± 39,023 | 51% [20, 65] | $0.0034 ± 0.0023 | 93% [42, 96] | 12 |
-| `--budget 12000` | 53/57 | 72,846 ± 54,006 | 43% [16, 56] | $0.0033 ± 0.0024 | 93% [43, 96] | 15 |
+| reference | 55/57 | 123,671 ± 142,433 | n/a | $0.0463 ± 0.1073 | n/a | 0 |
+| default | 54/57 | 103,029 ± 142,165 | 17% (noise) | $0.0285 ± 0.0722 | 38% (noise) | 0 |
+| `--budget 20000` | 54/57 | 61,357 ± 32,710 | 50% [22, 66] | $0.0032 ± 0.0019 | 93% [44, 96] | 12 |
+| `--budget 12000` (2026-11-02) | 53/57 | 72,846 ± 54,006 | 43% [16, 56] | $0.0033 ± 0.0024 | 93% [43, 96] | 15 |
 
-The two `--budget` rows were re-run after a search fix (below), against the
-reference and default rows from the first run with the same harness, tasks and
-model, two hours earlier. Every failure in the `--budget` rows is either a
-timeout or an off-by-one answer on a listing page that the reference also gets
-wrong (next section); none is on the large-page tasks.
+The `--budget 12000` row was measured against the 2026-11-02 reference
+($0.0466), not the one above. Of the 8 wrong runs on 2026-11-06, 5 were timeouts
+(1 reference, 2 default, 2 `--budget 20000`) and 3 were wrong answers (1 in each
+mode, on `books-mystery-third` or `quotes-page3`). The only failure on a
+large-page task was one default-mode timeout on `vec-extract-if`. Runs used
+`--jobs 4`.
 
 ### Listing pages and the URL rules
 

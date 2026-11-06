@@ -13,13 +13,13 @@ Snapshots of 40 public pages (news, docs, shops, forms, Wikipedia) are stored in
 
 | page | tokens | default | `--aggressive` |
 |---|---:|---:|---:|
-| Rust `Vec` docs | 244,156 | 166,563 (−32%) | 133,879 (−45%) |
-| MDN `<input>` reference | 166,768 | 112,891 (−32%) | 93,199 (−44%) |
-| Wikipedia "Rust (programming language)" | 133,768 | 105,700 (−21%) | 81,203 (−39%) |
-| The Guardian front page | 39,101 | 30,194 (−23%) | 20,699 (−47%) |
-| Hacker News front page | 13,713 | 8,262 (−40%) | 5,696 (−58%) |
-| books.toscrape.com | 8,660 | 5,697 (−34%) | 4,218 (−51%) |
-| all 40 pages | 943,239 | 650,329 (−31%) | 488,437 (−48%) |
+| Rust `Vec` docs | 244,156 | 166,563 (-32%) | 133,879 (-45%) |
+| MDN `<input>` reference | 166,768 | 112,891 (-32%) | 93,199 (-44%) |
+| Wikipedia "Rust (programming language)" | 133,768 | 105,700 (-21%) | 81,203 (-39%) |
+| The Guardian front page | 39,101 | 30,194 (-23%) | 20,699 (-47%) |
+| Hacker News front page | 13,713 | 8,262 (-40%) | 5,696 (-58%) |
+| books.toscrape.com | 8,660 | 5,697 (-34%) | 4,218 (-51%) |
+| all 40 pages | 943,239 | 650,329 (-31%) | 488,437 (-48%) |
 
 Repeat snapshot of an unchanged page, through real Playwright (Wikipedia
 "Rust"): 133,862 → 79 tokens. The second snapshot is sent as a note that
@@ -47,9 +47,9 @@ Code's limits for MCP results (25,000 tokens, and 50,000 characters for text):
 
 | mode | tokens | pages over 25K tokens | pages over 50K characters |
 |---|---:|---:|---:|
-| default | 650,431 (−31%) | 5 | 8 |
-| `--budget 20000` | 237,049 (−75%) | 0 | 6 |
-| `--budget 12000` | 180,523 (−81%) | 0 | 0 |
+| default | 650,431 (-31%) | 5 | 8 |
+| `--budget 20000` | 237,049 (-75%) | 0 | 6 |
+| `--budget 12000` | 180,523 (-81%) | 0 | 0 |
 
 The budget is converted at 3 bytes per token, so it is approximate: the largest
 page under `--budget 12000` came to 12,343 tokens.
@@ -75,13 +75,13 @@ o200k tokens:
 
 | output | tokens | default | aggressive | handler |
 |---|---:|---:|---:|---|
-| `list_issues` microsoft/playwright, 100 open | 78,757 | 11,915 (−85%) | 3,214 (−96%) | json |
-| `search_issues` playwright "screenshot" | 100,677 | 11,892 (−88%) | 3,901 (−96%) | json |
-| `list_commits` rust-lang/rust, 50 | 94,554 | 14,970 (−84%) | 5,370 (−94%) | json |
-| `search_repositories` "model context protocol" | 17,954 | 3,533 (−80%) | 1,093 (−94%) | json |
-| `list_pull_requests` playwright (16 open) | 25,013 | 4,889 (−80%) | 4,579 (−82%) | json |
-| `get_file_contents` (a directory) | 4,284 | untouched | 656 (−85%) | — |
-| `get_issue` | 1,202 | untouched | untouched | — |
+| `list_issues` microsoft/playwright, 100 open | 78,757 | 11,915 (-85%) | 3,214 (-96%) | json |
+| `search_issues` playwright "screenshot" | 100,677 | 11,892 (-88%) | 3,901 (-96%) | json |
+| `list_commits` rust-lang/rust, 50 | 94,554 | 14,970 (-84%) | 5,370 (-94%) | json |
+| `search_repositories` "model context protocol" | 17,954 | 3,533 (-80%) | 1,093 (-94%) | json |
+| `list_pull_requests` playwright (16 open) | 25,013 | 4,889 (-80%) | 4,579 (-82%) | json |
+| `get_file_contents` (a directory) | 4,284 | untouched | 656 (-85%) | n/a |
+| `get_issue` | 1,202 | untouched | untouched | n/a |
 
 The JSON handler keeps the first 10 items of a long list, so the rest are
 reachable only through `meiose_expand`. The probe asks `query` for the **last**
@@ -94,9 +94,9 @@ one-line fields of its object (number, state, URLs, dates): 6 of 6 found, at
 The pull-request list has only 16 items, under the JSON handler's 40-item
 threshold, but they are big (nested `head`/`base` repository objects are 56% of
 the bytes). It used to fall through to the text handler, which keeps the first
-16 KB and last 4 KB and so cut the JSON mid-item (−77%). A list too short for
+16 KB and last 4 KB and so cut the JSON mid-item (-77%). A list too short for
 the 40-item rule but over 40 KB of JSON now keeps whole items up to 16 KB
-(here 3 of 16), so the output stays valid JSON (−80%). Lists of more than 40
+(here 3 of 16), so the output stays valid JSON (-80%). Lists of more than 40
 items keep their 10 samples as before.
 
 Finally, JSON output is capped at 45,000 characters, under the 50,000 at which
@@ -151,10 +151,10 @@ interval over tasks, and an interval that includes zero is marked as noise.
 
 | mode | correct | billed tokens / run | saving | cost / run | saving | runs with an expand |
 |---|---:|---:|---|---:|---|---:|
-| reference | 57/57 | 195,323 ± 72,763 | — | $0.0073 ± 0.0020 | — | 0 |
-| default | 57/57 | 196,884 ± 65,370 | −1% (noise) | $0.0068 ± 0.0014 | 7% [3, 11] | 0 |
-| `--budget 20000` | 56/57 | 226,706 ± 146,099 | −16% (noise) | $0.0076 ± 0.0034 | −4% (noise) | 8 |
-| `--budget 12000` | 57/57 | 217,379 ± 98,992 | −11% (noise) | $0.0076 ± 0.0025 | −3% (noise) | 10 |
+| reference | 57/57 | 195,323 ± 72,763 | n/a | $0.0073 ± 0.0020 | n/a | 0 |
+| default | 57/57 | 196,884 ± 65,370 | -1% (noise) | $0.0068 ± 0.0014 | 7% [3, 11] | 0 |
+| `--budget 20000` | 56/57 | 226,706 ± 146,099 | -16% (noise) | $0.0076 ± 0.0034 | -4% (noise) | 8 |
+| `--budget 12000` | 57/57 | 217,379 ± 98,992 | -11% (noise) | $0.0076 ± 0.0025 | -3% (noise) | 10 |
 
 In Claude Code, only the default mode's 7% cost saving is outside the noise.
 `--budget` adds turns (searches with `query`) and does not pay off there.
@@ -167,8 +167,8 @@ stream-JSON session with no built-in tools.
 
 | mode | correct | billed tokens / run | saving | cost / run | saving | runs with an expand |
 |---|---:|---:|---|---:|---|---:|
-| reference | 57/57 | 128,068 ± 159,071 | — | $0.0466 ± 0.1082 | — | 0 |
-| default | 54/57 | 129,214 ± 177,727 | −1% (noise) | $0.0362 ± 0.0806 | 22% (noise) | 0 |
+| reference | 57/57 | 128,068 ± 159,071 | n/a | $0.0466 ± 0.1082 | n/a | 0 |
+| default | 54/57 | 129,214 ± 177,727 | -1% (noise) | $0.0362 ± 0.0806 | 22% (noise) | 0 |
 | `--budget 20000` | 54/57 | 63,378 ± 39,023 | 51% [20, 65] | $0.0034 ± 0.0023 | 93% [42, 96] | 12 |
 | `--budget 12000` | 53/57 | 72,846 ± 54,006 | 43% [16, 56] | $0.0033 ± 0.0024 | 93% [43, 96] | 15 |
 

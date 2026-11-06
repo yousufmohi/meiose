@@ -21,8 +21,8 @@
 </p>
 
 <p align="center">
-  Agents that pass tool output to the model in full: 93% lower cost, 54 of 57 eval tasks right (57 without meiose).<br>
-  Claude Code, which already moves large outputs to a file: 7% lower cost, 57 of 57.
+  A test agent that sends all tool output to the model: 93% lower cost, 3 more wrong answers out of 57.<br>
+  Claude Code, which already saves large outputs to a file: 7% lower cost, no more wrong answers.
 </p>
 
 ![meiose install --dry-run, then meiose log and meiose stats after a real Playwright session: a trimmed page, a query expand and a diff](docs/demo.gif)
@@ -36,12 +36,16 @@ the model on every turn (Cline, for one, passes MCP results through uncut:
 the agent and the server, cuts what the agent does not need, and keeps the
 original one tool call away.
 
-On 19 browsing tasks × 3 runs with Claude Haiku ([BENCHMARKS.md](BENCHMARKS.md)):
+We ran 19 browsing tasks 3 times each (57 runs per setup) with Claude Haiku.
+Full results are in [BENCHMARKS.md](BENCHMARKS.md).
 
-| agent | without meiose | with meiose |
-|---|---|---|
-| a loop that passes tool output in full, `--budget 20000` | $0.0466 per task, 57/57 right | $0.0034 per task (−93%, 95% CI 42–96%), 54/57 right |
-| Claude Code, defaults | $0.0073 per task, 57/57 right | $0.0068 per task (−7%, 95% CI 3–11%), 57/57 right |
+| agent | meiose setting | cost per task, without → with | cost saved | correct answers, without → with |
+|---|---|---|---|---|
+| test agent that sends all tool output to the model | `--budget 20000` | $0.0466 → $0.0034 | 93% | 57 → 54 of 57 |
+| Claude Code | default | $0.0073 → $0.0068 | 7% | 57 → 57 of 57 |
+
+Costs vary between runs, so these savings are estimates. The 95% confidence
+range is 42–96% for the test agent and 3–11% for Claude Code.
 
 Per output:
 
@@ -55,8 +59,8 @@ Per output:
 | getting the full output back | re-run the tool | `meiose_expand(id)`, exactly as the server sent it |
 | added latency | | 2.4 ms on the largest page |
 
-The loop is `eval/agent_loop.py`, a minimal agent, not a shipping client;
-measurements in Cline and Codex CLI are next.
+The test agent is `eval/agent_loop.py`, a minimal script, not a product you can
+install. A measurement in Cline is in progress.
 
 ## Install
 

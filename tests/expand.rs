@@ -135,6 +135,72 @@ fn expand_with_a_query_returns_only_matching_lines() {
     s.finish();
 }
 
+/// "Unchanged" is claimed only when the page itself is unchanged. Here a
+/// collapsed wrapper's ref changes: the trimmed view is identical, the page
+/// is not.
+#[test]
+fn an_identical_view_of_a_changed_page_is_not_reported_as_unchanged() {
+    let mut s = Session::start(FORM, &[]);
+    s.init();
+    let first = s.call("browser_snapshot", json!({}));
+    assert!(
+        !text_of(&first).contains("[ref=e100]"),
+        "e100 is a collapsed wrapper"
+    );
+    let second = s.call(
+        "browser_snapshot",
+        json!({"replace": ["[ref=e100]", "[ref=e900]"]}),
+    );
+    let d = text_of(&second);
+    assert!(!d.contains("Unchanged since"), "{d}");
+    assert!(d.contains("parts the trimmed view does not show"), "{d}");
+    assert!(d.contains("meiose_expand(\""), "{d}");
+    // Really unchanged: say so.
+    let third = s.call(
+        "browser_snapshot",
+        json!({"replace": ["[ref=e100]", "[ref=e900]"]}),
+    );
+    assert!(text_of(&third).contains("Unchanged since your previous snapshot"));
+    s.finish();
+}
+
+/// Claude Code saves a text result over 50,000 characters to a file and
+/// shows its model a note. A diff against such a view is relative to nothing
+/// the model has, so the next snapshot is sent in full again.
+#[test]
+fn no_diff_for_claude_code_against_a_view_it_saved_to_a_file() {
+    const LARGE: &str = "tests/fixtures/playwright/the-internet-herokuapp-com-large.txt";
+    for (client, expect_diff) in [("Claude Code", false), ("t", true)] {
+        let mut s = Session::start(LARGE, &[]);
+        s.init_as(client);
+        let first = s.call("browser_snapshot", json!({}));
+        assert!(
+            text_of(&first).len() > 50_000,
+            "{client}: not over the limit"
+        );
+        let second = s.call("browser_snapshot", json!({}));
+        let d = text_of(&second);
+        assert_eq!(
+            d.contains("Unchanged since your previous snapshot"),
+            expect_diff,
+            "{client}:\n{}",
+            &d[..300.min(d.len())]
+        );
+        assert_eq!(d.contains("```yaml"), !expect_diff, "{client}");
+        s.finish();
+    }
+    // Pages Claude Code does show are still diffed.
+    let mut s = Session::start(FORM, &[]);
+    s.init_as("Claude Code");
+    let first = s.call("browser_snapshot", json!({}));
+    assert!(text_of(&first).len() < 50_000);
+    let second = s.call("browser_snapshot", json!({"checked": true}));
+    let d = text_of(&second);
+    assert!(d.contains("```diff"), "{d}");
+    assert!(d.contains("no longer have the previous one"), "{d}");
+    s.finish();
+}
+
 #[test]
 fn no_diff_flag_always_sends_full_snapshots() {
     let mut s = Session::start(FORM, &["--no-diff"]);

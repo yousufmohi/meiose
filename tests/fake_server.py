@@ -73,7 +73,10 @@ TOOLS_PAGE_2 = [
 def mcp(fixture: str, stdin, stdout) -> int:
     """A scripted MCP server. Tools (arguments in braces):
 
-      browser_snapshot {checked?}   the fixture; `checked` flips one checkbox
+      browser_snapshot {checked?, replace?}
+                                    the fixture; `checked` flips one checkbox,
+                                    `replace: [old, new]` rewrites its first
+                                    occurrence of `old`
       huge_snapshot                 the fixture's tree repeated to ~5 MB
       get_rows                      ~150 KB JSON array
       small                         tiny text
@@ -174,6 +177,9 @@ def mcp(fixture: str, stdin, stdout) -> int:
                 text = snapshot
                 if args.get("checked"):
                     text = text.replace("- checkbox [ref=e5]", "- checkbox [checked] [ref=e5]", 1)
+                if args.get("replace"):
+                    old, new = args["replace"]
+                    text = text.replace(old, new, 1)
                 text_result(rid, text)
             elif name == "huge_snapshot":
                 text_result(rid, huge())

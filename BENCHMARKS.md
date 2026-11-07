@@ -175,6 +175,7 @@ stream-JSON session with no built-in tools.
 | default | 54/57 | 103,029 ± 142,165 | 17% (noise) | $0.0285 ± 0.0722 | 38% (noise) | 0 |
 | `--budget 20000` | 54/57 | 61,357 ± 32,710 | 50% [22, 66] | $0.0032 ± 0.0019 | 93% [44, 96] | 12 |
 | `--budget 12000` (2026-11-02) | 53/57 | 72,846 ± 54,006 | 43% [16, 56] | $0.0033 ± 0.0024 | 93% [43, 96] | 15 |
+| default after this change (`--budget 20000`, no `filename` option) | 57/57 | 64,407 ± 36,242 | 48% | $0.0035 ± 0.0022 | 92% [38, 96] | 12 |
 
 The `--budget 12000` row was measured against the 2026-11-02 reference
 ($0.0466), not the one above. Of the 8 wrong runs on 2026-11-06, 5 were timeouts
@@ -182,6 +183,48 @@ The `--budget 12000` row was measured against the 2026-11-02 reference
 mode, on `books-mystery-third` or `quotes-page3`). The only failure on a
 large-page task was one default-mode timeout on `vec-extract-if`. Runs used
 `--jobs 4`.
+
+The default row was run the same day as the reference, in a separate run. In
+that table the "default" row is the previous default, now `--budget 0`.
+
+### Why large pages cost so much on Claude Haiku
+
+`claude -p` with one large prompt, as reported by Claude Code (2.1.319):
+
+| model | cache-write tokens | cost per million |
+|---|---:|---:|
+| `claude-haiku-5-5` | 22,570 to 95,773 | $0.20 |
+| `claude-haiku-5-5` | 103,715 to 201,685 | $1.00 |
+| `claude-sonnet-5-5` | 32,623 and 115,381 | $4.00 |
+
+So on Haiku the price per token rose 5x between 95,773 and 103,715 tokens, and
+much of the 92% comes from staying under that line. Tokens fell 48%; on a model
+without the jump, expect a saving closer to that. The full eval has not been run
+on Sonnet. Two large-page tasks with the test agent, 2 runs each, show where the
+budget meets the jump:
+
+| budget | cost per run |
+|---:|---:|
+| 30,000 | $0.0082 |
+| 40,000 | $0.0104 |
+| 60,000 | $0.0105 |
+| 80,000 | $0.0163 |
+| 100,000 | $0.0640 |
+
+### Other ideas tested on 2026-11-06
+
+- `--aggressive`: on the test agent $0.0213 per task and 53/57, against $0.0285
+  and 54/57 for the previous default. On Claude Code $0.0068 and 57/57, against
+  $0.0069 and 57/57. It stays opt-in.
+- Hiding tools: 25 Playwright tools are about 5,500 tokens, but a `--tools` flag
+  gave no saving on Claude Code ($0.0069 with and without), and the test agent
+  already lists only the tools it uses. The flag was not kept.
+- Skipping sections repeated from the previous page: only 1%, 6% and 13% of a
+  page's text was shared on three sites. Not built.
+- Removing `browser_snapshot`'s `filename` option, in Cline with a free model,
+  1 run per task: Vanuatu went from 67,851 tokens with 3 file reads to 32,850
+  with none. The Wikipedia run with meiose was aborted before it answered, and
+  the `Vec` tasks hit the free quota, so this is not yet a Cline result.
 
 ### Listing pages and the URL rules
 

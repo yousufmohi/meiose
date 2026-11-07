@@ -35,10 +35,12 @@ Name check (2026-11-01): `meiose` is free on crates.io, npm, Homebrew
    Never parse-and-reserialize a message you are not changing.
 2. **stdout carries only protocol messages.** Logs go to the log file or stderr.
 3. **Never break the agent.**
-   - Without `--budget`, never drop an interactive element (`[ref=...]` that
-     is clickable, fillable or selectable). With `--budget` (opt-in), an
-     outline may omit them; they must stay reachable through `meiose_expand`
-     (full or `query`). Never turn `--budget` on by default without asking.
+   - Under no budget, never drop an interactive element (`[ref=...]` that
+     is clickable, fillable or selectable). Under a budget, an outline may omit
+     them; they must stay reachable through `meiose_expand` (full or `query`).
+     The default budget is 20,000 tokens, or none when `initialize` names
+     Claude Code (the maintainer asked for this on 2026-11-06). `--budget 0`
+     turns it off. A snapshot that does not parse is never outlined.
    - Every trimmed output has a marker:
      `[312 nodes trimmed — call meiose_expand("k3x9q2abm7tw4")]`.
    - `meiose_expand` returns the original output byte-for-byte.

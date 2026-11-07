@@ -92,7 +92,11 @@ fn interceptor(flags: ProxyFlags, cmd: &[String]) -> (Arc<Interceptor>, Option<S
         diff: !flags.no_diff,
         // ~3 bytes per token, on the safe side of the ~3.7 seen on real pages.
         // Counting exactly would put tiktoken on the message path.
-        budget_bytes: flags.budget.saturating_mul(3),
+        budget_bytes: flags
+            .budget
+            .unwrap_or(meiose::intercept::AUTO_BUDGET_TOKENS)
+            .saturating_mul(3),
+        auto_budget: flags.budget.is_none(),
         server: record::file_stem(cmd),
         server_key: store::server_key(cmd),
     };

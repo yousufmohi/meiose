@@ -150,9 +150,14 @@ impl Session {
     }
 
     pub fn init(&mut self) -> Vec<String> {
+        self.init_as("t")
+    }
+
+    /// Handshake as a client with this `clientInfo.name`, then list tools.
+    pub fn init_as(&mut self, client: &str) -> Vec<String> {
         self.request(
             "initialize",
-            json!({"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"t","version":"0"}}),
+            json!({"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":client,"version":"0"}}),
         );
         self.send(&json!({"jsonrpc":"2.0","method":"notifications/initialized"}));
         let tools = self.request("tools/list", json!({}));

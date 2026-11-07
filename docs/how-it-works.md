@@ -65,7 +65,9 @@ after a reload differs almost everywhere and is sent in full.
 
 ## Budget
 
-`--budget <TOKENS>` (off by default) caps the size of a Playwright snapshot.
+`--budget <TOKENS>` caps the size of a Playwright snapshot. The default is
+20,000, or no limit when the client's `initialize` message names Claude Code;
+`--budget 0` means no limit. A snapshot that does not parse is forwarded whole.
 A snapshot over the budget is first trimmed as in `--aggressive`. If it is
 still too large, it becomes an outline: the page's structure (headings,
 landmarks, forms) first, then form controls, then the rest of the page in
@@ -95,11 +97,11 @@ Text: outputs longer than 40 KB keep the head and the tail.
 
 These properties are tested on every commit on macOS, Linux and Windows.
 
-- Without `--budget`, interactive elements are never removed. Every link,
+- Under no budget, interactive elements are never removed. Every link,
   button, input, checkbox, option or element with `[cursor=pointer]` keeps its
   `[ref=…]`. This is checked on 40 real pages, on generated trees and on random
   page fragments, with a classifier written independently of the trimmer.
-  With `--budget`, an outline can leave interactive elements out; they stay
+  Under a budget, an outline can leave interactive elements out; they stay
   reachable through `meiose_expand`.
 - No distinct URL is lost: hiding repeated URLs keeps every distinct URL
   visible somewhere on the page (tested on every fixture).

@@ -89,6 +89,12 @@ pub fn looks_like_snapshot(text: &str) -> bool {
     false
 }
 
+/// Can this snapshot be parsed? A budget outline is only safe on one that can:
+/// otherwise the page is forwarded whole, like any snapshot the handler declines.
+pub fn parses(text: &str) -> bool {
+    find_block(text).is_some_and(|block| parse(&text[block]).is_some())
+}
+
 /// Logged once per process: a format change upstream would otherwise repeat
 /// it on every call. The output itself is forwarded whole either way (see
 /// `Handler::claims`), so this is diagnostic only.

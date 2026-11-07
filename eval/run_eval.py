@@ -26,6 +26,7 @@ Modes:
   meiose      `meiose run` (default settings)
   aggressive  `meiose run --aggressive`
   budgetN     `meiose run --budget N`, e.g. budget20000
+  nobudget    `meiose run --budget 0`
 
 A run is correct if its `ANSWER:` line (or, failing that, its whole reply)
 matches the task's regex. Results: eval/results/<timestamp>/{runs.jsonl,report.md}.
@@ -84,6 +85,8 @@ def server_cmd(mode: str, meiose: str) -> list:
         return [meiose, "run", "--"] + pw
     if mode == "aggressive":
         return [meiose, "run", "--aggressive", "--"] + pw
+    if mode == "nobudget":
+        return [meiose, "run", "--budget", "0", "--"] + pw
     if m := re.fullmatch(r"budget(\d+)", mode):
         return [meiose, "run", "--budget", m.group(1), "--"] + pw
     raise ValueError(f"unknown mode {mode!r}")

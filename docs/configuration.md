@@ -7,7 +7,7 @@ There is no config file. Everything below is optional.
 | | |
 |---|---|
 | `meiose run --aggressive -- …` | trim harder: hide all non-interactive refs, drop link URLs, shorten more |
-| `meiose run --budget 12000 -- …` | cap Playwright snapshots at about this many tokens; larger pages become an outline (off by default; see [how it works](how-it-works.md#budget)) |
+| `meiose run --budget 12000 -- …` | cap Playwright snapshots at about this many tokens; larger pages become an outline (default 20000, or no limit in Claude Code; `--budget 0` for no limit; see [how it works](how-it-works.md#budget)) |
 | `meiose run --no-diff -- …` | always send full snapshots |
 | `meiose run --no-store -- …` | keep this server's originals in memory only: expand works until the session ends, nothing is written to disk (stats still are) |
 | `meiose run --passthrough -- …` | change nothing (still records stats) |
@@ -23,8 +23,8 @@ There is no config file. Everything below is optional.
 
 | agent | suggestion |
 |---|---|
-| Claude Code | the defaults. `--budget` added turns and did not lower cost in the eval. |
-| an agent that passes tool results to the model in full | `--budget 20000` or `--budget 12000`. In the eval this cut cost by about 93%, with no wrong answers on the large-page tasks; see [BENCHMARKS.md](../BENCHMARKS.md). |
+| Claude Code | the defaults, which set no budget. `--budget` added turns and did not lower cost in the eval. |
+| an agent that passes tool results to the model in full | the defaults, which set `--budget 20000`. In the eval this cut cost by about 92% on Claude Haiku; see [BENCHMARKS.md](../BENCHMARKS.md). |
 
 ## The `meiose_expand` tool
 

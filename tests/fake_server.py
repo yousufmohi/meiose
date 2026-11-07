@@ -61,7 +61,8 @@ def main() -> int:
 
 
 TOOLS_PAGE_1 = [
-    {"name": "browser_snapshot", "description": "snapshot", "inputSchema": {"type": "object"}},
+    {"name": "browser_snapshot", "description": "snapshot", "inputSchema": {"type": "object", "properties": {
+        "filename": {"type": "string"}, "depth": {"type": "number"}}}},
     {"name": "get_rows", "description": "rows", "inputSchema": {"type": "object"}},
 ]
 TOOLS_PAGE_2 = [

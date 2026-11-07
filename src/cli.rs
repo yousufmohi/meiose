@@ -100,9 +100,10 @@ pub struct ProxyFlags {
     pub no_store: bool,
 
     /// Largest Playwright snapshot to send, in tokens (0 = no limit). Pages
-    /// over it are trimmed aggressively, then reduced to a searchable outline
-    #[arg(long, default_value_t = 0, value_name = "TOKENS")]
-    pub budget: usize,
+    /// over it are trimmed aggressively, then reduced to a searchable outline.
+    /// Without this flag: 20000, or no limit when the client is Claude Code
+    #[arg(long, value_name = "TOKENS")]
+    pub budget: Option<usize>,
 }
 
 #[derive(Debug, Args)]

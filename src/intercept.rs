@@ -28,6 +28,9 @@ use crate::search;
 use crate::store::{CallRecord, StoreHandle};
 
 pub const EXPAND_TOOL: &str = "meiose_expand";
+/// `--budget` when the flag is not given. Claude Code is exempt: it already
+/// saves large results to a file, and in the eval a budget saved nothing there.
+pub const AUTO_BUDGET_TOKENS: usize = 20_000;
 /// Only diff against a snapshot the agent saw this recently.
 const DIFF_MAX_AGE: Duration = Duration::from_secs(10 * 60);
 /// Requests whose responses never come (cancelled, crashed) must not leak.
@@ -40,6 +43,9 @@ pub struct Config {
     pub diff: bool,
     /// Largest Playwright snapshot to send, in bytes; 0 means no limit.
     pub budget_bytes: usize,
+    /// True when `budget_bytes` is the default rather than the user's choice:
+    /// it does not apply to a client that `initialize` says is Claude Code.
+    pub auto_budget: bool,
     /// Short label for stats, e.g. "npx-playwright-mcp".
     pub server: String,
     /// Identity of this server ([`crate::store::server_key`]): expand only
@@ -57,6 +63,8 @@ struct State {
     pending: HashMap<String, Pending>,
     expand_advertised: bool,
     server_has_expand: bool,
+    /// The client is Claude Code (from `initialize`).
+    client_is_claude_code: bool,
     /// (page url, yaml body exactly as sent to the agent, when)
     last_snapshot: Option<(String, String, Instant)>,
 }
@@ -171,6 +179,14 @@ impl Interceptor {
                 }
                 insert_pending(&mut st, id_key, Pending::ToolCall { name });
             }
+            "initialize" => {
+                let name = params
+                    .get("clientInfo")
+                    .and_then(|c| c.get("name"))
+                    .and_then(Value::as_str)
+                    .unwrap_or("");
+                self.state().client_is_claude_code = is_claude_code(name);
+            }
             "tools/list" => {
                 let first_page = params.get("cursor").is_none_or(Value::is_null);
                 insert_pending(&mut self.state(), id_key, Pending::ToolsList { first_page });
@@ -264,10 +280,10 @@ impl Interceptor {
         let id_raw = env.id?.get();
         match pending {
             Pending::ToolsList { first_page } => {
-                if !(self.active() && first_page) {
+                if !self.active() {
                     return None;
                 }
-                self.inject_expand_tool(id_raw, result_raw, rpc::terminator(frame))
+                self.rewrite_tools(id_raw, result_raw, first_page, rpc::terminator(frame))
             }
             Pending::ToolCall { name } => {
                 self.trim_tool_result(&name, id_raw, result_raw, rpc::terminator(frame))
@@ -275,12 +291,25 @@ impl Interceptor {
         }
     }
 
-    fn inject_expand_tool(&self, id_raw: &str, result_raw: &str, term: &[u8]) -> Option<Vec<u8>> {
+    /// The tool list the agent sees: the option that would save snapshots past
+    /// meiose removed, and `meiose_expand` added.
+    fn rewrite_tools(
+        &self,
+        id_raw: &str,
+        result_raw: &str,
+        first_page: bool,
+        term: &[u8],
+    ) -> Option<Vec<u8>> {
+        // A later page with nothing to change stays byte-for-byte.
+        if !first_page && !result_raw.contains("browser_snapshot") {
+            return None;
+        }
         let mut result: Value = serde_json::from_str(result_raw).ok()?;
         let tools = result.get_mut("tools")?.as_array_mut()?;
-        if tools
-            .iter()
-            .any(|t| t.get("name").and_then(Value::as_str) == Some(EXPAND_TOOL))
+        if first_page
+            && tools
+                .iter()
+                .any(|t| t.get("name").and_then(Value::as_str) == Some(EXPAND_TOOL))
         {
             tracing::warn!(
                 "the MCP server already has a tool named {EXPAND_TOOL}; trimming is disabled for this session"
@@ -288,8 +317,13 @@ impl Interceptor {
             self.state().server_has_expand = true;
             return None;
         }
-        tools.push(expand_tool_definition());
-        self.state().expand_advertised = true;
+        for tool in tools.iter_mut() {
+            remove_snapshot_file_option(tool);
+        }
+        if first_page {
+            tools.push(expand_tool_definition());
+            self.state().expand_advertised = true;
+        }
         let mut out = rpc::response_with_raw_result(id_raw, &result.to_string());
         out.extend_from_slice(term);
         Some(out)
@@ -440,13 +474,16 @@ impl Interceptor {
         view: &str,
         cx: &TrimContext,
     ) -> Option<(&'static str, String)> {
-        let budget = self.cfg.budget_bytes;
+        let exempt = self.cfg.auto_budget && self.state().client_is_claude_code;
+        let budget = if exempt { 0 } else { self.cfg.budget_bytes };
         if budget == 0 || view.len() <= budget {
             return None;
         }
         // A CRLF page is handled as LF, like the handler does.
         let text = playwright::normalized(text);
-        playwright::find_block(&text)?;
+        if !playwright::parses(&text) {
+            return None;
+        }
         let hard = TrimContext {
             expand_id: cx.expand_id,
             mode: Mode::Aggressive,
@@ -480,6 +517,29 @@ fn insert_pending(st: &mut State, key: String, p: Pending) {
         st.pending.clear();
     }
     st.pending.insert(key, p);
+}
+
+fn is_claude_code(client_name: &str) -> bool {
+    matches!(
+        client_name.to_ascii_lowercase().as_str(),
+        "claude code" | "claude-code"
+    )
+}
+
+/// Playwright's `browser_snapshot` can save the page to a file, which the
+/// agent then reads back without meiose seeing it. In Cline that bypassed the
+/// trimming. Only the advertised option goes; a call using it is still
+/// forwarded as is.
+fn remove_snapshot_file_option(tool: &mut Value) {
+    if tool.get("name").and_then(Value::as_str) != Some("browser_snapshot") {
+        return;
+    }
+    if let Some(props) = tool
+        .pointer_mut("/inputSchema/properties")
+        .and_then(Value::as_object_mut)
+    {
+        props.shift_remove("filename");
+    }
 }
 
 pub fn expand_tool_definition() -> Value {

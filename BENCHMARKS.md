@@ -226,6 +226,39 @@ budget meets the jump:
   with none. The Wikipedia run with meiose was aborted before it answered, and
   the `Vec` tasks hit the free quota, so this is not yet a Cline result.
 
+### Long sessions
+
+`python eval/run_eval.py --long` runs 5 tasks of about 20 to 30 turns, from
+`eval/long_tasks.json`, Claude Haiku, 2026-11-07. Claude Code, 3 runs per task,
+all 30 runs correct:
+
+| task | cost without meiose | cost with meiose | saved |
+|---|---:|---:|---:|
+| `long-books-prices` | $0.0907 | $0.0361 | 60% |
+| `long-wiki-years` | $0.0131 | $0.0110 | 16% |
+| `long-todo-steps` | $0.0174 | $0.0152 | 13% |
+| `long-quotes-count` | $0.0184 | $0.0170 | 7% |
+| `long-rust-versions` | $0.0154 | $0.0172 | -12% |
+| all 5 | $0.0310 | $0.0193 | 38% (noise, range -2% to 55%) |
+| all but `long-books-prices` | $0.0161 | $0.0151 | 6% (noise, range -6% to 14%) |
+
+The books task saved 60% in each of its 3 runs. Its cost without meiose is 2.6x
+what its tokens would cost at the rate below Haiku's price jump, so it appears
+to cross that line. meiose cuts the tokens written to the cache from 124,306 to
+86,680 and reduces that excess, though not all of it. The other four tasks stay
+under the line, or have their large pages saved to a file by Claude Code, and
+gain little. The saving in Claude Code therefore depends on the session.
+
+Test agent, 1 run per task, all 10 runs correct, so these are a first look:
+
+| task | cost without meiose | cost with meiose |
+|---|---:|---:|
+| `long-wiki-years` | $1.1871 | $0.0887 |
+| `long-rust-versions` | $1.0981 | $0.0996 |
+| `long-books-prices` | $0.0646 | $0.0225 |
+| `long-quotes-count` | $0.0158 | $0.0120 |
+| `long-todo-steps` | $0.0080 | $0.0062 |
+
 ### Listing pages and the URL rules
 
 The default mode hides a link's URL when the same URL already appeared on the
@@ -263,6 +296,7 @@ cargo build --release
 python eval/run_eval.py --quick                    # 5 tasks, 1 run per mode
 python eval/run_eval.py --modes baseline,meiose,budget20000 --runs 3
 python eval/run_eval.py --client loop --modes baseline,meiose,budget20000 --runs 3
+python eval/run_eval.py --long --modes baseline,meiose --runs 3 --timeout 1800
 cargo run --release --example report               # per-page table
 cargo run --release --example measure              # budget and query totals
 cargo run --release --example search_probe         # are answers in query results

@@ -248,7 +248,8 @@ def run_one(task: dict, mode: str, rep: int, args, out_dir: Path) -> dict:
     started = time.time()
     if args.client == "loop":
         env = dict(os.environ, MEIOSE_DATA_DIR=str(data), MEIOSE_EXACT_TOKENS="1")
-        d = agent_loop.run(task["prompt"] + LOOP_INSTRUCTIONS, cmd, env, args.model, TOOLS, args.timeout)
+        d = agent_loop.run(task["prompt"] + LOOP_INSTRUCTIONS, cmd, env, args.model, TOOLS, args.timeout,
+                           max_steps=80 if args.long else agent_loop.MAX_STEPS)
     elif args.client == "cline":
         d = run_cline(task, cmd, {"MEIOSE_DATA_DIR": str(data), "MEIOSE_EXACT_TOKENS": "1"}, args, work)
     else:
@@ -395,6 +396,8 @@ def main():
     ap.add_argument("--client", choices=["claude-code", "loop", "cline"], default="claude-code")
     ap.add_argument("--quick", action="store_true", help="5 representative tasks, 1 run per mode")
     ap.add_argument("--large", action="store_true", help="only the 4 large-page tasks")
+    ap.add_argument("--long", action="store_true",
+                    help="the long-session tasks in eval/long_tasks.json (separate from the 19)")
     ap.add_argument("--runs", type=int, default=2)
     ap.add_argument("--model", default="haiku")
     ap.add_argument("--modes", default="baseline,meiose")
@@ -414,7 +417,8 @@ def main():
     if not shutil.which("npx"):
         sys.exit("`npx` not found on PATH: install Node.js")
 
-    all_tasks = json.loads((ROOT / "eval" / "tasks.json").read_text(encoding="utf-8"))
+    tasks_file = "long_tasks.json" if args.long else "tasks.json"
+    all_tasks = json.loads((ROOT / "eval" / tasks_file).read_text(encoding="utf-8"))
     wanted = [t for t in args.tasks.split(",") if t] or (QUICK if args.quick else LARGE if args.large else [])
     tasks = [t for t in all_tasks if not wanted or t["id"] in wanted]
     if args.quick:

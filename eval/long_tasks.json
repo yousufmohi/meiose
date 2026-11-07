@@ -1,0 +1,32 @@
+[
+  {
+    "id": "long-books-prices",
+    "prompt": "On https://books.toscrape.com open each of these categories in turn using the links on the site: Travel, Mystery, Historical Fiction, Sequential Art, Classics, Philosophy, Romance, Womens Fiction. Take a snapshot of each category page and note the price of the first book listed. What is the sum of those eight prices, in pounds?",
+    "answer": "312\\.67",
+    "notes": "8 medium pages, about 20 turns"
+  },
+  {
+    "id": "long-quotes-count",
+    "prompt": "On https://quotes.toscrape.com go through pages 1 to 10 in order, taking a snapshot of each page. How many quotes in total on those ten pages are by Albert Einstein?",
+    "answer": "\\b10\\b",
+    "notes": "10 small pages"
+  },
+  {
+    "id": "long-rust-versions",
+    "prompt": "Using the Rust standard library docs at doc.rust-lang.org, open each of these pages and take a snapshot: std/vec/struct.Vec.html, std/string/struct.String.html, std/collections/struct.HashMap.html, std/option/enum.Option.html, std/result/enum.Result.html. Report the Rust version in which each of these methods became stable, as the page shows it: Vec::extract_if, String::retain, HashMap::retain, Option::zip, Result::inspect. Give all five on one line.",
+    "answer": "(?=.*1\\.87)(?=.*1\\.26)(?=.*1\\.18)(?=.*1\\.46)(?=.*1\\.76)",
+    "notes": "5 very large pages"
+  },
+  {
+    "id": "long-wiki-years",
+    "prompt": "Open each of these English Wikipedia articles and take a snapshot: Go (programming language), Python (programming language), C (programming language), Java (programming language), Ruby (programming language), Perl. From each article's infobox, read the year the language first appeared. What is the sum of the six years?",
+    "answer": "11,?949",
+    "notes": "6 large pages"
+  },
+  {
+    "id": "long-todo-steps",
+    "prompt": "Open https://demo.playwright.dev/todomvc. Add these todos one at a time, taking a snapshot after each: milk, eggs, bread, tea, rice, salt, soap, oil. Then mark eggs, tea and salt as completed, taking a snapshot after each. What number does the items-left counter show?",
+    "answer": "\\b5\\b",
+    "notes": "one page, many repeat snapshots (diffs), about 25 turns"
+  }
+]

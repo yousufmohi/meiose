@@ -113,6 +113,12 @@ def tool_stats(db: Path) -> dict:
         con.close()
 
 
+def request_usage(u: dict) -> list:
+    """[input, cache read, cache write, output] tokens of one model request."""
+    return [u.get(k, 0) or 0 for k in ("input_tokens", "cache_read_input_tokens",
+                                       "cache_creation_input_tokens", "output_tokens")]
+
+
 def run_claude_code(task, cmd, env, args, work: Path) -> dict:
     cfg = {"mcpServers": {"pw": {"command": cmd[0], "args": cmd[1:], "env": env}}}
     (work / "mcp.json").write_text(json.dumps(cfg), encoding="utf-8")
@@ -128,6 +134,9 @@ def run_claude_code(task, cmd, env, args, work: Path) -> dict:
         return {"is_error": True, "result": f"TIMEOUT after {args.timeout}s"}
     d = {"is_error": True, "result": "no result event"}
     offloads = reads = 0
+    # One entry per model request: stream-json repeats a message's usage on
+    # each of its content blocks, so the last line for a message id wins.
+    requests = {}
     for line in p.stdout.splitlines():
         try:
             m = json.loads(line)
@@ -139,11 +148,14 @@ def run_claude_code(task, cmd, env, args, work: Path) -> dict:
             for c in content:
                 if isinstance(c, dict) and c.get("type") == "tool_result" and OFFLOAD.search(json.dumps(c.get("content"))):
                     offloads += 1
+        if m.get("type") == "assistant" and isinstance(msg, dict) and msg.get("usage"):
+            requests[msg.get("id") or len(requests)] = request_usage(msg["usage"])
         if m.get("type") == "assistant" and isinstance(content, list):
             reads += sum(1 for c in content if isinstance(c, dict) and c.get("type") == "tool_use" and c.get("name") == "Read")
         if m.get("type") == "result":
             d = m
     d["offloads"], d["reads"] = offloads, reads
+    d["requests"] = list(requests.values())
     return d
 
 
@@ -248,7 +260,8 @@ def run_one(task: dict, mode: str, rep: int, args, out_dir: Path) -> dict:
     started = time.time()
     if args.client == "loop":
         env = dict(os.environ, MEIOSE_DATA_DIR=str(data), MEIOSE_EXACT_TOKENS="1")
-        d = agent_loop.run(task["prompt"] + LOOP_INSTRUCTIONS, cmd, env, args.model, TOOLS, args.timeout)
+        d = agent_loop.run(task["prompt"] + LOOP_INSTRUCTIONS, cmd, env, args.model, TOOLS, args.timeout,
+                           max_steps=80 if args.long else agent_loop.MAX_STEPS)
     elif args.client == "cline":
         d = run_cline(task, cmd, {"MEIOSE_DATA_DIR": str(data), "MEIOSE_EXACT_TOKENS": "1"}, args, work)
     else:
@@ -278,6 +291,8 @@ def run_one(task: dict, mode: str, rep: int, args, out_dir: Path) -> dict:
         "reads": d.get("reads", 0),
         "largest_tool_result_chars": d.get("largest_tool_result_chars"),
         "tools_used": d.get("tools_used", []),
+        "requests": d.get("requests", []),
+        "models": sorted(d.get("modelUsage") or []),
     }
     rec["billed_tokens"] = (rec["input_tokens"] + rec["cache_write_tokens"]
                             + rec["cache_read_tokens"] + rec["output_tokens"])
@@ -395,6 +410,8 @@ def main():
     ap.add_argument("--client", choices=["claude-code", "loop", "cline"], default="claude-code")
     ap.add_argument("--quick", action="store_true", help="5 representative tasks, 1 run per mode")
     ap.add_argument("--large", action="store_true", help="only the 4 large-page tasks")
+    ap.add_argument("--long", action="store_true",
+                    help="the long-session tasks in eval/long_tasks.json (separate from the 19)")
     ap.add_argument("--runs", type=int, default=2)
     ap.add_argument("--model", default="haiku")
     ap.add_argument("--modes", default="baseline,meiose")
@@ -414,7 +431,8 @@ def main():
     if not shutil.which("npx"):
         sys.exit("`npx` not found on PATH: install Node.js")
 
-    all_tasks = json.loads((ROOT / "eval" / "tasks.json").read_text(encoding="utf-8"))
+    tasks_file = "long_tasks.json" if args.long else "tasks.json"
+    all_tasks = json.loads((ROOT / "eval" / tasks_file).read_text(encoding="utf-8"))
     wanted = [t for t in args.tasks.split(",") if t] or (QUICK if args.quick else LARGE if args.large else [])
     tasks = [t for t in all_tasks if not wanted or t["id"] in wanted]
     if args.quick:

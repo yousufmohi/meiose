@@ -103,8 +103,9 @@ def _first_json(text: str):
 
 
 def run(prompt: str, server_cmd: list, env: dict, model: str, allowed: list,
-        timeout: int) -> dict:
+        timeout: int, max_steps: int = MAX_STEPS) -> dict:
     deadline = time.time() + timeout
+    requests = []
     work = tempfile.mkdtemp(prefix="meiose-loop-")
     usage = {"input_tokens": 0, "cache_creation_input_tokens": 0,
              "cache_read_input_tokens": 0, "output_tokens": 0}
@@ -138,6 +139,10 @@ def run(prompt: str, server_cmd: list, env: dict, model: str, allowed: list,
                     continue
                 for k in usage:
                     usage[k] += (m.get("usage") or {}).get(k, 0) or 0
+                u = m.get("usage") or {}
+                requests.append([u.get(k, 0) or 0 for k in (
+                    "input_tokens", "cache_read_input_tokens",
+                    "cache_creation_input_tokens", "output_tokens")])
                 out["total_cost_usd"] = m.get("total_cost_usd") or out["total_cost_usd"]
                 out["num_turns"] += 1
                 if m.get("is_error"):
@@ -145,7 +150,7 @@ def run(prompt: str, server_cmd: list, env: dict, model: str, allowed: list,
                 return m.get("result") or ""
 
         reply = say(prompt)
-        for _ in range(MAX_STEPS):
+        for _ in range(max_steps):
             obj = _first_json(reply)
             if obj and "answer" in obj:
                 out["result"] = f"ANSWER: {obj['answer']}"
@@ -162,7 +167,7 @@ def run(prompt: str, server_cmd: list, env: dict, model: str, allowed: list,
                 reply = say("Reply with exactly one JSON object, as described.")
         else:
             out["is_error"] = True
-            out["result"] = f"gave up after {MAX_STEPS} steps"
+            out["result"] = f"gave up after {max_steps} steps"
     except queue.Empty:
         out["is_error"], out["result"] = True, f"TIMEOUT after {timeout}s"
     except Exception as e:  # report, don't crash the whole eval
@@ -177,4 +182,5 @@ def run(prompt: str, server_cmd: list, env: dict, model: str, allowed: list,
         mcp.close()
         shutil.rmtree(work, ignore_errors=True)
     out["usage"] = usage
+    out["requests"] = requests
     return out

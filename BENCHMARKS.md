@@ -197,8 +197,10 @@ that table the "default" row is the previous default, now `--budget 0`.
 | `claude-haiku-5-5` | 103,715 to 201,685 | $1.00 |
 | `claude-sonnet-5-5` | 32,623 and 115,381 | $4.00 |
 
-So on Haiku the price per token rose 5x between 95,773 and 103,715 tokens, and
-much of the 92% comes from staying under that line. Tokens fell 48%; on a model
+This is published pricing: [Haiku 5.5 charges 5x](https://platform.claude.com/docs/en/about-claude/pricing)
+for a request whose prompt is over 100,000 tokens, counting cache reads and
+writes, and each request is priced on its own. Sonnet 5.5 has no such tier. Much
+of the 92% comes from staying under that line. Tokens fell 48%; on a model
 without the jump, expect a saving closer to that. The full eval has not been run
 on Sonnet. Two large-page tasks with the test agent, 2 runs each, show where the
 budget meets the jump:
@@ -225,6 +227,47 @@ budget meets the jump:
   1 run per task: Vanuatu went from 67,851 tokens with 3 file reads to 32,850
   with none. The Wikipedia run with meiose was aborted before it answered, and
   the `Vec` tasks hit the free quota, so this is not yet a Cline result.
+
+### Long sessions
+
+`python eval/run_eval.py --long` runs 5 tasks of about 20 to 30 turns, from
+`eval/long_tasks.json`, Claude Haiku, 2026-11-06. Claude Code, 3 runs per task,
+all 30 runs correct:
+
+| task | cost without meiose | cost with meiose | saved |
+|---|---:|---:|---:|
+| `long-books-prices` | $0.0907 | $0.0361 | 60% |
+| `long-wiki-years` | $0.0131 | $0.0110 | 16% |
+| `long-todo-steps` | $0.0174 | $0.0152 | 13% |
+| `long-quotes-count` | $0.0184 | $0.0170 | 7% |
+| `long-rust-versions` | $0.0154 | $0.0172 | -12% |
+| all 5 | $0.0310 | $0.0193 | 38% (noise, range -2% to 55%) |
+| all but `long-books-prices` | $0.0161 | $0.0151 | 6% (noise, range -6% to 14%) |
+
+The books task saved 60% in each of its 3 runs, because of Haiku's 100,000-token
+price line. The eval now records each request's size. In one run:
+
+| | largest request | requests over 100,000 | cost |
+|---|---:|---:|---:|
+| without meiose | 138,893 tokens | 4 of 12 | $0.0908 |
+| with meiose | 101,080 tokens | 1 of 12 | $0.0357 |
+
+Those 4 requests are about $0.068 of the cost without meiose, and would be about
+$0.014 at the lower price. The one request with meiose went over by only 1,080
+tokens and cost about $0.012 instead of $0.002. None of the other four tasks has
+a request over the line in that run (the largest is 72,824 tokens), so they gain
+little. The saving in Claude Code therefore depends on the session reaching the
+line.
+
+Test agent, 1 run per task, all 10 runs correct, so these are a first look:
+
+| task | cost without meiose | cost with meiose |
+|---|---:|---:|
+| `long-wiki-years` | $1.1871 | $0.0887 |
+| `long-rust-versions` | $1.0981 | $0.0996 |
+| `long-books-prices` | $0.0646 | $0.0225 |
+| `long-quotes-count` | $0.0158 | $0.0120 |
+| `long-todo-steps` | $0.0080 | $0.0062 |
 
 ### Listing pages and the URL rules
 
@@ -263,6 +306,7 @@ cargo build --release
 python eval/run_eval.py --quick                    # 5 tasks, 1 run per mode
 python eval/run_eval.py --modes baseline,meiose,budget20000 --runs 3
 python eval/run_eval.py --client loop --modes baseline,meiose,budget20000 --runs 3
+python eval/run_eval.py --long --modes baseline,meiose --runs 3 --timeout 1800
 cargo run --release --example report               # per-page table
 cargo run --release --example measure              # budget and query totals
 cargo run --release --example search_probe         # are answers in query results

@@ -229,7 +229,7 @@ budget meets the jump:
 ### Long sessions
 
 `python eval/run_eval.py --long` runs 5 tasks of about 20 to 30 turns, from
-`eval/long_tasks.json`, Claude Haiku, 2026-11-07. Claude Code, 3 runs per task,
+`eval/long_tasks.json`, Claude Haiku, 2026-11-06. Claude Code, 3 runs per task,
 all 30 runs correct:
 
 | task | cost without meiose | cost with meiose | saved |

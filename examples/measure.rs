@@ -33,6 +33,7 @@ impl Px {
                 trim: true,
                 diff: true,
                 budget_bytes: budget * 3,
+                auto_budget: false,
                 server: "m".into(),
                 server_key: "m".into(),
             },

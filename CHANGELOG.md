@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Playwright snapshots are capped at about 20,000 tokens by default, for every
+  client but Claude Code. A larger page becomes a searchable outline, which can
+  leave out links and buttons; they stay reachable through `meiose_expand`.
+  `--budget N` sets another size and `--budget 0` turns it off.
+- `browser_snapshot` no longer advertises its `filename` option, which let the
+  model save a page to a file and read it back without meiose trimming it.
+- A snapshot that does not parse is forwarded whole under a budget too, instead
+  of becoming an outline.
 - A Playwright snapshot the handler cannot parse (an odd indent, a header it
   does not know) is now forwarded whole. It used to fall through to the
   plain-text handler, which kept the first 16 KB and last 4 KB of the page

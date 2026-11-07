@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  A test agent that sends all tool output to the model: 93% lower cost, 1 more wrong answer out of 57.<br>
+  A test agent that sends all tool output to the model: 92% lower cost, about the same accuracy.<br>
   Claude Code, which already saves large outputs to a file: 7% lower cost, no more wrong answers.
 </p>
 
@@ -41,13 +41,20 @@ Full results are in [BENCHMARKS.md](BENCHMARKS.md).
 
 | agent | cost per task without meiose | cost per task with meiose | cost saved | correct without meiose | correct with meiose |
 |---|---|---|---|---|---|
-| test agent that sends all tool output to the model | $0.0463 | $0.0032 | 93% | 55 of 57 | 54 of 57 |
+| test agent that sends all tool output to the model | $0.0463 | $0.0035 | 92% | 55 of 57 | 57 of 57 |
 | Claude Code | $0.0075 | $0.0069 | 7% | 57 of 57 | 57 of 57 |
 
-The test agent ran with `--budget 20000`. Claude Code ran with meiose's defaults.
+Both ran with meiose's defaults. An earlier run of the test agent with the same
+budget got 54 of 57 right, so treat accuracy as about equal.
 
 Costs vary between runs, so these savings are estimates. The 95% confidence
-range is 44% to 96% for the test agent and 3% to 11% for Claude Code.
+range is 38% to 96% for the test agent and 3% to 11% for Claude Code.
+
+Much of the test agent's saving comes from Claude Haiku's pricing: the price per
+token rose 5x once a request passed about 100,000 tokens, and meiose keeps
+requests under that. Tokens fell 48%, so on a model without that price jump,
+expect a saving closer to that. Sonnet showed no jump between 33,000 and 115,000
+tokens. We have not run the full eval on it.
 
 Per output:
 
@@ -201,9 +208,11 @@ A repeat snapshot of the page you are on is sent as a diff of what changed
 
 ### Budget
 
-`--budget 20000` caps Playwright snapshots at about that many tokens: larger
-pages are trimmed harder, then become a searchable outline. It is off by
-default; see [which settings to use](docs/configuration.md#which-settings-to-use).
+Playwright snapshots are capped at about 20,000 tokens by default: larger pages
+are trimmed harder, then become a searchable outline. Claude Code is exempt,
+because it already saves large results to a file. `--budget N` sets another size
+and `--budget 0` turns it off; see
+[which settings to use](docs/configuration.md#which-settings-to-use).
 
 ### Privacy and storage
 
@@ -230,7 +239,7 @@ arguments never reach the logs. Details in [SECURITY.md](SECURITY.md).
 | flag | |
 |---|---|
 | `--aggressive` | trim harder: hide all non-interactive refs, drop link URLs, shorten more |
-| `--budget TOKENS` | cap Playwright snapshots (0 = no limit, the default) |
+| `--budget TOKENS` | cap Playwright snapshots (0 = no limit; default 20000, or no limit in Claude Code) |
 | `--no-diff` | always send full snapshots |
 | `--no-store` | keep this server's originals in memory only |
 | `--passthrough` | change nothing (stats are still recorded) |
@@ -258,7 +267,7 @@ guarantees and protocol support are in [docs/how-it-works.md](docs/how-it-works.
 
 - In Claude Code the gains are small (7% of cost in the eval), since Claude
   Code already moves outputs over 50,000 characters to a file.
-- `--budget` outlines can leave out links and buttons. They stay reachable
+- Budget outlines can leave out links and buttons. They stay reachable
   through `meiose_expand`, but that is less certain than a full snapshot.
 - A link whose URL appeared earlier on the page is shown without it; it can
   still be clicked.

@@ -330,6 +330,73 @@ fn keep_days_zero_keeps_originals_in_memory_only() {
     assert_eq!(n, 0);
 }
 
+const WIKI_PAGE: &str =
+    "tests/fixtures/playwright/en-wikipedia-org-wiki-rust-programming-language.txt";
+
+fn first_snapshot(flags: &[&str], client: &str) -> String {
+    let mut s = Session::start(WIKI_PAGE, flags);
+    s.init_as(client);
+    let r = s.call("browser_snapshot", json!({}));
+    let t = text_of(&r).to_string();
+    s.finish();
+    t
+}
+
+/// Without `--budget`, a large page is capped for every client but Claude
+/// Code, which already saves large results to a file.
+#[test]
+fn the_default_budget_applies_to_every_client_but_claude_code() {
+    let t = first_snapshot(&[], "Cline");
+    assert!(t.contains("outline only"), "{}", &t[t.len() - 300..]);
+    assert!(t.len() < 62_000, "{} bytes", t.len());
+    for name in ["Claude Code", "claude-code"] {
+        let t = first_snapshot(&[], name);
+        assert!(!t.contains("outline only"), "{name}");
+        assert!(t.len() > 300_000, "{name}: {} bytes", t.len());
+    }
+}
+
+#[test]
+fn an_explicit_budget_wins_over_the_default() {
+    // --budget 0 turns it off for any client.
+    let t = first_snapshot(&["--budget", "0"], "Cline");
+    assert!(!t.contains("outline only"));
+    assert!(t.len() > 300_000, "{} bytes", t.len());
+    // A chosen budget also applies to Claude Code.
+    let t = first_snapshot(&["--budget", "20000"], "Claude Code");
+    assert!(t.contains("outline only"));
+    assert!(t.len() < 62_000, "{} bytes", t.len());
+}
+
+fn snapshot_schema_props(flags: &[&str]) -> Value {
+    let mut s = Session::start(FORM, flags);
+    s.request(
+        "initialize",
+        json!({"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"t","version":"0"}}),
+    );
+    let tools = s.request("tools/list", json!({}));
+    let tool = tools["result"]["tools"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|t| t["name"] == "browser_snapshot")
+        .unwrap()
+        .clone();
+    s.finish();
+    tool["inputSchema"]["properties"].clone()
+}
+
+/// A snapshot saved to a file is read back without meiose seeing it.
+#[test]
+fn the_snapshot_file_option_is_not_advertised() {
+    let props = snapshot_schema_props(&[]);
+    assert!(props.get("filename").is_none(), "{props}");
+    assert!(props.get("depth").is_some(), "{props}");
+    // --passthrough changes nothing.
+    let props = snapshot_schema_props(&["--passthrough"]);
+    assert!(props.get("filename").is_some(), "{props}");
+}
+
 #[test]
 fn diff_after_a_budget_outline_only_refers_to_what_the_agent_saw() {
     // A budget small enough that the form page becomes an outline.

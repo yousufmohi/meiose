@@ -197,8 +197,10 @@ that table the "default" row is the previous default, now `--budget 0`.
 | `claude-haiku-5-5` | 103,715 to 201,685 | $1.00 |
 | `claude-sonnet-5-5` | 32,623 and 115,381 | $4.00 |
 
-So on Haiku the price per token rose 5x between 95,773 and 103,715 tokens, and
-much of the 92% comes from staying under that line. Tokens fell 48%; on a model
+This is published pricing: [Haiku 5.5 charges 5x](https://platform.claude.com/docs/en/about-claude/pricing)
+for a request whose prompt is over 100,000 tokens, counting cache reads and
+writes, and each request is priced on its own. Sonnet 5.5 has no such tier. Much
+of the 92% comes from staying under that line. Tokens fell 48%; on a model
 without the jump, expect a saving closer to that. The full eval has not been run
 on Sonnet. Two large-page tasks with the test agent, 2 runs each, show where the
 budget meets the jump:
@@ -242,12 +244,20 @@ all 30 runs correct:
 | all 5 | $0.0310 | $0.0193 | 38% (noise, range -2% to 55%) |
 | all but `long-books-prices` | $0.0161 | $0.0151 | 6% (noise, range -6% to 14%) |
 
-The books task saved 60% in each of its 3 runs. Its cost without meiose is 2.6x
-what its tokens would cost at the rate below Haiku's price jump, so it appears
-to cross that line. meiose cuts the tokens written to the cache from 124,306 to
-86,680 and reduces that excess, though not all of it. The other four tasks stay
-under the line, or have their large pages saved to a file by Claude Code, and
-gain little. The saving in Claude Code therefore depends on the session.
+The books task saved 60% in each of its 3 runs, because of Haiku's 100,000-token
+price line. The eval now records each request's size. In one run:
+
+| | largest request | requests over 100,000 | cost |
+|---|---:|---:|---:|
+| without meiose | 138,893 tokens | 4 of 12 | $0.0908 |
+| with meiose | 101,080 tokens | 1 of 12 | $0.0357 |
+
+Those 4 requests are about $0.068 of the cost without meiose, and would be about
+$0.014 at the lower price. The one request with meiose went over by only 1,080
+tokens and cost about $0.012 instead of $0.002. None of the other four tasks has
+a request over the line in that run (the largest is 72,824 tokens), so they gain
+little. The saving in Claude Code therefore depends on the session reaching the
+line.
 
 Test agent, 1 run per task, all 10 runs correct, so these are a first look:
 

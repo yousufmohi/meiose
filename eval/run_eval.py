@@ -113,6 +113,12 @@ def tool_stats(db: Path) -> dict:
         con.close()
 
 
+def request_usage(u: dict) -> list:
+    """[input, cache read, cache write, output] tokens of one model request."""
+    return [u.get(k, 0) or 0 for k in ("input_tokens", "cache_read_input_tokens",
+                                       "cache_creation_input_tokens", "output_tokens")]
+
+
 def run_claude_code(task, cmd, env, args, work: Path) -> dict:
     cfg = {"mcpServers": {"pw": {"command": cmd[0], "args": cmd[1:], "env": env}}}
     (work / "mcp.json").write_text(json.dumps(cfg), encoding="utf-8")
@@ -128,6 +134,9 @@ def run_claude_code(task, cmd, env, args, work: Path) -> dict:
         return {"is_error": True, "result": f"TIMEOUT after {args.timeout}s"}
     d = {"is_error": True, "result": "no result event"}
     offloads = reads = 0
+    # One entry per model request: stream-json repeats a message's usage on
+    # each of its content blocks, so the last line for a message id wins.
+    requests = {}
     for line in p.stdout.splitlines():
         try:
             m = json.loads(line)
@@ -139,11 +148,14 @@ def run_claude_code(task, cmd, env, args, work: Path) -> dict:
             for c in content:
                 if isinstance(c, dict) and c.get("type") == "tool_result" and OFFLOAD.search(json.dumps(c.get("content"))):
                     offloads += 1
+        if m.get("type") == "assistant" and isinstance(msg, dict) and msg.get("usage"):
+            requests[msg.get("id") or len(requests)] = request_usage(msg["usage"])
         if m.get("type") == "assistant" and isinstance(content, list):
             reads += sum(1 for c in content if isinstance(c, dict) and c.get("type") == "tool_use" and c.get("name") == "Read")
         if m.get("type") == "result":
             d = m
     d["offloads"], d["reads"] = offloads, reads
+    d["requests"] = list(requests.values())
     return d
 
 
@@ -279,6 +291,8 @@ def run_one(task: dict, mode: str, rep: int, args, out_dir: Path) -> dict:
         "reads": d.get("reads", 0),
         "largest_tool_result_chars": d.get("largest_tool_result_chars"),
         "tools_used": d.get("tools_used", []),
+        "requests": d.get("requests", []),
+        "models": sorted(d.get("modelUsage") or []),
     }
     rec["billed_tokens"] = (rec["input_tokens"] + rec["cache_write_tokens"]
                             + rec["cache_read_tokens"] + rec["output_tokens"])

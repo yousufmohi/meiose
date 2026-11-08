@@ -3,8 +3,8 @@
 ## Reporting a vulnerability
 
 Please report vulnerabilities privately through GitHub: on the
-[repository page](https://github.com/yousufmohi/meiose), open **Security →
-Report a vulnerability**. Don't open a public issue for anything that could
+[repository page](https://github.com/yousufmohi/meiose), open the Security tab
+and choose Report a vulnerability. Don't open a public issue for anything that could
 put users at risk before a fix is out.
 
 Include the meiose version (`meiose --version`), your OS, and the steps or
@@ -51,16 +51,16 @@ contain credentials. meiose must:
 
 ### Out of scope
 
-- **Malware or another program running as your user.** It can read your
+- Malware or another program running as your user. It can read your
   configs, your agent's files and meiose's data directly, and can change the
   meiose binary. File permissions do not protect against your own account.
-- **Someone who can edit your agent's MCP config.** They choose which
+- Someone who can edit your agent's MCP config. They choose which
   commands run; meiose runs what the config says.
-- **The MCP servers themselves**, and what your agent does with their output
+- The MCP servers themselves, and what your agent does with their output
   (prompt injection in page content is passed through like any other text).
-- **Windows file permissions.** meiose's files get the default permissions
+- Windows file permissions. meiose's files get the default permissions
   of your profile folder, which other standard users cannot read.
-- **`meiose record`**, a debugging tool: recordings contain all traffic,
+- `meiose record`, a debugging tool: recordings contain all traffic,
   including anything typed into forms, by design.
 
 ## Release integrity

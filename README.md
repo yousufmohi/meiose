@@ -199,6 +199,9 @@ meiose adds one tool, `meiose_expand`, answered locally:
 A repeat snapshot of the page you are on is sent as a diff of what changed
 (from 133,862 tokens to 79 for an unchanged Wikipedia page). `--no-diff` turns it off.
 
+Claude Code saves results over 50,000 characters to a file, so its model never
+sees them. After a snapshot that size, the next one is sent in full, not as a diff.
+
 ### Budget
 
 `--budget 20000` caps Playwright snapshots at about that many tokens: larger

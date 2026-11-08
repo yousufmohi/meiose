@@ -189,7 +189,10 @@ that is the M6 eval. The structural-ref hiding is the riskiest rule.
   every ref, so it falls back to full). `--no-diff` disables it. Three
   guards (2026-11-06): "Unchanged" is claimed only when the *untrimmed*
   bodies are identical (identical views of a changed page say so and point
-  at expand: under `--aggressive`/`--budget` most of a page is hidden);
+  at expand: under `--aggressive`/`--budget` most of a page is hidden; the
+  server's text is CRLF-normalised before its body is read, since
+  `find_block` refuses a body with a CR, else a CRLF page silently compared
+  trimmed views);
   every diff says to call expand if the previous snapshot is gone (saved to
   a file, a subagent, compaction); and when the client is Claude Code
   (`clientInfo.name` "Claude Code" in `initialize`) no diff is made against

@@ -451,7 +451,9 @@ impl Interceptor {
         if let Some(url) = diff::page_url(view)
             && let Some(body) = diff::body(view)
         {
-            let original = diff::body(text).unwrap_or(body);
+            // The server's text may be CRLF; `find_block` only reads LF bodies.
+            let normalized = playwright::normalized(text);
+            let original = diff::body(&normalized).unwrap_or(body);
             let (prev, visible) = {
                 let mut st = self.state();
                 (st.last_snapshot.take(), st.visible_chars)

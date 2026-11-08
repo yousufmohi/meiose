@@ -155,13 +155,21 @@ recorded with handler "query". Compact JSON (one line, as the official
 GitHub MCP server sends it; the npm server the benchmark used pretty-prints)
 is pretty-printed before the search, since the one matching line would
 otherwise be the whole document (170 KB back for one e-mail address). Lines
-over 600 bytes are shown as a window around the match (context lines from
-their start), so one huge line cannot fill the result; a snapshot element
-line keeps its whole key (role, name, `[ref=…]`) and a JSON field line its
-`"key": `, so a query never returns an element without its ref or a value
-without its key. A query written the way the compact preview shows it
-(`"email":"x"`, `&`) matches nothing pretty-printed, so it falls back
-to the raw text, windowed.
+over 600 bytes are shown as a window (250 bytes each side) around the first
+occurrence of *each* term, windows that touch merged, context lines from
+their start, so one huge line cannot fill the result; the note at the cut
+says how many chars were cut and how many matches fell outside the windows
+("(+1150 chars, 165 more matches)"), so a cut never hides a match silently
+(review of PR #14: one window around the earliest match dropped `Mexico`
+from `Canada|Mexico` and said nothing). A snapshot element line keeps its
+whole key (role, name, `[ref=…]`) and a JSON field line its `"key": `, so a
+query never returns an element without its ref or a value without its key.
+A term written the way the compact preview shows it (`"id":42,`, `&`)
+matches nothing pretty-printed: each such term is looked up in the raw
+text as well, windowed, under its own header "… in the compact text only
+(shown as sent)" (`search_in` reports which terms hit, so an `a|b` where
+only `a` is pretty-printable never drops `b`); when no term matches
+pretty-printed the raw text is searched alone, as before.
 
 **Not yet verified:** that agents succeed as often with trimmed snapshots —
 that is the M6 eval. The structural-ref hiding is the riskiest rule.

@@ -490,7 +490,9 @@ pub fn expand_tool_definition() -> Value {
             [meiose: … call meiose_expand(\"<id>\") …] and you need something that was left out: \
             refs of non-interactive elements, shortened text, omitted rows or items, or the full \
             page behind a snapshot diff. Pass query to get only the matching lines with their \
-            context, which is much smaller; prefer it unless you need everything.",
+            context, which is much smaller; prefer it unless you need everything. A very long \
+            line is cut to a window around each match, with a note of what was cut, and compact \
+            JSON is shown pretty-printed.",
         "inputSchema": {
             "type": "object",
             "properties": {

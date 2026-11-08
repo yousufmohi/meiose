@@ -25,7 +25,10 @@
   the one line that matched was all of it: 170 KB back for a query that
   matched one e-mail address. Compact JSON is pretty-printed before the
   search, and a line longer than 600 characters is shown as a window around
-  the match.
+  each matched term, with a note of how many characters were cut and how
+  many further matches the line holds. A term written the way the compact
+  preview shows it (`"id":42,` with no space) is looked up in the text as
+  sent, and the reply says so.
 
 ## 0.3.0 — 2026-11-03
 

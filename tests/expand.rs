@@ -106,6 +106,21 @@ fn query_on_compact_json_returns_only_the_matching_item() {
     assert!(t.contains("\"id\": 500"), "{t}");
     assert!(!t.contains("user499") && !t.contains("user501"), "{t}");
     assert!(t.len() < 1_000, "{} bytes:\n{t}", t.len());
+    // An alternative copied from the compact preview (two fields on one
+    // line) occurs nowhere pretty-printed: it is looked up in the text as
+    // sent instead of being dropped.
+    let hit = s.call(
+        "meiose_expand",
+        json!({"id": id, "query": r#"user500@example.com|"user600", "email""#}),
+    );
+    let t = text_of(&hit);
+    assert!(t.contains("\"id\": 500"), "{t}");
+    assert!(t.contains("in the compact text only"), "{t}");
+    assert!(
+        t.contains(r#""id": 600, "name": "user600", "email""#),
+        "{t}"
+    );
+    assert!(t.len() < 2_000, "{} bytes:\n{t}", t.len());
     s.finish();
 }
 

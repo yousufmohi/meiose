@@ -71,12 +71,12 @@ python eval/run_eval.py --client loop --modes baseline,meiose,budget20000   # no
 Each run is `claude -p` with Playwright MCP, identical prompt, model and
 allowed tools. The report (`eval/results/<time>/report.md`) has, per mode:
 
-- **success** — answers checked against verified answer keys;
-- **total tokens / cost** — from Claude's own usage report (input + cache
-  writes + cache reads + output), so this is real billed context;
-- **tool-output tokens** — what the browser tools returned, before and after
-  meiose (incl. anything expanded);
-- **failures where baseline succeeded**, with the meiose handler that touched
+- success: answers checked against verified answer keys.
+- total tokens and cost: from Claude's own usage report (input + cache
+  writes + cache reads + output), so this is real billed context.
+- tool-output tokens: what the browser tools returned, before and after
+  meiose, including anything expanded.
+- failures where the baseline succeeded, with the meiose handler that touched
   each call, so a harmful rule can be found.
 
 The baseline runs Playwright through `meiose --passthrough` (byte-identical

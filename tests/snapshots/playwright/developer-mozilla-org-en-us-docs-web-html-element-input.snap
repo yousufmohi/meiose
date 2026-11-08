@@ -3659,9 +3659,11 @@ source: tests/playwright_fixtures.rs
                 - table [ref=f2e3535]:
                   - rowgroup:
                     - row:
+                      - cell
                       - columnheader "desktop" [ref=f2e3539]
                       - columnheader "mobile" [ref=f2e3542]
                     - row:
+                      - cell
                       - columnheader "Chrome" [ref=f2e3547]
                       - columnheader "Edge" [ref=f2e3550]
                       - columnheader "Firefox" [ref=f2e3553]
@@ -9292,4 +9294,4 @@ source: tests/playwright_fixtures.rs
           - link "a Creative Commons license" [ref=f2e3322]: /docs/MDN/Writing_guidelines/Attrib_copyright_license
           - text: .
 ```
-[meiose: 204 nodes trimmed, 5320 non-interactive refs hidden, 284 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]
+[meiose: 202 nodes trimmed, 5322 non-interactive refs hidden, 284 repeated URLs hidden — call meiose_expand("EXPAND_ID") for the full snapshot, or add query="…" for only the lines you need]

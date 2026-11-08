@@ -495,15 +495,18 @@ impl Interceptor {
         cx: &TrimContext,
     ) -> Option<(&'static str, String)> {
         let budget = self.cfg.budget_bytes;
-        if budget == 0 || view.len() <= budget || playwright::find_block(text).is_none() {
+        if budget == 0 || view.len() <= budget {
             return None;
         }
+        // A CRLF page is handled as LF, like the handler does.
+        let text = playwright::normalized(text);
+        playwright::find_block(&text)?;
         let hard = TrimContext {
             expand_id: cx.expand_id,
             mode: Mode::Aggressive,
         };
         let aggressive =
-            playwright::trim_snapshot(text, &hard).map_or_else(|| text.to_string(), |t| t.text);
+            playwright::trim_snapshot(&text, &hard).map_or_else(|| text.to_string(), |t| t.text);
         if aggressive.len() <= budget {
             return Some(("playwright-budget", aggressive));
         }

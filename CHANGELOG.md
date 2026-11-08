@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+- A Playwright snapshot the handler cannot parse (an odd indent, a header it
+  does not know) is now forwarded whole. It used to fall through to the
+  plain-text handler, which kept the first 16 KB and last 4 KB of the page
+  and so dropped most of its interactive refs; a repeat snapshot was then
+  diffed against that cut. The older `- Page Snapshot` and `- Page Snapshot:`
+  headers and CRLF line endings are now trimmed normally.
+- Empty table cells are kept, so a row's values stay in their columns (MDN
+  compatibility tables, Hacker News). An empty cell used to be dropped, and
+  everything after it in the row moved one column left.
+- `meiose install` no longer reverts edits another program made to a config
+  file while its `[y/N]` question was open. Claude Code rewrites
+  `~/.claude.json` constantly (startup counters, project entries, servers
+  added with `claude mcp add`); the plan was computed before the question and
+  written after it, so those edits were silently lost. The file is now
+  written only if it is still what the diff was computed from; otherwise
+  install plans again from the current content, and asks again if the diff
+  changed.
 - Snapshot diffs no longer assume the agent has the previous snapshot. A
   repeat snapshot says "unchanged" only when the page itself is unchanged,
   not just the trimmed view (under `--aggressive` or `--budget` most of a

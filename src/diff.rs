@@ -40,7 +40,14 @@ pub fn body(text: &str) -> Option<&str> {
 
 /// Render `new_text` (a full, possibly trimmed snapshot) as a diff against
 /// `prev_body`. `None` if the change is too large for a diff to help.
-pub fn render(prev_body: &str, new_text: &str, expand_id: &str) -> Option<String> {
+/// `page_unchanged` says whether the untrimmed page is identical to the
+/// previous one: only then may an unchanged view be reported as "unchanged".
+pub fn render(
+    prev_body: &str,
+    new_text: &str,
+    expand_id: &str,
+    page_unchanged: bool,
+) -> Option<String> {
     let block = find_block(new_text)?;
     let new_body = &new_text[block.clone()];
     let old: Vec<&str> = prev_body.split('\n').collect();
@@ -129,9 +136,15 @@ pub fn render(prev_body: &str, new_text: &str, expand_id: &str) -> Option<String
     // Header up to "### Snapshot\n"; drop the "```yaml" opener line.
     let header_end = new_text[..block.start].rfind("```yaml")?;
     text.push_str(&new_text[..header_end]);
-    if changed == 0 {
+    if changed == 0 && page_unchanged {
         text.push_str(
             "Unchanged since your previous snapshot of this page: every element and ref is as before.\n",
+        );
+    } else if changed == 0 {
+        text.push_str(
+            "Your view of this page is unchanged since your previous snapshot (every ref shown is still \
+             valid), but the page changed in parts the trimmed view does not show (hidden refs, \
+             shortened text, omitted items): call meiose_expand for the full page if that matters.\n",
         );
     } else {
         text.push_str(&format!(
@@ -154,7 +167,9 @@ pub fn render(prev_body: &str, new_text: &str, expand_id: &str) -> Option<String
         text.push('\n');
     }
     text.push_str(&format!(
-        "[meiose: diff vs your previous snapshot — call meiose_expand(\"{expand_id}\") for the full snapshot]"
+        "[meiose: diff vs your previous snapshot — call meiose_expand(\"{expand_id}\") for the full \
+         snapshot; do that if you no longer have the previous one (saved to a file, taken by another \
+         agent, or lost to compaction)]"
     ));
     (text.len() < new_text.len()).then_some(text)
 }
@@ -230,7 +245,7 @@ mod tests {
     fn small_change_becomes_a_diff_with_ancestor_context() {
         let before = page(false);
         let after = page(true);
-        let d = render(body(&before).unwrap(), &after, "x1").unwrap();
+        let d = render(body(&before).unwrap(), &after, "x1", false).unwrap();
         assert!(d.starts_with(
             "### Page\n- Page URL: https://x.test/a\n- Page Title: T\n### Snapshot\n"
         ));
@@ -240,15 +255,36 @@ mod tests {
             !d.contains("filler text"),
             "unchanged lines must not be repeated"
         );
-        assert!(d.ends_with("call meiose_expand(\"x1\") for the full snapshot]"));
+        assert!(
+            d.contains("call meiose_expand(\"x1\") for the full snapshot"),
+            "{d}"
+        );
+        // The agent may not have the previous snapshot at all (saved to a
+        // file by its client, a subagent, context compaction).
+        assert!(d.ends_with("if you no longer have the previous one (saved to a file, taken by another agent, or lost to compaction)]"), "{d}");
         assert!(d.len() < after.len());
     }
 
     #[test]
     fn identical_snapshot_says_so() {
         let t = page(false);
-        let d = render(body(&t).unwrap(), &t, "x2").unwrap();
+        let d = render(body(&t).unwrap(), &t, "x2", true).unwrap();
         assert!(d.contains("Unchanged since your previous snapshot"));
+        assert!(d.contains("every element and ref is as before"));
+        assert!(!d.contains("```diff"));
+        assert!(d.contains("meiose_expand(\"x2\")"));
+    }
+
+    #[test]
+    fn identical_view_of_a_changed_page_does_not_claim_the_page_is_unchanged() {
+        // Under --aggressive or --budget most of a page is hidden; two
+        // trimmed views can be the same while the page is not.
+        let t = page(false);
+        let d = render(body(&t).unwrap(), &t, "x5", false).unwrap();
+        assert!(!d.contains("Unchanged since"), "{d}");
+        assert!(!d.contains("every element and ref is as before"), "{d}");
+        assert!(d.contains("parts the trimmed view does not show"), "{d}");
+        assert!(d.contains("meiose_expand(\"x5\")"));
         assert!(!d.contains("```diff"));
     }
 
@@ -262,7 +298,7 @@ mod tests {
             "https://x.test/",
             "- main [ref=m1]:\n  - button \"z\" [ref=z1]\n  - button \"y\" [ref=z2]",
         );
-        assert!(render(body(&a).unwrap(), &b, "x3").is_none());
+        assert!(render(body(&a).unwrap(), &b, "x3", false).is_none());
     }
 
     #[test]
@@ -272,7 +308,7 @@ mod tests {
             "```\n",
             "```\n### Events\n- New console entries: c.log\n[meiose: 3 nodes trimmed — call meiose_expand(\"old\") for the full snapshot]",
         );
-        let d = render(body(&before).unwrap(), &after, "x4").unwrap();
+        let d = render(body(&before).unwrap(), &after, "x4", false).unwrap();
         assert!(d.contains("### Events\n- New console entries: c.log\n"));
         assert!(!d.contains("\"old\""));
         assert!(d.contains("meiose_expand(\"x4\")"));

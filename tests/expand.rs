@@ -196,6 +196,111 @@ fn expand_with_a_query_returns_only_matching_lines() {
     s.finish();
 }
 
+/// "Unchanged" is claimed only when the page itself is unchanged. Here a
+/// collapsed wrapper's ref changes: the trimmed view is identical, the page
+/// is not.
+#[test]
+fn an_identical_view_of_a_changed_page_is_not_reported_as_unchanged() {
+    let mut s = Session::start(FORM, &[]);
+    s.init();
+    let first = s.call("browser_snapshot", json!({}));
+    assert!(
+        !text_of(&first).contains("[ref=e100]"),
+        "e100 is a collapsed wrapper"
+    );
+    let second = s.call(
+        "browser_snapshot",
+        json!({"replace": ["[ref=e100]", "[ref=e900]"]}),
+    );
+    let d = text_of(&second);
+    assert!(!d.contains("Unchanged since"), "{d}");
+    assert!(d.contains("parts the trimmed view does not show"), "{d}");
+    assert!(d.contains("meiose_expand(\""), "{d}");
+    // Really unchanged: say so.
+    let third = s.call(
+        "browser_snapshot",
+        json!({"replace": ["[ref=e100]", "[ref=e900]"]}),
+    );
+    assert!(text_of(&third).contains("Unchanged since your previous snapshot"));
+    s.finish();
+}
+
+/// The same guard on a CRLF page. The untrimmed body is read from the
+/// server's text, which is normalised first: `find_block` refuses a body
+/// with carriage returns, and without the normalisation the comparison
+/// silently fell back to the trimmed views. Under `--aggressive` every
+/// inert ref is hidden, so a changed ref on a `generic` line leaves the
+/// view identical while the page differs.
+#[test]
+fn a_crlf_page_with_a_hidden_change_is_not_reported_as_unchanged() {
+    const WIKI: &str =
+        "tests/fixtures/playwright/en-wikipedia-org-wiki-rust-programming-language.txt";
+    let text = std::fs::read_to_string(root().join(WIKI))
+        .unwrap()
+        .replace('\n', "\r\n");
+    let generic = text
+        .lines()
+        .find(|l| l.trim_start().starts_with("- generic [ref=e") && l.ends_with("]:"))
+        .expect("a bare generic wrapper with a ref")
+        .trim_start()
+        .to_string();
+    let changed = text.replacen(&generic, "- generic [ref=e99999]:", 1);
+    assert_ne!(changed, text);
+    let mut s = Session::start(WIKI, &["--aggressive"]);
+    s.init();
+    let first = s.call("echo", json!({"text": text}));
+    let first = text_of(&first);
+    let r = &generic[generic.find("[ref=").unwrap()..generic.find("]:").unwrap() + 1];
+    assert!(!first.contains(r), "{r} must be hidden under --aggressive");
+    assert!(!first.contains('\r'));
+    let second = s.call("echo", json!({"text": changed}));
+    let d = text_of(&second);
+    let head = &d[..500.min(d.len())];
+    assert!(!d.contains("Unchanged since"), "{head}");
+    assert!(d.contains("parts the trimmed view does not show"), "{head}");
+    // The same CRLF page again really is unchanged.
+    let third = s.call("echo", json!({"text": changed}));
+    assert!(text_of(&third).contains("Unchanged since your previous snapshot"));
+    s.finish();
+}
+
+/// Claude Code saves a text result over 50,000 characters to a file and
+/// shows its model a note. A diff against such a view is relative to nothing
+/// the model has, so the next snapshot is sent in full again.
+#[test]
+fn no_diff_for_claude_code_against_a_view_it_saved_to_a_file() {
+    const LARGE: &str = "tests/fixtures/playwright/the-internet-herokuapp-com-large.txt";
+    for (client, expect_diff) in [("Claude Code", false), ("t", true)] {
+        let mut s = Session::start(LARGE, &[]);
+        s.init_as(client);
+        let first = s.call("browser_snapshot", json!({}));
+        assert!(
+            text_of(&first).len() > 50_000,
+            "{client}: not over the limit"
+        );
+        let second = s.call("browser_snapshot", json!({}));
+        let d = text_of(&second);
+        assert_eq!(
+            d.contains("Unchanged since your previous snapshot"),
+            expect_diff,
+            "{client}:\n{}",
+            &d[..300.min(d.len())]
+        );
+        assert_eq!(d.contains("```yaml"), !expect_diff, "{client}");
+        s.finish();
+    }
+    // Pages Claude Code does show are still diffed.
+    let mut s = Session::start(FORM, &[]);
+    s.init_as("Claude Code");
+    let first = s.call("browser_snapshot", json!({}));
+    assert!(text_of(&first).len() < 50_000);
+    let second = s.call("browser_snapshot", json!({"checked": true}));
+    let d = text_of(&second);
+    assert!(d.contains("```diff"), "{d}");
+    assert!(d.contains("no longer have the previous one"), "{d}");
+    s.finish();
+}
+
 #[test]
 fn no_diff_flag_always_sends_full_snapshots() {
     let mut s = Session::start(FORM, &["--no-diff"]);

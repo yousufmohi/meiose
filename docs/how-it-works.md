@@ -37,6 +37,15 @@ brings its whole header. Up to 30 matches and about 24 KB are returned; the
 reply says how many matched in total. Refs in the result can be used directly,
 for example to click a link the trimmed page did not show.
 
+Compact JSON (one line, as the official GitHub MCP server sends it) is
+pretty-printed before the search, and the reply says so. A line longer than 600
+characters comes back as a window of about 250 characters around the first
+occurrence of each term, with a note saying how many characters were cut and
+how many further matches the line holds; a snapshot element keeps its role,
+name and ref, and a JSON field keeps its key. A term written the way the
+compact preview shows it, such as `"id":42,` with no space, matches nothing
+pretty-printed, so it is looked up in the text as sent and the reply says so.
+
 ## Handlers
 
 Handlers are tried in order. The first one that makes an output smaller wins.
